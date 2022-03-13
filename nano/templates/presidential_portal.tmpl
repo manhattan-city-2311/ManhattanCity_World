@@ -1,0 +1,303 @@
+ <style type="text/css">
+a, a:link, a:visited, a:active, .linkOn, .linkOff
+{ 
+	color: #ffffff; 
+	text-decoration: none;
+	background: #40628a;
+	border: 1px solid #161616;
+	padding: 1px 4px 1px 4px;
+	margin: 0 2px 0 0;
+	cursor:default;
+	white-space:nowrap;
+}
+</style>
+
+<h1>Presidential Portal</h1><hr>
+
+{{:data.page_msg}}<hr>
+
+<br>
+
+{{if data.index == 0}}
+{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
+{{if data.index == -1}}
+{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
+{{if data.index == 1}}
+
+<div class="itemLabel"><b>Government:</b></div> <br>
+{{:helper.link("Manage Council", null, {'manage_council' : 1})}}
+{{:helper.link("Resign as President", null, {'resign' : 1})}}
+{{:helper.link("Assign Vice President", null, {'notyet' : 1})}}
+{{:helper.link("Assign Cabinet", null, {'notyet' : 1})}}
+<p><p><br>
+
+<div class="itemLabel"><b>Law and Order:</b></div> <br>
+{{:helper.link("Make New Bill", null, {'notyet' : 1})}}
+{{:helper.link("Edit Colony Laws", null, {'notyet' : 1})}}
+{{:helper.link("Set Contraband", null, {'contraband' : 1})}}
+{{:helper.link("Citizen Rights", null, {'rights_panel' : 1})}}
+<p><p><br>
+
+<div class="itemLabel"><b>Economy:</b></div> <br>
+{{:helper.link("Economy Information", null, {'notyet' : 1})}}
+{{:helper.link("Manage Funds", null, {'manage_funds' : 1})}}
+{{:helper.link("Modify Public Jobs", null, {'notyet' : 1})}}
+{{:helper.link("Income Tax Rates", null, {'taxes' : 1})}}
+{{:helper.link("Item Tax", null, {'item_tax' : 1})}}
+<p><p><br>
+
+<div class="itemLabel"><b>Communications:</b></div> <br>
+{{:helper.link("Public News Announcement", null, {'notyet' : 1})}}
+{{:helper.link("Public Emails", null, {'notyet' : 1})}}
+{{:helper.link("Fax NanoTrasen", null, {'notyet' : 1})}}
+{{:helper.link("Fax SolGov", null, {'notyet' : 1})}}
+{{:helper.link("Fax City Council", null, {'notyet' : 1})}}
+<p><p><br>
+
+{{/if}}
+
+{{if data.index == 2}}
+
+{{:data.error_msg}}<p>
+
+	<div class="itemLabel">
+		Working Class Tax:
+	</div> {{:data.working_tax}}%  <br> {{:helper.link("Adjust Working Tax", null, {'adjust_wc_taxes' : 1})}}
+
+<br><br>
+	<div class="itemLabel">
+		Middle Class Tax:
+	</div> {{:data.middle_tax}}% <br> {{:helper.link("Adjust Middle Tax", null, {'adjust_mc_taxes' : 1})}}
+
+<br><br>
+	<div class="itemLabel">
+		Upper Class Tax:
+	</div> {{:data.upper_tax}}% <br> {{:helper.link("Adjust Upper Tax", null, {'adjust_uc_taxes' : 1})}}
+<br><br>
+{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
+
+{{if data.index == 3}}
+
+{{:data.error_msg}}<p>
+
+	{{:helper.link("Adjust Tax Group", null, {'adjust_main_taxes' : 1})}}
+
+	<br><br>
+
+	<div class="itemLabel">
+		Medical Tax:
+	</div> {{:data.medical_tax}}%  <br>
+
+	<div class="itemLabel">
+		Weapons Tax:
+	</div> {{:data.weapons_tax}}%  <br>
+
+	<div class="itemLabel">
+		Alcoholic Beverage Tax:
+	</div> {{:data.alcoholic_tax}}%  <br>
+
+	<div class="itemLabel">
+		Tobacco and Cigarette Tax:
+	</div> {{:data.tobacco_tax}}%  <br>
+
+	<div class="itemLabel">
+		Recreational Drug Tax:
+	</div> {{:data.recreational_drug_tax}}%  <br>
+
+	<div class="itemLabel">
+		Gambling Tax:
+	</div> {{:data.gambling_tax}}%  <br>
+
+	<br><br>
+	{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
+{{if data.index == 4}}
+
+	{{:data.error_msg}}<p>
+
+	{{:helper.link("Edit Contraband", null, {'contraband_edit' : 1})}}
+
+	<h3>Recreational Drugs:</h3><br>
+
+	<div class="itemLabel">
+		Marijuana and Cannabis Status:
+	</div> {{:data.cannabis_status}}  <br>
+
+	<div class="itemLabel">
+		Alcoholic Beverage Status:
+	</div> {{:data.alcohol_status}}  <br>
+
+	<div class="itemLabel">
+		Ecstasy Status:
+	</div> {{:data.ecstasy_status}}  <br>
+
+	<div class="itemLabel">
+		Psilocybin Status:
+	</div> {{:data.psilocybin_status}}  <br>
+
+	<div class="itemLabel">
+		Crack Status:
+	</div> {{:data.crack_status}}  <br>
+
+	<div class="itemLabel">
+		Cocaine Status:
+	</div> {{:data.cocaine_status}}  <br>
+
+	<div class="itemLabel">
+		Heroin Status:
+	</div> {{:data.heroin_status}}  <br>
+
+	<div class="itemLabel">
+		Meth Status:
+	</div> {{:data.meth_status}}  <br>
+
+	<div class="itemLabel">
+		Nicotine Status:
+	</div> {{:data.nicotine_status}}  <br>
+
+	<div class="itemLabel">
+		Stimm Status:
+	</div> {{:data.stimm_status}}  <br>
+
+	<h3>Poisonous Substances:</h3><br>
+
+	<div class="itemLabel">
+		Cyanide Status:
+	</div> {{:data.cyanide_status}}  <br>
+
+	<div class="itemLabel">
+		Chloral Hydrate Status:
+	</div> {{:data.chloral_status}}  <br>
+
+	<h3>Civilian Ownership Weapons:</h3><br>
+	<b>Note:</b> <i>Does not apply to police, military and government authorized bodies.</i><br>
+
+	<div class="itemLabel">
+		Gun Ownership:
+	</div> {{:data.guns_status}}  <br>
+
+	<div class="itemLabel">
+		Small Knife Ownership:
+	</div> {{:data.smallknives_status}}  <br>
+
+	<div class="itemLabel">
+		Large Knife Ownership:
+	</div> {{:data.largeknives_status}}  <br>
+
+	<div class="itemLabel">
+		Explosives Ownership:
+	</div> {{:data.explosives_status}}  <br>
+
+	<br><br>
+	{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
+{{if data.index == 5}}
+
+	{{:data.error_msg}}<p>
+
+	<center>{{:helper.link("Resign President", null, {'resign_president' : 1})}}</center>
+
+	<br><br>
+	{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
+{{if data.index == 6}}
+
+{{:data.error_msg}}<p>
+
+	<h3>Employment, Voting Status and Eligibility Options:</h3><br>
+
+	<div class="itemLabel">
+		Employers Can Reject Synths:
+	</div> {{:data.synth_discrimination}}  {{:helper.link("Change", null, {'toggle_synth_discrimination' : 1})}}
+	<br>
+	<br>
+
+	<div class="itemLabel">
+		Synth Minimum Wage:
+	</div> {{:data.synth_minimum_wage}}CR  {{:helper.link("Change", null, {'synth_minimum_wage' : 1})}}
+	<br>
+	<br>
+
+	<div class="itemLabel">
+		Synth Voting Rights:
+	</div> {{:data.synth_vote}}  {{:helper.link("Change", null, {'synth_vote' : 1})}}
+	<br>
+	<br>
+
+	<div class="itemLabel">
+		Immigrant Voting Rights:
+	</div> {{:data.citizenship_vote}}  {{:helper.link("Change", null, {'citizenship_vote' : 1})}}
+	<br>
+	<br>
+
+	<div class="itemLabel">
+		Criminal Voting Rights:
+	</div> {{:data.criminal_vote}}  {{:helper.link("Change", null, {'criminal_vote' : 1})}}
+	<br>
+	<br>
+	<h3>Age Options:</h3><br>
+
+	<div class="itemLabel">
+		Voting Age:
+	</div> {{:data.voting_age}}  {{:helper.link("Change", null, {'voting_age' : 1})}}<br>
+	<br>
+
+	<div class="itemLabel">
+		Drinking Age:
+	</div> {{:data.drinking_age}}  {{:helper.link("Change", null, {'drinking_age' : 1})}}<br>
+	<br>
+
+	<div class="itemLabel">
+		Smoking Age:
+	</div> {{:data.smoking_age}}  {{:helper.link("Change", null, {'smoking_age' : 1})}}<br>
+	<br>
+
+	<div class="itemLabel">
+		Gambling Age:
+	</div> {{:data.gambling_age}}  {{:helper.link("Change", null, {'gambling_age' : 1})}}<br>
+	<br>
+
+	<div class="itemLabel">
+		Sentencing Age:
+	</div> {{:data.sentencing_age}}  {{:helper.link("Change", null, {'sentencing_age' : 1})}}<br>
+	<br>
+
+	<div class="itemLabel">
+		Minimum Wage:
+	</div> {{:data.min_wage}}CR  {{:helper.link("Change", null, {'adjust_minimum_wage' : 1})}}
+	<br>
+	<br>
+
+
+	
+	{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
+
+{{if data.index == 7}}
+
+	{{:helper.link("Modify City Service Ability", null, {'manage_council_services' : 1})}}
+
+	<br>
+	<br>
+	<b>Council Services Allowance:</b> {{:data.city_services_enable}}
+
+
+	<br><br>
+	{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
+{{if data.index == 8}}
+
+	{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+

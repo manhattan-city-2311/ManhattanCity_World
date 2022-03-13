@@ -1,0 +1,48 @@
+
+ <style type="text/css">
+    h1 {
+        color: black;
+    }
+    h2 {
+        color: black;
+    }
+
+    h3 {
+        color: black;
+    }
+
+    h4 {
+        color: black;
+    }
+
+    h5 {
+        color: black;
+    }
+
+</style>
+
+
+<p><strong>{{:data.website_title}}</strong> - NTNet Explorer</p>
+<hr>
+<table style="width: 100%; margin-right: calc(0%);">
+    <tbody>
+        <tr>
+            <td style="width: 85%; color: black; background-color: #FFFFFF; color: black; text-align: left;">{{:data.website_url}}<br></td>{{:helper.link("Browse", null, {'Browse' : 1})}} 
+        </tr>
+    </tbody>
+</table>
+<p>
+
+{{:helper.link("Refresh", null, {'Refresh' : 1})}}  {{:helper.link("Home", null, {'go_homepage' : 1})}}  {{:helper.link("Set Home Page", null, {'set_homepage' : 1})}}</p>
+<p><br></p>
+
+
+<div style="background-color: #FFFFFF; color: #000000; padding: 6px;">
+
+
+
+		{{:data.website_content}}
+
+
+</div>
+

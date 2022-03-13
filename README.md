@@ -1,92 +1,93 @@
-# Manhattan City
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/GeneriedJenelle/The-World-Server-Redux) 
 
-То что мертво - дважды умереть не может. Ну, если вы не сражаетесь с некромантом
+# The-World-Server-Redux
 
-## Getting started
+[Forums](http://geminus.city/forums/index.php) - [Wiki](http://geminus.city/wiki) - [Discord](https://discord.gg/f8J7G2y)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+World Server is a fork of the Polaris code branch for the game Spacestation13.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+---
 
-## Add your files
+### LICENSE
+The code for Polaris is licensed under the [GNU Affero General Public License](http://www.gnu.org/licenses/agpl.html) version 3, which can be found in full in LICENSE-AGPL3.txt. Because we are a fork of Polaris, we ask you abide by their license.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+Code with a git authorship date prior to `1420675200 +0000` (2015/01/08 00:00) are licensed under the GNU General Public License version 3, which can be found in full in LICENSE-GPL3.txt.
 
+All code whose authorship dates are not prior to `1420675200 +0000` is assumed to be licensed under AGPL v3, if you wish to license under GPL v3 please make this clear in the commit message and any added files.
+
+If you wish to develop and host this codebase in a closed source manner you may use all code prior to `1420675200 +0000`, which is licensed under GPL v3.  The major change here is that if you host a server using any code licensed under AGPLv3 you are required to provide full source code for your servers users as well including addons and modifications you have made.
+
+See [here](https://www.gnu.org/licenses/why-affero-gpl.html) for more information.
+
+All assets including icons and sound are under a [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/) license unless otherwise indicated.
+
+### GETTING THE CODE
+The simplest way to obtain the code is using the github .zip feature.
+
+Click [here](https://github.com/GeneriedJenelle/The-World-Server-Redux/archive/master.zip) to get the latest code as a .zip file, then unzip it to wherever you want.
+
+The more complicated and easier to update method is using git.  You'll need to download git or some client from [here](http://git-scm.com/).  When that's installed, right click in any folder and click on "Git Bash".  When that opens, type in:
+
+    git clone https://github.com/GeneriedJenelle/The-World-Server-Redux.git
+
+(hint: hold down ctrl and press insert to paste into git bash)
+
+This will take a while to download, but it provides an easier method for updating.
+
+Once the repository is in place, run this command:
+```bash
+cd The-World-Server-Redux
+git update-index --assume-unchanged The-World-Server-Redux.int
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/VoiceInYourHead/manhattan-city.git
-git branch -M main
-git push -uf origin main
-```
+Now git will ignore changes to the file polaris.int.
 
-## Integrate with your tools
+### INSTALLATION
 
-- [ ] [Set up project integrations](https://gitlab.com/VoiceInYourHead/manhattan-city/-/settings/integrations)
+First-time installation should be fairly straightforward.  First, you'll need BYOND installed.  You can get it from [here](http://www.byond.com/).
 
-## Collaborate with your team
+This is a sourcecode-only release, so the next step is to compile the server files.  Open worldserver.dme by double-clicking it, open the Build menu, and click compile.  This'll take a little while, and if everything's done right you'll get a message like this:
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+    saving worldserver.dmb (DEBUG mode)
 
-## Test and Deploy
+    polaris.dmb - 0 errors, 0 warnings
 
-Use the built-in continuous integration in GitLab.
+If you see any errors or warnings, something has gone wrong - possibly a corrupt download or the files extracted wrong, or a code issue on the main repo. Ask on our Discord.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Once that's done, open up the config folder.  You'll want to edit config.txt to set the probabilities for different gamemodes in Secret and to set your server location so that all your players don't get disconnected at the end of each round.  It's recommended you don't turn on the gamemodes with probability 0, as they have various issues and aren't currently being tested, so they may have unknown and bizarre bugs.
 
-***
+You'll also want to edit admins.txt to remove the default admins and add your own.  "Game Master" is the highest level of access, and the other recommended admin levels for now are "Game Admin" and "Moderator".  The format is:
 
-# Editing this README
+    byondkey - Rank
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+where the BYOND key must be in lowercase and the admin rank must be properly capitalised.  There are a bunch more admin ranks, but these two should be enough for most servers, assuming you have trustworthy admins.
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Finally, to start the server, run Dream Daemon and enter the path to your compiled polaris.dmb file.  Make sure to set the port to the one you  specified in the config.txt, and set the Security box to 'Trusted'.  Then press GO and the server should start up and be ready to join.
 
-## Name
-Choose a self-explaining name for your project.
+---
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+### UPDATING
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+To update an existing installation, first back up your /config and /data folders
+as these store your server configuration, player preferences and banlist.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+If you used the zip method, you'll need to download the zip file again and unzip it somewhere else, and then copy the /config and /data folders over.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+If you used the git method, you simply need to type this in to git bash:
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+    git pull
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+When this completes, copy over your /data and /config folders again, just in case.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+When you have done this, you'll need to recompile the code, but then it should work fine.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+---
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+### Configuration
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+For a basic setup, simply copy every file from config/example to config.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+---
 
-## License
-For open source projects, say how it is licensed.
+### SQL Setup
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+The SQL backend for the library and stats tracking requires a MySQL server.  Your server details go in /config/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql.  More detailed setup instructions arecoming soon, for now ask in our Discord server.

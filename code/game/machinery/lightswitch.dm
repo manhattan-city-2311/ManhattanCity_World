@@ -1,0 +1,108 @@
+// the light switch
+// can have multiple per area
+// can also operate on non-loc area through "otherarea" var
+/obj/machinery/light_switch
+	name = "light switch"
+	desc = "It turns lights on and off. What are you, simple?"
+	icon = 'icons/obj/power.dmi'
+	icon_state = "light1"
+	anchored = 1.0
+	use_power = 1
+	idle_power_usage = 10
+	power_channel = LIGHT
+	var/on = 1
+	var/area/area = null
+	var/otherarea = null
+	var/image/overlay
+
+/obj/machinery/light_switch/New()
+	..()
+	spawn(5)
+		area = get_area(src)
+
+		if(otherarea)
+			area = locate(text2path("/area/[otherarea]"))
+
+		if(!name)
+			name = "light switch ([area.name])"
+
+		on = area.lightswitch
+		updateicon()
+
+	if(pixel_x == 0 && pixel_y == 0)
+
+		var/turf/here = get_turf(src)
+		var/placing = 0
+		for(var/checkdir in GLOB.cardinal)
+			var/turf/T = get_step(here, checkdir)
+			if(T.density)
+				placing = checkdir
+				break
+			for(var/thing in T)
+				var/atom/A = thing
+				if(A.simulated && !A.CanPass(src, T))
+					placing = checkdir
+					break
+
+		switch(placing)
+			if(NORTH)
+				pixel_x = 0
+				pixel_y = 30
+			if(SOUTH)
+				pixel_x = 0
+				pixel_y = -30
+			if(EAST)
+				pixel_x = 30
+				pixel_y = 0
+			if(WEST)
+				pixel_x = -30
+				pixel_y = 0
+
+/obj/machinery/light_switch/proc/updateicon()
+	if(!overlay)
+		overlay = image(icon, "light1-overlay")
+		overlay.plane = PLANE_LIGHTING_ABOVE
+
+	overlays.Cut()
+	if(stat & NOPOWER)
+		icon_state = "light-p"
+		set_light(0)
+	else
+		icon_state = "light[on]"
+		overlay.icon_state = "light[on]-overlay"
+		overlays += overlay
+		set_light(2, 0.1, on ? "#82FF4C" : "#F86060")
+
+/obj/machinery/light_switch/examine(mob/user)
+	if(..(user, 1))
+		to_chat(user, "A light switch. It is [on? "on" : "off"].")
+
+/obj/machinery/light_switch/attack_hand(mob/user)
+
+	on = !on
+
+	area.lightswitch = on
+	area.updateicon()
+
+	for(var/obj/machinery/light_switch/L in area)
+		L.on = on
+		L.updateicon()
+
+	area.power_change()
+
+/obj/machinery/light_switch/power_change()
+
+	if(!otherarea)
+		if(powered(LIGHT))
+			stat &= ~NOPOWER
+		else
+			stat |= NOPOWER
+
+		updateicon()
+
+/obj/machinery/light_switch/emp_act(severity)
+	if(stat & (BROKEN|NOPOWER))
+		..(severity)
+		return
+	power_change()
+	..(severity)

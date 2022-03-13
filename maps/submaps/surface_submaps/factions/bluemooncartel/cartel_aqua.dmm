@@ -1,0 +1,78 @@
+"aa" = (/turf/simulated/wall,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ab" = (/obj/machinery/door/airlock/multi_tile{icon_state = "closed"; dir = 8},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ac" = (/obj/machinery/computer/security/wooden_tv/entertainment,/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ad" = (/obj/structure/closet/cabinet,/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ae" = (/obj/machinery/fishtank/tank,/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"af" = (/obj/effect/wallframe_spawn/basic,/turf/simulated/floor/plating,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ag" = (/obj/structure/flora/pottedplant/aquatic{pixel_y = 11},/turf/simulated/floor/wood/tiledwood,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ah" = (/turf/simulated/floor/wood/tiledwood,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ai" = (/obj/machinery/light/colored/blue{tag = "icon-blue1 (EAST)"; icon_state = "blue1"; dir = 4},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aj" = (/obj/structure/table/glass,/obj/machinery/door/window/southright,/obj/structure/window/reinforced{dir = 8; health = 1e+006},/obj/structure/window/reinforced{dir = 4; health = 1e+006},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ak" = (/obj/structure/table/glass,/obj/machinery/door/window/southright,/obj/structure/window/reinforced{dir = 4; health = 1e+006},/obj/structure/window/reinforced{dir = 8; health = 1e+006},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"al" = (/obj/structure/table/woodentable,/obj/machinery/light/colored/blue{dir = 8},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"am" = (/obj/structure/table/woodentable,/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"an" = (/obj/structure/table/woodentable,/obj/structure/flora/pottedplant/drooping{pixel_y = 11},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ao" = (/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ap" = (/turf/simulated/floor/carpet/sblucarpet,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aq" = (/obj/structure/table/glass,/obj/machinery/door/window/northleft,/obj/machinery/door/window/southright,/obj/structure/window/reinforced{dir = 8; health = 1e+006},/obj/structure/window/reinforced{dir = 4; health = 1e+006},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ar" = (/obj/structure/table/glass,/obj/machinery/door/window/northleft,/obj/machinery/door/window/southright,/obj/structure/window/reinforced{dir = 4; health = 1e+006},/obj/structure/window/reinforced{dir = 8; health = 1e+006},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"as" = (/obj/machinery/door/airlock/multi_tile{icon_state = "closed"; dir = 8},/turf/simulated/floor/carpet/sblucarpet,/area/submap/factions/bluemooncartel/cartel_aqua)
+"at" = (/obj/structure/coatrack,/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"au" = (/obj/structure/table/bench/padded,/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"av" = (/obj/structure/bed/chair/comfy/blue{icon_state = "comfychair_preview"; dir = 4},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aw" = (/obj/structure/table/woodentable,/obj/structure/flora/pottedplant/thinbush{pixel_y = 11},/obj/machinery/light/colored/blue{dir = 8},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ax" = (/obj/machinery/light/colored/blue{dir = 8},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ay" = (/obj/structure/bed/chair/comfy/blue{icon_state = "comfychair_preview"; dir = 4},/obj/machinery/light/colored/blue{tag = "icon-blue1 (EAST)"; icon_state = "blue1"; dir = 4},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"az" = (/obj/structure/table/woodentable,/obj/machinery/chemical_dispenser/bar_coffee/full,/turf/simulated/floor/carpet/sblucarpet,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aA" = (/obj/structure/table/glass,/obj/machinery/door/window/northleft,/obj/structure/window/reinforced{dir = 8; health = 1e+006},/obj/structure/window/reinforced{dir = 4; health = 1e+006},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aB" = (/obj/structure/table/glass,/obj/machinery/door/window/northleft,/obj/structure/window/reinforced{dir = 4; health = 1e+006},/obj/structure/window/reinforced{dir = 8; health = 1e+006},/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aC" = (/obj/structure/safe,/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aD" = (/obj/structure/table/woodentable,/obj/item/weapon/handcuffs,/obj/item/weapon/tape_roll,/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aE" = (/obj/structure/table/woodentable,/obj/item/weapon/storage/box/glasses/meta,/obj/item/weapon/storage/box/glasses/meta,/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aF" = (/obj/structure/table/woodentable,/obj/machinery/chemical_dispenser/bar_alc/full,/turf/simulated/floor/carpet/sblucarpet,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aG" = (/obj/machinery/computer/security/telescreen/entertainment{icon_state = "frame"; pixel_x = 0; pixel_y = 32},/turf/simulated/floor/wood/tiledwood,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aH" = (/obj/machinery/door/window/westleft,/turf/simulated/floor/tiled,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aI" = (/obj/structure/table/woodentable,/obj/machinery/chemical_dispenser/bar_soft/full,/turf/simulated/floor/carpet/sblucarpet,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aJ" = (/obj/structure/table/woodentable,/obj/structure/curtain/open/color/pale_blue,/turf/simulated/floor/carpet/sblucarpet,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aK" = (/turf/simulated/floor/water/deep,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aL" = (/mob/living/simple_animal/fish/trout,/turf/simulated/floor/water/deep,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aM" = (/obj/structure/curtain/color/pale_blue,/turf/simulated/floor/carpet/sblucarpet,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aN" = (/obj/structure/bed/chair{dir = 8},/turf/simulated/floor/outdoors/dirt/indoors,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aO" = (/obj/machinery/light/colored/blue{dir = 8},/turf/simulated/floor/water/deep,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aP" = (/obj/machinery/light/small{icon_state = "bulb1"; dir = 8},/turf/simulated/floor/wood/tiledwood,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aQ" = (/obj/structure/bed/chair/comfy/blue,/turf/simulated/floor/wood/tiledwood,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aR" = (/obj/structure/table/woodentable,/obj/item/device/flashlight/lamp,/turf/simulated/floor/wood/tiledwood,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aS" = (/turf/simulated/floor/outdoors/dirt/indoors,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aT" = (/obj/machinery/atm{pixel_x = -32},/turf/simulated/floor/wood/tiledwood,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aU" = (/obj/structure/table/woodentable,/obj/item/weapon/paper_bin,/obj/item/weapon/pen/fountain,/obj/item/weapon/pen/fountain,/obj/item/weapon/pen/fountain,/obj/item/weapon/pen/fountain,/obj/item/weapon/pen/fountain,/obj/item/weapon/pen/fountain,/turf/simulated/floor/wood/tiledwood,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aV" = (/obj/machinery/papershredder,/turf/simulated/floor/wood/tiledwood,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aW" = (/obj/structure/flora/tree/jungle,/turf/simulated/floor/outdoors/dirt/indoors,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aX" = (/obj/structure/bed/chair/comfy/blue{icon_state = "comfychair_preview"; dir = 1},/turf/simulated/floor/wood/tiledwood,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aY" = (/obj/structure/bed/chair/comfy/blue{icon_state = "comfychair_preview"; dir = 4},/turf/simulated/floor/carpet/sblucarpet,/area/submap/factions/bluemooncartel/cartel_aqua)
+"aZ" = (/obj/structure/table/woodentable,/turf/simulated/floor/carpet/sblucarpet,/area/submap/factions/bluemooncartel/cartel_aqua)
+"ba" = (/obj/structure/bed/chair/comfy/blue{icon_state = "comfychair_preview"; dir = 8},/turf/simulated/floor/carpet/sblucarpet,/area/submap/factions/bluemooncartel/cartel_aqua)
+"bb" = (/obj/machinery/door/airlock,/turf/simulated/floor/wood/tiledwood,/area/submap/factions/bluemooncartel/cartel_aqua)
+"bc" = (/mob/living/simple_animal/fish/koi,/turf/simulated/floor/water/deep,/area/submap/factions/bluemooncartel/cartel_aqua)
+"bd" = (/obj/machinery/light/small,/turf/simulated/floor/wood/tiledwood,/area/submap/factions/bluemooncartel/cartel_aqua)
+"be" = (/obj/structure/sink/puddle/fountain,/turf/simulated/floor/water/deep,/area/submap/factions/bluemooncartel/cartel_aqua)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaoacadaeamanaoaoaaaiaoajakakaoalaa
+aaaiaoaoaoaoaoaoaoaaaoapapapapapaoaa
+aoaoapapapapapapapapapapaqararapaoaa
+abaoapapapapapapapasapapaoaoaoapaoaa
+aaaoapapaoaoauauaoaaaoapaqararapaoaa
+aaavapapaoauamamawaaaaapapapapapaxaa
+aaayapapaoauamapapazaaaiaAaBaBaoaCaa
+aaaDapapaoauaEapapaFaaafafafafafafaa
+aaatapapaoaoaHapapaIaaaKaLaKaKaKaKaa
+aaaaaMaMaaaaaaaJaaaaaaaSaKaKaKaKaOaa
+aaagahahahaGahahahafaSaSaSaSaKaKaKaa
+aaaPahaQaQaQahahaRafaSaSaNaWaKaKaKaa
+aaaTaYaZaZaZbaahaUafaSaSaKaKaKbcaKaa
+aaahaYaZaZaZbaahaVafaSaSbeaKbcaKaKaa
+aaaPahaXaXaXahahahbbaSaLaKaKaKbcaOaa
+aaahahahahahbdahahafaSaKaKaKaKaKaKaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}
