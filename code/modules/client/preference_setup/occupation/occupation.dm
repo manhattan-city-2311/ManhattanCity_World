@@ -1,5 +1,5 @@
 /datum/category_item/player_setup_item/occupation
-	name = "Occupation"
+	name = "Профессии"
 	sort_order = 1
 
 /datum/category_item/player_setup_item/occupation/load_character(var/savefile/S)
@@ -65,7 +65,7 @@
 
 	. = list()
 	. += "<tt><center>"
-	. += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br>"
+	. += "<b>Выберите шансы на занятие профессии</b><br>Недоступные профессии зачёркнуты.<br>"
 	. += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more columns.
 	. += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
@@ -91,17 +91,17 @@
 		var/rank = job.title
 		lastJob = job
 		if(jobban_isbanned(user, rank))
-			. += "<del>[rank]</del></td><td><b> \[RESTRICTED]</b></td></tr>"
+			. += "<del>[rank]</del></td><td><b> \[ОГРАНИЧЕНО]</b></td></tr>"
 			continue
 		if(!job.player_old_enough(user.client))
 			var/available_in_days = job.available_in_days(user.client)
-			. += "<del>[rank]</del></td><td> \[IN [(available_in_days)] DAYS]</td></tr>"
+			. += "<del>[rank]</del></td><td> \[ДОСТУПНО ЧЕРЕЗ [(available_in_days)] ДНЕЙ]</td></tr>"
 			continue
 		if(job.hard_whitelisted && !is_hard_whitelisted(user, job))
-			. += "<del>[rank]</del></td><td><b> \[WHITELISTED]</b></td></tr>"
+			. += "<del>[rank]</del></td><td><b> \[ПОД БЕЛЫМ СПИСКОМ]</b></td></tr>"
 			continue
 		if(job.minimum_character_age && user.client && (user.client.prefs.age < job.minimum_character_age))
-			. += "<del>[rank]</del></td><td> \[MINIMUM CHARACTER AGE: [job.minimum_character_age]]</td></tr>"
+			. += "<del>[rank]</del></td><td> \[МИНИМАЛЬНЫЙ ВОЗРАСТ ПЕРСОНАЖА: [job.minimum_character_age]]</td></tr>"
 			continue
 		if((pref.job_civilian_low & ASSISTANT) && job.type != /datum/job/assistant)
 			. += "<font color=grey>[rank]</font></td><td></td></tr>"
@@ -126,13 +126,13 @@
 			continue
 
 		if(pref.GetJobDepartment(job, 1) & job.flag)
-			. += " <font color=55cc55>\[High]</font>"
+			. += " <font color=55cc55>\[Высокий]</font>"
 		else if(pref.GetJobDepartment(job, 2) & job.flag)
-			. += " <font color=eecc22>\[Medium]</font>"
+			. += " <font color=eecc22>\[Средний]</font>"
 		else if(pref.GetJobDepartment(job, 3) & job.flag)
-			. += " <font color=cc5555>\[Low]</font>"
+			. += " <font color=cc5555>\[Низкий]</font>"
 		else
-			. += " <font color=black>\[NEVER]</font>"
+			. += " <font color=black>\[НИКОГДА]</font>"
 		if(job.alt_titles)
 			. += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'>&nbsp</td><td><a href='?src=\ref[src];select_alt_title=\ref[job]'>\[[pref.GetPlayerAltTitle(job)]\]</a></td></tr>"
 		. += "</a></td></tr>"
@@ -141,13 +141,13 @@
 
 	switch(pref.alternate_option)
 		if(GET_RANDOM_JOB)
-			. += "<u><a href='?src=\ref[src];job_alternative=1'>Get random job if preferences unavailable</a></u>"
+			. += "<u><a href='?src=\ref[src];job_alternative=1'>Получать случайную профессию, если выбранная профессия недоступна</a></u>"
 		if(BE_ASSISTANT)
-			. += "<u><a href='?src=\ref[src];job_alternative=1'>Be assistant if preference unavailable</a></u>"
+			. += "<u><a href='?src=\ref[src];job_alternative=1'>Быть ассистентом, если выбранная профессия недоступна</a></u>"
 		if(RETURN_TO_LOBBY)
-			. += "<u><a href='?src=\ref[src];job_alternative=1'>Return to lobby if preference unavailable</a></u>"
+			. += "<u><a href='?src=\ref[src];job_alternative=1'>Вернуться в лобби, если выбранная профессия недоступна</a></u>"
 
-	. += "<a href='?src=\ref[src];reset_jobs=1'>\[Reset\]</a></center>"
+	. += "<a href='?src=\ref[src];reset_jobs=1'>\[Сбросить]</a></center>"
 	. += "</tt>"
 	. = jointext(.,null)
 
@@ -167,7 +167,7 @@
 		var/datum/job/job = locate(href_list["select_alt_title"])
 		if (job)
 			var/choices = list(job.title) + job.alt_titles
-			var/choice = input("Choose a title for [job.title].", "Choose Title", pref.GetPlayerAltTitle(job)) as anything in choices|null
+			var/choice = input("Выберите титул для [job.title].", "Выбор титула", pref.GetPlayerAltTitle(job)) as anything in choices|null
 			if(choice && CanUseTopic(user))
 				SetPlayerAltTitle(job, choice)
 				return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)

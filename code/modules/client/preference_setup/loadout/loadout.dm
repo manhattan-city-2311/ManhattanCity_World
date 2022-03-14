@@ -42,7 +42,7 @@ var/list/gear_datums = list()
 	return 1
 
 /datum/category_item/player_setup_item/loadout
-	name = "Loadout"
+	name = "Личные вещи"
 	sort_order = 1
 	var/current_tab = "General"
 
@@ -85,16 +85,16 @@ var/list/gear_datums = list()
 	var/total_cost = 0
 	for(var/gear_name in pref.gear)
 		if(!gear_datums[gear_name])
-			to_chat(preference_mob, "<span class='warning'>You cannot have more than one of the \the [gear_name]</span>")
+			to_chat(preference_mob, "<span class='warning'>Вы не можете иметь больше чем одну единицу \the [gear_name]</span>")
 			pref.gear -= gear_name
 		else if(!(gear_name in valid_gear_choices()))
-			to_chat(preference_mob, "<span class='warning'>You cannot take \the [gear_name] as you are not whitelisted for the species.</span>")
+			to_chat(preference_mob, "<span class='warning'>Вы не можете взять \the [gear_name], потому что этот предмет ограничен расой.</span>")
 			pref.gear -= gear_name
 		else
 			var/datum/gear/G = gear_datums[gear_name]
 			if(total_cost + G.cost > MAX_GEAR_COST)
 				pref.gear -= gear_name
-				to_chat(preference_mob, "<span class='warning'>You cannot afford to take \the [gear_name]</span>")
+				to_chat(preference_mob, "<span class='warning'>Вы не можете позволить себе \the [gear_name]</span>")
 			else
 				total_cost += G.cost
 

@@ -122,7 +122,7 @@
 
 /datum/category_item/player_setup_item/general/equipment/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["change_backpack"])
-		var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference", backbaglist[pref.backbag]) as null|anything in backbaglist
+		var/new_backbag = input(user, "Выберите тип рюкзака вашего персонажа:", "Character Preference", backbaglist[pref.backbag]) as null|anything in backbaglist
 		if(!isnull(new_backbag) && CanUseTopic(user))
 			pref.backbag = backbaglist.Find(new_backbag)
 			return TOPIC_REFRESH_UPDATE_PREVIEW
@@ -137,7 +137,7 @@
 		var/datum/category_group/underwear/UWC = global_underwear.categories_by_name[href_list["change_underwear"]]
 		if(!UWC)
 			return
-		var/datum/category_item/underwear/selected_underwear = input(user, "Choose underwear:", "Character Preference", pref.all_underwear[UWC.name]) as null|anything in UWC.items
+		var/datum/category_item/underwear/selected_underwear = input(user, "Выберите нижнее бельё:", "Character Preference", pref.all_underwear[UWC.name]) as null|anything in UWC.items
 		if(selected_underwear && CanUseTopic(user))
 			pref.all_underwear[UWC.name] = selected_underwear.name
 		return TOPIC_REFRESH_UPDATE_PREVIEW

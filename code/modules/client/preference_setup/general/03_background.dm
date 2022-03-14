@@ -88,12 +88,12 @@
 /datum/category_item/player_setup_item/general/background/content(var/mob/user)
 	. += "<h1>Предыстория персонажа:</h1><hr>"
 	if(!pref.existing_character)
-		. += "Geminus City is on the planet Pollux, and is located in Blue Colony, in the Vetra star system. You may choose a different background. Social class and the system you are born in cannot be changed once set.</br><br>"
+		. += "Город Джеминус планеты Поллюкс, распологающийся в Синей колонии, в звёздной системе Ветра. Вы можете выбрать другую предысторию. Социальный класс и система не могут быть изменены после их изменения.</br><br>"
 
-		. += "There are the minimum days required to start each class:<br><br>"
-		. += "Working Class Minimum: 0 days (200CR inheritance)<br>"
-		. += "Middle Class Minimum: [config.middle_class_age] days (4000CR inheritance)<br>"
-		. += "Upper Class Minimum: [config.upper_class_age] day (10000CR inheritance)<br><br>"
+		. += "Минимальное количество дней для начала определённого класса:<br><br>"
+		. += "Рабочий класс: 0 дней (200 кредитов)<br>"
+		. += "Средний класс: [config.middle_class_age] дней (4000 кредитов)<br>"
+		. += "Высший класс: [config.upper_class_age] дней (10000 кредитов)<br><br>"
 
 		. += "<b>Экономический класс:</b> [pref.economic_status]<br>"
 		. += "<b>Социальный класс:</b> <a href='?src=\ref[src];soc_class=1'>[pref.social_class]</a><br/>"
@@ -101,16 +101,16 @@
 
 	else
 		. += "<b>Социальный класс:</b> [pref.social_class]<br/>"
-		. += "<b>Economic Class:</b> [pref.economic_status]<br>"
-		. += "<b>Birth System:</b> [pref.home_system]<br/>"
+		. += "<b>Экономический класс:</b> [pref.economic_status]<br>"
+		. += "<b>Система рождения:</b> [pref.home_system]<br/>"
 
 	. += "Континентальное жительство: <a href='?src=\ref[src];citizenship=1'>[pref.citizenship]</a><br/>"
 //	. += "Faction: <a href='?src=\ref[src];faction=1'>[pref.faction]</a><br/>" // meh do we even use this?
 	. += "Религия: <a href='?src=\ref[src];religion=1'>[pref.religion]</a><br/>"
 
-	. += "<br/><b>Public Records</b>:<br/>"
+	. += "<br/><b>Публичные записи</b>:<br/>"
 	if(jobban_isbanned(user, "Records"))
-		. += "<span class='danger'>You are banned from using character records.</span><br>"
+		. += "<span class='danger'>Вам забанена функция изменения предыстории.</span><br>"
 	else
 		. += "Больничные записи:<br>"
 		. += "<a href='?src=\ref[src];set_medical_records=1'>[TextPreview(pref.med_record,40)]</a><br><br>"
@@ -118,9 +118,9 @@
 		. += "<a href='?src=\ref[src];set_general_records=1'>[TextPreview(pref.gen_record,40)]</a><br><br>"
 		. += "Приводы:<br>"
 		if(!pref.existing_character)
-			. += "<a href='?src=\ref[src];set_security_records=1'>[pref.sec_record ? "[TextPreview(pref.sec_record,40)]" : "Add Police Notes"]</a><br>"
+			. += "<a href='?src=\ref[src];set_security_records=1'>[pref.sec_record ? "[TextPreview(pref.sec_record,40)]" : "Добавить полицейские записи"]</a><br>"
 		else
-			. += "<i>[pref.sec_record ? "[pref.sec_record]" : "No police notes found."]</i><br>"
+			. += "<i>[pref.sec_record ? "[pref.sec_record]" : "Полицейские записи не найдены."]</i><br>"
 
 
 		var/crime_data
@@ -130,8 +130,8 @@
 			record_count++
 
 		. += "Полицейские приводы:<br>"
-		. += "<a href='?src=\ref[src];edit_criminal_record=1'>Edit Criminal Record[record_count ? " ([record_count])" : ""]</a><br>"
-		. += "\n<b>Criminal Status:</b> [pref.criminal_status]<br>"
+		. += "<a href='?src=\ref[src];edit_criminal_record=1'>Редактировать криминальные записи[record_count ? " ([record_count])" : ""]</a><br>"
+		. += "\n<b>Криминальный статус:</b> [pref.criminal_status]<br>"
 
 /datum/category_item/player_setup_item/general/background/OnTopic(var/href,var/list/href_list, var/mob/user)
 	var/suitable_classes = get_available_classes(user.client)
@@ -145,17 +145,17 @@
 				return TOPIC_REFRESH
 
 	if(href_list["soc_class"])
-		var/new_class = input(user, "Choose your starting social class. This will affect the amount of money you will start with, your position in the revolution and other events.", "Character Preference", pref.social_class)  as null|anything in suitable_classes
+		var/new_class = input(user, "Выберите стартовый социальный класс. Это будет влиять на количество денег с которым вы начинаете, вашу позицию в революции и прочих событиях.", "Character Preference", pref.social_class)  as null|anything in suitable_classes
 		if(new_class && CanUseTopic(user))
 			pref.social_class = new_class
 			return TOPIC_REFRESH
 
 	else if(href_list["home_system"])
-		var/choice = input(user, "Please choose a home system.", "Character Preference", pref.home_system) as null|anything in home_system_choices
+		var/choice = input(user, "Выберите родную систему.", "Character Preference", pref.home_system) as null|anything in home_system_choices
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
 		if(choice == "Other")
-			var/raw_choice = sanitize(input(user, "Please enter a home system.", "Character Preference")  as text|null, MAX_NAME_LEN)
+			var/raw_choice = sanitize(input(user, "Выберите родную систему.", "Character Preference")  as text|null, MAX_NAME_LEN)
 			if(raw_choice && CanUseTopic(user))
 				pref.home_system = raw_choice
 		else
@@ -163,7 +163,7 @@
 		return TOPIC_REFRESH
 
 	else if(href_list["citizenship"])
-		var/choice = input(user, "Please choose your current citizenship.", "Character Preference", pref.citizenship) as null|anything in citizenship_choices
+		var/choice = input(user, "Выберите ваше гражданство.", "Character Preference", pref.citizenship) as null|anything in citizenship_choices
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
 		pref.citizenship = choice
@@ -182,11 +182,11 @@
 		return TOPIC_REFRESH
 */
 	else if(href_list["religion"])
-		var/choice = input(user, "Please choose a religion.", "Character Preference", pref.religion) as null|anything in religion_choices + list("None","Other")
+		var/choice = input(user, "Выберите религию.", "Character Preference", pref.religion) as null|anything in religion_choices + list("None","Other")
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
 		if(choice == "Other")
-			var/raw_choice = sanitize(input(user, "Please enter a religon.", "Character Preference")  as text|null, MAX_NAME_LEN)
+			var/raw_choice = sanitize(input(user, "Выберите религию.", "Character Preference")  as text|null, MAX_NAME_LEN)
 			if(raw_choice)
 				pref.religion = sanitize(raw_choice)
 		else
@@ -194,19 +194,19 @@
 		return TOPIC_REFRESH
 
 	else if(href_list["set_medical_records"])
-		var/new_medical = sanitize(input(user,"Enter medical information here.","Character Preference", html_decode(pref.med_record)) as message|null, MAX_RECORD_LENGTH, extra = 0)
+		var/new_medical = sanitize(input(user,"Введите медицинскую информацию.","Character Preference", html_decode(pref.med_record)) as message|null, MAX_RECORD_LENGTH, extra = 0)
 		if(!isnull(new_medical) && !jobban_isbanned(user, "Records") && CanUseTopic(user))
 			pref.med_record = new_medical
 		return TOPIC_REFRESH
 
 	else if(href_list["set_general_records"])
-		var/new_general = sanitize(input(user,"Enter employment information here.","Character Preference", html_decode(pref.gen_record)) as message|null, MAX_RECORD_LENGTH, extra = 0)
+		var/new_general = sanitize(input(user,"Введите информацию для нанимателей.","Character Preference", html_decode(pref.gen_record)) as message|null, MAX_RECORD_LENGTH, extra = 0)
 		if(!isnull(new_general) && !jobban_isbanned(user, "Records") && CanUseTopic(user))
 			pref.gen_record = new_general
 		return TOPIC_REFRESH
 
 	else if(href_list["set_security_records"])
-		var/sec_medical = sanitize(input(user,"Enter security information here.","Character Preference", html_decode(pref.sec_record)) as message|null, MAX_RECORD_LENGTH, extra = 0)
+		var/sec_medical = sanitize(input(user,"Введите информацию службы безопасности.","Character Preference", html_decode(pref.sec_record)) as message|null, MAX_RECORD_LENGTH, extra = 0)
 		if(!isnull(sec_medical) && !jobban_isbanned(user, "Records") && CanUseTopic(user))
 			pref.sec_record = sec_medical
 		return TOPIC_REFRESH
@@ -220,8 +220,8 @@
 	else if(href_list["set_criminal_record"])
 
 		var/laws_list = get_law_names()
-		var/crime = input(user, "Select a crime.", "Edit Criminal Records", null) as null|anything in laws_list
-		var/sec = sanitize(input(user,"Enter security information here.","Character Preference", html_decode(pref.sec_record)) as message|null, MAX_RECORD_LENGTH, extra = 0)
+		var/crime = input(user, "Выберите преступление.", "Edit Criminal Records", null) as null|anything in laws_list
+		var/sec = sanitize(input(user,"Выберите информацию службы безопасности.","Character Preference", html_decode(pref.sec_record)) as message|null, MAX_RECORD_LENGTH, extra = 0)
 		if(isnull(sec)) return
 
 		var/year = 0
@@ -229,14 +229,14 @@
 		var/day = get_game_day()
 
 		if(!pref.existing_character)
-			year = input(user, "How many years ago? IE: 3 years ago. Input 0 for current year", "Edit Criminal Year", year) as num|null
+			year = input(user, "Как много лет назад? Например - 3 года назад. Введите 0 для текущего года", "Edit Criminal Year", year) as num|null
 			if(year > pref.age) return
 
-			month = input(user, "On which month?", "Edit Month", month) as num|null
+			month = input(user, "В каком месяце?", "Edit Month", month) as num|null
 			if(!get_month_from_num(month)) return
 			if(!year && month > get_game_month()) return
 
-			day = input(user, "On what day?", "Edit Day", day) as num|null
+			day = input(user, "В каком дне?", "Edit Day", day) as num|null
 			if((month in THIRTY_DAY_MONTHS) && month > 30 || (month in THIRTY_ONE_DAY_MONTHS) && month > 31 || (month in TWENTY_EIGHT_DAY_MONTHS) && month > 28) return
 			if(!year && month == get_game_month() && day > get_game_day()) return
 
@@ -255,7 +255,7 @@
 	HTML += "<b>Edit Criminal Record</b> <hr />"
 	HTML += "<br></center>"
 
-	HTML += "<br><a href='?src=\ref[src];set_criminal_record=1'>Add Criminal Record</a><br>"
+	HTML += "<br><a href='?src=\ref[src];set_criminal_record=1'>Добавить запись о преступлении</a><br>"
 
 	for(var/datum/record/C in pref.crime_record)
 		if(!pref.existing_character)

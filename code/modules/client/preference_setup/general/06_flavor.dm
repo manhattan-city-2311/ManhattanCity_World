@@ -65,19 +65,19 @@
 
 /datum/category_item/player_setup_item/general/flavor/content(var/mob/user)
 	. += "<b>Описание персонажа:</b><br>"
-	. += "<a href='?src=\ref[src];flavor_text=open'>Set Flavor Text</a><br/>"
-	. += "<a href='?src=\ref[src];flavour_text_robot=open'>Set Robot Flavor Text</a><br/>"
+	. += "<a href='?src=\ref[src];flavor_text=open'>Установить описание персонажа</a><br/>"
+	. += "<a href='?src=\ref[src];flavour_text_robot=open'>Установить описание робота</a><br/>"
 
 /datum/category_item/player_setup_item/general/flavor/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["flavor_text"])
 		switch(href_list["flavor_text"])
 			if("open")
 			if("general")
-				var/msg = sanitize(input(usr,"Дайте общую характеристику своему характеру. Не включайте вещи, которые незнакомец не узнал бы о вас с первого взгляда. Никаких примечаний OOC — придерживайтесь только физических/слуховых описаний.","Flavor Text",html_decode(pref.flavor_texts[href_list["flavor_text"]])) as message, extra = 0)
+				var/msg = sanitize(input(usr,"Дайте общую характеристику своему характеру. Не включайте вещи, которые незнакомец не узнал бы о вас с первого взгляда. Никаких примечаний OOC — придерживайтесь только физических/слуховых описаний.","Описание персонажа",html_decode(pref.flavor_texts[href_list["flavor_text"]])) as message, extra = 0)
 				if(CanUseTopic(user))
 					pref.flavor_texts[href_list["flavor_text"]] = msg
 			else
-				var/msg = sanitize(input(usr,"Set the flavor text for your [href_list["flavor_text"]].","Flavor Text",html_decode(pref.flavor_texts[href_list["flavor_text"]])) as message, extra = 0)
+				var/msg = sanitize(input(usr,"Задайте описание персонажа для [href_list["flavor_text"]].","Описание персонажа",html_decode(pref.flavor_texts[href_list["flavor_text"]])) as message, extra = 0)
 				if(CanUseTopic(user))
 					pref.flavor_texts[href_list["flavor_text"]] = msg
 		SetFlavorText(user)
@@ -87,7 +87,7 @@
 		switch(href_list["flavour_text_robot"])
 			if("open")
 			if("Default")
-				var/msg = sanitize(input(usr,"Установите описание персонажа по умолчанию для вашего робота. Будет использоваться для любого модуля без индивидуальной настройки.","Flavour Text",html_decode(pref.flavour_texts_robot["Default"])) as message, extra = 0)
+				var/msg = sanitize(input(usr,"Установите описание персонажа по умолчанию для вашего робота. Будет использоваться для любого модуля без индивидуальной настройки.","Описание персонажа",html_decode(pref.flavour_texts_robot["Default"])) as message, extra = 0)
 				if(CanUseTopic(user))
 					pref.flavour_texts_robot[href_list["flavour_text_robot"]] = msg
 			else
@@ -102,33 +102,33 @@
 /datum/category_item/player_setup_item/general/flavor/proc/SetFlavorText(mob/user)
 	var/HTML = "<meta charset='UTF-8'><body>"
 	HTML += "<tt><center>"
-	HTML += "<b>Set Flavour Text</b> <hr />"
+	HTML += "<b>Установка описания персонажа</b> <hr />"
 	HTML += "<br></center>"
-	HTML += "<a href='?src=\ref[src];flavor_text=general'>General:</a> "
+	HTML += "<a href='?src=\ref[src];flavor_text=general'>Общее:</a> "
 	HTML += TextPreview(pref.flavor_texts["general"])
 	HTML += "<br>"
-	HTML += "<a href='?src=\ref[src];flavor_text=head'>Head:</a> "
+	HTML += "<a href='?src=\ref[src];flavor_text=head'>Голова:</a> "
 	HTML += TextPreview(pref.flavor_texts["head"])
 	HTML += "<br>"
-	HTML += "<a href='?src=\ref[src];flavor_text=face'>Face:</a> "
+	HTML += "<a href='?src=\ref[src];flavor_text=face'>Лицо:</a> "
 	HTML += TextPreview(pref.flavor_texts["face"])
 	HTML += "<br>"
-	HTML += "<a href='?src=\ref[src];flavor_text=eyes'>Eyes:</a> "
+	HTML += "<a href='?src=\ref[src];flavor_text=eyes'>Глаза:</a> "
 	HTML += TextPreview(pref.flavor_texts["eyes"])
 	HTML += "<br>"
-	HTML += "<a href='?src=\ref[src];flavor_text=torso'>Body:</a> "
+	HTML += "<a href='?src=\ref[src];flavor_text=torso'>Тело:</a> "
 	HTML += TextPreview(pref.flavor_texts["torso"])
 	HTML += "<br>"
-	HTML += "<a href='?src=\ref[src];flavor_text=arms'>Arms:</a> "
+	HTML += "<a href='?src=\ref[src];flavor_text=arms'>Руки:</a> "
 	HTML += TextPreview(pref.flavor_texts["arms"])
 	HTML += "<br>"
-	HTML += "<a href='?src=\ref[src];flavor_text=hands'>Hands:</a> "
+	HTML += "<a href='?src=\ref[src];flavor_text=hands'>Руки:</a> "
 	HTML += TextPreview(pref.flavor_texts["hands"])
 	HTML += "<br>"
-	HTML += "<a href='?src=\ref[src];flavor_text=legs'>Legs:</a> "
+	HTML += "<a href='?src=\ref[src];flavor_text=legs'>Ноги:</a> "
 	HTML += TextPreview(pref.flavor_texts["legs"])
 	HTML += "<br>"
-	HTML += "<a href='?src=\ref[src];flavor_text=feet'>Feet:</a> "
+	HTML += "<a href='?src=\ref[src];flavor_text=feet'>Стопы:</a> "
 	HTML += TextPreview(pref.flavor_texts["feet"])
 	HTML += "<br>"
 	HTML += "<hr />"

@@ -25,9 +25,9 @@
 
 /datum/category_item/player_setup_item/skills/content()
 	. = list()
-	. += "<b>Select your Skills</b><br>"
-	. += "Current skill level: <b>[pref.GetSkillClass(pref.used_skillpoints)]</b> ([pref.used_skillpoints])<br>"
-	. += "<a href='?src=\ref[src];preconfigured=1'>Use preconfigured skillset</a><br>"
+	. += "<b>Выберите ваши навыки</b><br>"
+	. += "Текущий уровень навыка: <b>[pref.GetSkillClass(pref.used_skillpoints)]</b> ([pref.used_skillpoints])<br>"
+	. += "<a href='?src=\ref[src];preconfigured=1'>Использовать преднастроенный набор навыков</a><br>"
 	. += "<table>"
 	for(var/V in SKILLS)
 		. += "<tr><th colspan = 5><b>[V]</b>"
@@ -36,14 +36,14 @@
 			var/level = pref.skills[S.ID]
 			. += "<tr style='text-align:left;'>"
 			. += "<th><a href='?src=\ref[src];skillinfo=\ref[S]'>[S.name]</a></th>"
-			. += skill_to_button(S, "Untrained", level, SKILL_NONE)
+			. += skill_to_button(S, "Не обучен", level, SKILL_NONE)
 			// secondary skills don't have an amateur level
 			if(S.secondary)
 				. += "<th></th>"
 			else
-				. += skill_to_button(S, "Amateur", level, SKILL_BASIC)
-			. += skill_to_button(S, "Trained", level, SKILL_ADEPT)
-			. += skill_to_button(S, "Professional", level, SKILL_EXPERT)
+				. += skill_to_button(S, "Новичок", level, SKILL_BASIC)
+			. += skill_to_button(S, "Обучен", level, SKILL_ADEPT)
+			. += skill_to_button(S, "Профессионал", level, SKILL_EXPERT)
 			. += "</tr>"
 	. += "</table>"
 	. = jointext(.,null)
@@ -68,7 +68,7 @@
 		return TOPIC_REFRESH
 
 	else if(href_list["preconfigured"])
-		var/selected = input(user, "Select a skillset", "Skillset") as null|anything in SKILL_PRE
+		var/selected = input(user, "Выберите набор навыков", "Набор навыков") as null|anything in SKILL_PRE
 		if(!selected || !CanUseTopic(user)) return
 
 		pref.ZeroSkills(1)

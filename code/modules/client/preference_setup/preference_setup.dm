@@ -36,7 +36,7 @@
 
 
 /datum/category_group/player_setup_category/global_preferences
-	name = "Global"
+	name = "Глобальные настройки"
 	sort_order = 8
 	category_item_type = /datum/category_item/player_setup_item/player_global
 

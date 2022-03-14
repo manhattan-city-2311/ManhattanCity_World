@@ -50,12 +50,12 @@
 /datum/category_item/player_setup_item/general/economy/content(var/mob/user)
 	. = list()
 	. += "<h1>Доходы и расходы:</h1><hr>"
-	. += "<b>Деньги:</b> [cash2text( pref.money_balance, FALSE, TRUE, TRUE )] credits<br>"
+	. += "<b>Деньги:</b> [cash2text( pref.money_balance, FALSE, TRUE, TRUE )] кредитов<br>"
 	var/datum/business/B = get_business_by_owner_uid(pref.unique_id) // no escape from tax amounts in business funds LOL
 	if(B)
-		. += "<b>Счета бизнеса:</b> [cash2text( B.get_funds(), FALSE, TRUE, TRUE )] credits<br>"
+		. += "<b>Счета бизнеса:</b> [cash2text( B.get_funds(), FALSE, TRUE, TRUE )] кредитов<br>"
 	if(pref.bank_account)
-		. += "<b>ИД аккаунта:</b> [pref.bank_account]<br>"
+		. += "<b>Номер аккаунта:</b> [pref.bank_account]<br>"
 
 	if(pref.bank_pin)
 		. += "<b>ПИН-код:</b> [pref.bank_pin]<br>"
@@ -72,7 +72,7 @@
 			var/purpose_name
 			if(E.purpose)
 				purpose_name = " ([E.purpose])"
-				. += "<b>[E.name][purpose_name]:</b> [E.amount_left] credits. ([E.cost_per_payroll] per payroll.)<br>"
+				. += "<b>[E.name][purpose_name]:</b> [E.amount_left] кредитов. ([E.cost_per_payroll] за зарплату.)<br>"
 
 
 	. = jointext(.,null)

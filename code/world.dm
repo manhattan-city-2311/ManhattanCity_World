@@ -37,7 +37,7 @@ var/global/datum/global_init/init = new ()
 	view = "15x15"
 	cache_lifespan = 7
 
-	fps = 30
+	fps = 60
 
 /var/game_id = null
 /proc/generate_gameid()
@@ -80,7 +80,7 @@ var/global/datum/global_init/init = new ()
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
 	if(byond_version < RECOMMENDED_VERSION)
-		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
+		world.log << "Ваша версия BYOND не соответствует версии сервера. Пожалуйста, обновите BYOND."
 
 	config.post_load()
 

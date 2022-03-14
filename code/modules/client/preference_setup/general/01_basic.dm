@@ -177,24 +177,24 @@ F
 	. += "<b>Тихое прибытие</b>:<br> <a href='?src=\ref[src];silent_join=1'>[(pref.silent_join) ? "Yes" : "No"]</a><br>"
 
 	if(config.allow_Metadata)
-		. += "<b>OOC Notes:</b><br> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
+		. += "<b>OOC Заметки:</b><br> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
 	. = jointext(.,null)
 
 /datum/category_item/player_setup_item/general/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["rename"])
-		var/raw_name = input(user, "Choose your character's name:", "Character Name")  as text|null
+		var/raw_name = input(user, "Выберите имя персонажа:", "Имя персонажа")  as text|null
 		if (!isnull(raw_name) && CanUseTopic(user))
 			var/new_name = sanitize_name(raw_name, pref.species, is_FBP())
 
 			if(new_name in pref.characters_created)
-				to_chat(user, "<span class='warning'>You cannot play this character again. Ahelp if this is in error.</span>")
+				to_chat(user, "<span class='warning'>Вы больше не можете играть за этого персонажа. Напишите администрации, если это ошибка.</span>")
 				return TOPIC_NOACTION
 
 			if(new_name)
 				pref.real_name = new_name
 				return TOPIC_REFRESH
 			else
-				to_chat(user, "<span class='warning'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</span>")
+				to_chat(user, "<span class='warning'>Неправильное имя. Ваше имя должно содержать как минимум 2 и как максимум [MAX_NAME_LEN] символов. Оно может содержать только символы A-Z, a-z, -, ' и .</span>")
 				return TOPIC_NOACTION
 
 	else if(href_list["random_name"])
@@ -206,14 +206,14 @@ F
 		return TOPIC_REFRESH
 */
 	else if(href_list["nickname"])
-		var/raw_nickname = input(user, "Choose your character's nickname:", "Character Nickname")  as text|null
+		var/raw_nickname = input(user, "Выберите прозвище вашего персонажа:", "Character Nickname")  as text|null
 		if (!isnull(raw_nickname) && CanUseTopic(user))
 			var/new_nickname = sanitize_name(raw_nickname, pref.species, is_FBP())
 			if(new_nickname)
 				pref.nickname = new_nickname
 				return TOPIC_REFRESH
 			else
-				to_chat(user, "<span class='warning'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</span>")
+				to_chat(user, "<span class='warning'>Неправильное имя. Ваше имя должно содержать как минимум 2 и как максимум [MAX_NAME_LEN] символов. Оно может содержать только символы A-Z, a-z, -, ' и .</span>")
 				return TOPIC_NOACTION
 
 	else if(href_list["bio_gender"])
@@ -223,7 +223,7 @@ F
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["id_gender"])
-		var/new_gender = input(user, "Choose your character's identifying gender:", "Character Preference", pref.identifying_gender) as null|anything in all_genders_define_list
+		var/new_gender = input(user, "Выберите пол вашего персонажа:", "Character Preference", pref.identifying_gender) as null|anything in all_genders_define_list
 		if(new_gender && CanUseTopic(user))
 			pref.identifying_gender = new_gender
 		return TOPIC_REFRESH
@@ -231,7 +231,7 @@ F
 	else if(href_list["age"])
 		var/min_age = get_min_age()
 		var/max_age = get_max_age()
-		var/new_age = input(user, "Choose your character's age:\n([min_age]-[max_age])", "Character Preference", pref.age) as num|null
+		var/new_age = input(user, "Выберите возраст вашего персонажа:\n([min_age]-[max_age])", "Character Preference", pref.age) as num|null
 		if(new_age && CanUseTopic(user))
 			pref.age = max(min(round(text2num(new_age)), max_age), min_age)
 			adjust_year()
@@ -240,18 +240,18 @@ F
 
 	else if(href_list["email_domain"])
 		var/list/domains = using_map.usable_email_tlds
-		var/prefix = input(user, "Enter your email username.", "Email Username")  as text|null
+		var/prefix = input(user, "Выберите имя пользователя почты вашего персонажа.", "Email Username")  as text|null
 		if(!prefix)
 			return
 
-		var/domain = input(user, "What is the email domain provider you use?", "Email Provider") as null|anything in domains
+		var/domain = input(user, "Выберите домен вашей почты?", "Email Provider") as null|anything in domains
 		if(!domain)
 			return
 
 		var/full_email = "[prefix]@[domain]"
 
 		if(full_email && SSemails.check_persistent_email(full_email))
-			alert(user, "This email already exists, please choose another.")
+			alert(user, "Эта почта уже существует.")
 			return
 
 		if(full_email && !SSemails.check_persistent_email(pref.email))
@@ -281,7 +281,7 @@ F
 		if(pref.birth_month in TWENTY_EIGHT_DAY_MONTHS)
 			max_day = 28
 
-		var/new_day = input(user, "Choose your character's birth day:\n([min_day]-[max_day])", "Character Preference", pref.birth_day) as num|null
+		var/new_day = input(user, "Выберите день рождения вашего персонажа:\n([min_day]-[max_day])", "Character Preference", pref.birth_day) as num|null
 		if(new_day && CanUseTopic(user))
 			pref.birth_day = max(min(round(text2num(new_day)), max_day), min_day)
 			adjust_year()
@@ -291,7 +291,7 @@ F
 		var/month_min = 1
 		var/month_max = 12
 
-		var/new_month = input(user, "Choose your character's birth month:\n([month_min]-[month_max])", "Character Preference", pref.birth_month) as num|null
+		var/new_month = input(user, "Выберите месяц рождения вашего персонажа:\n([month_min]-[month_max])", "Character Preference", pref.birth_month) as num|null
 		if(new_month && CanUseTopic(user))
 			pref.birth_month = max(min(round(text2num(new_month)), month_max), month_min)
 			if(pref.birth_month in THIRTY_DAY_MONTHS)
@@ -307,13 +307,13 @@ F
 		var/list/spawnkeys = list()
 		for(var/spawntype in spawntypes)
 			spawnkeys += spawntype
-		var/choice = input(user, "Where would you like to spawn when late-joining?") as null|anything in spawnkeys
+		var/choice = input(user, "Где бы вы хотели появляться при позднем заходе в раунд?") as null|anything in spawnkeys
 		if(!choice || !spawntypes[choice] || !CanUseTopic(user))	return TOPIC_NOACTION
 		pref.spawnpoint = choice
 		return TOPIC_REFRESH
 
 	else if(href_list["metadata"])
-		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , pref.metadata) as message|null)
+		var/new_metadata = sanitize(input(user, "Введите общедоступную для других игроков информацию:", "Game Preference" , pref.metadata) as message|null)
 		if(new_metadata && CanUseTopic(user))
 			pref.metadata = new_metadata
 			return TOPIC_REFRESH

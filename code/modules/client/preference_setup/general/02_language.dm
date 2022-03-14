@@ -34,15 +34,15 @@
 		if(pref.alternate_languages.len)
 			for(var/i = 1 to pref.alternate_languages.len)
 				var/lang = pref.alternate_languages[i]
-				. += "- [lang] - <a href='?src=\ref[src];remove_language=[i]'>remove</a><br>"
+				. += "- [lang] - <a href='?src=\ref[src];remove_language=[i]'>удалить</a><br>"
 
 		if(pref.alternate_languages.len < S.num_alternate_languages)
-			. += "- <a href='?src=\ref[src];add_language=1'>add</a> ([S.num_alternate_languages - pref.alternate_languages.len] remaining)<br>"
+			. += "- <a href='?src=\ref[src];add_language=1'>add</a> ([S.num_alternate_languages - pref.alternate_languages.len] осталось)<br>"
 	else
-		. += "- [pref.species] cannot choose secondary languages.<br>"
+		. += "- [pref.species] не может выбирать дополнительные языки.<br>"
 
 	. += "<b>Префиксы языков:</b><br>"
-	. += " [jointext(pref.language_prefixes, " ")] <a href='?src=\ref[src];change_prefix=1'>Change</a> <a href='?src=\ref[src];reset_prefix=1'>Reset</a><br>"
+	. += " [jointext(pref.language_prefixes, " ")] <a href='?src=\ref[src];change_prefix=1'>Изменить</a> <a href='?src=\ref[src];reset_prefix=1'>Reset</a><br>"
 
 /datum/category_item/player_setup_item/general/language/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["remove_language"])
@@ -52,7 +52,7 @@
 	else if(href_list["add_language"])
 		var/datum/species/S = all_species[pref.species]
 		if(pref.alternate_languages.len >= S.num_alternate_languages)
-			alert(user, "You have already selected the maximum number of alternate languages for this species!")
+			alert(user, "Вы уже выбрали максимальное количество языков для этой расы!")
 		else
 			var/list/available_languages = S.secondary_langs.Copy()
 			for(var/L in all_languages)
@@ -66,9 +66,9 @@
 			available_languages -= pref.alternate_languages
 
 			if(!available_languages.len)
-				alert(user, "There are no additional languages available to select.")
+				alert(user, "Больше нет языков для выбора.")
 			else
-				var/new_lang = input(user, "Select an additional language", "Character Generation", null) as null|anything in available_languages
+				var/new_lang = input(user, "Выберите дополнительный язык", "Character Generation", null) as null|anything in available_languages
 				if(new_lang && pref.alternate_languages.len < S.num_alternate_languages)
 					pref.alternate_languages |= new_lang
 					return TOPIC_REFRESH
