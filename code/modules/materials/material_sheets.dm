@@ -118,6 +118,15 @@
 	stack_color = COLOR_SANDSTONE
 	dyeable = TRUE
 
+/obj/item/stack/material/concrete
+	name = "concrete brick"
+	icon_state = "sheet-brick"
+	default_type = "concrete"
+	no_variants = FALSE
+	associated_reagents = list("silicon")
+	stack_color = "#727272"
+	dyeable = TRUE
+
 /obj/item/stack/material/marble
 	name = "marble brick"
 	icon_state = "sheet-brick"

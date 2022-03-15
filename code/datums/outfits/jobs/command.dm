@@ -75,3 +75,22 @@
 	for(var/obj/item/clothing/accessory/permit/gun/tier_four/permit in H.back.contents)
 		permit.set_name(H.real_name)
 
+/decl/hierarchy/outfit/job/heads/gendirector
+	name = OUTFIT_JOB_NAME("General Director")
+	glasses = /obj/item/clothing/glasses/sunglasses
+	uniform = /obj/item/clothing/under/suit_jacket/charcoal
+	suit = /obj/item/clothing/suit/greatcoat
+	l_ear = /obj/item/device/radio/headset/heads/ce
+	r_ear = /obj/item/device/radio/headset/headset_cargo
+	shoes = /obj/item/clothing/shoes/brown
+	backpack = /obj/item/weapon/storage/backpack
+	satchel_one = /obj/item/weapon/storage/backpack/satchel
+	messenger_bag = /obj/item/weapon/storage/backpack/messenger
+	id_type = /obj/item/weapon/card/id/silver/gendirector
+	pda_type = /obj/item/device/pda/heads/ce
+	backpack_contents = list()
+
+/decl/hierarchy/outfit/job/heads/captain/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(H.identifying_gender == FEMALE)
+		uniform = /obj/item/clothing/under/suit_jacket/female/skirt
