@@ -1,3 +1,4 @@
+/*
 /material/stone/concrete
 	name = MATERIAL_CONCRETE
 //	lore_text = "The most ubiquitous building material of old Earth, now in space. Consists of mineral aggregate bound with some sort of cementing solution."
@@ -12,3 +13,4 @@
 
 /material/stone/concrete/get_wall_texture()
 	return texture
+*/

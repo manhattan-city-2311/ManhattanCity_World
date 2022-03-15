@@ -152,6 +152,11 @@
 	rank = "City Clerk"
 	job_access_type = /datum/job/hop
 
+/obj/item/weapon/card/id/silver/gendirector
+	assignment = "Factory General Director"
+	rank = "Factory General Director"
+	job_access_type = /datum/job/factory_chief
+
 /obj/item/weapon/card/id/gold
 	name = "identification card"
 	desc = "A golden card which shows power and might."
@@ -350,17 +355,17 @@
 	icon_state = "eng"
 	primary_color = rgb(189,94,0)
 	secondary_color = rgb(223,159,95)
-/*
+
 /obj/item/weapon/card/id/engineering/engineer
 	assignment = "City Engineer"
 	rank = "City Engineer"
 	job_access_type = /datum/job/engineer
-*/
+/*
 /obj/item/weapon/card/id/engineering/atmos
 	assignment = "Maintenance Worker"
 	rank = "Maintenance Worker"
 	job_access_type = /datum/job/atmos
-
+*/
 /obj/item/weapon/card/id/engineering/head
 	name = "identification card"
 	desc = "A card which represents creativity and ingenuity."
