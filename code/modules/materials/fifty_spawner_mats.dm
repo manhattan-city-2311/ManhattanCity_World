@@ -8,6 +8,10 @@
 	name = "stack of sandstone"
 	type_to_spawn = /obj/item/stack/material/sandstone
 
+/obj/fiftyspawner/sandstone
+	name = "stack of concrete"
+	type_to_spawn = /obj/item/stack/material/concrete
+
 /obj/fiftyspawner/marble
 	name = "stack of marble"
 	type_to_spawn = /obj/item/stack/material/marble

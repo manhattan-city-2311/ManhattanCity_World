@@ -265,6 +265,24 @@
 	else
 		icon_state = "pistol"
 
+/obj/item/weapon/gun/projectile/beretta
+	name = "Beretta M9"
+	desc = "The M9 is a pistol that uses a staggered box magazine with a reversible magazine release button that can be positioned for either right or left-handed shooters. Hard chromed barrel bores to protect from corrosion and to reduce wear. Uses 9mm rounds."
+	icon_state = "beretta"
+	w_class = ITEMSIZE_NORMAL
+	caliber = "9mm"
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m9mm/large
+	allowed_magazines = list(/obj/item/ammo_magazine/m9mm)
+
+/obj/item/weapon/gun/projectile/beretta/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-e"
+
 /obj/item/weapon/silencer
 	name = "silencer"
 	desc = "a silencer"

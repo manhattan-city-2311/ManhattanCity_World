@@ -24,13 +24,13 @@
 
 
 /decl/hierarchy/outfit/job/engineering/engineer
-	name = OUTFIT_JOB_NAME("City Engineer")
+	name = OUTFIT_JOB_NAME("Engineer")
 	head = /obj/item/clothing/head/hardhat
 	uniform = /obj/item/clothing/under/rank/engineer
 	suit = /obj/item/clothing/suit/storage/toggle/hivisjacket
-	id_type = /obj/item/weapon/card/id/engineering/atmos
+	id_type = /obj/item/weapon/card/id/engineering/engineer
 	pda_type = /obj/item/device/pda/engineering
-
+/*
 /decl/hierarchy/outfit/job/engineering/atmos
 	name = OUTFIT_JOB_NAME("Firefighter")
 	uniform = /obj/item/clothing/under/rank/atmospheric_technician
@@ -38,3 +38,4 @@
 	id_type = /obj/item/weapon/card/id/engineering/atmos
 	pda_type = /obj/item/device/pda/atmos
 	suit = /obj/item/clothing/suit/fire/firefighter
+*/

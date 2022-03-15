@@ -170,7 +170,7 @@
 	light_range = 3
 	light_power = 3
 	light_color = "#ff0066" // Pink-ish
-	block_tele = TRUE // Will be used for dungeons so this is needed to stop cheesing with handteles.
+	block_tele = TRUE // Will be used for dungeon so this is needed to stop cheesing with handteles.
 
 /turf/simulated/shuttle/wall/alien/hard_corner
 	name = "hardcorner wall"
@@ -280,4 +280,27 @@
 		add_overlay(I)
 
 /turf/simulated/wall/concrete/New(var/newloc)
-	..(newloc,MATERIAL_CONCRETE)
+	..(newloc,"concrete")
+
+/turf/simulated/wall/concrete/reinforced
+	name = "reinforced concrete wall"
+	icon_state = "r_concrete"
+	girder_material = "steel"
+	material = "concrete"
+	reinf_material = "plasteel"
+
+/turf/simulated/wall/concrete/reinforced/New(var/newloc)
+	..(newloc,"concrete","concrete")
+
+/turf/simulated/wall/concrete/fckng_invincible
+	icon_state = "r_invincible"
+	block_tele = TRUE
+
+/turf/simulated/wall/concrete/fckng_invincible/New(var/newloc)
+	..(newloc,"concrete")
+
+/turf/simulated/wall/concrete/fckng_invincible/attackby()
+	return
+
+/turf/simulated/wall/concrete/fckng_invincible/ex_act()
+	return
