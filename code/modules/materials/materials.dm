@@ -370,6 +370,23 @@ var/list/name_to_material
 	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
 	stack_type = /obj/item/stack/material/marble
 
+/material/stone/concrete
+	name = "concrete"
+	stack_type = /obj/item/stack/material/concrete
+	icon_base = "stone"
+	icon_reinf = "reinf_stone"
+	icon_colour = "#727272"
+	shard_type = SHARD_STONE_PIECE
+	explosion_resistance = 35
+	weight = 35
+	hardness = 65
+	protectiveness = 10 // 33%
+	conductivity = 5
+	door_icon_base = "stone"
+	sheet_singular_name = "brick"
+	sheet_plural_name = "bricks"
+	worth = 0.35
+
 /material/steel
 	name = DEFAULT_WALL_MATERIAL
 	stack_type = /obj/item/stack/material/steel

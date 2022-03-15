@@ -63,6 +63,7 @@
 	/obj/item/stack/material/void_opal,
 	/obj/item/stack/material/quartz,
 	/obj/item/stack/material/sandstone,
+	/obj/item/stack/material/concrete,
 	/obj/item/stack/material/marble,
 
 

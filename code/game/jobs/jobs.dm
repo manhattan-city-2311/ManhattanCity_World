@@ -13,6 +13,7 @@ var/const/AI					=(1<<8)
 var/const/CYBORG				=(1<<9)
 
 var/const/PARAMEDIC				=(1<<10)
+var/const/GENDIRECTOR			=(1<<11)
 
 var/const/MEDSCI				=(1<<1)
 
@@ -93,7 +94,8 @@ var/list/command_positions = list(
 	"Mayor",
 	"City Clerk",
 	"Chief of Police",
-	"Maintenance Director",
+	"Chief Engineer",
+	"Factory General Director",
 	"Judge",
 	"Research Director",
 	"Medical Director"
@@ -101,7 +103,7 @@ var/list/command_positions = list(
 
 
 var/list/engineering_positions = list(
-	"Maintenance Director",
+	"Chief Engineer",
 	"Maintenance Worker",
 	"Sanitation Technician"
 )
