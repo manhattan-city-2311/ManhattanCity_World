@@ -510,16 +510,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			return TOPIC_REFRESH
 
 
-	else if(href_list["show_species"])
-		// Actual whitelist checks are handled elsewhere, this is just for accessing the preview window.
-		var/choice = input("На какую расу вы хотели бы посмотреть?") as null|anything in playable_species
-		if(!choice) return
-		pref.species_preview = choice
-		SetSpecies(preference_mob())
-		pref.alternate_languages.Cut() // Reset their alternate languages. Todo: attempt to just fix it instead?
-		return TOPIC_HANDLED
-
-	else if(href_list["set_species"])
+	/*else if(href_list["set_species"])
 		user << browse(null, "window=species")
 		if(!pref.species_preview || !(pref.species_preview in all_species))
 			return TOPIC_NOACTION
@@ -582,7 +573,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 			pref.weight = calories_to_weight(mob_species.normal_calories)
 
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return TOPIC_REFRESH_UPDATE_PREVIEW*/
 
 	else if(href_list["hair_color"])
 		if(!has_flag(mob_species, HAS_HAIR_COLOR))
