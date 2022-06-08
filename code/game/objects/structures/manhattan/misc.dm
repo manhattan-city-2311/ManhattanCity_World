@@ -136,3 +136,51 @@
 /obj/structure/sign/manhattan/rewards/medal
 	name = "gold medal"
 	icon_state = "medal"
+
+/obj/structure/sign/neon/big/transit
+	name = "transit station sign"
+	desc = "A sign for the city transit station."
+	icon_state = "transit"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/big/train
+	name = "transit station sign"
+	desc = "A sign for the city transit station."
+	icon_state = "train"
+	light_color = "#F070FF"
+
+/obj/structure/sign/neon/big/direction1
+	name = "direction sign"
+	desc = "A sign for the navigation inside of the city."
+	icon_state = "directions"
+	light_color = "#63C4D6"
+
+/obj/structure/sign/neon/big/direction2
+	name = "direction sign"
+	desc = "A sign for the navigation inside of the city."
+	icon_state = "directions-large"
+	light_color = "#63C4D6"
+
+/obj/structure/sign/neon/big/rent
+	name = "rent sign"
+	desc = "A sign that saying this place are for rent."
+	icon_state = "cryo"
+	light_color = "#63C4D6"
+
+/obj/structure/sign/neon/big/menu
+	name = "neon menu screen"
+	desc = "A sign with some options to choose."
+	icon_state = "options"
+	light_color = "#63C4D6"
+
+/obj/structure/sign/neon/big/bar
+	name = "neon bar sign"
+	desc = "A sign for the city local bar."
+	icon_state = "bar"
+	light_color = "#F070FF"
+
+/obj/structure/sign/neon/big/casino
+	name = "neon casino sign"
+	desc = "A sign for the city local casino."
+	icon_state = "casino"
+	light_color = COLOR_YELLOW

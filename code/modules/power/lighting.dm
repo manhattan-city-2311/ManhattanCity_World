@@ -415,6 +415,24 @@ var/global/list/light_type_cache = list()
 	anchored = 1
 	density = 1
 
+/obj/machinery/light/normal_lamp2
+	icon_state = "streetlight1"
+	base_state = "streetlight"
+	construct_type = /obj/machinery/light_construct/flamp
+	brightness_range = 8
+	brightness_power = 6
+	pixel_x = -32
+	plane = ABOVE_MOB_PLANE
+	brightness_color = "#FFE6CC"
+	desc = "A steet pole."
+	light_type = /obj/item/weapon/light/bulb
+	icon = 'icons/obj/manhattan/streetpoles.dmi'
+	anchored = 1
+	density = 1
+
+/obj/machinery/light/normal_lamp2/update_icon()
+	return FALSE
+
 /obj/machinery/light/small/emergency
 	light_type = /obj/item/weapon/light/bulb/red
 
