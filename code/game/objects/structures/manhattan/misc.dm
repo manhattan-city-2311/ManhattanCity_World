@@ -82,7 +82,7 @@
 		buckle_dir = WEST
 		plane = -35
 
-/obj/structure/bed/chair/skameika_steel/metal/New(var/newloc,var/newmaterial)
+/obj/structure/bed/chair/skameika_steel/New(var/newloc,var/newmaterial)
 	..(newloc,"steel","steel")
 
 /obj/structure/bed/chair/skameika_steel/right
