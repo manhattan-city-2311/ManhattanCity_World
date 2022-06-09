@@ -791,7 +791,7 @@ SUBSYSTEM_DEF(jobs)
 			to_chat(C,"Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Airbus instead.")
 			var/spawning = pick(latejoin)
 			.["turf"] = get_turf(spawning)
-			.["msg"] = "will arrive to the city shortly by airbus"
+			.["msg"] = "will arrive to the city shortly by tram"
 	else
 		var/spawning = pick(latejoin)
 		.["turf"] = get_turf(spawning)

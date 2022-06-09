@@ -4,7 +4,7 @@
 
 /datum/map/geminus
 	name = "Geminus"
-	full_name = "Geminus City"
+	full_name = "Нью-Манхэттен Сити"
 	path = "geminus"
 
 	lobby_icon = 'icons/misc/title.dmi'
@@ -16,9 +16,9 @@
 
 	zlevel_datum_type = /datum/map_z_level/geminus
 
-	station_name  = "Geminus City"
+	station_name  = "Нью-Манхэттен Сити"
 	station_short = "Geminus"
-	dock_name     = "Geminus City Airbus"
+	dock_name     = "Нью-Манхэттен Сити Airbus"
 	boss_name     = "Central Polluxian Government"
 	boss_short    = "Pollux Gov"
 	company_name  = "Nanotrasen"
@@ -87,7 +87,7 @@
 
 /datum/map_z_level/geminus/second
 	z = Z_LEVEL_SECOND_GEMINUS
-	name = "Geminus City"
+	name = "Нью-Манхэттен Сити"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	transit_chance = 50
 	base_turf = /turf/simulated/floor/outdoors/dirt
