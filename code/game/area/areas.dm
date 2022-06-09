@@ -300,8 +300,8 @@ var/list/mob/living/forced_ambiance_list = new
 			L << chosen_ambiance
 		else
 			L << sound(null, channel = CHANNEL_AMBIENCE_FORCED)
-	else if(src.ambience.len && prob(35))
-		if((world.time >= L.client.played + 600))
+	else if(src.ambience.len) //&& prob(40))
+		if((world.time >= L.client.played + 120))
 			var/sound = pick(ambience)
 			L << sound(sound, repeat = 0, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE)
 			L.client.played = world.time
