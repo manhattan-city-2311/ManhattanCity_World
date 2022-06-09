@@ -1,9 +1,9 @@
 // Elevator areas.
 /area/turbolift/geminus_top
-	name = "lift (Нью-Манхэттен Сити)"
+	name = "lift (geminus city)"
 	lift_floor_label = "Floor 2"
-	lift_floor_name = "Нью-Манхэттен Сити Metro"
-	lift_announce_str = "Lift arriving at Нью-Манхэттен Сити Metro Station, please stand clear of the doors."
+	lift_floor_name = "Geminus City Metro"
+	lift_announce_str = "Lift arriving at Geminus City Metro Station, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/geminus_ground
@@ -14,45 +14,45 @@
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/geminus_top_mining
-	name = "lift (Нью-Манхэттен Сити)"
+	name = "lift (geminus city)"
 	lift_floor_label = "Floor 2"
-	lift_floor_name = "Нью-Манхэттен Сити - Mining Office"
-	lift_announce_str = "Lift arriving at Нью-Манхэттен Сити Mining Office, please stand clear of the doors."
+	lift_floor_name = "Geminus City - Mining Office"
+	lift_announce_str = "Lift arriving at Geminus City Mining Office, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/geminus_ground_mining
 	name = "lift (mines)"
 	lift_floor_label = "Floor 1"
-	lift_floor_name = "Нью-Манхэттен Сити - Mines"
+	lift_floor_name = "Geminus City - Mines"
 	lift_announce_str = "Lift arriving at Geminus Mines, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/geminus_top_hospital
 	name = "lift (city hospital)"
 	lift_floor_label = "Floor 2"
-	lift_floor_name = "Нью-Манхэттен Сити - Upper Hospital"
-	lift_announce_str = "Lift arriving at Нью-Манхэттен Сити - Hospital Upper, please stand clear of the doors."
+	lift_floor_name = "Geminus City - Upper Hospital"
+	lift_announce_str = "Lift arriving at Geminus City - Hospital Upper, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/geminus_ground_hospital
 	name = "lift (hospital underground)"
 	lift_floor_label = "Floor 1"
-	lift_floor_name = "Нью-Манхэттен Сити - Underground Hospital"
-	lift_announce_str = "Lift arriving at Нью-Манхэттен Сити - Hospital Underground, please stand clear of the doors."
+	lift_floor_name = "Geminus City - Underground Hospital"
+	lift_announce_str = "Lift arriving at Geminus City - Hospital Underground, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/geminus_court_top
 	name = "lift (main courtroom)"
 	lift_floor_label = "Floor 2"
-	lift_floor_name = "Нью-Манхэттен Сити Courtroom"
-	lift_announce_str = "Lift arriving at Нью-Манхэттен Сити Courtroom, please stand clear of the doors."
+	lift_floor_name = "Geminus City Courtroom"
+	lift_announce_str = "Lift arriving at Geminus City Courtroom, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/geminus_court_ground
 	name = "lift (court underground)"
 	lift_floor_label = "Floor 1"
-	lift_floor_name = "Нью-Манхэттен Сити Court Offices"
-	lift_announce_str = "Lift arriving at Нью-Манхэттен Сити Court Offices, please stand clear of the doors."
+	lift_floor_name = "Geminus City Court Offices"
+	lift_announce_str = "Lift arriving at Geminus City Court Offices, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/geminus_mall_top
@@ -101,11 +101,11 @@
 
 
 /area/planets/Geminus
-	name = "\improper Нью-Манхэттен Сити"
+	name = "\improper Geminus City"
 	icon_state = "Holodeck"
 
 /area/planets/Geminus/outdoor
-	name = "\improper Нью-Манхэттен Сити Area"
+	name = "\improper Geminus City Area"
 	dynamic_lighting = 1
 	sound_env = CITY
 	flags = null
@@ -118,29 +118,29 @@
 
 
 /area/planets/Geminus/outdoor/north
-	name = "\improper Нью-Манхэттен Сити - North"
+	name = "\improper Geminus City - North"
 	icon_state = "yellow"
 	sound_env = PARKING_LOT
 
 
 /area/planets/Geminus/outdoor/south
-	name = "\improper Нью-Манхэттен Сити - South"
+	name = "\improper Geminus City - South"
 	icon_state = "blue"
 	sound_env = PARKING_LOT
 
 /area/planets/Geminus/outdoor/east
-	name = "\improper Нью-Манхэттен Сити - East"
+	name = "\improper Geminus City - East"
 	icon_state = "green"
 	sound_env = PARKING_LOT
 
 /area/planets/Geminus/outdoor/west
-	name = "\improper Нью-Манхэттен Сити - West"
+	name = "\improper Geminus City - West"
 	icon_state = "red"
 	sound_env = PARKING_LOT
 
 
 /area/planets/Geminus/outdoor/central
-	name = "\improper Нью-Манхэттен Сити - Central"
+	name = "\improper Geminus City - Central"
 	icon_state = "green"
 	sound_env = CITY
 
@@ -341,7 +341,7 @@
 	icon_state = "cmo"
 
 /area/planets/Geminus/outdoor/park
-	name = "\improper Нью-Манхэттен Сити - Park"
+	name = "\improper Geminus City - Park"
 	icon_state = "yellow"
 
 
@@ -412,7 +412,7 @@
 	name = "\improper Residential Area - Masonette Two"
 
 /area/centcom/president_office_geminus
-	name = "\improper President's Нью-Манхэттен Сити HQ" //Central Command Command totally isn't RAS Syndrome in action.
+	name = "\improper President's Geminus City HQ" //Central Command Command totally isn't RAS Syndrome in action.
 	icon_state = "centcom_command"
 
 /area/centcom/president_office_geminus/office

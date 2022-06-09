@@ -4,8 +4,8 @@
 #define Z_LEVEL_FOURTH_MANHATTAN					4
 
 /datum/map/new_manhattan
-	name = "Манхэттен"
-	full_name = "Нью-Манхэттен Сити"
+	name = "Manhattan"
+	full_name = "New-Manhattan City"
 	path = "manhattan"
 
 	lobby_icon = 'icons/lobby.dmi'
@@ -15,14 +15,14 @@
 
 //�������� ��� �� �� ������ ����������:
 
-	station_name  = "Нью-Манхэттен Сити"
-	station_short = "Манхэттен"
-	dock_name     = "Поезд"
-	boss_name     = "Центральное Правительство Манхэттена"
-	boss_short    = "Центральное Правительство"
-	company_name  = "Гамма Индастрис"
-	company_short = "Гамма"
-	starsys_name  = "Дельта-Павлина"
+	station_name  = "New-Manhattan City"
+	station_short = "Manhattan"
+	dock_name     = "Manhattan Airbus"
+	boss_name     = "Central Polluxian Government"
+	boss_short    = "Pollux Gov"
+	company_name  = "Nanotrasen"
+	company_short = "NT"
+	starsys_name  = "Vetra"
 
 	shuttle_docked_message = "The scheduled air shuttle to the %dock_name% has arrived far east of the city. It will depart in approximately %ETD%."
 	shuttle_leaving_dock = "The Civilian Transfer shuttle has left. Estimate %ETA% until the airbus docks at %dock_name%."
@@ -37,7 +37,7 @@
 
 //	planet_datums_to_make = list(/datum/planet/pollux)
 
-	usable_email_tlds = list("freemail.net", "ntmail.nt", "solnet.org", "deltamail.net")
+	usable_email_tlds = list("freemail.net", "ntmail.nt", "interpollux.org", "solnet.org", "vetralife.nt", "andromedian.org")
 	default_law_type = /datum/ai_laws/pollux
 
 	station_networks = list(
@@ -113,6 +113,8 @@
 
 /datum/map/manhattan/get_map_info()
 	. = list()
-	. +=  "[full_name] это хорошо известный корпоративный город в северном районе планеты Глизе-674.<br>"
-	. +=  "Планета Глизе-674 существует в звёздной системе Дельта-Павлина, в своём прошлом став местом роста для сразу нескольких крупных компаний."
+	. +=  "[full_name] is a very well-known metropolitan city in Blue Colony located on the planet Pollux.<br>"
+	. +=  "Pollux exists in the Vetra star system which is entirely monopolized by NanoTrasen acting as a quasi-corporate government."
+	. +=  "Being one of the first cities and initially a mining colony, Geminus has a rich history and is home to many descendants of the first prospectors.<br> "
+	. +=  "There's a definite class struggle, as working class Geminians feel pushed out by the richer colonists who wish to further gentrify the city and make it... <i>more profitable, more corporate, more <b>chic</b></i>."
 	return jointext(., "<br>")
