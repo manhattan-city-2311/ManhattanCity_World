@@ -76,7 +76,7 @@
 			return
 		if(istype(src,/obj/structure/bed/chair/skameika))
 			return
-		if(istype(src,/obj/structure/bed/chair/skameika))
+		if(istype(src,/obj/structure/bed/chair/skameika_steel))
 			return
 		if(!usr || !isturf(usr.loc))
 			return
