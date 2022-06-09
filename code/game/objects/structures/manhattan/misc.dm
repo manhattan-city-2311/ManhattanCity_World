@@ -1,46 +1,38 @@
 /obj/structure/bed/chair/skameika
 	name = "old ratty bench"
-	icon = 'icons/obj/manhattan/sofas.dmi'
-	icon_state = "pews"
+	icon = 'icons/obj/manhattan/furniture.dmi'
+	icon_state = "bench_wood_center"
 	anchored = 1
 	plane = UNDER_MOB_PLANE
-	color = null
-	base_icon = "pews"
-	applies_material_colour = 0
+	color = WOOD_COLOR_GENERIC
+	base_icon = "bench_wood_center"
+	applies_material_colour = 1
+
+/obj/structure/bed/chair/skameika/New(var/newloc,var/newmaterial)
+	..(newloc,"wood")
 
 /obj/structure/bed/chair/skameika/New()
 	..()
 	if(dir == 1)
-		buckle_dir = WEST
+		buckle_dir = NORTH
 		plane = -35
 	if(dir == 2)
-		buckle_dir = WEST
-		plane = -35
-	if(dir == 4)
-		buckle_dir = WEST
-		plane = -35
-	if(dir == 8)
-		buckle_dir = WEST
-		plane = -35
-
-/obj/structure/bed/chair/skameika/alt
-	icon_state = "pews_f"
-	base_icon = "pews_f"
-
-/obj/structure/bed/chair/skameika/alt/New()
-	..()
-	if(dir == 1)
-		buckle_dir = EAST
-		plane = -35
-	if(dir == 2)
-		buckle_dir = EAST
+		buckle_dir = SOUTH
 		plane = -35
 	if(dir == 4)
 		buckle_dir = EAST
 		plane = -35
 	if(dir == 8)
-		buckle_dir = EAST
+		buckle_dir = WEST
 		plane = -35
+
+/obj/structure/bed/chair/skameika/right
+	icon_state = "bench_wood_right"
+	base_icon = "bench_wood_right"
+
+/obj/structure/bed/chair/skameika/left
+	icon_state = "bench_wood_left"
+	base_icon = "bench_wood_left"
 
 /obj/structure/bed/chair/skameika/post_buckle_mob(mob/living/M)
 	update_mob()
@@ -64,6 +56,22 @@
 		M.pixel_x = 0
 		M.pixel_y = 0
 	return M
+
+/*/obj/structure/bed/chair/skameika/metal
+	icon_state = "bench_center"
+	color = COLOR_GRAY
+	base_icon = "bench_center"
+
+/obj/structure/bed/chair/skameika/metal/New(var/newloc,var/newmaterial) //шайтан машина бля не работает, цвет и материал остаётся деревом
+	..(newloc,"steel","steel")
+
+/obj/structure/bed/chair/skameika/metal/right
+	icon_state = "bench_right"
+	base_icon = "bench_right"
+
+/obj/structure/bed/chair/skameika/metal/left
+	icon_state = "bench_left"
+	base_icon = "bench_left"*/
 
 /obj/structure/bed/chair/couch_metal
 	name = "metal bench"

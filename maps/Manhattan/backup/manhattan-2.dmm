@@ -48,7 +48,7 @@
 "aV" = (/obj/structure/flora/tree/jungle,/turf/simulated/floor/outdoors/grass/nogrowth,/area/planets/Manhattan/outdoor)
 "aW" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/outdoors/grass/nogrowth,/area/planets/Manhattan/outdoor)
 "aX" = (/obj/structure/flora/ausbushes/grassybush,/turf/simulated/floor/outdoors/grass/nogrowth,/area/planets/Manhattan/outdoor)
-"aY" = (/obj/structure/bed/chair/skameika{dir = 1; icon_state = "pews_f"},/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
+"aY" = (/obj/structure/bed/chair/skameika/alt{dir = 1; icon_state = "pews_f"},/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
 "aZ" = (/obj/structure/loot_pile/maint/boxfort,/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
 "ba" = (/obj/structure/loot_pile/maint/trash{pixel_x = 15},/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
 "bb" = (/turf/simulated/floor/wood/mahogany,/area/planets/Manhattan/indoor/north)
@@ -160,7 +160,7 @@
 "dd" = (/obj/structure/fence/end,/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
 "de" = (/obj/structure/sculpting_block/sculpted/large/lion{opacity = 0},/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
 "df" = (/obj/effect/floor_decal/spline/fancy/wood/corner,/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
-"dg" = (/obj/structure/bed/chair/skameika{dir = 2},/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
+"dg" = (/obj/structure/bed/chair/skameika/alt,/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
 "dh" = (/obj/structure/bed/chair/skameika,/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
 "di" = (/obj/structure/closet/crate/bin,/turf/simulated/floor/pavement/empty,/area/planets/Manhattan/outdoor)
 "dj" = (/obj/structure/table/glass,/obj/effect/floor_decal/carpet/blue{dir = 4; icon_state = "bcarpet_edges"},/obj/effect/floor_decal/carpet/blue{dir = 8; icon_state = "bcarpet_edges"},/obj/effect/floor_decal/carpet/blue{dir = 1; icon_state = "bcarpet_edges"},/obj/effect/floor_decal/carpet/blue{dir = 9; icon_state = "bcarpet_edges"},/obj/effect/floor_decal/carpet/blue{dir = 5; icon_state = "bcarpet_edges"},/turf/simulated/floor/carpet/bcarpet,/area/planets/Manhattan/indoor/north)
@@ -1310,7 +1310,7 @@
 "zl" = (/obj/effect/decal/cleanable/liquid_fuel,/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
 "zm" = (/obj/machinery/door/airlock/freezer,/turf/simulated/floor/tiled/techmaint,/area/planets/Manhattan/indoor/north/bar/other1)
 "zn" = (/turf/simulated/floor/tiled/techmaint,/area/planets/Manhattan/indoor/north/bar/other1)
-"zo" = (/obj/structure/bed/chair/skameika{dir = 1; icon_state = "pews_f"},/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
+"zo" = (/obj/structure/bed/chair/skameika/alt{dir = 1; icon_state = "pews_f"},/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
 "zp" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
 "zq" = (/obj/machinery/door/airlock,/turf/simulated/floor/tiled/techmaint,/area/planets/Manhattan/indoor/north/bar/other1)
 "zr" = (/obj/machinery/light/normal_lamp2{icon_state = "streetlightcorner"; dir = 4},/turf/simulated/floor/pavement/corner_invert{dir = 1; icon_state = "pave_invert_corner"; tag = "icon-pave_invert_corner (NORTH)"},/area/planets/Manhattan/outdoor)
@@ -1380,7 +1380,7 @@
 "AD" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/phone,/obj/structure/window/reinforced,/turf/simulated/floor/tiled/steel_grid,/area/planets/Manhattan/indoor/north)
 "AE" = (/obj/structure/table/steel_reinforced,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/tiled/techfloor/grid,/area/planets/Manhattan/indoor/north)
 "AF" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/indoor/north)
-"AG" = (/obj/structure/bed/chair/skameika{dir = 1; icon_state = "pews_f"},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
+"AG" = (/obj/structure/bed/chair/skameika/alt{dir = 1; icon_state = "pews_f"},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
 "AH" = (/obj/machinery/light/colored/blue{dir = 4; tag = null},/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/indoor/north)
 "AI" = (/obj/structure/railing{dir = 4; icon_state = "railing0"; tag = "icon-railing0 (EAST)"},/turf/simulated/floor/stairs,/area/planets/Manhattan/indoor/north)
 "AJ" = (/obj/machinery/holoplant{pixel_x = -9},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
@@ -1393,7 +1393,7 @@
 "AQ" = (/obj/machinery/light/colored/blue{dir = 1},/turf/simulated/floor/tiled/techfloor/grid,/area/planets/Manhattan/indoor/north)
 "AR" = (/obj/structure/sign/neon/big/aeoiu,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/indoor/north)
 "AS" = (/obj/machinery/light/colored{dir = 8},/obj/effect/floor_decal/spline/fancy/wood{dir = 4},/turf/simulated/floor/wood/bamboo,/area/planets/Manhattan/indoor/north)
-"AT" = (/obj/structure/bed/chair/skameika,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
+"AT" = (/obj/structure/bed/chair/skameika/alt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
 "AU" = (/obj/structure/table/glass,/obj/structure/sign/manhattan/posters{icon_state = "posterbig2"; pixel_y = 28},/turf/simulated/floor/tiled/dark,/area/planets/Manhattan/indoor/north)
 "AV" = (/obj/structure/table/glass,/obj/structure/sign/manhattan/posters{icon_state = "posterbig3"; pixel_y = 28},/obj/item/weapon/paper_bin,/turf/simulated/floor/tiled/dark,/area/planets/Manhattan/indoor/north)
 "AW" = (/obj/structure/sign/manhattan/posters{icon_state = "posterbig9"; pixel_x = 5; pixel_y = 32},/obj/machinery/holoplant,/turf/simulated/floor/tiled/dark,/area/planets/Manhattan/indoor/north)
@@ -1412,7 +1412,7 @@
 "Bj" = (/obj/machinery/door/airlock/multi_tile/glass/civilian,/obj/effect/floor_decal/corner_kafel/blue{dir = 5; icon_state = "corner_kafel"},/turf/simulated/floor/tiled,/area/planets/Manhattan/indoor/north)
 "Bk" = (/obj/machinery/light/colored/blue{dir = 8},/turf/simulated/floor/tiled/steel_grid,/area/planets/Manhattan/indoor/north)
 "Bl" = (/turf/simulated/wall/concrete/reinforced,/area/planets/Manhattan/outdoor)
-"Bm" = (/obj/effect/floor_decal/spline/fancy{dir = 1; icon_state = "spline_fancy"},/obj/structure/bed/chair/skameika{dir = 1; icon_state = "pews_f"},/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
+"Bm" = (/obj/effect/floor_decal/spline/fancy{dir = 1; icon_state = "spline_fancy"},/obj/structure/bed/chair/skameika/alt{dir = 1; icon_state = "pews_f"},/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
 "Bn" = (/obj/structure/bed/chair/office/light,/turf/simulated/floor/wood/bamboo,/area/planets/Manhattan/indoor/north)
 "Bo" = (/obj/structure/table/steel_reinforced,/obj/machinery/cash_register{dir = 8; icon_state = "register_idle"},/turf/simulated/floor/wood/bamboo,/area/planets/Manhattan/indoor/north)
 "Bp" = (/obj/structure/fitness/weightlifter,/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/indoor/north)
@@ -1608,7 +1608,7 @@
 "EX" = (/obj/effect/floor_decal/spline/fancy/wood/cee{dir = 1; icon_state = "spline_fancy_cee"},/obj/structure/mirror{pixel_x = -25},/turf/simulated/floor/tiled/neutral,/area/planets/Manhattan/indoor/north)
 "EY" = (/obj/effect/floor_decal/spline/fancy/wood{dir = 4},/obj/machinery/electronic_display_case,/turf/simulated/floor/tiled/neutral,/area/planets/Manhattan/indoor/north)
 "EZ" = (/obj/structure/table/steel_reinforced,/obj/machinery/door/window/westleft,/turf/simulated/floor/tiled/techfloor/grid,/area/planets/Manhattan/indoor/north)
-"Fa" = (/obj/structure/bed/chair/skameika{dir = 1; icon_state = "pews_f"},/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
+"Fa" = (/obj/structure/bed/chair/skameika/alt{dir = 1; icon_state = "pews_f"},/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
 "Fb" = (/obj/structure/bed/chair/office/light{dir = 8},/turf/simulated/floor/tiled/steel_grid,/area/planets/Manhattan/indoor/north)
 "Fc" = (/obj/machinery/button/remote/blast_door{id = 9999; name = "Remote Gate control"; pixel_x = 29},/turf/simulated/floor/tiled/steel_grid,/area/planets/Manhattan/indoor/north)
 "Fd" = (/obj/machinery/disposal,/turf/simulated/floor/tiled/techfloor,/area/planets/Manhattan/indoor/north)
@@ -1684,7 +1684,7 @@
 "Gv" = (/obj/structure/sign/nosmoking_1{pixel_x = -26},/turf/simulated/floor/wood/mahogany,/area/planets/Manhattan/indoor/north)
 "Gw" = (/obj/effect/floor_decal/industrial/warning,/turf/simulated/floor/reinforced,/area/planets/Manhattan/outdoor)
 "Gx" = (/obj/machinery/light/colored/blue{dir = 8},/obj/machinery/food_machine/popcorn,/turf/simulated/floor/wood/bamboo,/area/planets/Manhattan/indoor/north)
-"Gy" = (/obj/structure/bed/chair/skameika{dir = 1; icon_state = "pews_f"},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
+"Gy" = (/obj/structure/bed/chair/skameika/alt{dir = 1; icon_state = "pews_f"},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
 "Gz" = (/obj/structure/table/woodentable/ebony,/obj/machinery/web_cinema{pixel_x = -15; pixel_y = 30},/turf/simulated/floor/wood/bamboo,/area/planets/Manhattan/indoor/north)
 "GA" = (/obj/machinery/media/jukebox,/turf/simulated/floor/wood/bamboo,/area/planets/Manhattan/indoor/north)
 "GB" = (/obj/machinery/door/airlock,/obj/effect/floor_decal/spline/fancy{dir = 4; icon_state = "spline_fancy"},/turf/simulated/floor/wood/bamboo,/area/planets/Manhattan/indoor/north)
@@ -1715,7 +1715,7 @@
 "Ha" = (/obj/structure/railing{dir = 4; icon_state = "railing0"; tag = "icon-railing0 (EAST)"},/turf/simulated/floor/pavement/empty,/area/planets/Manhattan/outdoor)
 "Hb" = (/obj/structure/railing{dir = 8; icon_state = "railing0"; tag = "icon-railing0 (WEST)"},/turf/simulated/floor/pavement/empty,/area/planets/Manhattan/outdoor)
 "Hc" = (/obj/structure/bed/chair/skameika{icon_state = "pews"; dir = 8},/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
-"Hd" = (/obj/structure/bed/chair/skameika{icon_state = "pews_f"; dir = 8},/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
+"Hd" = (/obj/structure/bed/chair/skameika/alt{icon_state = "pews_f"; dir = 8},/turf/simulated/floor/pavement/pave_tiling,/area/planets/Manhattan/outdoor)
 "He" = (/obj/structure/flora/tree/great_tree{alpha = 150},/turf/simulated/floor/outdoors/grass/nogrowth,/area/planets/Manhattan/outdoor)
 "Hf" = (/obj/machinery/newscaster{pixel_y = 29},/turf/simulated/floor/tiled/steel_grid,/area/planets/Manhattan/indoor/north)
 "Hg" = (/obj/structure/sign/neon/big/menu,/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/indoor/north/bar/pub1)
@@ -1854,7 +1854,7 @@
 "JJ" = (/obj/item/weapon/stool/bar/padded,/turf/simulated/floor/wood/mahogany,/area/planets/Manhattan/indoor/north)
 "JK" = (/obj/effect/floor_decal/carpet/blue{dir = 1; icon_state = "bcarpet_edges"},/obj/effect/floor_decal/carpet/blue{dir = 8; icon_state = "bcarpet_edges"},/obj/effect/floor_decal/carpet/blue{dir = 9; icon_state = "bcarpet_edges"},/obj/machinery/computer/slot_machine,/turf/simulated/floor/carpet/turcarpet,/area/planets/Manhattan/indoor/north)
 "JL" = (/obj/effect/floor_decal/carpet/blue{dir = 1; icon_state = "bcarpet_edges"},/obj/effect/floor_decal/carpet/blue{dir = 4; icon_state = "bcarpet_edges"},/obj/effect/floor_decal/carpet/blue{dir = 5; icon_state = "bcarpet_edges"},/obj/machinery/computer/betting_terminal,/turf/simulated/floor/carpet/turcarpet,/area/planets/Manhattan/indoor/north)
-"JM" = (/obj/structure/bed/chair/skameika,/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
+"JM" = (/obj/structure/bed/chair/skameika/alt,/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
 "JN" = (/obj/structure/closet/crate/secure/bin,/obj/machinery/light/colored/blue{dir = 1},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/indoor/north)
 "JO" = (/obj/structure/railing,/obj/structure/railing{dir = 4; icon_state = "railing0"; tag = "icon-railing0 (EAST)"},/turf/simulated/open,/area/planets/Manhattan/outdoor)
 "JP" = (/obj/machinery/light/colored/blue{dir = 1},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/indoor/north)
@@ -2013,12 +2013,12 @@
 "Qr" = (/obj/effect/floor_decal/industrial/warning/full,/obj/vehicle/train/engine/quadbike/random{charge_use = 1; dir = 1},/turf/simulated/floor/tiled/techfloor/grid,/area/planets/Manhattan/outdoor)
 "Qu" = (/obj/structure/railing{dir = 8; icon_state = "railing0"; tag = "icon-railing0 (WEST)"},/turf/simulated/open,/area/planets/Manhattan/outdoor)
 "Qz" = (/obj/structure/railing{dir = 1; icon_state = "railing0"},/turf/simulated/open,/area/planets/Manhattan/outdoor)
-"QA" = (/obj/structure/bed/chair/skameika{dir = 1; icon_state = "pews_f"},/obj/effect/decal/cleanable/graffiti{pixel_y = 30},/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
+"QA" = (/obj/structure/bed/chair/skameika/alt{dir = 1; icon_state = "pews_f"},/obj/effect/decal/cleanable/graffiti{pixel_y = 30},/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
 "QB" = (/obj/machinery/light/small{dir = 1},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
 "QC" = (/turf/simulated/floor/plating{icon_state = "dmg1"},/area/planets/Manhattan/outdoor)
 "QL" = (/obj/structure/bed/chair/wood{dir = 8},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/ebony{icon_state = "wood2"},/area/planets/Manhattan/outdoor)
 "QM" = (/obj/structure/railing,/obj/effect/floor_decal/industrial/hatch/yellow,/obj/structure/railing{dir = 8; icon_state = "railing0"; tag = "icon-railing0 (WEST)"},/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
-"QN" = (/obj/structure/bed/chair/skameika{dir = 1; icon_state = "pews_f"},/obj/machinery/light/small{dir = 1},/obj/effect/decal/cleanable/generic,/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
+"QN" = (/obj/structure/bed/chair/skameika/alt{dir = 1; icon_state = "pews_f"},/obj/machinery/light/small{dir = 1},/obj/effect/decal/cleanable/generic,/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
 "QR" = (/obj/structure/table/rack,/turf/simulated/floor/tiled/techfloor,/area/planets/Manhattan/outdoor)
 "QT" = (/obj/effect/floor_decal/industrial/warning{dir = 1},/turf/simulated/floor/reinforced,/area/planets/Manhattan/outdoor)
 "QU" = (/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/tiled/yellow,/area/planets/Manhattan/outdoor)
@@ -2123,7 +2123,7 @@
 "XW" = (/obj/effect/decal/cleanable/liquid_fuel,/turf/simulated/floor/wood,/area/planets/Manhattan/outdoor)
 "Yc" = (/obj/machinery/washing_machine{pixel_x = -7},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
 "Yi" = (/obj/structure/coatrack,/obj/effect/decal/cleanable/graffiti{pixel_x = -32},/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
-"Yk" = (/obj/structure/bed/chair/skameika,/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
+"Yk" = (/obj/structure/bed/chair/skameika/alt,/turf/simulated/floor/wood/ebony,/area/planets/Manhattan/outdoor)
 "Yl" = (/obj/effect/floor_decal/industrial/warning{dir = 6},/obj/machinery/light/colored/orange{dir = 4},/turf/simulated/floor/road/garage,/area/planets/Manhattan/outdoor)
 "Ym" = (/obj/effect/floor_decal/spline/fancy/wood{dir = 4},/turf/simulated/floor/wood,/area/planets/Manhattan/outdoor)
 "Yo" = (/obj/structure/catwalk,/turf/simulated/open,/area/planets/Manhattan/outdoor)
@@ -2163,19 +2163,19 @@ aopepepepepepepepeVbaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
 aopepepepepepepepeVbaqaqaqaqaqaqaqaqaqaqaqaeaeakaeaeaeakaeaeaeaeaeaeaeaeaeaeaeaeaeaealaeaeaealaeaeapapaqaqaqaqpbaaaadIaaaapaaSayaGatatauatapaGaqaSapbxapaqavawaeamanaeaeaeaeaeasaxaxaeaeazaBaeaeaxaDaFaeaeaeaeaeaKaLaeaqaqaqapbxapaqaqaGapatatatataGapaqpbaaaadIaaaaphaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaMaqaqaNaNaNaOaNaNaNaNaNaNaNaNaNaNaNaNaqpbaaaaaaaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
 aopepepepepepepepeVbaqaqaqaqaqaqaqaqaqaqaqaeaPaQaRaeaTbbbcbdeUbfbgaebhbhaebgbfeUbdbibjbjaeblbmaPaeatapapaqaqaqpbaaaadIaaaacbaqapatatataHatatapaqaqapatapaqaIaJaebqbsaebtbubvaeaxaxaxbzbAaBaBaBbBaxaxaxaebCbubFaebGaLaeaUaqaqapatapaqaqapaVaWaWataWatapaqpbaaaadIaaaaafaaaadIaaaadSdwdwdwdwfGdwdwdwgOdwdwdwdwgjaqaqaqaNaNaNaNaNaNaNaqaqaNbbbbbbbHaNbIbJaNbKbLbMbNbNbOaNbPgkaaaadIaaaagpaqaqaqaqaqaqaqaqaqaqaqaqao
 aopepepepepepepepeVbgrgrpNaqaqaqaqaqaqaqaqaebQbebRiAbbbbDuaebUbVbXaeaeaeaebYbVbZaecaccbjcecfbebQaeatatapaqaqaqaAaaaadIaaaagSdxdwcgatatatatatapaYaqapauchaZbaaIaecickclcmcncocpaxaxaxbzaBcqcraBbBaxaxaxcpcsctcuclckcwaeaqaSaqapaVapaqbnapataWatataWatapaqpbaaaadIaaaapNcxaadIaaaadEdEaaaaaaaaaaaaaaaaaaaaaaaagegfaqaqaNcyczcAcBcAaNcCcDaNcEcFbbbbcGbbbbcHcIcJdNdNdNdNdOaaaaaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
-aopepeVbVbVbVbVbVbVbapapqvaqaqaqaqaqaqaqaqaeaeaebSdjdkaeaeaeaeaeaedmdmdmdmaeaeaeaeaeaedndojFaeaeaeatatapaqaqaqpbaaaadIaaaaaaaaaagpataVatatatapdhaqapboduaqaZbpaedvdyaecmctdzcpegegegbzaBaBaBaBbBegegegcpdBdCcuaeckckaeaqhcaSapbwapaqdhapaHataWauaWaWfqaqaAaaaadIaaaaagaaaadIaaaadEdEaaaaaaaaaaaaaaaaaaaaaaaaaagegfgEaNdDdFdGdFdFaNapdJaNbbdKbbdLaNbbbbaNdMcJdNdNdNdNdOaaaaaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
+aopepeVbVbVbVbVbVbVbapapqvaqaqaqaqaqaqaqaqaeaeaebSdjdkaeaeaeaeaeaedmdmdmdmaeaeaeaeaeaedndojFaeaeaeatatapaqaqaqpbaaaadIaaaaaaaaaagpataVatatatapdgaqapboduaqaZbpaedvdyaecmctdzcpegegegbzaBaBaBaBbBegegegcpdBdCcuaeckckaeaqhcaSapbwapaqdhapaHataWauaWaWfqaqaAaaaadIaaaaagaaaadIaaaadEdEaaaaaaaaaaaaaaaaaaaaaaaaaagegfgEaNdDdFdGdFdFaNapdJaNbbdKbbdLaNbbbbaNdMcJdNdNdNdNdOaaaaaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
 aopepeVbapapapapapapapapqvaqaqaqaqaqaqaqaqaedPbbbbdQdRaedTdUdVdUaedmdmdmdmaedWbbLzbbaedYdZbjbjeaaeatatapaqaqaqpbaaaaaaaaaaaaaaaapaatatatatbwaGbyaqapatapaqaeaeaeaeebaeecedeeaeefegegaeaeaBaBaeaeegegehaeeiedeeaeebaeaeaeaeaqapatapaqbyaGatatatataWatapaqpbaaaaaaaaaaphaaaaaaaaaadEdEaaaaaaaaaaaaaaaaaaaaaaaaaaaapaaqejdDekekekelaNapapaNaNaNaNaNaNbbbbaNemcJdNdNdNdNdOaaaaaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
 aopepeVbapapapapapapapapqvaqaqaqaqaqaqaqaqeneobbbbbbbbepdUdUdUeqaedmdmdmdmaeerbbbbbbesbjbjbjbjetenatatapaqaqaqpbaaaadIaaaadEdEdEpaatatatatatapaqaqapauapaqaeeuevewexaeaeeyaeaeezeAeAaeaeaBaBaeaeeDeAeEaeaeeFaeaeeGeHeIeLaeaqapaXapaqaqayatatbTatatatapaqpbaaaadIaaaaphaaaadIaaaadEdEaaaaaaaaaaaaaaaaaaaaaaaaaaaagpaqaNdDdFdFdFdGaNqzapaNeNeObhbhePbbbbaNeQcJcQcQcQcQdOaaaaaaaaaaaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
 aopeVbVbappNapapappNpNSEpNpNpNpNpNpNpNpNaqaeeSbbdXbbeTaeLAdUdUeVaeeWdmdmdmaeeXbbbbbHaeeYbjbjbjeZaeatapapaqaqaqaAaaaadIaaaaaaaaaapaatatataVatapaqaqapaGapaqaefafbbhfcfdfeaBaBaBffffffaBfgaBaBfhaBfffffffjaBaBaBfkflfmfnfoaeaqapaGapaqaqayaWatatatatcjapaqpbaaaadIaaaaphaaaadIaaaadEdEaaaaaaaaaaaaaaaaaaaaaaaaaaaapaaqaNdDfpfrfrfraNqzapaNeNeNbheNaNfsftaNfufvfvfvfwfxaNfyiVaaaadIaaaagpaqaqaqaqaqaqaqaqaqaqaqaqao
 aopeVbqvappNgrgrgrpNtNtNtNtNtNpNrOrOrOpNaqaeaeaeaefAaeaeaeaeaeaeaeaebhbhaeaeaeaeaeaeaeaefBaeaeaeaeapapaqaqaqaqpbaaaadIaaaaaaaaaahjbTatatboatapaqaqaqaqaqaqaefCfDfEfFaeaeaeaeflaBaBaBaBaBaBaBaBaBaBaBaBfFaeaeaeaefHfFflfoaeaqaqaqaSaqaqayaWatatatatataGaqaAaaaadIaaaaphaaaadIaaaahkjGaadIaahlgBgBaaaadIaahlaNaNaapaaqaNaNaNaNaNaNaNqxapaNaNaNaNaNaNfIaNaNaNaNaNaNaNaNaNaqpbaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
 aopeVbqvappNapapappNtNtNtNtNtNpNrOrOrOpNaqaefJfMfNfOfPfQfRfQfQfQfWfQfXfYfZgafQHffQfRfQfQgcgggmgnaeaqaqaqaqaqaqpbaaaadIaaaadEdEdEpaatatatboboaGbyaqaqaqaSaqaegogxgCgDaeaqaqaegFgHgIgIgJgKgIgIgLgMgIgIgNgPaeaqaqaegQgxgRgTaeaqaqaqaqaqbyaGatauatatatatapaqpbaaaadIaaaaphaaaadIaaaahmgGaadIaahngBgBaaaadIaahnaNaNaapaaqiFaqaqgUhopHapapapduapapapgVapapapapgWaqaqaqaqgXaqaqkcaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
 aopeVbqvappNapapappNtNtNtNtNtNpNrOrOrOpNaqaegYgZhagZgZgZhbgZgZgZgZhbhdgchbgZgZgZgZhbgZhahefQhfaeaeaqaqaqaqaqaqpbaaaaaaaaaaaaaaaapaatatatatboapaYaqaqaqaqaqaebhhghhhiaeaSaqaeaeaehphpaeaehphpaeaehphpaeaeaeaqaqaehtgKgKhuaeaqaqaqaqaqbnapataXataVbwatapaqpbaaaaaaaaaaphaaaaaaaaaahmgGaadIaaaaaaaaaaaadIaaaajPaaaapaaqhvhvhwhvhvhvhwhvhxhxhyhyhyhyhqhqhqhqdaaqapapapapapaqpbaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
-aopeVbVbappNapapappNtNtNtNtNtNpNrOrOrOpNaqaeaeaeaehzaeaeaeaeaeaeaeaehFhGaeaeaeaeaeaeaeaefBaeaeaeaeapapaqaqaqaqaAaaaadIaaaaaaaaaadcatatatatboapdhaqaSaSaSaqaeaehHhIaeaeaSaqaqbDbwatcLathPaqaqbDhrcNataHcdcPaSaSaeaehQeHaeaeaqaqaqaqaqdhapatatatatatatapaqpbaaaadIaaaaphaaaadIaaaahmgGaadIaahngBgBaaaadIaahnaNaNaapahshvhRhShUhVhYiaibhxidhyifighygGgGhAhBhCaqapataHaVapaqgsaaaaaaaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
+aopeVbVbappNapapappNtNtNtNtNtNpNrOrOrOpNaqaeaeaeaehzaeaeaeaeaeaeaeaehFhGaeaeaeaeaeaeaeaefBaeaeaeaeapapaqaqaqaqaAaaaadIaaaaaaaaaadcatatatatboapdgaqaSaSaSaqaeaehHhIaeaeaSaqaqbDbwatcLathPaqaqbDhrcNataHcdcPaSaSaeaehQeHaeaeaqaqaqaqaqdhapatatatatatatapaqpbaaaadIaaaaphaaaadIaaaahmgGaadIaahngBgBaaaadIaahnaNaNaapahshvhRhShUhVhYiaibhxidhyifighygGgGhAhBhCaqapataHaVapaqgsaaaaaaaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
 aopepeVbappNpNpNpNpNpNpNpNtNpNpNpNrOpNpNaqaeihikinioipaeitiuitLBaeaefJivaeaebjbjixcaaeiyizLDiBbiaeatapapaqaqaqpbaaaadIaaaahDhEpcsMbwatatatatapaqaqaqaqaqaqaqcRaqaqcSaqaqaqaScvcKcKcKcKcMaqaqcvcKcKcKcKcMaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqapatatatatatcLaGaqaAaaaadIaaaaafaaaadIaaaahmgGaadIaahngBgBjQaadIaahnaNaNaapaaqiChUiDhUhUiDiDhUhxiHiIiJiKhyhJhKhLhMhNaqapaWaWatqxaqpbgtgtgtgtgtpaaqaqaqaqaqaqaqaqaqaqaqaqao
 aopepeVbappNABABABpNiLiLiLiLiLiLiLiLpNaqaqiMiOiPiQioioiRititiSiTaeaefJhGaeaeiUbjbjbjiWbjbjbjiXiYiZatatapaqaqaqpbaaaadIaaaahOhcapataVatatatataGapapapaGapapapaqaqcRaqaqapapapapaGqxapapapapapapapapapaGapapapapaqaqaqaqaqapapapaGchchapaGatatcjatatatapaqpbaaaadIaaaapNaaaadIaaaahmgGaadIaaaaaaaaaaaadIaaaaaaaaaapaaqjahUjbhUjchUjbhUhxjdhyhyhyhygGhLhLhMhNaqapjeatatapaqpbgtgtgtgtgtpaaqaqaqaqaqaqaqaqaqaqaqaqao
 aopepeVbappNABABABABiLiLiLiLiLiLiLiLSEaqaqaejfLEioiojgaejhititjiaeaefJhGaeaejjbjbjLGaejkbjbjbjjlaeatatapaqaqaqpbaaaadIaaaahjaSaGatatatatatcUatatcjaVatatataGaqaqaqaqaGapatbwaWatatatatatatatatatatatatatatatapaGaqaSaqaqaGbwataXatatboatboatatatatatapaqpbaaaadIaaaaagaaaadIaaaahmgGaadIaahngBgBaaaadIaahnaNaNaapaaqhvjmjbhUhvhUjbhUjojdjdjdjpjrgGgGgGhWhCaqapatatjsapaqpbgtgtgtgtgtpaaqaqaqaqaqaqaqaqaqaqaqaqao
 aopepeVbappNpNpNpNpNiLiLiLiLiLiLiLiLpNaqaqaeaeaejtiojuaeaeaeaeaeaeaefJjvaeaeaeaeaeaeaejwbjjxaeaeaeatatapaqaqaqaAaaaaaaaaaakmaqayboatatatatatatatauatataXatchaqaqaqaqapaVatatatatatatatcVataHcVatbTatataVatatatapaqaqaqaqduatatatatatatataWataVatatatapaqpbaaaaaaaaaaphaaaaaaaaaahXmdaadIaahlgBgBaaaadIaahlaNaNaapahZhvhUjbhUhvhUjbhUhxhxhxjyhxhxhLgGgGgGhCaqapatataWapaqpbgtgtgtgtgtpaaqaqaqaqaqaqaqaqaqaqaqaqao
-aopepeVbappNjzjzjzpNiLiLiLiLiLiLiLiLSEaqaqaebQbejAjtiojBjCaebULHbXaefJjHaebYLIbZaebjbjbjjxjJbebQaeatatapaqaqaqpbaaaadIaaaapaaqapatboatatatatatatatatatatatapaqaSaSbnapatatatatatatauatatatatatataWatatataWatatapdhaqaqaqapbTaHatauatatataXatatatatauaGaqaAaaaadIaaaaphaaaadIaaaadEdEaaaaaaaaicaaaaaaaaaaaaaajZaapaaqhwhUjbhUjKhUjbhUhxjLjNjOjRhxiiijgGgGhCaqapauatatapaqpbaaaaaaaaaajSaqaqaqaqaqaqaqaqaqaqaqaqao
+aopepeVbappNjzjzjzpNiLiLiLiLiLiLiLiLSEaqaqaebQbejAjtiojBjCaebULHbXaefJjHaebYLIbZaebjbjbjjxjJbebQaeatatapaqaqaqpbaaaadIaaaapaaqapatboatatatatatatatatatatatapaqaSaSbnapatatatatatatauatatatatatataWatatataWatatapaYaqaqaqapbTaHatauatatataXatatatatauaGaqaAaaaadIaaaaphaaaadIaaaadEdEaaaaaaaaicaaaaaaaaaaaaaajZaapaaqhwhUjbhUjKhUjbhUhxjLjNjOjRhxiiijgGgGhCaqapauatatapaqpbaaaaaaaaaajSaqaqaqaqaqaqaqaqaqaqaqaqao
 aoVbVbVbappNjzjzjzjziLiLiLiLiLiLiLiLpNaqaqaejVjWblaejXiojYbdbekabgaekbheaebgkabebdkdbjcaaeblbmjVaeatapapaqaqaqpbaaaadIaaaapaaqapatataVatatboboboatatatatauapaqaqaqdhapatatatatatatatatatatatatataWaWatatatatcjapdgaqaqaqapatatatatatatatatatatatatcNapaqpbaaaadIaaaaphaaaadIaaaadEdEaaaaaaaaaaaaaaaaaaaaaaaaaaaagpaqhwhUjbiDhUhUjbhUhxkejOjOjRhxilimgGhLhNaqapaHatjeapaqpbaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
 aoaqpHapappNjzjzjzpNpNiLpNpNiLiLiLpNpNaqaqaeaekfaeaeaekfaeaeaeaeaeaekgkhaeaeaeaeaeaekjaeaeaekjaeaekkapaqaqaqaqpbaaaadIaaaapaaqaGapcLatboatatatatatataXatataGaqaqaSaqapaHatatatatatatatcVatatcVatatatatatatatatapaqaqaSaSaGatatataWaWataHatatataWatapapaqpbaaaadIaaaaphaaaadIaaaadEdEaaaaaaaaaaaaaaaaaaaaaaaaaaaapaaqhvklhUiDhUhUhUibhxknkokpkqhxiqirhLijhNaqchaWauatapaqaAaaaadIaaaagpaqaqaqaqaqaqaqaqaqaqaqaqao
 aoVbVbVbappNjzjzjzpNktktpNiLiLiLiLiLpNaqaqbDjebwatcUatataHbEaqaqaqaqaqaqaqaqaqaqbDatLvjeatatataHbEaqaqaqaqaqaqpbaaaadIaaaacbaqaqapapatatboatauatatatcjatapapaqaqhcaqaGapatataVatatataWbTatatcjatatcWatatatatayaGaqaqaqaqapapataVataWatauatatatatapaGaqaqpbaaaadIaaaaphaaaadIaaaadEdEaaaaaaaaaaaaaaaaaaaaaaaaaaissMaqhvhvkukvkukwkyhvhxhxkzhxhxhxhJgGgGgGhCaqduapapapapaqpbaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqao
@@ -2219,7 +2219,7 @@ aoaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
 aoaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqapaaaaaaaaaapaaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaAaaaaaaaaaagpbDaHxitEtEtEtEtEtEtEtEtEtEtEtExiaShcaSaSaqpbgtgtgtgtgtapgtgtgtgtgtapaqapboatataWboatatapaqapatjeaVatatboatboataHatatcNapaGaqaqGZGZGZGZaqaqaGapatcUatataWatboatatatatatatapaqapcjboatatatatjeapaqao
 aoaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqapaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqpbaaaadIaaaaymbDbwtCHgynyoypyqyrypypypypyuyptCjEaIaqaqaqpbgtgtgtgtgtapgtgtgtgtgtapaqapboatbojebocWatapaqapapapapapapapapapapapapapapapaqbnHaacacacacHbaYaqapapapapapapapapapapapapapapapaqapatbwatatatatcjapaqao
 aoaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqapaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqpbaaaadIaaaapacvcKtCyvywyxyztCtCyAyBtCtCyCtCyEyEyEyEaqaqpbgtgtgtgtgtapgtgtgtgtgtapaqapcjatjeauatatjeapaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqHcHaacGYacacHbHdaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqapjeatatHeatatboapaqao
-aoaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqKQaaaadIaaaagpaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqpbaaaadIaaaapaaqaStCtEtEyxyFyGtCyHyJyKyLyNyOyEyQyEyEfiaqpbaaaaaaaaaazCaaaaaaaaaaKSaqapatatatatcUatatapaqapapapapapapapapapapapapapapapaqdhHaacacacacHbdhaqapapapapapapapapapapapapapapapaqapatatatatjecUatapaqao
+aoaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqKQaaaadIaaaagpaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqpbaaaadIaaaapaaqaStCtEtEyxyFyGtCyHyJyKyLyNyOyEyQyEyEfiaqpbaaaaaaaaaazCaaaaaaaaaaKSaqapatatatatcUatatapaqapapapapapapapapapapapapapapapaqdhHaacacacacHbdgaqapapapapapapapapapapapapapapapaqapatatatatjecUatapaqao
 aoaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqapaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaAaaaadIaaaagpaSaqtCxotEyxySyUtCyNyVyVyWyNyXyEyQyYyEaSaSaAaaaadIaaaaphaaaadIaaaaKTaqapatatatatatatatapaqapboboatatatatboatatatatatboapaGaqaqXxXxXxXxaqaqaGapboatatatatatatatataVatatatapaqapatboatatbwatatapaqao
 aoaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqapaaaaaaaaaapaaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqpbaaaaaaaaaapaaSaqtCynyZzayFzbtCyNyNzczeyNyNyEzfzgyEguaSpbaaaadIaaaaafaaaadIaaaaapaqapatbobocjatatauapaqapatatatataWatatauboatatatjeboapapaqaqaqaqaqaqapapaXboatcNcjatboatatauatatataWapaqapaXatatboatatjeapaqao
 aoaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqapaaaadIaaaapaaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqpbaaaadIaaaapaaqaqtCzhzjyFyFzbzkyNyNyNyNyNyNzmznznzqaqaSKUaaaadIaaaapNaaaadIaaaaapaqapaVatatboatatbwapaqapboaXatbocUatatatatatatatatboatapapapapapapapapboatatatatatbwatatatjeatatatatapaqapatbwbwboatataHapaqao

@@ -74,6 +74,8 @@
 	else
 		if(istype(usr,/mob/living/simple_mob/animal/passive/mouse))
 			return
+		if(istype(src,/obj/structure/bed/chair/skameika))
+			return
 		if(!usr || !isturf(usr.loc))
 			return
 		if(usr.stat || usr.restrained())
