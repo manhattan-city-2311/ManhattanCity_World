@@ -137,7 +137,7 @@
 
 //Execution by grand piano!
 /atom/movable/proc/get_fall_damage()
-	return 42
+	return rand(20,50)
 
 //If atom stands under open space, it can prevent fall, or not
 /atom/proc/can_prevent_fall(var/atom/movable/mover, var/turf/coming_from)
@@ -384,7 +384,7 @@
 		A.fall_impact(hit_atom, damage_min, damage_max, silent = TRUE)
 
 // Take damage from falling and hitting the ground
-/mob/living/fall_impact(var/atom/hit_atom, var/damage_min = 7, var/damage_max = 25, var/silent = FALSE, var/planetary = FALSE)
+/mob/living/fall_impact(var/atom/hit_atom, var/damage_min = 7, var/damage_max = 65, var/silent = FALSE, var/planetary = FALSE)
 	var/turf/landing = get_turf(hit_atom)
 	if(planetary && src.CanParachute())
 		if(!silent)
