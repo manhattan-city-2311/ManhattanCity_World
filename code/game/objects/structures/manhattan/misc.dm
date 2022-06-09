@@ -57,21 +57,65 @@
 		M.pixel_y = 0
 	return M
 
-/*/obj/structure/bed/chair/skameika/metal
+/obj/structure/bed/chair/skameika_steel
+	name = "bench"
+	icon = 'icons/obj/manhattan/furniture.dmi'
 	icon_state = "bench_center"
+	anchored = 1
+	plane = UNDER_MOB_PLANE
 	color = COLOR_GRAY
 	base_icon = "bench_center"
+	applies_material_colour = 1
 
-/obj/structure/bed/chair/skameika/metal/New(var/newloc,var/newmaterial) //шайтан машина бля не работает, цвет и материал остаётся деревом
+/obj/structure/bed/chair/skameika_steel/New()
+	..()
+	if(dir == 1)
+		buckle_dir = NORTH
+		plane = -35
+	if(dir == 2)
+		buckle_dir = SOUTH
+		plane = -35
+	if(dir == 4)
+		buckle_dir = EAST
+		plane = -35
+	if(dir == 8)
+		buckle_dir = WEST
+		plane = -35
+
+/obj/structure/bed/chair/skameika_steel/New(var/newloc,var/newmaterial)
 	..(newloc,"steel","steel")
 
-/obj/structure/bed/chair/skameika/metal/right
+/obj/structure/bed/chair/skameika_steel/right
 	icon_state = "bench_right"
 	base_icon = "bench_right"
 
-/obj/structure/bed/chair/skameika/metal/left
+/obj/structure/bed/chair/skameika_steel/left
 	icon_state = "bench_left"
-	base_icon = "bench_left"*/
+	base_icon = "bench_left"
+
+
+/obj/structure/bed/chair/skameika_steel/post_buckle_mob(mob/living/M)
+	update_mob()
+	return ..()
+
+/obj/structure/bed/chair/skameika_steel/proc/update_mob()
+	if(has_buckled_mobs())
+		for(var/A in buckled_mobs)
+			var/mob/living/L = A
+			L.set_dir(dir)
+			if(WEST && dir == 1)
+				L.pixel_x = -3
+				L.pixel_y = -5
+			if(EAST && dir == 1)
+				L.pixel_x = 3
+				L.pixel_y = -5
+
+/obj/structure/bed/chair/skameika_steel/unbuckle_mob()
+	var/mob/living/M = ..()
+	if(M)
+		M.pixel_x = 0
+		M.pixel_y = 0
+	return M
 
 /obj/structure/bed/chair/couch_metal
 	name = "metal bench"
