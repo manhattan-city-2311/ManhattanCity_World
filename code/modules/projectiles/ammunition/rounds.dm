@@ -81,6 +81,25 @@
 	projectile_type = /obj/item/projectile/bullet/gyro
 
 /*
+ * 5mm
+ */
+
+/obj/item/ammo_casing/a5mm
+	desc = "A 5mm bullet casing."
+	caliber = "5mm"
+	projectile_type = /obj/item/projectile/bullet/pistol/small
+
+/obj/item/ammo_casing/a5mm/ap
+	desc = "A 5mm armor-piercing bullet casing."
+	caliber = "5mm"
+	projectile_type = /obj/item/projectile/bullet/pistol/small/ap
+
+/obj/item/ammo_casing/a5mm/hollow
+	desc = "A 5mm hollow-point bullet casing."
+	caliber = "5mm"
+	projectile_type = /obj/item/projectile/bullet/pistol/small/hollow
+
+/*
  * 9mm
  */
 
