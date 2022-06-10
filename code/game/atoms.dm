@@ -380,8 +380,10 @@
 	if(A.fingerprintshidden && fingerprintshidden)
 		A.fingerprintshidden |= fingerprintshidden.Copy()    //admin	A.fingerprintslast = fingerprintslast
 
-	truncate_oldest(A.fingerprints, MAX_FINGERPRINTS)
-	truncate_oldest(A.fingerprintshidden, MAX_FINGERPRINTS)
+	if(A && A.fingerprints)
+		truncate_oldest(A.fingerprints, MAX_FINGERPRINTS)
+	if(A && A.fingerprintshidden)
+		truncate_oldest(A.fingerprintshidden, MAX_FINGERPRINTS)
 
 
 //returns 1 if made bloody, returns 0 otherwise

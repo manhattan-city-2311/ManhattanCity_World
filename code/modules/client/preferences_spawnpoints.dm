@@ -27,7 +27,7 @@ var/list/spawntypes = list()
 
 /datum/spawnpoint/arrivals
 	display_name = "City Arrivals Airbus"
-	msg = "will arrive to the city shortly by airbus"
+	msg = "will arrive to the city shortly by tram"
 
 /datum/spawnpoint/arrivals/New()
 	..()

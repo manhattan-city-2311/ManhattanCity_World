@@ -170,7 +170,6 @@
 	icon_state = "deaglecamo"
 	item_state = "deagleg"
 
-/*
 /obj/item/weapon/gun/projectile/fiveseven
 	name = "\improper WT-AP57"
 	desc = "This tacticool pistol made by Ward-Takahashi trades stopping power for armor piercing and a large capacity. Uses 5mm rounds."
@@ -178,17 +177,20 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	caliber = "5mm"
 	load_method = MAGAZINE
-	fire_sound = 'sound/weapons/semiauto.ogg'
-	magazine_type = /obj/item/ammo_magazine/c5mm
-	allowed_magazines = list(/obj/item/ammo_magazine/c5mm)
+	magazine_type = /obj/item/ammo_magazine/m5mm
+	allowed_magazines = list(/obj/item/ammo_magazine/m5mm)
+
+	firemodes = list(
+		list(mode_name="semiauto", burst=1, fire_delay=0),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=0,    burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.1, 0.1))
+		)
 
 /obj/item/weapon/gun/projectile/fiveseven/update_icon()
 	..()
 	if(ammo_magazine)
 		icon_state = "fnseven"
 	else
-		icon_state = "fnseven-empty"
-*/
+		icon_state = "fnseven-e"
 
 /obj/item/weapon/gun/projectile/gyropistol // Does this even appear anywhere outside of admin abuse?
 	name = "gyrojet pistol"

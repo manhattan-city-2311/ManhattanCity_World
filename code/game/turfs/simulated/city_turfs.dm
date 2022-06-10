@@ -11,8 +11,8 @@
 	initial_flooring = /decl/flooring/pavement/empty
 
 /turf/simulated/floor/pavement/border
-	icon_state = "pavement2"
-	initial_flooring = /decl/flooring/pavement
+	icon_state = "pavementt"
+	initial_flooring = /decl/flooring/pavementt
 
 /turf/simulated/floor/pavement/corner
 	icon_state = "pave_corner"

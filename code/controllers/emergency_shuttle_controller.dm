@@ -205,10 +205,8 @@ var/global/datum/emergency_shuttle_controller/emergency_shuttle
 
 //returns 1 if the shuttle is not idle at centcom
 /datum/emergency_shuttle_controller/proc/online()
-	if (!shuttle.location)	//not at centcom
-		return 1
-	if (wait_for_launch || shuttle.moving_status != SHUTTLE_IDLE)
-		return 1
+	//if (!shuttle.location)	//not at centcom
+		//return 1
 	return 0
 
 //returns 1 if the shuttle is currently in transit (or just leaving) to the station
@@ -217,7 +215,7 @@ var/global/datum/emergency_shuttle_controller/emergency_shuttle
 
 //returns 1 if the shuttle is currently in transit (or just leaving) to centcom
 /datum/emergency_shuttle_controller/proc/going_to_centcom()
-	return (shuttle.direction && shuttle.moving_status != SHUTTLE_IDLE)
+	return 0
 
 
 /datum/emergency_shuttle_controller/proc/get_status_panel_eta()

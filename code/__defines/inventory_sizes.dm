@@ -23,3 +23,9 @@
 #define INVENTORY_STANDARD_SPACE	ITEMSIZE_COST_NORMAL * 7 // 28
 #define INVENTORY_DUFFLEBAG_SPACE	ITEMSIZE_COST_NORMAL * 9 // 36
 #define INVENTORY_BOX_SPACE			ITEMSIZE_COST_SMALL * 4 // 8
+
+#define base_storage_cost(w_class) (2**(w_class-1)) //1,2,4,8,16,...
+
+//linear increase. Using many small storage containers is more space-efficient than using large ones,
+//in exchange for being limited in the w_class of items that will fit
+#define base_storage_capacity(w_class) (7*(w_class-1))

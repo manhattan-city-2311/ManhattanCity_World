@@ -128,6 +128,19 @@
 	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
 	damage = 15
 
+/obj/item/projectile/bullet/pistol/small // they really small
+	damage = 15
+	armor_penetration = 60
+	agony = 5
+
+/obj/item/projectile/bullet/pistol/small/ap // really?
+	damage = 10
+	armor_penetration = 90
+
+/obj/item/projectile/bullet/pistol/small/hollow // how these even works?
+	damage = 20
+	armor_penetration = 20
+
 /obj/item/projectile/bullet/pistol/ap
 	damage = 10
 	armor_penetration = 30

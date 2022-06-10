@@ -1,46 +1,38 @@
 /obj/structure/bed/chair/skameika
 	name = "old ratty bench"
-	icon = 'icons/obj/manhattan/sofas.dmi'
-	icon_state = "pews"
+	icon = 'icons/obj/manhattan/furniture.dmi'
+	icon_state = "bench_wood_center"
 	anchored = 1
 	plane = UNDER_MOB_PLANE
-	color = null
-	base_icon = "pews"
-	applies_material_colour = 0
+	color = WOOD_COLOR_GENERIC
+	base_icon = "bench_wood_center"
+	applies_material_colour = 1
+
+/obj/structure/bed/chair/skameika/New(var/newloc,var/newmaterial)
+	..(newloc,"wood")
 
 /obj/structure/bed/chair/skameika/New()
 	..()
 	if(dir == 1)
-		buckle_dir = WEST
+		buckle_dir = NORTH
 		plane = -35
 	if(dir == 2)
-		buckle_dir = WEST
-		plane = -35
-	if(dir == 4)
-		buckle_dir = WEST
-		plane = -35
-	if(dir == 8)
-		buckle_dir = WEST
-		plane = -35
-
-/obj/structure/bed/chair/skameika/alt
-	icon_state = "pews_f"
-	base_icon = "pews_f"
-
-/obj/structure/bed/chair/skameika/alt/New()
-	..()
-	if(dir == 1)
-		buckle_dir = EAST
-		plane = -35
-	if(dir == 2)
-		buckle_dir = EAST
+		buckle_dir = SOUTH
 		plane = -35
 	if(dir == 4)
 		buckle_dir = EAST
 		plane = -35
 	if(dir == 8)
-		buckle_dir = EAST
+		buckle_dir = WEST
 		plane = -35
+
+/obj/structure/bed/chair/skameika/right
+	icon_state = "bench_wood_right"
+	base_icon = "bench_wood_right"
+
+/obj/structure/bed/chair/skameika/left
+	icon_state = "bench_wood_left"
+	base_icon = "bench_wood_left"
 
 /obj/structure/bed/chair/skameika/post_buckle_mob(mob/living/M)
 	update_mob()
@@ -59,6 +51,66 @@
 				L.pixel_y = -5
 
 /obj/structure/bed/chair/skameika/unbuckle_mob()
+	var/mob/living/M = ..()
+	if(M)
+		M.pixel_x = 0
+		M.pixel_y = 0
+	return M
+
+/obj/structure/bed/chair/skameika_steel
+	name = "bench"
+	icon = 'icons/obj/manhattan/furniture.dmi'
+	icon_state = "bench_center"
+	anchored = 1
+	plane = UNDER_MOB_PLANE
+	color = COLOR_GRAY
+	base_icon = "bench_center"
+	applies_material_colour = 1
+
+/obj/structure/bed/chair/skameika_steel/New()
+	..()
+	if(dir == 1)
+		buckle_dir = NORTH
+		plane = -35
+	if(dir == 2)
+		buckle_dir = SOUTH
+		plane = -35
+	if(dir == 4)
+		buckle_dir = EAST
+		plane = -35
+	if(dir == 8)
+		buckle_dir = WEST
+		plane = -35
+
+/obj/structure/bed/chair/skameika_steel/New(var/newloc,var/newmaterial)
+	..(newloc,"steel","steel")
+
+/obj/structure/bed/chair/skameika_steel/right
+	icon_state = "bench_right"
+	base_icon = "bench_right"
+
+/obj/structure/bed/chair/skameika_steel/left
+	icon_state = "bench_left"
+	base_icon = "bench_left"
+
+
+/obj/structure/bed/chair/skameika_steel/post_buckle_mob(mob/living/M)
+	update_mob()
+	return ..()
+
+/obj/structure/bed/chair/skameika_steel/proc/update_mob()
+	if(has_buckled_mobs())
+		for(var/A in buckled_mobs)
+			var/mob/living/L = A
+			L.set_dir(dir)
+			if(WEST && dir == 1)
+				L.pixel_x = -3
+				L.pixel_y = -5
+			if(EAST && dir == 1)
+				L.pixel_x = 3
+				L.pixel_y = -5
+
+/obj/structure/bed/chair/skameika_steel/unbuckle_mob()
 	var/mob/living/M = ..()
 	if(M)
 		M.pixel_x = 0
@@ -136,3 +188,63 @@
 /obj/structure/sign/manhattan/rewards/medal
 	name = "gold medal"
 	icon_state = "medal"
+
+/obj/structure/sign/neon/big/transit
+	name = "transit station sign"
+	desc = "A sign for the city transit station."
+	icon_state = "transit"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/big/train
+	name = "transit station sign"
+	desc = "A sign for the city transit station."
+	icon_state = "train"
+	light_color = "#F070FF"
+
+/obj/structure/sign/neon/big/direction1
+	name = "direction sign"
+	desc = "A sign for the navigation inside of the city."
+	icon_state = "directions"
+	light_color = "#63C4D6"
+
+/obj/structure/sign/neon/big/direction2
+	name = "direction sign"
+	desc = "A sign for the navigation inside of the city."
+	icon_state = "directions-large"
+	light_color = "#63C4D6"
+
+/obj/structure/sign/neon/big/rent
+	name = "rent sign"
+	desc = "A sign that saying this place are for rent."
+	icon_state = "cryo"
+	light_color = "#63C4D6"
+
+/obj/structure/sign/neon/big/menu
+	name = "neon menu screen"
+	desc = "A sign with some options to choose."
+	icon_state = "options"
+	light_color = "#63C4D6"
+
+/obj/structure/sign/neon/big/bar
+	name = "neon bar sign"
+	desc = "A sign for the city local bar."
+	icon_state = "bar"
+	light_color = "#F070FF"
+
+/obj/structure/sign/neon/big/casino
+	name = "neon casino sign"
+	desc = "A sign for the city local casino."
+	icon_state = "casino"
+	light_color = COLOR_YELLOW
+
+/obj/structure/manhattan/rails
+	name = "rails"
+	icon = 'icons/obj/manhattan/rails.dmi'
+	desc = "A rails for some kind of train."
+	icon_state = "rail"
+
+/obj/structure/manhattan/rails/tie
+	name = "rails"
+	icon = 'icons/obj/manhattan/rails.dmi'
+	desc = "A rails for some kind of train."
+	icon_state = "tie"
