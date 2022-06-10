@@ -520,6 +520,17 @@ var/list/flooring_types
 		'sound/effects/footstep/pavement3.ogg',
 		'sound/effects/footstep/pavement4.ogg'))
 
+/decl/flooring/pavementt
+	name = "pavement"
+	icon = 'icons/turf/pavement.dmi'
+	icon_base = "pavementt"
+	build_type = null
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/pavement1.ogg',
+		'sound/effects/footstep/pavement2.ogg',
+		'sound/effects/footstep/pavement3.ogg',
+		'sound/effects/footstep/pavement4.ogg'))
+
 /decl/flooring/pavement/corner
 	icon_base = "pave_corner"
 

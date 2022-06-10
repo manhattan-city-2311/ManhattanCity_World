@@ -236,7 +236,7 @@ Proc for attack log creation, because really why not
 	if (progbar)
 		qdel(progbar)
 
-/proc/do_after(mob/user, delay, atom/target = null, needhand = 1, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT)
+/proc/do_after(mob/user, delay, atom/target = null, needhand = 1, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, var/progbar_on_user = 0)
 	if(!user)
 		return 0
 	if(!delay)
@@ -249,9 +249,13 @@ Proc for attack log creation, because really why not
 
 	var/holding = user.get_active_hand()
 
+/*	var/datum/progressbar/progbar
+	if (progress)
+		progbar = new(user, delay, target)*/
+
 	var/datum/progressbar/progbar
 	if (progress)
-		progbar = new(user, delay, target)
+		progbar = new(user, delay, progbar_on_user ? user : target)
 
 	var/endtime = world.time + delay
 	var/starttime = world.time

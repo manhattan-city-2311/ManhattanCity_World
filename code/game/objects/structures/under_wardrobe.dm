@@ -2,7 +2,7 @@
 	name = "underwear wardrobe"
 	desc = "Holds item of clothing you shouldn't be showing off in the hallways."
 	icon = 'icons/obj/closet.dmi'
-	icon_state = "drawer"
+	icon_state = "undies_walnut"
 	density = 1
 	burn_state = 0 //Burnable
 	burntime = MEDIUM_BURN

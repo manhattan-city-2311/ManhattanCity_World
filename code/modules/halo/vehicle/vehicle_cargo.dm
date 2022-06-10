@@ -93,6 +93,10 @@
 	if(!istype(user) || user.incapacitated())
 		return
 
+	if(user.loc == src)
+		to_chat(user, "<span class='notice'>You cannot retrieve cargo while inside [src].</span>")
+		return
+
 	var/list/cargo_list_names = list("Cancel")
 	for(var/obj/item in cargo_contents)
 		cargo_list_names += item.name
@@ -100,9 +104,14 @@
 	var/item_name_remove = input(user,"Pick an item to remove","Item removal selection","Cancel") in cargo_list_names
 	if(item_name_remove == "Cancel")
 		return
-	var/obj/object_removed = cargo_list_names[item_name_remove]
-	if(!user.put_in_hands(object_removed))
-		object_removed.loc = user.loc
+	eject_cargo_item(cargo_list_names[item_name_remove], user)
+
+/obj/manhattan/vehicles/proc/eject_cargo_item(var/obj/object_removed, var/atom/movable/target)
+	object_removed.forceMove(target)
+	if(isliving(target))
+		var/mob/living/user = target
+		if(!user.put_in_hands(object_removed))
+			object_removed.forceMove(user.loc)
 	cargo_contents -= object_removed
 	used_cargo_space -= base_storage_cost(get_cargo_size(object_removed))
 	if(!cargo_contents.len)
