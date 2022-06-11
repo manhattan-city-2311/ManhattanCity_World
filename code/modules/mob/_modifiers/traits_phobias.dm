@@ -515,9 +515,6 @@
 		if(istype(thing, /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun))
 			fear_amount += 8 //Syringe gun for a big ass mech.
 
-		if(istype(thing, /obj/machinery/sleep_console)) //Sleepers got them needles in them.
-			fear_amount += 4
-
 		if(istype(thing, /obj/item/weapon/implanter))
 			fear_amount += 8 //Very big needle.
 

@@ -289,17 +289,17 @@
 		msg += "[T.He] [T.is] very short!<br>"
 
 	if (src.stat)
-		msg += "<span class='warning'>[T.He] [T.is]n't responding to anything around [T.him] and seems to be asleep.</span><br>"
-		if((stat == 2 || src.losebreath) && get_dist(user, src) <= 3)
-			msg += "<span class='warning'>[T.He] [T.does] not appear to be breathing.</span><br>"
-		if(istype(user, /mob/living/carbon/human) && !user.stat && Adjacent(user))
-			user.visible_message("<b>[usr]</b> checks [src]'s pulse.", "You check [src]'s pulse.")
-		spawn(15)
-			if(isobserver(user) || (Adjacent(user) && !user.stat)) // If you're a corpse then you can't exactly check their pulse, but ghosts can see anything
-				if(pulse == PULSE_NONE)
-					to_chat(user, "<span class='deadsay'>[T.He] [T.has] no pulse[src.client ? "" : " and [T.his] soul has departed"]...</span>")
-				else
-					to_chat(user, "<span class='deadsay'>[T.He] [T.has] a pulse!</span>")
+		msg += "<span class='warning'>[T.He] [T.is]n't responding to anything around [T.him] and seems to be unconscious.</span>\n"
+		if((stat == DEAD || is_asystole() || src.losebreath))
+			msg += "<span class='warning'>[T.He] [T.does] not appear to be breathing.</span>\n"
+		if(ishuman(user) && !user.incapacitated() && Adjacent(user))
+			spawn(0)
+				user.visible_message("<b>\The [user]</b> checks \the [src]'s pulse.", "You check \the [src]'s pulse.")
+				if(do_after(user, 15, src))
+					if(get_pulse() == 0)
+						to_chat(user, "<span class='deadsay'>[T.He] [T.has] no pulse.</span>")
+					else
+						to_chat(user, "<span class='deadsay'>[T.He] [T.has] a pulse!</span>")
 
 	if(fire_stacks)
 		msg += "[T.He] [T.is] covered in some liquid.<br>"
@@ -330,13 +330,10 @@
 		else
 			continue
 
-	for(var/obj/item/organ/external/temp in organs)
+	for(var/obj/item/organ/external/temp in organs_by_name)
 		if(temp)
 			if((temp.organ_tag in hidden) && hidden[temp.organ_tag])
 				continue //Organ is hidden, don't talk about it
-			if(temp.status & ORGAN_DESTROYED)
-				wound_flavor_text["[temp.name]"] = "<span class='warning'><b>[T.He] [T.is] missing [T.his] [temp.name].</b></span><br>"
-				continue
 
 			if(!looks_synth && temp.robotic == ORGAN_ROBOT)
 				if(!(temp.brute_dam + temp.burn_dam))

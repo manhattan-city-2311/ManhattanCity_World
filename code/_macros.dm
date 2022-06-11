@@ -112,3 +112,21 @@
 #define FONT_HUGE(X) "<font size='4'>[X]</font>"
 
 #define FONT_GIANT(X) "<font size='5'>[X]</font>"
+
+// G is type.
+#define ishormone(G, T) (G == /datum/reagent/hormone/##T)
+
+#define LAZYACCESS0(L, I) (L ? (isnum(I) ? (I > 0 && I <= L.len ? L[I] : 0) : L[I]) : 0)
+
+proc/n_repeat(var/string, var/amount)
+	if(istext(string) && isnum(amount))
+		var/i
+		var/newstring = ""
+		if(length(newstring)*amount >=1000)
+			return
+		for(i=0, i<=amount, i++)
+			if(i>=1000)
+				break
+			newstring = newstring + string
+
+		return newstring

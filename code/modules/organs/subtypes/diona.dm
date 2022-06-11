@@ -130,7 +130,7 @@
 		return ..()
 	var/mob/living/carbon/human/H = owner
 	..()
-	if(!istype(H) || !H.organs || !H.organs.len)
+	if(!istype(H) || !H.organs_by_name || !H.organs_by_name.len)
 		H.death()
 	if(prob(50) && spawn_diona_nymph(get_turf(src)))
 		qdel(src)
@@ -146,7 +146,7 @@
 		return ..()
 	var/mob/living/carbon/human/H = owner
 	..()
-	if(!istype(H) || !H.organs || !H.organs.len)
+	if(!istype(H) || !H.organs_by_name || !H.organs_by_name.len)
 		H.death()
 	if(prob(50) && !skip_nymph && spawn_diona_nymph(get_turf(src)))
 		qdel(src)

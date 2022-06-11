@@ -213,24 +213,24 @@ var/list/preferences_datums = list()
 /datum/preferences/proc/ZeroSkills(var/forced = 0)
 	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
 		if(!skills.Find(S.ID) || forced)
-			skills[S.ID] = SKILL_NONE
+			skills[S.ID] = SKILL_UNSKILLED
 
 /datum/preferences/proc/CalculateSkillPoints()
 	used_skillpoints = 0
 	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
 		var/multiplier = 1
 		switch(skills[S.ID])
-			if(SKILL_NONE)
+			if(SKILL_UNSKILLED)
 				used_skillpoints += 0 * multiplier
-			if(SKILL_BASIC)
+			if(SKILL_AMATEUR)
 				used_skillpoints += 1 * multiplier
-			if(SKILL_ADEPT)
+			if(SKILL_TRAINED)
 				// secondary skills cost less
 				if(S.secondary)
 					used_skillpoints += 1 * multiplier
 				else
 					used_skillpoints += 3 * multiplier
-			if(SKILL_EXPERT)
+			if(SKILL_PROFESSIONAL)
 				// secondary skills cost less
 				if(S.secondary)
 					used_skillpoints += 3 * multiplier

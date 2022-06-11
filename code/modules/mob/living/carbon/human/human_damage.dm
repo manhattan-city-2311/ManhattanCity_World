@@ -8,7 +8,7 @@
 
 	var/total_burn  = 0
 	var/total_brute = 0
-	for(var/obj/item/organ/external/O in organs)	//hardcoded to streamline things a bit
+	for(var/obj/item/organ/external/O in organs_by_name)	//hardcoded to streamline things a bit
 		if((O.robotic >= ORGAN_ROBOT) && !O.vital)
 			continue //*non-vital* robot limbs don't count towards shock and crit
 		total_brute += O.brute_dam
@@ -66,7 +66,7 @@
 //These procs fetch a cumulative total damage from all organs
 /mob/living/carbon/human/getBruteLoss()
 	var/amount = 0
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in organs_by_name)
 		if(O.robotic >= ORGAN_ROBOT && !O.vital)
 			continue //*non-vital*robot limbs don't count towards death, or show up when scanned
 		amount += O.brute_dam
@@ -74,7 +74,7 @@
 
 /mob/living/carbon/human/getShockBruteLoss()
 	var/amount = 0
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in organs_by_name)
 		if(O.robotic >= ORGAN_ROBOT)
 			continue //robot limbs don't count towards shock and crit
 		amount += O.brute_dam
@@ -82,13 +82,13 @@
 
 /mob/living/carbon/human/getActualBruteLoss()
 	var/amount = 0
-	for(var/obj/item/organ/external/O in organs) // Unlike the above, robolimbs DO count.
+	for(var/obj/item/organ/external/O in organs_by_name) // Unlike the above, robolimbs DO count.
 		amount += O.brute_dam
 	return amount
 
 /mob/living/carbon/human/getFireLoss()
 	var/amount = 0
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in organs_by_name)
 		if(O.robotic >= ORGAN_ROBOT && !O.vital)
 			continue //*non-vital*robot limbs don't count towards death, or show up when scanned
 		amount += O.burn_dam
@@ -96,7 +96,7 @@
 
 /mob/living/carbon/human/getShockFireLoss()
 	var/amount = 0
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in organs_by_name)
 		if(O.robotic >= ORGAN_ROBOT)
 			continue //robot limbs don't count towards shock and crit
 		amount += O.burn_dam
@@ -104,7 +104,7 @@
 
 /mob/living/carbon/human/getActualFireLoss()
 	var/amount = 0
-	for(var/obj/item/organ/external/O in organs) // Unlike the above, robolimbs DO count.
+	for(var/obj/item/organ/external/O in organs_by_name) // Unlike the above, robolimbs DO count.
 		amount += O.burn_dam
 	return amount
 
@@ -242,7 +242,7 @@
 	if (amount > 0)
 		if (prob(mut_prob))
 			var/list/obj/item/organ/external/candidates = list()
-			for (var/obj/item/organ/external/O in organs)
+			for (var/obj/item/organ/external/O in organs_by_name)
 				if(!(O.status & ORGAN_MUTATED))
 					candidates |= O
 			if (candidates.len)
@@ -252,14 +252,14 @@
 				return
 	else
 		if (prob(heal_prob))
-			for (var/obj/item/organ/external/O in organs)
+			for (var/obj/item/organ/external/O in organs_by_name)
 				if (O.status & ORGAN_MUTATED)
 					O.unmutate()
 					to_chat(src, "<span class = 'notice'>Your [O.name] is shaped normally again.</span>")
 					return
 
 	if (getCloneLoss() < 1)
-		for (var/obj/item/organ/external/O in organs)
+		for (var/obj/item/organ/external/O in organs_by_name)
 			if (O.status & ORGAN_MUTATED)
 				O.unmutate()
 				to_chat(src, "<span class = 'notice'>Your [O.name] is shaped normally again.</span>")
@@ -307,7 +307,7 @@
 //Returns a list of damaged organs
 /mob/living/carbon/human/proc/get_damaged_organs(var/brute, var/burn)
 	var/list/obj/item/organ/external/parts = list()
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in organs_by_name)
 		if((brute && O.brute_dam) || (burn && O.burn_dam))
 			parts += O
 	return parts
@@ -315,7 +315,7 @@
 //Returns a list of damageable organs
 /mob/living/carbon/human/proc/get_damageable_organs()
 	var/list/obj/item/organ/external/parts = list()
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in organs_by_name)
 		if(O.is_damageable())
 			parts += O
 	return parts
@@ -407,7 +407,7 @@ This function restores the subjects blood to max.
 This function restores all organs.
 */
 /mob/living/carbon/human/restore_all_organs(var/ignore_prosthetic_prefs)
-	for(var/obj/item/organ/external/current_organ in organs)
+	for(var/obj/item/organ/external/current_organ in organs_by_name)
 		current_organ.rejuvenate(ignore_prosthetic_prefs)
 
 /mob/living/carbon/human/proc/HealDamage(zone, brute, burn)
@@ -443,8 +443,7 @@ This function restores all organs.
 	if((damagetype != BRUTE) && (damagetype != BURN))
 		if(damagetype == HALLOSS)
 			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
-				if(organ && organ.organ_can_feel_pain())
-					emote("scream")
+				emote("scream")
 		..(damage, damagetype, def_zone, blocked, soaked)
 		return 1
 

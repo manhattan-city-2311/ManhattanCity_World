@@ -391,7 +391,7 @@
 		return
 
 	if(host && world.time >= last_feeding + feeding_delay)
-		var/list/host_internal_organs = host.internal_organs
+		var/list/host_internal_organs = host.internal_organs_by_name
 
 		for(var/obj/item/organ/internal/O in host_internal_organs)	// Remove organs with maximum damage.
 			if(O.damage >= O.max_damage)

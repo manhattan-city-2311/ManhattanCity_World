@@ -94,8 +94,7 @@
 					if(affecting.take_damage(force, 0))
 						H.UpdateDamageIcon()
 					H.updatehealth()
-					if(affecting.organ_can_feel_pain())
-						H.Weaken(3)
+					H.Weaken(3)
 					return
 				check -= picked
 			return

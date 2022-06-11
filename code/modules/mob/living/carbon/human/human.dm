@@ -59,7 +59,7 @@
 
 /mob/living/carbon/human/Destroy()
 	human_mob_list -= src
-	for(var/organ in organs)
+	for(var/organ in organs_by_name)
 		qdel(organ)
 
 	return ..()
@@ -150,7 +150,7 @@
 	var/update = 0
 
 	// focus most of the blast on one organ
-	var/obj/item/organ/external/take_blast = pick(organs)
+	var/obj/item/organ/external/take_blast = pick(organs_by_name)
 	update |= take_blast.take_damage(b_loss * 0.9, f_loss * 0.9, used_weapon = "Explosive blast")
 
 	// distribute the remaining 10% on all limbs equally
@@ -159,7 +159,7 @@
 
 	var/weapon_message = "Explosive Blast"
 
-	for(var/obj/item/organ/external/temp in organs)
+	for(var/obj/item/organ/external/temp in organs_by_name)
 		switch(temp.organ_tag)
 			if(BP_HEAD)
 				update |= temp.take_damage(b_loss * 0.2, f_loss * 0.2, used_weapon = weapon_message)
@@ -179,7 +179,7 @@
 /mob/living/carbon/human/proc/is_loyalty_implanted()
 	for(var/L in src.contents)
 		if(istype(L, /obj/item/weapon/implant/loyalty))
-			for(var/obj/item/organ/external/O in src.organs)
+			for(var/obj/item/organ/external/O in src.organs_by_name)
 				if(L in O.implants)
 					return 1
 	return 0
@@ -1018,7 +1018,7 @@
 /mob/living/carbon/human/get_visible_implants(var/class = 0)
 
 	var/list/visible_implants = list()
-	for(var/obj/item/organ/external/organ in src.organs)
+	for(var/obj/item/organ/external/organ in src.organs_by_name)
 		for(var/obj/item/weapon/O in organ.implants)
 			if(!istype(O,/obj/item/weapon/implant) && (O.w_class > class) && !istype(O,/obj/item/weapon/material/shard/shrapnel))
 				visible_implants += O
@@ -1026,7 +1026,7 @@
 	return(visible_implants)
 
 /mob/living/carbon/human/embedded_needs_process()
-	for(var/obj/item/organ/external/organ in src.organs)
+	for(var/obj/item/organ/external/organ in src.organs_by_name)
 		for(var/obj/item/O in organ.implants)
 			if(!istype(O, /obj/item/weapon/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
 				return 1
@@ -1034,7 +1034,7 @@
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
 
-	for(var/obj/item/organ/external/organ in src.organs)
+	for(var/obj/item/organ/external/organ in src.organs_by_name)
 		if(organ.splinted) //Splints prevent movement.
 			continue
 		for(var/obj/item/O in organ.implants)
@@ -1074,7 +1074,7 @@
 		usr.visible_message("<span class='notice'>[usr] begins counting [T.his] pulse.</span>",\
 		"You begin counting your pulse.")
 
-	if(src.pulse)
+	if(get_pulse())
 		to_chat(usr, "<span class='notice'>[self ? "You have a" : "[src] has a"] pulse! Counting...</span>")
 	else
 		to_chat(usr, "<span class='danger'>[src] has no pulse!</span>")	//it is REALLY UNLIKELY that a dead person would check his own pulse
@@ -1082,7 +1082,7 @@
 
 	to_chat(usr, "You must[self ? "" : " both"] remain still until counting is finished.")
 	if(do_mob(usr, src, 60))
-		to_chat(usr, "<span class='notice'>[self ? "Your" : "[src]'s"] pulse is [src.get_pulse(GETPULSE_HAND)].</span>")
+		to_chat(usr, "<span class='notice'>[self ? "Your" : "[src]'s"] pulse is [src.get_pulse_fluffy(GETPULSE_HAND)].</span>")
 	else
 		to_chat(usr, "<span class='warning'>You failed to check the pulse. Try again.</span>")
 
@@ -1153,6 +1153,7 @@
 	spawn(0)
 		if(regen_icons) regenerate_icons()
 		make_blood()
+		bloodstr.add_reagent(/datum/reagent/hormone/glucose, GLUCOSE_LEVEL_NORMAL + 0.2)
 		if(vessel.total_volume < species.blood_volume)
 			vessel.maximum_volume = species.blood_volume
 			vessel.add_reagent("blood", species.blood_volume - vessel.total_volume)
@@ -1402,7 +1403,7 @@
 	current_limb.relocate()
 
 /mob/living/carbon/human/drop_from_inventory(var/obj/item/W, var/atom/Target = null)
-	if(W in organs)
+	if(W in organs_by_name)
 		return
 	..()
 
@@ -1516,8 +1517,15 @@
 	if(check_organ)
 		if(!istype(check_organ))
 			return 0
-		return check_organ.organ_can_feel_pain()
+		return 1
 	return !(species.flags & NO_PAIN)
+
+/mob/living/carbon/proc/get_pulse()
+	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
+	if(!H)
+		return 0
+	else
+		return H.pulse
 
 /mob/living/carbon/human/is_sentient()
 	if(get_FBP_type() == FBP_DRONE)

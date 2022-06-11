@@ -169,13 +169,6 @@
 			if(!vocal || vocal.is_broken() || vocal.mute)
 				return FALSE
 
-		if(src.name in H.species.assisted_langs)
-			. = FALSE
-			var/obj/item/organ/internal/voicebox/vox = locate() in H.internal_organs	// Only voiceboxes for now. Maybe someday it'll include other organs, but I'm not that clever
-			if(vox)
-				if(!vox.is_broken() && (src in vox.assists_languages))
-					. = TRUE
-
 // Language handling.
 /mob/proc/add_language(var/language)
 

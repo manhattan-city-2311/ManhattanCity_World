@@ -29,13 +29,29 @@
 #define IS_SLIME   8
 #define IS_PRECURSOR 9
 
-#define CE_STABLE "stable" // Inaprovaline
-#define CE_ANTIBIOTIC "antibiotic" // Antibiotics
-#define CE_BLOODRESTORE "bloodrestore" // Iron/nutriment
-#define CE_PAINKILLER "painkiller"
-#define CE_ALCOHOL "alcohol" // Liver filtering
-#define CE_ALCOHOL_TOXIC "alcotoxic" // Liver damage
-#define CE_SPEEDBOOST "gofast" // Hyperzine
+#define CE_STABLE        "stable"       // Inaprovaline
+#define CE_ANTIBIOTIC    "antibiotic"   // Antibiotics
+#define CE_BLOODRESTORE  "bloodrestore" // Iron/nutriment
+#define CE_PAINKILLER    "painkiller"
+#define CE_ALCOHOL       "alcohol"      // Liver filtering
+#define CE_ALCOHOL_TOXIC "alcotoxic"    // Liver damage
+#define CE_SPEEDBOOST    "gofast"       // Hyperzine
+#define CE_SLOWDOWN      "goslow"       // Slowdown
+#define CE_PULSE         "xcardic"      // increases or decreases heart rate
+#define CE_PRESSURE      "bpressure"    // increases or decreases gvr
+#define CE_CARDIAC_OUTPUT "cardoutput"  // multiplies cardiac output
+#define CE_NOPULSE       "heartstop"    // stops heartbeat
+#define CE_ANTITOX       "antitox"
+#define CE_OXYGENATED    "oxygen"       // Dexalin.
+#define CE_BRAIN_REGEN   "brainfix"     // Alkysine.
+#define CE_ANTIVIRAL     "antiviral"    // Anti-virus effect.
+#define CE_TOXIN         "toxins"       // Generic toxins, stops autoheal.
+#define CE_BREATHLOSS    "breathloss"   // Breathing depression, makes you need more air
+#define CE_MIND    		 "mindbending"  // Stabilizes or wrecks mind. Used for hallucinations
+#define CE_CRYO 	     "cryogenic"    // Prevents damage from being frozen
+#define CE_ANTIARRYTHMIC "stablerythme" // Prevents arrythmias.
+#define CE_ARRYTHMIC     "arrythmic"    // Causes arrythmia.
+
 
 #define REAGENTS_PER_SHEET 20
 

@@ -82,7 +82,7 @@
 	mob.adjustBruteLoss(10*multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		var/obj/item/organ/external/O = pick(H.organs)
+		var/obj/item/organ/external/O = pick(H.organs_by_name)
 		if(prob(25))
 			to_chat(mob, "<span class='warning'>Your [O.name] feels as if it might burst!</span>")
 		if(prob(10))
@@ -174,7 +174,7 @@
 /datum/disease2/effect/organs/deactivate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		for (var/obj/item/organ/external/E in H.organs)
+		for (var/obj/item/organ/external/E in H.organs_by_name)
 			E.status &= ~ORGAN_DEAD
 			for (var/obj/item/organ/external/C in E.children)
 				C.status &= ~ORGAN_DEAD
@@ -202,7 +202,7 @@
 /datum/disease2/effect/immortal/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		for (var/obj/item/organ/external/E in H.organs)
+		for (var/obj/item/organ/external/E in H.organs_by_name)
 			if (E.status & ORGAN_BROKEN && prob(30))
 				E.status ^= ORGAN_BROKEN
 	var/heal_amt = -5*multiplier
@@ -223,13 +223,13 @@
 /datum/disease2/effect/bones/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		for (var/obj/item/organ/external/E in H.organs)
+		for (var/obj/item/organ/external/E in H.organs_by_name)
 			E.min_broken_damage = max(5, E.min_broken_damage - 30)
 
 /datum/disease2/effect/bones/deactivate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		for (var/obj/item/organ/external/E in H.organs)
+		for (var/obj/item/organ/external/E in H.organs_by_name)
 			E.min_broken_damage = initial(E.min_broken_damage)
 
 /datum/disease2/effect/combustion
@@ -240,7 +240,7 @@
 /datum/disease2/effect/combustion/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		var/obj/item/organ/external/O = pick(H.organs)
+		var/obj/item/organ/external/O = pick(H.organs_by_name)
 		if(prob(25))
 			to_chat(mob, "<span class='warning'>It feels like your [O.name] is on fire and your blood is boiling!</span>")
 			H.adjust_fire_stacks(1)
@@ -339,7 +339,7 @@
 		mob.say("*groan")
 	else if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		var/obj/item/organ/external/E = pick(H.organs)
+		var/obj/item/organ/external/E = pick(H.organs_by_name)
 		to_chat(mob,"<span class='warning'>Your [E] aches.</span>")
 
 /datum/disease2/effect/chem_synthesis

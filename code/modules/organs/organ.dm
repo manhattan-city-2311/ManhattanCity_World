@@ -4,51 +4,38 @@ var/list/organ_cache = list()
 	name = "organ"
 	icon = 'icons/obj/surgery.dmi'
 	germ_level = 0
-	var/dead_icon // Icon to use when the organ has died.
+	w_class = ITEMSIZE_TINY
+	var/min_bruised_damage
+
 	// Strings.
 	var/organ_tag = "organ"           // Unique identifier.
-	var/parent_organ = BP_TORSO       // Organ holding this object.
+	var/parent_organ = BP_TORSO      // Organ holding this object.
+	var/dead_icon = "dead"
 
 	// Status tracking.
-	var/status = 0                    // Various status flags
+	var/status = 0                    // Various status flags (such as robotic)
 	var/vital                         // Lose a vital limb, die immediately.
-	var/damage = 0                    // Current damage to the organ
 	var/robotic = 0
 
 	// Reference data.
 	var/mob/living/carbon/human/owner // Current mob owning the organ.
-	var/list/transplant_data          // Transplant match data.
-	var/list/autopsy_data = list()    // Trauma data for forensics.
-	var/list/trace_chemicals = list() // Traces of chemicals in the organ.
 	var/datum/dna/dna                 // Original DNA.
 	var/datum/species/species         // Original species.
 
 	// Damage vars.
-	var/min_bruised_damage = 10       // Damage before considered bruised
-	var/min_broken_damage = 30        // Damage before becoming broken
+	var/damage = 0                    // Current damage to the organ
+	var/min_broken_damage = 30     	  // Damage before becoming broken
 	var/max_damage                    // Damage cap
-	var/can_reject = 1				  // Can this organ reject?
 	var/rejecting                     // Is this organ already being rejected?
-	var/preserved = 0                 // If this is 1, prevents organ decay.
+	var/preserved
+	var/death_time
 
-	// Language vars. Putting them here in case we decide to do something crazy with sign-or-other-nonverbal languages.
-	var/list/will_assist_languages = list()
-	var/list/datum/language/assists_languages = list()
-
-	// Organ verb vars.
-	var/list/organ_verbs		// Verbs added by the organ when present in the body.
-	var/list/target_parent_classes = list()	// Is the parent supposed to be organic, robotic, assisted?
-	var/forgiving_class = TRUE	// Will the organ give its verbs when it isn't a perfect match? I.E., assisted in organic, synthetic in organic.
-
-	drop_sound = 'sound/items/drop/flesh.ogg'
-	unique_save_vars = list("robotic", "damage", "preserved", "germ_level")
+/obj/item/organ/internal/proc/is_bruised()
+	return damage >= min_bruised_damage
 
 /obj/item/organ/Destroy()
 
-	if(owner)           owner = null
-	if(transplant_data) transplant_data.Cut()
-	if(autopsy_data)    autopsy_data.Cut()
-	if(trace_chemicals) trace_chemicals.Cut()
+	owner = null
 	dna = null
 	species = null
 
@@ -57,59 +44,56 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/update_health()
 	return
 
-/obj/item/organ/New(var/mob/living/carbon/holder, var/internal)
+/obj/item/organ/proc/is_broken()
+	return (damage >= min_broken_damage || (status & ORGAN_CUT_AWAY) || (status & ORGAN_BROKEN))
+
+/obj/item/organ/New(var/mob/living/carbon/holder)
 	..(holder)
-	create_reagents(5)
-	if(!max_damage)
+
+	if(max_damage)
+		min_broken_damage = Floor(max_damage / 2)
+	else
 		max_damage = min_broken_damage * 2
+
 	if(istype(holder))
-		src.owner = holder
-		src.w_class = max(src.w_class + mob_size_difference(holder.mob_size, MOB_MEDIUM), 1) //smaller mobs have smaller organs.
-		species = all_species[SPECIES_HUMAN]
+		owner = holder
+		w_class = max(w_class + mob_size_difference(holder.mob_size, MOB_MEDIUM), 1) //smaller mobs have smaller organs.
+
 		if(holder.dna)
 			dna = holder.dna.Clone()
 			species = all_species[dna.species]
 		else
-			log_debug("[src] at [loc] spawned without a proper DNA.")
-		var/mob/living/carbon/human/H = holder
-		if(istype(H))
-			if(internal)
-				var/obj/item/organ/external/E = H.get_organ(parent_organ)
-				if(E)
-					if(E.internal_organs == null)
-						E.internal_organs = list()
-					E.internal_organs |= src
-			if(dna)
-				if(!blood_DNA)
-					blood_DNA = list()
-				blood_DNA[dna.unique_enzymes] = dna.b_type
-		if(internal)
-			holder.internal_organs |= src
-	else
-		species = all_species["Human"]
+			species = all_species[SPECIES_HUMAN]
+			log_debug("[src] spawned in [holder] without a proper DNA.")
+
+	if(dna)
+		if(!blood_DNA)
+			blood_DNA = list()
+		blood_DNA[dna.unique_enzymes] = dna.b_type
+
+	create_reagents(5 * (w_class-1)**2)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, reagents.maximum_volume)
+
+	update_icon()
 
 /obj/item/organ/proc/set_dna(var/datum/dna/new_dna)
 	if(new_dna)
 		dna = new_dna.Clone()
-		if(blood_DNA)
-			blood_DNA.Cut()
-			blood_DNA[dna.unique_enzymes] = dna.b_type
+		if(!blood_DNA)
+			blood_DNA = list()
+		blood_DNA.Cut()
+		blood_DNA[dna.unique_enzymes] = dna.b_type
+		species = all_species[new_dna.species]
 
 /obj/item/organ/proc/die()
-	if(robotic < ORGAN_ROBOT)
-		status |= ORGAN_DEAD
 	damage = max_damage
-	processing_objects -= src
-	if(dead_icon)
-		icon_state = dead_icon
+	status |= ORGAN_DEAD
+	STOP_PROCESSING(SSobj, src)
+	death_time = world.time
 	if(owner && vital)
 		owner.death()
-		owner.can_defib = 0
 
-/obj/item/organ/proc/adjust_germ_level(var/amount)		// Unless you're setting germ level directly to 0, use this proc instead
-	germ_level = Clamp(germ_level + amount, 0, INFECTION_LEVEL_MAX)
-
-/obj/item/organ/process()
+/obj/item/organ/Process()
 
 	if(loc != owner)
 		owner = null
@@ -118,33 +102,25 @@ var/list/organ_cache = list()
 	if(status & ORGAN_DEAD)
 		return
 	// Don't process if we're in a freezer, an MMI or a stasis bag.or a freezer or something I dunno
-	if(istype(loc,/obj/item/device/mmi))
+	if(is_preserved())
 		return
-	if(preserved)
-		return
-
-	//check if we've hit max_damage
-	if(damage >= max_damage)
-		die()
-
 	//Process infections
-	if(robotic >= ORGAN_ROBOT || (owner && owner.species && (owner.species.flags & IS_PLANT || (owner.species.flags & NO_INFECT))))
+	if ((robotic >= ORGAN_ROBOT) || (owner && owner.species))
 		germ_level = 0
 		return
 
 	if(!owner && reagents)
 		var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
 		if(B && prob(40))
-			reagents.remove_reagent("blood",0.1)
+			reagents.remove_reagent(/datum/reagent/blood,0.1)
 			blood_splatter(src,B,1)
-		if(config.organs_decay) damage += rand(1,3)
-		if(damage >= max_damage)
-			damage = max_damage
-		adjust_germ_level(rand(2,6))
+		if(config.organs_decay)
+			take_damage(rand(1,3))
+		germ_level += rand(2,6)
 		if(germ_level >= INFECTION_LEVEL_TWO)
-			adjust_germ_level(rand(2,6))
+			germ_level += rand(4,8)
 		if(germ_level >= INFECTION_LEVEL_THREE)
-			die()
+			germ_level += rand(1,2)
 
 	else if(owner && owner.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
 		//** Handle antibiotics and curing infections
@@ -152,74 +128,67 @@ var/list/organ_cache = list()
 		handle_rejection()
 		handle_germ_effects()
 
+	//check if we've hit max_damage
+	if(damage >= max_damage)
+		die()
+
+/obj/item/organ/proc/is_preserved()
+	if(istype(loc,/obj/item/organ))
+		var/obj/item/organ/O = loc
+		return O.is_preserved()
+	else
+		return (istype(loc,/obj/item/device/mmi) || istype(loc,/obj/structure/closet/body_bag/cryobag) || istype(loc,/obj/structure/closet/crate/freezer) || istype(loc,/obj/item/weapon/storage/box/freezer))
+
 /obj/item/organ/examine(mob/user)
-	..(user)
+	. = ..(user)
+	show_decay_status(user)
+
+/obj/item/organ/proc/show_decay_status(mob/user)
 	if(status & ORGAN_DEAD)
-		to_chat(user, "<span class='notice'>The decay has set in.</span>")
+		to_chat(user, "<span class='notice'>The decay has set into \the [src].</span>")
 
 /obj/item/organ/proc/handle_germ_effects()
 	//** Handle the effects of infections
-	if(robotic >= ORGAN_ROBOT) //Just in case!
-		germ_level = 0
-		return 0
+	var/antibiotics = owner.reagents.get_reagent_amount(/datum/reagent/corophizine)
 
-	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC] || 0
-
-	var/infection_damage = 0
-
-	if((status & ORGAN_DEAD) && antibiotics < ANTIBIO_OD) //Sepsis from 'dead' organs
-		infection_damage = min(1, 1 + round((germ_level - INFECTION_LEVEL_THREE)/200,0.25)) //1 Tox plus a little based on germ level
-
-	else if(germ_level > INFECTION_LEVEL_TWO && antibiotics < ANTIBIO_OD)
-		infection_damage = min(0.25, 0.25 + round((germ_level - INFECTION_LEVEL_TWO)/200,0.25))
-
-	if(infection_damage)
-		owner.adjustToxLoss(infection_damage)
-
-	if (germ_level > 0 && germ_level < INFECTION_LEVEL_ONE/2 && prob(30))
-		adjust_germ_level(-antibiotics)
-
-	if (germ_level >= INFECTION_LEVEL_ONE/2)
-		//aiming for germ level to go from ambient to INFECTION_LEVEL_TWO in an average of 15 minutes
-		if(!antibiotics && prob(round(germ_level/6)))
-			adjust_germ_level(1)
+	if(germ_level > 0 && germ_level < INFECTION_LEVEL_ONE / 2)
+		germ_level--
 
 	if(germ_level >= INFECTION_LEVEL_ONE)
-		. = 1 //Organ qualifies for effect-specific processing
-		//var/fever_temperature = (owner.species.heat_level_1 - owner.species.body_temperature - 5)* min(germ_level/INFECTION_LEVEL_TWO, 1) + owner.species.body_temperature
-		//owner.bodytemperature += between(0, (fever_temperature - T20C)/BODYTEMP_COLD_DIVISOR + 1, fever_temperature - owner.bodytemperature)
-		var/fever_temperature = owner.species.heat_discomfort_level * 1.10 //Heat discomfort level plus 10%
-		if(owner.bodytemperature < fever_temperature)
-			owner.bodytemperature += min(0.2,(fever_temperature - owner.bodytemperature) / 10) //Will usually climb by 0.2, else 10% of the difference if less
+		if(owner.bodytemperature - T0C < 45.5)
+			owner.bodytemperature += germ_level / 170
 
-	if (germ_level >= INFECTION_LEVEL_TWO)
-		. = 2 //Organ qualifies for effect-specific processing
-		//No particular effect on the general 'organ' at 3
+	if(germ_level >= INFECTION_LEVEL_TWO)
+		var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
+		// Spread germs
+		if(antibiotics < 5 && parent.germ_level < germ_level && (parent.germ_level < INFECTION_LEVEL_ONE * 2))
+			parent.germ_level++
 
-	if (germ_level >= INFECTION_LEVEL_THREE && antibiotics < ANTIBIO_OD)
-		. = 3 //Organ qualifies for effect-specific processing
-		adjust_germ_level(rand(5,10)) //Germ_level increases without overdose of antibiotics
+		if (prob(3))	//about once every 30 seconds
+			take_damage(germ_level / INFECTION_LEVEL_TWO, silent = prob(30))
 
 /obj/item/organ/proc/handle_rejection()
 	// Process unsuitable transplants. TODO: consider some kind of
 	// immunosuppressant that changes transplant data to make it match.
-	if(dna && can_reject)
+	if(isrobotic())
+		return
+	if(dna)
 		if(!rejecting)
-			if(blood_incompatible(dna.b_type, owner.dna.b_type, species, owner.species))
+			if(owner.blood_incompatible(dna.b_type, species))
 				rejecting = 1
 		else
 			rejecting++ //Rejection severity increases over time.
 			if(rejecting % 10 == 0) //Only fire every ten rejection ticks.
 				switch(rejecting)
 					if(1 to 50)
-						adjust_germ_level(1)
+						germ_level++
 					if(51 to 200)
-						adjust_germ_level(rand(1,2))
+						germ_level += rand(1,2)
 					if(201 to 500)
-						adjust_germ_level(rand(2,3))
+						germ_level += rand(2,3)
 					if(501 to INFINITY)
-						adjust_germ_level(rand(3,5))
-						owner.reagents.add_reagent("toxin", rand(1,2))
+						germ_level += rand(3,5)
+						owner.reagents.add_reagent(/datum/reagent/toxin, rand(1,2))
 
 /obj/item/organ/proc/receive_chem(chemical as obj)
 	return 0
@@ -230,7 +199,6 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/rejuvenate(var/ignore_prosthetic_prefs)
 	damage = 0
 	status = 0
-	germ_level = 0
 	if(!ignore_prosthetic_prefs && owner && owner.client && owner.client.prefs && owner.client.prefs.real_name == owner.real_name)
 		var/status = owner.client.prefs.organ_data[organ_tag]
 		if(status == "assisted")
@@ -238,233 +206,154 @@ var/list/organ_cache = list()
 		else if(status == "mechanical")
 			robotize()
 
-/obj/item/organ/proc/is_damaged()
-	return damage > 0
-
-/obj/item/organ/proc/is_bruised()
-	return damage >= min_bruised_damage
-
-/obj/item/organ/proc/is_broken()
-	return (damage >= min_broken_damage || (status & ORGAN_CUT_AWAY) || (status & ORGAN_BROKEN))
-
 //Germs
 /obj/item/organ/proc/handle_antibiotics()
-	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC] || 0
+	var/antibiotics = 0
 
-	if (!germ_level || antibiotics < ANTIBIO_NORM)
+	if (!germ_level || antibiotics < 5)
 		return
 
-	if (germ_level < INFECTION_LEVEL_ONE)
-		germ_level = 0	//cure instantly
-	else if (germ_level < INFECTION_LEVEL_TWO)
-		adjust_germ_level(-antibiotics*4)	//at germ_level < 500, this should cure the infection in a minute
-	else if (germ_level < INFECTION_LEVEL_THREE)
-		adjust_germ_level(-antibiotics*2) //at germ_level < 1000, this will cure the infection in 5 minutes
-	else
-		adjust_germ_level(-antibiotics)	// You waited this long to get treated, you don't really deserve this organ
-
-//Adds autopsy data for used_weapon.
-/obj/item/organ/proc/add_autopsy_data(var/used_weapon, var/damage)
-	var/datum/autopsy_data/W = autopsy_data[used_weapon]
-	if(!W)
-		W = new()
-		W.weapon = used_weapon
-		autopsy_data[used_weapon] = W
-
-	W.hits += 1
-	W.damage += damage
-	W.time_inflicted = world.time
+	germ_level -= antibiotics / 5
+	if(germ_level < INFECTION_LEVEL_ONE)
+		germ_level = 0 // cure instantly
 
 //Note: external organs have their own version of this proc
 /obj/item/organ/proc/take_damage(amount, var/silent=0)
-	if(src.robotic >= ORGAN_ROBOT)
-		src.damage = between(0, src.damage + (amount * 0.8), max_damage)
-	else
-		src.damage = between(0, src.damage + amount, max_damage)
+	damage = between(0, damage + round(amount, 0.1), max_damage)
 
-		//only show this if the organ is not robotic
-		if(owner && parent_organ && amount > 0)
-			var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
-			if(parent && !silent)
-				owner.custom_pain("Something inside your [parent.name] hurts a lot.", amount)
+/obj/item/organ/proc/heal_damage(amount)
+	damage = between(0, damage - round(amount, 0.1), max_damage)
 
-/obj/item/organ/proc/bruise()
-	damage = max(damage, min_bruised_damage)
 
 /obj/item/organ/proc/robotize() //Being used to make robutt hearts, etc
 	robotic = ORGAN_ROBOT
-	src.status &= ~ORGAN_BROKEN
-	src.status &= ~ORGAN_BLEEDING
-	src.status &= ~ORGAN_CUT_AWAY
+	status = 0
 
 /obj/item/organ/proc/mechassist() //Used to add things like pacemakers, etc
-	robotize()
+	status = 0
 	robotic = ORGAN_ASSISTED
-	min_bruised_damage = 15
-	min_broken_damage = 35
-
-/obj/item/organ/proc/digitize() //Used to make the circuit-brain. On this level in the event more circuit-organs are added/tweaks are wanted.
-	robotize()
+	min_broken_damage += 5
 
 /obj/item/organ/emp_act(severity)
-	if(!(robotic >= ORGAN_ASSISTED))
+	if(!(robotic >= ORGAN_ROBOT))
 		return
-	for(var/i = 1; i <= robotic; i++)
-		switch (severity)
-			if (1)
-				take_damage(rand(5,9))
-			if (2)
-				take_damage(rand(3,7))
-			if (3)
-				take_damage(rand(2,5))
-			if (4)
-				take_damage(rand(1,3))
+	switch (severity)
+		if (1)
+			take_damage(9)
+		if (2)
+			take_damage(3)
+		if (3)
+			take_damage(1)
 
-/obj/item/organ/proc/removed(var/mob/living/user)
+/**
+ *  Remove an organ
+ *
+ *  drop_organ - if true, organ will be dropped at the loc of its former owner
+ */
+/obj/item/organ/proc/removed(var/mob/living/user, var/drop_organ=1)
 
 	if(!istype(owner))
 		return
 
-	owner.internal_organs_by_name[organ_tag] = null
-	owner.internal_organs_by_name -= organ_tag
-	owner.internal_organs_by_name -= null
-	owner.internal_organs -= src
+	if(drop_organ)
+		dropInto(owner.loc)
 
-	var/obj/item/organ/external/affected = owner.get_organ(parent_organ)
-	if(affected) affected.internal_organs -= src
-
-	loc = get_turf(owner)
-	processing_objects |= src
+	START_PROCESSING(SSobj, src)
 	rejecting = null
-	var/datum/reagent/blood/organ_blood = locate(/datum/reagent/blood) in reagents.reagent_list
-	if(!organ_blood || !organ_blood.data["blood_DNA"])
-		owner.vessel.trans_to(src, 5, 1, 1)
+	if(robotic < ORGAN_ROBOT)
+		var/datum/reagent/blood/organ_blood = locate(/datum/reagent/blood) in reagents.reagent_list //TODO fix this and all other occurences of locate(/datum/reagent/blood) horror
+		if(!organ_blood || !organ_blood.data["blood_DNA"])
+			owner.vessel.trans_to(src, 5, 1, 1)
 
 	if(owner && vital)
 		if(user)
-			add_attack_logs(user,owner,"Removed vital organ [src.name]")
+			log_admin(user, owner, "Removed a vital organ ([src]).", "Had a vital organ ([src]) removed.", "removed a vital organ ([src]) from")
 		owner.death()
-		owner.can_defib = 0
 
 	owner = null
 
+/obj/item/organ/proc/replaced(var/mob/living/carbon/human/target, var/obj/item/organ/external/affected)
+	owner = target
+	forceMove(owner) //just in case
+	if(isrobotic())
+		set_dna(owner.dna)
 	return 1
 
-/obj/item/organ/proc/replaced(var/mob/living/carbon/human/target,var/obj/item/organ/external/affected)
+/obj/item/organ/attack(var/mob/target, var/mob/user)
 
-	if(!istype(target)) return
+	if(robotic >= ORGAN_ROBOT || !istype(target) || !istype(user) || (user != target && user.a_intent == I_HELP))
+		return ..()
 
-	var/datum/reagent/blood/transplant_blood = locate(/datum/reagent/blood) in reagents.reagent_list
-	transplant_data = list()
-	if(!transplant_blood)
-		transplant_data["species"] =    target.species.name
-		transplant_data["blood_type"] = target.dna.b_type
-		transplant_data["blood_DNA"] =  target.dna.unique_enzymes
-	else
-		transplant_data["species"] =    transplant_blood.data["species"]
-		transplant_data["blood_type"] = transplant_blood.data["blood_type"]
-		transplant_data["blood_DNA"] =  transplant_blood.data["blood_DNA"]
-
-	owner = target
-	loc = owner
-	processing_objects -= src
-	target.internal_organs |= src
-	affected.internal_organs |= src
-	target.internal_organs_by_name[organ_tag] = src
-
-/obj/item/organ/proc/bitten(mob/user)
-
-	if(robotic >= ORGAN_ROBOT)
+	if(alert("Do you really want to use this organ as food? It will be useless for anything else afterwards.",,"Ew, no.","Bon appetit!") == "Ew, no.")
+		to_chat(user, "<span class='notice'>You successfully repress your cannibalistic tendencies.</span>")
 		return
-
-	to_chat(user, "<span class='notice'>You take an experimental bite out of \the [src].</span>")
-	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
-	blood_splatter(src,B,1)
 
 	user.drop_from_inventory(src)
 	var/obj/item/weapon/reagent_containers/food/snacks/organ/O = new(get_turf(src))
 	O.name = name
-	O.icon = icon
-	O.icon_state = icon_state
-
-	// Pass over the blood.
+	O.appearance = src
 	reagents.trans_to(O, reagents.total_volume)
-
-	if(fingerprints) O.fingerprints = fingerprints.Copy()
-	if(fingerprintshidden) O.fingerprintshidden = fingerprintshidden.Copy()
-	if(fingerprintslast) O.fingerprintslast = fingerprintslast
-
+	if(fingerprints)
+		O.fingerprints = fingerprints.Copy()
+	if(fingerprintshidden)
+		O.fingerprintshidden = fingerprintshidden.Copy()
+	if(fingerprintslast)
+		O.fingerprintslast = fingerprintslast
 	user.put_in_active_hand(O)
 	qdel(src)
+	target.attackby(O, user)
 
-/obj/item/organ/attack_self(mob/user as mob)
-
-	// Convert it to an edible form, yum yum.
-	if(!(robotic >= ORGAN_ROBOT) && user.a_intent == I_HELP && user.zone_sel.selecting == O_MOUTH)
-		bitten(user)
-		return
-
-/obj/item/organ/proc/organ_can_feel_pain()
-	if(species.flags & NO_PAIN)
-		return 0
-	if(status & ORGAN_DESTROYED)
-		return 0
-	if(robotic && robotic < ORGAN_LIFELIKE)	//Super fancy humanlike robotics probably have sensors, or something?
-		return 0
+/obj/item/organ/proc/can_feel_pain()
 	return 1
 
-/obj/item/organ/proc/handle_organ_mod_special(var/removed = FALSE)	// Called when created, transplanted, and removed.
-	if(!istype(owner))
-		return
-	var/list/save_verbs = list()
-	if(removed && organ_verbs)	// Do we share verbs with any other organs? Are they functioning?
-		var/list/all_organs = list()
-		all_organs |= owner.organs
-		all_organs |= owner.internal_organs
+/obj/item/organ/proc/is_usable()
+	return !(status & (ORGAN_CUT_AWAY|ORGAN_MUTATED|ORGAN_DEAD))
 
-		for(var/obj/item/organ/O in all_organs)
-			if(!(O.status & ORGAN_DEAD) && O.organ_verbs && O.check_verb_compatability())
-				for(var/verb_type in O.organ_verbs)
-					if(verb_type in organ_verbs)
-						save_verbs |= verb_type
+/obj/item/organ/proc/can_recover()
+	return (!(status & ORGAN_DEAD) || death_time >= world.time - 180)
 
-	if(!removed && organ_verbs && check_verb_compatability())
-		for(var/verb_path in organ_verbs)
-			owner.verbs |= verb_path
-	else if(organ_verbs)
-		for(var/verb_path in organ_verbs)
-			if(!(verb_path in save_verbs))
-				owner.verbs -= verb_path
+/obj/item/organ/proc/get_scan_results()
+	. = list()
+	if(robotic == ORGAN_ASSISTED)
+		. += "Assisted"
+	else if(robotic == ORGAN_ROBOT)
+		. += "Mechanical"
+	if(status & ORGAN_CUT_AWAY)
+		. += "Severed"
+	if(status & ORGAN_MUTATED)
+		. += "Genetic Deformation"
+	if(status & ORGAN_DEAD)
+		if(can_recover())
+			. += "Decaying"
+		else
+			. += "Necrotic"
+	switch (germ_level)
+		if(INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 50)
+			. += "Mild Infection I"
+		if(INFECTION_LEVEL_ONE + 50 to INFECTION_LEVEL_ONE + 100)
+			. += "Mild Infection II"
+		if(INFECTION_LEVEL_ONE + 100 to INFECTION_LEVEL_TWO)
+			. += "Mild Infection III"
+		if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 100)
+			. += "Acute Infection I"
+		if(INFECTION_LEVEL_TWO + 100 to INFECTION_LEVEL_TWO + 200)
+			. += "Acute Infection II"
+		if(INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_THREE)
+			. += "Acute Infection III"
+		if(INFECTION_LEVEL_THREE to INFECTION_LEVEL_THREE + 100)
+			. += "Septic I"
+		if(INFECTION_LEVEL_THREE + 100 to INFECTION_LEVEL_THREE + 200)
+			. += "Septic II"
+		if(INFECTION_LEVEL_THREE + 200 to INFECTION_LEVEL_MAX)
+			. += "Septic III"
+		if(INFECTION_LEVEL_MAX to INFINITY)
+			. += "Gangrene"
+	if(rejecting)
+		. += "Genetic Rejection"
+
+/obj/item/organ/proc/isrobotic()
+	return robotic >= ORGAN_ROBOT
+
+//used by stethoscope
+/obj/item/organ/proc/listen()
 	return
-
-/obj/item/organ/proc/handle_organ_proc_special()	// Called when processed.
-	return
-
-/obj/item/organ/proc/check_verb_compatability()		// Used for determining if an organ should give or remove its verbs. I.E., FBP part in a human, no verbs. If true, keep or add.
-	if(owner)
-		if(ishuman(owner))
-			var/mob/living/carbon/human/H = owner
-			var/obj/item/organ/O = H.get_organ(parent_organ)
-			if(forgiving_class)
-				if(O.robotic <= ORGAN_ASSISTED && robotic <= ORGAN_LIFELIKE)	// Parent is organic or assisted, we are at most synthetic.
-					return TRUE
-
-				if(O.robotic >= ORGAN_ROBOT && robotic >= ORGAN_ASSISTED)		// Parent is synthetic, and we are biosynthetic at least.
-					return TRUE
-
-			if(!target_parent_classes || !target_parent_classes.len)	// Default checks, if we're not looking for a Specific type.
-
-				if(O.robotic == robotic)	// Same thing, we're fine.
-					return TRUE
-
-				if(O.robotic < ORGAN_ROBOT && robotic < ORGAN_ROBOT)
-					return TRUE
-
-				if(O.robotic > ORGAN_ASSISTED && robotic > ORGAN_ASSISTED)
-					return TRUE
-
-			else
-				if(O.robotic in target_parent_classes)
-					return TRUE
-
-	return FALSE

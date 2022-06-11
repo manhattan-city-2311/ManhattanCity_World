@@ -1,8 +1,8 @@
 var/global/const
-	SKILL_NONE = 0
-	SKILL_BASIC = 1
-	SKILL_ADEPT = 2
-	SKILL_EXPERT = 3
+	SKILL_UNSKILLED = 0
+	SKILL_AMATEUR = 1
+	SKILL_TRAINED = 2
+	SKILL_PROFESSIONAL = 3
 
 /datum/skill/var
 	ID = "none" // ID of the skill, used in code
@@ -12,10 +12,10 @@ var/global/const
 	secondary = 0 // secondary skills only have two levels and cost significantly less
 
 var/global/list/SKILLS = null
-var/list/SKILL_ENGINEER = list("field" = "Engineering", "EVA" = SKILL_BASIC, "construction" = SKILL_ADEPT, "electrical" = SKILL_BASIC, "engines" = SKILL_ADEPT)
-var/list/SKILL_ORGAN_ROBOTICIST = list("field" = "Science", "devices" = SKILL_ADEPT, "electrical" = SKILL_BASIC, "computer" = SKILL_ADEPT, "anatomy" = SKILL_BASIC)
-var/list/SKILL_SECURITY_OFFICER = list("field" = "Security", "combat" = SKILL_BASIC, "weapons" = SKILL_ADEPT, "law" = SKILL_ADEPT, "forensics" = SKILL_BASIC)
-var/list/SKILL_CHEMIST = list("field" = "Science", "chemistry" = SKILL_ADEPT, "science" = SKILL_ADEPT, "medical" = SKILL_BASIC, "devices" = SKILL_BASIC)
+var/list/SKILL_ENGINEER = list("field" = "Engineering", "EVA" = SKILL_AMATEUR, "construction" = SKILL_TRAINED, "electrical" = SKILL_AMATEUR, "engines" = SKILL_TRAINED)
+var/list/SKILL_ORGAN_ROBOTICIST = list("field" = "Science", "devices" = SKILL_TRAINED, "electrical" = SKILL_AMATEUR, "computer" = SKILL_TRAINED, "anatomy" = SKILL_AMATEUR)
+var/list/SKILL_SECURITY_OFFICER = list("field" = "Security", "combat" = SKILL_AMATEUR, "weapons" = SKILL_TRAINED, "law" = SKILL_TRAINED, "forensics" = SKILL_AMATEUR)
+var/list/SKILL_CHEMIST = list("field" = "Science", "chemistry" = SKILL_TRAINED, "science" = SKILL_TRAINED, "medical" = SKILL_AMATEUR, "devices" = SKILL_AMATEUR)
 var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKILL_ORGAN_ROBOTICIST, "Police Officer" = SKILL_SECURITY_OFFICER, "Chemist" = SKILL_CHEMIST)
 
 /datum/skill/management
@@ -190,14 +190,14 @@ var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKI
 			var/level = M.skills[S.ID]
 			HTML += "<tr style='text-align:left;'>"
 			HTML += "<th>[S.name]</th>"
-			HTML += "<th><font color=[(level == SKILL_NONE) ? "red" : "black"]>\[Untrained\]</font></th>"
+			HTML += "<th><font color=[(level == SKILL_UNSKILLED) ? "red" : "black"]>\[Untrained\]</font></th>"
 			// secondary skills don't have an amateur level
 			if(S.secondary)
 				HTML += "<th></th>"
 			else
-				HTML += "<th><font color=[(level == SKILL_BASIC) ? "red" : "black"]>\[Amateur\]</font></th>"
-			HTML += "<th><font color=[(level == SKILL_ADEPT) ? "red" : "black"]>\[Trained\]</font></th>"
-			HTML += "<th><font color=[(level == SKILL_EXPERT) ? "red" : "black"]>\[Professional\]</font></th>"
+				HTML += "<th><font color=[(level == SKILL_AMATEUR) ? "red" : "black"]>\[Amateur\]</font></th>"
+			HTML += "<th><font color=[(level == SKILL_TRAINED) ? "red" : "black"]>\[Trained\]</font></th>"
+			HTML += "<th><font color=[(level == SKILL_PROFESSIONAL) ? "red" : "black"]>\[Professional\]</font></th>"
 			HTML += "</tr>"
 	HTML += "</table>"
 

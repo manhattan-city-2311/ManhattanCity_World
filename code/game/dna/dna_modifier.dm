@@ -140,7 +140,7 @@
 			to_chat(user, "<span class='warning'>The scanner is already occupied!</span>")
 			return
 		var/obj/item/organ/internal/brain/brain = item
-		if(brain.clone_source)
+		if(brain)
 			user.drop_item()
 			brain.loc = src
 			put_in(brain.brainmob)

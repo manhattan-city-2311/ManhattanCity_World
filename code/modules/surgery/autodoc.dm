@@ -75,7 +75,7 @@
 		picked_patchnotes.Add(toxnote.Copy())
 
 	if(AUTODOC_DAMAGE in possible_operations)
-		for(var/obj/item/organ/internal/internal in patient.internal_organs)
+		for(var/obj/item/organ/internal/internal in patient.internal_organs_by_name)
 			if(internal.damage)
 				var/datum/autodoc_patchnote/patchnote = new()
 				patchnote.organ = internal

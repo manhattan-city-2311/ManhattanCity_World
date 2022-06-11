@@ -91,7 +91,6 @@
 	..()
 	if(usr.incapacitated())
 		return
-	go_out()
 
 
 

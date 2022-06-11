@@ -32,8 +32,8 @@ mob/living/carbon/human/proc/handle_pain()
 		return
 	var/maxdam = 0
 	var/obj/item/organ/external/damaged_organ = null
-	for(var/obj/item/organ/external/E in organs)
-		if(!E.organ_can_feel_pain()) continue
+	for(var/obj/item/organ/external/E in organs_by_name)
+		if(0) continue
 		var/dam = E.get_damage()
 		// make the choice of the organ depend on damage,
 		// but also sometimes use one of the less damaged ones
@@ -59,7 +59,7 @@ mob/living/carbon/human/proc/handle_pain()
 		custom_pain(msg, maxdam, prob(10))
 
 	// Damage to internal organs hurts a lot.
-	for(var/obj/item/organ/I in internal_organs)
+	for(var/obj/item/organ/I in internal_organs_by_name)
 		if((I.status & ORGAN_DEAD) || I.robotic >= ORGAN_ROBOT) continue
 		if(I.damage > 2) if(prob(2))
 			var/obj/item/organ/external/parent = get_organ(I.parent_organ)

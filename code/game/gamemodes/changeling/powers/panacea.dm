@@ -39,13 +39,13 @@
 			C.adjustToxLoss(-heal_amount)
 			sleep(10)
 
-	for(var/obj/item/organ/external/E in C.organs)
+	for(var/obj/item/organ/external/E in C.organs_by_name)
 		var/obj/item/organ/external/G = E
 		if(G.germ_level)
 			var/germ_heal = heal_amount * 100
 			G.germ_level = min(0, G.germ_level - germ_heal)
 
-	for(var/obj/item/organ/internal/I in C.internal_organs)
+	for(var/obj/item/organ/internal/I in C.internal_organs_by_name)
 		var/obj/item/organ/internal/G = I
 		if(G.germ_level)
 			var/germ_heal = heal_amount * 100

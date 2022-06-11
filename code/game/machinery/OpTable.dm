@@ -71,7 +71,7 @@
 		var/mob/living/carbon/human/M = locate(/mob/living/carbon/human, src.loc)
 		if(M.lying)
 			victim = M
-			icon_state = M.pulse ? "table2-active" : "table2-idle"
+			icon_state = M.get_pulse_fluffy() ? "table2-active" : "table2-idle"
 			return 1
 	victim = null
 	icon_state = "table2-idle"
@@ -96,7 +96,7 @@
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		victim = H
-		icon_state = H.pulse ? "table2-active" : "table2-idle"
+		icon_state = H.get_pulse_fluffy() ? "table2-active" : "table2-idle"
 	else
 		icon_state = "table2-idle"
 

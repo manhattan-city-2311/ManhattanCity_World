@@ -10,12 +10,12 @@
 		vr_link.vr_holder = null
 		vr_link = null
 
-	for(var/obj/item/organ/I in internal_organs)
+	for(var/obj/item/organ/I in internal_organs_by_name)
 		I.removed()
 		if(istype(loc,/turf))
 			I.throw_at(get_edge_target_turf(src,pick(alldirs)),rand(1,3),30)
 
-	for(var/obj/item/organ/external/E in src.organs)
+	for(var/obj/item/organ/external/E in src.organs_by_name)
 		E.droplimb(0,DROPLIMB_EDGE,1)
 
 	sleep(1)

@@ -70,6 +70,7 @@
 
 #define COLOR_SANDSTONE "#D9C179"
 #define COLOR_MARBLE "#AAAAAA"
+#define COLOR_CONCRETE "#727272"
 #define COLOR_URANIUM "#007A00"
 #define    PIPE_COLOR_GREY "#ffffff"    //yes white is grey
 #define    PIPE_COLOR_RED "#ff0000"

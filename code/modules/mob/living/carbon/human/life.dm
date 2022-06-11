@@ -67,26 +67,7 @@
 	if(getStasis() > 2)
 		Sleeping(20)
 
-	//No need to update all of these procs if the guy is dead.
-	if(stat != DEAD && !stasis)
-		//Updates the number of stored chemicals for powers
-		handle_changeling()
-
-		//Organs and blood
-		handle_organs()
-		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
-
-		handle_shock()
-
-		handle_pain()
-
-		handle_medical_side_effects()
-
-		handle_heartbeat()
-
-		handle_nourishment()
-
-		handle_weight()
+		handle_medicine()
 
 		if(!client)
 			species.handle_npc(src)
@@ -187,7 +168,7 @@
 					if(1)
 						emote("twitch")
 					if(2 to 3)
-						say("[prob(50) ? ";" : ""][pick("SHIT", "PISS", "FUCK", "CUNT", "COCKSUCKER", "MOTHERFUCKER", "TITS")]")
+						say("[prob(50) ? ";" : ""][pick("ГОВНО", "МОЧА", "БЛЯТЬ", "СУКА", "ХУЕСОС", "МАМУ ЕБАЛ", "СИСЬКИ")]")
 				make_jittery(100)
 				return
 	if (disabilities & NERVOUS)
@@ -244,7 +225,7 @@
 			set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), species.get_flesh_colour(src))
 		// END DOGSHIT SNOWFLAKE
 
-		var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in internal_organs
+		var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in internal_organs_by_name
 		if(rad_organ && !rad_organ.is_broken())
 			var/rads = radiation/25
 			radiation -= rads
@@ -256,7 +237,7 @@
 			updatehealth()
 			return
 
-		var/obj/item/organ/internal/brain/slime/core = locate() in internal_organs
+		var/obj/item/organ/internal/brain/slime/core = locate() in internal_organs_by_name
 		if(core)
 			return
 
@@ -301,11 +282,6 @@
 			damage *= species.radiation_mod
 			adjustToxLoss(damage * RADIATION_SPEED_COEFFICIENT)
 			updatehealth()
-			if(!isSynthetic() && organs.len)
-				var/obj/item/organ/external/O = pick(organs)
-				if(istype(O)) O.add_autopsy_data("Radiation Poisoning", damage)
-
-	/** breathing **/
 
 /mob/living/carbon/human/handle_chemical_smoke(var/datum/gas_mixture/environment)
 	if(wear_mask && (wear_mask.item_flags & BLOCK_GAS_SMOKE_EFFECT))
@@ -929,10 +905,6 @@
 			if(overeatduration > 1)
 				overeatduration -= 2 //doubled the unfat rate
 
-		// TODO: stomach and bloodstream organ.
-
-			handle_trace_chems()
-
 	updatehealth()
 
 	return //TODO: DEFERRED
@@ -1056,9 +1028,6 @@
 				eye_blurry = max(eye_blurry-3, 0)
 				blinded =    1
 
-			//blurry sight
-			if(vision.is_bruised())   // Vision organs impaired? Permablurry.
-				eye_blurry = 1
 			if(eye_blurry)	           // Blurry eyes heal slowly
 				eye_blurry = max(eye_blurry-1, 0)
 
@@ -1244,7 +1213,7 @@
 				var/limb_trauma_val = trauma_val*0.3
 				// Collect and apply the images all at once to avoid appearance churn.
 				var/list/health_images = list()
-				for(var/obj/item/organ/external/E in organs)
+				for(var/obj/item/organ/external/E in organs_by_name)
 					if(no_damage && (E.brute_dam || E.burn_dam))
 						no_damage = 0
 					health_images += E.get_damage_hud_image(limb_trauma_val)
@@ -1267,7 +1236,7 @@
 				healths.appearance = healths_ma
 
 		if(nutrition_icon)
-			switch(nutrition)
+			switch(bloodstr?.get_reagent_amount(/datum/reagent/hormone/glucose))
 				if(450 to INFINITY)				nutrition_icon.icon_state = "nutrition0"
 				if(350 to 450)					nutrition_icon.icon_state = "nutrition1"
 				if(250 to 350)					nutrition_icon.icon_state = "nutrition2"
@@ -1561,95 +1530,7 @@
 		Weaken(20)
 
 /mob/living/carbon/human/proc/handle_pulse()
-	if(life_tick % 5) return pulse	//update pulse every 5 life ticks (~1 tick/sec, depending on server load)
-
-	var/temp = PULSE_NORM
-
-	var/brain_modifier = 1
-
-	var/modifier_shift = 0
-	var/modifier_set
-
-	if(modifiers && modifiers.len)
-		for(var/datum/modifier/mod in modifiers)
-			if(isnull(modifier_set) && !isnull(mod.pulse_set_level))
-				modifier_set = round(mod.pulse_set_level)	// Should be a whole number, but let's not take chances.
-			else if(mod.pulse_set_level > modifier_set)
-				modifier_set = round(mod.pulse_set_level)
-
-			modifier_set = max(0, modifier_set)	// No setting to negatives.
-
-			if(mod.pulse_modifier)
-				modifier_shift += mod.pulse_modifier
-
-	modifier_shift = round(modifier_shift)
-
-	if(!internal_organs_by_name[O_HEART])
-		temp = PULSE_NONE
-		if(!isnull(modifier_set))
-			temp = modifier_set
-		return temp //No blood, no pulse.
-
-	if(stat == DEAD)
-		temp = PULSE_NONE
-		if(!isnull(modifier_set))
-			temp = modifier_set
-		return temp	//that's it, you're dead, nothing can influence your pulse, aside from outside means.
-
-	var/obj/item/organ/internal/heart/Pump = internal_organs_by_name[O_HEART]
-
-	var/obj/item/organ/internal/brain/Control = internal_organs_by_name[O_BRAIN]
-
-	if(Control)
-		brain_modifier = Control.get_control_efficiency()
-
-		if(brain_modifier <= 0.7 && brain_modifier >= 0.4) // 70%-40% control, things start going weird as the brain is failing.
-			brain_modifier = rand(5, 15) / 10
-
-	if(Pump)
-		temp += Pump.standard_pulse_level - PULSE_NORM
-
-	if(round(vessel.get_reagent_amount("blood")) <= BLOOD_VOLUME_BAD)	//how much blood do we have
-		temp = temp + 3	//not enough :(
-
-	if(status_flags & FAKEDEATH)
-		temp = PULSE_NONE		//pretend that we're dead. unlike actual death, can be inflienced by meds
-
-	if(!isnull(modifier_set))
-		temp = modifier_set
-
-	temp = max(0, temp + modifier_shift)	// No negative pulses.
-
-	if(Pump)
-		for(var/datum/reagent/R in reagents.reagent_list)
-			if(R.id in bradycardics)
-				if(temp <= Pump.standard_pulse_level + 3 && temp >= Pump.standard_pulse_level)
-					temp--
-			if(R.id in tachycardics)
-				if(temp <= Pump.standard_pulse_level + 1 && temp >= PULSE_NONE)
-					temp++
-			if(R.id in heartstopper) //To avoid using fakedeath
-				temp = PULSE_NONE
-			if(R.id in cheartstopper) //Conditional heart-stoppage
-				if(R.volume >= R.overdose)
-					temp = PULSE_NONE
-		return temp * brain_modifier
-	//handles different chems' influence on pulse
-	for(var/datum/reagent/R in reagents.reagent_list)
-		if(R.id in bradycardics)
-			if(temp <= PULSE_THREADY && temp >= PULSE_NORM)
-				temp--
-		if(R.id in tachycardics)
-			if(temp <= PULSE_FAST && temp >= PULSE_NONE)
-				temp++
-		if(R.id in heartstopper) //To avoid using fakedeath
-			temp = PULSE_NONE
-		if(R.id in cheartstopper) //Conditional heart-stoppage
-			if(R.volume >= R.overdose)
-				temp = PULSE_NONE
-
-	return round(temp * brain_modifier)
-
+	return
 
 /mob/living/carbon/human/proc/handle_nourishment()
 	if (nutrition <= 0)
@@ -1671,31 +1552,8 @@
 
 
 /mob/living/carbon/human/proc/handle_heartbeat()
-	if(pulse == PULSE_NONE)
-		return
+	return
 
-	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
-
-	if(!H || (H.robotic >= ORGAN_ROBOT))
-		return
-
-	if(pulse >= PULSE_2FAST || shock_stage >= 10 || istype(get_turf(src), /turf/space))
-		//PULSE_THREADY - maximum value for pulse, currently it 5.
-		//High pulse value corresponds to a fast rate of heartbeat.
-		//Divided by 2, otherwise it is too slow.
-		var/rate = (PULSE_THREADY - pulse)/2
-
-		if(heartbeat >= rate)
-			heartbeat = 0
-			src << sound('sound/effects/singlebeat.ogg',0,0,0,50)
-		else
-			heartbeat++
-
-/*
-	Called by life(), instead of having the individual hud items update icons each tick and check for status changes
-	we only set those statuses and icons upon changes.  Then those HUD items will simply add those pre-made images.
-	This proc below is only called when those HUD elements need to change as determined by the mobs hud_updateflag.
-*/
 /mob/living/carbon/human/proc/handle_hud_list()
 	if (BITTEST(hud_updateflag, HEALTH_HUD))
 		var/image/holder = grab_hud(HEALTH_HUD)
@@ -1856,8 +1714,6 @@
 	var/obj/item/organ/internal/brain/brain = internal_organs_by_name[O_BRAIN]
 	if(!brain)
 		return // Still no brain.
-
-	brain.tick_defib_timer()
 
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS

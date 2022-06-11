@@ -48,11 +48,9 @@ Implant Specifics:<BR>"}
 		if(H.species.has_organ[O_BRAIN])
 			var/obj/item/organ/internal/brain/possible_brain = H.internal_organs_by_name[O_BRAIN]
 			my_brain = possible_brain //Organs will take damage all the same.
-			if(istype(possible_brain) && my_brain.can_assist())		//If the brain is infact a brain, and not something special like an MMI.
-				my_brain.implant_assist(target_state)
 		if(H.isSynthetic() && H.get_FBP_type() != FBP_CYBORG)		//If this on an FBP, it's just an extra inefficient attachment to whatever their brain is.
 			robotic_brain = TRUE
-	if(my_brain && my_brain.can_assist())
+	if(my_brain)
 		START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/implant/neural/Destroy()

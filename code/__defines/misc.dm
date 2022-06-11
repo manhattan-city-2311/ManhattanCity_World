@@ -323,3 +323,6 @@ var/global/list/##LIST_NAME = list();\
 #define LOT_SECURITY_STOP_INTRUSION		8 // Hacking airlocks, brute forcing PINs.
 #define LOT_SECURITY_STOP_EVERYTHING	(LOT_SECURITY_STOP_VANDALISM|LOT_SECURITY_STOP_THEFT|LOT_SECURITY_STOP_GRAFFITI|LOT_SECURITY_STOP_INTRUSION)
 #define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (isclient(I) ? I : null))
+
+var/global/list/SKILLS = null
+#define LAZYISIN(L, I) (L ? (I in L) : FALSE)

@@ -9,7 +9,7 @@
 	icon_state = "larynx"
 	parent_organ = BP_HEAD		// We don't have a neck area
 	organ_tag = O_VOICE
-	will_assist_languages = list(LANGUAGE_GALCOM)
+	var/will_assist_languages = list(LANGUAGE_GALCOM)
 	var/mute = FALSE
 
 /obj/item/organ/internal/voicebox/New()
@@ -17,8 +17,7 @@
 	amend_assist_langs()
 
 /obj/item/organ/internal/voicebox/proc/amend_assist_langs()	// Adds the list of language datums assisted by the voicebox to the list used in speaking
-	for(var/L in will_assist_languages)
-		assists_languages |= all_languages[L]
+	return
 
 /obj/item/organ/internal/voicebox/proc/add_assistable_langs(var/language)	// Adds a new language (by string/define) to the list of things the voicebox can assist
 	will_assist_languages |= language

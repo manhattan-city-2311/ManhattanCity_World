@@ -323,7 +323,6 @@
 
 /datum/supply_pack/med/defib
 	name = "Defibrillator crate"
-	contains = list(/obj/item/device/defib_kit = 2)
 	cost = 500
 	containertype = /obj/structure/closet/crate/medical
 	containername = "Defibrillator crate"

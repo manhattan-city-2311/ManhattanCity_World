@@ -410,7 +410,7 @@
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
 
-		if(locate(new_organ) in M.internal_organs)
+		if(locate(new_organ) in M.internal_organs_by_name)
 			to_chat(usr, "Mob already has that organ.")
 			return
 
@@ -425,13 +425,13 @@
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
 			return
 
-		var/obj/item/organ/rem_organ = input("Please choose an organ to remove.","Organ",null) as null|anything in M.internal_organs
+		var/obj/item/organ/rem_organ = input("Please choose an organ to remove.","Organ",null) as null|anything in M.internal_organs_by_name
 
 		if(!M)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
 
-		if(!(locate(rem_organ) in M.internal_organs))
+		if(!(locate(rem_organ) in M.internal_organs_by_name))
 			to_chat(usr, "Mob does not have that organ.")
 			return
 
@@ -515,7 +515,32 @@
 		log_admin("Admin [key_name(usr)] Showed [key_name(C)] a VV window of a [src]")
 		to_chat(C, "[holder.fakekey ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window")
 		C.debug_variables(thing)
+	else if(href_list["add_organ_disease"])
+		if(!check_rights(R_DEBUG|R_SERVER))	return
 
+		var/obj/item/organ/internal/I = locate(href_list["add_organ_disease"])
+		if(!istype(I))
+			to_chat(usr, "This can only be used on instances of type /obj/item/organ/internal")
+			return
+
+		var/list/allowed = list()
+		var/list/allowed_s = list()
+		for(var/T in subtypesof(/datum/organ_disease))
+			allowed += new T
+		for(var/datum/organ_disease/D in allowed)
+			if(!(D.can_be_apply(I)))
+				allowed -= D
+			else
+				allowed_s += D.name
+
+		var/selected = input(usr, "Select disease", "Disease") as null|anything in allowed_s
+		if(!selected)
+			return
+		for(var/datum/organ_disease/D in allowed_s)
+			if(!(D.name == selected))
+				continue
+			I.diseases += D
+			return
 	if(href_list["datumrefresh"])
 		var/datum/DAT = locate(href_list["datumrefresh"])
 		if(istype(DAT, /datum) || istype(DAT, /client))

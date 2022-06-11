@@ -121,13 +121,13 @@
 			if(ishuman(holder))
 				var/mob/living/carbon/human/H = holder
 
-				for(var/obj/item/organ/O in H.internal_organs)
+				for(var/obj/item/organ/O in H.internal_organs_by_name)
 					if(O.damage > 0) // Fix internal damage
 						O.damage = max(O.damage - 2, 0)
 					if(O.damage <= 5 && O.organ_tag == O_EYES) // Fix eyes
 						H.sdisabilities &= ~BLIND
 
-				for(var/obj/item/organ/external/O in H.organs) // Fix limbs, no matter if they are Man or Machine.
+				for(var/obj/item/organ/external/O in H.organs_by_name) // Fix limbs, no matter if they are Man or Machine.
 					O.heal_damage(rand(1,3), rand(1,3), internal = 1, robo_repair = 1)
 
 				for(var/obj/item/organ/E in H.bad_external_organs) // Fix bones

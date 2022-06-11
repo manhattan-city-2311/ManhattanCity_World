@@ -36,13 +36,13 @@
 		var/mob/living/carbon/human/H = new(newloc,newspecies)
 		H.stat = DEAD
 		H.gender = gender
-		for(var/obj/item/organ/external/EO in H.organs)
+		for(var/obj/item/organ/external/EO in H.organs_by_name)
 			if(EO.organ_tag == BP_TORSO || EO.organ_tag == BP_GROIN)
 				continue //Roboticizing a torso does all the children and wastes time, do it later
 			else
 				EO.remove_rejuv()
 
-		for(var/obj/item/organ/external/O in H.organs)
+		for(var/obj/item/organ/external/O in H.organs_by_name)
 			O.species = all_species[newspecies]
 			O.robotize(prosfab.manufacturer)
 			O.dna = new/datum/dna()

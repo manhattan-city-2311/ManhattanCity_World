@@ -502,7 +502,7 @@
 /datum/reagent/peridaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/I in H.internal_organs)
+		for(var/obj/item/organ/I in H.internal_organs_by_name)
 			if(I.robotic >= ORGAN_ROBOT)
 				continue
 			if(I.damage > 0) //Peridaxon heals only non-robotic organs
@@ -590,7 +590,7 @@
 		repair_strength = 0.6
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/I in H.internal_organs)
+		for(var/obj/item/organ/I in H.internal_organs_by_name)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LUNGS, O_VOICE, O_GBLADDER)))
 				continue
 			if(I.damage > 0)
@@ -624,7 +624,7 @@
 		repair_strength = 0.6
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/I in H.internal_organs)
+		for(var/obj/item/organ/I in H.internal_organs_by_name)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_APPENDIX, O_STOMACH, O_INTESTINE, O_NUTRIENT, O_PLASMA, O_POLYP)))
 				continue
 			if(I.damage > 0)
@@ -658,7 +658,7 @@
 		repair_strength = 0.4
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/I in H.internal_organs)
+		for(var/obj/item/organ/I in H.internal_organs_by_name)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LIVER, O_KIDNEYS, O_APPENDIX, O_ACID, O_HIVE)))
 				continue
 			if(I.damage > 0)
@@ -694,7 +694,7 @@
 		repair_strength = 0.6
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/I in H.internal_organs)
+		for(var/obj/item/organ/I in H.internal_organs_by_name)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_HEART, O_SPLEEN, O_RESPONSE, O_ANCHOR, O_EGG)))
 				continue
 			if(I.damage > 0)
@@ -823,7 +823,7 @@
 	..()
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 
-/datum/reagent/immunosuprizine
+/*/datum/reagent/immunosuprizine
 	name = "Immunosuprizine"
 	id = "immunosuprizine"
 	description = "An experimental medicine believed to have the ability to prevent any organ rejection."
@@ -858,8 +858,8 @@
 			H.adjustToxLoss((30 / strength_mod) * removed)
 
 		var/list/organtotal = list()
-		organtotal |= H.organs
-		organtotal |= H.internal_organs
+		organtotal |= H.organs_by_name
+		organtotal |= H.internal_organs_by_name
 
 		for(var/obj/item/organ/I in organtotal)	// Don't mess with robot bits, they don't reject.
 			if(I.robotic >= ORGAN_ROBOT)
@@ -879,7 +879,7 @@
 					if(rejectmem != I.can_reject)
 						H.adjustToxLoss((15 / strength_mod))
 						I.take_damage(1)
-
+*/
 /datum/reagent/corophizine
 	name = "Corophizine"
 	id = "corophizine"
@@ -911,7 +911,7 @@
 	//One of the levofloxacin side effects is 'spontaneous tendon rupture', which I'll immitate here. 1:1000 chance, so, pretty darn rare.
 	if(ishuman(M) && rand(1,1000) == 1)
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/eo = pick(H.organs) //Misleading variable name, 'organs' is only external organs
+		var/obj/item/organ/external/eo = pick(H.organs_by_name) //Misleading variable name, 'organs' is only external organs
 		eo.fracture()
 
 /datum/reagent/sterilizine

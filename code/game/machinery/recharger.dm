@@ -18,8 +18,8 @@ obj/machinery/recharger
 	/obj/item/device/flashlight,
 	/obj/item/device/electronic_assembly,
 	/obj/item/weapon/weldingtool/electric,
-	/obj/item/device/communicator,
-	/obj/item/device/defib_kit)
+	/obj/item/device/communicator
+	)
 
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
@@ -138,8 +138,8 @@ obj/machinery/recharger
 	/obj/item/weapon/melee/baton,
 	/obj/item/device/flashlight,
 	/obj/item/weapon/cell/device,
-	/obj/item/device/communicator,
-	/obj/item/device/defib_kit)
+	/obj/item/device/communicator
+	)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"

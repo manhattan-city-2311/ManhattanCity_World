@@ -85,7 +85,6 @@
 
 	var/used_skillpoints = 0
 	var/skill_specialization = null
-	var/list/skills = list()
 
 	var/voice = ""	//Instead of new say code calling GetVoice() over and over and over, we're just going to ask this variable, which gets updated in Life()
 	var/voice_sound = VOICE_NORMAL
@@ -109,6 +108,13 @@
 	mob_bump_flag = HUMAN
 	mob_push_flags = ~HEAVY
 	mob_swap_flags = ~HEAVY
+
+	var/k = 1
+	var/gvr = 0 // general vascular resitance
+	var/mcv = 0 // minute circulation volume
+	var/spressure = 120 // systolic pressure
+	var/dpressure = 80 // dyastolic pressure
+	var/mpressure = 93 // medium pressure
 
 	var/identifying_gender // In case the human identifies as another gender than it's biological
 

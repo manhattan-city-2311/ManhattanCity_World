@@ -35,9 +35,10 @@
 #define ORGAN_CUT_AWAY   (1<<0)
 #define ORGAN_BLEEDING   (1<<1)
 #define ORGAN_BROKEN     (1<<2)
-#define ORGAN_DESTROYED  (1<<3)
-#define ORGAN_DEAD       (1<<4)
-#define ORGAN_MUTATED    (1<<5)
+#define ORGAN_DEAD       (1<<3)
+#define ORGAN_MUTATED    (1<<4)
+#define ORGAN_ARTERY_CUT (1<<6)
+#define ORGAN_TENDON_CUT (1<<7)
 
 #define DROPLIMB_EDGE 0
 #define DROPLIMB_BLUNT 1
@@ -56,6 +57,8 @@
 #define GERM_LEVEL_MOVE_CAP 200 // Maximum germ level you can reach by running around.
 
 #define INFECTION_LEVEL_ONE   100
-#define INFECTION_LEVEL_TWO   500
-#define INFECTION_LEVEL_THREE 1000
-#define INFECTION_LEVEL_MAX   1500
+#define INFECTION_LEVEL_TWO   250
+#define INFECTION_LEVEL_THREE 550
+#define INFECTION_LEVEL_MAX   850
+
+#define GERMS_BREEDING_COEF   1000 

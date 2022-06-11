@@ -24,9 +24,6 @@ emp_act
 		else // Otherwise we blocked normally and stopped all the damage.
 			return 0
 
-	if(!P.nodamage)
-		organ.add_autopsy_data("[P.name]", P.damage)
-
 	// Tell clothing we're wearing that it got hit by a bullet/laser/etc
 	var/list/clothing = get_clothing_list_organ(organ)
 	for(var/obj/item/clothing/C in clothing)
@@ -70,9 +67,6 @@ emp_act
 				drop_from_inventory(c_hand)
 				if (affected.robotic >= ORGAN_ROBOT)
 					emote("me", 1, "drops what they were holding, their [affected.name] malfunctioning!")
-				else
-					var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
-					emote("me", 1, "[affected.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [affected.name]!")
 
 	..(stun_amount, agony_amount, def_zone)
 
@@ -599,7 +593,7 @@ emp_act
 	user.visible_message("<span class='danger'>\The [user] twists \the [W] around inside [src]'s [chest]!</span>")
 
 	if(prob(organ_chance))
-		var/obj/item/organ/internal/selected_organ = pick(chest.internal_organs)
+		var/obj/item/organ/internal/selected_organ = pick(src.internal_organs_by_name)
 		selected_organ.damage = max(selected_organ.damage, damage * 0.5)
 		G.last_action = world.time
 		flick(G.hud.icon_state, G.hud)

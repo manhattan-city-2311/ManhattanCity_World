@@ -292,12 +292,7 @@
 	return
 
 /turf/simulated/wall/proc/radiate()
-	var/total_radiation = material.radioactivity + (reinf_material ? reinf_material.radioactivity / 2 : 0) + (girder_material ? girder_material.radioactivity / 2 : 0)
-	if(!total_radiation)
-		return
-
-	SSradiation.radiate(src, total_radiation)
-	return total_radiation
+	return
 
 /turf/simulated/wall/proc/burn(temperature)
 	if(material.combustion_effect(src, temperature, 0.7))
