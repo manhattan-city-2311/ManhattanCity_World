@@ -122,6 +122,7 @@ var/list/preferences_datums = list()
 	//Keeps track of preferrence for not getting any wanted jobs
 	var/alternate_option = 1
 
+	var/skillpoints = 16
 	var/used_skillpoints = 0
 	var/skill_specialization = null
 	var/list/skills = list() // skills can range from 0 to 3
@@ -216,26 +217,40 @@ var/list/preferences_datums = list()
 			skills[S.ID] = SKILL_UNSKILLED
 
 /datum/preferences/proc/CalculateSkillPoints()
+	skillpoints = 0
 	used_skillpoints = 0
 	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
-		var/multiplier = 1
 		switch(skills[S.ID])
 			if(SKILL_UNSKILLED)
-				used_skillpoints += 0 * multiplier
+				used_skillpoints += 0
 			if(SKILL_AMATEUR)
-				used_skillpoints += 1 * multiplier
+				if(check_skillpoints(1))
+					used_skillpoints += 1
+
 			if(SKILL_TRAINED)
 				// secondary skills cost less
 				if(S.secondary)
-					used_skillpoints += 1 * multiplier
+					if(check_skillpoints(1))
+						used_skillpoints += 1
 				else
-					used_skillpoints += 3 * multiplier
+					if(check_skillpoints(3))
+						used_skillpoints += 3
 			if(SKILL_PROFESSIONAL)
 				// secondary skills cost less
 				if(S.secondary)
-					used_skillpoints += 3 * multiplier
+					if(check_skillpoints(3))
+						used_skillpoints += 3
 				else
-					used_skillpoints += 6 * multiplier
+					if(check_skillpoints(6))
+						used_skillpoints += 6
+	skillpoints -= used_skillpoints
+
+/datum/preferences/proc/check_skillpoints(var/amount)
+	var/test_skillpoints = skillpoints - amount
+	if(test_skillpoints >= 0)
+		return 1
+	else
+		return 0
 
 /datum/preferences/proc/GetSkillClass(points)
 	return CalculateSkillClass(points, age)

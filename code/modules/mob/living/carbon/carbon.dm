@@ -409,10 +409,10 @@
 
 // Get fluffy numbers
 /mob/living/carbon/human/proc/get_blood_pressure_fluffy()
-/*	if(get_blood_pressure() < 30)
-		return "0/0"
-	return "[Floor(get_blood_pressure())]/[Floor(max(10, get_blood_pressure() - 40) + rand(-5, 5))]"
-*/
+//	if(get_blood_pressure() < 30)
+//		return "0/0"
+//	return "[Floor(get_blood_pressure())]/[Floor(max(10, get_blood_pressure() - 40) + rand(-5, 5))]"
+
 	return 120
 //Point at which you dun breathe no more. Separate from asystole crit, which is heart-related.
 /mob/living/carbon/human/proc/nervous_system_failure()

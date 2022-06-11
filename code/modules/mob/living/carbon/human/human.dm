@@ -22,6 +22,21 @@
 
 	var/unique_id						//used for keeping track of characters.
 
+/mob/living/carbon/human/proc/calc_k()
+	var/isMale = gender == MALE
+	k = (weight * 170) / (isMale ? 9440 : 7350)
+
+	if(weight > (isMale ? 59 : 49))
+		k = 1.0/k
+
+/mob/living/carbon/human/proc/setup_cm()
+	calc_k()
+	gvr = k*218.50746
+	mcv = 799920/gvr
+	update_cm()
+
+
+
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
 
 	if(!dna)

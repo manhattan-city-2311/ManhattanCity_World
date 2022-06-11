@@ -461,7 +461,9 @@ This function restores all organs.
 	if(blocked)
 		blocked = (100-blocked)/100
 		damage = (damage * blocked)
-
+		
+	if(damage > 15 && prob(damage*4))
+		make_adrenaline(round(damage/10))
 	if(soaked)
 		damage -= soaked
 

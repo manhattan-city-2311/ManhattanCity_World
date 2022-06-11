@@ -1,0 +1,40 @@
+{{if !data.name}}
+    <div class="item">
+        NOT CONNECTED
+    </div>
+{{else}}
+<div class="statusDisplay">
+    <div class="item">
+        {{:data.name}}
+        <div class="itemContent">
+            {{:data.status}}
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="itemLabel">
+            Status:
+        </div>
+        <div class="itemContent">
+            {{:data.hr}} bpm<br>
+            <span {{if data.bp_s}} class="{{:data.bp_s}}"{{/if}}>{{:data.bp}} </span> {{:data.saturation}}% Sp02.<br>
+            <span {{if data.perfusion_s}} class="{{:data.perfusion_s}}"{{/if}}>{{:data.perfusion}}% of normal perfusion.</span><br>
+        </div>
+    </div>
+</div>
+
+<div class="item">
+    <div class="itemLabel">
+        ECG:
+    </div><br>
+    {{:data.rythme}} rythme.<br>
+    {{for data.ecg}}
+    <div class="itemContent">
+        <div class="warning">
+            {{:value}}
+        </div>
+    </div>
+    {{/for}}
+</div>
+
+{{/if}}

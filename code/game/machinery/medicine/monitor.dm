@@ -1,4 +1,4 @@
-/obj/structure/monitor
+/obj/machinery/monitor
 	name = "\improper Monitor"
 	icon = 'icons/obj/medicine.dmi'
 	icon_state = "monitor"
@@ -6,7 +6,7 @@
 	density = 0
 	var/mob/living/carbon/human/attached
 
-/obj/structure/monitor/MouseDrop(mob/living/carbon/human/over_object, src_location, over_location)
+/obj/machinery/monitor/MouseDrop(mob/living/carbon/human/over_object, src_location, over_location)
 	if(!CanMouseDrop(over_object))
 		return
 
@@ -24,12 +24,12 @@
 
 	update_icon()
 
-/obj/structure/monitor/Destroy()
+/obj/machinery/monitor/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	attached = null
 	. = ..()
 
-/obj/structure/monitor/update_icon()
+/obj/machinery/monitor/update_icon()
 	overlays.Cut()
 	if(!attached)
 		icon_state = "monitor"
@@ -54,7 +54,17 @@
 	if(attached.get_blood_perfusion() < 0.7)
 		overlays += image(icon, "monitor-y")
 
-/obj/structure/monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/monitor/process()
+	if(!attached)
+		return PROCESS_KILL
+	if(!Adjacent(attached))
+		attached = null
+		update_icon()
+		return PROCESS_KILL
+
+	update_icon()
+
+/obj/machinery/monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/obj/item/organ/internal/heart/H = attached?.internal_organs_by_name[O_HEART]
 	if(!attached || !H)
 		return
@@ -99,13 +109,14 @@
 	data["ecg"] += list("GVR: [round(attached.gvr)] N·s·m<sup><small>-5</small></sup>")
 	data["ecg"] += list("MCV: [round(attached.mcv)/1000] L/m")
 
+	ui = SSnanoui.update_user_uis(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "monitor.tmpl", "Monitor", 450, 270)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(TRUE)
 
-/obj/structure/monitor/attack_hand(mob/user)
+/obj/machinery/monitor/attack_hand(mob/user)
 	ui_interact(user)
-/obj/structure/monitor/examine(mob/user)
+/obj/machinery/monitor/examine(mob/user)
 	ui_interact(user)
