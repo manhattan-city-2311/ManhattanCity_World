@@ -37,6 +37,7 @@
 /mob/living/carbon/human/Life()
 	set invisibility = 0
 	set background = BACKGROUND_ENABLED
+	handle_medicine()
 
 	if (transforming)
 		return
@@ -66,8 +67,6 @@
 	var/stasis = inStasisNow()
 	if(getStasis() > 2)
 		Sleeping(20)
-
-		handle_medicine()
 
 		if(!client)
 			species.handle_npc(src)
