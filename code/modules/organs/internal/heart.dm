@@ -182,7 +182,7 @@
 				if(open_wound)
 					blood_max += bleed_amount
 				else
-					owner.vessel.remove_reagent(/datum/reagent/blood, bleed_amount)
+					owner.vessel.remove_reagent("blood", bleed_amount)
 
 		blood_max *= owner.mpressure / BLOOD_PRESSURE_NORMAL
 

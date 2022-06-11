@@ -15,3 +15,4 @@
 		handle_nourishment()
 
 		handle_weight()
+		process()

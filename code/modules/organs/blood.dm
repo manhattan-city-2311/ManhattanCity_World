@@ -16,7 +16,7 @@
 	if(!should_have_organ(O_HEART)) //We want the var for safety but we can do without the actual blood.
 		return
 
-	vessel.add_reagent(/datum/reagent/blood,species.blood_volume)
+	vessel.add_reagent("blood",species.blood_volume)
 	fixblood()
 
 //Resets blood data
@@ -110,7 +110,7 @@
 	if(!B)
 		B = new /datum/reagent/blood
 		B.sync_to(src)
-		container.reagents.add_reagent(/datum/reagent/blood, amount, B.data)
+		container.reagents.add_reagent("blood", amount, B.data)
 	else
 		B.sync_to(src)
 		B.volume += amount
@@ -139,7 +139,7 @@
 		reagents.trans_to_obj(container, amount)
 		return 1
 
-	if(vessel.get_reagent_amount(/datum/reagent/blood) < amount)
+	if(vessel.get_reagent_amount("blood") < amount)
 		return null
 	vessel.trans_to_holder(container.reagents,amount)
 	return 1
@@ -164,7 +164,7 @@
 /mob/living/carbon/human/inject_blood(var/datum/reagent/blood/injected, var/amount)
 
 	if(!should_have_organ(O_HEART))
-		reagents.add_reagent(/datum/reagent/blood, amount, injected.data)
+		reagents.add_reagent("blood", amount, injected.data)
 		reagents.update_total()
 		return
 
@@ -172,7 +172,7 @@
 		reagents.add_reagent(/datum/reagent/toxin, amount * 0.5)
 		reagents.update_total()
 	else
-		vessel.add_reagent(/datum/reagent/blood, amount, injected.data)
+		vessel.add_reagent("blood", amount, injected.data)
 		vessel.update_total()
 	..()
 
@@ -208,7 +208,7 @@
 	return 0
 
 /mob/living/carbon/human/proc/regenerate_blood(amount)
-	var/blood_volume_raw = vessel.get_reagent_amount(/datum/reagent/blood)
+	var/blood_volume_raw = vessel.get_reagent_amount("blood")
 	amount = max(0,min(amount, species.blood_volume - blood_volume_raw))
 	if(amount)
 		var/datum/reagent/blood/B = get_blood(vessel)
@@ -275,7 +275,7 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 
 // 0-1
 /mob/living/carbon/human/proc/get_blood_volume()
-	. = vessel.get_reagent_amount(/datum/reagent/blood) / species.blood_volume
+	. = vessel.get_reagent_amount("blood") / species.blood_volume
 
 /mob/living/carbon/human/process()
 	var/hr = get_heart_rate()
