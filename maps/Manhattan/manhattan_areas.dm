@@ -43,6 +43,7 @@
 	dynamic_lighting = 1
 	sound_env = CITY
 	flags = null
+	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north4.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
 
 /area/planets/Manhattan/indoor
 	name = "\improper New-Manhattan Interior"
@@ -95,6 +96,44 @@
 
 /area/planets/Manhattan/indoor/north/gas/bathroom
 	icon_state = "north_m3"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room1
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room2
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room3
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room4
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room5
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room6
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room7
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room8
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/balcony
+	icon_state = "north_m3"
+	sound_env = CITY
+	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north4.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+
+/area/planets/Manhattan/indoor/north/house_standart1/balcony/one
+
+/area/planets/Manhattan/indoor/north/house_standart1/balcony/two
+
+/area/planets/Manhattan/indoor/north/house_standart1/balcony/three
+
+/area/planets/Manhattan/indoor/north/house_standart1/balcony/four
+
 
 // Elevator areas.
 /area/turbolift/manhattan_house11

@@ -236,3 +236,15 @@
 	desc = "A sign for the city local casino."
 	icon_state = "casino"
 	light_color = COLOR_YELLOW
+
+/obj/structure/manhattan/rails
+	name = "rails"
+	icon = 'icons/obj/manhattan/rails.dmi'
+	desc = "A rails for some kind of train."
+	icon_state = "rail"
+
+/obj/structure/manhattan/rails/tie
+	name = "rails"
+	icon = 'icons/obj/manhattan/rails.dmi'
+	desc = "A rails for some kind of train."
+	icon_state = "tie"

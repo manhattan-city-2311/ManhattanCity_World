@@ -193,6 +193,46 @@
 	name = "speedloader (.45 AP)"
 	ammo_type = /obj/item/ammo_casing/a45ap
 
+///////// 5mm /////////
+
+/obj/item/ammo_magazine/m5mm
+	name = "magazine (5mm)"
+	icon_state = "5x19p_fullsize"
+	origin_tech = list(TECH_COMBAT = 3)
+	mag_type = MAGAZINE
+	matter = list(DEFAULT_WALL_MATERIAL = 300)
+	caliber = "5mm"
+	ammo_type = /obj/item/ammo_casing/a5mm
+	max_ammo = 19
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m5mm/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/m5mm/ap
+	ammo_type = /obj/item/ammo_casing/a5mm/ap
+
+/obj/item/ammo_magazine/m5mm/hollow
+	ammo_type = /obj/item/ammo_casing/a5mm/hollow
+
+/obj/item/ammo_magazine/box/c5mm
+	name = "ammunition Box (5mm)"
+	icon_state = "5mm"
+	origin_tech = list(TECH_COMBAT = 3)
+	matter = list(DEFAULT_WALL_MATERIAL = 1000, "copper" = 50)
+	caliber = "5mm"
+	ammo_type = /obj/item/ammo_casing/a5mm
+	max_ammo = 38
+
+/obj/item/ammo_magazine/box/c5mm/ap
+	name = "ammunition Box (5mm ap)"
+	icon_state = "5mm_ap"
+	origin_tech = list(TECH_COMBAT = 4)
+	matter = list(DEFAULT_WALL_MATERIAL = 1200, "copper" = 350)
+	caliber = "5mm"
+	ammo_type = /obj/item/ammo_casing/a5mm/ap
+	max_ammo = 38
+
 ///////// 9mm /////////
 
 /obj/item/ammo_magazine/m9mm

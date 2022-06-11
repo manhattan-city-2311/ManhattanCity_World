@@ -419,6 +419,12 @@
 					break
 	return
 
+/obj/structure/closet/crate/large/wooden
+	desc = "A hefty wooden crate."
+	icon_state = "woodencrate"
+	icon_opened = "woodencrateopen"
+	icon_closed = "woodencrate"
+
 /obj/structure/closet/crate/secure/large
 	name = "large crate"
 	desc = "A hefty metal crate with an electronic locking system."

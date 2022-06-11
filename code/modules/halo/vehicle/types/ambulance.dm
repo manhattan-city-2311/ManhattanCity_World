@@ -17,21 +17,22 @@
 	exposed_positions = list("driver" = 10,"passenger" = 10)
 
 	vehicle_size = ITEM_SIZE_VEHICLE_LARGE
+	vehicle_carry_size = ITEM_SIZE_VEHICLE
 	capacity_flag = ITEM_SIZE_VEHICLE_LARGE
 
 //	move_sound = 'code/modules/halo/sounds/warthog_move.ogg'
 
 	light_color = "#E1FDFF"
 
-	min_speed = 10
-	max_speed = 6
+	min_speed = 9
+	max_speed = 3
 
-/obj/manhattan/vehicles/ambulance/update_icon()
+/obj/manhattan/vehicles/ambulance/update_object_sprites()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
-		bounds = "96,64"
-	else
 		bounds = "64,96"
+	else
+		bounds = "96,64"
 
 /obj/manhattan/vehicles/ambulance/on_death()
 	. = ..()

@@ -58,14 +58,14 @@
 	new /obj/effect/temporary_effect/lightning_strike(T)
 
 	// For those close up.
-	playsound(T, 'sound/effects/lightningbolt.ogg', 100, 1)
+	playsound(T, 'sound/effects/thunder.ogg', 200, 1)
 
 	// And for those far away. If the strike happens on a planet, everyone on the planet will hear it.
 	// Otherwise only those on the current z-level will hear it.
 	var/sound = get_sfx("thunder")
 	for(var/mob/M in player_list)
 		if( (P && (M.z in P.expected_z_levels)) || M.z == T.z)
-			M.playsound_local(get_turf(M), soundin = sound, vol = 70, vary = FALSE, is_global = TRUE)
+			M.playsound_local(get_turf(M), soundin = sound, vol = 100, vary = FALSE, is_global = TRUE)
 
 	if(cosmetic) // Everything beyond here involves potentially damaging things. If we don't want to do that, stop now.
 		return
@@ -87,6 +87,7 @@
 			// The actual damage/electrocution is handled by tesla_zap().
 			L.Paralyse(5)
 			L.stuttering += 20
+			L.adjustFireLoss(rand(10,20))
 			L.make_jittery(20)
 			L.emp_act(1)
 			to_chat(L, span("critical", "You've been struck by lightning!"))

@@ -23,8 +23,8 @@
 
 	light_color = "#E1FDFF"
 
-	min_speed = 8
-	max_speed = 4
+	min_speed = 7
+	max_speed = 2.5
 
 /obj/manhattan/vehicles/truck/update_object_sprites()
 	. = ..()

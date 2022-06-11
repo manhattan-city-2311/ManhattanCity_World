@@ -339,7 +339,7 @@ var/global/list/light_type_cache = list()
 	light_type = /obj/item/weapon/light/bulb
 	layer = TURF_LAYER+0.002
 	plane = UNDER_MOB_PLANE
-	brightness_range = 2
+	brightness_range = 4
 	brightness_power = 10
 	brightness_color = "#f7f1b9"
 	on_wall = 0
@@ -423,9 +423,9 @@ var/global/list/light_type_cache = list()
 	brightness_power = 6
 	pixel_x = -32
 	plane = ABOVE_MOB_PLANE
-	brightness_color = "#FFE6CC"
-	desc = "A steet pole."
-	light_type = /obj/item/weapon/light/bulb
+	light_color = "#59FF9B"
+	desc = "A street pole."
+	light_type = /obj/item/weapon/light/bulb/neon/blue
 	icon = 'icons/obj/manhattan/streetpoles.dmi'
 	anchored = 1
 	density = 1
@@ -990,6 +990,11 @@ var/global/list/light_type_cache = list()
 	brightness_range = 4
 	color = "#da0205"
 	brightness_color = "#da0205"
+
+/obj/item/weapon/light/bulb/neon/blue
+	color = "#b6e2fb"
+	brightness_color = "#34528a"
+	light_color = "#34528a"
 
 /obj/item/weapon/light/bulb/fire
 	name = "fire bulb"
