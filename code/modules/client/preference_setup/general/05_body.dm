@@ -230,10 +230,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			else if(status == "mechanical")
 				I.robotize()
 
-	for(var/N in character.organs_by_name)
-		var/obj/item/organ/external/O = character.organs_by_name[N]
-		O.markings.Cut()
-
 	for(var/M in pref.body_markings)
 		var/datum/sprite_accessory/marking/mark_datum = body_marking_styles_list[M]
 		var/mark_color = "[pref.body_markings[M]]"
