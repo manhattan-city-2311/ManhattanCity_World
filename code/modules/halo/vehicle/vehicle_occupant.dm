@@ -104,7 +104,7 @@
 			return 0
 		occupants[user] = position
 		visible_message("<span class = 'notice'>[user] enters [src] as [position]</span>")
-//		update_object_sprites()
+		update_object_sprites()
 		return 1
 
 	occupants += user

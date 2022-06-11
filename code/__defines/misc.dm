@@ -326,3 +326,6 @@ var/global/list/##LIST_NAME = list();\
 
 var/global/list/SKILLS = null
 #define LAZYISIN(L, I) (L ? (I in L) : FALSE)
+
+//Elevation Defines//
+#define BASE_ELEVATION 0

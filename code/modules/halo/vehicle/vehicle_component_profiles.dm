@@ -4,7 +4,7 @@
 
 /datum/component_profile
 
-//	var/list/gunner_weapons = list(/obj/item/weapon/gun/vehicle_turret)
+	var/list/gunner_weapons = list(/obj/item/weapon/gun/vehicle_turret)
 	var/pos_to_check = "gunner" //Allows for overriding position checks for equip/firing of mounted weapon.
 	var/obj/manhattan/vehicles/contained_vehicle
 
@@ -52,7 +52,7 @@
 		var/comp_resistance = component.get_resistance_for("bomb")
 		component.damage_integrity(600/ex_severity * (1- comp_resistance/100),)
 
-/*/datum/component_profile/proc/give_gunner_weapons(var/obj/vehicles/source_vehicle)
+/datum/component_profile/proc/give_gunner_weapons(var/obj/manhattan/vehicles/source_vehicle)
 	var/list/gunners = source_vehicle.get_occupants_in_position(pos_to_check)
 	for(var/mob/living/carbon/human/gunner in gunners)
 		if(gunner.get_active_hand() || gunner.get_inactive_hand()) //Let's not give anyone a gun if they're messing with their inventory, or already have a gun.
@@ -66,7 +66,7 @@
 		spawn(1)
 			source_vehicle.update_user_view(gunner)
 
-/datum/component_profile/proc/gunner_fire_check(var/mob/user,var/obj/vehicles/source_vehicle,var/obj/gun)
+/datum/component_profile/proc/gunner_fire_check(var/mob/user,var/obj/manhattan/vehicles/source_vehicle,var/obj/gun)
 	if(!(gun.type in gunner_weapons))
 		return 0
 	var/list/gunners = source_vehicle.get_occupants_in_position(pos_to_check)
@@ -77,7 +77,7 @@
 		return 1
 	else
 		to_chat(user,"<span class = 'notice'>You need to be in the [pos_to_check] position to fire that!</span>")
-	return 0*/
+	return 0
 
 /datum/component_profile/proc/inspect_components(var/mob/user)
 	var/obj/item/vehicle_component/chosen = input(user, "Which component would you like to inspect?","Compoenent Inspection") in components + vital_components

@@ -629,7 +629,7 @@
 			return !density
 		else
 			return 1
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+	if(istype(mover) && (mover.checkpass(PASSTABLE) || mover.elevation != elevation))
 		return 1
 	if(locate(/obj/structure/table/bench) in get_turf(mover))
 		return 0

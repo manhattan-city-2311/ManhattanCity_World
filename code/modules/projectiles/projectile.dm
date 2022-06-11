@@ -30,6 +30,7 @@
 	var/turf/starting = null // the projectile's starting turf
 	var/list/permutated = list() // we've passed through these atoms, don't try to hit them again
 	var/makeshift = 0 //if it is fired from a makeshift weapon, sparks fly out when its fired
+	var/target_elevation = BASE_ELEVATION
 
 	var/p_x = 16
 	var/p_y = 16 // the pixel location of the tile that the player clicked. Default is the center
@@ -172,7 +173,12 @@
 		qdel(src)
 		return 0
 
-	loc = get_turf(user) //move the projectile out into the world
+	if(istype(user.loc,/obj/manhattan/vehicles))
+		var/obj/manhattan/vehicles/V = user.loc
+		permutated += V
+		loc = pick(user.locs)
+	else
+		loc = get_turf(user) //move the projectile out into the world
 
 	firer = user
 	shot_from = launcher.name
@@ -329,6 +335,12 @@
 		if (is_below_sound_pressure(get_turf(src)) && !vacuum_traversal) //Deletes projectiles that aren't supposed to bein vacuum if they leave pressurised areas
 			qdel(src)
 			return
+
+		if(elevation != target_elevation)
+			if(elevation > target_elevation)
+				change_elevation(-1)
+			else
+				change_elevation(1)
 
 		before_move()
 		Move(location.return_turf())
