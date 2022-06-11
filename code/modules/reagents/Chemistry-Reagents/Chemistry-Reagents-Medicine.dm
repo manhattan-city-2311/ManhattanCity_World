@@ -1,12 +1,14 @@
 /* General medicine */
 
-/datum/reagent/inaprovaline
-	name = "Inaprovaline"
-	id = "inaprovaline"
-	description = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients."
+//STABILIZERS
+
+/datum/reagent/metaprolol
+	name = "Metaprolol"
+	id = "metaprolol"
+	description = "Metaprolol is a selective β1 receptor blocker medication. It is used to treat high blood pressure, chest pain due to poor blood flow to the heart, and a number of conditions involving an abnormally fast heart rate."
 	taste_description = "bitterness"
 	reagent_state = LIQUID
-	color = "#00BFFF"
+	color = "#f788bb"
 	overdose = REAGENTS_OVERDOSE * 2
 	metabolism = REM * 0.5
 	scannable = 1
@@ -14,156 +16,46 @@
 
 	tax_type = PHARMA_TAX
 
-/datum/reagent/inaprovaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/metaprolol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE, 15)
-		M.add_chemical_effect(CE_PAINKILLER, 10)
 
-/datum/reagent/inaprovaline/topical
-	name = "Inaprovalaze"
-	id = "inaprovalaze"
-	description = "Inaprovalaze is a topical variant of Inaprovaline."
+/datum/reagent/acetral
+	name = "Acetral"
+	id = "acetral"
+	description = "Acetral is a beta blocker medication for the treatment of hypertension and arrhythmias."
 	taste_description = "bitterness"
 	reagent_state = LIQUID
-	color = "#00BFFF"
+	color = "#68193e"
 	overdose = REAGENTS_OVERDOSE * 2
 	metabolism = REM * 0.5
 	scannable = 1
-	touch_met = REM * 0.75
+	price_tag = 0.5
 
-/datum/reagent/inaprovaline/topical/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	tax_type = PHARMA_TAX
+
+/datum/reagent/acetral/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
-		..()
-		M.adjustToxLoss(2 * removed)
+		M.add_chemical_effect(CE_STABLE, 30)
+		M.add_chemical_effect(CE_PAINKILLER, 10)
 
-/datum/reagent/inaprovaline/topical/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien != IS_DIONA)
-		M.add_chemical_effect(CE_STABLE, 20)
-		M.add_chemical_effect(CE_PAINKILLER, 12)
+//ANALGESICS
 
-/datum/reagent/bicaridine
-	name = "Bicaridine"
-	id = "bicaridine"
-	description = "Bicaridine is an analgesic medication and can be used to treat blunt trauma."
+/datum/reagent/aspirin
+	name = "Aspirin"
+	id = "aspirin"
+	description = "Aspirin is a medication used to reduce pain, fever, or inflammation."
 	taste_description = "bitterness"
 	taste_mult = 3
 	reagent_state = LIQUID
-	color = "#BF0000"
+	color = "#a7b8cc"
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
-
-
 	tax_type = PHARMA_TAX
 
-/datum/reagent/bicaridine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/aspirin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
-		M.heal_organ_damage(6 * removed, 0)
-
-/datum/reagent/bicaridine/overdose(var/mob/living/carbon/M, var/alien, var/removed)
-	..()
-	var/wound_heal = 1.5 * removed
-	M.eye_blurry = min(M.eye_blurry + wound_heal, 250)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/external/O in H.bad_external_organs)
-			for(var/datum/wound/W in O.wounds)
-				if(W.bleeding())
-					W.damage = max(W.damage - wound_heal, 0)
-					if(W.damage <= 0)
-						O.wounds -= W
-				if(W.internal)
-					W.damage = max(W.damage - wound_heal, 0)
-					if(W.damage <= 0)
-						O.wounds -= W
-
-/datum/reagent/bicaridine/topical
-	name = "Bicaridaze"
-	id = "bicaridaze"
-	description = "Bicaridaze is a topical variant of the chemical Bicaridine."
-	taste_description = "bitterness"
-	taste_mult = 3
-	reagent_state = LIQUID
-	color = "#BF0000"
-	overdose = REAGENTS_OVERDOSE * 0.75
-	scannable = 1
-	touch_met = REM * 0.75
-
-/datum/reagent/bicaridine/topical/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	var/chem_effective = 1
-	if(alien == IS_SLIME)
-		chem_effective = 0.75
-	if(alien != IS_DIONA)
-		..(M, alien, removed * chem_effective)
-		M.adjustToxLoss(2 * removed)
-
-/datum/reagent/bicaridine/topical/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
-	var/chem_effective = 1
-	if(alien == IS_SLIME)
-		chem_effective = 0.75
-	if(alien != IS_DIONA)
-		M.heal_organ_damage(6 * removed * chem_effective, 0)
-
-/datum/reagent/kelotane
-	name = "Kelotane"
-	id = "kelotane"
-	description = "Kelotane is a drug used to treat burns."
-	taste_description = "bitterness"
-	reagent_state = LIQUID
-	color = "#FFA800"
-	overdose = REAGENTS_OVERDOSE
-	scannable = 1
-	price_tag = 0.55
-
-	tax_type = PHARMA_TAX
-
-/datum/reagent/kelotane/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien != IS_DIONA)
-		M.heal_organ_damage(0, 6 * removed)
-
-/datum/reagent/dermaline
-	name = "Dermaline"
-	id = "dermaline"
-	description = "Dermaline is the next step in burn medication. Works twice as good as kelotane and enables the body to restore even the direst heat-damaged tissue."
-	taste_description = "bitterness"
-	taste_mult = 1.5
-	reagent_state = LIQUID
-	color = "#FF8000"
-	overdose = REAGENTS_OVERDOSE * 0.5
-	scannable = 1
-	price_tag = 0.7
-
-	tax_type = PHARMA_TAX
-
-/datum/reagent/dermaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien != IS_DIONA)
-		M.heal_organ_damage(0, 12 * removed)
-
-/datum/reagent/dermaline/topical
-	name = "Dermalaze"
-	id = "dermalaze"
-	description = "Dermalaze is a topical variant of the chemical Dermaline."
-	taste_description = "bitterness"
-	taste_mult = 1.5
-	reagent_state = LIQUID
-	color = "#FF8000"
-	overdose = REAGENTS_OVERDOSE * 0.4
-	scannable = 1
-	touch_met = REM * 0.75
-
-/datum/reagent/dermaline/topical/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	var/chem_effective = 1
-	if(alien == IS_SLIME)
-		chem_effective = 0.75
-	if(alien != IS_DIONA)
-		..(M, alien, removed * chem_effective)
-		M.adjustToxLoss(2 * removed)
-
-/datum/reagent/dermaline/topical/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
-	var/chem_effective = 1
-	if(alien == IS_SLIME)
-		chem_effective = 0.75
-	if(alien != IS_DIONA)
-		M.heal_organ_damage(0, 12 * removed * chem_effective)
+		M.add_chemical_effect(CE_PAINKILLER, 10)
 
 /datum/reagent/dylovene
 	name = "Dylovene"

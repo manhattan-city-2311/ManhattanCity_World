@@ -10,7 +10,8 @@
 
 /datum/reagent/hormone/adrenaline
 	name = "Adrenaline"
-	description = "Adrenaline is a hormone used as emergency drug to quickly increase BP by increase HR and CO."
+	id = "adrenaline"
+	description = "Adrenaline is a hormone used as emergency drug to quickly increase BP by increasing HR and CO."
 	overdose = 10
 
 /datum/reagent/hormone/adrenaline/affect_blood(mob/living/carbon/human/M, alien, removed)
@@ -28,12 +29,14 @@
 // METABOLISM
 /datum/reagent/hormone/glucose
 	name = "Glucose"
+	id = "glucose"
 	metabolism = 0 // reduced only by insulin.
 
 // 1u insulin produce 0.1u glucose decrease.
 
 /datum/reagent/hormone/insulin
 	name = "Insulin"
+	id = "insulin"
 	metabolism = 0.1
 	overdose = 1
 

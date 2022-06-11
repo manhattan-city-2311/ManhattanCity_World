@@ -36,11 +36,10 @@
 
 /obj/machinery/chemical_dispenser/ert
 	dispense_reagents = list(
-		"inaprovaline", "ryetalyn", "paracetamol", "tramadol", "oxycodone", "sterilizine", "leporazine",
-		"kelotane", "dermaline", "dexalin", "dexalinp", "tricordrazine", "anti_toxin", "synaptizine",
-		"hyronalin", "arithrazine", "alkysine", "imidazoline", "peridaxon", "bicaridine", "hyperzine",
-		"rezadone", "penicillin", "ethylredoxrazine", "stoxin", "chloralhydrate", "cryoxadone",
-		"clonexadone"
+		"metaprolol", "acetral", "aspirin", "adrenaline", "insulin", "tramadol", "glucose", "sterilizine",
+		"anti_toxin", "synaptizine",
+		"hyronalin", "arithrazine", "alkysine", "imidazoline", "hyperzine",
+		"rezadone", "penicillin", "ethylredoxrazine", "stoxin", "chloralhydrate"
 		)
 
 /obj/machinery/chemical_dispenser/bar_soft
