@@ -277,7 +277,7 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 /mob/living/carbon/human/proc/get_blood_volume()
 	. = vessel.get_reagent_amount(/datum/reagent/blood) / species.blood_volume
 
-/mob/living/carbon/human/proc/update_cm()
+/mob/living/carbon/human/process()
 	var/hr = get_heart_rate()
 	if(hr <= 15)
 		dpressure = 0

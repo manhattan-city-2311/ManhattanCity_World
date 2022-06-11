@@ -33,12 +33,11 @@
 	calc_k()
 	gvr = k*218.50746
 	mcv = 799920/gvr
-	update_cm()
 
 
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
-
+	setup_cm()
 	if(!dna)
 		dna = new /datum/dna(null)
 		// Species name is handled by set_species()

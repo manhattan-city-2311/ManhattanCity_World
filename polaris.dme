@@ -258,7 +258,6 @@
 #include "code\controllers\subsystems\initialization\persistence.dm"
 #include "code\controllers\subsystems\initialization\webhooks.dm"
 #include "code\controllers\subsystems\processing\fastprocess.dm"
-#include "code\controllers\subsystems\processing\medicine.dm"
 #include "code\controllers\subsystems\processing\obj.dm"
 #include "code\controllers\subsystems\processing\processing.dm"
 #include "code\controllers\subsystems\processing\turfs.dm"
