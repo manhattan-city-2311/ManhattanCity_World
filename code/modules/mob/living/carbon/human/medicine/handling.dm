@@ -15,9 +15,9 @@
 	handle_nourishment()
 
 	handle_weight()
-		
+
 	process()
 
 	handle_glucose_level()
 
-	handle_additictions()
+//	handle_additictions()
