@@ -558,6 +558,58 @@
 	breath.update_values()
 	return 1
 
+/mob/living/carbon/human/proc/handle_glucose_level()
+	var/level = bloodstr.get_reagent_amount(/datum/reagent/hormone/glucose)
+	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
+
+	switch(level)
+		if(-INFINITY to GLUCOSE_LEVEL_LCRITICAL)
+			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.1)
+			if(prob(8) && H.get_arrythmia_score() < ARRYTHMIA_SEVERITY_OVERWRITING)
+				H?.make_common_arrythmia(rand(2, ARRYTHMIA_SEVERITY_OVERWRITING - 1))
+			make_dizzy(rand(80, 160))
+			make_jittery(rand(30, 100))
+			if(prob(10))
+				Paralyse(2)
+		if(GLUCOSE_LEVEL_LCRITICAL to GLUCOSE_LEVEL_L2BAD)
+			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.45)
+			if(prob(2) && H.get_arrythmia_score() < (ARRYTHMIA_SEVERITY_OVERWRITING-1))
+				H?.make_common_arrythmia(rand(1, ARRYTHMIA_SEVERITY_OVERWRITING - 2))
+			make_dizzy(rand(50, 80))
+			make_jittery(rand(30, 60))
+			if(prob(5))
+				Paralyse(1)
+		if(GLUCOSE_LEVEL_LBAD to GLUCOSE_LEVEL_NORMAL)
+			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.7)
+			make_dizzy(rand(5, 50))
+			make_jittery(rand(5, 30))
+
+		if(GLUCOSE_LEVEL_NORMAL to GLUCOSE_LEVEL_HBAD)
+			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.95)
+			make_dizzy(rand(5, 15))
+		if(GLUCOSE_LEVEL_HBAD to GLUCOSE_LEVEL_H2BAD)
+			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.80)
+			make_dizzy(rand(15, 30))
+			make_jittery(rand(5, 15))
+		if(GLUCOSE_LEVEL_HBAD to GLUCOSE_LEVEL_H2BAD)
+			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.55)
+			make_dizzy(rand(30, 50))
+			make_jittery(rand(15, 25))
+		if(GLUCOSE_LEVEL_H2BAD to GLUCOSE_LEVEL_HCRITICAL)
+			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.40)
+			if(prob(2) && H.get_arrythmia_score() < (ARRYTHMIA_SEVERITY_OVERWRITING-1))
+				H?.make_common_arrythmia(rand(1, ARRYTHMIA_SEVERITY_OVERWRITING - 2))
+			if(prob(10))
+				Paralyse(1)
+		if(GLUCOSE_LEVEL_HCRITICAL to GLUCOSE_LEVEL_H2CRITICAL)
+			if(prob(20))
+				Paralyse(1)
+			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.10)
+			if(prob(8) && H.get_arrythmia_score() < ARRYTHMIA_SEVERITY_OVERWRITING)
+				H?.make_common_arrythmia(rand(2, ARRYTHMIA_SEVERITY_OVERWRITING - 1))
+			make_dizzy(rand(80, 160))
+			make_jittery(rand(30, 100))
+
 /mob/living/carbon/human/handle_environment(datum/gas_mixture/environment)
 	if(!environment)
 		return
@@ -921,10 +973,11 @@
 	if(stat == DEAD)	//DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
 		blinded = 1
 		silent = 0
+		handle_decay()
 	else				//ALIVE. LIGHTS ARE ON
 		updatehealth()	//TODO
 
-		if(health <= config.health_threshold_dead || (should_have_organ("brain") && !has_brain()))
+		if((should_have_organ("brain") && !has_brain()))
 			death()
 			blinded = 1
 			silent = 0
@@ -1235,13 +1288,12 @@
 				healths.appearance = healths_ma
 
 		if(nutrition_icon)
-			switch(bloodstr?.get_reagent_amount(/datum/reagent/hormone/glucose))
-				if(450 to INFINITY)				nutrition_icon.icon_state = "nutrition0"
-				if(350 to 450)					nutrition_icon.icon_state = "nutrition1"
-				if(250 to 350)					nutrition_icon.icon_state = "nutrition2"
-				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
-				if(50 to 150)					nutrition_icon.icon_state = "nutrition4"
-				else						nutrition_icon.icon_state = "nutrition5"
+			switch(bloodstr?.get_reagent_amount("glucose"))
+				if(GLUCOSE_LEVEL_HBAD - 2   to INFINITY)				    nutrition_icon.icon_state = "nutrition0"
+				if(GLUCOSE_LEVEL_NORMAL - 0.1 to INFINITY)		nutrition_icon.icon_state = "nutrition1"
+				if(GLUCOSE_LEVEL_LBAD   to GLUCOSE_LEVEL_NORMAL - 0.1)	nutrition_icon.icon_state = "nutrition2"
+				if(GLUCOSE_LEVEL_LBAD - 0.5  to GLUCOSE_LEVEL_LBAD)		nutrition_icon.icon_state = "nutrition3"
+				else														nutrition_icon.icon_state = "nutrition4"
 		if(!isSynthetic())
 			if(hydration_icon)
 				switch(hydration)
@@ -1713,6 +1765,46 @@
 	var/obj/item/organ/internal/brain/brain = internal_organs_by_name[O_BRAIN]
 	if(!brain)
 		return // Still no brain.
+
+/mob/living/carbon/human/proc/handle_decay()
+	var/decaytime = world.time - timeofdeath
+	var/image/flies = image('icons/effects/effects.dmi', "rotten")//This is a hack, there has got to be a safer way to do this but I don't know it at the moment.
+
+	if(isSynthetic())
+		return
+
+	if(decaytime <= 6000) //10 minutes for decaylevel1 -- stinky
+		return
+
+	if(decaytime > 6000 && decaytime <= 12000)//20 minutes for decaylevel2 -- bloated and very stinky
+		decaylevel = 1
+		overlays -= flies
+		overlays += flies
+
+	if(decaytime > 12000 && decaytime <= 18000)//30 minutes for decaylevel3 -- rotting and gross
+		decaylevel = 2
+
+	if(decaytime > 18000 && decaytime <= 27000)//45 minutes for decaylevel4 -- skeleton
+		decaylevel = 3
+
+	if(decaytime > 27000)
+		decaylevel = 4
+		overlays -= flies
+		flies = null
+		ChangeToSkeleton()
+		return
+
+	for(var/mob/living/carbon/human/H in range(decaylevel, src))
+		if(prob(2))
+			if(istype(loc,/obj/item/bodybag))
+				return
+			if(H.wear_mask)
+				return
+			if(H.stat == DEAD)//This shouldn't even need to be a fucking check.
+				return
+			to_chat(H, "<spawn class='warning'>You smell something foul...")
+			if(prob(75))
+				H.vomit()
 
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS

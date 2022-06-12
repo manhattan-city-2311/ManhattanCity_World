@@ -1,18 +1,21 @@
 /mob/living/carbon/human/proc/handle_medicine()
-	if(stat != DEAD)
-		//Organs and blood
-		handle_organs()
-		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
+	//Organs and blood
+	handle_organs()
 
-		handle_shock()
+	stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
 
-		handle_pain()
+	handle_shock()
 
-		handle_medical_side_effects()
+	handle_pain()
 
-		handle_heartbeat()
+	handle_medical_side_effects()
 
-		handle_nourishment()
+	handle_heartbeat()
 
-		handle_weight()
-		process()
+	handle_nourishment()
+
+	handle_weight()
+		
+	process()
+
+	handle_glucose_level()
