@@ -442,3 +442,85 @@
 	icon_state = "tape-splint"
 	amount = 1
 	splintable_organs = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
+
+
+/obj/item/stack/medical/gauze
+	name = "roll of gauzes"
+	singular_name = "gauze"
+	desc = "Gauzes are very important in trauma treatment, surgery operations."
+	icon = 'icons/obj/medicine.dmi'
+	icon_state = "gauze"
+	heal_brute = 6
+	origin_tech = list(TECH_BIO = 1)
+
+/obj/item/stack/medical/gauze/attack(mob/living/carbon/M as mob, mob/user as mob)
+	if(..())
+		return 1
+
+	if (!istype(M, /mob/living/carbon/human))
+		return
+
+	var/mob/living/carbon/human/H = M
+	var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting) //nullchecked by ..()
+	if(affecting.is_gauzed())
+		to_chat(user, "<span class='warning'>[M]'s [affecting.name] is already gauzed.</span>")
+		return 1
+	user.visible_message("<span class='notice'>\The [user] starts gauzing [M]'s [affecting.name].</span>", \
+			             "<span class='notice'>You start gauzing [M]'s [affecting.name].</span>" )
+
+	if(!do_mob(user, M, 5 SECONDS))
+		to_chat(user, "<span class='notice'>You must stand still to gauze [affecting.name].</span>")
+		use(1)
+		return
+
+	for (var/datum/wound/W in affecting.wounds)
+		if (W.bandaged)
+			continue
+		W.heal_damage(heal_brute)
+
+	affecting.gauze()
+
+	affecting.update_damages()
+	use(1)
+
+/obj/item/stack/medical/harness
+	name = "roll of harnesses"
+	singular_name = "harness"
+	desc = "Harnesses are very important in trauma treatment, surgery operations."
+	icon = 'icons/obj/medicine.dmi'
+	icon_state = "harness"
+	heal_brute = 0
+	origin_tech = list(TECH_BIO = 1)
+	var/list/splintable_organs = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG, BP_L_HAND, BP_R_HAND, BP_L_FOOT, BP_R_FOOT)
+
+/obj/item/stack/medical/harness/attack(mob/living/carbon/M as mob, mob/user as mob)
+	if(..())
+		return 1
+
+	if (!istype(M, /mob/living/carbon/human))
+		return
+
+	var/mob/living/carbon/human/H = M
+	var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting) //nullchecked by ..()
+
+	if(!(affecting.organ_tag in splintable_organs))
+		to_chat(user, "<span class='danger'>You can't use \the [src] to apply a harness there!</span>")
+		return
+	if(affecting.is_clamped())
+		to_chat(user, "<span class='warning'>[M]'s [affecting.name] is already harnessed.</span>")
+		return 1
+	user.visible_message("<span class='notice'>\The [user] starts harness [M]'s [affecting.name].</span>", \
+			             "<span class='notice'>You start harness [M]'s [affecting.name].</span>" )
+
+	if(!do_mob(user, M, 5 SECONDS))
+		to_chat(user, "<span class='notice'>You must stand still to harness [affecting.name].</span>")
+		use(1)
+		return
+
+	affecting.clamp_()
+
+	affecting.update_damages()
+
+	H.verbs += /mob/proc/remove_harness
+
+	use(1)

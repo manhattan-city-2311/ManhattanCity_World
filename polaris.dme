@@ -2117,6 +2117,7 @@
 #include "code\modules\mob\living\carbon\human\unarmed_attack.dm"
 #include "code\modules\mob\living\carbon\human\update_icons.dm"
 #include "code\modules\mob\living\carbon\human\weight.dm"
+#include "code\modules\mob\living\carbon\human\medicine\addictions.dm"
 #include "code\modules\mob\living\carbon\human\medicine\blood.dm"
 #include "code\modules\mob\living\carbon\human\medicine\handling.dm"
 #include "code\modules\mob\living\carbon\human\medicine\hormones.dm"

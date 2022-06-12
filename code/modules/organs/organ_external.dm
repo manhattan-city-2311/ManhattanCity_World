@@ -74,6 +74,10 @@
 	var/burn_stage = 0		//Surgical repair stage for burn.
 	var/brute_stage = 0		//Surgical repair stage for brute.
 
+	var/gauzed
+	var/clamped
+
+
 	// HUD element variable, see organ_icon.dm get_damage_hud_image()
 	var/image/hud_damage_image
 
@@ -1316,3 +1320,25 @@ Note that amputating the affected organ does in fact remove the infection from t
 				if(6 to INFINITY)
 					flavor_text += "a ton of [wound]\s"
 		return english_list(flavor_text)
+
+/obj/item/organ/external/proc/is_gauzed()
+	return gauzed
+
+/obj/item/organ/external/proc/is_clamped()
+	return clamped
+
+/obj/item/organ/external/proc/gauze()
+	status &= ~ORGAN_BLEEDING
+	var/rval = 0
+	for(var/datum/wound/W in wounds)
+		rval |= !W.bandaged
+		W.bandaged = 1
+	if(rval)
+		owner.update_surgery()
+	gauzed = world.time
+
+/obj/item/organ/external/proc/clamp_()
+	clamped = world.time
+
+	for(var/obj/item/organ/external/C in children)
+		clamped = -1

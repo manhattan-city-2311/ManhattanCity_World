@@ -9,7 +9,7 @@
  */
 /obj/item/weapon/storage/firstaid
 	name = "first aid kit"
-	desc = "It's an emergency medical kit for those serious boo-boos."
+	desc = "A cheap first-aid kit for general injuries."
 	icon_state = "firstaid"
 	throw_speed = 2
 	throw_range = 8
@@ -26,30 +26,25 @@
 
 /obj/item/weapon/storage/firstaid/fire
 	name = "fire first aid kit"
-	desc = "It's an emergency medical kit for when the toxins lab <i>spontaneously</i> burns down."
+	desc = "It's an emergency medical kit for when the toxins lab <i>accidentally</i> burns down."
 	icon_state = "ointment"
 	item_state_slots = list(slot_r_hand_str = "firstaid-ointment", slot_l_hand_str = "firstaid-ointment")
 	icon_variety = list("ointment","firefirstaid")
 	starts_with = list(
 		/obj/item/device/healthanalyzer,
-		/obj/item/weapon/reagent_containers/hypospray/autoinjector,
 		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/ointment,
-		/obj/item/weapon/reagent_containers/pill/kelotane,
-		/obj/item/weapon/reagent_containers/pill/kelotane,
-		/obj/item/weapon/reagent_containers/pill/kelotane
+		/obj/item/stack/medical/ointment
 	)
 
 /obj/item/weapon/storage/firstaid/regular
 	icon_state = "firstaid"
 	starts_with = list(
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/gauze,
+		/obj/item/stack/medical/harness,
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/medical/ointment,
 		/obj/item/stack/medical/ointment,
-		/obj/item/device/healthanalyzer,
-		/obj/item/weapon/reagent_containers/hypospray/autoinjector
+		/obj/item/device/healthanalyzer
 	)
 
 /obj/item/weapon/storage/firstaid/toxin
@@ -59,7 +54,6 @@
 	item_state_slots = list(slot_r_hand_str = "firstaid-toxin", slot_l_hand_str = "firstaid-toxin")
 	icon_variety = list("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
 	starts_with = list(
-		/obj/item/weapon/reagent_containers/syringe/antitoxin,
 		/obj/item/weapon/reagent_containers/syringe/antitoxin,
 		/obj/item/weapon/reagent_containers/syringe/antitoxin,
 		/obj/item/weapon/reagent_containers/pill/antitox,
@@ -76,10 +70,6 @@
 	starts_with = list(
 		/obj/item/weapon/reagent_containers/pill/dexalin,
 		/obj/item/weapon/reagent_containers/pill/dexalin,
-		/obj/item/weapon/reagent_containers/pill/dexalin,
-		/obj/item/weapon/reagent_containers/pill/dexalin,
-		/obj/item/weapon/reagent_containers/hypospray/autoinjector,
-		/obj/item/weapon/reagent_containers/syringe/inaprovaline,
 		/obj/item/device/healthanalyzer
 	)
 
@@ -89,13 +79,11 @@
 	icon_state = "advfirstaid"
 	item_state_slots = list(slot_r_hand_str = "firstaid-advanced", slot_l_hand_str = "firstaid-advanced")
 	starts_with = list(
-		/obj/item/weapon/reagent_containers/hypospray/autoinjector,
-		/obj/item/stack/medical/advanced/bruise_pack,
-		/obj/item/stack/medical/advanced/bruise_pack,
-		/obj/item/stack/medical/advanced/bruise_pack,
-		/obj/item/stack/medical/advanced/ointment,
-		/obj/item/stack/medical/advanced/ointment,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/gauze,
+		/obj/item/stack/medical/harness,
+		/obj/item/stack/medical/splint,
+		/obj/item/stack/medical/ointment
 	)
 
 /obj/item/weapon/storage/firstaid/combat

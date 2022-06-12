@@ -19,3 +19,5 @@
 	process()
 
 	handle_glucose_level()
+
+	handle_additictions()
