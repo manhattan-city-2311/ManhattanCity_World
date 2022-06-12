@@ -38,36 +38,6 @@
 
 	output += "<a href='byond://?src=\ref[src];show_preferences=1'>Character Panel</A></p>"
 
-	output += "<a href='byond://?src=\ref[src];observe=1'>Observe</A> "
-
-	if(!IsGuestKey(src.key))
-		establish_db_connection()
-
-		if(dbcon.IsConnected())
-			var/isadmin = 0
-			if(src.client && src.client.holder)
-				isadmin = 1
-			var/DBQuery/query = dbcon.NewQuery("SELECT id FROM erro_poll_question WHERE [(isadmin ? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime AND id NOT IN (SELECT pollid FROM erro_poll_vote WHERE ckey = \"[ckey]\") AND id NOT IN (SELECT pollid FROM erro_poll_textreply WHERE ckey = \"[ckey]\")")
-			query.Execute()
-			var/newpoll = 0
-			while(query.NextRow())
-				newpoll = 1
-				break
-			if(newpoll)
-				output += "<b><a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A> (NEW!)</b>"
-			else
-				output += "<a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A>"
-
-	if(news_data.city_newspaper)
-		output += "<a href='byond://?src=\ref[src];open_city_news=1'>Show [using_map.station_name] News</A>"
-	if(SSpersistent_options)
-		var/ballot_no = LAZYLEN(SSpersistent_options.get_ballots(active_only = TRUE))
-		output += "<a href='byond://?src=\ref[src];show_referendums=1'>Show Referendums[ballot_no ? " ([ballot_no] Active)" : ""]</A>"
-	if(client.check_for_new_server_news())
-		output += "<b><a href='byond://?src=\ref[src];shownews=1'>Game Updates</A> (NEW!)</b>"
-	else
-		output += "<a href='byond://?src=\ref[src];shownews=1'>Game Updates</A>"
-
 	output +="<hr>"
 
 	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
@@ -79,8 +49,6 @@
 	else
 		output += "<a href='byond://?src=\ref[src];manifest=1'>Citizen's Roster</A><br>"
 		output += "<p><a href='byond://?src=\ref[src];late_join=1'>Join Game!</A>"
-		if(config.allow_lobby_antagonists)
-			output += "<p><a href='byond://?src=\ref[src];join_as_antag=1'>Join As Antagonist</A>"
 
 
 	output += "<hr>Current character: <b>[client.prefs.real_name]</b>, [client.prefs.economic_status]<br>"
@@ -164,55 +132,10 @@
 		ready = !ready
 		new_player_panel_proc()
 
-	if(href_list["show_referendums"])
-		ShowReferendums()
-		return
-
 	if(href_list["refresh"])
 		//src << browse(null, "window=playersetup") //closes the player setup window
 		panel.close()
 		new_player_panel_proc()
-
-	if(href_list["observe"])
-		if(!client.holder)
-			to_chat(src, "No no, you aren`t admin!")
-			return
-		if(alert(src,"Are you sure you wish to observe? You will have to wait 5 minutes before being able to respawn!","Player Setup","Yes","No") == "Yes")
-			if(!client)	return 1
-
-				//Make a new mannequin quickly, and allow the observer to take the appearance
-			var/mob/living/carbon/human/dummy/mannequin = new()
-			client.prefs.dress_preview_mob(mannequin)
-			var/mob/observer/dead/observer = new(mannequin)
-			observer.forceMove(null) //Let's not stay in our doomed mannequin
-			qdel(mannequin)
-
-			spawning = 1
-			src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // MAD JAMS cant last forever yo
-
-
-			observer.started_as_observer = 1
-			close_spawn_windows()
-			var/obj/O = locate("landmark*Observer-Start")
-			if(istype(O))
-				to_chat(src,"<span class='notice'>Now teleporting.</span>")
-				observer.forceMove(O.loc)
-			else
-				to_chat(src,"<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the city map.</span>")
-			observer.timeofdeath = world.time // Set the time of death so that the respawn timer works correctly.
-
-			announce_ghost_joinleave(src)
-
-//			if(client.prefs.be_random_name)
-//				client.prefs.real_name = random_name(client.prefs.identifying_gender)
-			observer.real_name = client.prefs.real_name
-			observer.name = observer.real_name
-			if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
-				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
-			observer.key = key
-			qdel(src)
-
-			return 1
 
 	if(href_list["late_join"])
 
@@ -221,37 +144,6 @@
 			return
 
 		LateChoices()
-
-	if(href_list["join_as_antag"])
-
-		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
-			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
-			return
-
-		JoinAsAntag()
-
-	if(href_list["JoinAsAntag"])	//pre- SelectedJob usage for new menu
-		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
-			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
-			return
-
-		var/E = href_list["JoinAsAntag"]
-
-		var/antag_type = E
-		var/datum/antagonist/antag = null
-
-		for(var/datum/antagonist/A in GLOB.lobbyjoin_antagonists)
-			if(A.id == antag_type)
-				antag = A
-
-		if(!antag)
-			return
-
-		JoinAntag(antag)
-
-		return
-
-
 
 	if(href_list["manifest"])
 		ViewManifest()
@@ -297,157 +189,11 @@
 	if(href_list["SelectedJob"])
 		JoinLate(href_list["SelectedJob"])
 
-
-	if(href_list["privacy_poll"])
-		establish_db_connection()
-		if(!dbcon.IsConnected())
-			return
-		var/voted = 0
-
-		//First check if the person has not voted yet.
-		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM erro_privacy WHERE ckey='[src.ckey]'")
-		query.Execute()
-		while(query.NextRow())
-			voted = 1
-			break
-
-		//This is a safety switch, so only valid options pass through
-		var/option = "UNKNOWN"
-		switch(href_list["privacy_poll"])
-			if("signed")
-				option = "SIGNED"
-			if("anonymous")
-				option = "ANONYMOUS"
-			if("nostats")
-				option = "NOSTATS"
-			if("later")
-				usr << browse(null,"window=privacypoll")
-				return
-			if("abstain")
-				option = "ABSTAIN"
-
-		if(option == "UNKNOWN")
-			return
-
-		if(!voted)
-			var/sql = "INSERT INTO erro_privacy VALUES (null, Now(), '[src.ckey]', '[option]')"
-			var/DBQuery/query_insert = dbcon.NewQuery(sql)
-			query_insert.Execute()
-			to_chat(usr, "<b>Thank you for your vote!</b>")
-			usr << browse(null,"window=privacypoll")
-
 	if(!ready && href_list["preference"])
 		if(client)
 			client.prefs.process_link(src, href_list)
 	else if(!href_list["late_join"])
 		new_player_panel()
-
-	if(href_list["showpoll"])
-
-		handle_player_polling()
-		return
-
-	if(href_list["pollid"])
-
-		var/pollid = href_list["pollid"]
-		if(istext(pollid))
-			pollid = text2num(pollid)
-		if(isnum(pollid))
-			src.poll_player(pollid)
-		return
-
-	if(href_list["votepollid"] && href_list["votetype"])
-		var/pollid = text2num(href_list["votepollid"])
-		var/votetype = href_list["votetype"]
-		switch(votetype)
-			if("OPTION")
-				var/optionid = text2num(href_list["voteoptionid"])
-				vote_on_poll(pollid, optionid)
-			if("TEXT")
-				var/replytext = href_list["replytext"]
-				log_text_poll_reply(pollid, replytext)
-			if("NUMVAL")
-				var/id_min = text2num(href_list["minid"])
-				var/id_max = text2num(href_list["maxid"])
-
-				if( (id_max - id_min) > 100 )	//Basic exploit prevention
-					to_chat(usr, "The option ID difference is too big. Please contact administration or the database admin.")
-					return
-
-				for(var/optionid = id_min; optionid <= id_max; optionid++)
-					if(!isnull(href_list["o[optionid]"]))	//Test if this optionid was replied to
-						var/rating
-						if(href_list["o[optionid]"] == "abstain")
-							rating = null
-						else
-							rating = text2num(href_list["o[optionid]"])
-							if(!isnum(rating))
-								return
-
-						vote_on_numval_poll(pollid, optionid, rating)
-			if("MULTICHOICE")
-				var/id_min = text2num(href_list["minoptionid"])
-				var/id_max = text2num(href_list["maxoptionid"])
-
-				if( (id_max - id_min) > 100 )	//Basic exploit prevention
-					to_chat(usr, "The option ID difference is too big. Please contact administration or the database admin.")
-					return
-
-				for(var/optionid = id_min; optionid <= id_max; optionid++)
-					if(!isnull(href_list["option_[optionid]"]))	//Test if this optionid was selected
-						vote_on_poll(pollid, optionid, 1)
-
-	if(href_list["shownews"])
-		handle_server_news()
-		return
-
-	switch(href_list["action"])
-		if("add_vote")
-			. = 1
-
-			var/datum/voting_ballot/VO = locate(href_list["ballot"])
-			var/vote = href_list["vote"]
-
-			if(!VO || !VO.active || (lowertext(usr.ckey) in VO.ckeys_voted))
-				return
-
-			var/response = alert(usr, "Please confirm that you want to vote [vote] on \"[VO.name]\"? This cannot be undone.", "Final Referendum Confirmation", "Yes", "No")
-			if(!response || response == "No")
-				return FALSE
-
-			VO.add_vote(vote, usr)
-			ShowReferendums()
-
-		if("view_full")
-
-			var/O = locate(href_list["option"])
-			var/datum/persistent_option/PO = O
-
-			if(!O)
-				return
-
-			var/dat = PO.get_formatted_value()
-
-			var/datum/browser/popup = new(usr, "option_view", "[PO.name]", 350, 500, src)
-			popup.set_content(jointext(dat,null))
-			popup.open()
-
-			onclose(usr, "option_view")
-
-		if("view_ref_full")
-
-			var/datum/voting_ballot/VO = locate(href_list["ballot"])
-
-			if(!VO)
-				return
-
-			var/dat = VO.get_formatted_proposed_value()
-
-			var/datum/browser/popup = new(usr, "option_ref_view", "[src]", 350, 500, src)
-			popup.set_content(jointext(dat,null))
-			popup.open()
-
-			onclose(usr, "option_ref_view")
 
 /mob/new_player/proc/handle_server_news()
 	if(!client)
@@ -556,7 +302,7 @@
 		character.buckled.set_dir(character.dir)
 
 	ticker.mode.latespawn(character)
-	matchmaker.do_matchmaking(character)
+	//matchmaker.do_matchmaking(character)
 
 	if(character.mind.assigned_role != "Cyborg")
 
