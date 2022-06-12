@@ -36,10 +36,10 @@
 
 /obj/machinery/chemical_dispenser/ert
 	dispense_reagents = list(
-		"metaprolol", "acetral", "aspirin", "adrenaline", "insulin", "tramadol", "glucose", "sterilizine",
+		"metaprolol", "acetral", "aspirin", "adrenaline", "insulin", "tramadol", "glucose",
 		"anti_toxin", "synaptizine",
-		"hyronalin", "arithrazine", "alkysine", "imidazoline", "hyperzine",
-		"rezadone", "penicillin", "ethylredoxrazine", "stoxin", "chloralhydrate"
+		"hyronalin", "hyperzine",
+		"rezadone", "penicillin", "chloralhydrate"
 		)
 
 /obj/machinery/chemical_dispenser/bar_soft
