@@ -12,7 +12,7 @@
 
 	comp_prof = /datum/component_profile/warthog
 
-//	ammo_containers = newlist(/obj/item/ammo_magazine/warthog_mag)
+	ammo_containers = newlist(/obj/item/ammo_magazine/warthog_mag)
 
 	occupants = list(1,1)
 	exposed_positions = list("driver" = 10,"passenger" = 10)
@@ -35,7 +35,26 @@
 	resistances = list("brute"=80,"burn"=80,"emp"=25,"bomb"=50)
 
 /datum/component_profile/warthog
+	pos_to_check = "gunner"
+	gunner_weapons = list(/obj/item/weapon/gun/vehicle_turret/warthog_turret)
 	vital_components = newlist(/obj/item/vehicle_component/health_manager/warthog)
+
+/obj/item/ammo_magazine/warthog_mag
+	name = "Internal Ammunition Storage"
+	caliber = "a762"
+	max_ammo = 200
+	ammo_type = /obj/item/ammo_casing/a762/ap
+
+/obj/item/weapon/gun/vehicle_turret/warthog_turret
+	name = "Warthog Turret"
+	desc = "A rapid-fire mounted machine gun."
+
+	fire_delay = 20
+
+	dispersion = list(0,0,0,0,0,1)
+	burst_accuracy = list(0,0,0,0,0.-1)
+
+	magazine_type = /obj/item/ammo_magazine/warthog_mag
 
 /obj/manhattan/vehicles/halo/warthog/turretless
 	name = "M12 Warthog LRV Recon Modified"

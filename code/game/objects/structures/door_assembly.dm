@@ -22,6 +22,14 @@
 	New()
 		update_state()
 
+/obj/structure/door_assembly/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+	if(air_group || (height==0))
+		return 1
+	if(istype(mover) && (mover.checkpass(PASSTABLE) || mover.elevation != elevation))
+		return 1
+	else
+		return 0
+
 /obj/structure/door_assembly/door_assembly_hatch
 	icon = 'icons/obj/doors/hatch/door.dmi'
 	panel_icon = 'icons/obj/doors/hatch/panel.dmi'

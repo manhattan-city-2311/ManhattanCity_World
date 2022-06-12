@@ -172,7 +172,7 @@
 		return state
 	if(istype(mover, /obj/effect/beam))
 		return !opacity
-	return !density
+	return (!density || (mover && mover.elevation != elevation))
 
 /obj/structure/inflatable/door/proc/TryToSwitchState(atom/user)
 	if(isSwitchingStates) return

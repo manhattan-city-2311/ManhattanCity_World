@@ -2,13 +2,12 @@
 /obj/item/weapon/gun/vehicle_turret
 	name = "Vehicle Turret"
 
-	icon = 'code/modules/halo/weapons/turrets/turret_items.dmi'
+	icon = 'code/modules/halo/vehicle/turret_items.dmi'
 	icon_state = "chaingun_obj"
 	item_state = "chaingun_obj"
-	w_class = ITEM_SIZE_LARGE
-	can_rename = 0
+	w_class = ITEMSIZE_LARGE
 
-	var/obj/vehicles/linked_vehicle
+	var/obj/manhattan/vehicles/linked_vehicle
 	var/magazine_type = /obj/item/ammo_magazine
 	var/obj/item/ammo_magazine/mag_use
 

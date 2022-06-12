@@ -218,7 +218,7 @@
 
 /obj/manhattan/vehicles/process()
 	if(world.time % 3)
-//		comp_prof.give_gunner_weapons(src)
+		comp_prof.give_gunner_weapons(src)
 		update_object_sprites()
 		if(active)
 			var/list/drivers = get_occupants_in_position("driver")
@@ -526,9 +526,9 @@
 		spawn_datum.handle_spawn(user,src)*/
 
 /obj/manhattan/vehicles/attackby(var/obj/item/I,var/mob/user)
-/*	if(elevation > user.elevation || elevation > I.elevation)
+	if(elevation > user.elevation || elevation > I.elevation)
 		to_chat(user,"<span class = 'notice'>[name] is too far away to interact with!</span>")
-		return*/
+		return
 	if(!istype(I))
 		return
 	if(istype(I,/obj/item/weapon/grab))

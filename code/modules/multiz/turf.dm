@@ -35,7 +35,6 @@
 
 /turf/simulated/open/initialize()
 	. = ..()
-	ASSERT(HasBelow(z))
 	update()
 
 /turf/simulated/open/Entered(var/atom/movable/mover)
