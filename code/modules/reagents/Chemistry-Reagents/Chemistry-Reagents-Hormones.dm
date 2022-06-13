@@ -19,11 +19,13 @@
 
 /datum/reagent/hormone/noradrenaline
 	name = "Noradrenaline"
+	id = "noradrenaline"
 	description = "Noradrenaline is a hormone used as emergency drug in shock states to increase BP by vasoconstricting."
 	overdose = 10
 
 /datum/reagent/hormone/dopamine
 	name = "Dopamine"
+	id = "dopamine"
 	description = "Dopamine is a hormone used to treat hypotension by vasoconstricting. Can cause arrythmia."
 
 // METABOLISM
@@ -41,28 +43,34 @@
 	overdose = 1
 
 /datum/reagent/hormone/insulin/affect_blood(mob/living/carbon/human/M, alien, removed)
-	var/amount = min(M.bloodstr.get_reagent_amount(/datum/reagent/hormone/glucose), 0.1)
-	M.bloodstr.remove_reagent(/datum/reagent/hormone/glucose, amount)
-	M.bloodstr.remove_reagent(/datum/reagent/hormone/potassium, max(amount * 10, 0.1))
+	var/amount = min(M.bloodstr.get_reagent_amount("glucose"), 0.1)
+	M.bloodstr.remove_reagent("glucose", amount)
+	M.bloodstr.remove_reagent("potassium_hormone", max(amount * 10, 0.1))
 	volume = max(0, amount * 10)
 	M.adjustToxLoss(-amount * 15)
 
 // 1u glucagone produces 0.1u glucose increase.
 /datum/reagent/hormone/glucagone
 	name = "Glucagone"
+	id = "glucagone"
 
 // MARKERS
 
 /datum/reagent/hormone/marker/troponin_t
 	name = "Troponin-T"
+	id = "troponin-t"
 /datum/reagent/hormone/marker/bilirubine
 	name = "Bilirubine"
+	id = "bilirubine"
 /datum/reagent/hormone/marker/ast
 	name = "AST"
+	id = "ast"
 /datum/reagent/hormone/marker/alt
 	name = "ALT"
+	id = "alt"
 /datum/reagent/hormone/marker/crp
 	name = "CRP"
+	id = "crp"
 
 
 // Ions.
@@ -70,12 +78,13 @@
 
 /datum/reagent/hormone/potassium
 	name = "Potassium"
+	id = "potassium_hormone"
 
 /datum/reagent/hormone/potassium/affect_blood(mob/living/carbon/human/H, alien, removed)
 	var/obj/item/organ/internal/heart/heart = H.internal_organs_by_name[O_HEART]
 	var/amount = volume * 0.99
-	amount -= H.bloodstr.get_reagent_amount(/datum/reagent/hormone/adrenaline) * 0.7
-	amount -= H.bloodstr.get_reagent_amount(/datum/reagent/hormone/noradrenaline) * 0.5
+	amount -= H.bloodstr.get_reagent_amount("adrenaline") * 0.7
+	amount -= H.bloodstr.get_reagent_amount("noradrenaline") * 0.5
 
 	if(amount < POTASSIUM_LEVEL_HBAD)
 		return
@@ -94,5 +103,5 @@
 			heart.pulse_modificators["potassium_level"] = -volume * 8
 
 /datum/reagent/potassium/affect_blood(mob/living/carbon/human/H, alien, removed)
-	H.bloodstr.add_reagent(/datum/reagent/hormone/potassium, volume * 0.5)
+	H.bloodstr.add_reagent("potassium_hormone", volume * 0.5)
 	volume = 0

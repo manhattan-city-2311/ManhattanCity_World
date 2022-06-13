@@ -47,7 +47,7 @@
 /datum/analysis/troponin/analyze(var/datum/reagent/blood/B)
 	. = format_header(B)
 	var/list/RL = form_reagent_list(B)
-	var/troponin_level = get_reagent_amount(RL, /datum/reagent/hormone/marker/troponin_t)
+	var/troponin_level = get_reagent_amount(RL, "troponin_t")
 	. += format_reagent_level("Troponin-T", amount = troponin_level, normal_h = 0)
 
 /datum/analysis/ast_alt
@@ -57,10 +57,10 @@
 /datum/analysis/ast_alt/analyze(var/datum/reagent/blood/B)
 	. = format_header(B)
 	var/list/RL = form_reagent_list(B)
-	var/ast_level = get_reagent_amount(RL, /datum/reagent/hormone/marker/ast)
+	var/ast_level = get_reagent_amount(RL, "ast")
 	. += format_reagent_level("AST", amount = ast_level, normal_h = 41)
 
-	var/alt_level = get_reagent_amount(RL, /datum/reagent/hormone/marker/alt)
+	var/alt_level = get_reagent_amount(RL, "alt")
 	. += format_reagent_level("ALT", amount = alt_level, normal_h = 41)
 
 /datum/analysis/liver
@@ -70,13 +70,13 @@
 /datum/analysis/liver/analyze(var/datum/reagent/blood/B)
 	. = format_header(B)
 	var/list/RL = form_reagent_list(B)
-	var/ast_level = get_reagent_amount(RL, /datum/reagent/hormone/marker/ast)
+	var/ast_level = get_reagent_amount(RL, "ast")
 	. += format_reagent_level("AST", amount = ast_level, normal_h = 41)
 
-	var/alt_level = get_reagent_amount(RL, /datum/reagent/hormone/marker/alt)
+	var/alt_level = get_reagent_amount(RL, "alt")
 	. += format_reagent_level("ALT", amount = alt_level, normal_h = 41)
 
-	var/bilirubine_level = get_reagent_amount(RL, /datum/reagent/hormone/marker/bilirubine)
+	var/bilirubine_level = get_reagent_amount(RL, "bilirubine")
 	. += format_reagent_level("Bilirubine", amount = bilirubine_level, normal_l = 5, normal_h = 21)
 
 /datum/analysis/biochemical
@@ -87,10 +87,10 @@
 	. = format_header(B)
 
 	var/list/RL = form_reagent_list(B)
-	var/glucose_level = get_reagent_amount(RL, /datum/reagent/hormone/glucose)
+	var/glucose_level = get_reagent_amount(RL, "glucose")
 	. += format_reagent_level("Glucose", amount = glucose_level,
 		normal_l = GLUCOSE_LEVEL_LBAD + 0.5, normal_h = GLUCOSE_LEVEL_HBAD - 0.5)
-	var/potassium_level = get_reagent_amount(RL, /datum/reagent/hormone/potassium)
+	var/potassium_level = get_reagent_amount(RL, "potassium_hormone")
 	. += format_reagent_level("Potassium", amount = potassium_level,
 		normal_h = POTASSIUM_LEVEL_HBAD)
 

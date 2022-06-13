@@ -1,0 +1,227 @@
+"aj" = (/obj/effect/floor_decal/asteroid,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"ao" = (/obj/structure/flora/ausbushes/sunnybush,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"as" = (/obj/structure/filingcabinet/chestdrawer,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"aS" = (/obj/machinery/optable,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"bB" = (/turf/simulated/floor/pavement/border{dir = 8},/area/planets/Manhattan/outdoor)
+"bQ" = (/turf/simulated/floor/tiled/dark,/area/planets/Manhattan/outdoor)
+"bV" = (/obj/machinery/door/window/southleft,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"cw" = (/obj/structure/flora/ausbushes/brflowers,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"cT" = (/obj/machinery/door/airlock/medical,/turf/simulated/floor/tiled/steel_grid,/area/planets/Manhattan/outdoor)
+"df" = (/turf/simulated/wall/concrete,/area/planets/Manhattan/outdoor)
+"dv" = (/obj/machinery/door/airlock/medical,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"dV" = (/obj/machinery/door/airlock/medical,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"eh" = (/obj/structure/railing{dir = 8},/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"eB" = (/obj/structure/table/steel,/obj/machinery/door/window/southleft{dir = 4},/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"eZ" = (/obj/structure/table/steel,/obj/structure/window/reinforced{dir = 4},/obj/item/weapon/paper_bin/medical_bills,/obj/item/weapon/pen,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"fv" = (/obj/structure/reagent_dispensers,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"fH" = (/obj/machinery/door/airlock/medical,/turf/simulated/floor/wood/walnut,/area/planets/Manhattan/outdoor)
+"fR" = (/obj/structure/railing{dir = 8},/turf/simulated/open,/area/planets/Manhattan/outdoor)
+"ga" = (/obj/structure/janitorialcart,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"gz" = (/obj/structure/railing{dir = 1},/obj/structure/railing{dir = 4},/turf/simulated/open,/area/planets/Manhattan/outdoor)
+"gP" = (/turf/simulated/open,/area/planets/Manhattan/outdoor)
+"ht" = (/obj/structure/bed/chair/office/dark,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"if" = (/obj/structure/bed/roller,/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"iC" = (/obj/machinery/monitor,/obj/structure/table/steel,/turf/simulated/floor/tiled/steel,/area/planets/Manhattan/outdoor)
+"iE" = (/obj/structure/prop/tech/console/crew{dir = 1},/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"iW" = (/turf/simulated/floor/stairs/stairsdark,/area/planets/Manhattan/outdoor)
+"jd" = (/turf/simulated/floor/stairs/north,/area/planets/Manhattan/outdoor)
+"jg" = (/obj/structure/table/standard,/obj/item/weapon/storage/belt/janitor,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"jD" = (/obj/structure/railing{dir = 4},/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"jL" = (/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"jO" = (/obj/structure/bed/chair/sofa/blue{dir = 1},/turf/simulated/floor/wood/walnut,/area/planets/Manhattan/outdoor)
+"jU" = (/obj/structure/flora/ausbushes/ywflowers,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"ke" = (/obj/structure/window/reinforced{dir = 8},/obj/machinery/smartfridge/chemistry,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"ku" = (/obj/structure/railing{dir = 4},/turf/simulated/open,/area/planets/Manhattan/outdoor)
+"kw" = (/obj/structure/table/glass/black,/obj/item/weapon/reagent_containers/spray/cleaner/drone,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"kx" = (/obj/structure/railing,/turf/simulated/open,/area/planets/Manhattan/outdoor)
+"kN" = (/turf/simulated/floor/road/corner,/area/planets/Manhattan/outdoor)
+"lA" = (/turf/simulated/floor/carpet/oracarpet,/area/planets/Manhattan/outdoor)
+"lQ" = (/obj/structure/bed/chair/office/light,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"mj" = (/obj/structure/table/rack,/obj/random/firstaid,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"mm" = (/obj/machinery/vending/snack,/turf/simulated/floor/wood/walnut,/area/planets/Manhattan/outdoor)
+"mD" = (/obj/structure/toilet{dir = 4},/turf/simulated/floor/tiled/freezer,/area/planets/Manhattan/outdoor)
+"mJ" = (/obj/structure/table/rack,/obj/item/weapon/storage/pill_bottle/tramadol,/obj/item/weapon/storage/pill_bottle/iron,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"mN" = (/obj/structure/closet/secure_closet/chemical,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"mO" = (/obj/structure/prop/tech/console/crew,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"ns" = (/obj/structure/bed/chair/office/dark{dir = 1},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"nV" = (/obj/structure/railing{dir = 4},/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"oa" = (/obj/structure/foamedmetal,/turf/simulated/floor/plating,/area/planets/Manhattan/outdoor)
+"of" = (/obj/machinery/door/airlock/medical,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"oI" = (/obj/structure/bed/chair/office/dark,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"ph" = (/obj/structure/table/steel,/obj/item/weapon/storage/box/syringes,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"pi" = (/obj/machinery/door/blast/shutters,/turf/simulated/floor/road/corner,/area/planets/Manhattan/outdoor)
+"pz" = (/turf/simulated/floor/stairs,/area/planets/Manhattan/outdoor)
+"pR" = (/turf/simulated/floor/pavement/empty,/area/planets/Manhattan/outdoor)
+"qb" = (/obj/structure/bed/chair/sofa/blue/left{dir = 1},/turf/simulated/floor/wood/walnut,/area/planets/Manhattan/outdoor)
+"qg" = (/obj/structure/closet/secure_closet/CMO,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"qF" = (/obj/machinery/smartfridge/secure/medbay,/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"rg" = (/obj/structure/table/marble,/obj/machinery/microscope,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"rk" = (/obj/machinery/door/airlock/freezer,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"rV" = (/obj/structure/reagent_dispensers/coolanttank,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"sk" = (/obj/effect/floor_decal/industrial/warning{dir = 4},/turf/simulated/floor/road/corner,/area/planets/Manhattan/outdoor)
+"so" = (/obj/structure/flora/ausbushes/leafybush,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"sR" = (/obj/structure/table/steel,/obj/random/firstaid,/obj/random/firstaid,/obj/random/firstaid,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"sW" = (/obj/machinery/door/airlock/medical,/turf/simulated/floor/tiled/dark,/area/planets/Manhattan/outdoor)
+"tc" = (/obj/structure/table/steel,/obj/item/weapon/defibrillator/loaded,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"th" = (/obj/machinery/smartfridge/chemistry/virology,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"tn" = (/obj/machinery/door/window/northright{dir = 2},/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"to" = (/obj/structure/railing{dir = 4},/obj/structure/railing,/turf/simulated/open,/area/planets/Manhattan/outdoor)
+"tO" = (/obj/structure/bed/chair,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"vJ" = (/obj/structure/railing{dir = 4},/obj/structure/flora/ausbushes/ywflowers,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"vP" = (/obj/structure/table/steel,/turf/simulated/floor/wood/walnut,/area/planets/Manhattan/outdoor)
+"vX" = (/obj/structure/railing,/obj/structure/railing{dir = 4},/turf/simulated/open,/area/planets/Manhattan/outdoor)
+"wy" = (/obj/machinery/chemical_dispenser/full,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"wD" = (/obj/structure/bed/chair/comfy/beige,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"xj" = (/obj/structure/table/marble,/obj/item/weapon/storage/box/beakers,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"xz" = (/obj/machinery/media/jukebox,/turf/simulated/floor/wood/walnut,/area/planets/Manhattan/outdoor)
+"xH" = (/obj/structure/table/glass/black,/obj/item/weapon/tray,/obj/item/weapon/surgical/FixOVein,/obj/item/weapon/surgical/bone_clamp,/obj/item/weapon/surgical/bonegel,/obj/item/weapon/surgical/bonesetter,/obj/item/weapon/surgical/cautery,/obj/item/weapon/surgical/circular_saw,/obj/item/weapon/surgical/hemostat,/obj/item/weapon/surgical/retractor,/obj/item/weapon/surgical/scalpel,/obj/item/weapon/surgical/surgicaldrill,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"yi" = (/obj/structure/bed/roller,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"yx" = (/obj/structure/flora/pottedplant/fern,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"yy" = (/obj/structure/table/standard,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"za" = (/obj/structure/table/rack,/obj/item/weapon/storage/firstaid/surgery,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"ze" = (/obj/machinery/door/window/northright,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"zj" = (/obj/machinery/atmospherics/unary/freezer{dir = 8},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"zx" = (/obj/structure/bed/chair/office/light{dir = 4},/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"zG" = (/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"Af" = (/obj/structure/railing{dir = 8},/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"As" = (/obj/structure/table/steel,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"AL" = (/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 4},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"BD" = (/turf/simulated/floor/tiled/steel,/area/planets/Manhattan/outdoor)
+"BE" = (/obj/structure/table/standard,/obj/item/weapon/stamp/cmo,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"BS" = (/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"BY" = (/obj/structure/railing{dir = 8},/obj/structure/flora/ausbushes/palebush,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"Cd" = (/obj/structure/bed/chair/comfy/beige{dir = 4},/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"Cn" = (/obj/structure/closet/secure_closet/medical2,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"CG" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"Dp" = (/obj/structure/bed/padded,/turf/simulated/floor/tiled/steel,/area/planets/Manhattan/outdoor)
+"Dz" = (/obj/machinery/door/airlock/multi_tile/glass/medical{dir = 8},/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"EK" = (/turf/simulated/floor/pavement/stairs,/area/planets/Manhattan/outdoor)
+"EQ" = (/obj/structure/railing{dir = 8},/obj/effect/floor_decal/asteroid,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"EY" = (/turf/simulated/floor/road/garage,/area/planets/Manhattan/outdoor)
+"Fy" = (/turf/simulated/floor/wood/walnut,/area/planets/Manhattan/outdoor)
+"Gj" = (/obj/structure/window/reinforced,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"Gs" = (/obj/structure/window/basic/full,/turf/simulated/floor/reinforced,/area/planets/Manhattan/outdoor)
+"Hc" = (/obj/structure/reagent_dispensers/fueltank,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"Hf" = (/obj/machinery/door/airlock/multi_tile/medical,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"Hj" = (/obj/manhattan/vehicles/truck,/turf/simulated/floor/road/corner,/area/planets/Manhattan/outdoor)
+"HI" = (/obj/structure/flora/pottedplant/flower,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"Ij" = (/obj/machinery/door/airlock/medical,/turf/simulated/floor/tiled/steel,/area/planets/Manhattan/outdoor)
+"ID" = (/turf/simulated/floor/tiled/steel_grid,/area/planets/Manhattan/outdoor)
+"IX" = (/obj/structure/closet/l3closet/janitor,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"Jc" = (/obj/structure/flora/pottedplant/lily,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"Jz" = (/obj/structure/bed/chair{dir = 4},/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"JR" = (/obj/structure/railing{dir = 8},/obj/structure/railing{dir = 1},/turf/simulated/open,/area/planets/Manhattan/outdoor)
+"Kg" = (/obj/structure/table/marble,/obj/item/weapon/storage/fancy/vials,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"KL" = (/obj/machinery/door/window/northleft,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"Lj" = (/obj/structure/table/marble,/obj/item/weapon/reagent_containers/glass/beaker,/obj/item/weapon/reagent_containers/glass/beaker/large,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"LH" = (/obj/structure/bed/roller,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"LI" = (/obj/structure/table/steel,/obj/machinery/monitor,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"LV" = (/obj/machinery/iv_drip,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"MA" = (/obj/effect/floor_decal/industrial/warning{dir = 8},/turf/simulated/floor/road/corner,/area/planets/Manhattan/outdoor)
+"Ni" = (/obj/structure/bed/padded,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"NB" = (/obj/structure/bed/chair/sofa/blue/right{dir = 1},/turf/simulated/floor/wood/walnut,/area/planets/Manhattan/outdoor)
+"NQ" = (/obj/machinery/vending/coffee,/turf/simulated/floor/wood/walnut,/area/planets/Manhattan/outdoor)
+"Pc" = (/turf/simulated/floor/road,/area/planets/Manhattan/outdoor)
+"Pf" = (/obj/structure/flora/pottedplant/tall,/turf/simulated/floor/wood/walnut,/area/planets/Manhattan/outdoor)
+"Po" = (/obj/structure/table/steel,/obj/machinery/door/window/northright{dir = 4},/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"Ql" = (/obj/structure/table/glass/white,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"Qq" = (/obj/machinery/door/airlock/multi_tile/medical{dir = 8},/turf/simulated/floor/tiled/dark,/area/planets/Manhattan/outdoor)
+"QI" = (/obj/machinery/door/blast/shutters{dir = 4},/turf/simulated/floor/road/corner,/area/planets/Manhattan/outdoor)
+"QM" = (/obj/structure/railing{dir = 4},/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"QZ" = (/obj/effect/floor_decal/industrial/warning{dir = 8},/obj/manhattan/vehicles/truck,/turf/simulated/floor/road/corner,/area/planets/Manhattan/outdoor)
+"RK" = (/turf/simulated/floor/stairs/stairsdark/north,/area/planets/Manhattan/outdoor)
+"Sd" = (/obj/structure/table/glass/black,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"Sf" = (/obj/machinery/door/airlock/medical,/turf/simulated/floor/tiled/freezer,/area/planets/Manhattan/outdoor)
+"SL" = (/obj/structure/railing{dir = 1},/turf/simulated/open,/area/planets/Manhattan/outdoor)
+"Uf" = (/obj/machinery/iv_drip,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"Uo" = (/obj/structure/sink{dir = 4; pixel_x = 13},/turf/simulated/floor/tiled/freezer,/area/planets/Manhattan/outdoor)
+"Ut" = (/obj/structure/reagent_dispensers/cleanertank,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"Uw" = (/obj/structure/bed/chair/comfy/beige{dir = 1},/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
+"UD" = (/obj/structure/railing{dir = 8},/obj/structure/railing{dir = 4},/turf/simulated/floor/road/garage,/area/planets/Manhattan/outdoor)
+"Va" = (/obj/structure/railing,/turf/simulated/floor/road/garage,/area/planets/Manhattan/outdoor)
+"Vu" = (/obj/structure/flora/ausbushes/pointybush,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"VG" = (/obj/structure/table/marble,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"VX" = (/obj/structure/flora/ausbushes/fernybush,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"Wu" = (/turf/simulated/floor/reinforced,/area/planets/Manhattan/outdoor)
+"WB" = (/obj/structure/table/standard,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"WW" = (/obj/structure/filingcabinet/medical,/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"Xb" = (/obj/structure/table/steel,/obj/structure/flora/pottedplant/smallcactus{pixel_y = 13},/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"Xt" = (/obj/structure/bed/chair{dir = 8},/turf/simulated/floor/tiled,/area/planets/Manhattan/outdoor)
+"Xx" = (/obj/structure/bed/chair,/turf/simulated/floor/tiled/dark,/area/planets/Manhattan/outdoor)
+"XS" = (/obj/structure/flora/ausbushes/ppflowers,/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+"Yg" = (/obj/manhattan/vehicles/ambulance,/turf/simulated/floor/road/corner,/area/planets/Manhattan/outdoor)
+"Yy" = (/obj/structure/table/steel,/turf/simulated/floor/tiled/steel,/area/planets/Manhattan/outdoor)
+"YR" = (/turf/simulated/floor/tiled/freezer,/area/planets/Manhattan/outdoor)
+"YY" = (/obj/machinery/door/airlock/multi_tile/medical{dir = 8},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"Zc" = (/turf/simulated/floor/pavement/border{dir = 4},/area/planets/Manhattan/outdoor)
+"ZH" = (/obj/machinery/chem_master,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"ZO" = (/turf/simulated/floor/grass,/area/planets/Manhattan/outdoor)
+
+(1,1,1) = {"
+ZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOdfdfdfdfdfZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOZOZOZOZOZOdfdfdfjLlQasdfZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOZOZOZOZOZOdfXbjLjLAsAsdfZOZOZOZOZOdfdfdfdfdfdfdfZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOZOZOZOZOZOdfCdjLjLjLjLdfZOZOZOZOZOdfoaoaoaoaoadfZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOZOZOdfdfdfdfCdjLjLjLyxdfZOZOZOZOZOdfoadfdfdfdfdfZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOdfdfdfXxXxdfdfdfdfdVdfdfZOZOZOZOZOdfoadfnVpzpzdfdfdfdfdfdfdfZOZOZOZOZOZOZOZOZOZOPcPc
+ZOZOZOZOZOZOZOZOdfbQbQbQbQbQbQbQbQbQbQdfZOdfZOdfZOdfoadfnViWiWdfoaoaoaoaoadfdfdfdfdfdfdfdfdfdfZOPcPc
+ZOZOZOZOZOZOZOZOdfbQbQbQbQbQbQbQbQbQbQdfZOZOZOZOZOdfoadfBSBSBSdfoaoaoaoaoadfkNskMAskMAskMAkNdfZOPcPc
+ZOZOZOZOZOZOdfdfdfdVdfdfdfdfdfdfdfbQbQdfZOZOZOZOZOdfoadfBSBSBSdfoaoaoaoaoadfkNskMAskMAskMAkNdfZOPcPc
+ZOZOZOZOZOZOdfHIjLjLdftOtOtOtOWBdfbQbQdfdfdfdfdfdfdfdfdfdfBSBSdfdfdfdfdfdfdfHjskQZskQZskQZkNdfZOPcPc
+ZOZOZOZOZOZOdfjLjLAseZjLjLjLjLjLjLbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQkNkNkNkNkNkNkNkNdfZOPcPc
+ZOZOZOZOZOZOdfjLjLlQeBjLjLjLjLjLDzbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQQqkNkNkNkNkNkNkNkNQIZOPcPc
+ZOZOZOZOZOZOdfjLjLjLPojLjLjLjLWBdfdfdfdfdVdfdfdfdfdfSfdfbQbQdfdfdfdfdfdfdfdfkNkNkNkNkNkNkNkNQIZOPcPc
+ZOZOZOZOZOZOdfdfdVdfdfWBjLjLjLXtdfIXIXjLjLgadfmDSfYRYRdfbQbQdfNiLINiLIifyidfkNkNkNkNkNkNkNkNQIZOPcPc
+ZOZOZOZOZOZOdfWWjLWWdfJzjLjLjLXtdfjLjLjLjLjLdfdfdfYRUodfbQbQdfzGzGzGzGzGzGdfdfdfdfdfdfdfdfdfdfZOPcPc
+ZOZOZOZOZOZOdfWWjLWWdfJzjLjLjLXtdfjLjLjLjLjLdfmDSfYRUodfbQbQdfLVzGzGzGzGtcdfEYEYEYEYEYEYEYdfZOZOPcPc
+ZOZOZOZOZOZOdfWWjLWWdfJzjLjLjLXtdfWBjgWBWBUtdfdfdfYRUodfbQbQzGzGzGzGzGzGzGzGEYEYEYEYEYEYEYdfZOZOPcPc
+ZOZOZOZOZOZOdfWWjLWWdfjLjLjLjLjLdfdfdfdfdfdfdfmDSfYRUodfbQbQYYzGzGphsRzGzGYYEYEYVaEYVaEYEYdfZOZOPcPc
+ZOZOZOZOZOZOdfdfdfdfdfbVtnGjbVtndfCGajcwZOZOdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfkNkNkNUDkNkNkNdfZOZOPcPc
+ZOZOZOZOCGjUCGZOXSajQMbBpRpRpRZcEQsoZOCGjUZOVXZOCGZOZOZOZOZOZOZOZOdfoaoaoadfkNkNkNUDkNkNkNdfZOZOPcPc
+ZOZOZOCGCGZOaoZOCGsojDbBpRpRpRZcBYCGCGVuCGZOCGZOZOZOZOZOZOZOZOZOZOdfoaoaoadfkNkNkNUDkNkNkNdfZOZOPcPc
+ZOZOZOCGCGCGCGCGZOajjDbBpRpRpRZcehajXSZOCGcwCGZOZOZOZOZOZOZOZOZOZOdfdfdfdfdfYgkNkNUDkNYgkNdfZOZOPcPc
+ZOZOZOZOCGjUZOsoajCGvJEKEKEKEKEKAfaoCGZOVXZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOdfpipipidfpipipidfZOZOPcPc
+PcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPc
+PcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPcPc
+"}
+(1,1,2) = {"
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPkxkxkxkxkxgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPkxkxtoWuWuWuWuWufRgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPkuWuWuWuWuWuWuWuWufRgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPkuWuWuWuWuWuWuWuWufRgPgPgPgPdfdfdfdfdfdfdfgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+gPgPgPgPgPgPgPgPgPgPkxtoWuWudfdfdfdfdfdfdfdfdfdfdfdfBSBSBSBSBSdfgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+gPgPgPgPgPgPgPgPkxtoWuWuWuWudfqFkedfALzjdfwyLjxjrgdfBSBSBSBSBSdfgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+gPgPgPgPgPgPgPkuWuWuWuWuWuWudfKLzezGzGzGrkzGnszGKgdfRKRKJRgPgPdfdfdfdfdfdfdfgPgPgPgPgPgPgPkxkxgPgPgP
+gPgPgPgPgPgPkxvXWuWuWuWudfdfdfmjmjzGdfdfdfzGzGzGZHdfjdjdfRgPgPdfjLjLjLjLqgdfdfdfdfdfdfdfdfWuWufRgPgP
+gPgPgPgPgPkuWuWuWuWudfdfdfQldfzGzGzGdfthdfLjoIzGmNdfBSBSfRgPgPdfjLjLjLhtasdfUfBSBSBSBSHcdfWuWufRgPgP
+gPgPgPgPgPkuWuWuWuWudfwDwDQldfzamJzGzGzedfVGwyzGmNdfBSBSfRgPgPdfjLjLBEWBWBdfUfBSBSBSBSfvdfWuWufRgPgP
+gPgPgPgPgPkuWuWudfsWdfBSBSJcdfdfdfrkdfdfdfdfdfdvdfdfBSBSdfdfdfdfdVdfdfdfdfdfdfrVBSBSLHLHdfWuWufRgPgP
+gPgPgPgPgPkuWuWudfbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQdfdfHfBSdfdfdfWuWufRgPgP
+gPgPgPgPgPkuWuWudfbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQbQdfWuWuWuWufRgPgP
+gPgPgPgPgPgPdfdfdfIjdfdfdfdfIjdfdfdfUwUwQldfdfofdfdfdfdfdfdfdfdfdvdfdfdfbQbQbQbQbQbQsWWuWuWuWufRgPgP
+gPgPgPgPgPgPdfDpBDBDBDDpdfBDBDBDDpdfdfdfdfdfBSBSBSdfIDIDIDdfzGzGzGzGCndfdfdfdfdffHdfdfWuWuWuWufRgPgP
+gPgPgPgPgPgPdfYyBDBDBDYydfYyBDBDiCdfIDIDIDcTBSBSBScTIDIDIDdfzGzGzGzGxHdfFyxzFyvPFyPfdfWuWuWuWufRgPgP
+gPgPgPgPgPgPdfDpBDBDBDDpdfYyBDBDDpdfIDIDIDdfBSmOyydfIDIDIDdfzGLVaSzGSddfFylAlAlAlAFydfWuWuWuJRgPgPgP
+gPgPgPgPgPgPdfYyBDBDBDYydfYyBDBDiCdfIDIDIDdfBSzxyydfIDIDIDdfzGzGzGzGSddfFylAlAlAlANQdfWuWuWufRgPgPgP
+gPgPgPgPgPgPdfDpBDBDBDDpdfYyBDBDdfdfdfdfdfdfdfiEyydfIDIDIDdfzGzGzGkwSddfNBjOqbFyFymmdfWuWuWufRgPgPgP
+gPgPgPgPgPgPdfdfdfGsGsdfdfdfGsGsdfgPgPgPgPgPdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfWuWuWufRgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPkuWuWuWuWuWuWuWuWuWuWuWuWuWufRgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPkuWuWuWuWuWuWuWuWuWuWuWuWuWufRgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPkuWuWuWuWuWuWuWuWuWuWuWuWuWufRgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPSLSLSLgzWuWuWuWuWuWuWuWuWufRgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPSLSLSLSLSLSLSLSLSLgPgPgPgP
+gPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgPgP
+"}

@@ -559,7 +559,7 @@
 	return 1
 
 /mob/living/carbon/human/proc/handle_glucose_level()
-/*	var/level = bloodstr.get_reagent_amount(/datum/reagent/hormone/glucose)
+	var/level = bloodstr.get_reagent_amount("glucose")
 	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
 
 	switch(level)
@@ -608,8 +608,7 @@
 			if(prob(8) && H.get_arrythmia_score() < ARRYTHMIA_SEVERITY_OVERWRITING)
 				H?.make_common_arrythmia(rand(2, ARRYTHMIA_SEVERITY_OVERWRITING - 1))
 			make_dizzy(rand(80, 160))
-			make_jittery(rand(30, 100))*/
-	return
+			make_jittery(rand(30, 100))
 
 /mob/living/carbon/human/handle_environment(datum/gas_mixture/environment)
 	if(!environment)

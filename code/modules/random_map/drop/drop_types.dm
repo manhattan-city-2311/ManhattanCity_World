@@ -315,9 +315,5 @@ datum/supply_drop_loot/riot
 		/obj/item/weapon/storage/firstaid/o2,
 		/obj/item/weapon/storage/firstaid/adv,
 		/obj/item/weapon/storage/firstaid/combat,
-		/obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
-		/obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
-		/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline,
-		/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline,
 		/obj/item/weapon/storage/box/syringes,
 		/obj/item/weapon/storage/box/autoinjectors)

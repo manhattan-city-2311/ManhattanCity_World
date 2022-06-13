@@ -102,7 +102,7 @@
 	else
 		data["ecg"] += list("Neurological system activity: [100 - round(100 * CLAMP01(brain.damage / brain.max_damage))]% of normal.")
 
-	if(attached.bloodstr.get_reagent_amount(/datum/reagent/hormone/potassium) > POTASSIUM_LEVEL_HBAD)
+	if(attached.bloodstr.get_reagent_amount("potassium_hormone") > POTASSIUM_LEVEL_HBAD)
 		data["ecg"] += list("Hypercaliemia.")
 	if(H.ischemia)
 		data["ecg"] += list("Ischemia.")

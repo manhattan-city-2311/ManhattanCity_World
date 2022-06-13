@@ -8,7 +8,7 @@
 	var/list/watched_hormones // list of hormones, what always process in influence_hormone
 
 	var/list/waste_hormones = list(
-		/datum/reagent/hormone/potassium = 0.02
+		"potassium_hormone" = 0.02
 	)
 
 /obj/item/organ/internal/get_view_variables_options()

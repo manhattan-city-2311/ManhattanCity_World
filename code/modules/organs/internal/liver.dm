@@ -9,17 +9,17 @@
 	min_broken_damage = 45
 	max_damage = 70
 	influenced_hormones = list(
-		/datum/reagent/hormone/glucose
+		"glucose"
 	)
 	hormones = list(
-		/datum/reagent/hormone/glucose = 2
+		"glucose" = 2
 	)
 
 	var/bilirubine_norm = -1
 
 /obj/item/organ/internal/liver/influence_hormone(T, amount)
 	if(ishormone(T, glucose))
-		free_hormone(/datum/reagent/hormone/glucose, min(amount, 0.1))
+		free_hormone("glucose", min(amount, 0.1))
 		absorb_hormone(T, min(amount, 0.1) * 10)
 
 /obj/item/organ/internal/liver/Process()
@@ -30,9 +30,9 @@
 	if(bilirubine_norm < 0)
 		bilirubine_norm = rand(5, 21)
 
-	make_up_to_hormone(/datum/reagent/hormone/marker/bilirubine, bilirubine_norm)
-	make_up_to_hormone(/datum/reagent/hormone/marker/ast, 30 + ((damage / max_damage) * 0.1))
-	make_up_to_hormone(/datum/reagent/hormone/marker/alt, 25 + ((damage / max_damage) * 2))
+	make_up_to_hormone("bilirubine", bilirubine_norm)
+	make_up_to_hormone("ast", 30 + ((damage / max_damage) * 0.1))
+	make_up_to_hormone("alt", 25 + ((damage / max_damage) * 2))
 
 	if (germ_level > INFECTION_LEVEL_ONE)
 		if(prob(1))

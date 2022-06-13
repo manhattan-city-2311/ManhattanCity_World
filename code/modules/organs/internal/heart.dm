@@ -18,9 +18,9 @@
 	max_damage = 100
 	var/open
 	influenced_hormones = list(
-		/datum/reagent/hormone/adrenaline,
-		/datum/reagent/hormone/noradrenaline,
-		/datum/reagent/hormone/dopamine
+		"adrenaline",
+		"noradrenaline",
+		"dopamine"
 	)
 	var/last_arrythmia_gain
 
@@ -63,8 +63,8 @@
 	handle_blood()
 	post_handle_rythme()
 
-	make_up_to_hormone(/datum/reagent/hormone/marker/ast, 30 + ((damage / max_damage) * 2))
-	make_up_to_hormone(/datum/reagent/hormone/marker/alt, 25 + ((damage / max_damage) * 0.1))
+	make_up_to_hormone("ast", 30 + ((damage / max_damage) * 2))
+	make_up_to_hormone("alt", 25 + ((damage / max_damage) * 0.1))
 
 
 /obj/item/organ/internal/heart/proc/handle_pulse()
@@ -141,7 +141,7 @@
 		damage += lerp(0.1, 0.5, (ischemia - 30) / 70)
 	cardiac_output_modificators["ischemia"] = max(1 - (ischemia / 100), 0.3)
 	if(damage / max_damage > (20 / max_damage))
-		make_up_to_hormone(/datum/reagent/hormone/marker/troponin_t, damage / max_damage * 2)
+		make_up_to_hormone("troponin_t", damage / max_damage * 2)
 
 
 /obj/item/organ/internal/heart/proc/handle_blood()
