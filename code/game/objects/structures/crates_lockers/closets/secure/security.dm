@@ -111,7 +111,7 @@
 		new /obj/item/clothing/head/police/policechiefcap(src)
 		new /obj/item/clothing/head/soft/policechief(src)
 		new /obj/item/clothing/head/beret/policegold(src)
-		new /obj/item/clothing/suit/armor/pcarrier/medium/police(src)	
+		new /obj/item/clothing/suit/armor/pcarrier/medium/police(src)
 		new /obj/item/clothing/head/helmet/dermal(src)
 		new /obj/item/clothing/suit/storage/toggle/policejacket(src)
 		new /obj/item/weapon/cartridge/hos(src)
@@ -247,6 +247,15 @@
 		new /obj/item/device/holowarrant(src)
 		return
 
+/obj/structure/closet/secure_closet/security_empty
+	name = "PD locker"
+	req_access = list(access_brig)
+	icon_state = "sec1"
+	icon_closed = "sec"
+	icon_locked = "sec1"
+	icon_opened = "secopen"
+	icon_broken = "secbroken"
+	icon_off = "secoff"
 
 /obj/structure/closet/secure_closet/security/cargo
 

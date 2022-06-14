@@ -134,6 +134,8 @@
 
 /area/planets/Manhattan/indoor/north/house_standart1/balcony/four
 
+/area/planets/Manhattan/indoor/north/police_dept
+	ambience = list('sound/ambience/MAIN0C.SAP.ogg', 'sound/ambience/MAIN05.SAP.ogg')
 
 // Elevator areas.
 /area/turbolift/manhattan_house11
