@@ -15,8 +15,7 @@
 	overdose = 10
 
 /datum/reagent/hormone/adrenaline/affect_blood(mob/living/carbon/human/M, alien, removed)
-    M.add_chemical_effect(CE_PRESSURE, min(2 * volume, 40))
-	M.add_chemical_effect(CE_PULSE, min(2 * volume, 40))
+    M.add_chemical_effect(CE_PULSE, 2)
 
 /datum/reagent/hormone/noradrenaline
 	name = "Noradrenaline"
@@ -25,8 +24,7 @@
 	overdose = 10
 
 /datum/reagent/hormone/noradrenaline/affect_blood(mob/living/carbon/human/M, alien, removed)
-    M.add_chemical_effect(CE_PULSE, min(1 * volume, 40))
-	M.add_chemical_effect(CE_PRESSURE, min(2 * volume, 40))
+	M.add_chemical_effect(CE_PRESSURE, 2)
 
 /datum/reagent/hormone/dopamine
 	name = "Dopamine"
@@ -34,7 +32,7 @@
 	description = "Dopamine is a hormone used to treat hypotension by vasoconstricting. Can cause arrythmia."
 
 /datum/reagent/hormone/dopamine/affect_blood(mob/living/carbon/human/M, alien, removed)
-	M.add_chemical_effect(CE_PRESSURE, min(3 * volume, 40))
+	M.add_chemical_effect(CE_PRESSURE, 3)
 
 // METABOLISM
 /datum/reagent/hormone/glucose
