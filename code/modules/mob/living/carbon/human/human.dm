@@ -55,7 +55,6 @@
 			mind.name = real_name
 
 	nutrition = rand(200,400)
-	bloodstr.add_reagent("glucose", GLUCOSE_LEVEL_NORMAL + 0.2)
 	human_mob_list |= src
 
 	..()
