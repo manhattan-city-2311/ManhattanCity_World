@@ -135,9 +135,11 @@
 			take_damage(1,silent=prob(15))
 
 /obj/item/organ/internal/Process()
+	..()
 	for(var/datum/organ_disease/OD in SANITIZE_LIST(diseases))
 		if(OD.can_gone())
 			diseases -= OD
 			qdel(OD)
 			break
 		OD.update()
+	

@@ -584,7 +584,7 @@
 			make_dizzy(rand(5, 50))
 			make_jittery(rand(5, 30))
 
-		if(GLUCOSE_LEVEL_NORMAL to GLUCOSE_LEVEL_HBAD)
+		if(GLUCOSE_LEVEL_NORMAL_LOW to GLUCOSE_LEVEL_HBAD)
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.95)
 			make_dizzy(rand(5, 15))
 		if(GLUCOSE_LEVEL_HBAD to GLUCOSE_LEVEL_H2BAD)
