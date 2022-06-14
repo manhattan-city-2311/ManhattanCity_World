@@ -579,7 +579,7 @@
 			make_jittery(rand(30, 60))
 			if(prob(5))
 				Paralyse(1)
-		if(GLUCOSE_LEVEL_LBAD to GLUCOSE_LEVEL_NORMAL)
+		if(GLUCOSE_LEVEL_LBAD to GLUCOSE_LEVEL_NORMAL_LOW)
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.7)
 			make_dizzy(rand(5, 50))
 			make_jittery(rand(5, 30))

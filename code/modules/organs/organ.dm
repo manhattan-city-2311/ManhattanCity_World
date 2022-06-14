@@ -99,15 +99,12 @@ var/list/organ_cache = list()
 		owner = null
 
 	//dead already, no need for more processing
-	if(status & ORGAN_DEAD)
-		return
-	// Don't process if we're in a freezer, an MMI or a stasis bag.or a freezer or something I dunno
-	if(is_preserved())
-		return
+	//if(status & ORGAN_DEAD)
+	//	return
 	//Process infections
-	if ((robotic >= ORGAN_ROBOT) || (owner && owner.species))
-		germ_level = 0
-		return
+	//if ((robotic >= ORGAN_ROBOT) || (owner && owner.species))
+	//	germ_level = 0
+	//	return
 
 	if(!owner && reagents)
 		var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list

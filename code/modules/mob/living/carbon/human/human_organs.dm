@@ -30,7 +30,7 @@
 			bad_external_organs |= Ex
 
 	//processing internal organs is pretty cheap, do that first.
-	for(var/obj/item/organ/I in internal_organs_by_name)
+	for(var/obj/item/organ/internal/I in internal_organs_by_name)
 		I.Process()
 
 	handle_stance()

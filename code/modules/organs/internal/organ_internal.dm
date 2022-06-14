@@ -142,4 +142,15 @@
 			qdel(OD)
 			break
 		OD.update()
-	
+	for(var/T in SANITIZE_LIST(influenced_hormones))
+		if(owner.bloodstr.has_reagent(T))
+			influence_hormone(T, min(owner.bloodstr.get_reagent_amount(T), owner.bloodstr.get_overdose(T)))
+	for(var/T in SANITIZE_LIST(watched_hormones))
+		influence_hormone(T, min(owner.bloodstr.get_reagent_amount(T), owner.bloodstr.get_overdose(T)))
+	for(var/T in SANITIZE_LIST(waste_hormones))
+		make_hormone(T, waste_hormones[T])
+
+	if(!vital && damage && owner.bloodstr.get_reagent_amount("glucose") >= GLUCOSE_LEVEL_NORMAL)
+		var/regen = min(max_damage_regen, damage)
+		absorb_hormone("glucose", regen)
+		damage = max(0, damage)
