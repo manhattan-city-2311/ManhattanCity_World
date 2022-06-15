@@ -11,7 +11,6 @@
 #define MATERIAL_CRYSTAL                 "crystal"
 #define MATERIAL_CONCRETE                "concrete"
 #define MATERIAL_SANDSTONE               "sandstone"
-#define MATERIAL_CONCRETE                "concrete"
 #define MATERIAL_LEATHER                 "leather"
 #define MATERIAL_IRON                    "iron"
 #define MATERIAL_PLATINUM                "platinum"

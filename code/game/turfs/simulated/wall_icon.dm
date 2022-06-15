@@ -9,9 +9,11 @@
 		construction_stage = null
 	if(!material)
 		material = get_material_by_name(DEFAULT_WALL_MATERIAL)
-	if(material)
+	if(material && material.explosion_resistance)
 		explosion_resistance = material.explosion_resistance
-	if(reinf_material && reinf_material.explosion_resistance > explosion_resistance)
+	else
+		explosion_resistance = 0
+	if(reinf_material && reinf_material.explosion_resistance)
 		explosion_resistance = reinf_material.explosion_resistance
 
 	if(reinf_material)

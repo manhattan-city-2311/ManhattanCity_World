@@ -372,9 +372,8 @@ var/list/name_to_material
 
 /material/stone/concrete
 	name = "concrete"
+	display_name = "concrete"
 	stack_type = /obj/item/stack/material/concrete
-	icon_base = "stone"
-	icon_reinf = "reinf_stone"
 	icon_colour = COLOR_CONCRETE
 	shard_type = SHARD_STONE_PIECE
 	explosion_resistance = 35
