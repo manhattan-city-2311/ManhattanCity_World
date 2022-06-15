@@ -50,6 +50,10 @@
 	icon_state = "yellow"
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/upper_floor //вот это приписать к этажам выше первого
+	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/indoor/north/bar
 
