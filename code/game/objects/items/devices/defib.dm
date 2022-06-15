@@ -64,9 +64,11 @@
 /obj/item/weapon/defibrillator/ui_action_click()
 	toggle_paddles()
 
-/obj/item/weapon/defibrillator/attack_hand(mob/user)
+/obj/item/weapon/defibrillator/attack_self(mob/user)
 	var/new_shock_power = input(user, "Set the shock power(240-360)", "Shock power", shock_power) as num
 	shock_power = Clamp(new_shock_power, 1, 720)
+
+/obj/item/weapon/defibrillator/attack_hand(mob/user)
 	if(loc == user)
 		toggle_paddles()
 	else
@@ -332,7 +334,7 @@
 		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 		return
 
-	make_announcement("Stand back from the patient!", "warning")
+	src.visible_message("<span class='warning'>The defibrillator weeps, STAND BACK FROM THE PATIENT!</span>")
 	//placed on chest and short delay to shock for dramatic effect, revive time is 5sec total
 	if(!do_after(user, chargetime, H))
 		return
@@ -358,8 +360,6 @@
 		heart.pulse_modificators["defibrillation"] = rand(80, 120)
 		heart.make_common_arrythmia(1)
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
-	spawn(5)
-	make_announcement("Provided a shock of [defib.shock_power] joules.")
 
 /obj/item/weapon/shockpaddles/proc/do_electrocute(mob/living/carbon/human/H, mob/user, var/target_zone)
 	var/obj/item/organ/external/affecting = H.get_organ(target_zone)
