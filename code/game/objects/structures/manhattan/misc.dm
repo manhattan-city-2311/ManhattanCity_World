@@ -248,3 +248,91 @@
 	icon = 'icons/obj/manhattan/rails.dmi'
 	desc = "A rails for some kind of train."
 	icon_state = "tie"
+
+/obj/structure/manhattan/statue
+	name = "statue"
+	icon = 'icons/obj/manhattan/64x64.dmi'
+	desc = "A big stone statue."
+	icon_state = "statue"
+	density = 1
+	anchored = TRUE
+	bound_height = 64
+	bound_width = 64
+
+/obj/structure/manhattan/writers
+	name = "typewriter"
+	desc = "Old typewriter."
+	icon = 'icons/obj/manhattan/structures.dmi'
+	density = 1
+	anchored = TRUE
+	icon_state = "writers"
+	var/amount = 30
+	var/list/papers = new/list()
+	var/paper_type = /obj/item/weapon/paper
+	var/paper_type_carbon = /obj/item/weapon/paper/carbon
+	var/has_carbon_paper = 1
+
+	unique_save_vars = list("amount")
+
+/obj/structure/manhattan/writers/attack_hand(mob/user as mob)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
+		if (H.hand)
+			temp = H.organs_by_name["l_hand"]
+		if(temp && !temp.is_usable())
+			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+			return
+
+	if (user.a_intent == I_GRAB)
+		return ..()
+
+	var/response = ""
+	if(!papers.len > 0)
+		if(has_carbon_paper)
+			response = alert(user, "Do you take regular paper, or Carbon copy paper?", "Paper type request", "Regular", "Carbon-Copy", "Cancel")
+		else
+			response = "Regular"
+		if (response != "Regular" && response != "Carbon-Copy")
+			add_fingerprint(user)
+			return
+	if(amount >= 1)
+		amount--
+		if(amount==0)
+			update_icon()
+
+		var/obj/item/weapon/paper/P
+		if(papers.len > 0)	//If there's any custom paper on the stack, use that instead of creating a new paper.
+			P = papers[papers.len]
+			papers.Remove(P)
+		else
+			if(response == "Regular")
+				P = new paper_type
+				if(Holiday == "April Fool's Day")
+					if(prob(30))
+						P.info = "<font face=\"[P.crayonfont]\" color=\"red\"><b>HONK HONK HONK HONK HONK HONK HONK<br>HOOOOOOOOOOOOOOOOOOOOOONK<br>APRIL FOOLS</b></font>"
+						P.rigged = 1
+						P.updateinfolinks()
+			else if (response == "Carbon-Copy")
+				P = new paper_type_carbon
+
+		P.loc = user.loc
+		user.put_in_hands(P)
+		to_chat(user, "<span class='notice'>You take [P] out of the [src].</span>")
+	else
+		to_chat(user, "<span class='notice'>[src] is empty!</span>")
+
+	add_fingerprint(user)
+	return
+
+
+/obj/structure/manhattan/writers/attackby(obj/item/weapon/paper/i as obj, mob/user as mob)
+	if(!istype(i))
+		return
+
+	user.drop_item()
+	i.loc = src
+	to_chat(user, "<span class='notice'>You put [i] in [src].</span>")
+	papers.Add(i)
+	update_icon()
+	amount++
