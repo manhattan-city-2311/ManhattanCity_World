@@ -62,7 +62,7 @@
 /datum/reagent/proc/touch_turf(turf/T, amount) // Cleaner cleaning, lube lubbing, etc, all go here
 	return
 
-/datum/reagent/proc/on_mob_life(mob/living/carbon/M, alien, datum/reagents/metabolism/location) // Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
+/datum/reagent/proc/on_mob_life(mob/living/carbon/human/M, alien, datum/reagents/metabolism/location) // Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
 	if(!istype(M))
 		return
 	if(!affects_dead && M.stat == DEAD)
@@ -101,6 +101,7 @@
 	if(overdose && (volume > overdose) && (active_metab.metabolism_class != CHEM_TOUCH))
 		overdose(M, alien, removed)
 	remove_self(removed)
+	M.chem_traces += src
 	return
 
 /datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)

@@ -63,14 +63,12 @@
 
 	vial.reagents.remove_any(analysis.removed_amount)
 
-	if(!do_after(user, analysis.time, src))
-		to_chat(user, SPAN_NOTICE("You have interrupted analysis."))
-		return 
-
 	if(!check_analysis(analysis, volume_test = FALSE))
 		return
-
+	visible_message("<span class='notice'>\The [src] beeps and begins to analyze the sample.</span>")
+	spawn(analysis.time)
 	new /obj/item/weapon/paper(loc, analysis.analyze(vial.reagents.get_master_reagent()), dest_analysis)
+	visible_message("<span class='notice'>\The [src] rattles and prints out a report.</span>")
 
 /obj/machinery/microscope/proc/remove_vial(var/mob/living/remover)
 	if(!istype(remover) || remover.incapacitated() || !Adjacent(remover))

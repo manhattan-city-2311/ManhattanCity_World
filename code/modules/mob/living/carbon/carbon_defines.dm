@@ -20,7 +20,7 @@
 	var/datum/reagents/metabolism/bloodstream/bloodstr = null
 	var/datum/reagents/metabolism/ingested/ingested = null
 	var/datum/reagents/metabolism/touch/touching = null
-
+	var/list/chem_traces = list()
 	var/pulse = 86	//current pulse level
 
 	var/does_not_breathe = 0 //Used for specific mobs that can't take advantage of the species flags (changelings)

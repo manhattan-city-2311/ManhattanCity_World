@@ -2,7 +2,7 @@
 	var/name = "UNKNOWN ANALYSIS"
 	var/required_reagent = /datum/reagent/blood
 	var/required_amount = 15
-	var/time = 0
+	var/time = 10 SECONDS
 	var/removed_amount = 5
 
 /datum/analysis/proc/form_reagent_list(var/datum/reagent/blood/B)
@@ -97,8 +97,23 @@
 /datum/analysis/blood_type
 	name = "Blood type screen"
 	removed_amount = 2
+	time = 5 SECONDS
 
 /datum/analysis/blood_type/analyze(var/datum/reagent/blood/B)
 	. = format_header(B)
 
 	. += format_2("Blood type", B.data["blood_type"])
+
+/datum/analysis/tracechem
+	name = "Trace chemical analysis"
+	removed_amount = 2
+	time = 20 SECONDS
+
+/datum/analysis/blood_type/analyze(var/datum/reagent/blood/B)
+	. = format_header(B)
+	var/mob/living/carbon/human/donor = B.data.Find("donor")
+	if(donor.chem_traces.len)
+		. += "<b>Trace Chemicals: </b><br>"
+		for(var/chemID in donor.chem_traces)
+			. += chemID
+			. += "<br>"
