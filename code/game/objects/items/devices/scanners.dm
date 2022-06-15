@@ -87,7 +87,7 @@ HALOGEN COUNTER	- Radcount on mobs
 		if(M.status_flags & FAKEDEATH)
 			pulse_result = 0
 		else
-			pulse_result = M.get_pulse_fluffy(1)
+			pulse_result = M.get_pulse_fluffy(0)
 	else
 		pulse_result = "<span class='danger'>ERROR - Nonstandard biology</span>"
 
