@@ -330,16 +330,6 @@
 /// Syringes. END
 ////////////////////////////////////////////////////////////////////////////////
 
-/obj/item/weapon/reagent_containers/syringe/inaprovaline
-	name = "Syringe (inaprovaline)"
-	desc = "Contains inaprovaline - used to stabilize patients."
-
-/obj/item/weapon/reagent_containers/syringe/inaprovaline/New()
-	..()
-	reagents.add_reagent("inaprovaline", 15)
-	mode = SYRINGE_INJECT
-	update_icon()
-
 /obj/item/weapon/reagent_containers/syringe/antitoxin
 	name = "Syringe (anti-toxin)"
 	desc = "Contains anti-toxins."

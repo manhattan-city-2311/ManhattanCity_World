@@ -234,17 +234,6 @@
 	..()
 	reagents.add_reagent("anti_toxin", 15)
 
-
-/obj/item/weapon/reagent_containers/pill/inaprovaline
-	name = "Inaprovaline pill"
-	desc = "Used to stabilize patients. Contains 30 units of Inaprovaline."
-	icon_state = "pill20"
-
-/obj/item/weapon/reagent_containers/pill/inaprovaline/New()
-	..()
-	reagents.add_reagent("inaprovaline", 30)
-
-
 /obj/item/weapon/reagent_containers/pill/bicaridine
 	name = "Bicaridine pill"
 	desc = "Used to treat physical injuries. Contains 20 units of Bicaridine."

@@ -23,14 +23,12 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/sacid,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/peridaxon,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/cryoxadone,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/inaprov,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/tungsten
 		)
 
 /obj/machinery/chemical_dispenser/ert
 	name = "medicine dispenser"
 	spawn_cartridges = list(
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/inaprov,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ryetalyn,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/paracetamol,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/tramadol,

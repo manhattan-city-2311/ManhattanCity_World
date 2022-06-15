@@ -227,11 +227,6 @@
 	desc = "Contains pills used to treat toxic substances in the blood."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/dylovene = 7)
 
-/obj/item/weapon/storage/pill_bottle/inaprovaline
-	name = "bottle of Inaprovaline pills"
-	desc = "Contains pills used to stabilize patients."
-	starts_with = list(/obj/item/weapon/reagent_containers/pill/inaprovaline = 7)
-
 /obj/item/weapon/storage/pill_bottle/kelotane
 	name = "bottle of kelotane pills"
 	desc = "Contains pills used to treat burns."

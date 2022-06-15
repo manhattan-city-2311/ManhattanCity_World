@@ -80,7 +80,6 @@
 	espresso	spawn_reagent = "espresso"
 
 	// ERT
-	inaprov		spawn_reagent = "inaprovaline"
 	ryetalyn	spawn_reagent = "ryetalyn"
 	paracetamol	spawn_reagent = "paracetamol"
 	tramadol	spawn_reagent = "tramadol"

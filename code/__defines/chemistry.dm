@@ -29,7 +29,7 @@
 #define IS_SLIME   8
 #define IS_PRECURSOR 9
 
-#define CE_STABLE        "stable"       // Inaprovaline
+#define CE_STABLE        "stable"
 #define CE_ANTIBIOTIC    "antibiotic"   // Antibiotics
 #define CE_BLOODRESTORE  "bloodrestore" // Iron/nutriment
 #define CE_PAINKILLER    "painkiller"
@@ -61,7 +61,7 @@
 #define ANTIBIO_SUPER	3
 
 // Chemistry lists.
-var/list/tachycardics  = list("coffee", "crank", "inaprovaline", "hyperzine", "nitroglycerin", "thirteenloko", "nicotine") // Increase heart rate.
+var/list/tachycardics  = list("coffee", "crank", "hyperzine", "nitroglycerin", "thirteenloko", "nicotine") // Increase heart rate.
 var/list/bradycardics  = list("neurotoxin", "cryoxadone", "clonexadone", "ecstasy", "stoxin")                 // Decrease heart rate.
 var/list/heartstopper  = list("potassium_chlorophoride", "zombie_powder") // This stops the heart.
 var/list/cheartstopper = list("potassium_chloride")                       // This stops the heart when overdose is met. -- c = conditional
