@@ -9,7 +9,7 @@
 	path = "manhattan"
 
 	lobby_icon = 'icons/lobby.dmi'
-	lobby_screens = list("lobbypic")
+	lobby_screens = list("manhattan")
 
 	zlevel_datum_type = /datum/map_z_level/new_manhattan
 
