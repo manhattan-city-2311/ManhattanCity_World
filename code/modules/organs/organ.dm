@@ -47,7 +47,7 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/is_broken()
 	return (damage >= min_broken_damage || (status & ORGAN_CUT_AWAY) || (status & ORGAN_BROKEN))
 
-/obj/item/organ/New(var/mob/living/carbon/holder)
+/obj/item/organ/New(var/mob/living/carbon/human/holder, var/internal)
 	..(holder)
 
 	if(max_damage)
@@ -65,11 +65,19 @@ var/list/organ_cache = list()
 		else
 			species = all_species[SPECIES_HUMAN]
 			log_debug("[src] spawned in [holder] without a proper DNA.")
+	var/obj/item/organ/external/E = holder.get_organ(parent_organ)
+	if(E && internal)
+		if(E.internal_organs == null)
+			E.internal_organs = list()
+		E.internal_organs |= src
 
 	if(dna)
 		if(!blood_DNA)
 			blood_DNA = list()
 		blood_DNA[dna.unique_enzymes] = dna.b_type
+	
+	if(internal)
+		holder.internal_organs |= src
 
 	create_reagents(5 * (w_class-1)**2)
 	//reagents.add_reagent(/datum/reagent/nutriment/protein, reagents.maximum_volume)

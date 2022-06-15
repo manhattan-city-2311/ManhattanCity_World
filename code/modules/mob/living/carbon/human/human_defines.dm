@@ -121,7 +121,7 @@
 	var/identifying_gender // In case the human identifies as another gender than it's biological
 
 	var/step_count = 0 // Track how many footsteps have been taken to know when to play footstep sounds
-
+	var/list/internal_organs = list()
 	can_be_antagged = TRUE
 
 // Used by mobs in virtual reality to point back to the "real" mob the client belongs to.
