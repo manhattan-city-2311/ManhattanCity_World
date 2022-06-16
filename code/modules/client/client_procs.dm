@@ -479,6 +479,26 @@
 		'websites/website_images/seized.png'
 		)
 
+	spawn (10) // removing this spawn causes all clients to not get verbs.
+		if(!src) // client disconnected
+			return
+
+		var/list/priority_assets = list()
+		var/list/other_assets = list()
+
+		for(var/type in subtypesof(/datum/asset))
+			get_asset_datum(type)
+
+		for(var/asset_type in asset_datums)
+			var/datum/asset/simple/D = asset_datums[asset_type]
+			if(D.isTrivial)
+				other_assets += D
+			else
+				priority_assets += D
+
+		for(var/datum/asset/D in (priority_assets + other_assets))
+			if (!D.send_slow(src)) // Precache the client with all other assets slowly, so as to not block other browse() calls
+				return
 
 /mob/proc/MayRespawn()
 	return 0

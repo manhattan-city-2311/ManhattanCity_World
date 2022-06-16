@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(tgui)
-	name = "tgui"
-	priority = 40
+	name = "Tgui"
+	priority = SS_PRIORITY_TGUI
 	wait = 1 SECOND
 	flags = SS_BACKGROUND|SS_POST_FIRE_TIMING
 
@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(tgui)
 
 /datum/controller/subsystem/tgui/Initialize()
 	. = ..()
-	basehtml = file2text('tgui/tgui.html')
+	basehtml = file2text('tgui-next/packages/tgui/public/tgui-main.html')
 
 /datum/controller/subsystem/tgui/fire(resumed = 0)
 	if (!resumed)

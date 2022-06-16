@@ -272,3 +272,12 @@
 
 /client/proc/simple_info_line()
 	return "[key_name(src)] ([mob.x],[mob.y],[mob.z])"
+
+/* ui logging */
+
+/proc/log_tgui_error(text)
+	log_error(text)
+
+/proc/log_tgui_debug(text)
+	log_debug(text)
+

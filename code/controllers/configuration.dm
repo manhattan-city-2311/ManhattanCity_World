@@ -11,6 +11,7 @@ var/list/gamemode_cache = list()
 	var/days_in_future = 0				// how many years in the future are we?
 	var/months_in_future = 0				// how many years in the future are we?
 
+	var/log_tgui_debug // Log debug info about tgui
 	var/log_ooc = 0					// log OOC channel
 	var/log_access = 0					// log login/logout
 	var/log_say = 0					// log client say
@@ -365,6 +366,9 @@ var/list/gamemode_cache = list()
 
 				if ("log_access")
 					config.log_access = 1
+					
+				if ("log_tgui_debug")
+					config.log_tgui_debug = 1
 
 				if ("sql_enabled")
 					config.sql_enabled = 1
