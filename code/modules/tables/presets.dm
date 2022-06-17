@@ -224,10 +224,10 @@
 	reinforced = MATERIAL_WALNUT
 
 /obj/structure/table/woodentable_reinforced/ebony/New()
-	..()
 	icon_state = "reinf_preview"
 	material = get_material_by_name(MATERIAL_EBONY)
-	reinforced = MATERIAL_EBONY
+	reinforced = get_material_by_name(DEFAULT_WALL_MATERIAL)
+	..()
 
 /obj/structure/table/woodentable/mahogany/New()
 	..()

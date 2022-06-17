@@ -52,7 +52,12 @@
 	flags = RAD_SHIELDED
 	base_turf = /turf/simulated/floor/plating
 
-/area/planets/Manhattan/indoor/upper_floor //вот это приписать к этажам выше первого
+/area/planets/Manhattan/outdoor/upper1
+	name = "\improper New-Manhattan second level outdoors"
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/outdoor/upper2
+	name = "\improper New-Manhattan third level outdoors"
 	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/indoor/north/bar
