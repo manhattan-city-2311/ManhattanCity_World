@@ -118,6 +118,9 @@
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	// Instantiate tgui panel
+	tgui_panel = new(src)
+
 	//Admin Authorisation
 	holder = admin_datums[ckey]
 	if(holder)
@@ -250,6 +253,13 @@
 		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
 		if(config.aggressive_changelog)
 			src.changes()
+	var/client/client = src
+
+	client.update_chat_position()
+
+	client.toggle_fullscreen()
+
+	client.tgui_panel.initialize()
 
 /client/proc/add_ip_cid_list(ip, cid)
 	// This is for hard saving.
@@ -607,3 +617,62 @@ client/verb/character_setup()
 	else
 		ip_reputation = score
 		return TRUE
+
+/client/proc/update_chat_position(use_alternative)
+	var/input_height = 0
+	var/mode = GLOB.PREF_YES
+	var/currently_alternative = (winget(src, "input", "is-default") == "false") ? TRUE : FALSE
+
+	// Hell
+	if(mode == GLOB.PREF_YES && !currently_alternative)
+		input_height = winget(src, "input", "size")
+		input_height = text2num(splittext(input_height, "x")[2])
+
+		winset(src, "input_alt", "is-visible=true;is-disabled=false;is-default=true")
+		winset(src, "hotkey_toggle_alt", "is-visible=true;is-disabled=false;is-default=true")
+		winset(src, "saybutton_alt", "is-visible=true;is-disabled=false;is-default=true")
+
+		winset(src, "input", "is-visible=false;is-disabled=true;is-default=false")
+		winset(src, "hotkey_toggle", "is-visible=false;is-disabled=true;is-default=false")
+		winset(src, "saybutton", "is-visible=false;is-disabled=true;is-default=false")
+
+		var/current_size = splittext(winget(src, "outputwindow.output", "size"), "x")
+		var/new_size = "[current_size[1]]x[text2num(current_size[2]) - input_height]"
+		winset(src, "outputwindow.output", "size=[new_size]")
+		winset(src, "outputwindow.browseroutput", "size=[new_size]")
+
+		current_size = splittext(winget(src, "mainwindow.mainvsplit", "size"), "x")
+		new_size = "[current_size[1]]x[text2num(current_size[2]) + input_height]"
+		winset(src, "mainwindow.mainvsplit", "size=[new_size]")
+	else if(mode == GLOB.PREF_NO && currently_alternative)
+		input_height = winget(src, "input_alt", "size")
+		input_height = text2num(splittext(input_height, "x")[2])
+
+		winset(src, "input_alt", "is-visible=false;is-disabled=true;is-default=false")
+		winset(src, "hotkey_toggle_alt", "is-visible=false;is-disabled=true;is-default=false")
+		winset(src, "saybutton_alt", "is-visible=false;is-disabled=true;is-default=false")
+
+		winset(src, "input", "is-visible=true;is-disabled=false;is-default=true")
+		winset(src, "hotkey_toggle", "is-visible=true;is-disabled=false;is-default=true")
+		winset(src, "saybutton", "is-visible=true;is-disabled=false;is-default=true")
+
+		var/current_size = splittext(winget(src, "outputwindow.output", "size"), "x")
+		var/new_size = "[current_size[1]]x[text2num(current_size[2]) + input_height]"
+		winset(src, "outputwindow.output", "size=[new_size]")
+		winset(src, "outputwindow.browseroutput", "size=[new_size]")
+
+		current_size = splittext(winget(src, "mainwindow.mainvsplit", "size"), "x")
+		new_size = "[current_size[1]]x[text2num(current_size[2]) - input_height]"
+		winset(src, "mainwindow.mainvsplit", "size=[new_size]")
+
+/client/proc/toggle_fullscreen(new_value)
+	if((new_value == GLOB.PREF_BASIC) || (new_value == GLOB.PREF_FULL))
+		winset(src, "mainwindow", "is-maximized=false;can-resize=false;titlebar=false")
+		if(new_value == GLOB.PREF_FULL)
+			winset(src, "mainwindow", "menu=null;statusbar=false")
+		winset(src, "mainwindow.mainvsplit", "pos=0x0")
+	else
+		winset(src, "mainwindow", "is-maximized=false;can-resize=true;titlebar=true")
+		winset(src, "mainwindow", "menu=menu;statusbar=true")
+		winset(src, "mainwindow.mainvsplit", "pos=3x0")
+	winset(src, "mainwindow", "is-maximized=true")

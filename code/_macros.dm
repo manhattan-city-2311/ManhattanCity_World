@@ -60,7 +60,7 @@
 
 #define isclient(A) istype(A, /client)
 
-#define to_chat(target, message) target << message
+//#define to_chat(target, message) target << message
 #define to_world(message) world << message
 #define to_world_log(message) world.log << message
 // TODO - Baystation has this log to crazy places. For now lets just world.log, but maybe look into it later.
@@ -92,6 +92,8 @@
 //Currently used in SDQL2 stuff
 #define send_output(target, msg, control) target << output(msg, control)
 #define send_link(target, url) target << link(url)
+
+#define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"
 
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
 

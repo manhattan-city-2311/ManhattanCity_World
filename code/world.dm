@@ -475,7 +475,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	for(var/client/C in GLOB.clients)
 		if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[config.server]")
-
+		C?.tgui_panel?.send_roundrestart()
 	..(reason)
 
 /hook/startup/proc/loadMode()

@@ -275,6 +275,9 @@
 
 /* ui logging */
 
+/proc/log_tgui(text)
+	log_tgui_error(text)
+
 /proc/log_tgui_error(text)
 	log_error(text)
 
