@@ -501,10 +501,7 @@
 
 		for(var/asset_type in asset_datums)
 			var/datum/asset/simple/D = asset_datums[asset_type]
-			if(D.isTrivial)
-				other_assets += D
-			else
-				priority_assets += D
+			priority_assets += D
 
 		for(var/datum/asset/D in (priority_assets + other_assets))
 			if (!D.send_slow(src)) // Precache the client with all other assets slowly, so as to not block other browse() calls

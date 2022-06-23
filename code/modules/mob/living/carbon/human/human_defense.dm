@@ -272,7 +272,11 @@ emp_act
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if(!affecting)
 		return 0
-
+	var/sharp = is_sharp(I)
+	if(I.edge)
+		playsound(user, "chop")
+	else if(sharp)
+		playsound(user, "sharp")
 	// Allow clothing to respond to being hit.
 	// This is done up here so that clothing damage occurs even if fully blocked.
 	var/list/clothing = get_clothing_list_organ(affecting)

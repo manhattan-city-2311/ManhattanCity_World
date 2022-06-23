@@ -57,39 +57,7 @@
 	light_power = 4
 	light_range = 6
 
-/*/obj/vehicles/proc/mobile_spawn_check(var/mob/user)
-	if(spawn_datum.is_spawn_active == 0 && (guns_disabled || movement_destroyed))
-		to_chat(user,"<span class = 'notice'>[src] is too damaged to lock down.</span>")
-		return 0
-	if(block_enter_exit == 1)
-		to_chat(user,"<span class = 'notice'>Cannot deploy in this current state.</span>")
-		return 0
-	return 1
-
-/obj/vehicles/proc/toggle_mobile_spawn_deploy()
-	set name = "Toggle Mobile Spawn Status"
-	set category = "Vehicle"
-	set src in view(1)
-	var/mob/living/user = usr
-	if(!istype(user))
-		return
-	if(!mobile_spawn_check(user))
-		return
-	visible_message("<span class = 'notice'>[user] starts preparing [src] to act as a mobile respawn point</span>")
-	if(!do_after(user,10 SECONDS))
-		return
-	visible_message("<span class = 'notice'>[user] prepares [src] to act as a mobile respawn point</span>")
-	set_mobile_spawn_deploy(!spawn_datum.is_spawn_active)
-
-/obj/vehicles/proc/set_mobile_spawn_deploy(var/set_to)
-	spawn_datum.is_spawn_active = set_to
-	visible_message("<span class = 'notice'>[src] [spawn_datum.is_spawn_active ? "locks down" : "unlocks and readies for operation"]</span>")
-	icon_state = "[initial(icon_state)]_deployed"
-	if(spawn_datum.is_spawn_active)
-		active = 0
-	else
-		active = 1
-		communicate(/decl/communication_channel/dsay, src, "A [spawn_datum.spawn_faction] mobile respawn point within [src] has just been activated at ([x],[y],[z]), [get_area(src)]", /decl/dsay_communication/direct)*/
+	var/list/compatible_details
 
 /obj/manhattan/vehicles/verb/toggle_headlights()
 	set name = "Toggle Headlights"

@@ -1850,6 +1850,7 @@
 #include "code\modules\halo\vehicle\vehiclebase.dm"
 #include "code\modules\halo\vehicle\vehiclebase_air.dm"
 #include "code\modules\halo\vehicle\vehiclebase_weaponry.dm"
+#include "code\modules\halo\vehicle\modules\module.dm"
 #include "code\modules\halo\vehicle\types\ambulance.dm"
 #include "code\modules\halo\vehicle\types\pelican.dm"
 #include "code\modules\halo\vehicle\types\truck.dm"

@@ -258,6 +258,7 @@
 		return maxHealth/2
 	return breathe_organ.get_oxygen_deprivation()
 
+
 /mob/living/carbon/human/setOxyLoss(var/amount)
 	adjustOxyLoss(getOxyLoss()-amount)
 

@@ -77,7 +77,7 @@
 	var/female_sneeze_sound = 'sound/effects/mob_effects/f_sneeze.ogg'
 
 	// Combat vars.
-	var/total_health = 100									// Point at which the mob will enter crit.
+	var/total_health = 300									// Point at which the mob will enter crit.
 	var/list/unarmed_types = list(							// Possible unarmed attacks that the mob will use in combat,
 		/datum/unarmed_attack,
 		/datum/unarmed_attack/bite

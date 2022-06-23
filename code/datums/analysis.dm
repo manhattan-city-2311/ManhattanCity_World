@@ -47,7 +47,7 @@
 /datum/analysis/troponin/analyze(var/datum/reagent/blood/B)
 	. = format_header(B)
 	var/list/RL = form_reagent_list(B)
-	var/troponin_level = get_reagent_amount(RL, "troponin_t")
+	var/troponin_level = get_reagent_amount(RL, "troponint")
 	. += format_reagent_level("Troponin-T", amount = troponin_level, normal_h = 0)
 
 /datum/analysis/ast_alt

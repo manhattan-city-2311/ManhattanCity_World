@@ -24,7 +24,7 @@
 
 /mob/living/carbon/human/proc/calc_k()
 	var/isMale = gender == MALE
-	k = (weight * 170) / (isMale ? 9440 : 7350)
+	k = (weight * 160) / (isMale ? 9440 : 7350)
 
 	if(weight > (isMale ? 59 : 49))
 		k = 1.0/k

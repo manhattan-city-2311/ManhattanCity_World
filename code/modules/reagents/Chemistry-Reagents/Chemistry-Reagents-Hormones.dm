@@ -15,7 +15,7 @@
 	overdose = 10
 
 /datum/reagent/hormone/adrenaline/affect_blood(mob/living/carbon/human/M, alien, removed)
-    M.add_chemical_effect(CE_PULSE, 2)
+    M.add_chemical_effect(CE_PAINKILLER, min(2 * volume, 40))
 
 /datum/reagent/hormone/noradrenaline
 	name = "Noradrenaline"
@@ -24,7 +24,7 @@
 	overdose = 10
 
 /datum/reagent/hormone/noradrenaline/affect_blood(mob/living/carbon/human/M, alien, removed)
-	M.add_chemical_effect(CE_PRESSURE, 2)
+	M.add_chemical_effect(CE_PRESSURE, min(2 * volume, 40))
 
 /datum/reagent/hormone/dopamine
 	name = "Dopamine"
@@ -32,7 +32,10 @@
 	description = "Dopamine is a hormone used to treat hypotension by vasoconstricting. Can cause arrythmia."
 
 /datum/reagent/hormone/dopamine/affect_blood(mob/living/carbon/human/M, alien, removed)
-	M.add_chemical_effect(CE_PRESSURE, 3)
+	M.add_chemical_effect(CE_PRESSURE,  min(3 * volume, 40))
+	var/obj/item/organ/internal/heart/heart = M.internal_organs_by_name[O_HEART]
+	if(prob(1) && heart.get_arrythmia_score() < 1)
+		heart.make_common_arrythmia(1)
 
 // METABOLISM
 /datum/reagent/hormone/glucose
@@ -64,7 +67,7 @@
 
 /datum/reagent/hormone/marker/troponin_t
 	name = "Troponin-T"
-	id = "troponin-t"
+	id = "troponint"
 /datum/reagent/hormone/marker/bilirubine
 	name = "Bilirubine"
 	id = "bilirubine"

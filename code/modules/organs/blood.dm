@@ -169,7 +169,7 @@
 		return
 
 	if(blood_incompatible(injected.data["blood_type"], injected.data["species"]))
-		reagents.add_reagent(/datum/reagent/toxin, amount * 0.5)
+		reagents.add_reagent("toxin", amount * 0.5)
 		reagents.update_total()
 	else
 		vessel.add_reagent("blood", amount, injected.data)

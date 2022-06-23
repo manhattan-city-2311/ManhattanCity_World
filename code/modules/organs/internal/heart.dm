@@ -141,7 +141,7 @@
 		damage += lerp(0.1, 0.5, (ischemia - 30) / 70)
 	cardiac_output_modificators["ischemia"] = max(1 - (ischemia / 100), 0.3)
 	if(damage / max_damage > (20 / max_damage))
-		make_up_to_hormone("troponin_t", damage / max_damage * 2)
+		make_up_to_hormone("troponint", damage / max_damage * 2)
 
 
 /obj/item/organ/internal/heart/proc/handle_blood()
