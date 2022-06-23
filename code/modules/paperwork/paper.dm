@@ -139,8 +139,13 @@
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	stamps = ""
-	name = new_name
-	info = new_info
+	if(new_info)
+		name = new_name
+		info = new_info
+		info = html_encode(info)
+		info = replacetext_char(info, "\n", "<BR>")
+		info = parsepencode(info)
+
 	if(name != "paper")
 		desc = "This is a paper titled '" + name + "'."
 

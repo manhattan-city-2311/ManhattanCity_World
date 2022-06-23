@@ -19,6 +19,27 @@ mob/living/carbon/proc/custom_pain(message, power, force)
 	if(force || (message != last_pain_message) || (world.time >= next_pain_time))
 		last_pain_message = message
 		to_chat(src, message)
+		
+	next_pain_time = world.time + (100-power)
+
+mob/living/carbon/human/custom_pain(message, power, force)
+	if(!message || stat || !can_feel_pain() || chem_effects[CE_PAINKILLER] > power)
+		return 0
+	message = "<span class='danger'>[message]</span>"
+	if(power >= 50)
+		message = "<font size=3>[message]</font>"
+
+	// Anti message spam checks
+	if(force || (message != last_pain_message) || (world.time >= next_pain_time))
+		last_pain_message = message
+		to_chat(src, message)
+		switch(power)
+			if(11 to 90)
+				emote(pick("groan", "whimper"))
+			if(91 to INFINITY)
+				emote(pick("scream", "cry"))
+				if(power > 100 && prob(25))
+					emote("collapse")
 	next_pain_time = world.time + (100-power)
 
 mob/living/carbon/human/proc/handle_pain()
@@ -53,7 +74,7 @@ mob/living/carbon/human/proc/handle_pain()
 			if(11 to 90)
 				flash_weak_pain()
 				msg = "<font size=2>Your [damaged_organ.name] [burning ? "burns" : "hurts"] badly!</font>"
-			if(91 to 10000)
+			if(91 to INFINITY)
 				flash_pain()
 				msg = "<font size=3>OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!</font>"
 		custom_pain(msg, maxdam, prob(10))

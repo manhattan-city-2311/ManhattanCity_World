@@ -166,6 +166,8 @@
 	other_connections = dirs_to_corner_states(other_dirs)
 
 /turf/simulated/wall/proc/can_join_with(var/turf/simulated/wall/W)
+	if(!W.material.icon_base)
+		return 1
 	if(material && W.material && material.icon_base == W.material.icon_base)
 		return 1
 	for(var/wb_type in blend_turfs)
