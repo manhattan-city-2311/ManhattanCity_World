@@ -792,6 +792,29 @@
 					message = "makes a very loud noise."
 					m_type = 2
 
+		if("agony")
+			if(miming)
+				message = "acts out an agony!"
+				m_type = 1
+			else
+				if(!muzzled)
+					//message = "[species.scream_verb]!"
+					var/scream_sound = pick("ПОМОГИ МНЕ!","УБЕЙ МЕНЯ!","КАК БОЛЬНО!","АААААА, СУКА!","УБЕЙТЕ МЕНЯ!", "ПОМОГИТЕ МНЕ!")
+					var/scream_desc = pick("shakes in agony",
+					"screams in immense pain",
+					"violently convulses",
+					"let's out an agonizing scream",
+					"screams")
+					message = "[scream_desc], \"[scream_sound]\""
+					m_type = 2
+					if(get_gender() == FEMALE)
+						playsound(src, pick(species.female_agony_sound), 50)
+					else
+						playsound(src, pick(species.male_agony_sound), 50)
+				else
+					message = "makes a very loud noise."
+					m_type = 2	
+
 		if("snap", "snaps")
 			m_type = 2
 			var/mob/living/carbon/human/H = src

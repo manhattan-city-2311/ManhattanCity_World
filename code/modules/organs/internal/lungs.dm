@@ -38,8 +38,6 @@
 
 // Returns a percentage value for use by GetOxyloss().
 /obj/item/organ/internal/lungs/proc/get_oxygen_deprivation()
-	if(status & ORGAN_DEAD)
-		return 100
 	return round((oxygen_deprivation/species.total_health)*100)
 
 /obj/item/organ/internal/lungs/robotize()

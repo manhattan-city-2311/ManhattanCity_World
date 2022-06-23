@@ -39,9 +39,18 @@
 
 
 /obj/item/organ/internal/heart/die()
+	make_arrythmia(/datum/arrythmia/asystole)
+	pulse = 0
+	ischemia = 100
 	if(dead_icon)
 		icon_state = dead_icon
 	..()
+
+/obj/item/organ/internal/heart/removed(mob/living/user, drop_organ)
+	..()
+	make_arrythmia(/datum/arrythmia/asystole)
+	pulse = 0
+	ischemia = 100
 
 /obj/item/organ/internal/heart/Process()
 	..()
@@ -73,7 +82,18 @@
 	if(OW && OW.id == ARRYTHMIA_ASYSTOLE)
 		return
 	pulse = LERP(pulse, n_pulse, 0.5)
-	pulse = round(Clamp(pulse, 0, 500))
+	pulse = round(Clamp(pulse, 0, 476))
+	switch(pulse)
+		if(150 to 200)
+			take_damage(1, 1)
+		if(201 to 300)
+			take_damage(5, 1)
+			if(prob(25))
+				make_common_arrythmia(1)
+		if(301 to 400)
+			take_damage(10, 1)
+			if(prob(25))
+				make_arrythmia(/datum/arrythmia/asystole)
 
 
 /obj/item/organ/internal/heart/proc/handle_cardiac_output()

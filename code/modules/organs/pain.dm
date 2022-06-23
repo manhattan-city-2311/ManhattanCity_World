@@ -34,11 +34,13 @@ mob/living/carbon/human/custom_pain(message, power, force)
 		last_pain_message = message
 		to_chat(src, message)
 		switch(power)
-			if(11 to 90)
+			if(11 to 30)
 				emote(pick("groan", "whimper"))
-			if(91 to INFINITY)
+			if(31 to 90)
 				emote(pick("scream", "cry"))
-				if(power > 100 && prob(25))
+			if(91 to INFINITY)
+				emote(pick("scream", "cry", "agony"))
+				if(prob(25))
 					emote("collapse")
 	next_pain_time = world.time + (100-power)
 
@@ -54,7 +56,6 @@ mob/living/carbon/human/proc/handle_pain()
 	var/maxdam = 0
 	var/obj/item/organ/external/damaged_organ = null
 	for(var/obj/item/organ/external/E in organs_by_name)
-		if(0) continue
 		var/dam = E.get_damage()
 		// make the choice of the organ depend on damage,
 		// but also sometimes use one of the less damaged ones

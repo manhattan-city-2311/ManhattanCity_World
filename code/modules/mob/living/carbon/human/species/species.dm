@@ -69,12 +69,14 @@
 
 	//Soundy emotey things.
 	var/scream_verb = "screams"
-	var/male_scream_sound		= 'sound/voice/human/man_scream.ogg'
-	var/female_scream_sound	= 'sound/voice/human/woman_scream.ogg'
+	var/male_scream_sound		= list('sound/voice/human/man_scream.ogg', 'sound/voice/human/scream_male1.ogg', 'sound/voice/human/scream_male2.ogg', 'sound/voice/human/scream_male3.ogg')
+	var/female_scream_sound	= list('sound/voice/human/woman_scream.ogg', 'sound/voice/human/scream_female1.ogg', 'sound/voice/human/scream_female1.ogg')
 	var/male_cough_sounds = list('sound/effects/mob_effects/m_cougha.ogg','sound/effects/mob_effects/m_coughb.ogg', 'sound/effects/mob_effects/m_coughc.ogg')
 	var/female_cough_sounds = list('sound/effects/mob_effects/f_cougha.ogg','sound/effects/mob_effects/f_coughb.ogg')
 	var/male_sneeze_sound = 'sound/effects/mob_effects/sneeze.ogg'
 	var/female_sneeze_sound = 'sound/effects/mob_effects/f_sneeze.ogg'
+	var/male_agony_sound = list('sound/voice/human/agony1.ogg', 'sound/voice/human/agony2.ogg', 'sound/voice/human/agony3.ogg')
+	var/female_agony_sound = list('sound/voice/human/woman_agony1.ogg', 'sound/voice/human/woman_agony2.ogg', 'sound/voice/human/woman_agony3.ogg')
 
 	// Combat vars.
 	var/total_health = 300									// Point at which the mob will enter crit.
