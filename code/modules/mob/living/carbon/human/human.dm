@@ -21,6 +21,7 @@
 	var/active_regen_delay = 300
 
 	var/unique_id						//used for keeping track of characters.
+	var/npc = FALSE
 
 /mob/living/carbon/human/proc/calc_k()
 	var/isMale = gender == MALE

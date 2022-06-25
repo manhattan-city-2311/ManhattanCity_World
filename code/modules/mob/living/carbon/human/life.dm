@@ -945,7 +945,7 @@
 	if(status_flags & GODMODE)	return 0
 
 	//SSD check, if a logged player is awake put them back to sleep!
-	if(species.get_ssd(src) && !client && !teleop)
+	if(species.get_ssd(src) && !client && !teleop && !npc)
 		Sleeping(2)
 	if(stat == DEAD)	//DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
 		blinded = 1
@@ -1104,7 +1104,6 @@
 		handle_hud_list()
 
 	// now handle what we see on our screen
-
 	if(!client)
 		return 0
 
@@ -1583,6 +1582,8 @@
 	return
 
 /mob/living/carbon/human/proc/handle_hud_list()
+	if(!client)
+		return
 	if (BITTEST(hud_updateflag, HEALTH_HUD))
 		var/image/holder = grab_hud(HEALTH_HUD)
 		if(stat == DEAD)
