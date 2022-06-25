@@ -107,8 +107,8 @@ var/list/organ_cache = list()
 		owner = null
 
 	//dead already, no need for more processing
-	//if(status & ORGAN_DEAD)
-	//	return
+	if(status & ORGAN_DEAD)
+		return
 	//Process infections
 	//if ((robotic >= ORGAN_ROBOT) || (owner && owner.species))
 	//	germ_level = 0

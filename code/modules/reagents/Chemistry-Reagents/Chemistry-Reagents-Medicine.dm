@@ -89,6 +89,7 @@
 
 /datum/reagent/nitroglycerin
 	name = "Nitroglycerin"
+	id = "nitroglycerin"
 	description = "Nitroglycerin is a drug used to reduce CO and increase coronary refill to reduce heart ischemia."
 	taste_description = "oil"
 	reagent_state = LIQUID
@@ -106,6 +107,7 @@
 
 /datum/reagent/atropine
 	name = "Atropine"
+	id = "atropine"
 	description = "Atropine is a drug what increases HR. Used in severe bradycardia cases"
 	reagent_state = LIQUID
 	color = "#ff7766"
@@ -117,6 +119,7 @@
 
 /datum/reagent/adenosine
 	name = "Adenosine"
+	id = "adenosine"
 	description = "Adenosine is a drug used to produce controlled AV blockade."
 	reagent_state = LIQUID
 	color = "#aa7766"
@@ -150,6 +153,7 @@
 
 /datum/reagent/lidocaine
 	name = "Lidocaine"
+	id = "lidocaine"
 	description = "Lidocaine is a antiarrythmic and painkiller drug."
 	reagent_state = LIQUID
 	color = "#77aaaa"
