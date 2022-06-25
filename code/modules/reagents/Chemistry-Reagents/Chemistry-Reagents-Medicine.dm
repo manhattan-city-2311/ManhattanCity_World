@@ -39,6 +39,131 @@
 		M.add_chemical_effect(CE_STABLE, 30)
 		M.add_chemical_effect(CE_PAINKILLER, 10)
 
+//ANTIBIOTICS
+/datum/reagent/amicile
+	name = "Amicile"
+	id = "amicile"
+	description = "Amicile is a light antibiotic with few side effects."
+	taste_description = "dryness"
+	taste_mult = 3
+	reagent_state = LIQUID
+	color = "#a7b8cc"
+	overdose = 15
+	scannable = 1
+	tax_type = PHARMA_TAX
+
+/datum/reagent/amicile/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.add_chemical_effect(CE_ANTIBIOTIC, volume * 2)
+
+/datum/reagent/cetrifiaxon
+	name = "Cetrifiaxon"
+	id = "cetrifiaxon"
+	description = "Cetrifiaxon is an extremely strong antibiotic, toxic."
+	taste_description = "cell genocide"
+	taste_mult = 5
+	reagent_state = LIQUID
+	color = "#0077ff"
+	overdose = 15
+	scannable = 1
+	tax_type = PHARMA_TAX
+
+/datum/reagent/cetrifiaxon/affect_blood(var/mob/living/carbon/human/M, var/alien, var/removed)
+	M.add_chemical_effect(CE_ANTIBIOTIC, volume * 4)
+	M.adjustToxLoss(0.02 * M.chem_doses[type])
+
+//ANTIARRYTHMICS
+/datum/reagent/amiodarone
+	name = "Amiodarone"
+	id = "amiodarone"
+	description = "Amiodarone is a light antiarrythmic. Safe for urban use."
+	taste_description = "calmness"
+	taste_mult = 3
+	reagent_state = LIQUID
+	color = "#914347"
+	overdose = 15
+	scannable = 1
+	tax_type = PHARMA_TAX
+
+/datum/reagent/amiodarone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.add_chemical_effect(CE_ARRYTHMIC, 1)
+
+/datum/reagent/nitroglycerin
+	name = "Nitroglycerin"
+	description = "Nitroglycerin is a drug used to reduce CO and increase coronary refill to reduce heart ischemia."
+	taste_description = "oil"
+	reagent_state = LIQUID
+	color = "#808080"
+
+/datum/reagent/nitroglycerin/affect_blood(var/mob/living/carbon/human/M, var/alien, var/removed)
+	..()
+	M.add_chemical_effect(CE_CARDIAC_OUTPUT, Clamp(1 - M.chem_doses[type] * 0.01, 0.6, 1))
+
+	var/obj/item/organ/internal/heart/H = M.internal_organs_by_name[O_HEART]
+	if(!H)
+		return
+
+	H.ischemia = max(0, H.ischemia - volume / 2.5)
+
+/datum/reagent/atropine
+	name = "Atropine"
+	description = "Atropine is a drug what increases HR. Used in severe bradycardia cases"
+	reagent_state = LIQUID
+	color = "#ff7766"
+
+/datum/reagent/atropine/affect_blood(mob/living/carbon/human/H, alien, removed)
+	..()
+	H.add_chemical_effect(CE_PULSE, H.chem_doses[type] * 7.5)
+	H.add_chemical_effect(CE_ARRYTHMIC, 1)
+
+/datum/reagent/adenosine
+	name = "Adenosine"
+	description = "Adenosine is a drug used to produce controlled AV blockade."
+	reagent_state = LIQUID
+	color = "#aa7766"
+	metabolism = 0.5
+
+/datum/reagent/adenosine/affect_blood(mob/living/carbon/human/H, alien, removed)
+	var/obj/item/organ/internal/heart/heart = H.internal_organs_by_name[O_HEART]
+	if(!heart)
+		return
+
+	if(volume < 5)
+		return
+	// initial rush.
+	if(H.chem_doses[type] < 5)
+		H.make_heart_rate(-140 + sin(world.time / 20) * 60, "adenosine_av_blockage")
+		return
+
+	// TODO: rewrite this more compact
+	if(ARRYTHMIA_AFIB in heart.arrythmias)
+		var/required = 5 * heart.arrythmias[ARRYTHMIA_AFIB].strength
+		if(volume >= required)
+			heart.arrythmias[ARRYTHMIA_AFIB].weak(heart)
+			volume -= required
+		return
+	if(ARRYTHMIA_TACHYCARDIA in heart.arrythmias)
+		var/required = 5 * heart.arrythmias[ARRYTHMIA_TACHYCARDIA].strength
+		if(volume >= required)
+			heart.arrythmias[ARRYTHMIA_TACHYCARDIA].weak(heart)
+			volume -= required
+		return
+
+/datum/reagent/lidocaine
+	name = "Lidocaine"
+	description = "Lidocaine is a antiarrythmic and painkiller drug."
+	reagent_state = LIQUID
+	color = "#77aaaa"
+	metabolism = REM
+	overdose = 10
+
+/datum/reagent/lidocaine/affect_blood(mob/living/carbon/human/H, alien, removed)
+	H.add_chemical_effect(CE_ANTIARRYTHMIC, 2)
+	H.add_chemical_effect(CE_PAINKILLER, 40)
+
+/datum/reagent/lidocaine/overdose(mob/living/carbon/human/H, alien)
+	if(prob(50))
+		H.add_chemical_effect(CE_BREATHLOSS)
+
 //ANALGESICS
 
 /datum/reagent/aspirin

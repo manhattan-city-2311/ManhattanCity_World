@@ -13,18 +13,62 @@
 	icon_state = "0"
 	matter = list("glass" = 150)
 	amount_per_transfer_from_this = 5
-	possible_transfer_amounts = null
+	possible_transfer_amounts = list(1,2,3,4,5)
 	volume = 15
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 	sharp = 1
 	unacidable = 1 //glass
+	var/obj/item/weapon/needle/needle = new
 	var/mode = SYRINGE_DRAW
 	var/image/filling //holds a reference to the current filling overlay
 	var/visible_name = "a syringe"
 	var/time = 30
 	var/drawing = 0
 	drop_sound = 'sound/items/drop/glass.ogg'
+
+
+/obj/item/weapon/needle
+	name = "needle packet"
+	desc = "A cheap disposable needle for a syringe or an IV."
+	icon = 'icons/obj/syringe.dmi'
+	icon_state = "syringe_pack"
+	var/possible_transfer_amounts = list(1,2,3,4,5)
+	var/use_times = 0
+	var/transfer_amount = 5
+	var/time = 30
+	germ_level = 0
+	var/open = FALSE
+	sharp = 1
+
+/obj/item/weapon/needle/attack_self(mob/user)
+	. = ..()
+	if(!open)
+		open = TRUE
+		user.visible_message("<span class='notice'>[user] unwraps the [src].</span>")
+		playsound(user, 'sound/items/package_unwrap.ogg', 50, 1)
+
+/obj/item/weapon/reagent_containers/syringe/initialize()
+	time = needle.time
+	amount_per_transfer_from_this = needle.transfer_amount
+	possible_transfer_amounts = needle.possible_transfer_amounts
+
+/obj/item/weapon/reagent_containers/syringe/examine(mob/user, distance)
+	. = ..()
+	if(needle.use_times >= 1)
+		. += "<span class='warning'>The needle looks used!</span>"
+	return .
+
+/obj/item/weapon/reagent_containers/syringe/proc/use_needle(mob/living/carbon/human/user)
+	var/pain = 5 //default for syringes
+	if(needle.use_times == 1)
+		pain += 5
+	if(needle.use_times >= 2)
+		pain += 10
+	user.custom_pain("<span class='warning'>You feel a prick!</span>", pain, 1)
+	user.germ_level += needle.germ_level
+	needle.germ_level += user.germ_level
+	needle.use_times += 1
 
 /obj/item/weapon/reagent_containers/syringe/on_reagent_change()
 	update_icon()
@@ -52,6 +96,15 @@
 	update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/attackby(obj/item/I as obj, mob/user as mob)
+	if(istype(I, /obj/item/weapon/needle))
+		var/obj/item/weapon/needle/new_needle
+		if(needle.open)
+			user.visible_message("<span class='notice'>[user] changes the needle on the syringe.</span>")
+			qdel(needle)
+			needle = new_needle
+			forceMove(src)
+		else
+			to_chat(user, "<span class='warning'>The needle packet is closed!</span>")
 	return
 
 /obj/item/weapon/reagent_containers/syringe/afterattack(obj/target, mob/user, proximity)

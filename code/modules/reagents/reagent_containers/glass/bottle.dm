@@ -68,19 +68,6 @@
 	desc = "A tiny ampoule."
 	icon_state = "ampoule"
 	volume = 8
-	var/broken = 0
-
-/obj/item/weapon/reagent_containers/glass/bottle/ampoule/examine(mob/user)
-	. = ..()
-	if(broken)
-		. += "<span class='warning'>[src]'s lid is intact.</span>"
-	else
-		. += "<span class='warning'>[src]'s lid is broken.</span>"
-
-/obj/item/weapon/reagent_containers/glass/bottle/ampoule/attack_self(mob/user)
-	if(!broken)
-		broken = 1
-		src.visible_message("<span class='warning'>[user] breaks off the [src] lid.</span>")
 
 /obj/item/weapon/reagent_containers/glass/bottle/trioxin
 	name = "Trioxin bottle"
@@ -195,83 +182,47 @@
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/morphine
 	name = "morphine ampoule"
 	desc = "A tiny ampoule. Contains morphine. 8u."
-
-/obj/item/weapon/reagent_containers/glass/bottle/ampoule/morphine/New()
-	..()
-	reagents.add_reagent("morphine", volume)
-	update_icon()
+	prefill = list("morphine" = 8)
 
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/ceftriaxone
 	name = "cetriaxone ampoule"
 	desc = "A tiny ampoule. Contains cetriaxone. 8u."
-
-/obj/item/weapon/reagent_containers/glass/bottle/ampoule/ceftriaxone/New()
-	..()
-	reagents.add_reagent("ceftriaxone", volume)
-	update_icon()
+	prefill = list("cetriaxone" = 8)
 
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/glucose
 	name = "glucose ampoule"
 	desc = "A tiny ampoule. Contains glucose. 8u."
-
-/obj/item/weapon/reagent_containers/glass/bottle/ampoule/glucose/New()
-	..()
-	reagents.add_reagent("glucose", volume)
-	update_icon()
+	prefill = list("glucose" = 8)
 
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/insulin
 	name = "insulin ampoule"
 	desc = "A tiny ampoule. Contains insulin. 2u."
 	volume = 2
+	prefill = list("insulin" = 2)
 
-/obj/item/weapon/reagent_containers/glass/bottle/ampoule/insulin/New()
-	..()
-	reagents.add_reagent("insulin", volume)
-	update_icon()
-
-/obj/item/weapon/reagent_containers/glass/bottle/lidocaine
+/obj/item/weapon/reagent_containers/glass/bottle/ampoule/lidocaine
 	name = "lidocaine ampoule"
 	desc = "A small ampoule. Contains lidocaine. 5u"
 	volume = 5
-
-/obj/item/weapon/reagent_containers/glass/bottle/lidocaine/New()
-	..()
-	reagents.add_reagent("lidocaine", volume)
-	update_icon()
+	prefill = list("lidocaine" = 5)
 
 //BOTTLES
 /obj/item/weapon/reagent_containers/glass/bottle/glucagone
 	name = "glucagone bottle"
 	desc = "A small bottle. Contains glucagone."
-
-/obj/item/weapon/reagent_containers/glass/bottle/glucagone/New()
-	..()
-	reagents.add_reagent("glucagone", volume)
-	update_icon()
+	prefill = list("glucagone" = 30)
 
 /obj/item/weapon/reagent_containers/glass/bottle/adenosine
 	name = "adenosine bottle"
 	desc = "A small bottle. Contains adenosine."
-
-/obj/item/weapon/reagent_containers/glass/bottle/adenosine/New()
-	..()
-	reagents.add_reagent("adenosine", volume)
-	update_icon()
+	prefill = list("adenosine" = 30)
 
 /obj/item/weapon/reagent_containers/glass/bottle/amiodarone
 	name = "amiodarone bottle"
 	desc = "A small bottle. Contains amiodarone."
-
-/obj/item/weapon/reagent_containers/glass/bottle/amiodarone/New()
-	..()
-	reagents.add_reagent("amiodarone", volume)
-	update_icon()
+	prefill = list("amiodarone" = 30)
 
 /obj/item/weapon/reagent_containers/glass/bottle/dopamine
 	name = "dopamine bottle"
 	desc = "A small bottle. Contains dopamine."
-
-/obj/item/weapon/reagent_containers/glass/bottle/dopamine/New()
-	..()
-	reagents.add_reagent("dopamine", volume)
-	update_icon()
+	prefill = list("dopamine" = 30)
