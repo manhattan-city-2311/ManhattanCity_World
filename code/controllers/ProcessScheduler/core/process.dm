@@ -226,7 +226,7 @@
 	if(TICK_USAGE < defer_usage)
 		sleep(0)
 	else
-		sleep(world.tick_lag)
+		sleep(world.tick_lag - TICK_USAGE)
 		cpu_defer_count++
 	tick_usage_start = TICK_USAGE
 	next_sleep_usage = min(TICK_USAGE + sleep_interval, defer_usage)

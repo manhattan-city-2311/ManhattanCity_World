@@ -109,7 +109,7 @@
 	data["ecg"] += list("GVR: [round(attached.gvr)] N·s·m<sup><small>-5</small></sup>")
 	data["ecg"] += list("MCV: [round(attached.mcv)/1000] L/m")
 
-	ui = SSnanoui.update_user_uis(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "monitor.tmpl", "Monitor", 450, 270)
 		ui.set_initial_data(data)

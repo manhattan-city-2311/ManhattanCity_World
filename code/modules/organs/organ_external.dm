@@ -76,7 +76,11 @@
 
 	var/gauzed
 	var/clamped
+	var/artery_name = "artery"
+	var/tendon_name = "tendon"
 
+	var/pain = 0                       // How much the limb hurts.
+	var/pain_disability_threshold      // Point at which a limb becomes unusable due to pain.
 
 	// HUD element variable, see organ_icon.dm get_damage_hud_image()
 	var/image/hud_damage_image
@@ -1336,3 +1340,32 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	for(var/obj/item/organ/external/C in children)
 		clamped = -1
+
+/obj/item/organ/external/proc/sever_artery()
+	if(species && species.has_organ[O_HEART])
+		var/obj/item/organ/internal/heart/O = species.has_organ[O_HEART]
+		if(robotic < ORGAN_ROBOT && !(status & ORGAN_ARTERY_CUT) && !initial(O.open))
+			status |= ORGAN_ARTERY_CUT
+			return TRUE
+	return FALSE
+
+// Pain/halloss
+/obj/item/organ/external/proc/get_pain()
+	if(!can_feel_pain() || robotic >= ORGAN_ROBOT)
+		return 0
+	var/lasting_pain = 0
+	if(is_broken())
+		lasting_pain += 10
+	else if(is_dislocated())
+		lasting_pain += 5
+	var/tox_dam = owner.getToxLoss()
+	return pain + lasting_pain + 0.7 * brute_dam + 0.8 * burn_dam + 0.3 * tox_dam + 0.5
+
+
+/obj/item/organ/external/proc/add_pain(var/amount)
+	if(!can_feel_pain() || robotic >= ORGAN_ROBOT)
+		pain = 0
+		return
+	var/last_pain = pain
+	pain = max(0,min(max_damage,pain+amount))
+	return pain-last_pain

@@ -104,7 +104,7 @@
 			user.visible_message("<span class='notice'>[user] changes the needle on the syringe.</span>")
 			qdel(needle)
 			needle = new_needle
-			new_needle.forceMove(src)
+			new_needle.loc(src)
 		else
 			to_chat(user, "<span class='warning'>The needle packet is closed!</span>")
 	return
@@ -180,7 +180,7 @@
 						on_reagent_change()
 						reagents.handle_reactions()
 					to_chat(user, "<span class='notice'>You take a blood sample from [target].</span>")
-					use_needle()
+					use_needle(user)
 					for(var/mob/O in viewers(4, user))
 						O.show_message("<span class='notice'>[user] takes a blood sample from [target].</span>", 1)
 
@@ -269,7 +269,7 @@
 			if (reagents.total_volume <= 0 && mode == SYRINGE_INJECT)
 				mode = SYRINGE_DRAW
 				update_icon()
-			use_needle()
+			use_needle(user)
 			if(trans)
 				to_chat(user, "<span class='notice'>You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units.</span>")
 				if(ismob(target))

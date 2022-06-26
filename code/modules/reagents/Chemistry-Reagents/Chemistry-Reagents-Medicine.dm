@@ -844,18 +844,19 @@
 	..()
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 
-/*/datum/reagent/immunosuprizine
+/datum/reagent/immunosuprizine
 	name = "Immunosuprizine"
 	id = "immunosuprizine"
 	description = "An experimental medicine believed to have the ability to prevent any organ rejection."
 	taste_description = "flesh"
 	reagent_state = SOLID
 	color = "#7B4D4F"
+	metabolism = 0.01
 	overdose = 20
 	overdose_mod = 1.5
 	scannable = 1
 
-/datum/reagent/immunosuprizine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/*/datum/reagent/immunosuprizine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	var/strength_mod = 1 * M.species.chem_strength_heal
 
 	if(alien == IS_DIONA)	// It's a tree.

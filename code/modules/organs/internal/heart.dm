@@ -99,7 +99,7 @@
 
 /obj/item/organ/internal/heart/proc/make_modificators()
 	pulse_modificators["hypoperfusion"] = (1 - owner.get_blood_perfusion()) * 100
-	pulse_modificators["shock"] = owner.shock_stage
+	pulse_modificators["shock"] = Clamp(owner.shock_stage, 0, 110)
 	if(CE_PULSE in owner.chem_effects)
 		pulse_modificators["chem"] = owner.chem_effects[CE_PULSE]
 	if(CE_CARDIAC_OUTPUT in owner.chem_effects)

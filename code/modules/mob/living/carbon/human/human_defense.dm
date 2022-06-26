@@ -269,80 +269,57 @@ emp_act
 	return blocked
 
 /mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
+	if(I.edge)
+		playsound(user, "chop")
+	else if(I.sharp)
+		playsound(user, "sharp")
+	hit_zone = user.zone_sel.selecting
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if(!affecting)
 		return 0
-	var/sharp = is_sharp(I)
-	if(I.edge)
-		playsound(user, "chop")
-	else if(sharp)
-		playsound(user, "sharp")
-	// Allow clothing to respond to being hit.
-	// This is done up here so that clothing damage occurs even if fully blocked.
-	var/list/clothing = get_clothing_list_organ(affecting)
-	for(var/obj/item/clothing/C in clothing)
-		C.clothing_impact(I, effective_force)
 
-	if(soaked >= round(effective_force*0.8))
-		effective_force -= round(effective_force*0.8)
 	// Handle striking to cripple.
 	if(user.a_intent == I_DISARM)
-		effective_force *= 0.5 //reduced effective force...
-		if(!..(I, user, effective_force, blocked, soaked, hit_zone))
+		effective_force *= 0.66 //reduced effective force...
+		if(!..(I, user, effective_force, blocked, hit_zone))
 			return 0
 
 		//set the dislocate mult less than the effective force mult so that
 		//dislocating limbs on disarm is a bit easier than breaking limbs on harm
-		attack_joint(affecting, I, effective_force, 0.75, blocked, soaked) //...but can dislocate joints
+		attack_joint(affecting, I, effective_force, 0.5, blocked) //...but can dislocate joints
 	else if(!..())
 		return 0
 
-	if(effective_force > 10 || effective_force >= 5 && prob(33))
-		forcesay(hit_appends)	//forcesay checks stat already
+	//Ok this block of text handles cutting arteries, tendons, and limbs off.
+	//First we cut an artery, the reason for that, is that arteries are funninly enough, not that lethal, and don't have the biggest impact. They'll still make you bleed out, but they're less immediately lethal.
+	if(I.sharp && prob(35) && !(affecting.status & ORGAN_ARTERY_CUT))
+		affecting.sever_artery()
 
-	if(prob(25 + (effective_force * 2)))
-		if(!((I.damtype == BRUTE) || (I.damtype == HALLOSS)))
-			return
+	//Next tendon, which disables the limb, but does not remove it, making it easier to fix, and less lethal, than losing it.
+	//else if(I.sharp && (I.sharpness * 2) && !(affecting.status & ORGAN_TENDON_CUT) && affecting.has_tendon)//Yes this is the same exactly probability again. But I'm running it seperate because I don't want the two to be exclusive.
+	//	affecting.sever_tendon()
+	//	src.visible_message("<span class='danger'>[user] slices open [src]'s [affecting.tendon_name] tendon!</span>")
 
-		if(!(I.flags & NOBLOODY))
-			I.add_blood(src)
+	//Finally if we pass all that, we cut the limb off. This should reduce the number of one hit sword kills.
+	else if(I.sharp && I.edge)
+		if(prob(5))
+			affecting.droplimb(0, DROPLIMB_EDGE)
 
-		var/bloody = 0
-		if(prob(33))
-			bloody = 1
-			var/turf/location = loc
-			if(istype(location, /turf/simulated))
-				location.add_blood(src)
-			if(ishuman(user))
-				var/mob/living/carbon/human/H = user
-				if(get_dist(H, src) <= 1) //people with TK won't get smeared with blood
-					H.bloody_body(src)
-					H.bloody_hands(src)
-
+	if((I.damtype == BRUTE) && prob(25 + (effective_force * 2)))//Knocking them out.
 		if(!stat)
-			switch(hit_zone)
-				if("head")//Harder to score a stun but if you do it lasts a bit longer
-					if(prob(effective_force))
-						apply_effect(20, PARALYZE, blocked, soaked)
-						visible_message("<span class='danger'>\The [src] has been knocked unconscious!</span>")
-					if(bloody)//Apply blood
-						if(wear_mask)
-							wear_mask.add_blood(src)
-							update_inv_wear_mask(0)
-						if(head)
-							head.add_blood(src)
-							update_inv_head(0)
-						if(glasses && prob(33))
-							glasses.add_blood(src)
-							update_inv_glasses(0)
-				if("chest")//Easier to score a stun but lasts less time
-					if(prob(effective_force + 10))
-						apply_effect(6, WEAKEN, blocked, soaked)
-						visible_message("<span class='danger'>\The [src] has been knocked down!</span>")
-					if(bloody)
-						bloody_body(src)
+			if(headcheck(hit_zone))
+				//Harder to score a stun but if you do it lasts a bit longer
+				if(prob(effective_force))
+					visible_message("<span class='danger'>[src] [species.knockout_message]</span>")
+					apply_effect(20, PARALYZE, blocked)
+			else
+				//Easier to score a stun but lasts less time
+				if(prob(effective_force + 10))
+					visible_message("<span class='danger'>[src] has been knocked down!</span>")
+					apply_effect(6, WEAKEN, blocked)
 
 	return 1
+
 
 /mob/living/carbon/human/proc/attack_joint(var/obj/item/organ/external/organ, var/obj/item/W, var/effective_force, var/dislocate_mult, var/blocked, var/soaked)
 	if(!organ || (organ.dislocated == 2) || (organ.dislocated == -1) || blocked >= 100)
