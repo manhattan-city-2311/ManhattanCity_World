@@ -12,7 +12,7 @@
 #define PROCESS_DEFAULT_HANG_RESTART_TIME 900 // 90 seconds
 #define PROCESS_DEFAULT_SCHEDULE_INTERVAL 50  // 50 ticks
 #define PROCESS_DEFAULT_SLEEP_INTERVAL    20  // 20% of a tick
-#define PROCESS_DEFAULT_DEFER_USAGE       100  // 90% of a tick
+#define PROCESS_DEFAULT_DEFER_USAGE       90  // 90% of a tick
 
 // Sleep check macro
 #define SCHECK if(TICK_USAGE >= next_sleep_usage) defer()
