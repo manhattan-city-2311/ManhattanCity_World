@@ -32,7 +32,6 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/oxycodone,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/amicile,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/cetrifiaxon,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/amiodarone,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/nitroglycerin,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/atropine,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/adenosine,

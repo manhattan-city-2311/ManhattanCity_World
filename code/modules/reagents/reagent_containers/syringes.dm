@@ -104,7 +104,7 @@
 			user.visible_message("<span class='notice'>[user] changes the needle on the syringe.</span>")
 			qdel(needle)
 			needle = new_needle
-			new_needle.loc(src)
+			new_needle.loc = src
 		else
 			to_chat(user, "<span class='warning'>The needle packet is closed!</span>")
 	return
