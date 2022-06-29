@@ -473,15 +473,41 @@
 /obj/item/weapon/storage/box/lights/tubes
 	name = "box of replacement tubes"
 	icon_state = "lighttube"
-	starts_with = list(/obj/item/weapon/light/tube = 24)
+	starts_with = list(
+		/obj/item/weapon/light/tube = 18,
+		/obj/item/weapon/light/tube/large = 6
+	)
 
 /obj/item/weapon/storage/box/lights/mixed
 	name = "box of replacement lights"
 	icon_state = "lightmixed"
 	starts_with = list(
-		/obj/item/weapon/light/tube = 16,
+		/obj/item/weapon/light/tube/large = 3,
+		/obj/item/weapon/light/tube = 13,
 		/obj/item/weapon/light/bulb = 8
 	)
+
+/obj/item/weapon/storage/box/lights/tubes/neon
+	name = "box of replacement neon tubes"
+	icon_state = "lighttube"
+	starts_with = list(/obj/item/weapon/light/tube/large/neon = 24)
+
+/obj/item/weapon/storage/box/lights/tubes/neon/yellow_green_orange
+	starts_with = list(
+		/obj/item/weapon/light/tube/large/neon/yellow = 8,
+		/obj/item/weapon/light/tube/large/neon/green = 8,
+		/obj/item/weapon/light/tube/large/neon/orange = 8
+		)
+
+/obj/item/weapon/storage/box/lights/tubes/neon/pink_purple_red
+	starts_with = list(
+		/obj/item/weapon/light/tube/large/neon/pink = 8,
+		/obj/item/weapon/light/tube/large/neon/purple = 8,
+		/obj/item/weapon/light/tube/large/neon/red = 8
+		)
+
+/obj/item/weapon/storage/box/lights/tubes/neon/blue
+	starts_with = list(/obj/item/weapon/light/tube/large/neon/blue = 24)
 
 /obj/item/weapon/storage/box/freezer
 	name = "portable freezer"

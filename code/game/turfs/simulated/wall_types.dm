@@ -301,3 +301,12 @@
 
 /turf/simulated/wall/concrete/fckng_invincible/ex_act()
 	return
+
+/turf/simulated/wall/concrete/fckng_invincible/hitby()
+	return
+
+/turf/simulated/wall/concrete/fckng_invincible/take_damage()
+	return
+
+/turf/simulated/wall/concrete/fckng_invincible/attack_hand()
+	return
