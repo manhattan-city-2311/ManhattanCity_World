@@ -83,6 +83,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/update_floating(var/dense_object=0)
 
+	if(elevation > 0)
+		make_floating(1)
+
 	if(anchored||buckled)
 		make_floating(0)
 		return

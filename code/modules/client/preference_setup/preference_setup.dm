@@ -14,16 +14,6 @@
 	sort_order = 3
 	category_item_type = /datum/category_item/player_setup_item/occupation
 
-/datum/category_group/player_setup_category/appearance_preferences
-	name = "Антагонисты"
-	sort_order = 4
-	category_item_type = /datum/category_item/player_setup_item/antagonism
-
-/datum/category_group/player_setup_category/relations_preferences
-	name = "Социальные отношения"
-	sort_order = 5
-	category_item_type = /datum/category_item/player_setup_item/relations
-
 /datum/category_group/player_setup_category/trait_preferences
 	name = "Черты"
 	sort_order = 6

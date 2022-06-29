@@ -114,7 +114,7 @@
 		var/mob/living/carbon/human/H = src.loc
 		var/obj/item/organ/external/affected
 
-		for(var/obj/item/organ/external/organ in H.organs) //Grab the organ holding the implant.
+		for(var/obj/item/organ/external/organ in H.organs_by_name) //Grab the organ holding the implant.
 			for(var/obj/item/O in organ.implants)
 				if(O == src)
 					affected = organ

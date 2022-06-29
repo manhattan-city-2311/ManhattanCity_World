@@ -45,7 +45,7 @@ HALOGEN COUNTER	- Radcount on mobs
 /obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/user)
 	scan_mob(M, user)
 
-/obj/item/device/healthanalyzer/proc/scan_mob(mob/living/M, mob/living/user)
+/obj/item/device/healthanalyzer/proc/scan_mob(mob/living/carbon/human/M, mob/living/carbon/human/user)
 	var/dat = ""
 	if ((CLUMSY in user.mutations) && prob(50))
 		user.visible_message("<span class='warning'>\The [user] has analyzed the floor's vitals!</span>", "<span class='warning'>You try to analyze the floor's vitals!</span>")
@@ -53,7 +53,6 @@ HALOGEN COUNTER	- Radcount on mobs
 		dat += "Overall Status: Healthy<br>"
 		dat += "\tDamage Specifics: 0-0-0-0<br>"
 		dat += "Key: Suffocation/Toxin/Burns/Brute<br>"
-		dat += "Body Temperature: ???"
 		user.show_message("<span class='notice'>[dat]</span>", 1)
 		return
 	if (!(ishuman(user) || ticker) && ticker.mode.name != "monkey")
@@ -67,9 +66,6 @@ HALOGEN COUNTER	- Radcount on mobs
 		dat += "<span class='notice'>Analyzing Results for ERROR:\n\tOverall Status: ERROR<br>"
 		dat += "\tKey: <font color='cyan'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font><br>"
 		dat += "\tDamage Specifics: <font color='cyan'>?</font> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font><br>"
-		dat += "Body Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span><br>"
-		dat += "<span class='warning'>Warning: Blood Level ERROR: --% --cl.</span> <span class='notice'>Type: ERROR</span><br>"
-		dat += "<span class='notice'>Subject's pulse: <font color='red'>-- bpm.</font></span>"
 		user.show_message(dat, 1)
 		return
 
@@ -78,6 +74,30 @@ HALOGEN COUNTER	- Radcount on mobs
 	var/TX = M.getToxLoss() > 50 	? 	"<b>[M.getToxLoss()]</b>" 		: M.getToxLoss()
 	var/BU = M.getFireLoss() > 50 	? 	"<b>[M.getFireLoss()]</b>" 		: M.getFireLoss()
 	var/BR = M.getBruteLoss() > 50 	? 	"<b>[M.getBruteLoss()]</b>" 	: M.getBruteLoss()
+
+	// Traumatic shock.
+	if(M.is_asystole())
+		dat += "<span class='danger'>Patient is suffering from cardiovascular shock. Administer CPR immediately.</span>"
+	else if(M.shock_stage > 80)
+		dat += "<span class='warning'>Patient is at serious risk of going into shock. Pain relief recommended.</span>"
+
+	// Pulse rate.
+	var/pulse_result = "normal"
+	if(M.should_have_organ(O_HEART))
+		if(M.status_flags & FAKEDEATH)
+			pulse_result = 0
+		else
+			pulse_result = M.get_pulse_fluffy(0)
+	else
+		pulse_result = "<span class='danger'>ERROR - Nonstandard biology</span>"
+
+	dat += "<span class='notice'>Pulse rate: [pulse_result]bpm.</span>"
+
+	dat += "<b>Blood pressure:</b> [M.get_blood_pressure_fluffy()] ([round(M.get_blood_perfusion() * 100)]% of normal perfusion)"
+
+	// Body temperature.
+	dat += "<span class='notice'>Body temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span>"
+
 	if(M.status_flags & FAKEDEATH)
 		OX = fake_oxy > 50 			? 	"<b>[fake_oxy]</b>" 			: fake_oxy
 		dat += "<span class='notice'>Analyzing Results for [M]:</span><br>"
@@ -104,10 +124,16 @@ HALOGEN COUNTER	- Radcount on mobs
 		else
 			dat += "<span class='notice'>    Limbs are OK.</span><br>"
 
-	OX = M.getOxyLoss() > 50 ? 	 "<font color='cyan'><b>Severe oxygen deprivation detected</b></font>" 		: 	"Subject bloodstream oxygen level normal"
-	TX = M.getToxLoss() > 50 ? 	 "<font color='green'><b>Dangerous amount of toxins detected</b></font>" 	: 	"Subject bloodstream toxin level minimal"
-	BU = M.getFireLoss() > 50 ?  "<font color='#FFA500'><b>Severe burn damage detected</b></font>" 			:	"Subject burn injury status O.K"
-	BR = M.getBruteLoss() > 50 ? "<font color='red'><b>Severe anatomical damage detected</b></font>" 		: 	"Subject brute-force injury status O.K"
+	// Other general warnings.
+	if(M.getOxyLoss() > 50)
+		dat += "<font color='blue'><b>Severe oxygen deprivation detected.</b></font>"
+	if(M.getToxLoss() > 50)
+		dat += "<font color='green'><b>Major systemic organ failure detected.</b></font>"
+	if(M.getFireLoss() > 50)
+		dat += "<font color='#ffa500'><b>Severe burn damage detected.</b></font>"
+	if(M.getBruteLoss() > 50)
+		dat += "<font color='red'><b>Severe anatomical damage detected.</b></font>"
+
 	if(M.status_flags & FAKEDEATH)
 		OX = fake_oxy > 50 ? 		"<span class='warning'>Severe oxygen deprivation detected</span>" 	: 	"Subject bloodstream oxygen level normal"
 	dat += "[OX] | [TX] | [BU] | [BR]<br>"
@@ -126,7 +152,7 @@ HALOGEN COUNTER	- Radcount on mobs
 		else
 			dat += "<span class='warning'>Radiation detected.</span><br>"
 	if(iscarbon(M))
-		var/mob/living/carbon/C = M
+		var/mob/living/carbon/human/C = M
 		if(C.reagents.total_volume)
 			var/unknown = 0
 			var/reagentdata[0]
@@ -182,8 +208,6 @@ HALOGEN COUNTER	- Radcount on mobs
 					dat += "<span class='warning'>Warning: Unknown pathogen detected in subject's blood.</span><br>"
 	if (M.getCloneLoss())
 		dat += "<span class='warning'>Subject appears to have been imperfectly cloned.</span><br>"
-//	if (M.reagents && M.reagents.get_reagent_amount("inaprovaline"))
-//		user.show_message("<span class='notice'>Bloodstream Analysis located [M.reagents:get_reagent_amount("inaprovaline")] units of rejuvenation chemicals.</span>")
 	if (M.has_brain_worms())
 		dat += "<span class='warning'>Subject suffering from aberrant brain activity. Recommend further scanning.</span><br>"
 	else if (M.getBrainLoss() >= 60 || !M.has_brain())
@@ -196,7 +220,7 @@ HALOGEN COUNTER	- Radcount on mobs
 		dat += "<span class='warning'>Minor brain damage detected.</span><br>"
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/internal/appendix/a in H.internal_organs)
+		for(var/obj/item/organ/internal/appendix/a in H.internal_organs_by_name)
 			var/severity = ""
 			if(a.inflamed > 3)
 				severity = "Severe"
@@ -206,53 +230,42 @@ HALOGEN COUNTER	- Radcount on mobs
 				severity = "Mild"
 			if(severity)
 				dat += "<span class='warning'>[severity] inflammation detected in subject [a.name].</span><br>"
-		// Infections, fractures, and IB
-		var/basic_fracture = 0	// If it's a basic scanner
-		var/basic_ib = 0		// If it's a basic scanner
-		var/fracture_dat = ""	// All the fractures
-		var/infection_dat = ""	// All the infections
-		var/ib_dat = ""			// All the IB
-		for(var/obj/item/organ/external/e in H.organs)
+		for(var/obj/item/organ/external/e in H.organs_by_name)
 			if(!e)
 				continue
-			// Broken limbs
-			if(e.status & ORGAN_BROKEN)
-				if((e.name in list("l_arm", "r_arm", "l_leg", "r_leg")) && (!e.splinted))
-					fracture_dat += "<span class='warning'>Unsecured fracture in subject [e.name]. Splinting recommended for transport.</span><br>"
-				else if(advscan >= 1 && showadvscan == 1)
-					fracture_dat += "<span class='warning'>Bone fractures detected in subject [e.name].</span><br>"
-				else
-					basic_fracture = 1
+
+
+	for(var/name in M.organs_by_name)
+		var/obj/item/organ/external/e = M.organs_by_name[name]
+		if(!e)
+			continue
+		var/limb = e.name
+		if(e.status & ORGAN_BROKEN)
+			if(((e.name == BP_L_ARM) || (e.name == BP_R_ARM) || (e.name == BP_L_LEG) || (e.name == BP_R_LEG)) && (!e.splinted))
+				dat += "<span class='warning'>Unsecured fracture in subject [limb]. Splinting recommended for transport.</span>"
+		if(e.has_infected_wound())
+			dat += "<span class='warning'>Infected wound detected in subject [limb]. Disinfection recommended.</span>"
+
+	var/found_bleed
+	var/found_tendon
+	var/found_disloc
+	for(var/obj/item/organ/external/e in M.organs_by_name)
+		if(e)
+			if(!found_disloc && e.dislocated == 2)
+				dat += "<span class='warning'>Dislocation detected. Advanced scanner required for location.</span>"
+				found_disloc = TRUE
+			if(!found_bleed && (e.status & ORGAN_ARTERY_CUT))
+				dat += "<span class='warning'>Arterial bleeding detected. Advanced scanner required for location.</span>"
+				found_bleed = TRUE
+			if(!found_tendon && (e.status & ORGAN_TENDON_CUT))
+				dat += "<span class='warning'>Tendon or ligament damage detected. Advanced scanner required for location.</span>"
+				found_tendon = TRUE
+		if(found_disloc && found_bleed && found_tendon)
+			break
+
 			// Infections
 			if(e.has_infected_wound())
 				dat += "<span class='warning'>Infected wound detected in subject [e.name]. Disinfection recommended.</span><br>"
-			// IB
-			for(var/datum/wound/W in e.wounds)
-				if(W.internal)
-					if(advscan >= 1 && showadvscan == 1)
-						ib_dat += "<span class='warning'>Internal bleeding detected in subject [e.name].</span><br>"
-					else
-						basic_ib = 1
-		if(basic_fracture)
-			fracture_dat += "<span class='warning'>Bone fractures detected. Advanced scanner required for location.</span><br>"
-		if(basic_ib)
-			ib_dat += "<span class='warning'>Internal bleeding detected. Advanced scanner required for location.</span><br>"
-		dat += fracture_dat
-		dat += infection_dat
-		dat += ib_dat
-
-		// Blood level
-		if(M:vessel)
-			var/blood_volume = H.vessel.get_reagent_amount("blood")
-			var/blood_percent =  round((blood_volume / H.species.blood_volume)*100)
-			var/blood_type = H.dna.b_type
-			if(blood_percent <= BLOOD_VOLUME_BAD)
-				dat += "<span class='danger'><i>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i></span><br>"
-			else if(blood_percent <= BLOOD_VOLUME_SAFE)
-				dat += "<span class='danger'>Warning: Blood Level LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]</span><br>"
-			else
-				dat += "<span class='notice'>Blood Level Normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]</span><br>"
-		dat += "<span class='notice'>Subject's pulse: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</font></span>"
 	user.show_message(dat, 1)
 
 /obj/item/device/healthanalyzer/verb/toggle_mode()

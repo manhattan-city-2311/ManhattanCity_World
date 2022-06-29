@@ -60,12 +60,12 @@ var/list/ventcrawl_machinery = list(
 		return 1
 
 /mob/living/carbon/is_allowed_vent_crawl_item(var/obj/item/carried_item)
-	if(carried_item in internal_organs)
+	if(carried_item in internal_organs_by_name)
 		return 1
 	return ..()
 
 /mob/living/carbon/human/is_allowed_vent_crawl_item(var/obj/item/carried_item)
-	if(carried_item in organs)
+	if(carried_item in organs_by_name)
 		return 1
 	return ..()
 

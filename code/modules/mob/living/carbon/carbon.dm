@@ -21,7 +21,7 @@
 	qdel(ingested)
 	qdel(touching)
 	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
-	for(var/guts in internal_organs)
+	for(var/guts in internal_organs_by_name)
 		qdel(guts)
 	for(var/food in stomach_contents)
 		qdel(food)
@@ -177,7 +177,7 @@
 				"<font color='blue'>You check yourself for injuries.</font>" \
 				)
 
-			for(var/obj/item/organ/external/org in H.organs)
+			for(var/obj/item/organ/external/org in H.organs_by_name)
 				var/list/status = list()
 				var/brutedamage = org.brute_dam
 				var/burndamage = org.burn_dam
@@ -342,25 +342,13 @@
 	return
 
 //generates realistic-ish pulse output based on preset levels
-/mob/living/carbon/proc/get_pulse(var/method)	//method 0 is for hands, 1 is for machines, more accurate
-	var/temp = 0								//see setup.dm:694
-	switch(src.pulse)
-		if(PULSE_NONE)
-			return "0"
-		if(PULSE_SLOW)
-			temp = rand(40, 60)
-			return num2text(method ? temp : temp + rand(-10, 10))
-		if(PULSE_NORM)
-			temp = rand(60, 90)
-			return num2text(method ? temp : temp + rand(-10, 10))
-		if(PULSE_FAST)
-			temp = rand(90, 120)
-			return num2text(method ? temp : temp + rand(-10, 10))
-		if(PULSE_2FAST)
-			temp = rand(120, 160)
-			return num2text(method ? temp : temp + rand(-10, 10))
-		if(PULSE_THREADY)
-			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
+/mob/living/carbon/proc/get_pulse_fluffy(var/method)	//method 0 is for hands, 1 is for machines, more accurate
+	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
+	if(!H)
+		return
+	if(H.open && !method)
+		return "muddled and unclear; you can't seem to find a vein"
+	return "[method ? get_pulse() : get_pulse() + rand(-10, 10)]"
 //			output for machines^	^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/verb/mob_sleep()
@@ -413,3 +401,18 @@
 	if(isSynthetic())
 		return 0
 	return !(species.flags & NO_PAIN)
+
+/mob/living/carbon/human/proc/make_adrenaline(amount)
+	if(stat == CONSCIOUS)
+		var/limit = max(0, 15) - reagents.get_reagent_amount("adrenaline")
+		reagents.add_reagent("adrenaline", min(amount, limit))
+
+// Get fluffy numbers
+/mob/living/carbon/human/proc/get_blood_pressure_fluffy()
+	if(spressure < 30)
+		return "0/0"
+	return "[round(spressure)]/[round(dpressure)]"
+
+//Point at which you dun breathe no more. Separate from asystole crit, which is heart-related.
+/mob/living/carbon/human/proc/nervous_system_failure()
+	return getBrainLoss() >= maxHealth * 0.75

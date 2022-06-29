@@ -81,6 +81,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_LAW				-29
 #define INIT_ORDER_LOTS				-30
 #define INIT_ORDER_WEBSITES			-31
+#define INIT_ORDER_CHAT 			-200 // Should be last to ensure chat remains smooth during init.
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
@@ -95,7 +96,9 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_OBJ			40
 #define FIRE_PRIORITY_PROCESS			45
 #define FIRE_PRIORITY_DEFAULT			50
+#define FIRE_PRIORITY_MEDICINE			74
 #define FIRE_PRIORITY_PLANETS			75
+#define FIRE_PRIORITY_CHAT				90
 #define FIRE_PRIORITY_MACHINES		100
 #define FIRE_PRIORITY_PROJECTILES		150
 #define FIRE_PRIORITY_OVERLAYS		500

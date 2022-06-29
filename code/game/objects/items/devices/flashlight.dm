@@ -153,8 +153,6 @@
 					return
 				if(XRAY in M.mutations)
 					to_chat(user, "<span class='notice'>\The [M] pupils give an eerie glow!</span>")
-				if(vision.is_bruised())
-					to_chat(user, "<span class='warning'>There's visible damage to [M]'s [vision.name]!</span>")
 				else if(M.eye_blurry)
 					to_chat(user, "<span class='notice'>\The [M]'s pupils react slower than normally.</span>")
 				if(M.getBrainLoss() > 15)

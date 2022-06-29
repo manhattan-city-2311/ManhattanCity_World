@@ -149,19 +149,40 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		return new type()
 	return asset_datums[type]
 
+/datum/asset
+	// All assets, "filename = file"
+	var/list/assets = list()
+	var/registred = FALSE
+
 /datum/asset/New()
 	asset_datums[type] = src
+	register()
 
 /datum/asset/proc/register()
-	return
+	for(var/asset_name in assets)
+		register_asset(asset_name, assets[asset_name])
+	registred = TRUE
 
 /datum/asset/proc/send(client)
 	return
 
+/datum/asset/proc/send_slow(client/client)
+	ASSERT(client)
+	ASSERT(istype(client))
+	return getFilesSlow(client, assets)
+
+/*/proc/getFilesSlow(client/client, list/files)
+	for(var/file in files)
+		if(!client)
+			return FALSE
+		send_asset(client, file)
+		stoplag(0) //queuing calls like this too quickly can cause issues in some client versions
+	return TRUE*/
+
 //If you don't need anything complicated.
 /datum/asset/simple
-	var/assets = list()
 	var/verify = FALSE
+	var/isTrivial = TRUE
 
 /datum/asset/simple/register()
 	for(var/asset_name in assets)
@@ -172,10 +193,41 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 
-/datum/asset/simple/tgui
+/datum/asset/simple/tgui_common
+	isTrivial = TRUE
+	verify = FALSE
 	assets = list(
-		"tgui.css"	= 'tgui/assets/tgui.css',
-		"tgui.js"	= 'tgui/assets/tgui.js'
+		"tgui-common.bundle.js" = 'tgui/public/tgui-common.bundle.js',
+	)
+
+/datum/asset/simple/tgui
+	isTrivial = TRUE
+	verify = FALSE
+	assets = list(
+		"tgui.bundle.js" = 'tgui/public/tgui.bundle.js',
+		"tgui.bundle.css" = 'tgui/public/tgui.bundle.css',
+	)
+
+/datum/asset/simple/tgui_panel
+	isTrivial = TRUE
+	verify = FALSE
+	assets = list(
+		"tgui-panel.bundle.js" = 'tgui/public/tgui-panel.bundle.js',
+		"tgui-panel.bundle.css" = 'tgui/public/tgui-panel.bundle.css',
+	)
+
+/datum/asset/simple/fontawesome
+	isTrivial = TRUE
+	verify = FALSE
+	assets = list(
+		"fa-regular-400.eot"  = 'html/font-awesome/webfonts/fa-regular-400.eot',
+		"fa-regular-400.woff" = 'html/font-awesome/webfonts/fa-regular-400.woff',
+		"fa-brands-400.eot"  = 'html/font-awesome/webfonts/fa-brands-400.eot',
+		"fa-brands-400.woff"  = 'html/font-awesome/webfonts/fa-brands-400.woff',
+		"fa-solid-900.eot"    = 'html/font-awesome/webfonts/fa-solid-900.eot',
+		"fa-solid-900.woff"   = 'html/font-awesome/webfonts/fa-solid-900.woff',
+		"font-awesome.css"    = 'html/font-awesome/css/all.min.css',
+		"v4shim.css"          = 'html/font-awesome/css/v4-shims.min.css'
 	)
 
 /datum/asset/nanoui

@@ -88,7 +88,6 @@
 
 	// FBP repair.
 	src.modules += new /obj/item/device/robotanalyzer(src)
-	src.modules += new /obj/item/weapon/shockpaddles/robot/jumper(src)
 	src.modules += new /obj/item/weapon/gripper/no_use/organ/robotics(src)
 
 	// Hacking other things.
@@ -162,7 +161,6 @@
 
 	// General healing.
 	src.modules += new /obj/item/weapon/gripper/medical(src)
-	src.modules += new /obj/item/weapon/shockpaddles/robot/combat(src)
 	src.modules += new /obj/item/weapon/reagent_containers/dropper(src) // Allows borg to fix necrosis apparently
 	src.modules += new /obj/item/weapon/reagent_containers/syringe(src)
 	src.modules += new /obj/item/roller_holder(src)

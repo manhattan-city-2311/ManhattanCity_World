@@ -62,7 +62,7 @@
 /datum/reagent/proc/touch_turf(turf/T, amount) // Cleaner cleaning, lube lubbing, etc, all go here
 	return
 
-/datum/reagent/proc/on_mob_life(mob/living/carbon/M, alien, datum/reagents/metabolism/location) // Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
+/datum/reagent/proc/on_mob_life(mob/living/carbon/human/M, alien, datum/reagents/metabolism/location) // Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
 	if(!istype(M))
 		return
 	if(!affects_dead && M.stat == DEAD)
@@ -83,22 +83,6 @@
 		// Metabolism
 		removed *= active_metab.metabolism_speed
 
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(H.species.has_organ[O_HEART])
-				var/obj/item/organ/internal/heart/Pump = H.internal_organs_by_name[O_HEART]
-				if(!Pump)
-					removed *= 0.1
-				else if(Pump.standard_pulse_level == PULSE_NONE)	// No pulse normally means chemicals process a little bit slower than normal.
-					removed *= 0.8
-				else	// Otherwise, chemicals process as per percentage of your current pulse, or, if you have no pulse but are alive, by a miniscule amount.
-					removed *= max(0.1, H.pulse / Pump.standard_pulse_level)
-			if(filtered_organs && filtered_organs.len)
-				for(var/organ_tag in filtered_organs)
-					var/obj/item/organ/internal/O = H.internal_organs_by_name[organ_tag]
-					if(O && !O.is_broken() && prob(max(0, O.max_damage - O.damage)))
-						removed *= 0.8
-
 	if(ingest_met && (active_metab.metabolism_class == CHEM_INGEST))
 		removed = ingest_met
 	if(touch_met && (active_metab.metabolism_class == CHEM_TOUCH))
@@ -117,6 +101,7 @@
 	if(overdose && (volume > overdose) && (active_metab.metabolism_class != CHEM_TOUCH))
 		overdose(M, alien, removed)
 	remove_self(removed)
+	M.chem_traces += src
 	return
 
 /datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)

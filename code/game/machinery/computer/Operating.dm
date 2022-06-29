@@ -47,7 +47,7 @@
 
 		victim_ui = list("real_name" = victim.real_name, "age" = victim.age, "b_type" = victim.b_type, "health" = victim.health,
 						"brute" = victim.getBruteLoss(), "tox" = src.victim.getToxLoss(), "burn" = victim.getFireLoss(), "oxy" = victim.getOxyLoss(),
-						"stat" = (victim.stat ? "Non-Responsive" : "Stable"), "pulse" = victim.get_pulse(GETPULSE_TOOL))
+						"stat" = (victim.stat ? "Non-Responsive" : "Stable"), "pulse" = victim.get_pulse_fluffy(GETPULSE_TOOL))
 	else
 		victim = null
 		victim_ui = null

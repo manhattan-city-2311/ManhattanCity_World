@@ -58,11 +58,11 @@ obj/structure/windoor_assembly/Destroy()
 	icon_state = "[facing]_[secure]windoor_assembly[state]"
 
 /obj/structure/windoor_assembly/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
+	if(istype(mover) && (mover.checkpass(PASSGLASS) || mover.elevation != elevation))
 		return 1
 	if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
 		if(air_group) return 0
-		return !density
+		return (!density || (mover && mover.elevation != elevation))
 	else
 		return 1
 
@@ -219,7 +219,6 @@ obj/structure/windoor_assembly/Destroy()
 				if(src.electronics && istype(src.electronics, /obj/item/weapon/circuitboard/broken))
 					to_chat(usr,"<span class='warning'>The assembly has broken airlock electronics.</span>")
 					return
-				to_chat(usr,browse(null, "window=windoor_access")) //Not sure what this actually does... -Ner
 				playsound(src, W.usesound, 100, 1)
 				user.visible_message("[user] pries the windoor into the frame.", "You start prying the windoor into the frame.")
 

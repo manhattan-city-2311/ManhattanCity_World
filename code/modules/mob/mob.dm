@@ -976,7 +976,7 @@ mob/proc/yank_out_object()
 		var/mob/living/carbon/human/H = src
 		var/obj/item/organ/external/affected
 
-		for(var/obj/item/organ/external/organ in H.organs) //Grab the organ holding the implant.
+		for(var/obj/item/organ/external/organ in H.organs_by_name) //Grab the organ holding the implant.
 			for(var/obj/item/O in organ.implants)
 				if(O == selection)
 					affected = organ
@@ -1191,3 +1191,50 @@ mob/proc/yank_out_object()
 	closeToolTip(usr) //No reason not to, really
 
 	..()
+
+/mob/proc/remove_harness()
+	set category = "Object"
+	set name = "Remove harness"
+	set desc = "Remove an harness"
+	set src in view(1)
+
+	if(!ishuman(usr) || !usr.canClick())
+		return
+	usr.setClickCooldown(20)
+
+	if(usr.stat == 1)
+		to_chat(usr, "You are unconcious and cannot do that!")
+		return
+
+	if(usr.restrained())
+		to_chat(usr, "You are restrained and cannot do that!")
+		return
+
+	var/mob/living/carbon/human/S = src
+	var/mob/U = usr
+	var/list/valid_harnesses = list()
+
+	for(var/obj/item/organ/external/E in S.organs_by_name)
+		if(E.clamped > 0)
+			valid_harnesses += E
+	var/obj/item/organ/external/choice = input("Which limb do you wanna to remove the harness from?", "Limbs") in valid_harnesses
+
+	var/self = S == U
+
+	if(!do_mob(U, S, 30))
+		return
+	if(!S || !U || !choice)
+		return
+
+	if(self)
+		visible_message("<span class='warning'><b>[src] removes harness out of their [choice].</b></span>","<span class='warning'><b>You rip harness out of your [choice].</b></span>")
+	else
+		visible_message("<span class='warning'><b>[usr] removes harness out of [src]'s [choice].</b></span>","<span class='warning'><b>[usr] rips harness out of your [choice].</b></span>")
+
+	valid_harnesses.Cut()
+	for(var/obj/item/organ/external/E in S.organs_by_name)
+		if(E.clamped)
+			valid_harnesses += E
+	if(valid_harnesses.len == 1)
+		src.verbs -= /mob/proc/remove_harness
+	choice.clamped = 0

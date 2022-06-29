@@ -56,7 +56,7 @@
 
 /datum/reagent/nutriment/glucose
 	name = "Glucose"
-	id = "glucose"
+	id = "glucosenutriment"
 	taste_description = "sweetness"
 	color = "#FFFFFF"
 	calories_factor = 8

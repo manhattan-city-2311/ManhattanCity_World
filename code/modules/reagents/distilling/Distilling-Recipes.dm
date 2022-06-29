@@ -72,18 +72,6 @@
 	temp_range = list(T20C + 80, T20C + 130)
 	temp_shift = -2
 
-// Medicinal
-/datum/chemical_reaction/distilling/inaprovalaze
-	name = "Distilling Inaprovalaze"
-	id = "distill_inaprovalaze"
-	result = "inaprovalaze"
-	required_reagents = list("inaprovaline" = 2, "foaming_agent" = 1)
-	result_amount = 2
-
-	reaction_rate = HALF_LIFE(10)
-
-	temp_range = list(T0C + 100, T0C + 120)
-
 /datum/chemical_reaction/distilling/bicaridaze
 	name = "Distilling Bicaridaze"
 	id = "distill_bicaridaze"

@@ -9,9 +9,11 @@
 		construction_stage = null
 	if(!material)
 		material = get_material_by_name(DEFAULT_WALL_MATERIAL)
-	if(material)
+	if(material && material.explosion_resistance)
 		explosion_resistance = material.explosion_resistance
-	if(reinf_material && reinf_material.explosion_resistance > explosion_resistance)
+	else
+		explosion_resistance = 0
+	if(reinf_material && reinf_material.explosion_resistance)
 		explosion_resistance = reinf_material.explosion_resistance
 
 	if(reinf_material)
@@ -164,6 +166,8 @@
 	other_connections = dirs_to_corner_states(other_dirs)
 
 /turf/simulated/wall/proc/can_join_with(var/turf/simulated/wall/W)
+	if(!W.material.icon_base)
+		return 1
 	if(material && W.material && material.icon_base == W.material.icon_base)
 		return 1
 	for(var/wb_type in blend_turfs)

@@ -216,8 +216,6 @@ the artifact triggers the rage.
 	on_expired_text = "<span class='notice'>You feel.. different.</span>"
 	stacks = MODIFIER_STACK_EXTEND
 
-	pulse_set_level = PULSE_NORM
-
 
 
 

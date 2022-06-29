@@ -43,13 +43,22 @@
 	dynamic_lighting = 1
 	sound_env = CITY
 	flags = null
-	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north4.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
 
 /area/planets/Manhattan/indoor
 	name = "\improper New-Manhattan Interior"
 	icon_state = "yellow"
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/outdoor/upper1
+	name = "\improper New-Manhattan second level outdoors"
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/outdoor/upper2
+	name = "\improper New-Manhattan third level outdoors"
+	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/indoor/north/bar
 
@@ -124,7 +133,7 @@
 /area/planets/Manhattan/indoor/north/house_standart1/balcony
 	icon_state = "north_m3"
 	sound_env = CITY
-	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north4.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
 
 /area/planets/Manhattan/indoor/north/house_standart1/balcony/one
 
@@ -133,6 +142,9 @@
 /area/planets/Manhattan/indoor/north/house_standart1/balcony/three
 
 /area/planets/Manhattan/indoor/north/house_standart1/balcony/four
+
+/area/planets/Manhattan/indoor/north/police_dept
+	ambience = list('sound/ambience/MAIN0C.SAP.ogg', 'sound/ambience/MAIN05.SAP.ogg')
 
 /*
  		--------S O U T H---------

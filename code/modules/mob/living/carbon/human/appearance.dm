@@ -219,6 +219,6 @@
 	return valid_facial_hairstyles
 
 /mob/living/carbon/human/proc/force_update_limbs()
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in organs_by_name)
 		O.sync_colour_to_human(src)
 	update_icons_body(FALSE)

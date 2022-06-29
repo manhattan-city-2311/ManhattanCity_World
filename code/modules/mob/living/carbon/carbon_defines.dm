@@ -20,8 +20,8 @@
 	var/datum/reagents/metabolism/bloodstream/bloodstr = null
 	var/datum/reagents/metabolism/ingested/ingested = null
 	var/datum/reagents/metabolism/touch/touching = null
-
-	var/pulse = PULSE_NORM	//current pulse level
+	var/list/chem_traces = list()
+	var/pulse = 86	//current pulse level
 
 	var/does_not_breathe = 0 //Used for specific mobs that can't take advantage of the species flags (changelings)
 
@@ -29,3 +29,5 @@
 	//the second is the message in question.
 	var/last_taste_time = 0
 	var/last_taste_text = ""
+	var/list/organs_by_name = list() // map organ names to organs
+	var/list/internal_organs_by_name = list() // so internal organs have less ickiness too

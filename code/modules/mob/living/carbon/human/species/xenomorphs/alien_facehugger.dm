@@ -111,7 +111,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		return
 
 	var/mob/living/carbon/C = M
-	if(istype(C) && locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)
+	if(istype(C) && locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs_by_name)
 		return
 
 
@@ -211,7 +211,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		return 0
 
 	var/mob/living/carbon/C = M
-	if(istype(C) && locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)
+	if(istype(C) && locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs_by_name)
 		return 0
 
 	if(ishuman(C))

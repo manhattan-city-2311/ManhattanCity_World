@@ -182,7 +182,7 @@
 
 	var/obj/item/organ/internal/borer/B = new(H)
 	H.internal_organs_by_name["brain"] = B
-	H.internal_organs |= B
+	H.internal_organs_by_name |= B
 
 	var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
 	affecting.implants -= src

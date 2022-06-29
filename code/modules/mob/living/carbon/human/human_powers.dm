@@ -171,13 +171,13 @@
 	else
 		output += "System Instability: <span style='color:green;'>OK</span>\n"
 
-	for(var/obj/item/organ/external/EO in organs)
+	for(var/obj/item/organ/external/EO in organs_by_name)
 		if(EO.brute_dam || EO.burn_dam)
 			output += "[EO.name] - <span class='warning'>[EO.burn_dam + EO.brute_dam > ROBOLIMB_REPAIR_CAP ? "Heavy Damage" : "Light Damage"]</span>\n"
 		else
 			output += "[EO.name] - <span style='color:green;'>OK</span>\n"
 
-	for(var/obj/item/organ/IO in internal_organs)
+	for(var/obj/item/organ/IO in internal_organs_by_name)
 		if(IO.damage)
 			output += "[IO.name] - <span class='warning'>[IO.damage > 10 ? "Heavy Damage" : "Light Damage"]</span>\n"
 		else
@@ -253,7 +253,7 @@
 	if(do_after(src,delay_length))
 		nutrition -= 200
 
-		for(var/obj/item/organ/I in internal_organs)
+		for(var/obj/item/organ/I in internal_organs_by_name)
 			if(I.damage > 0)
 				I.damage = max(I.damage - 30, 0) //Repair functionally half of a dead internal organ.
 				to_chat(src, "<span class='notice'>You feel a soothing sensation within your [I.name]...</span>")
@@ -263,7 +263,7 @@
 			var/obj/item/organ/external/E = src.organs_by_name[limb_type]
 			if(E && E.disfigured)
 				E.disfigured = 0
-			if(E && (E.is_stump() || (E.status & (ORGAN_DESTROYED|ORGAN_DEAD|ORGAN_MUTATED))))
+			if(E && (E.is_stump() || (E.status & (ORGAN_DEAD|ORGAN_MUTATED))))
 				E.removed()
 				qdel(E)
 				E = null

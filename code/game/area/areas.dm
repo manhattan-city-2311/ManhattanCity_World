@@ -289,14 +289,14 @@ var/list/mob/living/forced_ambiance_list = new
 
 	if(!L.client.ambience_playing)
 		L.client.ambience_playing = 1
-		L << sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 35, channel = CHANNEL_AMBIENCE)
+		L << sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE)
 
 	if(forced_ambience)
 		if(forced_ambience.len)
 			forced_ambiance_list |= L
 			var/sound/chosen_ambiance = pick(forced_ambience)
 			if(!istype(chosen_ambiance))
-				chosen_ambiance = sound(chosen_ambiance, repeat = 1, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE_FORCED)
+				chosen_ambiance = sound(chosen_ambiance, repeat = 1, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE_FORCED)
 			L << chosen_ambiance
 		else
 			L << sound(null, channel = CHANNEL_AMBIENCE_FORCED)

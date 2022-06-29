@@ -33,7 +33,7 @@
 	var/list/bodypart_targets = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_TORSO,BP_GROIN,BP_HEAD)
 	var/infest_target = BP_TORSO	// The currently chosen bodypart to infest.
 	var/mob/living/carbon/host		// Our humble host.
-	var/list/produceable_chemicals = list("inaprovaline","anti_toxin","alkysine","bicaridine","tramadol","kelotane","leporazine","iron","phoron","condensedcapsaicin_v","frostoil")
+	var/list/produceable_chemicals = list("anti_toxin","alkysine","bicaridine","tramadol","kelotane","leporazine","iron","phoron","condensedcapsaicin_v","frostoil")
 	var/randomized_reagent = "iron"	// The reagent chosen at random to be produced, if there's no one piloting the worm.
 	var/passive_reagent = "paracetamol"	// Reagent passively produced by the leech. Should usually be a painkiller.
 
@@ -163,8 +163,6 @@
 		if(!docile && ishuman(host) && chemicals < max_chemicals)
 			var/mob/living/carbon/human/H = host
 			H.vessel.remove_reagent("blood", 1)
-			if(!H.reagents.has_reagent("inaprovaline"))
-				H.reagents.add_reagent("inaprovaline", 1)
 			chemicals += 2
 
 		if(!client && !docile)	// Automatic 'AI' to manage damage levels.
@@ -391,7 +389,7 @@
 		return
 
 	if(host && world.time >= last_feeding + feeding_delay)
-		var/list/host_internal_organs = host.internal_organs
+		var/list/host_internal_organs = host.internal_organs_by_name
 
 		for(var/obj/item/organ/internal/O in host_internal_organs)	// Remove organs with maximum damage.
 			if(O.damage >= O.max_damage)

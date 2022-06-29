@@ -59,20 +59,6 @@
 
 	if(pref.bank_pin)
 		. += "<b>ПИН-код:</b> [pref.bank_pin]<br>"
-	. += "<b>Экономический класс:</b> [pref.economic_status]<br>"
-
-	if(SSpersistent_options)
-		. += "<b>[pref.economic_status] Налог:</b> [get_tax_rate(pref.economic_status)]<br>"
-
-	. += "<b>Долги:</b></br>"
-	if(isemptylist(pref.expenses))
-		. += "<i>У вас нет записанных долгов.</i>"
-	else
-		for(var/datum/expense/E in pref.expenses)
-			var/purpose_name
-			if(E.purpose)
-				purpose_name = " ([E.purpose])"
-				. += "<b>[E.name][purpose_name]:</b> [E.amount_left] кредитов. ([E.cost_per_payroll] за зарплату.)<br>"
 
 
 	. = jointext(.,null)

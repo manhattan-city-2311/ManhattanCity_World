@@ -32,6 +32,9 @@
 	// amount of germs in the wound
 	var/germ_level = 0
 
+	var/germ_speed = 1         // speed of germs creating
+
+	var/obj/item/organ/external/parent_organ	// the organ the wound is on, if on an organ
 	/*  These are defined by the wound type and should not be changed */
 
 	// stages such as "cut", "deep cut", etc.
@@ -150,9 +153,6 @@
 	proc/salve()
 		salved = 1
 
-	proc/disinfect()
-		disinfected = 1
-
 	// heal the given amount of damage, and if the given amount of damage was more
 	// than what needed to be healed, return how much heal was left
 	// set @heals_internal to also heal internal organ damage
@@ -171,7 +171,11 @@
 		src.min_damage = damage_list[current_stage]
 
 		// return amount of healing still leftover, can be used for other wounds
-		return amount
+		if(parent_organ)
+			if(damage_type == BURN && !(parent_organ))
+				return amount	//We don't want to heal wounds on irreparable organs.
+			else if(!(parent_organ))
+				return amount
 
 	// opens the wound again
 	proc/open_wound(damage)
@@ -277,26 +281,32 @@
 	// Minor cuts have max_bleeding_stage set to the stage that bears the wound type's name.
 	// The major cut types have the max_bleeding_stage set to the clot stage (which is accordingly given the "blood soaked" descriptor).
 	max_bleeding_stage = 3
+	germ_speed = 0.25
 	stages = list("ugly ripped cut" = 20, "ripped cut" = 10, "cut" = 5, "healing cut" = 2, "small scab" = 0)
 
 /datum/wound/cut/deep
 	max_bleeding_stage = 3
+	germ_speed = 1.25
 	stages = list("ugly deep ripped cut" = 25, "deep ripped cut" = 20, "deep cut" = 15, "clotted cut" = 8, "scab" = 2, "fresh skin" = 0)
 
 /datum/wound/cut/flesh
 	max_bleeding_stage = 4
+	germ_speed = 1.5
 	stages = list("ugly ripped flesh wound" = 35, "ugly flesh wound" = 30, "flesh wound" = 25, "blood soaked clot" = 15, "large scab" = 5, "fresh skin" = 0)
 
 /datum/wound/cut/gaping
 	max_bleeding_stage = 3
+	germ_speed = 2
 	stages = list("gaping wound" = 50, "large blood soaked clot" = 25, "blood soaked clot" = 15, "small angry scar" = 5, "small straight scar" = 0)
 
 /datum/wound/cut/gaping_big
 	max_bleeding_stage = 3
+	germ_speed = 2.25
 	stages = list("big gaping wound" = 60, "healing gaping wound" = 40, "large blood soaked clot" = 25, "large angry scar" = 10, "large straight scar" = 0)
 
 datum/wound/cut/massive
 	max_bleeding_stage = 3
+	germ_speed = 2.5
 	stages = list("massive wound" = 70, "massive healing wound" = 50, "massive blood soaked clot" = 25, "massive angry scar" = 10,  "massive jagged scar" = 0)
 
 /** PUNCTURES **/
@@ -309,26 +319,31 @@ datum/wound/cut/massive
 
 /datum/wound/puncture/small
 	max_bleeding_stage = 2
+	germ_speed = 0.5
 	stages = list("puncture" = 5, "healing puncture" = 2, "small scab" = 0)
 	damage_type = PIERCE
 
 /datum/wound/puncture/flesh
 	max_bleeding_stage = 2
+	germ_speed = 1
 	stages = list("puncture wound" = 15, "blood soaked clot" = 5, "large scab" = 2, "small round scar" = 0)
 	damage_type = PIERCE
 
 /datum/wound/puncture/gaping
 	max_bleeding_stage = 3
+	germ_speed = 2
 	stages = list("gaping hole" = 30, "large blood soaked clot" = 15, "blood soaked clot" = 10, "small angry scar" = 5, "small round scar" = 0)
 	damage_type = PIERCE
 
 /datum/wound/puncture/gaping_big
 	max_bleeding_stage = 3
+	germ_speed = 2.5
 	stages = list("big gaping hole" = 50, "healing gaping hole" = 20, "large blood soaked clot" = 15, "large angry scar" = 10, "large round scar" = 0)
 	damage_type = PIERCE
 
 datum/wound/puncture/massive
 	max_bleeding_stage = 3
+	germ_speed = 3
 	stages = list("massive wound" = 60, "massive healing wound" = 30, "massive blood soaked clot" = 25, "massive angry scar" = 10,  "massive jagged scar" = 0)
 	damage_type = PIERCE
 
@@ -337,6 +352,7 @@ datum/wound/puncture/massive
 	stages = list("monumental bruise" = 80, "huge bruise" = 50, "large bruise" = 30,
 				  "moderate bruise" = 20, "small bruise" = 10, "tiny bruise" = 5)
 	bleed_threshold = 20
+	germ_speed = 0.75
 	max_bleeding_stage = 2 //only huge bruise and above can bleed.
 	damage_type = BRUISE
 
@@ -344,6 +360,7 @@ datum/wound/puncture/massive
 /datum/wound/burn
 	damage_type = BURN
 	max_bleeding_stage = 0
+	germ_speed = 1
 
 /datum/wound/burn/bleeding()
 	return 0
@@ -352,15 +369,19 @@ datum/wound/puncture/massive
 	stages = list("ripped burn" = 10, "moderate burn" = 5, "healing moderate burn" = 2, "fresh skin" = 0)
 
 /datum/wound/burn/large
+	germ_speed = 1.25
 	stages = list("ripped large burn" = 20, "large burn" = 15, "healing large burn" = 5, "fresh skin" = 0)
 
 /datum/wound/burn/severe
+	germ_speed = 1.5
 	stages = list("ripped severe burn" = 35, "severe burn" = 30, "healing severe burn" = 10, "burn scar" = 0)
 
 /datum/wound/burn/deep
+	germ_speed = 1.75
 	stages = list("ripped deep burn" = 45, "deep burn" = 40, "healing deep burn" = 15,  "large burn scar" = 0)
 
 /datum/wound/burn/carbonised
+	germ_speed = 2
 	stages = list("carbonised area" = 50, "healing carbonised area" = 20, "massive burn scar" = 0)
 
 /** INTERNAL BLEEDING **/
@@ -372,6 +393,7 @@ datum/wound/puncture/massive
 
 /** EXTERNAL ORGAN LOSS **/
 /datum/wound/lost_limb
+	germ_level = 4
 
 /datum/wound/lost_limb/New(var/obj/item/organ/external/lost_limb, var/losstype, var/clean)
 	var/damage_amt = lost_limb.max_damage
@@ -400,3 +422,14 @@ datum/wound/puncture/massive
 
 /datum/wound/lost_limb/can_merge(var/datum/wound/other)
 	return 0 //cannot be merged
+
+/datum/wound/proc/disinfect()
+	disinfected = 1
+	if(!disinfected)
+		germ_level *= 0.5
+		disinfected = 1
+
+/datum/wound/proc/germ_speed()
+	.  = germ_speed
+	. *= is_treated() ? 0.8 : 1
+	. *= disinfected  ? 0.6 : 1 

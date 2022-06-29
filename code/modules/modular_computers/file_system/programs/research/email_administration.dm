@@ -24,7 +24,7 @@
 		data = program.get_header_data()
 
 	data += "skill_fail"
-//	if(!user.skill_check(SKILL_COMPUTER, SKILL_BASIC))
+//	if(!user.skill_check(SKILL_COMPUTER, SKILL_AMATEUR))
 //		var/datum/extension/fake_data/fake_data = get_or_create_extension(src, /datum/extension/fake_data, /datum/extension/fake_data, 15)
 //		data["skill_fail"] = fake_data.update_and_return_data()
 	data["terminal"] = !!program
@@ -79,7 +79,7 @@
 	if(!istype(user))
 		return 1
 
-//	if(!user.skill_check(SKILL_COMPUTER, SKILL_BASIC))
+//	if(!user.skill_check(SKILL_COMPUTER, SKILL_AMATEUR))
 //		return 1
 
 	// High security - can only be operated when the user has an ID with access on them.

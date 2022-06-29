@@ -13,7 +13,7 @@
 
 //	ammo_containers = newlist(/obj/item/ammo_magazine/warthog_mag)
 
-	occupants = list(1,2)
+	occupants = list(2,0)
 	exposed_positions = list("driver" = 10,"passenger" = 50)
 
 	vehicle_size = ITEM_SIZE_VEHICLE_LARGE

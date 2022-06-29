@@ -14,7 +14,7 @@
 	var/muzzled = is_muzzled()
 	//var/m_type = 1
 
-	for(var/obj/item/organ/O in src.organs)
+	for(var/obj/item/organ/O in src.organs_by_name)
 		for (var/obj/item/weapon/implant/I in O)
 			if (I.implanted)
 				I.trigger(act, src)
@@ -421,7 +421,7 @@
 				m_type = 1
 			else
 				if (!muzzled)
-					message = "cries."
+					message = "плачет."
 					var/use_sound
 					if(get_species() == SPECIES_HUMAN_CHILD || get_species() == SPECIES_HUMAN_TEEN)
 						if(get_gender() == FEMALE)
@@ -526,7 +526,7 @@
 				m_type = 1
 			else
 				if (!muzzled)
-					message = "groans!"
+					message = "болезненно стонет!"
 					m_type = 2
 				else
 					message = "makes a loud noise."
@@ -537,7 +537,7 @@
 				message = "appears to moan!"
 				m_type = 1
 			else
-				message = "moans!"
+				message = "стонет!"
 				m_type = 2
 
 		if ("johnny")
@@ -672,11 +672,11 @@
 
 		if ("whimper")
 			if (miming)
-				message = "appears hurt."
+				message = "выглядит болезненно."
 				m_type = 1
 			else
 				if (!muzzled)
-					message = "whimpers."
+					message = "хнычет."
 					m_type = 2
 				else
 					message = "makes a weak noise."
@@ -777,20 +777,43 @@
 				if(!muzzled)
 					//message = "[species.scream_verb]!"
 					var/scream_sound = pick("Aaaaaargh!","Aaaaah!","Aaaaahhhh!","AHHHHHH!","Aaarrgh!")
-					var/scream_desc = pick("lets out a bloodcurdling scream",
-					"screams loudly",
-					"yells out in a scream",
-					"yowls",
-					"screams")
+					var/scream_desc = pick("болезненно кричит",
+					"громко кричит",
+					"орёт в приступах боли",
+					"воет от боли",
+					"кричит")
 					message = "[scream_desc], \"[scream_sound]\""
 					m_type = 2
 					if(get_gender() == FEMALE)
-						playsound(src, pick(species.female_scream_sound), 50)
+						playsound(src, pick(species.female_scream_sound), 50, 1)
 					else
-						playsound(src, pick(species.male_scream_sound), 50)
+						playsound(src, pick(species.male_scream_sound), 50, 1)
 				else
 					message = "makes a very loud noise."
 					m_type = 2
+
+		if("agony")
+			if(miming)
+				message = "имитирует агонию!"
+				m_type = 1
+			else
+				if(!muzzled)
+					//message = "[species.scream_verb]!"
+					var/scream_sound = pick("ПОМОГИ МНЕ!","УБЕЙ МЕНЯ!","КАК БОЛЬНО!","АААААА, СУКА!","УБЕЙТЕ МЕНЯ!", "ПОМОГИТЕ МНЕ!", "НЕТ, НЕТ, НЕТ!", "НЕТ, СПАСИТЕ!")
+					var/scream_desc = pick("трясётся в агонии",
+					"болезненно кричит",
+					"бьётся в конвульсиях",
+					"кричит в агонии",
+					"кричит")
+					message = "[scream_desc], \"[scream_sound]\""
+					m_type = 2
+					if(get_gender() == FEMALE)
+						playsound(src, pick(species.female_agony_sound), 50, 1)
+					else
+						playsound(src, pick(species.male_agony_sound), 50, 1)
+				else
+					message = "makes a very loud noise."
+					m_type = 2	
 
 		if("snap", "snaps")
 			m_type = 2
@@ -799,9 +822,9 @@
 			var/obj/item/organ/external/R = H.get_organ("r_hand")
 			var/left_hand_good = 0
 			var/right_hand_good = 0
-			if(L && (!(L.status & ORGAN_DESTROYED)) && (!(L.splinted)) && (!(L.status & ORGAN_BROKEN)))
+			if(L && (!(L.splinted)) && (!(L.status & ORGAN_BROKEN)))
 				left_hand_good = 1
-			if(R && (!(R.status & ORGAN_DESTROYED)) && (!(R.splinted)) && (!(R.status & ORGAN_BROKEN)))
+			if(R && (!(R.splinted)) && (!(R.status & ORGAN_BROKEN)))
 				right_hand_good = 1
 
 			if(!left_hand_good && !right_hand_good)

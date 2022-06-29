@@ -372,10 +372,9 @@ var/list/name_to_material
 
 /material/stone/concrete
 	name = "concrete"
+	display_name = "concrete"
 	stack_type = /obj/item/stack/material/concrete
-	icon_base = "stone"
-	icon_reinf = "reinf_stone"
-	icon_colour = "#727272"
+	icon_colour = COLOR_CONCRETE
 	shard_type = SHARD_STONE_PIECE
 	explosion_resistance = 35
 	weight = 35
@@ -598,7 +597,7 @@ var/list/name_to_material
 
 /material/resin/can_open_material_door(var/mob/living/user)
 	var/mob/living/carbon/M = user
-	if(istype(M) && locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
+	if(istype(M) && locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs_by_name)
 		return 1
 	return 0
 

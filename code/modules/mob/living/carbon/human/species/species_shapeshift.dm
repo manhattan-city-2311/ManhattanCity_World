@@ -72,7 +72,7 @@ var/list/wrapped_species_by_ref = list()
 		H.g_facial = H.g_skin
 		H.b_facial = H.b_skin
 
-	for(var/obj/item/organ/external/E in H.organs)
+	for(var/obj/item/organ/external/E in H.organs_by_name)
 		E.sync_colour_to_human(H)
 
 // Verbs follow.
@@ -196,7 +196,7 @@ var/list/wrapped_species_by_ref = list()
 		g_facial = g_skin
 		b_facial = b_skin
 
-	for(var/obj/item/organ/external/E in organs)
+	for(var/obj/item/organ/external/E in organs_by_name)
 		E.sync_colour_to_human(src)
 
 	regenerate_icons()
@@ -281,7 +281,7 @@ var/list/wrapped_species_by_ref = list()
 			O.update_damages()
 			O.owner.updatehealth() //droplimb will call updatehealth() again if it does end up being called
 		else
-			organs.Remove(O)
+			organs_by_name.Remove(O)
 			organs_by_name.Remove(O)
 
 	spawn(0)

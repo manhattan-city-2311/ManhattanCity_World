@@ -52,7 +52,7 @@
 	var/synthetic		//If they are a synthetic (aka synthetic torso)
 	var/voice_type = 1 //for determining which sound to play when mob does *scream
 
-	var/weight = 120 //defined by calories. see life.dm
+	var/weight = 59 //defined by calories. see life.dm
 
 	var/list/all_underwear = list()
 	var/list/all_underwear_metadata = list()
@@ -67,6 +67,8 @@
 	var/religion = ""
 	var/antag_faction = ""
 	var/antag_vis = ""
+
+	var/decaylevel
 
 	//Equipment slots
 	var/obj/item/wear_suit = null
@@ -85,7 +87,6 @@
 
 	var/used_skillpoints = 0
 	var/skill_specialization = null
-	var/list/skills = list()
 
 	var/voice = ""	//Instead of new say code calling GetVoice() over and over and over, we're just going to ask this variable, which gets updated in Life()
 	var/voice_sound = VOICE_NORMAL
@@ -110,14 +111,22 @@
 	mob_push_flags = ~HEAVY
 	mob_swap_flags = ~HEAVY
 
+	var/k = 1
+	var/gvr = 0 // general vascular resitance
+	var/mcv = 0 // minute circulation volume
+	var/spressure = 120 // systolic pressure
+	var/dpressure = 80 // dyastolic pressure
+	var/mpressure = 93 // medium pressure
+
 	var/identifying_gender // In case the human identifies as another gender than it's biological
 
 	var/step_count = 0 // Track how many footsteps have been taken to know when to play footstep sounds
-
+	var/list/internal_organs = list()
 	can_be_antagged = TRUE
 
 // Used by mobs in virtual reality to point back to the "real" mob the client belongs to.
 	var/mob/living/carbon/human/vr_holder = null
 	// Used by "real" mobs after they leave a VR session
 	var/mob/living/carbon/human/vr_link = null
-	var/obj/machinery/machine_visual //machine that is currently applying visual effects to this mob. Only used for camera monitors currently.
+	var/obj/machinery/machine_visual //machine that is currently applying visual effects to this mob. Only used for camera monitors currently..
+	var/list/chem_doses = list()

@@ -171,7 +171,6 @@
 				prob(3);/obj/item/bodybag/cryobag,
 				prob(5);/obj/item/weapon/reagent_containers/syringe/antitoxin,
 				prob(3);/obj/item/weapon/reagent_containers/syringe/antiviral,
-				prob(5);/obj/item/weapon/reagent_containers/syringe/inaprovaline,
 				prob(1);/obj/item/weapon/reagent_containers/hypospray,
 				prob(1);/obj/item/weapon/storage/box/freezer,
 				prob(2);/obj/item/stack/nanopaste)

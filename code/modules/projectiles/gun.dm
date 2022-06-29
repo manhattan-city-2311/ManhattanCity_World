@@ -7,7 +7,7 @@
 */
 /mob/living
 	var/atom/last_mouse_target
-	
+
 /datum/firemode
 	var/name = "default"
 	var/list/settings = list()
@@ -78,6 +78,7 @@
 	var/obj/screen/auto_target/auto_target
 	var/shooting = 0
 	var/next_fire_time = 0
+	var/last_elevation = BASE_ELEVATION
 
 	var/sel_mode = 1 //index of the currently selected mode
 	var/list/firemodes = list()
@@ -322,10 +323,33 @@
 				usr.put_in_l_hand(src)
 		src.add_fingerprint(usr)
 
+/obj/item/weapon/gun/proc/check_z_compatible(var/atom/target,var/mob/living/user)
+	if(target.z != user.z) return 0
+	return 1
+
+/obj/item/weapon/gun/proc/pershot_check(var/mob/user) //Placeholder for any checks that must be performed per-shot. Used for vehicles.
+	return 1
+
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	set background = TRUE
 	if(!user || !target) return
-	if(target.z != user.z) return
+	if(target.elevation != last_elevation && (istype(target,/obj/manhattan/vehicles) || istype(target,/mob/living)))
+		last_elevation = target.elevation
+		visible_message("<span class = 'warning'>[user.name] changes their firing elevation to target [target.name]</span>")
+	if(istype(user.loc,/obj/manhattan/vehicles))
+		var/obj/manhattan/vehicles/V = user.loc
+		if(!istype(src,/obj/item/weapon/gun/vehicle_turret))
+			var/user_position = V.occupants[user]
+			if(isnull(user_position)) return
+			if(user_position == "driver")
+				to_chat(user,"<span class = 'warning'>You can't fire from the driver's position!</span>")
+				return
+			if(!(user_position in V.exposed_positions))
+				to_chat(user,"<span class = 'warning'>You can't fire [src.name] from this position in [V.name].</span>")
+				return
+		if(target.z != V.z) return
+	else
+		if(!check_z_compatible(target,user)) return
 
 	add_fingerprint(user)
 
@@ -358,6 +382,8 @@
 		burst = 1000//Yes its not EXACTLY full auto but when are we shooting more than 1000 normally and it can easily be made higher
 */
 	for(var/i in 1 to burst)
+		if(!pershot_check(user))
+			break
 		/*	// Commented out for quality control and testing.
 		if(!reflex && automatic)//If we are shooting automatic then check our target, however if we are shooting reflex we dont use automatic
 			//extra sanity checking.
@@ -376,6 +402,9 @@
 		if(!projectile)
 			handle_click_empty(user)
 			break
+		if(istype(projectile,/obj/item/projectile))
+			var/obj/item/projectile/proj_obj = projectile
+			proj_obj.target_elevation = last_elevation
 
 		process_accuracy(projectile, user, user.last_mouse_target, i, held_twohanded)
 
@@ -385,6 +414,7 @@
 		if(process_projectile(projectile, user, user.last_mouse_target, user.zone_sel.selecting, clickparams))
 			handle_post_fire(user, target, pointblank, reflex)
 			update_icon()
+
 
 		if(i < burst)
 			sleep(burst_delay)
@@ -665,10 +695,12 @@
 			y_offset = rand(-1,1)
 			x_offset = rand(-1,1)
 
-	var/launched = !P.launch_from_gun(target, user, src, target_zone, x_offset, y_offset)
+	var/obj/launched = !P.launch_from_gun(target, user, src, target_zone, x_offset, y_offset)
 
 	if(launched)
-		play_fire_sound(user, P)
+		play_fire_sound(user,P)
+//		if(istype(target,/atom/movable) && istype(launched) && get_dist(target,user) <= 1)
+//			change_elevation(target.elevation-launched.elevation)
 
 	return launched
 
@@ -779,7 +811,7 @@
 			var/obj/screen/S = src
 			L.last_mouse_target = screen_loc2turf(S.screen_loc, get_turf(usr))
 		else
-			L.last_mouse_target = src 
+			L.last_mouse_target = src
 
 /client
 	var/list/selected_target[2]

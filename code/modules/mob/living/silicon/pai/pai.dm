@@ -269,7 +269,7 @@
 		var/mob/holder = card.loc
 		if(ishuman(holder))
 			var/mob/living/carbon/human/H = holder
-			for(var/obj/item/organ/external/affecting in H.organs)
+			for(var/obj/item/organ/external/affecting in H.organs_by_name)
 				if(card in affecting.implants)
 					affecting.take_damage(rand(30,50))
 					affecting.implants -= card

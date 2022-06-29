@@ -69,15 +69,17 @@
 
 	//Soundy emotey things.
 	var/scream_verb = "screams"
-	var/male_scream_sound		= 'sound/voice/human/man_scream.ogg'
-	var/female_scream_sound	= 'sound/voice/human/woman_scream.ogg'
+	var/male_scream_sound		= list('sound/voice/human/man_scream.ogg', 'sound/voice/human/scream_male1.ogg', 'sound/voice/human/scream_male2.ogg', 'sound/voice/human/scream_male3.ogg')
+	var/female_scream_sound	= list('sound/voice/human/woman_scream.ogg', 'sound/voice/human/scream_female1.ogg', 'sound/voice/human/scream_female1.ogg')
 	var/male_cough_sounds = list('sound/effects/mob_effects/m_cougha.ogg','sound/effects/mob_effects/m_coughb.ogg', 'sound/effects/mob_effects/m_coughc.ogg')
 	var/female_cough_sounds = list('sound/effects/mob_effects/f_cougha.ogg','sound/effects/mob_effects/f_coughb.ogg')
 	var/male_sneeze_sound = 'sound/effects/mob_effects/sneeze.ogg'
 	var/female_sneeze_sound = 'sound/effects/mob_effects/f_sneeze.ogg'
+	var/male_agony_sound = list('sound/voice/human/agony1.ogg', 'sound/voice/human/agony2.ogg', 'sound/voice/human/agony3.ogg')
+	var/female_agony_sound = list('sound/voice/human/woman_agony1.ogg', 'sound/voice/human/woman_agony2.ogg', 'sound/voice/human/woman_agony3.ogg')
 
 	// Combat vars.
-	var/total_health = 100									// Point at which the mob will enter crit.
+	var/total_health = 300									// Point at which the mob will enter crit.
 	var/list/unarmed_types = list(							// Possible unarmed attacks that the mob will use in combat,
 		/datum/unarmed_attack,
 		/datum/unarmed_attack/bite
@@ -313,16 +315,16 @@
 
 	H.mob_size = mob_size
 	for(var/obj/item/organ/organ in H.contents)
-		if((organ in H.organs) || (organ in H.internal_organs))
+		if((organ in H.organs_by_name) || (organ in H.internal_organs_by_name))
 			qdel(organ)
 
-	if(H.organs)									H.organs.Cut()
-	if(H.internal_organs)				 H.internal_organs.Cut()
+	if(H.organs_by_name)									H.organs_by_name.Cut()
+	if(H.internal_organs_by_name)				 H.internal_organs_by_name.Cut()
 	if(H.organs_by_name)					H.organs_by_name.Cut()
 	if(H.internal_organs_by_name) H.internal_organs_by_name.Cut()
 
-	H.organs = list()
-	H.internal_organs = list()
+	H.organs_by_name = list()
+	H.internal_organs_by_name = list()
 	H.organs_by_name = list()
 	H.internal_organs_by_name = list()
 

@@ -31,13 +31,13 @@
 			user.adjust_instability(5)
 			L.adjust_instability(5)
 
-			for(var/obj/item/organ/O in H.internal_organs)
+			for(var/obj/item/organ/O in H.internal_organs_by_name)
 				if(O.damage > 0) // Fix internal damage
 					O.damage = max(O.damage - (heal_power / 2), 0)
 				if(O.damage <= 5 && O.organ_tag == O_EYES) // Fix eyes
 					H.sdisabilities &= ~BLIND
 
-			for(var/obj/item/organ/external/O in H.organs) // Fix limbs
+			for(var/obj/item/organ/external/O in H.organs_by_name) // Fix limbs
 				if(!O.robotic < ORGAN_ROBOT) // No robot parts for this.
 					continue
 				O.heal_damage(0, heal_power / 4, internal = 1, robo_repair = 0)

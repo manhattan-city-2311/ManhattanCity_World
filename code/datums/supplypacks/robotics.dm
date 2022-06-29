@@ -189,9 +189,7 @@
 
 /datum/supply_pack/robotics/jumper_cables
 	name = "Jumper kit crate"
-	contains = list(
-			/obj/item/device/defib_kit/jumper_kit = 2
-			)
+	contains = list()
 	cost = 500
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Jumper kit crate"

@@ -1,12 +1,14 @@
 /* General medicine */
 
-/datum/reagent/inaprovaline
-	name = "Inaprovaline"
-	id = "inaprovaline"
-	description = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients."
+//STABILIZERS
+
+/datum/reagent/metaprolol
+	name = "Metaprolol"
+	id = "metaprolol"
+	description = "Metaprolol is a selective β1 receptor blocker medication. It is used to treat high blood pressure, chest pain due to poor blood flow to the heart, and a number of conditions involving an abnormally fast heart rate."
 	taste_description = "bitterness"
 	reagent_state = LIQUID
-	color = "#00BFFF"
+	color = "#f788bb"
 	overdose = REAGENTS_OVERDOSE * 2
 	metabolism = REM * 0.5
 	scannable = 1
@@ -14,156 +16,175 @@
 
 	tax_type = PHARMA_TAX
 
-/datum/reagent/inaprovaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/metaprolol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE, 15)
-		M.add_chemical_effect(CE_PAINKILLER, 10)
 
-/datum/reagent/inaprovaline/topical
-	name = "Inaprovalaze"
-	id = "inaprovalaze"
-	description = "Inaprovalaze is a topical variant of Inaprovaline."
+/datum/reagent/acetral
+	name = "Acetral"
+	id = "acetral"
+	description = "Acetral is a beta blocker medication for the treatment of hypertension and arrhythmias."
 	taste_description = "bitterness"
 	reagent_state = LIQUID
-	color = "#00BFFF"
+	color = "#68193e"
 	overdose = REAGENTS_OVERDOSE * 2
 	metabolism = REM * 0.5
 	scannable = 1
-	touch_met = REM * 0.75
-
-/datum/reagent/inaprovaline/topical/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien != IS_DIONA)
-		..()
-		M.adjustToxLoss(2 * removed)
-
-/datum/reagent/inaprovaline/topical/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien != IS_DIONA)
-		M.add_chemical_effect(CE_STABLE, 20)
-		M.add_chemical_effect(CE_PAINKILLER, 12)
-
-/datum/reagent/bicaridine
-	name = "Bicaridine"
-	id = "bicaridine"
-	description = "Bicaridine is an analgesic medication and can be used to treat blunt trauma."
-	taste_description = "bitterness"
-	taste_mult = 3
-	reagent_state = LIQUID
-	color = "#BF0000"
-	overdose = REAGENTS_OVERDOSE
-	scannable = 1
-
+	price_tag = 0.5
 
 	tax_type = PHARMA_TAX
 
-/datum/reagent/bicaridine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/acetral/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
-		M.heal_organ_damage(6 * removed, 0)
+		M.add_chemical_effect(CE_STABLE, 30)
+		M.add_chemical_effect(CE_PAINKILLER, 10)
 
-/datum/reagent/bicaridine/overdose(var/mob/living/carbon/M, var/alien, var/removed)
+//ANTIBIOTICS
+/datum/reagent/amicile
+	name = "Amicile"
+	id = "amicile"
+	description = "Amicile is a light antibiotic with few side effects."
+	taste_description = "dryness"
+	taste_mult = 3
+	reagent_state = LIQUID
+	color = "#a7b8cc"
+	overdose = 15
+	scannable = 1
+	tax_type = PHARMA_TAX
+
+/datum/reagent/amicile/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.add_chemical_effect(CE_ANTIBIOTIC, volume * 2)
+
+/datum/reagent/cetrifiaxon
+	name = "Cetrifiaxon"
+	id = "cetrifiaxon"
+	description = "Cetrifiaxon is an extremely strong antibiotic, toxic."
+	taste_description = "cell genocide"
+	taste_mult = 5
+	reagent_state = LIQUID
+	color = "#0077ff"
+	overdose = 15
+	scannable = 1
+	tax_type = PHARMA_TAX
+
+/datum/reagent/cetrifiaxon/affect_blood(var/mob/living/carbon/human/M, var/alien, var/removed)
+	M.add_chemical_effect(CE_ANTIBIOTIC, volume * 4)
+	M.adjustToxLoss(0.02 * M.chem_doses[type])
+
+//ANTIARRYTHMICS
+/datum/reagent/amiodarone
+	name = "Amiodarone"
+	id = "amiodarone"
+	description = "Amiodarone is a light antiarrythmic. Safe for urban use."
+	taste_description = "calmness"
+	taste_mult = 3
+	reagent_state = LIQUID
+	color = "#914347"
+	overdose = 15
+	scannable = 1
+	tax_type = PHARMA_TAX
+
+/datum/reagent/amiodarone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.add_chemical_effect(CE_ARRYTHMIC, 1)
+
+/datum/reagent/nitroglycerin
+	name = "Nitroglycerin"
+	id = "nitroglycerin"
+	description = "Nitroglycerin is a drug used to reduce CO and increase coronary refill to reduce heart ischemia."
+	taste_description = "oil"
+	reagent_state = LIQUID
+	color = "#808080"
+
+/datum/reagent/nitroglycerin/affect_blood(var/mob/living/carbon/human/M, var/alien, var/removed)
 	..()
-	var/wound_heal = 1.5 * removed
-	M.eye_blurry = min(M.eye_blurry + wound_heal, 250)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/external/O in H.bad_external_organs)
-			for(var/datum/wound/W in O.wounds)
-				if(W.bleeding())
-					W.damage = max(W.damage - wound_heal, 0)
-					if(W.damage <= 0)
-						O.wounds -= W
-				if(W.internal)
-					W.damage = max(W.damage - wound_heal, 0)
-					if(W.damage <= 0)
-						O.wounds -= W
+	M.add_chemical_effect(CE_CARDIAC_OUTPUT, Clamp(1 - M.chem_doses[type] * 0.01, 0.6, 1))
 
-/datum/reagent/bicaridine/topical
-	name = "Bicaridaze"
-	id = "bicaridaze"
-	description = "Bicaridaze is a topical variant of the chemical Bicaridine."
+	var/obj/item/organ/internal/heart/H = M.internal_organs_by_name[O_HEART]
+	if(!H)
+		return
+
+	H.ischemia = max(0, H.ischemia - volume / 2.5)
+
+/datum/reagent/atropine
+	name = "Atropine"
+	id = "atropine"
+	description = "Atropine is a drug what increases HR. Used in severe bradycardia cases"
+	reagent_state = LIQUID
+	color = "#ff7766"
+
+/datum/reagent/atropine/affect_blood(mob/living/carbon/human/H, alien, removed)
+	..()
+	H.add_chemical_effect(CE_PULSE, H.chem_doses[type] * 7.5)
+	H.add_chemical_effect(CE_ARRYTHMIC, 1)
+
+/datum/reagent/adenosine
+	name = "Adenosine"
+	id = "adenosine"
+	description = "Adenosine is a drug used to produce controlled AV blockade."
+	reagent_state = LIQUID
+	color = "#aa7766"
+	metabolism = 0.5
+
+/datum/reagent/adenosine/affect_blood(mob/living/carbon/human/H, alien, removed)
+	var/obj/item/organ/internal/heart/heart = H.internal_organs_by_name[O_HEART]
+	if(!heart)
+		return
+
+	if(volume < 5)
+		return
+	// initial rush.
+	if(H.chem_doses[type] < 5)
+		H.make_heart_rate(-140 + sin(world.time / 20) * 60, "adenosine_av_blockage")
+		return
+
+	// TODO: rewrite this more compact
+	if(ARRYTHMIA_AFIB in heart.arrythmias)
+		var/required = 5 * heart.arrythmias[ARRYTHMIA_AFIB].strength
+		if(volume >= required)
+			heart.arrythmias[ARRYTHMIA_AFIB].weak(heart)
+			volume -= required
+		return
+	if(ARRYTHMIA_TACHYCARDIA in heart.arrythmias)
+		var/required = 5 * heart.arrythmias[ARRYTHMIA_TACHYCARDIA].strength
+		if(volume >= required)
+			heart.arrythmias[ARRYTHMIA_TACHYCARDIA].weak(heart)
+			volume -= required
+		return
+
+/datum/reagent/lidocaine
+	name = "Lidocaine"
+	id = "lidocaine"
+	description = "Lidocaine is a antiarrythmic and painkiller drug."
+	reagent_state = LIQUID
+	color = "#77aaaa"
+	metabolism = REM
+	overdose = 10
+
+/datum/reagent/lidocaine/affect_blood(mob/living/carbon/human/H, alien, removed)
+	H.add_chemical_effect(CE_ANTIARRYTHMIC, 2)
+	H.add_chemical_effect(CE_PAINKILLER, 40)
+
+/datum/reagent/lidocaine/overdose(mob/living/carbon/human/H, alien)
+	if(prob(50))
+		H.add_chemical_effect(CE_BREATHLOSS)
+
+//ANALGESICS
+
+/datum/reagent/aspirin
+	name = "Aspirin"
+	id = "aspirin"
+	description = "Aspirin is a medication used to reduce pain, fever, or inflammation."
 	taste_description = "bitterness"
 	taste_mult = 3
 	reagent_state = LIQUID
-	color = "#BF0000"
-	overdose = REAGENTS_OVERDOSE * 0.75
-	scannable = 1
-	touch_met = REM * 0.75
-
-/datum/reagent/bicaridine/topical/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	var/chem_effective = 1
-	if(alien == IS_SLIME)
-		chem_effective = 0.75
-	if(alien != IS_DIONA)
-		..(M, alien, removed * chem_effective)
-		M.adjustToxLoss(2 * removed)
-
-/datum/reagent/bicaridine/topical/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
-	var/chem_effective = 1
-	if(alien == IS_SLIME)
-		chem_effective = 0.75
-	if(alien != IS_DIONA)
-		M.heal_organ_damage(6 * removed * chem_effective, 0)
-
-/datum/reagent/kelotane
-	name = "Kelotane"
-	id = "kelotane"
-	description = "Kelotane is a drug used to treat burns."
-	taste_description = "bitterness"
-	reagent_state = LIQUID
-	color = "#FFA800"
+	color = "#a7b8cc"
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
-	price_tag = 0.55
-
 	tax_type = PHARMA_TAX
 
-/datum/reagent/kelotane/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/aspirin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
-		M.heal_organ_damage(0, 6 * removed)
-
-/datum/reagent/dermaline
-	name = "Dermaline"
-	id = "dermaline"
-	description = "Dermaline is the next step in burn medication. Works twice as good as kelotane and enables the body to restore even the direst heat-damaged tissue."
-	taste_description = "bitterness"
-	taste_mult = 1.5
-	reagent_state = LIQUID
-	color = "#FF8000"
-	overdose = REAGENTS_OVERDOSE * 0.5
-	scannable = 1
-	price_tag = 0.7
-
-	tax_type = PHARMA_TAX
-
-/datum/reagent/dermaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien != IS_DIONA)
-		M.heal_organ_damage(0, 12 * removed)
-
-/datum/reagent/dermaline/topical
-	name = "Dermalaze"
-	id = "dermalaze"
-	description = "Dermalaze is a topical variant of the chemical Dermaline."
-	taste_description = "bitterness"
-	taste_mult = 1.5
-	reagent_state = LIQUID
-	color = "#FF8000"
-	overdose = REAGENTS_OVERDOSE * 0.4
-	scannable = 1
-	touch_met = REM * 0.75
-
-/datum/reagent/dermaline/topical/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	var/chem_effective = 1
-	if(alien == IS_SLIME)
-		chem_effective = 0.75
-	if(alien != IS_DIONA)
-		..(M, alien, removed * chem_effective)
-		M.adjustToxLoss(2 * removed)
-
-/datum/reagent/dermaline/topical/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
-	var/chem_effective = 1
-	if(alien == IS_SLIME)
-		chem_effective = 0.75
-	if(alien != IS_DIONA)
-		M.heal_organ_damage(0, 12 * removed * chem_effective)
+		M.add_chemical_effect(CE_PAINKILLER, 10)
 
 /datum/reagent/dylovene
 	name = "Dylovene"
@@ -502,7 +523,7 @@
 /datum/reagent/peridaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/I in H.internal_organs)
+		for(var/obj/item/organ/I in H.internal_organs_by_name)
 			if(I.robotic >= ORGAN_ROBOT)
 				continue
 			if(I.damage > 0) //Peridaxon heals only non-robotic organs
@@ -590,7 +611,7 @@
 		repair_strength = 0.6
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/I in H.internal_organs)
+		for(var/obj/item/organ/I in H.internal_organs_by_name)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LUNGS, O_VOICE, O_GBLADDER)))
 				continue
 			if(I.damage > 0)
@@ -624,7 +645,7 @@
 		repair_strength = 0.6
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/I in H.internal_organs)
+		for(var/obj/item/organ/I in H.internal_organs_by_name)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_APPENDIX, O_STOMACH, O_INTESTINE, O_NUTRIENT, O_PLASMA, O_POLYP)))
 				continue
 			if(I.damage > 0)
@@ -658,7 +679,7 @@
 		repair_strength = 0.4
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/I in H.internal_organs)
+		for(var/obj/item/organ/I in H.internal_organs_by_name)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LIVER, O_KIDNEYS, O_APPENDIX, O_ACID, O_HIVE)))
 				continue
 			if(I.damage > 0)
@@ -694,7 +715,7 @@
 		repair_strength = 0.6
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/I in H.internal_organs)
+		for(var/obj/item/organ/I in H.internal_organs_by_name)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_HEART, O_SPLEEN, O_RESPONSE, O_ANCHOR, O_EGG)))
 				continue
 			if(I.damage > 0)
@@ -830,11 +851,12 @@
 	taste_description = "flesh"
 	reagent_state = SOLID
 	color = "#7B4D4F"
+	metabolism = 0.01
 	overdose = 20
 	overdose_mod = 1.5
 	scannable = 1
 
-/datum/reagent/immunosuprizine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/*/datum/reagent/immunosuprizine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	var/strength_mod = 1 * M.species.chem_strength_heal
 
 	if(alien == IS_DIONA)	// It's a tree.
@@ -858,8 +880,8 @@
 			H.adjustToxLoss((30 / strength_mod) * removed)
 
 		var/list/organtotal = list()
-		organtotal |= H.organs
-		organtotal |= H.internal_organs
+		organtotal |= H.organs_by_name
+		organtotal |= H.internal_organs_by_name
 
 		for(var/obj/item/organ/I in organtotal)	// Don't mess with robot bits, they don't reject.
 			if(I.robotic >= ORGAN_ROBOT)
@@ -879,7 +901,7 @@
 					if(rejectmem != I.can_reject)
 						H.adjustToxLoss((15 / strength_mod))
 						I.take_damage(1)
-
+*/
 /datum/reagent/corophizine
 	name = "Corophizine"
 	id = "corophizine"
@@ -911,7 +933,7 @@
 	//One of the levofloxacin side effects is 'spontaneous tendon rupture', which I'll immitate here. 1:1000 chance, so, pretty darn rare.
 	if(ishuman(M) && rand(1,1000) == 1)
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/eo = pick(H.organs) //Misleading variable name, 'organs' is only external organs
+		var/obj/item/organ/external/eo = pick(H.organs_by_name) //Misleading variable name, 'organs' is only external organs
 		eo.fracture()
 
 /datum/reagent/sterilizine

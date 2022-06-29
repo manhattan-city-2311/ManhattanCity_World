@@ -63,7 +63,7 @@
 	var/heal_rate = 1 // Temp. Regen per tick.
 
 	has_organ = list(
-		O_BRAIN =    /obj/item/organ/internal/brain/zombie
+		O_BRAIN =    /obj/item/organ/internal/brain
 		)
 
 

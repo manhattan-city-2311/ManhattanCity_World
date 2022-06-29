@@ -280,17 +280,14 @@
 		add_overlay(I)
 
 /turf/simulated/wall/concrete/New(var/newloc)
-	..(newloc,"concrete")
+	..(newloc, material, reinf_material, girder_material)
 
 /turf/simulated/wall/concrete/reinforced
 	name = "reinforced concrete wall"
 	icon_state = "r_concrete"
 	girder_material = "steel"
 	material = "concrete"
-	reinf_material = "plasteel"
-
-/turf/simulated/wall/concrete/reinforced/New(var/newloc)
-	..(newloc,"concrete","concrete")
+	reinf_material = "concrete"
 
 /turf/simulated/wall/concrete/fckng_invincible
 	icon_state = "r_invincible"

@@ -134,11 +134,14 @@
 
 //lipstick wiping is in code/game/objects/items/weapons/cosmetics.dm!
 
-/obj/item/weapon/paper/New()
+/obj/item/weapon/paper/New(loc, var/new_info, var/new_name)
 	..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	stamps = ""
+	if(new_info)
+		name = new_name
+		info = new_info
 
 	if(name != "paper")
 		desc = "This is a paper titled '" + name + "'."

@@ -26,4 +26,3 @@
 	src.see_in_dark = 8
 	src.see_invisible = SEE_INVISIBLE_LEVEL_TWO
 	src.update_mutations()
-	src.mind.special_role = "Jesus"

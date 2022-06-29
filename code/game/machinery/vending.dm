@@ -1010,11 +1010,7 @@
 	icon_deny = "med-deny"
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
 	req_access = list(access_medical)
-	products = list(/obj/item/weapon/reagent_containers/glass/bottle/antitoxin = 4,
-					/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline = 4,
-					/obj/item/weapon/reagent_containers/glass/bottle/stoxin = 4,
-					/obj/item/weapon/reagent_containers/glass/bottle/toxin = 4,
-					/obj/item/weapon/reagent_containers/syringe/antiviral = 4,
+	products = list(
 					/obj/item/weapon/reagent_containers/syringe = 12,
 					/obj/item/device/healthanalyzer = 5,
 					/obj/item/weapon/reagent_containers/glass/beaker = 4,
@@ -1023,8 +1019,6 @@
 					/obj/item/stack/medical/advanced/ointment = 6,
 					/obj/item/stack/medical/splint = 4,
 					/obj/item/weapon/storage/pill_bottle/carbon = 2,
-					/obj/item/weapon/reagent_containers/glass/bottle/alkysine = 5,
-					/obj/item/weapon/reagent_containers/glass/bottle/peridaxon = 5,
 					/obj/item/weapon/reagent_containers/pill/rezadone = 2)
 
 
@@ -1067,7 +1061,6 @@
 	req_access = list(access_medical)
 	products = list (/obj/item/bodybag/cryobag = 6,
 					 /obj/item/weapon/reagent_containers/spray/sterilizine = 5,
-					 /obj/item/device/defib_kit/loaded = 3,
 					 /obj/item/weapon/cane = 3,
 					 /obj/item/weapon/cane/crutch = 3,
 					 /obj/item/weapon/cane/white = 3,
@@ -1166,7 +1159,7 @@
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/stack/medical/bruise_pack = 2,/obj/item/stack/medical/ointment = 2,/obj/item/weapon/reagent_containers/hypospray/autoinjector = 4,/obj/item/device/healthanalyzer = 1, /obj/item/device/defib_kit/loaded = 5)
+	products = list(/obj/item/stack/medical/bruise_pack = 2,/obj/item/stack/medical/ointment = 2,/obj/item/weapon/reagent_containers/hypospray/autoinjector = 4,/obj/item/device/healthanalyzer = 1)
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/antitoxin = 4,/obj/item/weapon/reagent_containers/syringe/antiviral = 4,/obj/item/weapon/reagent_containers/pill/tox = 1)
 	req_log_access = access_cmo
 	has_logs = 1
@@ -1185,13 +1178,13 @@
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
 	products = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector = 10,/obj/item/weapon/reagent_containers/syringe/antitoxin = 10,/obj/item/stack/medical/bruise_pack = 10,
-					/obj/item/stack/medical/ointment = 10, /obj/item/device/healthanalyzer = 2, /obj/item/device/defib_kit/loaded = 5)
+					/obj/item/stack/medical/ointment = 10, /obj/item/device/healthanalyzer = 2)
 	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 3)
 	req_log_access = access_cmo
 	has_logs = 1
 
 	prices = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector = 15, /obj/item/weapon/reagent_containers/syringe/antitoxin = 10,/obj/item/stack/medical/bruise_pack = 15,
-					/obj/item/stack/medical/ointment = 15,/obj/item/device/healthanalyzer = 10, /obj/item/device/defib_kit/loaded = 200)
+					/obj/item/stack/medical/ointment = 15,/obj/item/device/healthanalyzer = 10)
 
 	vendor_department = DEPT_HEALTHCARE
 	block_persistence = FALSE

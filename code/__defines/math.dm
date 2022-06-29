@@ -217,3 +217,13 @@
 #define NORM(x, y) (sqrt(SQUAREDNORM(x,y)))
 #define ISPOWEROFTWO(x) ((x & (x - 1)) == 0)
 #define ROUNDUPTOPOWEROFTWO(x) (2 ** -round(-log(2,x)))
+
+/proc/frac(x)
+	return x % 1
+
+/proc/remove_frac(x)
+	return x - frac(x)
+
+// Performs a linear interpolation between a and b.
+/proc/lerp(a, b, t = 0.5)
+	return a + t * (b - a)

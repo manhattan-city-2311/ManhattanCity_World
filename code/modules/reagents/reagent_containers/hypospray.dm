@@ -136,7 +136,7 @@
 	amount_per_transfer_from_this = 5
 	volume = 5
 	filled = 1
-	filled_reagents = list("inaprovaline" = 5)
+	filled_reagents = list("adrenaline" = 5)
 	preserve_item = 0
 
 /obj/item/weapon/reagent_containers/hypospray/autoinjector/on_reagent_change()
@@ -184,7 +184,7 @@
 	amount_per_transfer_from_this = 15
 	volume = 15
 	origin_tech = list(TECH_BIO = 4)
-	filled_reagents = list("inaprovaline" = 15)
+	filled_reagents = list("adrenaline" = 15)
 	flags = 0 // Removed OPENCONTAINER so you can't extract things to cheese the identification system in unidentified versions.
 
 /obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/brute
@@ -236,12 +236,12 @@
 /obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/clotting
 	name = "clotting agent"
 	desc = "A refined version of the standard autoinjector, allowing greater capacity. This variant excels at treating bleeding wounds and internal bleeding."
-	filled_reagents = list("inaprovaline" = 5, "myelamine" = 10)
+	filled_reagents = list("adrenaline" = 5, "myelamine" = 10)
 
 /obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/bonemed
 	name = "bone repair injector"
 	desc = "A refined version of the standard autoinjector, allowing greater capacity. This one excels at treating damage to bones."
-	filled_reagents = list("inaprovaline" = 5, "osteodaxon" = 10)
+	filled_reagents = list("adrenaline" = 5, "osteodaxon" = 10)
 
 
 /obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/stimm

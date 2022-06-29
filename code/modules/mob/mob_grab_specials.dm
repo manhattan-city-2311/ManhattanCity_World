@@ -1,45 +1,59 @@
 
 /obj/item/weapon/grab/proc/inspect_organ(mob/living/carbon/human/H, mob/user, var/target_zone)
-
-	var/obj/item/organ/external/E = H.get_organ(target_zone)
-
-	if(!E || E.is_stump())
-		to_chat(user, "<span class='notice'>[H] is missing that bodypart.</span>")
-		return
-
-	user.visible_message("<span class='notice'>[user] starts inspecting [affecting]'s [E.name] carefully.</span>")
-	if(!do_mob(user,H, 10))
-		to_chat(user, "<span class='notice'>You must stand still to inspect [E] for wounds.</span>")
-	else if(E.wounds.len)
-		to_chat(user, "<span class='warning'>You find [E.get_wounds_desc()]</span>")
+	var/obj/item/organ/external/O = H.internal_organs_by_name[target_zone]
+	user.visible_message("<span class='notice'>[user] starts inspecting [H]'s [name] carefully.</span>")
+	if(O.wounds.len)
+		to_chat(user, "<span class='warning'>You find [O.get_wounds_desc()]</span>")
 	else
 		to_chat(user, "<span class='notice'>You find no visible wounds.</span>")
-
-	to_chat(user, "<span class='notice'>Checking bones now...</span>")
-	if(!do_mob(user, H, 20))
-		to_chat(user, "<span class='notice'>You must stand still to feel [E] for fractures.</span>")
-	else if(E.status & ORGAN_BROKEN)
-		to_chat(user, "<span class='warning'>The [E.encased ? E.encased : "bone in the [E.name]"] moves slightly when you poke it!</span>")
-		H.custom_pain("Your [E.name] hurts where it's poked.", 40)
-	else
-		to_chat(user, "<span class='notice'>The [E.encased ? E.encased : "bones in the [E.name]"] seem to be fine.</span>")
 
 	to_chat(user, "<span class='notice'>Checking skin now...</span>")
 	if(!do_mob(user, H, 10))
 		to_chat(user, "<span class='notice'>You must stand still to check [H]'s skin for abnormalities.</span>")
+		return
+
+	var/list/badness = list()
+	if(H.shock_stage >= 30)
+		badness += "clammy and cool to the touch"
+	if(H.getToxLoss() >= 25)
+		badness += "jaundiced"
+	if(H.get_blood_perfusion() <= 0.5)
+		badness += "turning blue"
+	if(H.get_blood_perfusion() <= 0.6)
+		badness += "very pale"
+	if(O.status & ORGAN_DEAD)
+		badness += "rotting"
+	if(germ_level > INFECTION_LEVEL_ONE)
+		switch(germ_level)
+			if(INFECTION_LEVEL_ONE to INFECTION_LEVEL_TWO)
+				badness += "slightly purulent"
+			if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_THREE)
+				badness += "strong inflammation"
+			if(INFECTION_LEVEL_THREE to INFECTION_LEVEL_MAX)
+				badness += "blackening"
+			if(INFECTION_LEVEL_MAX to INFINITY)
+				badness += "peeling with disgusting blisters"
+	if(!badness.len)
+		to_chat(user, "<span class='notice'>[H]'s skin is normal.</span>")
 	else
-		var/bad = 0
-		if(H.getToxLoss() >= 40)
-			to_chat(user, "<span class='warning'>[H] has an unhealthy skin discoloration.</span>")
-			bad = 1
-		if(H.getOxyLoss() >= 20)
-			to_chat(user, "<span class='warning'>[H]'s skin is unusaly pale.</span>")
-			bad = 1
-		if(E.status & ORGAN_DEAD)
-			to_chat(user, "<span class='warning'>[E] is decaying!</span>")
-			bad = 1
-		if(!bad)
-			to_chat(user, "<span class='notice'>[H]'s skin is normal.</span>")
+		to_chat(user, "<span class='warning'>[H]'s skin is [english_list(badness)].</span>")
+
+	to_chat(user, "<span class='notice'>Checking bones now...</span>")
+	if(!do_mob(user, H, 10))
+		to_chat(user, "<span class='notice'>You must stand still to feel [src] for fractures.</span>")
+		return
+
+	if(O.status & ORGAN_BROKEN)
+		to_chat(user, "<span class='warning'>The [O.encased ? O.encased : "bone in the [name]"] moves slightly when you poke it!</span>")
+		H.custom_pain("Your [name] hurts where it's poked.",40)
+	else
+		to_chat(user, "<span class='notice'>The [O.encased ? O.encased : "bones in the [name]"] seem to be fine.</span>")
+
+	if(O.status & ORGAN_TENDON_CUT)
+		to_chat(user, "<span class='warning'>The tendons in [name] are severed!</span>")
+	if(O.dislocated == 2)
+		to_chat(user, "<span class='warning'>The [O.joint] is dislocated!</span>")
+	return 1
 
 /obj/item/weapon/grab/proc/jointlock(mob/living/carbon/human/target, mob/attacker, var/target_zone)
 	if(state < GRAB_AGGRESSIVE)

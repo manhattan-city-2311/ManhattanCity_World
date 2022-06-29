@@ -1689,3 +1689,5 @@ var/mob/dview/dview_mob = new
 // Third one is the text that will be clickable.
 /proc/href(href_src, list/href_params, href_text)
 	return "<a href='?src=\ref[href_src];[list2params(href_params)]'>[href_text]</a>"
+
+#define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"

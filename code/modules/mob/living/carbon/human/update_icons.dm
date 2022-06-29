@@ -169,7 +169,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	// first check whether something actually changed about damage appearance
 	var/damage_appearance = ""
 
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in organs_by_name)
 		if(isnull(O) || O.is_stump())
 			continue
 		damage_appearance += O.damage_state
@@ -183,7 +183,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	var/image/standing_image = image(icon = species.damage_overlays, icon_state = "00", layer = BODY_LAYER+DAMAGE_LAYER)
 
 	// blend the individual damage states with our icons
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in organs_by_name)
 		if(isnull(O) || O.is_stump())
 			continue
 
@@ -211,7 +211,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		return
 	var/image/standing_image = overlays_standing[DAMAGE_LAYER]
 	if(standing_image)
-		for(var/obj/item/organ/external/O in organs)
+		for(var/obj/item/organ/external/O in organs_by_name)
 			if(O.is_stump())
 				continue
 			var/bandage_level = O.bandage_level()
@@ -289,7 +289,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		var/obj/item/organ/external/chest = get_organ(BP_TORSO)
 		base_icon = chest.get_icon()
 
-		for(var/obj/item/organ/external/part in organs)
+		for(var/obj/item/organ/external/part in organs_by_name)
 			if(isnull(part) || part.is_stump())
 				continue
 			var/icon/temp = part.get_icon(skeleton)
@@ -1009,7 +1009,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	remove_layer(SURGERY_LAYER)
 
 	var/image/total = new
-	for(var/obj/item/organ/external/E in organs)
+	for(var/obj/item/organ/external/E in organs_by_name)
 		if(E.open)
 			var/image/I = image(icon = 'icons/mob/surgery.dmi',  icon_state = "[E.icon_name][round(E.open)]", layer = BODY_LAYER+SURGERY_LAYER)
 			total.overlays += I //TODO: This compositing is annoying

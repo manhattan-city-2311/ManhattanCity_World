@@ -127,7 +127,7 @@
 				return
 
 			// If the human is losing too much blood, beep.
-			if(((T.vessel.get_reagent_amount("blood")/T.species.blood_volume)*100) < BLOOD_VOLUME_SAFE)
+			if(attached.get_blood_volume() < BLOOD_PERFUSION_SAFE * 1.05)
 				visible_message("\The [src] beeps loudly.")
 
 			var/datum/reagent/B = T.take_blood(beaker,amount)
@@ -179,7 +179,7 @@
 
 	to_chat(usr, "<span class='notice'>[attached ? attached : "No one"] is attached.</span>")
 
-/obj/machinery/iv_drip/CanPass(atom/movable/mover, turf/target, height = 0, air_group = 0)
-	if(height && istype(mover) && mover.checkpass(PASSTABLE)) //allow bullets, beams, thrown objects, mice, drones, and the like through.
+/obj/machinery/iv_drip/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+	if(height && istype(mover) && (mover.checkpass(PASSTABLE) || mover.elevation != elevation)) //allow bullets, beams, thrown objects, mice, drones, and the like through.
 		return 1
 	return ..()

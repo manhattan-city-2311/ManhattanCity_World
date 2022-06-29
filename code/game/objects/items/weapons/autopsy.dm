@@ -33,43 +33,6 @@
 		W.time_inflicted = time_inflicted
 		return W
 
-/obj/item/weapon/autopsy_scanner/proc/add_data(var/obj/item/organ/external/O)
-	if(!O.autopsy_data.len && !O.trace_chemicals.len) return
-
-	for(var/V in O.autopsy_data)
-		var/datum/autopsy_data/W = O.autopsy_data[V]
-
-		if(!W.pretend_weapon)
-			/*
-			// the more hits, the more likely it is that we get the right weapon type
-			if(prob(50 + W.hits * 10 + W.damage))
-			*/
-
-			// Buffing this stuff up for now!
-			W.pretend_weapon = W.weapon
-//			else
-//				W.pretend_weapon = pick("mechanical toolbox", "wirecutters", "revolver", "crowbar", "fire extinguisher", "tomato soup", "oxygen tank", "emergency oxygen tank", "laser", "bullet")
-
-
-		var/datum/autopsy_data_scanner/D = wdata[V]
-		if(!D)
-			D = new()
-			D.weapon = W.weapon
-			wdata[V] = D
-
-		if(!D.organs_scanned[O.name])
-			if(D.organ_names == "")
-				D.organ_names = O.name
-			else
-				D.organ_names += ", [O.name]"
-
-		qdel(D.organs_scanned[O.name])
-		D.organs_scanned[O.name] = W.copy()
-
-	for(var/V in O.trace_chemicals)
-		if(O.trace_chemicals[V] > 0 && !chemtraces.Find(V))
-			chemtraces += V
-
 /obj/item/weapon/autopsy_scanner/verb/print_data()
 	set category = "Object"
 	set src in view(usr, 1)
@@ -181,8 +144,6 @@
 			to_chat(user, "<span class='warning'>You have to cut [S] open first!</span>")
 			return
 		M.visible_message("<span class='notice'>\The [user] scans the wounds on [M]'s [S.name] with [src]</span>")
-
-		src.add_data(S)
 
 		return 1
 

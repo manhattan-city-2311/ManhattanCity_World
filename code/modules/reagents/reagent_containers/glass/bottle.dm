@@ -8,9 +8,9 @@
 	icon_state = null
 	item_state = "atoxinbottle"
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60)
+	possible_transfer_amounts = list(5,10,15,25,30)
 	flags = 0
-	volume = 60
+	volume = 30
 	matter = list("glass" = 50)
 
 /obj/item/weapon/reagent_containers/glass/bottle/open
@@ -63,21 +63,11 @@
 		var/image/lid = image(icon, src, "lid_bottle")
 		overlays += lid
 
-
-/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline
-	name = "inaprovaline bottle"
-	desc = "A small bottle. Contains inaprovaline - used to stabilize patients."
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "bottle-4"
-	prefill = list("inaprovaline" = 60)
-
-
-/obj/item/weapon/reagent_containers/glass/bottle/toxin
-	name = "toxin bottle"
-	desc = "A small bottle of toxins. Do not drink, it is poisonous."
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "bottle-3"
-	prefill = list("toxin" = 60)
+/obj/item/weapon/reagent_containers/glass/bottle/ampoule
+	name = "glass ampoule"
+	desc = "A tiny ampoule."
+	icon_state = "ampoule"
+	volume = 8
 
 /obj/item/weapon/reagent_containers/glass/bottle/trioxin
 	name = "Trioxin bottle"
@@ -85,20 +75,6 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-3"
 	prefill = list("trioxin" = 60)
-
-/obj/item/weapon/reagent_containers/glass/bottle/peridaxon
-	name = "peridaxon bottle"
-	desc = "A small bottle of peridaxon."
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "bottle-3"
-	prefill = list("peridaxon" = 60)
-
-/obj/item/weapon/reagent_containers/glass/bottle/alkysine
-	name = "alkysine bottle"
-	desc = "A small bottle of alkysine."
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "bottle-3"
-	prefill = list("alkysine" = 60)
 
 /obj/item/weapon/reagent_containers/glass/bottle/cyanide
 	name = "cyanide bottle"
@@ -114,22 +90,6 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-3"
 	prefill = list("stoxin" = 60)
-
-
-/obj/item/weapon/reagent_containers/glass/bottle/chloralhydrate
-	name = "Chloral Hydrate Bottle"
-	desc = "A small bottle of Choral Hydrate. Mickey's Favorite!"
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "bottle-3"
-	prefill = list("chloralhydrate" = 30) //Intentionally low since it is so strong. Still enough to knock someone out.
-
-
-/obj/item/weapon/reagent_containers/glass/bottle/antitoxin
-	name = "dylovene bottle"
-	desc = "A small bottle of dylovene. Counters poisons, and repairs damage. A wonder drug."
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "bottle-4"
-	prefill = list("anti_toxin" = 60)
 
 
 /obj/item/weapon/reagent_containers/glass/bottle/mutagen
@@ -216,3 +176,53 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-3"
 	prefill = list("biomass" = 60)
+
+
+//AMPOULES
+/obj/item/weapon/reagent_containers/glass/bottle/ampoule/morphine
+	name = "morphine ampoule"
+	desc = "A tiny ampoule. Contains morphine. 8u."
+	prefill = list("morphine" = 8)
+
+/obj/item/weapon/reagent_containers/glass/bottle/ampoule/ceftriaxone
+	name = "cetriaxone ampoule"
+	desc = "A tiny ampoule. Contains cetriaxone. 8u."
+	prefill = list("cetriaxone" = 8)
+
+/obj/item/weapon/reagent_containers/glass/bottle/ampoule/glucose
+	name = "glucose ampoule"
+	desc = "A tiny ampoule. Contains glucose. 8u."
+	prefill = list("glucose" = 8)
+
+/obj/item/weapon/reagent_containers/glass/bottle/ampoule/insulin
+	name = "insulin ampoule"
+	desc = "A tiny ampoule. Contains insulin. 2u."
+	volume = 2
+	prefill = list("insulin" = 2)
+
+/obj/item/weapon/reagent_containers/glass/bottle/ampoule/lidocaine
+	name = "lidocaine ampoule"
+	desc = "A small ampoule. Contains lidocaine. 5u"
+	volume = 5
+	prefill = list("lidocaine" = 5)
+
+//BOTTLES
+/obj/item/weapon/reagent_containers/glass/bottle/glucagone
+	name = "glucagone bottle"
+	desc = "A small bottle. Contains glucagone."
+	prefill = list("glucagone" = 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/adenosine
+	name = "adenosine bottle"
+	desc = "A small bottle. Contains adenosine."
+	prefill = list("adenosine" = 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/amiodarone
+	name = "amiodarone bottle"
+	desc = "A small bottle. Contains amiodarone."
+	prefill = list("amiodarone" = 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/dopamine
+	name = "dopamine bottle"
+	desc = "A small bottle. Contains dopamine."
+	prefill = list("dopamine" = 30)

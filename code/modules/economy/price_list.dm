@@ -257,3 +257,29 @@
 
 /obj/machinery/computer/betting_terminal/get_tax()
 	return SSpersistent_options.get_persistent_option_value(GAMBLING_TAX)
+
+
+
+//Cardiostabilizers
+/datum/reagent/metaprolol 		price_tag = 1
+/datum/reagent/acetral			price_tag = 4.5
+
+//Antibiotics
+/datum/reagent/amicile			price_tag = 2
+/datum/reagent/cetrifiaxon		price_tag = 5
+
+//Antiarrythmics
+/datum/reagent/amiodarone		price_tag = 0.75
+/datum/reagent/nitroglycerin	price_tag = 0.5
+/datum/reagent/atropine			price_tag = 3
+/datum/reagent/adenosine		price_tag = 4.5
+/datum/reagent/lidocaine		price_tag = 1.25
+
+//Analgesics
+/datum/reagent/aspirin			price_tag = 0.5
+/datum/reagent/paracetamol		price_tag = 0.75
+/datum/reagent/tramadol			price_tag = 2.5
+/datum/reagent/oxycodone		price_tag = 6
+
+//Imunnosupressants
+/datum/reagent/immunosuprizine	price_tag = 30

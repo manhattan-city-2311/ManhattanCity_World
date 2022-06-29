@@ -84,7 +84,6 @@
 
 /obj/item/weapon/circuitboard/sleeper_console
 	name = T_BOARD("sleeper console")
-	build_path = /obj/machinery/sleep_console
 	board_type = new /datum/frame/frame_types/medical_console
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 

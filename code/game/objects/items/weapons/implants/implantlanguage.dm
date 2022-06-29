@@ -11,7 +11,7 @@
 /obj/item/weapon/implant/language/post_implant(mob/M)	// Amends the mob's voice organ, then deletes itself
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/internal/voicebox/V = locate() in H.internal_organs
+		var/obj/item/organ/internal/voicebox/V = locate() in H.internal_organs_by_name
 		if(V)
 			var/list/need_amend = list()			// If they've already got all the languages they need, then they don't need this implant to do anything
 			for(var/L in languages)

@@ -60,7 +60,7 @@
 
 #define isclient(A) istype(A, /client)
 
-#define to_chat(target, message) target << message
+//#define to_chat(target, message) target << message
 #define to_world(message) world << message
 #define to_world_log(message) world.log << message
 // TODO - Baystation has this log to crazy places. For now lets just world.log, but maybe look into it later.
@@ -93,6 +93,8 @@
 #define send_output(target, msg, control) target << output(msg, control)
 #define send_link(target, url) target << link(url)
 
+#define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"
+
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
 
 #define SPAN_SUBTLE(X) "<span class='subtle'>[X]</span>"
@@ -112,3 +114,21 @@
 #define FONT_HUGE(X) "<font size='4'>[X]</font>"
 
 #define FONT_GIANT(X) "<font size='5'>[X]</font>"
+
+// G is type.
+#define ishormone(G, T) (G == /datum/reagent/hormone/##T)
+
+#define LAZYACCESS0(L, I) (L ? (isnum(I) ? (I > 0 && I <= L.len ? L[I] : 0) : L[I]) : 0)
+
+proc/n_repeat(var/string, var/amount)
+	if(istext(string) && isnum(amount))
+		var/i
+		var/newstring = ""
+		if(length(newstring)*amount >=1000)
+			return
+		for(i=0, i<=amount, i++)
+			if(i>=1000)
+				break
+			newstring = newstring + string
+
+		return newstring

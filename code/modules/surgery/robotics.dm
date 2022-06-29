@@ -16,8 +16,6 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if (affected == null)
 		return 0
-	if (affected.status & ORGAN_DESTROYED)
-		return 0
 	if (!(affected.robotic >= ORGAN_ROBOT))
 		return 0
 	return 1
@@ -430,7 +428,7 @@
 		to_chat(user, "<span class='danger'>You're pretty sure [target.species.name_plural] don't normally have a brain.</span>")
 		return SURGERY_FAILURE
 
-	if(!isnull(target.internal_organs["brain"]))
+	if(!isnull(target.internal_organs_by_name["brain"]))
 		to_chat(user, "<span class='danger'>Your subject already has a brain.</span>")
 		return SURGERY_FAILURE
 

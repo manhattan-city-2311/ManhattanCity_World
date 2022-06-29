@@ -5,9 +5,9 @@
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
 			return 1
-		return (!mover.density || !density || lying)
+		return (!mover.density || !density || lying || mover.elevation != elevation)
 	else
-		return (!mover.density || !density || lying)
+		return (!mover.density || !density || lying || mover.elevation != elevation)
 
 /mob/proc/setMoveCooldown(var/timeout)
 	move_delay = max(world.time + timeout, move_delay)

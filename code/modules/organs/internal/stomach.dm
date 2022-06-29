@@ -10,16 +10,36 @@
 	var/max_acid_volume = 30
 
 	var/deadly_hold = TRUE	// Does the stomach do damage to mobs eaten by its owner? Xenos should probably have this FALSE.
+	watched_hormones = list(
+		"glucose"
+	)
+	var/absolutely_normal_glucose_level
+
+/obj/item/organ/internal/stomach/influence_hormone(T, amount)
+	if(ishormone(T, glucose))
+		var/diff = amount - absolutely_normal_glucose_level
+		var/produce_hormone_level = min(abs(diff) / 0.1, 1)
+		if(diff > -0.1 && diff < 2)
+			return
+
+		if(diff > 0) // >normal
+			free_up_to_hormone("insulin", produce_hormone_level)
 
 /obj/item/organ/internal/stomach/New()
 	..()
-
+	absolutely_normal_glucose_level = rand(GLUCOSE_LEVEL_NORMAL + 0.1, GLUCOSE_LEVEL_HBAD - 0.55)
 	if(reagents)
 		reagents.maximum_volume = 30
 	else
 		create_reagents(30)
 
-/obj/item/organ/internal/stomach/handle_organ_proc_special()
+/obj/item/organ/internal/stomach/proc/handle_organ_proc_special()
+	// wer simulate glucose-nutrition system by this..
+	// TODO: detach this from stomach, remove this copy-paste from insulin code.
+	absorb_hormone("glucose", DEFAULT_HUNGER_FACTOR)
+	absorb_hormone("potassium_hormone", max(DEFAULT_HUNGER_FACTOR * 10, 0.1))
+
+	generate_hormone("insulin", 0.1, 15)
 	if(owner && istype(owner, /mob/living/carbon/human))
 		if(reagents)
 			if(reagents.total_volume + 2 < max_acid_volume && prob(20))

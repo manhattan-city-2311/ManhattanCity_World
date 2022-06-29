@@ -316,7 +316,7 @@
 			occupantData["ingested"] = ingestedData
 
 			var/extOrganData[0]
-			for(var/obj/item/organ/external/E in H.organs)
+			for(var/obj/item/organ/external/E in H.organs_by_name)
 				var/organData[0]
 				organData["name"] = E.name
 				organData["open"] = E.open
@@ -337,7 +337,7 @@
 				organData["implants_len"] = implantData.len
 
 				var/organStatus[0]
-				if(E.status & ORGAN_DESTROYED)
+				if(E.status)
 					organStatus["destroyed"] = 1
 				if(E.status & ORGAN_BROKEN)
 					organStatus["broken"] = E.broken_description
@@ -364,7 +364,7 @@
 			occupantData["extOrgan"] = extOrganData
 
 			var/intOrganData[0]
-			for(var/obj/item/organ/I in H.internal_organs)
+			for(var/obj/item/organ/I in H.internal_organs_by_name)
 				var/organData[0]
 				organData["name"] = I.name
 				if(I.status & ORGAN_ASSISTED)
@@ -487,7 +487,7 @@
 			dat += "<th>Other Wounds</th>"
 			dat += "</tr>"
 
-			for(var/obj/item/organ/external/e in occupant.organs)
+			for(var/obj/item/organ/external/e in occupant.organs_by_name)
 				dat += "<tr>"
 				var/AN = ""
 				var/open = ""
@@ -543,12 +543,12 @@
 					imp += "Unknown body present:"
 				if(!AN && !open && !infected & !imp)
 					AN = "None:"
-				if(!(e.status & ORGAN_DESTROYED))
+				if(!(e.status))
 					dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured][o_dead]</td>"
 				else
 					dat += "<td>[e.name]</td><td>-</td><td>-</td><td>Not Found</td>"
 				dat += "</tr>"
-			for(var/obj/item/organ/i in occupant.internal_organs)
+			for(var/obj/item/organ/i in occupant.internal_organs_by_name)
 				var/mech = ""
 				var/i_dead = ""
 				if(i.status & ORGAN_ASSISTED)

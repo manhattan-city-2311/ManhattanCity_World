@@ -36,7 +36,7 @@
         {{:helper.link('Dialysis: '+data.dialysis_cost,     data.dialysis_picked?'check':null,	{'toggle':'dialysis', 	'id':1},	(data.dialysis && !data.active)? null:'disabled')}}
 	</div>
 	<h3>Organ Status</h3>
-	{{for data.organs}}
+	{{for data.organs_by_name}}
 	<div class="item">
 		{{if value.internal}}
 			<div class="itemLabel"><b>{{:value.name}}</b></div>

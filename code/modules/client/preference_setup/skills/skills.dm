@@ -26,7 +26,7 @@
 /datum/category_item/player_setup_item/skills/content()
 	. = list()
 	. += "<b>Выберите ваши навыки</b><br>"
-	. += "Текущий уровень навыка: <b>[pref.GetSkillClass(pref.used_skillpoints)]</b> ([pref.used_skillpoints])<br>"
+	. += "Количество очков навыка: <b>[pref.skillpoints]<br>"
 	. += "<a href='?src=\ref[src];preconfigured=1'>Использовать преднастроенный набор навыков</a><br>"
 	. += "<table>"
 	for(var/V in SKILLS)
@@ -36,14 +36,14 @@
 			var/level = pref.skills[S.ID]
 			. += "<tr style='text-align:left;'>"
 			. += "<th><a href='?src=\ref[src];skillinfo=\ref[S]'>[S.name]</a></th>"
-			. += skill_to_button(S, "Не обучен", level, SKILL_NONE)
+			. += skill_to_button(S, "Не обучен", level, SKILL_UNSKILLED)
 			// secondary skills don't have an amateur level
 			if(S.secondary)
 				. += "<th></th>"
 			else
-				. += skill_to_button(S, "Новичок", level, SKILL_BASIC)
-			. += skill_to_button(S, "Обучен", level, SKILL_ADEPT)
-			. += skill_to_button(S, "Профессионал", level, SKILL_EXPERT)
+				. += skill_to_button(S, "Новичок", level, SKILL_AMATEUR)
+			. += skill_to_button(S, "Обучен", level, SKILL_TRAINED)
+			. += skill_to_button(S, "Профессионал", level, SKILL_PROFESSIONAL)
 			. += "</tr>"
 	. += "</table>"
 	. = jointext(.,null)

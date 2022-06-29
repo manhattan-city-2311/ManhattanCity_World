@@ -288,6 +288,9 @@ var/global/datum/controller/radio/radio_controller
 	var/frequency as num
 	var/list/list/obj/devices = list()
 
+/datum/radio_frequency/proc/get_message_type()
+	CRASH("Channel [src] has no message type")
+
 /datum/radio_frequency/proc/post_signal(obj/source as obj|null, datum/signal/signal, var/radio_filter = null as text|null, var/range = null as num|null)
 	var/turf/start_point
 	if(range)

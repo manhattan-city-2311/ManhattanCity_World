@@ -1,3 +1,31 @@
+GLOBAL_VAR_CONST(PREF_YES, "Yes")
+GLOBAL_VAR_CONST(PREF_NO, "No")
+GLOBAL_VAR_CONST(PREF_ALL_SPEECH, "All Speech")
+GLOBAL_VAR_CONST(PREF_NEARBY, "Nearby")
+GLOBAL_VAR_CONST(PREF_ALL_EMOTES, "All Emotes")
+GLOBAL_VAR_CONST(PREF_ALL_CHATTER, "All Chatter")
+GLOBAL_VAR_CONST(PREF_SHORT, "Short")
+GLOBAL_VAR_CONST(PREF_LONG, "Long")
+GLOBAL_VAR_CONST(PREF_SHOW, "Show")
+GLOBAL_VAR_CONST(PREF_HIDE, "Hide")
+GLOBAL_VAR_CONST(PREF_FANCY, "Fancy")
+GLOBAL_VAR_CONST(PREF_PLAIN, "Plain")
+GLOBAL_VAR_CONST(PREF_PRIMARY, "Primary")
+GLOBAL_VAR_CONST(PREF_ALL, "All")
+GLOBAL_VAR_CONST(PREF_OFF, "Off")
+GLOBAL_VAR_CONST(PREF_BASIC, "Basic")
+GLOBAL_VAR_CONST(PREF_FULL, "Full")
+GLOBAL_VAR_CONST(PREF_MIDDLE_CLICK, "middle click")
+GLOBAL_VAR_CONST(PREF_SHIFT_MIDDLE_CLICK, "shift middle click")
+GLOBAL_VAR_CONST(PREF_ALT_CLICK, "alt click")
+GLOBAL_VAR_CONST(PREF_CTRL_CLICK, "ctrl click")
+GLOBAL_VAR_CONST(PREF_CTRL_SHIFT_CLICK, "ctrl shift click")
+GLOBAL_VAR_CONST(PREF_HEAR, "Hear")
+GLOBAL_VAR_CONST(PREF_SILENT, "Silent")
+GLOBAL_VAR_CONST(PREF_SHORTHAND, "Shorthand")
+GLOBAL_VAR_CONST(PREF_WHITE, "White")
+GLOBAL_VAR_CONST(PREF_DARK, "Dark")
+
 #define SAVE_RESET -1
 
 var/list/preferences_datums = list()
@@ -122,6 +150,7 @@ var/list/preferences_datums = list()
 	//Keeps track of preferrence for not getting any wanted jobs
 	var/alternate_option = 1
 
+	var/skillpoints = 16
 	var/used_skillpoints = 0
 	var/skill_specialization = null
 	var/list/skills = list() // skills can range from 0 to 3
@@ -213,29 +242,43 @@ var/list/preferences_datums = list()
 /datum/preferences/proc/ZeroSkills(var/forced = 0)
 	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
 		if(!skills.Find(S.ID) || forced)
-			skills[S.ID] = SKILL_NONE
+			skills[S.ID] = SKILL_UNSKILLED
 
 /datum/preferences/proc/CalculateSkillPoints()
+	skillpoints = 0
 	used_skillpoints = 0
 	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
-		var/multiplier = 1
 		switch(skills[S.ID])
-			if(SKILL_NONE)
-				used_skillpoints += 0 * multiplier
-			if(SKILL_BASIC)
-				used_skillpoints += 1 * multiplier
-			if(SKILL_ADEPT)
+			if(SKILL_UNSKILLED)
+				used_skillpoints += 0
+			if(SKILL_AMATEUR)
+				if(check_skillpoints(1))
+					used_skillpoints += 1
+
+			if(SKILL_TRAINED)
 				// secondary skills cost less
 				if(S.secondary)
-					used_skillpoints += 1 * multiplier
+					if(check_skillpoints(1))
+						used_skillpoints += 1
 				else
-					used_skillpoints += 3 * multiplier
-			if(SKILL_EXPERT)
+					if(check_skillpoints(3))
+						used_skillpoints += 3
+			if(SKILL_PROFESSIONAL)
 				// secondary skills cost less
 				if(S.secondary)
-					used_skillpoints += 3 * multiplier
+					if(check_skillpoints(3))
+						used_skillpoints += 3
 				else
-					used_skillpoints += 6 * multiplier
+					if(check_skillpoints(6))
+						used_skillpoints += 6
+	skillpoints -= used_skillpoints
+
+/datum/preferences/proc/check_skillpoints(var/amount)
+	var/test_skillpoints = skillpoints - amount
+	if(test_skillpoints >= 0)
+		return 1
+	else
+		return 0
 
 /datum/preferences/proc/GetSkillClass(points)
 	return CalculateSkillClass(points, age)

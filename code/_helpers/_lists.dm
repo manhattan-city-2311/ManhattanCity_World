@@ -793,3 +793,39 @@ proc/dd_sortedTextList(list/incoming)
 /proc/get_initial_name(var/atom/atom_type)
 	var/atom/A = atom_type
 	return initial(A.name)
+
+/proc/sumList(list/L)
+	. = 0
+	for(var/i in L)
+		. += i
+
+/proc/sumListAndCut(list/L)
+	. = sumList(L)
+	L.Cut()
+
+/proc/mulList(list/L)
+	. = 0
+	for(var/i in L)
+		. *= i
+
+/proc/mulListAndCut(list/L)
+	. = mulList(L)
+	L.Cut()
+
+/proc/sumListAssoc(list/L)
+	. = 0
+	for(var/I in L)
+		. += L[I]
+
+/proc/sumListAndCutAssoc(list/L)
+	. = sumListAssoc(L)
+	L.Cut()
+
+/proc/mulListAssoc(list/L)
+	. = 1
+	for(var/I in L)
+		. *= L[I]
+
+/proc/mulListAndCutAssoc(list/L)
+	. = mulListAssoc(L)
+	L.Cut()

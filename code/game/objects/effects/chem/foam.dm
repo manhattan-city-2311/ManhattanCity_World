@@ -182,4 +182,4 @@
 /obj/structure/foamedmetal/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
 	if(air_group)
 		return 0
-	return !density
+	return (!density || (mover && mover.elevation != elevation))
