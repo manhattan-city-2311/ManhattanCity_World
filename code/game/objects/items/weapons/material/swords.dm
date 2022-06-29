@@ -37,3 +37,22 @@
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	visible_message(span("danger", "[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), span("danger", "You slit your stomach open with \the [src.name]!"), span("danger", "You hear the sound of flesh tearing open.")) // gory, but it gets the point across
 	return(BRUTELOSS)
+
+/obj/item/weapon/material/sword/murasama
+	name = "murasama"
+	desc = "A high-frequency blade, it seems that you can cut anything with it. There will be bloodshed."
+	icon_state = "murasama"
+	slot_flags = SLOT_BELT
+	applies_material_colour = 0
+	default_material = "uranium"
+	material = "uranium"
+	embed_chance = 0
+	force_divisor = 0.6
+	reach = 2
+	unbreakable = 1
+	unacidable = 1
+	armor_penetration = 50
+
+/obj/item/weapon/material/sword/murasama/advisor
+	name = "Best Advisor"
+	desc = "The best adviser, will help in all matters that cannot be resolved peacefully."

@@ -146,6 +146,264 @@
 /area/planets/Manhattan/indoor/north/police_dept
 	ambience = list('sound/ambience/MAIN0C.SAP.ogg', 'sound/ambience/MAIN05.SAP.ogg')
 
+/*
+ 		--------S O U T H---------
+*/
+
+/area/planets/Manhattan/south
+	name = "\improper New-Manhattan South District"
+	icon_state = "south_m1"
+	dynamic_lighting = 1
+	sound_env = CITY
+	flags = null
+	ambience = list('sound/manhattan/south1.mp3')
+
+/area/planets/Manhattan/south/indoor
+	name = "\improper New-Manhattan South District Interior"
+	icon_state = "south_m1_indoor"
+	dynamic_lighting = 1
+	flags = RAD_SHIELDED
+
+//BUILDINGS - FLATS
+
+/area/planets/Manhattan/south/building
+	name = "\improper Building"
+	icon_state = "south_m_build"
+	dynamic_lighting = 1
+	flags = RAD_SHIELDED
+
+/area/planets/Manhattan/south/building/f1
+	icon_state = "south_m_build_flat"
+/area/planets/Manhattan/south/building/f1/n1
+	name = "\improper Flat 1"
+/area/planets/Manhattan/south/building/f1/n2
+	name = "\improper Flat 2"
+/area/planets/Manhattan/south/building/f1/n3
+	name = "\improper Flat 3"
+/area/planets/Manhattan/south/building/f1/n4
+	name = "\improper Flat 4"
+/area/planets/Manhattan/south/building/f1/n5
+	name = "\improper Flat 5"
+/area/planets/Manhattan/south/building/f1/n6
+	name = "\improper Flat 6"
+
+/area/planets/Manhattan/south/building/f2
+	icon_state = "south_m_build_flat"
+/area/planets/Manhattan/south/building/f2/n1
+	name = "\improper Flat 1"
+/area/planets/Manhattan/south/building/f2/n2
+	name = "\improper Flat 2"
+/area/planets/Manhattan/south/building/f2/n3
+	name = "\improper Flat 3"
+/area/planets/Manhattan/south/building/f2/n4
+	name = "\improper Flat 4"
+/area/planets/Manhattan/south/building/f2/n5
+	name = "\improper Flat 5"
+/area/planets/Manhattan/south/building/f2/n6
+	name = "\improper Flat 6"
+
+/area/planets/Manhattan/south/building/f3
+	icon_state = "south_m_build_flat"
+/area/planets/Manhattan/south/building/f3/n1
+	name = "\improper Flat 1"
+/area/planets/Manhattan/south/building/f3/n2
+	name = "\improper Flat 2"
+/area/planets/Manhattan/south/building/f3/n3
+	name = "\improper Flat 3"
+/area/planets/Manhattan/south/building/f3/n4
+	name = "\improper Flat 4"
+/area/planets/Manhattan/south/building/f3/n5
+	name = "\improper Flat 5"
+/area/planets/Manhattan/south/building/f3/n6
+	name = "\improper Flat 6"
+
+/area/planets/Manhattan/south/building/f4
+	icon_state = "south_m_build_flat"
+/area/planets/Manhattan/south/building/f4/n1
+	name = "\improper Flat 1"
+/area/planets/Manhattan/south/building/f4/n2
+	name = "\improper Flat 2"
+/area/planets/Manhattan/south/building/f4/n3
+	name = "\improper Flat 3"
+/area/planets/Manhattan/south/building/f4/n4
+	name = "\improper Flat 4"
+/area/planets/Manhattan/south/building/f4/n5
+	name = "\improper Flat 5"
+/area/planets/Manhattan/south/building/f4/n6
+	name = "\improper Flat 6"
+
+/area/planets/Manhattan/south/building/f5
+	icon_state = "south_m_build_flat"
+/area/planets/Manhattan/south/building/f5/n1
+	name = "\improper Flat 1"
+/area/planets/Manhattan/south/building/f5/n2
+	name = "\improper Flat 2"
+/area/planets/Manhattan/south/building/f5/n3
+	name = "\improper Flat 3"
+/area/planets/Manhattan/south/building/f5/n4
+	name = "\improper Flat 4"
+/area/planets/Manhattan/south/building/f5/n5
+	name = "\improper Flat 5"
+/area/planets/Manhattan/south/building/f5/n6
+	name = "\improper Flat 6"
+
+//FACTORY
+
+/area/planets/Manhattan/south/factory
+	name = "\improper South District Factory"
+	icon_state = "south_m_factory"
+	dynamic_lighting = 1
+	flags = RAD_SHIELDED
+
+/area/planets/Manhattan/south/factory/roof
+	name = "\improper Factory Roof"
+
+/area/planets/Manhattan/south/factory/maintenance
+	name = "\improper Factory Maintenance"
+	icon_state = "south_m_factory_m"
+
+/area/planets/Manhattan/south/factory/maintenance/janitor
+	name = "\improper Janitorial Closet"
+
+/area/planets/Manhattan/south/factory/office
+	name = "\improper Factory Office Hallway"
+	icon_state = "south_m_factory_o"
+
+/area/planets/Manhattan/south/factory/office/a
+	name = "\improper Factory Office A"
+
+/area/planets/Manhattan/south/factory/office/b
+	name = "\improper Factory Office B"
+
+/area/planets/Manhattan/south/factory/office/c
+	name = "\improper Factory Office C"
+
+/area/planets/Manhattan/south/factory/office/d
+	name = "\improper Factory Office D"
+
+/area/planets/Manhattan/south/factory/office/storage
+	name = "\improper Factory Office Storage"
+
+/area/planets/Manhattan/south/factory/office/director
+	name = "\improper General Director Office"
+
+/area/planets/Manhattan/south/factory/office/director/room
+	name = "\improper General Director Backroom"
+
+/area/planets/Manhattan/south/factory/office/ce
+	name = "\improper Chief Engineer Office"
+
+/area/planets/Manhattan/south/factory/office/ce/room
+	name = "\improper Chief Engineer Backroom"
+
+/area/planets/Manhattan/south/factory/office/qm
+	name = "\improper Quartermaster Office"
+
+/area/planets/Manhattan/south/factory/office/qm/room
+	name = "\improper Quartermaster Backroom"
+
+/area/planets/Manhattan/south/factory/office/pmchead
+	name = "\improper PMC Head Office"
+
+/area/planets/Manhattan/south/factory/pmc
+	name = "\improper PMC Wing"
+	icon_state = "south_m_factory_s"
+
+/area/planets/Manhattan/south/factory/pmc/armory
+	name = "\improper PMC Armory"
+
+/area/planets/Manhattan/south/factory/pmc/brig
+	name = "\improper PMC Brig"
+
+/area/planets/Manhattan/south/factory/pmc/forensics
+	name = "\improper PMC Forensics"
+
+/area/planets/Manhattan/south/factory/pmc/gate
+	name = "\improper Factory Main Gate"
+
+/area/planets/Manhattan/south/factory/pmc/gate/control
+	name = "\improper Factory Gate Control"
+
+/area/planets/Manhattan/south/factory/pmc/interrogation
+	name = "\improper PMC Interrogation"
+
+/area/planets/Manhattan/south/factory/pmc/checkpoint
+	name = "\improper PMC Checkpoint A"
+
+/area/planets/Manhattan/south/factory/pmc/checkpoint/b
+	name = "\improper PMC Checkpoint B"
+
+/area/planets/Manhattan/south/factory/pmc/checkpoint/c
+	name = "\improper PMC Checkpoint C"
+
+/area/planets/Manhattan/south/factory/hallway
+	name = "\improper Factory Hallway"
+
+/area/planets/Manhattan/south/factory/hallway/second_floor
+	name = "\improper Factory 2th Floor Hallway"
+
+/area/planets/Manhattan/south/factory/hallway/mess
+	name = "\improper Factory Mess Hall"
+
+/area/planets/Manhattan/south/factory/cargo
+	name = "\improper Factory Cargo Wing"
+	icon_state = "south_m_factory_c"
+
+/area/planets/Manhattan/south/factory/cargo/storage
+	name = "\improper Cargo Storage"
+
+/area/planets/Manhattan/south/factory/cargo/storage/second
+	name = "\improper Cargo Second Storage"
+
+/area/planets/Manhattan/south/factory/cargo/storage/thirt
+	name = "\improper Cargo Thirt Storage"
+
+/area/planets/Manhattan/south/factory/cargo/breakroom
+	name = "\improper Cargo Break Room"
+
+/area/planets/Manhattan/south/factory/cargo/meeting
+	name = "\improper Cargo Meeting Room"
+
+/area/planets/Manhattan/south/factory/cargo/equipment
+	name = "\improper Cargo Equipment"
+
+/area/planets/Manhattan/south/factory/cargo/mining
+	name = "\improper Mining"
+
+/area/planets/Manhattan/south/factory/engineering
+	name = "\improper Engineering"
+	icon_state = "south_m_factory_e"
+
+/area/planets/Manhattan/south/factory/engineering/lobby
+	name = "\improper Engineering Lobby"
+
+/area/planets/Manhattan/south/factory/engineering/construction
+	name = "\improper Engineering Construction Site"
+
+/area/planets/Manhattan/south/factory/engineering/exosuit
+	name = "\improper Engineering Exosuit Fabrication"
+
+/area/planets/Manhattan/south/factory/engineering/breakroom
+	name = "\improper Engineering Break Room"
+
+/area/planets/Manhattan/south/factory/engineering/breakroom/b
+	name = "\improper Engineering Observatory"
+
+/area/planets/Manhattan/south/factory/engineering/equipment
+	name = "\improper Engineering Equipment"
+
+/area/planets/Manhattan/south/factory/engineering/hangar
+	name = "\improper Delivery Hangar"
+
+/area/planets/Manhattan/south/factory/engineering/meeting
+	name = "\improper Engineering Meeting Room"
+
+/area/planets/Manhattan/south/factory/engineering/storage
+	name = "\improper Engineering Storage"
+
+/area/planets/Manhattan/south/factory/engineering/storage/b
+	name = "\improper Engineering Second Storage"
+
 // Elevator areas.
 /area/turbolift/manhattan_house11
 	name = "lift (first floor)"

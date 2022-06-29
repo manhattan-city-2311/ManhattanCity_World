@@ -68,4 +68,20 @@
 	initial_flooring = /decl/flooring/road/garage
 	outdoors = FALSE
 
+/turf/simulated/floor/road/arrow
+	icon_state = "road_arrow"
+	initial_flooring = /decl/flooring/road/arrow
+
+/turf/simulated/floor/road/lines
+	icon_state = "road_lines"
+	initial_flooring = /decl/flooring/road/lines
+
+/turf/simulated/floor/road/lines/y
+	icon_state = "road_lines_y"
+	initial_flooring = /decl/flooring/road/lines/y
+
+/turf/simulated/floor/road/stripe
+	icon_state = "road_stripe"
+	initial_flooring = /decl/flooring/road/stripe
+
 

@@ -83,11 +83,8 @@
 /obj/effect/wingrille_spawn/reinforced/crescent
 	name = "Crescent window grille spawner"
 	icon_state = "r-wingrille"
-	win_path = /obj/structure/window/reinforced
-
-/obj/effect/wingrille_spawn/reinforced/crescent/handle_window_spawn(var/obj/structure/window/W)
-	W.maxhealth = 1000000
-	W.health = 1000000
+	win_path = /obj/structure/window/reinforced/crescent
+	grille_path = /obj/structure/grille/crescent
 
 /obj/effect/wingrille_spawn/phoron
 	name = "phoron window grille spawner"

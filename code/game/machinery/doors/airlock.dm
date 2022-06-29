@@ -495,6 +495,30 @@ var/list/airlock_overlays = list()
 	fill_file = 'icons/obj/doors/centcomm/fill_steel.dmi'
 	paintable = AIRLOCK_PAINTABLE|AIRLOCK_STRIPABLE
 
+/obj/machinery/door/airlock/centcom/crescent
+	secured_wires = 1
+	explosion_resistance = 100
+	opacity = 1
+	hackProof = 1
+
+/obj/machinery/door/airlock/centcom/crescent/attack_hand()
+	return
+
+/obj/machinery/door/airlock/centcom/crescent/attackby()
+	return
+
+/obj/machinery/door/airlock/centcom/crescent/ex_act()
+	return
+
+/obj/machinery/door/airlock/centcom/crescent/hitby()
+	return
+
+/obj/machinery/door/airlock/centcom/crescent/take_damage()
+	return
+
+/obj/machinery/door/airlock/centcom/crescent/bolted
+	locked = 1
+
 /obj/machinery/door/airlock/highsecurity
 	airlock_type = "secure"
 	name = "Secure Airlock"
