@@ -596,6 +596,33 @@
 	icon_state = "rwindow_full"
 	maxhealth = 80
 
+/obj/structure/window/reinforced/crescent
+	name = "immensely reinforced window"
+	icon_state = "rwindow"
+	maxhealth = 80000000
+
+/obj/structure/window/reinforced/crescent/full
+	dir = SOUTHWEST
+	icon_state = "rwindow_full"
+
+/obj/structure/window/reinforced/crescent/attack_hand()
+	return
+
+/obj/structure/window/reinforced/crescent/attackby()
+	return
+
+/obj/structure/window/reinforced/crescent/ex_act()
+	return
+
+/obj/structure/window/reinforced/crescent/hitby()
+	return
+
+/obj/structure/window/reinforced/crescent/take_damage()
+	return
+
+/obj/structure/window/reinforced/crescent/shatter()
+	return
+
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
 	desc = "It looks rather strong and opaque. Might take a few good hits to shatter it."

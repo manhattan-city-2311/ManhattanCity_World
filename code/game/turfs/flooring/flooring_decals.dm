@@ -522,6 +522,9 @@ var/list/floor_decals = list()
 	name = "spline - fancy"
 	icon_state = "spline_fancy"
 
+/obj/effect/floor_decal/spline/fancy/corner
+	icon_state = "spline_fancy_corner"
+
 /obj/effect/floor_decal/spline/fancy/wood
 	name = "spline - wood"
 	color = "#CB9E04"
@@ -533,6 +536,19 @@ var/list/floor_decals = list()
 	icon_state = "spline_fancy_cee"
 
 /obj/effect/floor_decal/spline/fancy/wood/three_quarters
+	icon_state = "spline_fancy_full"
+
+/obj/effect/floor_decal/spline/fancy/black
+	name = "spline - fancy"
+	color = "#242424"
+
+/obj/effect/floor_decal/spline/fancy/black/corner
+	icon_state = "spline_fancy_corner"
+
+/obj/effect/floor_decal/spline/fancy/black/cee
+	icon_state = "spline_fancy_cee"
+
+/obj/effect/floor_decal/spline/fancy/black/three_quarters
 	icon_state = "spline_fancy_full"
 
 /obj/effect/floor_decal/industrial/warning

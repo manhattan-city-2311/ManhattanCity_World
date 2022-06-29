@@ -159,6 +159,20 @@
 /obj/structure/wall_frame/blue
 	color = COLOR_BLUE_GRAY
 
+/obj/structure/wall_frame/crescent
+
+/obj/structure/wall_frame/crescent/attack_hand()
+	return
+
+/obj/structure/wall_frame/crescent/attackby()
+	return
+
+/obj/structure/wall_frame/crescent/ex_act()
+	return
+
+/obj/structure/wall_frame/crescent/hitby()
+	return
+
 /*
 /obj/structure/wall_frame/hull/initialize()
 	. = ..()

@@ -576,6 +576,17 @@ var/list/flooring_types
 /decl/flooring/road/garage
 	icon_base = "garage"
 
+/decl/flooring/road/arrow
+	icon_base = "road_arrow"
+
+/decl/flooring/road/lines
+	icon_base = "road_lines"
+
+/decl/flooring/road/lines/y
+	icon_base = "road_lines_y"
+
+/decl/flooring/road/stripe
+	icon_base = "road_stripe"
 
 
 /decl/flooring/bluegeo

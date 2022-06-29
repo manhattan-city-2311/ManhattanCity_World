@@ -273,6 +273,21 @@
 
 /obj/structure/grille/broken/cult
 	icon_state = "grillecult-b"
+
+/obj/structure/grille/crescent
+
+/obj/structure/grille/crescent/attack_hand()
+	return
+
+/obj/structure/grille/crescent/attackby()
+	return
+
+/obj/structure/grille/crescent/ex_act()
+	return
+
+/obj/structure/grille/crescent/hitby()
+	return
+
 /*
 /obj/structure/grille/rustic
 	name = "rustic grille"

@@ -131,6 +131,13 @@
 	icon_state = "r-wingrille"
 	win_path = /obj/structure/window/reinforced/full
 
+/obj/effect/wallframe_spawn/reinforced/crescent
+	name = "crescent reinforced wall frame window spawner"
+	icon_state = "r-wingrille"
+	win_path = /obj/structure/window/reinforced/crescent/full
+	frame_path = /obj/structure/wall_frame/crescent
+	grille_path = /obj/structure/grille/crescent
+
 /obj/effect/wallframe_spawn/reinforced/electric
 	name = "reinforced wall frame window spawner"
 	icon_state = "r-wingrille"
