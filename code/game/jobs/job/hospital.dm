@@ -5,8 +5,8 @@
 	department_flag = MEDSCI
 	department = DEPT_COUNCIL
 	faction = "City"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	subordinates = "the public healthcare department"
 	supervisors = "the Mayor"
 	selection_color = "#026865"
@@ -41,8 +41,8 @@
 	department_flag = MEDSCI
 	department = DEPT_HEALTHCARE
 	faction = "City"
-	total_positions = 5
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/doctor
@@ -70,8 +70,8 @@
 	department = DEPT_HEALTHCARE
 	department_flag = MEDSCI
 	faction = "City"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	minimum_character_age = 25
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
@@ -115,8 +115,8 @@
 	department_flag = MEDSCI
 	department = DEPT_HEALTHCARE
 	faction = "City"
-	total_positions = 4
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	wage = 2400
 	synth_wage = 240
 
@@ -138,8 +138,8 @@
 
 	department = DEPT_HEALTHCARE
 	faction = "City"
-	total_positions = 5
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the medical director"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/intern
@@ -159,8 +159,8 @@
 	department_flag = MEDSCI
 	department = DEPT_HEALTHCARE
 	faction = "City"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the medical director"
 	selection_color = "#5B4D20"
 	idtype = /obj/item/weapon/card/id/medical/paramedic

@@ -280,6 +280,3 @@
 /datum/reagent/paracetamol		price_tag = 0.75
 /datum/reagent/tramadol			price_tag = 2.5
 /datum/reagent/oxycodone		price_tag = 6
-
-//Imunnosupressants
-/datum/reagent/immunosuprizine	price_tag = 30

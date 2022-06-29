@@ -5,8 +5,8 @@
 	head_position = 0
 	department_flag = GOVLAW
 	faction = "City"
-	total_positions = -1
-	spawn_positions = -1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "Nanotrasen and the President"
 	selection_color = "#0F0F6F"
 	idtype = /obj/item/weapon/card/id/nanotrasen/ntrep
@@ -49,8 +49,8 @@
 	flag = PRESIDENT
 	department_flag = GOVLAW
 	faction = "City"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "NanoTrasen"
 	subordinates = "the Governor"
 
@@ -78,8 +78,8 @@
 
 /datum/job/nanotrasen/vice
 	title = "Vice President"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	flag = VICEPRESIDENT
 	wage = 15000
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/vpresident
@@ -94,8 +94,8 @@
 
 /datum/job/nanotrasen/ceo
 	title = "Nanotrasen CEO"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	flag = CEO
 	wage = 18000
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/ceo
@@ -118,8 +118,8 @@
 
 /datum/job/nanotrasen/governor
 	title = "Governor"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	flag = GOVERNOR
 	wage = 45000
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/governor
@@ -139,8 +139,8 @@
 
 /datum/job/nanotrasen/supreme_justice
 	title = "Supreme Justice"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	flag = SUPREMEJUSTICE
 	wage = 9000
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/justice
@@ -162,8 +162,8 @@
 	head_position = 0
 	department_flag = GOVLAW
 	faction = "City"
-	total_positions = -1
-	spawn_positions = -1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the PDSI Director"
 
 	selection_color = "#0F0F6F"
@@ -202,8 +202,8 @@
 
 /datum/job/nanotrasen/advisor/defense
 	title = "Advisor of Defense"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	flag = ADVISORDEFENSE
 	faction = "City"
 	alt_titles = list("Advisor of Defense")
@@ -212,8 +212,8 @@
 
 /datum/job/nanotrasen/advisor/justice
 	title = "Advisor of Justice"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	flag = ADVISORJUSTICE
 	alt_titles = list("Advisor of Justice")
 
@@ -223,8 +223,8 @@
 
 /datum/job/nanotrasen/advisor/innovation
 	title = "Advisor of Innovation"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions =0
 	flag = ADVISORINNOVATION
 	alt_titles = list("Advisor of Innovation")
 
@@ -234,8 +234,8 @@
 
 /datum/job/nanotrasen/advisor/health
 	title = "Advisor of Health"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	flag = ADVISORHEALTH
 	alt_titles = list("Advisor of Health")
 	faction = "City"
@@ -244,8 +244,8 @@
 
 /datum/job/nanotrasen/advisor/finance
 	title = "Advisor of Finance"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	flag = ADVISORFINANCE
 	faction = "City"
 	alt_titles = list("Advisor of Finance")

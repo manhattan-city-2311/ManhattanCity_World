@@ -5,8 +5,8 @@
 	faction = "City"
 	department = DEPT_PUBLIC
 	department_flag = CIVILIAN
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	minimum_character_age = 18
 
 	supervisors = "the city clerk"

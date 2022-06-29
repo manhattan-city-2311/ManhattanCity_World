@@ -5,7 +5,7 @@
 	department_flag = ENGSEC
 //	faction = "City"
 	total_positions = 0 // Not used for AI, see is_position_available below and modules/mob/living/silicon/ai/latejoin.dm
-	spawn_positions = 1
+	spawn_positions = 0
 	selection_color = "#3F823F"
 	supervisors = "your laws"
 	req_admin_notify = 1

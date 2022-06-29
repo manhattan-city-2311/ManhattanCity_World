@@ -5,8 +5,8 @@
 	head_position = 1
 	department_flag = ENGSEC
 	department = DEPT_COUNCIL
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the Mayor"
 	subordinates = "the maintenance department"
 	selection_color = "#7F6E2C"
@@ -44,8 +44,8 @@
 	department_flag = ENGSEC
 	faction = "City"
 	department = DEPT_MAINTENANCE
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the Chief Engineer"
 	selection_color = "#5B4D20"
 	idtype = /obj/item/weapon/card/id/engineering/engineer
@@ -90,8 +90,8 @@
 	faction = "City"
 	department_flag = CIVILIAN
 	department = DEPT_MAINTENANCE
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the Chief Engineer"
 	selection_color = "#515151"
 
@@ -112,8 +112,8 @@
 	head_position = 1
 	department_flag = ENGSEC
 	department = DEPT_COUNCIL
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the Mayor"
 	subordinates = "the whole factory"
 	selection_color = "#ccc91a"

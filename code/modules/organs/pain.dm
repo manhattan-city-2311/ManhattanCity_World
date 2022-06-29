@@ -56,6 +56,8 @@ mob/var/next_pain_time = 0
 		return
 	if(!can_feel_pain())
 		return
+	if(!pulse)
+		return
 	if(world.time < next_pain_time)
 		return
 	var/maxdam = 0

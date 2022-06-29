@@ -26,6 +26,13 @@
 	var/last_failed_breath
 	var/breath_fail_ratio // How badly they failed a breath. Higher is worse.
 
+/obj/item/organ/internal/lungs/New()
+	..()
+	if(!owner.client)
+		return
+	damage = owner.client.prefs.lungs_data["damage"]
+	oxygen_deprivation = owner.client.prefs.lungs_data["oxygen_deprivation"]
+
 /obj/item/organ/internal/lungs/proc/remove_oxygen_deprivation(var/amount)
 	var/last_suffocation = oxygen_deprivation
 	oxygen_deprivation = min(species.total_health,max(0,oxygen_deprivation - amount))
@@ -132,11 +139,9 @@
 	var/failed_exhale = 0
 
 	var/inhaling = breath.gas[breath_type]
-	var/poison = breath.gas[poison_type]
 	var/exhaling = exhale_type ? breath.gas[exhale_type] : 0
 
 	var/inhale_pp = (inhaling/breath.total_moles)*breath_pressure
-	var/toxins_pp = (poison/breath.total_moles)*breath_pressure
 	var/exhaled_pp = (exhaling/breath.total_moles)*breath_pressure
 
 	var/inhale_efficiency = min(round(inhale_pp/safe_pressure_min, 0.001), 3)
@@ -187,17 +192,6 @@
 			to_chat(owner, "<span class='warning'>You feel [word].</span>")
 			owner.adjustOxyLoss(oxyloss)
 			owner.co2_alert = alert
-
-	// Too much poison in the air.
-	if(toxins_pp > safe_toxins_max)
-		var/ratio = (poison/safe_toxins_max) * 10
-		if(robotic >= ORGAN_ROBOT)
-			ratio /= 2 //Robolungs filter out some of the inhaled toxic air.
-		owner.reagents.add_reagent("toxin", Clamp(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
-		breath.adjust_gas(poison_type, -poison/6, update = 0) //update after
-		owner.phoron_alert = 1
-	else
-		owner.phoron_alert = 0
 
 	// Were we able to breathe?
 	var/failed_breath = failed_inhale || failed_exhale

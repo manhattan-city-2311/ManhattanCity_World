@@ -855,6 +855,7 @@
 #include "code\game\machinery\kitchen\cooking_machines\oven.dm"
 #include "code\game\machinery\medicine\microscope.dm"
 #include "code\game\machinery\medicine\monitor.dm"
+#include "code\game\machinery\medicine\mri.dm"
 #include "code\game\machinery\pipe\construction.dm"
 #include "code\game\machinery\pipe\pipe_dispenser.dm"
 #include "code\game\machinery\pipe\pipe_recipes.dm"

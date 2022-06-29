@@ -24,6 +24,17 @@
 	)
 	var/last_arrythmia_gain
 
+/obj/item/organ/internal/heart/New()
+	..()
+	if(!owner.client)
+		return
+	damage = owner.client.prefs.heart_data["damage"]
+	pulse = owner.client.prefs.heart_data["pulse"]
+	cardiac_output = owner.client.prefs.heart_data["cardiac_output"]
+	ischemia = owner.client.prefs.heart_data["ischemia"]
+	germ_level = owner.client.prefs.heart_data["germ_level"]
+
+
 /obj/item/organ/internal/heart/influence_hormone(T, amount)
 	if(ishormone(T, adrenaline))
 		owner.add_chemical_effect(CE_PULSE, amount * 5)

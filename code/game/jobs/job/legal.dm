@@ -4,8 +4,8 @@
 	head_position = 1
 	faction = "City"
 	department = DEPT_LEGAL
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	department_flag = CIVILIAN
 	req_admin_notify = 1
 
@@ -37,8 +37,8 @@
 	faction = "City"
 	department = DEPT_LEGAL
 	department_flag = ENGSEC
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	req_admin_notify = 1
 	supervisors = "the judge"
 	selection_color = "#601C1C"

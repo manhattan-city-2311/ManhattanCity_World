@@ -112,9 +112,9 @@ var/list/preferences_datums = list()
 	var/b_synth							//Same as above
 
 		//Some faction information.
-	var/home_system = "Vetra"           //System of birth.
-	var/citizenship = "Blue Colony"     //Current home system.
-	var/faction = "NanoTrasen Colony Civilian"                //General associated faction.
+	var/home_system = "Mars"           //System of birth.
+	var/citizenship = "Mars"     //Current home system.
+	var/faction = "Sol Central Government"                //General associated faction.
 	var/religion = "None"               //Religious association.
 	var/antag_faction = "None"			//Antag associated faction.
 	var/antag_vis = "Shared"			//How visible antag association is to others.
@@ -217,6 +217,19 @@ var/list/preferences_datums = list()
 	var/loadcharcooldown
 
 	var/cyber_control = FALSE //Allows players to use cyberware on spawn
+
+	var/turf/location
+
+	var/blood_level
+	var/list/heart_data
+	var/list/liver_data
+	var/list/lungs_data
+	var/list/stomach_data
+	var/list/kidneys_data
+	var/list/brain_data
+
+
+
 
 /datum/preferences/New(client/C)
 	player_setup = new(src)

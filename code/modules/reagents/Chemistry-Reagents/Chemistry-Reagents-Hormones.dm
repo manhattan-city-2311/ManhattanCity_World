@@ -15,7 +15,7 @@
 	overdose = 10
 
 /datum/reagent/hormone/adrenaline/affect_blood(mob/living/carbon/human/M, alien, removed)
-    M.add_chemical_effect(CE_PAINKILLER, min(2 * volume, 40))
+    M.add_chemical_effect(CE_PULSE, min(2 * volume, 40))
 
 /datum/reagent/hormone/noradrenaline
 	name = "Noradrenaline"

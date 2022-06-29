@@ -139,9 +139,6 @@
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	stamps = ""
-	if(new_info)
-		name = new_name
-		info = new_info
 
 	if(name != "paper")
 		desc = "This is a paper titled '" + name + "'."
@@ -151,6 +148,10 @@
 		info = replacetext_char(info, "\n", "<BR>")
 		info = parsepencode(info)
 
+	if(new_info)
+		name = new_name
+		info = new_info
+		desc = "This is a paper titled '" + name + "'."
 	spawn(2)
 		update_icon()
 		update_space(info)

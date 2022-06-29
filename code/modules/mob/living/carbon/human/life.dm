@@ -370,7 +370,6 @@
 						rupture_lung()
 
 	var/safe_exhaled_max = 10
-	var/safe_toxins_max = 0.2
 	var/SA_para_min = 1
 	var/SA_sleep_min = 5
 	var/inhaled_gas_used = 0
@@ -378,11 +377,9 @@
 	var/breath_pressure = (breath.total_moles*R_IDEAL_GAS_EQUATION*breath.temperature)/BREATH_VOLUME
 
 	var/inhaling
-	var/poison
 	var/exhaling
 
 	var/breath_type
-	var/poison_type
 	var/exhale_type
 
 	var/failed_inhale = 0
@@ -394,12 +391,6 @@
 		breath_type = "oxygen"
 	inhaling = breath.gas[breath_type]
 
-	if(species.poison_type)
-		poison_type = species.poison_type
-	else
-		poison_type = "phoron"
-	poison = breath.gas[poison_type]
-
 	if(species.exhale_type)
 		exhale_type = species.exhale_type
 		exhaling = breath.gas[exhale_type]
@@ -407,7 +398,6 @@
 		exhaling = 0
 
 	var/inhale_pp = (inhaling/breath.total_moles)*breath_pressure
-	var/toxins_pp = (poison/breath.total_moles)*breath_pressure
 	var/exhaled_pp = (exhaling/breath.total_moles)*breath_pressure
 
 	// Not enough to breathe
@@ -463,16 +453,6 @@
 
 		else
 			co2_alert = 0
-
-	// Too much poison in the air.
-	if(toxins_pp > safe_toxins_max)
-		var/ratio = (poison/safe_toxins_max) * 10
-		if(reagents)
-			reagents.add_reagent("toxin", Clamp(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
-			breath.adjust_gas(poison_type, -poison/6, update = 0) //update after
-		phoron_alert = max(phoron_alert, 1)
-	else
-		phoron_alert = 0
 
 	// If there's some other shit in the air lets deal with it here.
 	if(breath.gas["sleeping_agent"])

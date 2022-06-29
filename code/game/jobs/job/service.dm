@@ -6,8 +6,8 @@
 //	faction = "City"
 	department = DEPT_BAR
 	department_flag = CIVILIAN
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 
 	supervisors = "the bar manager"
 	selection_color = "#515151"
@@ -26,8 +26,8 @@
 //	faction = "City"
 	department = DEPT_BAR
 	department_flag = CIVILIAN
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions =0
 
 	supervisors = "the bar manager"
 	selection_color = "#515151"
@@ -45,8 +45,8 @@
 //	faction = "City"
 	department_flag = CIVILIAN
 	department = DEPT_BOTANY
-	total_positions = 2
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the bar manager"
 
 	selection_color = "#515151"
@@ -64,8 +64,8 @@
 //	faction = "City"
 	department_flag = CIVILIAN
 	department = DEPT_BAR
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the bar owner"
 	subordinates = "the bar employees"
 	selection_color = "#515151"
@@ -87,8 +87,8 @@
 //	faction = "City"
 	department_flag = CIVILIAN
 	department = DEPT_PUBLIC
-	total_positions = 4
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the city clerk"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/journalist
@@ -105,8 +105,8 @@
 	faction = "City"
 	department_flag = CIVILIAN
 	department = DEPT_PUBLIC
-	total_positions = 4
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the Judge"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/defense
@@ -130,8 +130,8 @@
 //	faction = "City"
 	department_flag = CIVILIAN
 	department = DEPT_PUBLIC
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the city clerk"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/barber
@@ -149,8 +149,8 @@
 	department = DEPT_FACTORY
 	department_flag = CIVILIAN
 	faction = "City"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the factory owners"
 	subordinates = "the factory workers"
 	selection_color = "#7a4f33"
@@ -172,9 +172,8 @@
 	faction = "City"
 	department = DEPT_FACTORY
 	department_flag = CIVILIAN
-	total_positions = 4
-
-	spawn_positions = 4
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the factory manager"
 	selection_color = "#9b633e"
 	idtype = /obj/item/weapon/card/id/cargo/cargo_tech
@@ -194,8 +193,8 @@
 //	faction = "City"
 	department = DEPT_FACTORY
 	department_flag = CIVILIAN
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the factory manager"
 
 	selection_color = "#9b633e"

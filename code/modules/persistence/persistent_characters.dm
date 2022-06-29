@@ -1,3 +1,28 @@
+/mob/living/carbon/human/proc/save_organs_to_prefs()
+	var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
+	client.prefs.heart_data["damage"] = heart.damage
+	client.prefs.heart_data["pulse"] = heart.pulse
+	client.prefs.heart_data["cardiac_output"] = heart.cardiac_output
+	client.prefs.heart_data["ischemia"] = heart.ischemia
+	client.prefs.heart_data["germ_level"] = heart.germ_level
+
+	var/obj/item/organ/internal/liver/liver = internal_organs_by_name[O_LIVER]
+	client.prefs.liver_data["damage"] = liver.damage
+
+	var/obj/item/organ/internal/lungs/lungs = internal_organs_by_name[O_LUNGS]
+	client.prefs.lungs_data["damage"] = lungs.damage
+	client.prefs.lungs_data["oxygen_deprivation"] = lungs.oxygen_deprivation
+
+	var/obj/item/organ/internal/stomach/stomach = internal_organs_by_name[O_STOMACH]
+	client.prefs.stomach_data["damage"] = stomach.damage
+
+	var/obj/item/organ/internal/kidneys/kidneys = internal_organs_by_name[O_KIDNEYS]
+	client.prefs.kidneys_data["damage"] = kidneys.damage
+
+	var/obj/item/organ/internal/brain/brain = internal_organs_by_name[O_BRAIN]
+	client.prefs.brain_data["damage"] = brain.damage
+
+
 // Moved from /datum/preferences/proc/save_to_preferences()
 /mob/living/carbon/human/proc/save_mob_to_prefs()
 
@@ -20,7 +45,7 @@
 	//There's no way (that I know of) to edit the "real name" of a character unless
 	//it's a body transformation, admin or antag fuckery. So this works.
 
-
+	save_organs_to_prefs()
 	// Copy basic values
 	mind.prefs.nickname = nickname
 	mind.prefs.religion = religion //Maybe make features where people can change religion.
@@ -29,6 +54,9 @@
 	//List of basic things we want saved.
 	mind.prefs.biological_gender = gender
 	mind.prefs.identifying_gender = identifying_gender
+
+	mind.prefs.location = src.loc
+	mind.prefs.blood_level = vessel.total_volume
 
 	mind.prefs.r_eyes = r_eyes
 	mind.prefs.g_eyes = g_eyes

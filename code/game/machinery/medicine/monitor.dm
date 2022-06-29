@@ -61,7 +61,7 @@
 		attached = null
 		update_icon()
 		return PROCESS_KILL
-
+	
 	update_icon()
 
 /obj/machinery/monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)

@@ -53,8 +53,8 @@
 	faction = "City"
 	department = DEPT_RESEARCH
 	department_flag = MEDSCI
-	total_positions = 5
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the research director"
 	selection_color = "#633D63"
 	idtype = /obj/item/weapon/card/id/science/scientist
@@ -76,8 +76,8 @@
 	faction = "City"
 	department = DEPT_RESEARCH
 	department_flag = MEDSCI
-	total_positions = 3
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the research director"
 	selection_color = "#633D63"
 	idtype = /obj/item/weapon/card/id/science/xenobiologist
@@ -99,8 +99,8 @@
 	faction = "City"
 	department = DEPT_RESEARCH
 	department_flag = MEDSCI
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "research director"
 	selection_color = "#633D63"
 	idtype = /obj/item/weapon/card/id/science/roboticist
@@ -123,8 +123,8 @@
 	faction = "City"
 	department = DEPT_RESEARCH
 	department_flag = MEDSCI
-	total_positions = 5
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the research director"
 	selection_color = "#633D63"
 	idtype = /obj/item/weapon/card/id/science/intern

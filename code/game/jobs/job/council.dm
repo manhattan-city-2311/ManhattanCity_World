@@ -7,8 +7,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	head_position = 1
 	department_flag = ENGSEC
 	faction = "City"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 
 	supervisors = "government officials and the president"
 	subordinates = "the City Council"
@@ -58,8 +58,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	head_position = 1
 	department_flag = CIVILIAN
 	faction = "City"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 
 	supervisors = "the Mayor"
 	subordinates = "the city hall staff"
@@ -103,8 +103,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department = DEPT_PUBLIC
 	department_flag = CIVILIAN
 	faction = "City"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the City Clerk"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/secretary
@@ -131,8 +131,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department = DEPT_PUBLIC
 	department_flag = ENGSEC
 	faction = "City"
-	total_positions = 2
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the City Clerk"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/silver/secretary

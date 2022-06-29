@@ -116,8 +116,10 @@
 	if(!(S.spawn_flags & SPECIES_CAN_JOIN))
 		src << alert("Your current species, [client.prefs.species], is not available for play on the city.")
 		return 0
-
-	AttemptLateSpawn(selected_job_name,client.prefs.spawnpoint, antag_type)
+	if(client.prefs.location)
+		AttemptLateSpawn(selected_job_name, client.prefs.location, antag_type)
+	else
+		AttemptLateSpawn(selected_job_name, client.prefs.spawnpoint, antag_type)
 
 	return TRUE
 
@@ -235,7 +237,7 @@
 
 	return 1
 
-/mob/new_player/proc/AttemptLateSpawn(rank, var/spawning_at, antag_type)
+/mob/new_player/proc/AttemptLateSpawn(rank, var/turf/spawning_at, antag_type)
 	if (src != usr)
 		return 0
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
@@ -254,10 +256,13 @@
 	if(rank == "Prisoner")
 		is_prisoner = 1
 
-
 	//Find our spawning point.
+	var/turf/T
 	var/list/join_props = SSjobs.LateSpawn(client, rank)
-	var/turf/T = join_props["turf"]
+	if(spawning_at)
+		T = spawning_at
+	else
+		T = join_props["turf"]
 	var/join_message = join_props["msg"]
 
 	if(!T || !join_message)

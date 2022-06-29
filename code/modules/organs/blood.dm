@@ -15,8 +15,10 @@
 
 	if(!should_have_organ(O_HEART)) //We want the var for safety but we can do without the actual blood.
 		return
-
-	vessel.add_reagent("blood",species.blood_volume)
+	if(client && client.prefs.blood_level)
+		vessel.add_reagent("blood",client.prefs.blood_level)
+	else
+		vessel.add_reagent("blood",species.blood_volume)
 	fixblood()
 
 //Resets blood data
@@ -98,7 +100,7 @@
 		return 0
 	if(!amt)
 		return 0
-	return vessel.remove_reagent(/datum/reagent/blood, amt * (src.mob_size/MOB_MEDIUM))
+	return vessel.remove_reagent("blood", amt * (src.mob_size/MOB_MEDIUM))
 
 /****************************************************
 				BLOOD TRANSFERS

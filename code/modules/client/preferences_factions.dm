@@ -14,28 +14,59 @@ var/global/list/seen_religions = list()
 	return
 
 var/global/list/citizenship_choices = list(
-	"Blue Colony",
-	"Cascington",
-	"Ocral Spax A",
-	"Ocral Spax B",
-	"Glace Gria",
-	"Glace Grace",
-	"Castor",
+	"Mars",
+	"Earth",
 	"Luna",
 	"Venus",
+	"Ceres",
+	"Pluto",
+	"Tau Ceti",
+	"Helios",
 	"Terra",
-	"Mars"
+	"Lorriman",
+	"Cinu",
+	"Yuklid",
+	"Lordania",
+	"Kingston",
+	"Gaia",
+	"Magnitka"
 	)
 
 var/global/list/home_system_choices = list(
-	"Vetra",
-	"Sol",
-	"Andromeda"
+	"Mars",
+	"Earth",
+	"Luna",
+	"Venus",
+	"Ceres",
+	"Pluto",
+	"Tau Ceti",
+	"Helios",
+	"Terra",
+	"Lorriman",
+	"Cinu",
+	"Yuklid",
+	"Lordania",
+	"Kingston",
+	"Gaia",
+	"Magnitka"
 	)
 
 var/global/list/faction_choices = list(
-	"NanoTrasen Colony Civilian",
-	"NanoTrasen Civil Service"
+	"Sol Central Government",
+	"SCG Fleet",
+	"SCG Army",
+	"The Expeditionary Corps Organisation",
+	"The Independent Colonial Confederation of Gilgamesh",
+	"The Expeditionary Corps",
+	"The Sol Federal",
+	"The NanoTrasen Corporation",
+	"Xynergy",
+	"Hephaestus Industries",
+	"The Free Trade Union",
+	"Proxima Centauri Risk Control",
+	"Strategic Assault and Asset Retention Enterprises",
+	"Deimos Advanced Information Systems",
+	"Other"
 	)
 
 var/global/list/antag_faction_choices = list(	//Should be populated after brainstorming. Leaving as blank in case brainstorming does not occur.

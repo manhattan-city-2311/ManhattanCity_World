@@ -6,8 +6,8 @@
 	department = DEPT_COUNCIL
 	department_flag = ENGSEC
 	head_position = 1
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the Mayor"
 	subordinates = "the police department"
 	selection_color = "#8E2929"
@@ -45,8 +45,8 @@
 	faction = "City"
 	department = DEPT_POLICE
 	department_flag = ENGSEC
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the chief of police"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/warden
@@ -78,8 +78,8 @@
 	faction = "City"
 	department = DEPT_POLICE
 	department_flag = ENGSEC
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the chief of police"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/detective
@@ -114,8 +114,8 @@
 	faction = "City"
 	department = DEPT_POLICE
 	department_flag = ENGSEC
-	total_positions = 8
-	spawn_positions = 8
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the chief of police"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/officer

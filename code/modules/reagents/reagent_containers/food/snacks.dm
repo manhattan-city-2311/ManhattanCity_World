@@ -674,7 +674,6 @@
 /obj/item/weapon/reagent_containers/food/snacks/organ/New()
 	..()
 	reagents.add_reagent("protein", rand(3,5))
-	reagents.add_reagent("toxin", rand(1,3))
 	src.bitesize = 3
 
 /obj/item/weapon/reagent_containers/food/snacks/tofu
