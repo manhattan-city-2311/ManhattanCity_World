@@ -192,40 +192,6 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 		M.vomit()
 	..()
 
-/datum/reagent/drug/heroin
-	name = "Heroin"
-	id = "diamorphine"
-	description = "Heroin, also known as diamorphine is a potent opiate with strong painkilling effects."
-	reagent_state = LIQUID
-	color = "#d69641" //brown
-	calories_factor = -5
-	high_msg_list = list("You feel euphoric!",
-	"You have a strange sense of calm and excitement at the same time.",
-	"You feel... sleepy.",
-	"You feel dizzy.")
-
-	price_tag = 1.5
-
-	contraband_type = CONTRABAND_HEROIN
-
-/datum/reagent/drug/heroin/affect_blood(var/mob/living/carbon/M)
-	M.add_chemical_effect(CE_PAINKILLER, 250)
-	M.add_chemical_effect(CE_SPEEDBOOST, 1)
-	M.adjustBrainLoss(0.25)
-	if(prob(5))
-		M.emote(pick("twitch", "shiver"))
-	..()
-
-/datum/reagent/drug/heroin/overdose(var/mob/living/M as mob)
-	if(M.canmove && !istype(M.loc, /atom/movable))
-		for(var/i = 0, i < 4, i++)
-			step(M, pick(cardinal))
-
-	M.adjustToxLoss(1)
-	M.drowsyness = max(M.drowsyness, 10)
-	M.adjustBrainLoss(pick(0.5, 0.6, 0.7, 0.8, 0.9, 1))
-	..()
-
 /datum/reagent/drug/cocaine
 	name = "Cocaine"
 	id = "cocaine"
@@ -484,53 +450,6 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 		M.adjustToxLoss(3)
 		..()
 
-/datum/reagent/drug/krokodil
-	name = "Krokodil"
-	id = "krokodil"
-	description = "A sketchy homemade opiate, often used by disgruntled Cosmonauts."
-	reagent_state = LIQUID
-	color = "#0264B4"
-	overdose = 20
-	taste_description = "very poor life choices"
-	high_msg_list = list("You feel pretty chill.",
-	"Your skin feels all rough and dry.",
-	"The feel too chill!")
-
-	contraband_type = CONTRABAND_KROKODIL
-
-/datum/reagent/drug/krokodil/affect_blood(var/mob/living/carbon/M)
-	M.drowsyness = max(M.drowsyness, 5)
-	M.add_chemical_effect(CE_PAINKILLER,1)
-	M.adjustToxLoss(1)
-	if(prob(10))
-		M.visible_message("<span class='warning'>[M] looks dazed!</span>")
-		M.Stun(3)
-		M.emote("drool")
-		..()
-
-/datum/reagent/drug/krokodil/overdose(var/mob/living/M as mob)
-	M.adjustToxLoss(1)
-	M.drowsyness = max(M.drowsyness, 10)
-	if(prob(40))
-		M.visible_message("<span class='warning'>[M] looks dazed!</span>")
-		M.Stun(3)
-		M.emote("drool")
-		..()
-	if(prob(30))
-		to_chat(M, "<span class ='warning'>Your skin is cracking and bleeding!</span>")
-		M.adjustBruteLoss(5)
-		M.adjustToxLoss(2)
-		M.adjustBrainLoss(1)
-		M.emote("cry")
-		..()
-	if(prob(20))
-		M.visible_message("<span class ='warning'>[M] sways and falls over!</span>")
-		M.adjustToxLoss(3)
-		M.adjustBrainLoss(3)
-		M.Weaken(8)
-		M.emote("faint")
-		..()
-
 /datum/reagent/drug/psilocybin
 	name = "Psilocybin"
 	id = "psilocybin"
@@ -576,27 +495,4 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 		if(prob(15))
 			M.emote(pick("twitch", "giggle"))
 
-
-/datum/reagent/drug/iwuna
-	name = "1-wUn4"
-	id = "iwuna"
-	description = "Causes schizophrenia and gender dysphoria"
-	taste_description = "fallout 13"
-	color = "#ff00ff"
-	high_msg_list = list("DAYZBILD IS BETTER!!!")
-	var/list/iwuna_quotes = list("Я призываю ТАУЦЕТИ на помощь", "ДЕЙЗбилд гораздо перспективнее", "Ванотян и андрейкей незаконно захватили власть")
-
-/datum/reagent/drug/iwuna/affect_blood(mob/living/carbon/M)
-	. = ..()
-	if(prob(40))
-		M.say(pick(iwuna_quotes))
-		M.adjustBrainLoss(0.25*REM)
-		M.adjustToxLoss(0.25*REM)
-		M.hallucination += rand(20, 50)
-
-/datum/reagent/drug/iwuna/overdose(mob/living/carbon/M, alien, removed)
-	var/mob/living/carbon/human/H = M
-	if(H.identifying_gender != FEMALE)
-		H.identifying_gender = FEMALE
-		to_chat(H, "Вы стали трансом!!!")
 

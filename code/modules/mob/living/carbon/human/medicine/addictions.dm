@@ -52,8 +52,8 @@
 /datum/additiction/opioid/update(var/mob/living/carbon/human/H)
 	var/power_diff = 0
 	for(var/datum/reagent/tramadol/T in (H.reagents.reagent_list | H.ingested.reagent_list))
-		//if(power < T.pain_power / 5)
-		//	power_diff += (T.pain_power / 20 * H.chem_doses[T.type] * 0.05)
+		if(power < T.pain_power / 5)
+			power_diff += (T.pain_power / 20 * H.chem_doses[T.type] * 0.05)
 	power += power_diff
 	if(power_diff < 0.1)
 		if(power >= 0)
@@ -103,19 +103,22 @@
 						H.vomit()
 		H.adjustToxLoss(P / 40)
 
-	var/HE
+	if(!prob(15))
+		return
+	var/description
 	switch(P)
 		if(0 to 6)
-			HE = SPAN_WARNING("You wanna opiates.")
+			description = SPAN_WARNING("You want opiates.")
 		if(6 to 13)
-			HE = SPAN_WARNING("You really want opiates!")
+			description = SPAN_WARNING("You really want opiates!")
 		if(13 to 30)
-			HE = SPAN_DANGER("You need opiates!")
+			description = SPAN_DANGER("You need opiates!")
 		if(30 to 60)
-			HE = SPAN_DANGER("<big>You really need opiates!</big>")
+			description = SPAN_DANGER("<big>You really need opiates!</big>")
 		if(60 to INFINITY)
-			HE = SPAN_DANGER("<big>OH GOD! You cannot live without opiates.</big>")
-	to_chat(H, HE)
+			description = SPAN_DANGER("<big>OH GOD! You cannot live without opiates!</big>")
+	to_chat(H, description)
+
 /datum/additiction/alcohol
 	name = "Alcohol"
 
@@ -128,6 +131,8 @@
 	if(ingested)
 		var/list/pool = H.reagents.reagent_list | ingested.reagent_list
 		for(var/datum/reagent/ethanol/booze in pool)
+			if(H.chem_doses[booze.type] < 2)
+				continue
 			. = 1
 			if(booze.strength < 40)
 				return 2
@@ -174,7 +179,7 @@
 	return chronic ? FALSE : power < -max_power
 
 /datum/additiction/nicotine/update(var/mob/living/carbon/human/H)
-	var/power_diff = 5
+	var/power_diff = H.chem_doses[/datum/reagent/drug/nicotine] || 0
 	if(power < 0)
 		power_diff *= 200
 	power += power_diff / 10

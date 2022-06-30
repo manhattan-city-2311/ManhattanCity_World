@@ -129,4 +129,3 @@
 	// Used by "real" mobs after they leave a VR session
 	var/mob/living/carbon/human/vr_link = null
 	var/obj/machinery/machine_visual //machine that is currently applying visual effects to this mob. Only used for camera monitors currently..
-	var/list/chem_doses = list()
