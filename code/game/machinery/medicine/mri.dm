@@ -37,13 +37,6 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 		console = new_console
 
 /obj/machinery/mri/process()
-	if(attracted.len)
-		for(var/obj/A in attracted)
-			A.throw_at(src, 1, 3)
-			src.visible_message("<span class='warning'>\The [A] gets pulled by [src]!</span>")
-		for(var/mob/living/carbon/human/H in attracted)
-			H.throw_at(src, 3, 3)
-			src.visible_message("<span class='warning'>\The [H] gets flung towards [src]!</span>")
 
 	//last_process += 1
 	//if(!last_process == 3)
@@ -59,6 +52,13 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 		if(is_type_in_typecache(I, GLOB.mri_attracted_items))
 			attracted += I
 			break
+	if(attracted.len)
+		for(var/obj/A in attracted)
+			A.throw_at(src, 1, 3)
+			src.visible_message("<span class='warning'>\The [A] gets pulled by [src]!</span>")
+		for(var/mob/living/carbon/human/H in attracted)
+			H.throw_at(src, 3, 3)
+			src.visible_message("<span class='warning'>\The [H] gets flung towards [src]!</span>")
 
 /obj/machinery/mri/proc/start_scan()
 	operating = TRUE
@@ -164,7 +164,7 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 				else
 					dat += "<td>[e.name]</td><td>-</td><td>-</td><td>Not Found</td>"
 				dat += "</tr>"
-			for(var/obj/item/organ/i in occupant.internal_organs_by_name)
+			for(var/obj/item/organ/internal/i in occupant.internal_organs_by_name)
 				var/mech = ""
 				var/i_dead = ""
 				if(i.status & ORGAN_ASSISTED)
@@ -247,8 +247,8 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	if (user.stat)
 		return
 	src.connected = new /obj/structure/mri_tray( src.loc )
-	step(src.connected, EAST)
-	var/turf/T = get_step(src, EAST)
+	step(src.connected, NORTH)
+	var/turf/T = get_step(src, NORTH)
 	if (list_find(T.contents, src.connected))
 		src.connected.connected = src
 		for(var/atom/movable/A as mob|obj in src)
