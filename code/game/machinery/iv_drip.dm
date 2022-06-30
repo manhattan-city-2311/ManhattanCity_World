@@ -89,8 +89,10 @@
 	if(attached)
 
 		if(!(get_dist(src, attached) <= 1 && isturf(attached.loc)))
-			visible_message("The needle is ripped out of [attached], doesn't that hurt?")
-			attached:apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
+			visible_message("<span class='warning'>The needle is violently ripped out of [attached]!</span>")
+			var/affected = pick("r_arm", "l_arm")
+			attached:apply_damage(15, BRUTE, affected)
+			attached.custom_pain("<span class='warning'>You feel something ripped out of your arm!</span>", 1, affecting = affected)
 			attached = null
 			update_icon()
 			return
@@ -128,7 +130,7 @@
 
 			// If the human is losing too much blood, beep.
 			if(attached.get_blood_volume() < BLOOD_PERFUSION_SAFE * 1.05)
-				visible_message("\The [src] beeps loudly.")
+				visible_message("<span class='warning'>The IV drip beeps loudly!</span>")
 
 			var/datum/reagent/B = T.take_blood(beaker,amount)
 

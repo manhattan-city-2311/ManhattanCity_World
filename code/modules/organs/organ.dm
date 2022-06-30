@@ -273,12 +273,13 @@ var/list/organ_cache = list()
 		if(user)
 			log_admin(user, owner, "Removed a vital organ ([src]).", "Had a vital organ ([src]) removed.", "removed a vital organ ([src]) from")
 		owner.death()
-
+	owner.internal_organs_by_name -= src
 	owner = null
 
 /obj/item/organ/proc/replaced(var/mob/living/carbon/human/target, var/obj/item/organ/external/affected)
 	owner = target
 	forceMove(owner) //just in case
+	owner.internal_organs_by_name |= src
 	if(isrobotic())
 		set_dna(owner.dna)
 	return 1

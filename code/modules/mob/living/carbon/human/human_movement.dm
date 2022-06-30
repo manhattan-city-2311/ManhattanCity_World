@@ -14,6 +14,12 @@
 	if(embedded_flag)
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
 
+	if(CE_SPEEDBOOST in chem_effects)
+		return -1
+
+	if(CE_SLOWDOWN in chem_effects)
+		tally += chem_effects[CE_SLOWDOWN]
+
 	if(force_max_speed)
 		return -3
 
@@ -27,7 +33,7 @@
 	if(health_deficiency >= 40) tally += (health_deficiency / 25)
 
 	if(can_feel_pain())
-		if(halloss >= 10) tally += (halloss / 10) //halloss shouldn't slow you down if you can't even feel it
+		if(shock_stage >= 10) tally += (shock_stage / 10) //pain shouldn't slow you down if you can't even feel it
 
 	var/hungry = (500 - nutrition)/5 // So overeat would be 100 and default level would be 80
 	if (hungry >= 70) tally += hungry/50

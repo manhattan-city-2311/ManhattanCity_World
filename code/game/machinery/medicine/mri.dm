@@ -33,27 +33,32 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 
 /obj/machinery/mri/initialize()
 	. = ..()
-	for(var/obj/machinery/mri_console/new_console)
+	for(var/obj/machinery/mri_console/new_console in range(5, src))
 		console = new_console
 
 /obj/machinery/mri/process()
-    if(attracted.len)
-        for(var/atom/movable/A in attracted)
-            A.throw_at(src)
-    last_process += 1
-    if(!last_process == 3)
-        return
-    attracted.Cut()
-    for(var/mob/living/carbon/human/H in range(2, src))
-        var/list/contents_check = H.GetAllContents()
-        for(var/A in contents_check)
-            if(is_type_in_typecache(A, GLOB.mri_attracted_items))
-                attracted += H
-                break
-    for(var/obj/item/I in range(2, src))
-        if(is_type_in_typecache(I, GLOB.mri_attracted_items))
-            attracted += I
-            break
+	if(attracted.len)
+		for(var/obj/A in attracted)
+			A.throw_at(src, 1, 3)
+			src.visible_message("<span class='warning'>\The [A] gets pulled by [src]!</span>")
+		for(var/mob/living/carbon/human/H in attracted)
+			H.throw_at(src, 3, 3)
+			src.visible_message("<span class='warning'>\The [H] gets flung towards [src]!</span>")
+
+	//last_process += 1
+	//if(!last_process == 3)
+	//    return
+	attracted.Cut()
+	for(var/mob/living/carbon/human/H in range(2, src))
+		var/list/contents_check = H.GetAllContents()
+		for(var/A in contents_check)
+			if(is_type_in_typecache(A, GLOB.mri_attracted_items))
+				attracted += H
+				break
+	for(var/obj/item/I in range(2, src))
+		if(is_type_in_typecache(I, GLOB.mri_attracted_items))
+			attracted += I
+			break
 
 /obj/machinery/mri/proc/start_scan()
 	operating = TRUE
@@ -84,9 +89,6 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 
 			extra_font = "<font color=[occupant.getFireLoss() < 60 ? "blue" : "red"]>"
 			dat += "[extra_font]\t-Burn Severity %: [occupant.getFireLoss()]</font><br>"
-
-			extra_font = "<font color=[occupant.getBrainLoss() < 1 ? "blue" : "red"]>"
-			dat += "[extra_font]\tApprox. Brain Damage %: [occupant.getBrainLoss()]</font><br>"
 
 			dat += "<hr>"
 
@@ -225,13 +227,13 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	else
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		src.connected = new /obj/structure/mri_tray( src.loc )
-		step(src.connected, src.dir)
-		var/turf/T = get_step(src, src.dir)
+		step(src.connected, NORTH)
+		var/turf/T = get_step(src, NORTH)
 		if (list_find(T.contents, src.connected))
 			src.connected.connected = src
 			for(var/atom/movable/A as mob|obj in src)
 				A.forceMove(src.connected.loc)
-			src.connected.set_dir(src.dir)
+			src.connected.set_dir(NORTH)
 		else
 			qdel(src.connected)
 			src.connected = null

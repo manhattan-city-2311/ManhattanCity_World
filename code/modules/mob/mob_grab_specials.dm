@@ -1,7 +1,7 @@
 
 /obj/item/weapon/grab/proc/inspect_organ(mob/living/carbon/human/H, mob/user, var/target_zone)
-	var/obj/item/organ/external/O = H.internal_organs_by_name[target_zone]
-	user.visible_message("<span class='notice'>[user] starts inspecting [H]'s [name] carefully.</span>")
+	var/obj/item/organ/external/O = H.organs_by_name[target_zone]
+	user.visible_message("<span class='notice'>[user] starts inspecting [H]'s [O] carefully.</span>")
 	if(O.wounds.len)
 		to_chat(user, "<span class='warning'>You find [O.get_wounds_desc()]</span>")
 	else

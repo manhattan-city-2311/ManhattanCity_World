@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(air)
 	name = "Air"
 	init_order = INIT_ORDER_AIR
 	priority = FIRE_PRIORITY_AIR
-	wait = 2 SECONDS // seconds (We probably can speed this up actually)
+	wait = 30 SECONDS // seconds (We probably can speed this up actually)
 	flags = SS_BACKGROUND // TODO - Should this really be background? It might be important.
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/static/list/part_names = list("turfs", "edges", "fire zones", "hotspots", "zones")
@@ -60,6 +60,8 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		log_debug("Active Edges on ZAS Startup\n" + edge_log.Join("\n"))
 
 	..()
+	spawn(60)
+	can_fire = FALSE
 
 /datum/controller/subsystem/air/fire(resumed = 0)
 	var/timer
