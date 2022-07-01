@@ -269,7 +269,6 @@
 		new /obj/item/clothing/suit/straight_jacket(src)
 		new /obj/item/weapon/reagent_containers/glass/bottle/stoxin(src)
 		new /obj/item/weapon/reagent_containers/syringe(src)
-		new /obj/item/weapon/storage/pill_bottle/citalopram(src)
 		new /obj/item/weapon/reagent_containers/pill/methylphenidate(src)
 		new /obj/item/weapon/clipboard(src)
 		new /obj/item/weapon/folder/white(src)

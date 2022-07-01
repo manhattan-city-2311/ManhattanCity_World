@@ -60,8 +60,6 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	gloves = /obj/item/clothing/gloves/swat
 
-	l_pocket = /obj/item/weapon/reagent_containers/pill/cyanide
-
 	id_slot = slot_wear_id
 	id_type = /obj/item/weapon/card/id/syndicate
 	id_pda_assignment = "Mercenary"

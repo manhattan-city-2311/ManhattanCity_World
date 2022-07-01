@@ -16,7 +16,6 @@
 		owner.internal_organs_by_name -= organ_tag
 		while(null in owner.internal_organs_by_name)
 			owner.internal_organs_by_name -= null
-		var/obj/item/organ/external/E = owner.organs_by_name[parent_organ]
 	..()
 
 // Brain is defined in brain_item.dm.

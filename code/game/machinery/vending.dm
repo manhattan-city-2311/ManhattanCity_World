@@ -1010,19 +1010,6 @@
 	icon_deny = "med-deny"
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
 	req_access = list(access_medical)
-	products = list(
-					/obj/item/weapon/reagent_containers/syringe = 12,
-					/obj/item/device/healthanalyzer = 5,
-					/obj/item/weapon/reagent_containers/glass/beaker = 4,
-					/obj/item/weapon/reagent_containers/dropper = 5,
-					/obj/item/stack/medical/advanced/bruise_pack = 6,
-					/obj/item/stack/medical/advanced/ointment = 6,
-					/obj/item/stack/medical/splint = 4,
-					/obj/item/weapon/storage/pill_bottle/carbon = 2,
-					/obj/item/weapon/reagent_containers/pill/rezadone = 2)
-
-
-	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 3,/obj/item/weapon/reagent_containers/pill/stox = 4,/obj/item/weapon/reagent_containers/pill/antitox = 6)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	req_log_access = access_cmo
 	has_logs = 1
@@ -1117,13 +1104,12 @@
 	name = "Mania Inc. Psychiatric Vendomat"
 	desc = "A vending machine which puts the man, back in mania. Stocks all manner of psychiatric supplies."
 	req_access = list(64)
-	products = list (/obj/item/weapon/storage/pill_bottle/citalopram = 2,
+	products = list (
 					 /obj/item/weapon/reagent_containers/glass/bottle/stoxin = 2,
 					 /obj/item/weapon/reagent_containers/syringe = 10,
 					 /obj/item/clothing/suit/straight_jacket = 6,
 					 /obj/item/weapon/gun/launcher/syringe = 5,
 					 /obj/item/weapon/storage/box/syringegun = 2,
-					 /obj/item/weapon/storage/pill_bottle/citalopram = 5,
 					 /obj/item/clothing/under/rank/psych = 4,
 					 /obj/item/clothing/under/rank/psych/turtleneck = 4,
 					 /obj/item/weapon/clipboard = 4,
@@ -1159,8 +1145,6 @@
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/stack/medical/bruise_pack = 2,/obj/item/stack/medical/ointment = 2,/obj/item/weapon/reagent_containers/hypospray/autoinjector = 4,/obj/item/device/healthanalyzer = 1)
-	contraband = list(/obj/item/weapon/reagent_containers/syringe/antitoxin = 4,/obj/item/weapon/reagent_containers/syringe/antiviral = 4,/obj/item/weapon/reagent_containers/pill/tox = 1)
 	req_log_access = access_cmo
 	has_logs = 1
 
@@ -1177,9 +1161,6 @@
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector = 10,/obj/item/weapon/reagent_containers/syringe/antitoxin = 10,/obj/item/stack/medical/bruise_pack = 10,
-					/obj/item/stack/medical/ointment = 10, /obj/item/device/healthanalyzer = 2)
-	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 3)
 	req_log_access = access_cmo
 	has_logs = 1
 

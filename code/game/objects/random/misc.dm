@@ -183,9 +183,6 @@
 
 /obj/random/medical/pillbottle/item_to_spawn()
 	return pick(prob(1);/obj/item/weapon/storage/pill_bottle/penicillin,
-				prob(1);/obj/item/weapon/storage/pill_bottle/dermaline,
-				prob(1);/obj/item/weapon/storage/pill_bottle/dexalin_plus,
-				prob(1);/obj/item/weapon/storage/pill_bottle/bicaridine,
 				prob(1);/obj/item/weapon/storage/pill_bottle/iron)
 
 /obj/random/medical/lite
@@ -204,7 +201,6 @@
 				prob(4);/obj/item/device/healthanalyzer,
 				prob(1);/obj/item/bodybag,
 				prob(3);/obj/item/weapon/reagent_containers/hypospray/autoinjector,
-				prob(2);/obj/item/weapon/storage/pill_bottle/kelotane,
 				prob(2);/obj/item/weapon/storage/pill_bottle/antitox)
 
 /obj/random/firstaid
@@ -230,7 +226,6 @@
 /obj/random/contraband/item_to_spawn()
 	return pick(prob(6);/obj/item/weapon/storage/pill_bottle/tramadol,
 				prob(8);/obj/item/weapon/haircomb,
-				prob(4);/obj/item/weapon/storage/pill_bottle/ecstasy,
 				prob(4);/obj/item/weapon/storage/pill_bottle/zoom,
 				prob(10);/obj/item/weapon/contraband/poster,
 				prob(4);/obj/item/weapon/material/butterfly,

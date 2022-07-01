@@ -5,16 +5,6 @@
 	name = "bottle of Ecstasy pills"
 	desc = "Highly illegal drug. When you want to see the rainbow."
 
-/obj/item/weapon/storage/pill_bottle/ecstasy/New()
-	..()
-	new /obj/item/weapon/reagent_containers/pill/ecstasy( src )
-	new /obj/item/weapon/reagent_containers/pill/ecstasy( src )
-	new /obj/item/weapon/reagent_containers/pill/ecstasy( src )
-	new /obj/item/weapon/reagent_containers/pill/ecstasy( src )
-	new /obj/item/weapon/reagent_containers/pill/ecstasy( src )
-	new /obj/item/weapon/reagent_containers/pill/ecstasy( src )
-	new /obj/item/weapon/reagent_containers/pill/ecstasy( src )
-
 /obj/item/weapon/storage/pill_bottle/zoom
 	name = "bottle of Zoom pills"
 	desc = "Highly illegal drug. Trade brain for speed."

@@ -15,7 +15,7 @@
 	icon_state = "bullet"
 	density = 1
 	unacidable = 1
-	anchored = 1 
+	anchored = 1
 	pass_flags = PASSTABLE
 	mouse_opacity = 0
 	var/bumped = 0		//Prevents it from hitting more than one guy at once
@@ -82,11 +82,10 @@
 	var/datum/plot_vector/trajectory	// used to plot the path of the projectile
 	var/datum/vector_loc/location		// current location of the projectile in pixel space
 	var/matrix/effect_transform			// matrix to rotate and scale projectile effects - putting it here so it doesn't
-	
+
 	var/speed = 50 // Meters per second
 	var/acceleration = 0 // Whether the bullet constantly accelerates
 	var/falloff = 3 //How much speed a bullet loses per second
-	var/armor_penetration = 0
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
 /obj/item/projectile/proc/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
@@ -328,11 +327,11 @@
 			speed += acceleration
 		switch(speed)
 			if(10 to 20)
-				move_delay = 3
+				step_delay = 3
 			if(21 to 30)
-				move_delay = 2
+				step_delay = 2
 			if(30 to INFINITY)
-				move_delay = 1
+				step_delay = 1
 
 		if((!( current ) || loc == current))
 			current = locate(min(max(x + xo, 1), world.maxx), min(max(y + yo, 1), world.maxy), z)
