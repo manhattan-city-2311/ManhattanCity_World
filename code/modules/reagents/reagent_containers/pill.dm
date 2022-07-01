@@ -13,7 +13,7 @@
 	possible_transfer_amounts = null
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
-	volume = 60
+	volume = 200
 
 
 
@@ -96,68 +96,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 //Pills
-/obj/item/weapon/reagent_containers/pill/antitox
-	name = "Anti-toxins pill"
-	desc = "Neutralizes many common toxins. Contains 25 units of Dylovene."
-	icon_state = "pill17"
-
-/obj/item/weapon/reagent_containers/pill/antitox/New()
-	..()
-	reagents.add_reagent("anti_toxin", 25)
-
-
-/obj/item/weapon/reagent_containers/pill/tox
-	name = "Toxins pill"
-	desc = "Highly toxic." //this is cooler without "contains 50u toxin"
-	icon_state = "pill5"
-
-/obj/item/weapon/reagent_containers/pill/tox/New()
-	..()
-	reagents.add_reagent("toxin", 50)
-
-
-/obj/item/weapon/reagent_containers/pill/cyanide
-	name = "Cyanide pill"
-	desc = "Don't swallow this." //this is cooler without "contains 50u cyanide"
-	icon_state = "pill5"
-
-/obj/item/weapon/reagent_containers/pill/cyanide/New()
-	..()
-	reagents.add_reagent("cyanide", 50)
-
-
-/obj/item/weapon/reagent_containers/pill/adminordrazine
-	name = "Adminordrazine pill"
-	desc = "It's magic. We don't have to explain it." //it's space magic you don't need the quantity
-	icon_state = "pill16"
-
-/obj/item/weapon/reagent_containers/pill/adminordrazine/New()
-	..()
-	reagents.add_reagent("adminordrazine", 50)
-
-/obj/item/weapon/reagent_containers/pill/stox
-	name = "Sleeping pill"
-	desc = "Commonly used to treat insomnia. Contains 15 units of Soporific."
-	icon_state = "pill8"
-
-/obj/item/weapon/reagent_containers/pill/stox/New()
-	..()
-	reagents.add_reagent("stoxin", 15)
-
-
-/obj/item/weapon/reagent_containers/pill/kelotane
-	name = "Kelotane pill"
-	desc = "Used to treat burns. Contains 15 units of Kelotane."
-	icon_state = "pill11"
-
-/obj/item/weapon/reagent_containers/pill/kelotane/New()
-	..()
-	reagents.add_reagent("kelotane", 15)
-
 
 /obj/item/weapon/reagent_containers/pill/paracetamol
 	name = "Paracetamol pill"
-	desc = "Paracetamol! A painkiller for the ages. Chewables! Contains 15 units of Paracetamol."
+	desc = "Paracetamol! A painkiller for the ages. Chewables! Contains 15 ml of Paracetamol."
 	icon_state = "pill8"
 
 /obj/item/weapon/reagent_containers/pill/paracetamol/New()
@@ -167,7 +109,7 @@
 
 /obj/item/weapon/reagent_containers/pill/tramadol
 	name = "Tramadol pill"
-	desc = "A simple painkiller. Contains 15 units of Tramadol."
+	desc = "A simple painkiller. Contains 15 ml of Tramadol."
 	icon_state = "pill8"
 
 /obj/item/weapon/reagent_containers/pill/tramadol/New()
@@ -177,7 +119,7 @@
 
 /obj/item/weapon/reagent_containers/pill/methylphenidate
 	name = "Methylphenidate pill"
-	desc = "Improves the ability to concentrate. Contains 15 units of Methylphenidate."
+	desc = "Improves the ability to concentrate. Contains 15 ml of Methylphenidate."
 	icon_state = "pill8"
 
 /obj/item/weapon/reagent_containers/pill/methylphenidate/New()
@@ -187,66 +129,16 @@
 
 /obj/item/weapon/reagent_containers/pill/citalopram
 	name = "Citalopram pill"
-	desc = "Mild anti-depressant. Contains 15 units of Citalopram."
+	desc = "Mild anti-depressant. Contains 15 ml of Citalopram."
 	icon_state = "pill8"
 
 /obj/item/weapon/reagent_containers/pill/citalopram/New()
 	..()
 	reagents.add_reagent("citalopram", 15)
 
-
-/obj/item/weapon/reagent_containers/pill/dexalin
-	name = "Dexalin pill"
-	desc = "Used to treat oxygen deprivation. Contains 15 units of Dexalin."
-	icon_state = "pill16"
-
-/obj/item/weapon/reagent_containers/pill/dexalin/New()
-	..()
-	reagents.add_reagent("dexalin", 15)
-
-
-/obj/item/weapon/reagent_containers/pill/dexalin_plus
-	name = "Dexalin Plus pill"
-	desc = "Used to treat extreme oxygen deprivation. Contains 15 units of Dexalin Plus."
-	icon_state = "pill8"
-
-/obj/item/weapon/reagent_containers/pill/dexalin_plus/New()
-	..()
-	reagents.add_reagent("dexalinp", 15)
-
-
-/obj/item/weapon/reagent_containers/pill/dermaline
-	name = "Dermaline pill"
-	desc = "Used to treat burn wounds. Contains 15 units of Dermaline."
-	icon_state = "pill12"
-
-/obj/item/weapon/reagent_containers/pill/dermaline/New()
-	..()
-	reagents.add_reagent("dermaline", 15)
-
-
-/obj/item/weapon/reagent_containers/pill/dylovene
-	name = "Dylovene pill"
-	desc = "A broad-spectrum anti-toxin. Contains 15 units of Dylovene."
-	icon_state = "pill13"
-
-/obj/item/weapon/reagent_containers/pill/dylovene/New()
-	..()
-	reagents.add_reagent("anti_toxin", 15)
-
-/obj/item/weapon/reagent_containers/pill/bicaridine
-	name = "Bicaridine pill"
-	desc = "Used to treat physical injuries. Contains 20 units of Bicaridine."
-	icon_state = "pill18"
-
-/obj/item/weapon/reagent_containers/pill/bicaridine/New()
-	..()
-	reagents.add_reagent("bicaridine", 20)
-
-
 /obj/item/weapon/reagent_containers/pill/penicillin
 	name = "penicillin pill"
-	desc = "A theta-lactam antibiotic. Effective against many diseases likely to be encountered in space. Contains 15 units of penicillin."
+	desc = "A theta-lactam antibiotic. Effective against many diseases likely to be encountered in space. Contains 15 ml of penicillin."
 	icon_state = "pill19"
 
 /obj/item/weapon/reagent_containers/pill/penicillin/New()
@@ -256,7 +148,7 @@
 
 /obj/item/weapon/reagent_containers/pill/carbon
 	name = "Carbon pill"
-	desc = "Used to neutralise chemicals in the stomach. Contains 15 units of Carbon."
+	desc = "Used to neutralise chemicals in the stomach. Contains 15 ml of Carbon."
 	icon_state = "pill7"
 
 /obj/item/weapon/reagent_containers/pill/carbon/New()
@@ -266,32 +158,12 @@
 
 /obj/item/weapon/reagent_containers/pill/iron
 	name = "Iron pill"
-	desc = "Used to aid in blood regeneration after bleeding. Contains 15 units of Iron."
+	desc = "Used to aid in blood regeneration after bleeding. Contains 15 ml of Iron."
 	icon_state = "pill4"
 
 /obj/item/weapon/reagent_containers/pill/iron/New()
 	..()
 	reagents.add_reagent("iron", 15)
-
-
-/obj/item/weapon/reagent_containers/pill/rezadone
-	name = "rezadone pill"
-	desc = "Used to treat genetic damage. Contains 5 units of Rezadone."
-	icon_state = "pill5"
-
-/obj/item/weapon/reagent_containers/pill/rezadone/New()
-	..()
-	reagents.add_reagent("rezadone", 5)
-
-//Not-quite-medicine
-/obj/item/weapon/reagent_containers/pill/ecstasy
-	name = "Ectasy pill"
-	desc = "Happy happy joy joy!" //we're not giving quantities for shady maint drugs
-	icon_state = "pill18"
-
-/obj/item/weapon/reagent_containers/pill/ecstasy/New()
-	..()
-	reagents.add_reagent("ecstasy", 15)
 
 
 /obj/item/weapon/reagent_containers/pill/zoom

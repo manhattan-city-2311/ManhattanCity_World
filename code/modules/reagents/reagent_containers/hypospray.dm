@@ -8,9 +8,9 @@
 	icon = 'icons/obj/syringe.dmi'
 	item_state = "hypo"
 	icon_state = "hypo"
-	amount_per_transfer_from_this = 5
+	amount_per_transfer_from_this = 50
 	unacidable = 1
-	volume = 30
+	volume = 800
 	possible_transfer_amounts = null
 	flags = OPENCONTAINER
 	slot_flags = SLOT_BELT

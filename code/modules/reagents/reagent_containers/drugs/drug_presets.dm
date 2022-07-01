@@ -3,7 +3,7 @@
 
 /obj/item/weapon/reagent_containers/drugs/baggie/cannabis/New()
 	..()
-	reagents.add_reagent("cannabis",  10)
+	reagents.add_reagent("cannabis",  80)
 
 
 /obj/item/weapon/reagent_containers/drugs/baggie/meth/
@@ -11,7 +11,7 @@
 
 /obj/item/weapon/reagent_containers/drugs/baggie/meth/New()
 	..()
-	reagents.add_reagent("methamphetamine",  10)
+	reagents.add_reagent("methamphetamine",  80)
 
 
 /obj/item/weapon/reagent_containers/drugs/baggie/heroin
@@ -19,4 +19,4 @@
 
 /obj/item/weapon/reagent_containers/drugs/baggie/heroin/New()
 	..()
-	reagents.add_reagent("diamorphine",  10)
+	reagents.add_reagent("diamorphine",  80)

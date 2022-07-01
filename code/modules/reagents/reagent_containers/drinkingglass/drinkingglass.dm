@@ -12,7 +12,7 @@
 	desc = "A generic drinking glass." // Description when empty
 	icon = DRINK_ICON_FILE
 	var/base_icon = "square" // Base icon name
-	volume = 30
+	volume = 250
 
 	var/list/filling_states // List of percentages full that have icons
 
@@ -23,7 +23,7 @@
 	center_of_mass = list("x"=16, "y"=10)
 
 	amount_per_transfer_from_this = 5
-	possible_transfer_amounts = list(5,10,15,30)
+	possible_transfer_amounts = list(5,10,15,30,60,90)
 	flags = OPENCONTAINER
 
 	matter = list("glass" = 60)

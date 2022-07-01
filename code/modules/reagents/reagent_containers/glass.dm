@@ -10,9 +10,9 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "null"
 	item_state = "null"
-	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60)
-	volume = 60
+	amount_per_transfer_from_this = 80
+	possible_transfer_amounts = list(5,10,15,25,30,60,80)
+	volume = 480
 	w_class = ITEMSIZE_SMALL
 	flags = OPENCONTAINER
 	unacidable = 1 //glass doesn't dissolve in acid
@@ -199,8 +199,8 @@
 	desc = "A large beaker."
 	icon_state = "beakerlarge"
 	matter = list("glass" = 5000)
-	volume = 120
-	amount_per_transfer_from_this = 10
+	volume = 960
+	amount_per_transfer_from_this = 80
 	possible_transfer_amounts = list(5,10,15,25,30,60,120)
 	flags = OPENCONTAINER
 
@@ -209,8 +209,8 @@
 	desc = "A cryostasis beaker that allows for chemical storage without reactions."
 	icon_state = "beakernoreact"
 	matter = list("glass" = 500)
-	volume = 60
-	amount_per_transfer_from_this = 10
+	volume = 480
+	amount_per_transfer_from_this = 80
 	flags = OPENCONTAINER | NOREACT
 
 /obj/item/weapon/reagent_containers/glass/beaker/bluespace
@@ -218,8 +218,8 @@
 	desc = "A bluespace beaker, powered by experimental bluespace technology."
 	icon_state = "beakerbluespace"
 	matter = list("glass" = 5000)
-	volume = 300
-	amount_per_transfer_from_this = 10
+	volume = 2400
+	amount_per_transfer_from_this = 80
 	possible_transfer_amounts = list(5,10,15,25,30,60,120,300)
 	flags = OPENCONTAINER
 
@@ -228,7 +228,7 @@
 	desc = "A small glass vial."
 	icon_state = "vial"
 	matter = list("glass" = 250)
-	volume = 30
+	volume = 80
 	w_class = ITEMSIZE_TINY
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,30)
@@ -254,9 +254,9 @@
 	item_state = "bucket"
 	matter = list(DEFAULT_WALL_MATERIAL = 200)
 	w_class = ITEMSIZE_NORMAL
-	amount_per_transfer_from_this = 20
+	amount_per_transfer_from_this = 160
 	possible_transfer_amounts = list(10,20,30,60,120)
-	volume = 120
+	volume = 15000
 	flags = OPENCONTAINER
 	unacidable = 0
 	drop_sound = 'sound/items/drop/box.ogg'
@@ -311,9 +311,6 @@ obj/item/weapon/reagent_containers/glass/bucket/wood
 	item_state = "woodbucket"
 	matter = list("wood" = 50)
 	w_class = ITEMSIZE_LARGE
-	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(10,20,30,60,120)
-	volume = 120
 	flags = OPENCONTAINER
 	unacidable = 0
 
@@ -345,7 +342,7 @@ obj/item/weapon/reagent_containers/glass/bucket/wood
 	icon_state = "water_cooler_bottle"
 	matter = list("glass" = 2000)
 	w_class = ITEMSIZE_NORMAL
-	amount_per_transfer_from_this = 20
+	amount_per_transfer_from_this = 160
 	possible_transfer_amounts = list(10,20,30,60,120)
-	volume = 120
+	volume = 5000
 	drop_sound = 'sound/items/drop/glass.ogg'

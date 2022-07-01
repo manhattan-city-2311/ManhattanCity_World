@@ -18,12 +18,12 @@
 /obj/item/weapon/reagent_containers/blood
 	name = "IV pack"
 	var/base_name = " "
-	desc = "Holds liquids used for transfusion."
+	desc = "Holds liquids used for transfusion. Contains 2 liters of blood."
 	var/base_desc = " "
 	icon = 'icons/obj/bloodpack.dmi'
 	icon_state = "empty"
 	item_state = "bloodpack_empty"
-	volume = 200
+	volume = 2000
 	var/label_text = ""
 
 	var/blood_type = null

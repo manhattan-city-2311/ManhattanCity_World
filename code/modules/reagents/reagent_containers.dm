@@ -4,9 +4,9 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = null
 	w_class = ITEMSIZE_SMALL
-	var/amount_per_transfer_from_this = 5
-	var/possible_transfer_amounts = list(5,10,15,25,30)
-	var/volume = 30
+	var/amount_per_transfer_from_this = 100
+	var/possible_transfer_amounts = list(50,100,150,250,300)
+	var/volume = 250
 
 /obj/item/weapon/reagent_containers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
@@ -46,7 +46,7 @@
 		return 1
 
 	var/trans = target.reagents.trans_to_obj(src, target:amount_per_transfer_from_this)
-	to_chat(user, "<span class='notice'>You fill [src] with [trans] units of the contents of [target].</span>")
+	to_chat(user, "<span class='notice'>You fill [src] with [trans] milliliters of the contents of [target].</span>")
 	return 1
 
 /obj/item/weapon/reagent_containers/proc/standard_splash_mob(var/mob/user, var/mob/target) // This goes into afterattack
@@ -141,7 +141,7 @@
 		return 1
 
 	var/trans = reagents.trans_to(target, amount_per_transfer_from_this)
-	to_chat(user, "<span class='notice'>You transfer [trans] units of the solution to [target].</span>")
+	to_chat(user, "<span class='notice'>You transfer [trans] milliliters of the solution to [target].</span>")
 	return 1
 
 /obj/item/weapon/reagent_containers/proc/get_calories() // Calorie counting

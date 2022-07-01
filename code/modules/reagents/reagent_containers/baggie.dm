@@ -5,9 +5,9 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "baggie"
 	item_state = "beaker"
-	amount_per_transfer_from_this = 2
-	possible_transfer_amounts = 2
-	volume = 10
+	amount_per_transfer_from_this = 16
+	possible_transfer_amounts = 16
+	volume = 80
 	flags = OPENCONTAINER
 	w_class = ITEMSIZE_TINY
 	drop_sound = 'sound/items/drop/wrapper.ogg'
@@ -85,7 +85,7 @@
 
 /obj/item/weapon/reagent_containers/drugs/baggie
 	name = "baggie"
-	desc = "A baggie. Can hold up to 10 units."
+	desc = "A baggie. Can hold up to 80 milliliters."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "baggie"
 	item_state = "beaker"

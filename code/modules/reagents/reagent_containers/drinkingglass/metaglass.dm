@@ -3,7 +3,7 @@
 	desc = "This glass changes shape and form depending on the drink inside... fancy!"
 	icon_state = "glass_empty"
 	amount_per_transfer_from_this = 5
-	volume = 30
+	volume = 250
 	unacidable = 1 //glass
 	center_of_mass = list("x"=16, "y"=10)
 	matter = list("glass" = 500)

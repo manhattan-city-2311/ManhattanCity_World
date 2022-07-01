@@ -2,7 +2,7 @@
 #define DEFAULT_THIRST_FACTOR 0.05 // Factor of how fast mob hydration decreases.
 #define DEFAULT_CALORIES_FACTOR 0.05 // Factor of how fast mob calories decreases.
 
-#define REM 0.2 // Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
+#define REM 1.6 // Means 'Reagent Effect Multiplier'. This is how many ml of reagent are consumed per tick
 
 #define CHEM_TOUCH 1
 #define CHEM_INGEST 2

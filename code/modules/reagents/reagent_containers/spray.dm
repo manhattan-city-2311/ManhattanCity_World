@@ -12,12 +12,12 @@
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 10
-	amount_per_transfer_from_this = 10
+	amount_per_transfer_from_this = 80
 	unacidable = 1 //plastic
-	possible_transfer_amounts = list(5,10) //Set to null instead of list, if there is only one.
+	possible_transfer_amounts = list(40,80,100) //Set to null instead of list, if there is only one.
 	var/spray_size = 3
 	var/list/spray_sizes = list(1,3)
-	volume = 250
+	volume = 1750
 	drop_sound = 'sound/items/drop/bottle.ogg'
 
 /obj/item/weapon/reagent_containers/spray/New()
@@ -94,7 +94,7 @@
 /obj/item/weapon/reagent_containers/spray/cleaner/drone
 	name = "space cleaner"
 	desc = "BLAM!-brand non-foaming space cleaner!"
-	volume = 50
+	volume = 500
 
 /obj/item/weapon/reagent_containers/spray/cleaner/New()
 	..()
@@ -115,12 +115,12 @@
 	icon_state = "pepperspray"
 	item_state = "pepperspray"
 	possible_transfer_amounts = null
-	volume = 40
+	volume = 1600
 	var/safety = 1
 
 /obj/item/weapon/reagent_containers/spray/pepper/New()
 	..()
-	reagents.add_reagent("condensedcapsaicin", 40)
+	reagents.add_reagent("condensedcapsaicin", 1600)
 
 /obj/item/weapon/reagent_containers/spray/pepper/examine(mob/user)
 	if(..(user, 1))
@@ -142,13 +142,13 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "sunflower"
 	item_state = "sunflower"
-	amount_per_transfer_from_this = 1
+	amount_per_transfer_from_this = 40
 	possible_transfer_amounts = null
-	volume = 10
+	volume = 800
 
 /obj/item/weapon/reagent_containers/spray/waterflower/New()
 	..()
-	reagents.add_reagent("water", 10)
+	reagents.add_reagent("water", 800)
 
 /obj/item/weapon/reagent_containers/spray/chemsprayer
 	name = "chem sprayer"
@@ -159,7 +159,7 @@
 	throwforce = 3
 	w_class = ITEMSIZE_NORMAL
 	possible_transfer_amounts = null
-	volume = 600
+	volume = 10000
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
 
 /obj/item/weapon/reagent_containers/spray/chemsprayer/Spray_at(atom/A as mob|obj)
@@ -188,11 +188,11 @@
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "plantbgone"
 	item_state = "plantbgone"
-	volume = 100
+	volume = 800
 
 /obj/item/weapon/reagent_containers/spray/plantbgone/New()
 	..()
-	reagents.add_reagent("plantbgone", 100)
+	reagents.add_reagent("plantbgone", 800)
 
 
 
@@ -200,7 +200,7 @@
 	name = "deodorant"
 	desc = "A can of Gold Standard spray deodorant - for when you're too lazy to shower."
 	gender = PLURAL
-	volume = 35
+	volume = 250
 	icon = 'icons/obj/cosmetics.dmi'
 	icon_state = "deodorant"
 	item_state = "deodorant"

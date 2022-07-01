@@ -10,7 +10,7 @@
 	possible_transfer_amounts = list(1,2,3,4,5)
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
-	volume = 5
+	volume = 40
 	drop_sound = 'sound/items/drop/glass.ogg'
 
 /obj/item/weapon/reagent_containers/dropper/can_empty()
@@ -77,7 +77,7 @@
 
 		else
 			trans = reagents.trans_to_obj(target, amount_per_transfer_from_this)
-			to_chat(user, "<span class='notice'>You transfer [trans] units of the solution.</span>")
+			to_chat(user, "<span class='notice'>You transfer [trans] ml of the solution.</span>")
 
 	else // Taking from something
 
@@ -91,7 +91,7 @@
 
 		var/trans = target.reagents.trans_to_obj(src, amount_per_transfer_from_this)
 
-		to_chat(user, "<span class='notice'>You fill the dropper with [trans] units of the solution.</span>")
+		to_chat(user, "<span class='notice'>You fill the dropper with [trans] ml of the solution.</span>")
 
 	return
 
@@ -106,10 +106,10 @@
 
 /obj/item/weapon/reagent_containers/dropper/industrial
 	name = "Industrial Dropper"
-	desc = "A larger dropper. Transfers up to 10 units at a time."
+	desc = "A larger dropper. Transfers up to 10 ml at a time."
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(1,2,3,4,5,6,7,8,9,10)
-	volume = 10
+	volume = 80
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Droppers. END

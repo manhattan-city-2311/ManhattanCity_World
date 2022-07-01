@@ -12,9 +12,9 @@
 	item_state = "syringe_0"
 	icon_state = "0"
 	matter = list("glass" = 150)
-	amount_per_transfer_from_this = 15
-	possible_transfer_amounts = list(1,2,3,4,5,10,15)
-	volume = 15
+	amount_per_transfer_from_this = 5
+	possible_transfer_amounts = list(1,2,3,4,5,10,15,20)
+	volume = 20
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 	sharp = 1
@@ -33,7 +33,7 @@
 	desc = "A cheap disposable needle for a syringe or an IV."
 	icon = 'icons/obj/syringe.dmi'
 	icon_state = "syringe_pack"
-	var/possible_transfer_amounts = list(1,2,3,4,5)
+	var/possible_transfer_amounts = list(1,2,3,4,5,10,15,20)
 	var/use_times = 0
 	var/transfer_amount = 5
 	var/time = 30
@@ -63,9 +63,9 @@
 /obj/item/weapon/reagent_containers/syringe/proc/use_needle(mob/living/carbon/human/user)
 	var/pain = 5 //default for syringes
 	if(needle.use_times == 1)
-		pain += 5
+		pain += 15
 	if(needle.use_times >= 2)
-		pain += 10
+		pain += 30
 	user.custom_pain("<span class='warning'>You feel a prick!</span>", pain, 1)
 	user.germ_level += needle.germ_level
 	needle.germ_level += user.germ_level

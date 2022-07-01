@@ -30,7 +30,7 @@
 	to_chat(user, "<span class='notice'>It contains:</span>")
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
-			to_chat(user, "<span class='notice'>[R.volume] units of [R.name]</span>")
+			to_chat(user, "<span class='notice'>[R.volume] milliliters of [R.name]</span>")
 	else
 		to_chat(user, "<span class='notice'>Nothing.</span>")
 
@@ -69,7 +69,7 @@
 	desc = "A vat that can hold a lot of fluid. Usually found in reservoirs."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "vat"
-	amount_per_transfer_from_this = 10
+	amount_per_transfer_from_this = 100
 	anchored = TRUE
 
 /obj/structure/reagent_dispensers/vat/water
@@ -77,7 +77,7 @@
 
 /obj/structure/reagent_dispensers/vat/water/New()
 	..()
-	reagents.add_reagent("water", 1000)
+	reagents.add_reagent("water", 10000)
 
 
 //Dispensers
@@ -86,11 +86,11 @@
 	desc = "A watertank."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
-	amount_per_transfer_from_this = 10
+	amount_per_transfer_from_this = 100
 
 /obj/structure/reagent_dispensers/watertank/New()
 	..()
-	reagents.add_reagent("water", 1000)
+	reagents.add_reagent("water", 20000)
 
 /obj/structure/reagent_dispensers/watertank/high
 	name = "high-capacity water tank"
@@ -99,7 +99,7 @@
 
 /obj/structure/reagent_dispensers/watertank/high/New()
 	..()
-	reagents.add_reagent("water", 4000)
+	reagents.add_reagent("water", 40000)
 
 /obj/structure/reagent_dispensers/cleanertank
 	name = "high-capacity cleaner tank"
@@ -108,14 +108,14 @@
 
 /obj/structure/reagent_dispensers/cleanertank/New()
 	..()
-	reagents.add_reagent("cleaner", 5000)
+	reagents.add_reagent("cleaner", 20000)
 
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
 	desc = "A fueltank."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "weldtank"
-	amount_per_transfer_from_this = 10
+	amount_per_transfer_from_this = 100
 	var/modded = 0
 	var/obj/item/device/assembly_holder/rig = null
 
@@ -252,17 +252,17 @@
 	icon_state = "peppertank"
 	anchored = 1
 	density = 0
-	amount_per_transfer_from_this = 45
+	amount_per_transfer_from_this = 100
 
 /obj/structure/reagent_dispensers/peppertank/New()
 	..()
-	reagents.add_reagent("condensedcapsaicin",1000)
+	reagents.add_reagent("condensedcapsaicin",8000)
 
 
 /obj/structure/reagent_dispensers/water_cooler
 	name = "Water-Cooler"
 	desc = "A machine that dispenses water to drink."
-	amount_per_transfer_from_this = 5
+	amount_per_transfer_from_this = 250
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "water_cooler"
 	possible_transfer_amounts = null
@@ -279,7 +279,7 @@
 /obj/structure/reagent_dispensers/water_cooler/New()
 	..()
 	if(bottle)
-		reagents.add_reagent("water",120)
+		reagents.add_reagent("water",6000)
 	update_icon()
 
 /obj/structure/reagent_dispensers/water_cooler/examine(mob/user)
@@ -400,22 +400,22 @@
 	desc = "A wooden barrel that is used to hold a high quantity of fluid for transport."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "barrel"
-	amount_per_transfer_from_this = 10
+	amount_per_transfer_from_this = 100
 
 /obj/structure/reagent_dispensers/barrel/wine/New()
 	..()
-	reagents.add_reagent("wine",1000)
+	reagents.add_reagent("wine",8000)
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
 	desc = "A beer keg."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "beertankTEMP"
-	amount_per_transfer_from_this = 10
+	amount_per_transfer_from_this = 100
 
 /obj/structure/reagent_dispensers/beerkeg/New()
 	..()
-	reagents.add_reagent("beer",1000)
+	reagents.add_reagent("beer",8000)
 
 /obj/structure/reagent_dispensers/beerkeg/fakenuke
 	name = "nuclear beer keg"
@@ -428,23 +428,23 @@
 	desc = "A dispenser of virus food. Yum."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "virusfoodtank"
-	amount_per_transfer_from_this = 10
+	amount_per_transfer_from_this = 100
 	anchored = 1
 	density = 0
 
 /obj/structure/reagent_dispensers/virusfood/New()
 	..()
-	reagents.add_reagent("virusfood", 1000)
+	reagents.add_reagent("virusfood", 8000)
 
 /obj/structure/reagent_dispensers/acid
 	name = "Sulphuric Acid Dispenser"
 	desc = "A dispenser of acid for industrial processes."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "acidtank"
-	amount_per_transfer_from_this = 10
+	amount_per_transfer_from_this = 100
 	anchored = 1
 	density = 0
 
 /obj/structure/reagent_dispensers/acid/New()
 	..()
-	reagents.add_reagent("sacid", 1000)
+	reagents.add_reagent("sacid", 8000)

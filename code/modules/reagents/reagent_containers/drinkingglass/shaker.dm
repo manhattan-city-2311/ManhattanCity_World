@@ -4,10 +4,10 @@
 	desc = "Big enough to contain enough protein to get perfectly swole. Don't mind the bits."
 	icon_state = "fitness-cup_black"
 	base_icon = "fitness-cup"
-	volume = 100
+	volume = 800
 	matter = list("plastic" = 2000)
 	filling_states = list(10,20,30,40,50,60,70,80,90,100)
-	possible_transfer_amounts = list(5, 10, 15, 25)
+	possible_transfer_amounts = list(50, 100, 150, 250)
 	rim_pos = null // no fruit slices
 	var/lid_color = "black"
 	smash_when_thrown = FALSE
@@ -26,7 +26,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake/New()
 	..()
-	reagents.add_reagent("nutriment", 30)
-	reagents.add_reagent("iron", 10)
-	reagents.add_reagent("protein", 35)
-	reagents.add_reagent("water", 25)
+	reagents.add_reagent("nutriment", 300)
+	reagents.add_reagent("iron", 100)
+	reagents.add_reagent("protein", 350)
+	reagents.add_reagent("water", 250)

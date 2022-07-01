@@ -41,7 +41,7 @@
 	var/show_ssd = "fast asleep"
 	var/virus_immune
 	var/short_sighted										// Permanent weldervision.
-	var/blood_volume = 560									// Initial blood volume.
+	var/blood_volume = 5500									// Initial blood volume.
 	var/bloodloss_rate = 1									// Multiplier for how fast a species bleeds out. Higher = Faster
 	var/hunger_factor = DEFAULT_HUNGER_FACTOR 				// Multiplier for hunger.
 	var/thirst_factor = DEFAULT_THIRST_FACTOR 				// Multiplier for thirst.

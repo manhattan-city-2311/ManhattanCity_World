@@ -15,7 +15,7 @@
 	icon_state = "bullet"
 	density = 1
 	unacidable = 1
-	anchored = 1 //There's a reason this is here, Mport. God fucking damn it -Agouri. Find&Fix by Pete. The reason this is here is to stop the curving of emitter shots.
+	anchored = 1 
 	pass_flags = PASSTABLE
 	mouse_opacity = 0
 	var/bumped = 0		//Prevents it from hitting more than one guy at once
@@ -38,18 +38,19 @@
 	var/accuracy = 0
 	var/dispersion = 0.0
 
-	var/damage = 10
-	var/damage_type = BRUTE //BRUTE, BURN, TOX, OXY, CLONE, HALLOSS are the only things that should be in here
-	var/SA_bonus_damage = 0 // Some bullets inflict extra damage on simple animals.
-	var/SA_vulnerability = null // What kind of simple animal the above bonus damage should be applied to. Set to null to apply to all SAs.
+	var/damage = 0 //OBSOLETE
+	var/damage_type = BRUTE //OBSOLETE
+	var/SA_bonus_damage = 0 //OBSOLETE
+	var/SA_vulnerability = null //OBSOLETE
 	var/nodamage = 0 //Determines if the projectile will skip any damage inflictions
 	var/taser_effect = 0 //If set then the projectile will apply it's agony damage using stun_effect_act() to mobs it hits, and other damage will be ignored
 	var/check_armour = "bullet" //Defines what armor to use when it hits things.  Must be set to bullet, laser, energy,or bomb	//Cael - bio and rad are also valid
 	var/projectile_type = /obj/item/projectile
 	var/penetrating = 0 //If greater than zero, the projectile will pass through dense objects as specified by on_penetrate()
-	var/kill_count = 50 //This will de-increment every process(). When 0, it will delete the projectile.
+	var/kill_count = 50 //OBSOLETE
 		//Effects
 	var/incendiary = 0 //1 for ignite on hit, 2 for trail of fire. 3 maybe later for burst of fire around the impact point. - Mech
+	var/explosive = 0
 	var/flammability = 0 //Amount of fire stacks to add for the above.
 	var/combustion = TRUE	//Does this set off flammable objects on fire/hit?
 	var/stun = 0
@@ -81,7 +82,11 @@
 	var/datum/plot_vector/trajectory	// used to plot the path of the projectile
 	var/datum/vector_loc/location		// current location of the projectile in pixel space
 	var/matrix/effect_transform			// matrix to rotate and scale projectile effects - putting it here so it doesn't
-										//  have to be recreated multiple times
+	
+	var/speed = 50 // Meters per second
+	var/acceleration = 0 // Whether the bullet constantly accelerates
+	var/falloff = 3 //How much speed a bullet loses per second
+	var/armor_penetration = 0
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
 /obj/item/projectile/proc/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
@@ -314,10 +319,21 @@
 	var/first_step = 1
 
 	spawn while(src && src.loc)
-		if(kill_count-- < 1)
+		speed -= falloff
+		if(speed < 10)
 			on_impact(src.loc) //for any final impact behaviours
 			qdel(src)
 			return
+		if(acceleration)
+			speed += acceleration
+		switch(speed)
+			if(10 to 20)
+				move_delay = 3
+			if(21 to 30)
+				move_delay = 2
+			if(30 to INFINITY)
+				move_delay = 1
+
 		if((!( current ) || loc == current))
 			current = locate(min(max(x + xo, 1), world.maxx), min(max(y + yo, 1), world.maxy), z)
 		if((x == 1 || x == world.maxx || y == 1 || y == world.maxy))
@@ -330,10 +346,6 @@
 
 		if(!location)
 			qdel(src)	// if it's left the world... kill it
-			return
-
-		if (is_below_sound_pressure(get_turf(src)) && !vacuum_traversal) //Deletes projectiles that aren't supposed to bein vacuum if they leave pressurised areas
-			qdel(src)
 			return
 
 		if(elevation != target_elevation)

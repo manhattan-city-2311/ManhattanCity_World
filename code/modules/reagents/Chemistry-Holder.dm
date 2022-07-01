@@ -3,10 +3,10 @@
 /datum/reagents
 	var/list/datum/reagent/reagent_list = list()
 	var/total_volume = 0
-	var/maximum_volume = 100
+	var/maximum_volume = 800
 	var/tmp/atom/my_atom = null
 
-/datum/reagents/New(var/max = 100, atom/A = null)
+/datum/reagents/New(var/max = 8100, atom/A = null)
 	..()
 	maximum_volume = max
 	my_atom = A

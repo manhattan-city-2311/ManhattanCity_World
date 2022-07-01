@@ -23,7 +23,7 @@
 
 /obj/machinery/chem_master/New()
 	..()
-	var/datum/reagents/R = new/datum/reagents(900)	//Just a huge random number so the buffer should (probably) never dump your reagents.
+	var/datum/reagents/R = new/datum/reagents(9000)	//Just a huge random number so the buffer should (probably) never dump your reagents.
 	reagents = R
 	R.my_atom = src
 
@@ -612,7 +612,7 @@
 			for(var/datum/reagent/R in I.reagents.reagent_list)
 				if(!R.name)
 					continue
-				to_chat(user, span("notice", "Contains [R.volume]u of <b>[R.name]</b>.<br>[R.description]<br>"))
+				to_chat(user, span("notice", "Contains [R.volume]ml of <b>[R.name]</b>.<br>[R.description]<br>"))
 
 		to_chat(user, span("notice", "Scanning of \the [I] complete."))
 		analyzing = FALSE

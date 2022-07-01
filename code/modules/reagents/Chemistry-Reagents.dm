@@ -20,7 +20,7 @@
 	var/reagent_state = SOLID
 	var/list/data = null
 	var/volume = 0
-	var/metabolism = REM // This would be 0.2 normally
+	var/metabolism = REM // This would be 1.6 normally
 	var/list/filtered_organs = list()	// Organs that will slow the processing of this chemical.
 	var/mrate_static = FALSE	//If the reagent should always process at the same speed, regardless of species, make this TRUE
 	var/ingest_met = 0
@@ -35,8 +35,8 @@
 	var/cup_name = null
 	var/cup_desc = null
 	var/cup_center_of_mass = null
-	var/hydration_factor = 0 // Per unit
-	var/calories_factor = 0 // Per unit
+	var/hydration_factor = 0 // Per milliliter
+	var/calories_factor = 0 // Per milliliter
 
 	price_tag = 0.3
 
@@ -90,7 +90,7 @@
 	removed = min(removed, volume)
 	max_dose = max(volume, max_dose)
 	dose = min(dose + removed, max_dose)
-	if(removed >= (metabolism * 0.1) || removed >= 0.1) // If there's too little chemical, don't affect the mob, just remove it
+	if(removed >= (metabolism * 0.8) || removed >= 0.8) // If there's too little chemical, don't affect the mob, just remove it
 		switch(active_metab.metabolism_class)
 			if(CHEM_BLOOD)
 				affect_blood(M, alien, removed)
