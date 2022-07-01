@@ -1,4 +1,7 @@
 /mob/living/carbon/human/proc/handle_medicine()
+	if(stat == DEAD)
+		handle_decay()
+		return
 	//Organs and blood
 	handle_organs()
 
@@ -20,4 +23,4 @@
 
 	handle_glucose_level()
 
-//	handle_additictions()
+	handle_additictions()

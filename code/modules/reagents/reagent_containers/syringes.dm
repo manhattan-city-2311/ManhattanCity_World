@@ -12,8 +12,8 @@
 	item_state = "syringe_0"
 	icon_state = "0"
 	matter = list("glass" = 150)
-	amount_per_transfer_from_this = 5
-	possible_transfer_amounts = list(1,2,3,4,5)
+	amount_per_transfer_from_this = 15
+	possible_transfer_amounts = list(1,2,3,4,5,10,15)
 	volume = 15
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
@@ -59,7 +59,6 @@
 		. += "<span class='warning'>The needle looks used!</span>"
 	if(mode == SYRINGE_BROKEN)
 		. += "<span class='warning'>The needle is broken!</span>"
-	return .
 
 /obj/item/weapon/reagent_containers/syringe/proc/use_needle(mob/living/carbon/human/user)
 	var/pain = 5 //default for syringes

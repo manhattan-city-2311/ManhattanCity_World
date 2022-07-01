@@ -11,3 +11,14 @@
 		/area/turbolift/manhattan_house11,
 		/area/turbolift/manhattan_house12
 		)
+
+/obj/turbolift_map_holder/hospital
+	name = "Hospital Elevator"
+	depth = 3
+	lift_size_x = 3
+	lift_size_y = 3
+	areas_to_use = list(
+		/area/turbolift/hospital1,
+		/area/turbolift/hospital2,
+		/area/turbolift/hospital3
+		)

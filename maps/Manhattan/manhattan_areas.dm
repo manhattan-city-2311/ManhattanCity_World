@@ -418,3 +418,22 @@
 	lift_floor_name = "Second floor"
 	lift_announce_str = "Lift arriving at second floor, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/plating
+
+/area/turbolift/hospital1
+	name = "Elevator-1"
+	lift_floor_label = "1 этаж"
+	lift_floor_name = "Первый этаж"
+	lift_announce_str = "Первый этаж: Департамент реанимации, хранилище медикаментов и лобби."
+	base_turf = /turf/simulated/floor/plating
+
+/area/turbolift/hospital2
+	name = "Elevator-2"
+	lift_floor_label = "2 этаж"
+	lift_floor_name = "Второй этаж"
+	lift_announce_str = "Второй этаж: Операционная, лаборатория, крыло долговременного лечения, приёмная и постоянное хранилище."
+
+/area/turbolift/hospital3
+	name = "Elevator-3"
+	lift_floor_label = "3 этаж"
+	lift_floor_name = "Третий этаж"
+	lift_announce_str = "Третий этаж: Офисы, крыло персонала и смотровая операционной."

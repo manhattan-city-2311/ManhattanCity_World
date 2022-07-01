@@ -7,7 +7,7 @@
 
 /datum/analysis/proc/form_reagent_list(var/datum/reagent/blood/B)
 	. = list()
-	var/list/chems = params2list(B.data["trace_chem"])
+	var/list/chems = params2list(B.data["dose_chem"])
 	for(var/C in chems)
 		.[text2path(C)] = text2num(chems[C])
 
@@ -36,6 +36,7 @@
 
 /datum/analysis/proc/get_reagent_amount(var/list/RL, T)
 	return LAZYACCESS(RL, T) || 0
+
 /datum/analysis/proc/analyze(var/datum/reagent/R)
 	if(!R)
 		return "Cannot analyze this sample."

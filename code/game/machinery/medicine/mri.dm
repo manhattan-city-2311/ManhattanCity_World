@@ -20,8 +20,8 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 /obj/machinery/mri
 	name = "magnetic resonance imager"
 	desc = "Магнитно-резонансный томограф. ПОСТОЯННО НАМАГНИЧЕН, БЕЗОПАСНАЯ ДИСТАНЦИЯ - 3 МЕТРА."
-	icon = 'icons/obj/medicine.dmi'
-	icon_state = "mri_base"
+	icon = 'icons/obj/mri.dmi'
+	icon_state = "mri"
 	dir = NORTH
 	density = TRUE
 	var/obj/structure/mri_tray/connected = null

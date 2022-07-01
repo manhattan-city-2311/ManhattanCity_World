@@ -154,7 +154,7 @@ var/list/organ_cache = list()
 
 /obj/item/organ/proc/handle_germ_effects()
 	//** Handle the effects of infections
-	var/antibiotics = owner.reagents.get_reagent_amount(/datum/reagent/corophizine)
+	var/antibiotics = LAZYACCESS0(owner.chem_effects, CE_ANTIBIOTIC)
 
 	if(germ_level > 0 && germ_level < INFECTION_LEVEL_ONE / 2)
 		germ_level--
