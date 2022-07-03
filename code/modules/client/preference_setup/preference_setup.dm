@@ -17,7 +17,7 @@
 /datum/category_group/player_setup_category/trait_preferences
 	name = "Черты"
 	sort_order = 6
-	category_item_type = /datum/category_item/player_setup_item/traits
+//	category_item_type = /datum/category_item/player_setup_item/traits
 
 /datum/category_group/player_setup_category/loadout_preferences
 	name = "Предметы"
