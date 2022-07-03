@@ -67,6 +67,6 @@
 	value = 2
 
 /datum/quirk/athlete
-	name = QUIRK_ATHELETE
+	name = QUIRK_ATHLETE
 	desc = "Ваши лёгкие и сердце хорошо развиты."
 	value = 4
