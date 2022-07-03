@@ -7,6 +7,8 @@
 
 	var/mob_class = null	// A mob's "class", e.g. human, mechanical, animal, etc. Used for certain projectile effects. See __defines/mob.dm for available classes.
 
+	var/list/roundstart_quirks = list()
+
 	var/hud_updateflag = 0
 
 	//Damage related vars, NOTE: THESE SHOULD ONLY BE MODIFIED BY PROCS

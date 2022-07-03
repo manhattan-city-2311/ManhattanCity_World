@@ -299,7 +299,6 @@ var/global/datum/controller/gameticker/ticker
 					SSjobs.EquipRank(player, player.mind.assigned_role, 0)
 					UpdateFactionList(player)
 					equip_custom_items(player)
-					player.apply_traits()
 		if(captainless)
 			for(var/mob/M in player_list)
 				if(!istype(M,/mob/new_player))

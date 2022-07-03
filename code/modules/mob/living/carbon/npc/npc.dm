@@ -24,6 +24,11 @@
 /mob/living/carbon/human/npc/New()
     ..()
     switch_intent()
+    switch_mode()
+
+/mob/living/carbon/human/npc/death()
+    ..()
+    mode = NPC_MODE_SLEEP
 
 /mob/living/carbon/human/npc/Life()
     ..()
@@ -31,8 +36,10 @@
         handle_route()
     if(mode == NPC_MODE_PATROL)
         handlePatrol()
-        if(prob(5))
+        if(prob(1))
             switch_mode()
+    if(mode == NPC_MODE_ATTACK)
+        handle_combat()
 
 /mob/living/carbon/human/npc/proc/switch_mode()
     resetTarget()

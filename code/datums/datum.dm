@@ -4,11 +4,16 @@
 //
 
 /datum
+	var/list/status_traits
+	var/list/datum_components //for /datum/components
+	var/list/comp_lookup //it used to be for looking up components which had registered a signal but now anything can register
 	var/gc_destroyed //Time when this object was destroyed.
 	var/weakref/weakref // Holder of weakref instance pointing to this datum
 	var/is_processing		//If is processing, may or may not have the name of the list it's in.
 	var/list/active_timers  //for SStimer
 	var/datum_flags = NONE
+	var/list/signal_procs
+	var/signal_enabled = FALSE
 
 #ifdef TESTING
 	var/tmp/running_find_references
@@ -34,3 +39,19 @@
 	tag = null
 	SSnanoui.close_uis(src)
 	return QDEL_HINT_QUEUE
+
+/datum/proc/_SendSignal(sigtype, list/arguments)
+	var/target = comp_lookup[sigtype]
+	if(!length(target))
+		var/datum/C = target
+		if(!C.signal_enabled)
+			return NONE
+		var/datum/callback/CB = C.signal_procs[src][sigtype]
+		return CB.InvokeAsync(arglist(arguments))
+	. = NONE
+	for(var/I in target)
+		var/datum/C = I
+		if(!C.signal_enabled)
+			continue
+		var/datum/callback/CB = C.signal_procs[src][sigtype]
+		. |= CB.InvokeAsync(arglist(arguments))

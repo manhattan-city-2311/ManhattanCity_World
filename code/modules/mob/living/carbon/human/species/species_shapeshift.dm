@@ -287,8 +287,6 @@ var/list/wrapped_species_by_ref = list()
 	spawn(0)
 		regenerate_icons()
 
-	if(species && mind)
-		apply_traits()
 	return
 
 /mob/living/carbon/human/proc/shapeshifter_select_eye_colour()

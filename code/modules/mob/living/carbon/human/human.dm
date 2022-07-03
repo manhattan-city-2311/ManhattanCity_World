@@ -1190,8 +1190,6 @@
 
 
 	if(species)
-		if(mind)
-			apply_traits()
 		return 1
 	else
 		return 0

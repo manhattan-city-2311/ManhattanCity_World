@@ -54,14 +54,14 @@
 
 /datum/trait/modifier/physical/weak
 	name = "Слабый"
-	desc = "Недостаток физической силы снижает возможности в ближнем бою."
+	desc = "Недостаток физической силы снижает возможности к ближнем бою."
 	modifier_type = /datum/modifier/trait/weak
 	mutually_exclusive = list(/datum/trait/modifier/physical/wimpy)
 
 
 /datum/trait/modifier/physical/wimpy
 	name = "Хлюпик"
-	desc = "Чрезвычайная нехватка физической силы приводит к значительному снижению способности в ближнем бою."
+	desc = "Чрезвычайная нехватка физической силы приводит к значительному снижению способностей к ближнему бою."
 	modifier_type = /datum/modifier/trait/wimpy
 	mutually_exclusive = list(/datum/trait/modifier/physical/weak)
 
@@ -69,16 +69,17 @@
 /datum/trait/modifier/physical/inaccurate
 	name = "Неточный"
 	desc = "Ты неопытен в обращении с оружием, ты никогда в жизни им не пользовался, или очень давно. \
-	Несмотря на это, вам довольно сложно попасть туда, куда вы хотели."
+	Вам довольно сложно попасть туда, куда вы хотите."
 	modifier_type = /datum/modifier/trait/inaccurate
 
 /datum/trait/modifier/physical/shorter
-	name = "Короткий"
+	name = "Очень низкий"
+	desc = "Небольшой рост увеличивает вашу устойчивость и улучшает кровообращение."
 	modifier_type = /datum/modifier/trait/shorter
 	mutually_exclusive = list(/datum/trait/modifier/physical/short, /datum/trait/modifier/physical/tall, /datum/trait/modifier/physical/taller)
 
 /datum/trait/modifier/physical/short
-	name = "Короток"
+	name = "Низкий"
 	modifier_type = /datum/modifier/trait/short
 	mutually_exclusive = list(/datum/trait/modifier/physical/shorter, /datum/trait/modifier/physical/tall, /datum/trait/modifier/physical/taller)
 
@@ -88,12 +89,14 @@
 	mutually_exclusive = list(/datum/trait/modifier/physical/shorter, /datum/trait/modifier/physical/short, /datum/trait/modifier/physical/taller)
 
 /datum/trait/modifier/physical/taller
-	name = "Выше"
+	name = "Очень высокий"
+	desc = "Большой рост понижает вашу устойчивость и способность сердца качать кровь. \
+	Вам легче накладывать шины и оказывать первую помощь, проводить инженерные работы и управлять транспортом."
 	modifier_type = /datum/modifier/trait/taller
 	mutually_exclusive = list(/datum/trait/modifier/physical/shorter, /datum/trait/modifier/physical/short, /datum/trait/modifier/physical/tall)
 
 /datum/trait/modifier/physical/thin
-	name = "Узкий"
+	name = "Худой"
 	modifier_type = /datum/modifier/trait/thin
 	mutually_exclusive = list(/datum/trait/modifier/physical/fat, /datum/trait/modifier/physical/obese, /datum/trait/modifier/physical/thinner)
 	selectable = 0
@@ -103,7 +106,7 @@
 	return ..()
 
 /datum/trait/modifier/physical/thinner
-	name = "Уже"
+	name = "Дрыщ"
 	modifier_type = /datum/modifier/trait/thinner
 	mutually_exclusive = list(/datum/trait/modifier/physical/fat, /datum/trait/modifier/physical/obese, /datum/trait/modifier/physical/thin)
 	selectable = 0
@@ -123,7 +126,7 @@
 	return ..()
 
 /datum/trait/modifier/physical/obese
-	name = "Жирный"
+	name = "Жирдяй"
 	modifier_type = /datum/modifier/trait/obese
 	mutually_exclusive = list(/datum/trait/modifier/physical/fat, /datum/trait/modifier/physical/thinner, /datum/trait/modifier/physical/thin)
 	selectable = 0
@@ -167,7 +170,8 @@
 
 
 /datum/trait/modifier/physical/no_clone
-	name = "Несовместим с клонированием"
+	name = "Генетическое повреждение"
+	desc = "Ваше ДНК повреждено, вас не могут клонировать. Регенерация и фильтрация крови ослаблена."
 	modifier_type = /datum/modifier/no_clone
 
 /datum/trait/modifier/physical/no_clone/test_for_invalidity(var/datum/category_item/player_setup_item/traits/setup)

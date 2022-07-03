@@ -3,10 +3,6 @@
 // They should return negative, zero, or positive numbers for a < b, a == b, and a > b respectively.
 //
 
-// Sorts numeric ascending
-/proc/cmp_numeric_asc(a,b)
-	return a - b
-
 // Sorts subsystems alphabetically
 /proc/cmp_subsystem_display(datum/controller/subsystem/a, datum/controller/subsystem/b)
 	return sorttext(b.name, a.name)

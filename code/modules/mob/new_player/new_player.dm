@@ -299,8 +299,6 @@
 		// Equip our custom items only AFTER deploying to spawn points eh? Also, not as a prisoner, since they can break out.
 		equip_custom_items(character)
 
-	character.apply_traits()
-
 	// Moving wheelchair if they have one
 	if(character.buckled && istype(character.buckled, /obj/structure/bed/chair/wheelchair))
 		character.buckled.loc = character.loc

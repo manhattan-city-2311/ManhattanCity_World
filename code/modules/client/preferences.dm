@@ -119,6 +119,15 @@ var/list/preferences_datums = list()
 	var/antag_faction = "None"			//Antag associated faction.
 	var/antag_vis = "Shared"			//How visible antag association is to others.
 
+	// Quirk list
+	var/list/positive_quirks = list()
+	var/list/negative_quirks = list()
+	var/list/neutral_quirks = list()
+	var/list/all_quirks = list()
+	var/list/character_quirks = list()
+
+	var/list/allowed_quirks = list()
+
 		//Mob preview
 	var/icon/preview_icon = null
 
