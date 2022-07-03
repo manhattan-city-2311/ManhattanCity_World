@@ -124,6 +124,9 @@
 		cardiac_output_modificators[A.name] = A.co_mod
 		pulse_modificators[A.name] = A.get_hr_mod(src)
 	ischemia = max(0, ischemia - 0.2)
+	for(var/datum/arrythmia/asystole in arrythmias)
+		if(pulse > 30)
+			A.weak(src)
 
 
 /obj/item/organ/internal/heart/proc/post_handle_rythme()

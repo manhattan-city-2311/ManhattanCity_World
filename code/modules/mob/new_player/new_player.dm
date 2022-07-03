@@ -278,23 +278,6 @@
 	UpdateFactionList(character)
 	log_game("JOINED [key_name(character)] as \"[rank]\"")
 
-	// AIs don't need a spawnpoint, they must spawn at an empty core
-	if(character.mind.assigned_role == "AI")
-
-		character = character.AIize(move=0) // AIize the character, but don't move them yet
-
-		// IsJobAvailable for AI checks that there is an empty core available in this list
-		var/obj/structure/AIcore/deactivated/C = empty_playable_ai_cores[1]
-		empty_playable_ai_cores -= C
-
-		character.loc = C.loc
-
-		AnnounceCyborg(character, rank, "has been transferred to the empty core in \the [character.loc.loc]")
-		ticker.mode.latespawn(character)
-
-		qdel(C)
-		qdel(src)
-		return
 	if(!is_prisoner)
 		// Equip our custom items only AFTER deploying to spawn points eh? Also, not as a prisoner, since they can break out.
 		equip_custom_items(character)
@@ -383,7 +366,6 @@
 			new_character.real_name = pick(clown_names)	//I hate this being here of all places but unfortunately dna is based on real_name!
 			new_character.rename_self("clown")
 		mind.original = new_character
-		mind.traits = client.prefs.traits.Copy()
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
 
 	new_character.name = real_name

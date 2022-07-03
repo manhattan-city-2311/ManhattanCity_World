@@ -39,7 +39,7 @@
 	if(blood_type != null)
 		label_text = "[blood_type]"
 		update_iv_label()
-		reagents.add_reagent(reag_id, 200, list("donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=blood_type,"resistances"=null,"trace_chem"=null))
+		reagents.add_reagent(reag_id, 2000, list("donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=blood_type,"resistances"=null,"trace_chem"=null, "chem_doses"=null))
 		update_icon()
 
 /obj/item/weapon/reagent_containers/blood/on_reagent_change()

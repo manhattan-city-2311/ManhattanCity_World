@@ -21,7 +21,7 @@
 	strength = clamp(strength + dstrength, 0, max_strength)
 
 /datum/arrythmia
-	var/id
+	var/id = "nonexistent arrythmia"
 	var/name
 	var/co_mod = 1
 	var/severity = 0 // 0 for uncommon arrythmias

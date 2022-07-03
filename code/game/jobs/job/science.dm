@@ -6,8 +6,8 @@
 	department = DEPT_COUNCIL
 	department_flag = MEDSCI
 	head_position = 1
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the mayor"
 	subordinates = "the research department"
 	selection_color = "#AD6BAD"
