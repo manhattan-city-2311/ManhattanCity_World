@@ -32,6 +32,8 @@
 	var/appear_time
 	var/mutate_period = 1.5 MINUTE
 
+	var/stop_heart = FALSE
+
 /datum/arrythmia/New()
 	appear_time = world.time
 
@@ -57,7 +59,7 @@
 	. += owner.gvr > 280
 	. += owner.mcv > 20000
 	. += (owner.mcv < 3000) * 2
-	. += (owner.mcv < 1000) * 3
+	. += (owner.mcv < 1000) * 2
 	. += (pulse > 250)
 	. = max(0, .)
 
@@ -204,27 +206,31 @@
 
 	severity = ARRYTHMIA_SEVERITY_OVERWRITING + 1
 
-	co_mod = 0.1
+	co_mod = 0.06
 
 	weakening_type = list(/datum/arrythmia/vflaunt)
 	strengthening_type = /datum/arrythmia/asystole
 
 	mutate_period = 1 MINUTE
 
+	stop_heart = TRUE
+
 /datum/arrythmia/vfib/get_hr_mod()
-	return rand(200, 300)
+	return rand(200, 500)
 
 /datum/arrythmia/vflaunt
 	id = ARRYTHMIA_VFLAUNT
 	name = "Ventricular flaunt"
-	co_mod = 0.3
-	
+	co_mod = 0.2
+
 	severity = ARRYTHMIA_SEVERITY_OVERWRITING
 
 	weakening_type = null
 	strengthening_type = /datum/arrythmia/vfib
 
 	mutate_period = 30 SECONDS
+
+	stop_heart = TRUE
 
 /datum/arrythmia/vflaunt/get_hr_mod()
 	return rand(100, 200)
@@ -235,14 +241,14 @@
 
 	severity = ARRYTHMIA_SEVERITY_OVERWRITING + 2
 
-	co_mod = 2
+	co_mod = 0.2
 	ischemia_mod = 0.7
 
 
 	weakening_type = list(/datum/arrythmia/vfib, null)
 	strengthening_type = null
 
-/datum/arrythmia/asystole/get_hr_mod(var/obj/item/organ/internal/heart/H)
-	return -145 - (H.ischemia / 50) * 40 + LAZYACCESS0(H.owner.chem_effects, CE_ANTIARRYTHMIC) * 10
+	stop_heart = TRUE
+
 /datum/arrythmia/asystole/can_weaken(var/obj/item/organ/internal/heart/H)
-	return H.pulse > 0
+	return H.pulse > (H.ischemia + LAZYACCESS0(H.owner.chem_effects, CE_ANTIARRYTHMIC) * 10)

@@ -1,4 +1,5 @@
 #define HEART_NC_DT 0.1
+#define HEART_PULSE_DT 0.1
 
 /obj/item/organ/internal/heart
 	name = "heart"
@@ -60,20 +61,25 @@
 /obj/item/organ/internal/heart/removed(mob/living/user, drop_organ)
 	..()
 	make_arrythmia(/datum/arrythmia/asystole)
-	pulse = 0
-	ischemia = 100
 
 /obj/item/organ/internal/heart/Process()
 	..()
 	if(!owner)
 		return
-	if(owner.stat == DEAD)
-		make_arrythmia(/datum/arrythmia/asystole)
-		pulse = 0
-		ischemia = 100
-		return
 
-	make_modificators()
+	var/should_work = TRUE
+
+	for(var/T in arrythmias)
+		var/datum/arrythmia/A = arrythmias[T]
+		if(A.stop_heart)
+			should_work = FALSE
+			break
+
+
+	if(should_work)
+		make_modificators()
+	make_chem_modificators()
+
 	handle_rythme()
 	handle_ischemia()
 
@@ -89,32 +95,21 @@
 
 /obj/item/organ/internal/heart/proc/handle_pulse()
 	var/n_pulse = initial(pulse) + sumListAndCutAssoc(pulse_modificators)
-	var/datum/arrythmia/OW = get_ow_arrythmia()
-	if(OW && OW.id == ARRYTHMIA_ASYSTOLE)
-		return
-	pulse = LERP(pulse, n_pulse, 0.3)
+	pulse = LERP(pulse, n_pulse, HEART_PULSE_DT)
 	pulse = round(Clamp(pulse, 0, 476))
-	switch(pulse)
-		if(240 to 300)
-			take_damage(0.5, 1)
-			if(prob(25))
-				make_common_arrythmia(1)
-		if(301 to 476)
-			take_damage(1, 1)
-			if(prob(5))
-				make_arrythmia(/datum/arrythmia/asystole)
-
 
 /obj/item/organ/internal/heart/proc/handle_cardiac_output()
 	cardiac_output = initial(cardiac_output) * mulListAndCutAssoc(cardiac_output_modificators)
 
-/obj/item/organ/internal/heart/proc/make_modificators()
-	pulse_modificators["hypoperfusion"] = (1 - owner.get_blood_perfusion()) * 100
-	pulse_modificators["shock"] = Clamp(owner.shock_stage, 0, 110)
+/obj/item/organ/internal/heart/proc/make_chem_modificators()
 	if(CE_PULSE in owner.chem_effects)
 		pulse_modificators["chem"] = owner.chem_effects[CE_PULSE]
 	if(CE_CARDIAC_OUTPUT in owner.chem_effects)
 		cardiac_output_modificators["chem"] = owner.chem_effects[CE_CARDIAC_OUTPUT]
+
+/obj/item/organ/internal/heart/proc/make_modificators()
+	pulse_modificators["hypoperfusion"] = (1 - owner.get_blood_perfusion()) * 100
+	pulse_modificators["shock"] = Clamp(owner.shock_stage, 0, 110)
 	cardiac_output_modificators["damage"] = 1 - (damage / max_damage)
 
 /obj/item/organ/internal/heart/proc/handle_rythme()
@@ -137,9 +132,7 @@
 		if(A.can_strengthen(src))
 			A.strengthen(src)
 			break
-	for(var/datum/arrythmia/asystole/A in arrythmias)
-		if(pulse > 30)
-			A.weak(src)
+
 	var/period = world.time - last_arrythmia_gain
 
 	if(prob(1) && period > 1.5 MINUTES && !get_ow_arrythmia())
@@ -183,7 +176,7 @@
 	if(owner.stat == DEAD)
 		return
 
-	if(!pulse)
+	if(pulse <= 0)
 		return
 	//Bleeding out
 	var/blood_max = 0
@@ -237,7 +230,7 @@
 	return pulse
 
 /obj/item/organ/internal/heart/listen()
-	if(!pulse)
+	if(pulse <= 0)
 		return "no pulse."
 
 	var/strength
