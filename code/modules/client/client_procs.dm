@@ -617,7 +617,7 @@ client/verb/character_setup()
 
 /client/proc/update_chat_position(use_alternative)
 	var/input_height = 0
-	var/mode = GLOB.PREF_YES
+	var/mode = GLOB.PREF_NO // TODO: Make alternative command input field.
 	var/currently_alternative = (winget(src, "input", "is-default") == "false") ? TRUE : FALSE
 
 	// Hell
