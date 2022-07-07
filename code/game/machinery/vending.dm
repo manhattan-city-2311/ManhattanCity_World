@@ -1063,14 +1063,32 @@
 	name = "C.V.C Refridgerated Bloodbank"
 	desc = "A fully stocked bloodbank, equipped with advanced cooling technology which keeps your blood extra cold. One bloodbag ah ah ah, two bloodbag ah ah ah, three bloodbag ah ah ah."
 	icon_state = "smartfridge"
-	req_access = list(access_medical)
-	products = list (/obj/item/weapon/reagent_containers/blood/empty = 8,
-					 /obj/item/weapon/reagent_containers/blood/OMinus = 6,
-					 /obj/item/weapon/reagent_containers/blood/APlus = 4,
-					 /obj/item/weapon/reagent_containers/blood/AMinus = 4,
-					 /obj/item/weapon/reagent_containers/blood/BPlus = 4,
-					 /obj/item/weapon/reagent_containers/blood/BMinus = 4,
-					 /obj/item/weapon/reagent_containers/blood/OPlus =4)
+	req_access = list()
+	products = list (/obj/item/weapon/reagent_containers/blood/empty = 4,
+					 /obj/item/weapon/reagent_containers/blood/saline = 20,
+					 /obj/item/weapon/reagent_containers/blood/OMinus = 2,
+					 /obj/item/weapon/reagent_containers/blood/APlus = 3,
+					 /obj/item/weapon/reagent_containers/blood/AMinus = 3,
+					 /obj/item/weapon/reagent_containers/blood/BPlus = 3,
+					 /obj/item/weapon/reagent_containers/blood/BMinus = 3,
+					 /obj/item/weapon/reagent_containers/blood/OPlus =3)
+	charge_free_department = DEPT_HEALTHCARE
+	block_persistence = TRUE
+
+/obj/machinery/vending/medical/hospital/reagents
+	name = "Central Hospital Reagent Storage"
+	desc = "Medical drug dispenser."
+	icon_state = "smartfridge"
+	req_access = list()
+	products = list (/obj/item/weapon/reagent_containers/glass/bottle/ampoule/morphine = 16,
+					 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/lidocaine = 13,
+					 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/ceftriaxone = 12,
+					 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/glucose = 4,
+					 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/insulin = 6,
+					 /obj/item/weapon/reagent_containers/glass/bottle/adenosine = 11,
+					 /obj/item/weapon/reagent_containers/glass/bottle/amiodarone = 9,
+					 /obj/item/weapon/reagent_containers/glass/bottle/dopamine = 8
+					)
 	charge_free_department = DEPT_HEALTHCARE
 	block_persistence = TRUE
 

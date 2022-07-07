@@ -16,9 +16,9 @@
 	else if(over_object)
 		if(!ishuman(over_object))
 			return
-		visible_message("\The [usr] connects \the [over_object] up to \the [src].")
 		if(!do_after(usr, 30, over_object))
 			return
+		visible_message("\The [usr] connects \the [over_object] up to \the [src].")
 		attached = over_object
 		START_PROCESSING(SSobj, src)
 
@@ -65,14 +65,16 @@
 	update_icon()
 
 /obj/machinery/monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/obj/item/organ/internal/heart/H = attached?.internal_organs_by_name[O_HEART]
-	if(!attached || !H)
+	if(!attached)
 		return
-
+	var/obj/item/organ/internal/heart/H = attached?.internal_organs_by_name[O_HEART]
 	var/list/data = list()
 	data["name"] = "[attached]"
-	data["hr"] = H.pulse
-	data["rythme"] = H.get_rythme_fluffy()
+	if(H)
+		data["hr"] = H.pulse
+		data["rythme"] = H.get_rythme_fluffy()
+	else
+		data["hr"] = "UNKNOWN"
 	data["bp"] = attached.get_blood_pressure_fluffy()
 	switch(attached.mpressure)
 		if(-INFINITY to BLOOD_PRESSURE_L2BAD)
@@ -89,7 +91,8 @@
 			data["perfusion_s"] = "bad"
 		if(0.6 to 0.8)
 			data["perfusion_s"] = "average"
-	data["ischemia"] = H.ischemia
+	if(H)
+		data["ischemia"] = H.ischemia
 	data["saturation"] = round(attached.get_blood_saturation() * 100)
 	data["perfusion"] = round(attached.get_blood_perfusion() * 100)
 	data["status"] = (attached.stat == CONSCIOUS) ? "CONSCIOUS" : "UNCONSCIOUS"

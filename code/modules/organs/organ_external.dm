@@ -685,16 +685,16 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(parent.germ_level < INFECTION_LEVEL_ONE * 2 || prob(30 - antibiotics))
 				parent.germ_level++
 
-	if(germ_level >= INFECTION_LEVEL_MAX && antibiotics < 15) // Overdosing is necessary to stop severe infections
+	if(germ_level >= INFECTION_LEVEL_THREE && antibiotics < 15) // Overdosing is necessary to stop severe infections
 		if(!(status & ORGAN_DEAD))
 			status |= ORGAN_DEAD
 			to_chat(owner, "<span class='notice'>You can't feel your [name] anymore...</span>")
+			owner.bloodstr.add_reagent("potassium_hormone", 30)
 
 		germ_level++
-		owner.adjustToxLoss(1)
-		owner.adjustToxLoss(0.5)
+		owner.bloodstr.add_reagent("potassium_hormone", 0.25)
 	if(germ_level >= INFECTION_LEVEL_THREE)
-		owner.adjustToxLoss(germ_level / (INFECTION_LEVEL_MAX + antibiotics * 65))
+		owner.bloodstr.add_reagent("potassium_hormone", 0.5)
 
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
 /obj/item/organ/external/proc/update_wounds()

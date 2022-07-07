@@ -117,6 +117,7 @@
 	var/spressure = 120 // systolic pressure
 	var/dpressure = 80 // dyastolic pressure
 	var/mpressure = 93 // medium pressure
+	var/perfusion = 1
 
 	var/identifying_gender // In case the human identifies as another gender than it's biological
 

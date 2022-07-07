@@ -857,6 +857,7 @@
 #include "code\game\machinery\kitchen\cooking_machines\fryer.dm"
 #include "code\game\machinery\kitchen\cooking_machines\grill.dm"
 #include "code\game\machinery\kitchen\cooking_machines\oven.dm"
+#include "code\game\machinery\medicine\heartbypass.dm"
 #include "code\game\machinery\medicine\microscope.dm"
 #include "code\game\machinery\medicine\monitor.dm"
 #include "code\game\machinery\medicine\mri.dm"

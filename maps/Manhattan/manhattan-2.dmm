@@ -3248,7 +3248,7 @@
 "uGM" = (/obj/machinery/vending/medical/hospital/cvcrb{req_access = list()},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
 "uId" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/tiled/steel,/area/planets/Manhattan/outdoor)
 "uPo" = (/obj/structure/bed/chair,/obj/effect/floor_decal/corner/beige{dir = 5},/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
-"uUg" = (/obj/machinery/smartfridge/secure/medbay{req_one_access = list()},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"uUg" = (/obj/machinery/vending/medical/hospital/reagents,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
 "vdS" = (/obj/structure/reagent_dispensers/water_cooler{pixel_y = 6},/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
 "vkJ" = (/turf/simulated/floor/tiled/paleblue,/area/planets/Manhattan/outdoor)
 "vmV" = (/obj/machinery/door/window/northleft,/obj/machinery/light/colored/blue{dir = 8},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)

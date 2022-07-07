@@ -1,6 +1,7 @@
 /datum/reagent/blood
 	data = new/list("donor" = null, "viruses" = null, "species" = SPECIES_HUMAN, "blood_DNA" = null, "blood_type" = null, "blood_colour" = "#A10808", "resistances" = null, "trace_chem" = null, "dose_chem" = null, "antibodies" = list())
 	name = "Blood"
+	description = "The primary liquid of a human's body. Thansfusion can cause allergic reactions."
 	id = "blood"
 	taste_description = "iron"
 	taste_mult = 1.3
@@ -70,6 +71,21 @@
 		M.antibodies |= data["antibodies"]
 
 /datum/reagent/blood/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.inject_blood(src, volume * volume_mod)
+	remove_self(volume)
+
+/datum/reagent/saline
+	name = "saline solution"
+	description = "A special solution that mimics the saltiness of blood. Works best in emergency situations in which it is impossible to know the blood type of a patient."
+	id = "salinesolution"
+	color = "#b4b4b3"
+	taste_description = "salt"
+	taste_mult = 1.3
+	reagent_state = LIQUID
+	metabolism = REM * 5
+	var/volume_mod = 0.75
+
+/datum/reagent/saline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.inject_blood(src, volume * volume_mod)
 	remove_self(volume)
 
@@ -199,6 +215,7 @@
 	color = "#757547"
 	taste_description = "fecal matter"
 	calories_factor = 0
+
 /datum/reagent/fuel
 	name = "Welding fuel"
 	id = "fuel"

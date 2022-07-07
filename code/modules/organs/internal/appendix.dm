@@ -46,7 +46,7 @@
 
 			var/obj/item/organ/external/groin = owner.get_organ(BP_GROIN)
 			var/datum/wound/W = new /datum/wound/internal_bleeding(20)
-			owner.adjustToxLoss(25)
+			owner.bloodstr.add_reagent("potassium_hormone", 30)
 			groin.wounds += W
 			inflamed = 1
 

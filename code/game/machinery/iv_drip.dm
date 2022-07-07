@@ -173,7 +173,7 @@
 
 	if(beaker)
 		if(beaker.reagents && beaker.reagents.reagent_list.len)
-			to_chat(usr, "<span class='notice'>Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.</span>")
+			to_chat(usr, "<span class='notice'>Attached is \a [beaker] with [beaker.reagents.total_volume]ml of liquid.</span>")
 		else
 			to_chat(usr, "<span class='notice'>Attached is an empty [beaker].</span>")
 	else

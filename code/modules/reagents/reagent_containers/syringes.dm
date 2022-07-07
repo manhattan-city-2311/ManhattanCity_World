@@ -25,6 +25,7 @@
 	var/visible_name = "a syringe"
 	var/time = 30
 	var/drawing = 0
+	var/pain = 5
 	drop_sound = 'sound/items/drop/glass.ogg'
 
 
@@ -56,18 +57,18 @@
 /obj/item/weapon/reagent_containers/syringe/examine(mob/user, distance)
 	. = ..()
 	if(needle.use_times >= 1)
-		. += "<span class='warning'>The needle looks used!</span>"
+		to_chat(user, "<span class='warning'>The needle looks used!</span>")
 	if(mode == SYRINGE_BROKEN)
-		. += "<span class='warning'>The needle is broken!</span>"
+		to_chat(user, "<span class='warning'>The needle is broken!</span>")
 
 /obj/item/weapon/reagent_containers/syringe/proc/use_needle(mob/living/carbon/human/user)
-	var/pain = 5 //default for syringes
+	pain = initial(pain)
 	if(needle.use_times == 1)
 		pain += 15
 	if(needle.use_times >= 2)
 		pain += 30
 	user.custom_pain("<span class='warning'>You feel a prick!</span>", pain, 1)
-	user.germ_level += needle.germ_level
+	user.germ_level += needle.germ_level / 4
 	needle.germ_level += user.germ_level
 	needle.use_times += 1
 
@@ -100,10 +101,12 @@
 	if(istype(I, /obj/item/weapon/needle))
 		var/obj/item/weapon/needle/new_needle = I
 		if(new_needle.open == 1)
-			user.visible_message("<span class='notice'>[user] changes the needle on the syringe.</span>")
+			user.visible_message("<span class='notice'>[user] replaces the needle on the syringe.</span>")
 			qdel(needle)
 			needle = new_needle
 			new_needle.forceMove(null)
+			mode = SYRINGE_DRAW
+			update_icon()
 		else
 			to_chat(user, "<span class='warning'>The needle packet is closed!</span>")
 	return
@@ -288,7 +291,7 @@
 		icon_state = "broken"
 		return
 
-	var/rounded_vol = round(reagents.total_volume, round(reagents.maximum_volume / 3))
+	var/rounded_vol = round(reagents.total_volume, round(reagents.maximum_volume / 4))
 	if(ismob(loc))
 		var/injoverlay
 		switch(mode)
@@ -430,3 +433,14 @@
 	..()
 	reagents.add_reagent("adrenaline",5)
 	reagents.add_reagent("hyperzine",10)
+
+/obj/item/weapon/reagent_containers/syringe/adrenaline
+	name = "Adrenaline Syringe"
+	desc = "Adrenaline injection for emergency use. EXTREMELY large needle."
+	amount_per_transfer_from_this = 20
+	possible_transfer_amounts = list()
+	mode = SYRINGE_INJECT
+
+/obj/item/weapon/reagent_containers/syringe/adrenaline/New()
+	..()
+	reagents.add_reagent("adrenaline",20)

@@ -385,7 +385,7 @@
 	price_tag = 0.7
 
 	tax_type = PHARMA_TAX
-	var/pain_power = 100 //magnitide of painkilling effect
+	var/pain_power = 300 //magnitide of painkilling effect
 	var/effective_dose = 0.5 //how many units it need to process to reach max power
 	var/soft_overdose = 15 //determines when it starts causing negative effects w/out actually causing OD
 	var/additiction_coef = 0.8
@@ -449,7 +449,7 @@
 	scannable = 0
 	reagent_state = SOLID
 	data = 0
-	pain_power = 120
+	pain_power = 360
 	var/drugdata = 0
 	additiction_coef = 2.1
 
@@ -492,7 +492,7 @@
 	color = "#b79a8d"
 	overdose = 15
 	soft_overdose = 7.5
-	pain_power = 220
+	pain_power = 660
 	scannable = 0
 	reagent_state = SOLID
 	additiction_coef = 3
@@ -529,7 +529,7 @@
 	color = "#b79abd"
 	overdose = 15
 	soft_overdose = 7.5
-	pain_power = 80
+	pain_power = 240
 	scannable = 1
 	reagent_state = SOLID
 	additiction_coef = 3
@@ -541,7 +541,7 @@
 	color = "#b7ba8d"
 	overdose = 15
 	soft_overdose = 7.5
-	pain_power = 150
+	pain_power = 450
 	scannable = 1
 	reagent_state = SOLID
 	additiction_coef = 2.6
@@ -556,7 +556,7 @@
 	scannable = 1
 	reagent_state = SOLID
 	data = 0
-	pain_power = 200
+	pain_power = 600
 	additiction_coef = 2
 
 /datum/reagent/tramadol/opium/oxycodone
@@ -566,7 +566,7 @@
 	taste_description = "bitterness"
 	color = "#800080"
 	overdose = 20
-	pain_power = 180
+	pain_power = 560
 	effective_dose = 2
 	additiction_coef = 2
 

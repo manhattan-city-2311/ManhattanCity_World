@@ -113,6 +113,21 @@
 	blood_type = "O-"
 	reag_id = "synthblood"
 
+/obj/item/weapon/reagent_containers/blood/saline
+	blood_type = "Saline Solution Pack"
+	reag_id = "salinesolution"
+	desc = "Holds liquids used for transfusion. Contains 2 liters of saline solution."
+
+/obj/item/weapon/reagent_containers/blood/saline/New()
+	..()
+	base_name = name
+	base_desc = desc
+	if(blood_type != null)
+		label_text = "96% saline"
+		update_iv_label()
+		reagents.add_reagent(reag_id, 2000)
+		update_icon()
+
 /obj/item/weapon/reagent_containers/blood/empty
 	name = "Empty Blood Pack"
 	desc = "Seems pretty useless... Maybe if there were a way to fill it?"

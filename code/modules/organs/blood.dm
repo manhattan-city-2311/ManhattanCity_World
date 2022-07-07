@@ -316,14 +316,10 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	. = heart?.cardiac_output
 
 /mob/living/carbon/human/proc/get_blood_saturation()
-	if(stat == DEAD)
-		return 0
-	// TODO: make this by cm standarts
+	// TODO: make this by cm standards
 	. = Clamp(1 - (getOxyLoss() / 100) + rand(-0.05, 0.05), 0, 0.99)
 
 // 0-1
 /mob/living/carbon/human/proc/get_blood_perfusion()
-	if(stat == DEAD)
-		return 0
-
-	. = CLAMP01((mcv / (NORMAL_MCV * k)) * get_blood_saturation())
+	var/n_perfusion = CLAMP01((mcv / (NORMAL_MCV * k)) * get_blood_saturation())
+	. = LERP(perfusion, n_perfusion, 0.3)

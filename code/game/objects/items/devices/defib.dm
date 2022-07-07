@@ -345,7 +345,7 @@
 		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 		return
 
-	H.visible_message("<span class='warning'>\The [H]'s body convulses a bit.</span>")
+	H.visible_message("<span class='warning'>\The [H]'s body convulses violently!</span>")
 	playsound(get_turf(src), "bodyfall", 50, 1)
 	playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 50, 1, -1)
 	set_cooldown(cooldowntime)

@@ -2,19 +2,19 @@
 #define DEFAULT_THIRST_FACTOR 0.05 // Factor of how fast mob hydration decreases.
 #define DEFAULT_CALORIES_FACTOR 0.05 // Factor of how fast mob calories decreases.
 
-#define REM 1.6 // Means 'Reagent Effect Multiplier'. This is how many ml of reagent are consumed per tick
+#define REM 0.2 // Means 'Reagent Effect Multiplier'. This is how many ml of reagent are consumed per tick
 
 #define CHEM_TOUCH 1
 #define CHEM_INGEST 2
 #define CHEM_BLOOD 3
 
-#define MINIMUM_CHEMICAL_VOLUME 0.01
+#define MINIMUM_CHEMICAL_VOLUME 0.1
 
 #define SOLID 1
 #define LIQUID 2
 #define GAS 3
 
-#define REAGENTS_OVERDOSE 30
+#define REAGENTS_OVERDOSE 130
 
 #define CHEM_SYNTH_ENERGY 500 // How much energy does it take to synthesize 1 unit of chemical, in Joules.
 
@@ -53,7 +53,7 @@
 #define CE_ARRYTHMIC     "arrythmic"    // Causes arrythmia.
 
 
-#define REAGENTS_PER_SHEET 20
+#define REAGENTS_PER_SHEET 200
 
 // Attached to CE_ANTIBIOTIC
 #define ANTIBIO_NORM	1

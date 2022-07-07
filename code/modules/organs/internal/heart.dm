@@ -92,7 +92,7 @@
 	var/datum/arrythmia/OW = get_ow_arrythmia()
 	if(OW && OW.id == ARRYTHMIA_ASYSTOLE)
 		return
-	pulse = LERP(pulse, n_pulse, 0.5)
+	pulse = LERP(pulse, n_pulse, 0.3)
 	pulse = round(Clamp(pulse, 0, 476))
 	switch(pulse)
 		if(240 to 300)
@@ -124,9 +124,6 @@
 		cardiac_output_modificators[A.name] = A.co_mod
 		pulse_modificators[A.name] = A.get_hr_mod(src)
 	ischemia = max(0, ischemia - 0.2)
-	for(var/datum/arrythmia/asystole/A in arrythmias)
-		if(pulse > 30)
-			A.weak(src)
 
 
 /obj/item/organ/internal/heart/proc/post_handle_rythme()
@@ -140,6 +137,9 @@
 		if(A.can_strengthen(src))
 			A.strengthen(src)
 			break
+	for(var/datum/arrythmia/asystole/A in arrythmias)
+		if(pulse > 30)
+			A.weak(src)
 	var/period = world.time - last_arrythmia_gain
 
 	if(prob(1) && period > 1.5 MINUTES && !get_ow_arrythmia())
