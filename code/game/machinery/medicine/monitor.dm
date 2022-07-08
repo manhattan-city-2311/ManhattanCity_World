@@ -61,7 +61,7 @@
 		attached = null
 		update_icon()
 		return PROCESS_KILL
-	
+
 	update_icon()
 
 /obj/machinery/monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
@@ -108,13 +108,14 @@
 	if(attached.bloodstr.get_reagent_amount("potassium_hormone") > POTASSIUM_LEVEL_HBAD)
 		data["ecg"] += list("Hypercaliemia.")
 	if(H.ischemia)
-		data["ecg"] += list("Ischemia.")
-	data["ecg"] += list("GVR: [round(attached.gvr)] N·s·m<sup><small>-5</small></sup>")
+		data["ecg"] += list("Ischemia [H.ischemia]%")
+	data["ecg"] += list("GVR: [round(attached.gvr)] N·s·m<sup>-5</sup>")
 	data["ecg"] += list("MCV: [round(attached.mcv)/1000] L/m")
+	data["ecg"] += list("CO: [H.pulse ? round(attached.mcv / H.pulse) : "?"] ml")
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "monitor.tmpl", "Monitor", 450, 270)
+		ui = new(user, src, ui_key, "monitor.tmpl", "Monitor", 450, 320)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(TRUE)

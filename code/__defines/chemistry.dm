@@ -51,7 +51,7 @@
 #define CE_CRYO 	     "cryogenic"    // Prevents damage from being frozen
 #define CE_ANTIARRYTHMIC "stablerythme" // Prevents arrythmias.
 #define CE_ARRYTHMIC     "arrythmic"    // Causes arrythmia.
-
+#define CE_BETABLOCKER   "betablocker"  // β1-selective beta-blockers.
 
 #define REAGENTS_PER_SHEET 200
 

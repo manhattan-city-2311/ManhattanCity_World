@@ -108,7 +108,7 @@
 /datum/reagent/atropine
 	name = "Atropine"
 	id = "atropine"
-	description = "Atropine is a drug what increases HR. Used in severe bradycardia cases"
+	description = "Atropine is a drug what increases HR."
 	reagent_state = LIQUID
 	color = "#ff7766"
 
@@ -133,8 +133,9 @@
 	if(volume < 5)
 		return
 	// initial rush.
-	if(H.chem_doses[type] < 5)
-		H.make_heart_rate(-140 + sin(world.time / 20) * 60, "adenosine_av_blockage")
+	if(H.chem_doses[type] < 10)
+		H.make_heart_rate(-heart.pulse - 150, "adenosine_av_blockage")
+		heart.pulse = 0
 		return
 
 	// TODO: rewrite this more compact
@@ -167,6 +168,24 @@
 /datum/reagent/lidocaine/overdose(mob/living/carbon/human/H, alien)
 	if(prob(50))
 		H.add_chemical_effect(CE_BREATHLOSS)
+
+/datum/reagent/esmolol
+	name = "Esmolol"
+	id = "esmolol"
+	description = "Esmolol is β1-selective beta-blocker with very short duration of action."
+
+	metabolism = REM * 3
+
+	overdose = 10
+
+/datum/reagent/esmolol/affect_blood(mob/living/carbon/human/H, alien, removed)
+	..()
+	H.add_chemical_effect(CE_BETABLOCKER, 5 * volume)
+	H.add_chemical_effect(CE_PULSE, H.chem_doses[type] * -7.5)
+
+/datum/reagent/esmolol/overdose(mob/living/carbon/human/H, alien)
+	H.add_chemical_effect(CE_PULSE, H.chem_doses[type] * -5)
+
 
 //ANALGESICS
 

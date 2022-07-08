@@ -1,5 +1,5 @@
 #define HEART_NC_DT 0.1
-#define HEART_PULSE_DT 0.1
+#define HEART_PULSE_DT 0.5
 
 /obj/item/organ/internal/heart
 	name = "heart"
@@ -24,6 +24,8 @@
 		"dopamine"
 	)
 	var/last_arrythmia_gain
+
+	var/cpr = 0
 
 /obj/item/organ/internal/heart/New()
 	..()
@@ -77,8 +79,18 @@
 
 
 	if(should_work)
-		make_modificators()
-	make_chem_modificators()
+		var/should_add_modificators = TRUE
+
+		if(CE_BETABLOCKER in owner.chem_effects)
+			should_add_modificators = prob(100 - owner.chem_effects[CE_BETABLOCKER])
+
+		if(should_add_modificators)
+			make_modificators()
+			make_chem_modificators()
+	else
+		pulse_modificators["!should_work"] = -initial(pulse) - 1
+
+	cardiac_output_modificators["damage"] = 1 - (damage / max_damage)
 
 	handle_rythme()
 	handle_ischemia()
@@ -94,7 +106,8 @@
 
 
 /obj/item/organ/internal/heart/proc/handle_pulse()
-	var/n_pulse = initial(pulse) + sumListAndCutAssoc(pulse_modificators)
+	var/n_pulse = max(initial(pulse) + sumListAndCutAssoc(pulse_modificators), cpr)
+	cpr = 0
 	pulse = LERP(pulse, n_pulse, HEART_PULSE_DT)
 	pulse = round(Clamp(pulse, 0, 476))
 
@@ -110,7 +123,6 @@
 /obj/item/organ/internal/heart/proc/make_modificators()
 	pulse_modificators["hypoperfusion"] = (1 - owner.get_blood_perfusion()) * 100
 	pulse_modificators["shock"] = Clamp(owner.shock_stage, 0, 110)
-	cardiac_output_modificators["damage"] = 1 - (damage / max_damage)
 
 /obj/item/organ/internal/heart/proc/handle_rythme()
 	for(var/T in arrythmias)

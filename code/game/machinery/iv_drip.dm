@@ -101,10 +101,10 @@
 		// Give blood
 		if(mode)
 			if(beaker.volume > 0)
-				var/transfer_amount = REM
+				var/transfer_amount = 1
 				if(istype(beaker, /obj/item/weapon/reagent_containers/blood))
 					// speed up transfer on blood packs
-					transfer_amount = 4
+					transfer_amount = 40
 				beaker.reagents.trans_to_mob(attached, transfer_amount, CHEM_BLOOD)
 				update_icon()
 

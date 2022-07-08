@@ -409,7 +409,7 @@
 
 // Get fluffy numbers
 /mob/living/carbon/human/proc/get_blood_pressure_fluffy()
-	if(spressure < 30)
+	if(spressure < 0 || dpressure < 0)
 		return "0/0"
 	return "[round(spressure)]/[round(dpressure)]"
 

@@ -275,6 +275,8 @@
 /datum/reagent/adenosine		price_tag = 4.5
 /datum/reagent/lidocaine		price_tag = 1.25
 
+/datum/reagent/esmolol          price_tag = 4.5
+
 //Analgesics
 /datum/reagent/aspirin			price_tag = 0.5
 /datum/reagent/paracetamol		price_tag = 0.75

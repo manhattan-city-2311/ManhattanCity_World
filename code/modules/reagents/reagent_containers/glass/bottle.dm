@@ -206,6 +206,12 @@
 	volume = 5
 	prefill = list("lidocaine" = 5)
 
+/obj/item/weapon/reagent_containers/glass/bottle/ampoule/esmolol
+	name = "esmolol ampoule"
+	desc = "A small ampoule. Contains esmolol. 7u"
+	volume = 5
+	prefill = list("esmolol" = 5)
+
 //BOTTLES
 /obj/item/weapon/reagent_containers/glass/bottle/glucagone
 	name = "glucagone bottle"

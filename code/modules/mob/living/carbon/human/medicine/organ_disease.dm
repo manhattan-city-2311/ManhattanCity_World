@@ -52,6 +52,9 @@
 /datum/arrythmia/proc/can_appear(var/obj/item/organ/internal/heart/H)
 	return TRUE
 
+/datum/arrythmia/proc/on_appear(var/obj/item/organ/internal/heart/H)
+	return
+
 /obj/item/organ/internal/heart/proc/get_arrythmic()
 	. = LAZYACCESS0(owner.chem_effects, CE_ARRYTHMIC) - LAZYACCESS0(owner.chem_effects, CE_ANTIARRYTHMIC)
 	. += (damage / max_damage) / 0.25
@@ -71,6 +74,8 @@
 	else if(get_ow_arrythmia())
 		return
 	arrythmias[A.id] = A
+
+	A.on_appear(src)
 
 /obj/item/organ/internal/heart/proc/remove_arrythmia(id)
 	arrythmias -= id
@@ -191,7 +196,7 @@
 /datum/arrythmia/extrasystolic
 	id = ARRYTHMIA_EXTRASYSTOLIC
 	name = "Extrasystolic"
-	severity = 2
+	severity = 1
 	co_mod = 0.87
 	ischemia_mod = 0.2
 	weakening_type = /datum/arrythmia/afib
@@ -249,6 +254,11 @@
 	strengthening_type = null
 
 	stop_heart = TRUE
+
+	mutate_period = 30 SECONDS
+
+/datum/arrythmia/asystole/on_appear(var/obj/item/organ/internal/heart/H)
+	H.pulse = 0
 
 /datum/arrythmia/asystole/can_weaken(var/obj/item/organ/internal/heart/H)
 	return H.pulse > (H.ischemia + LAZYACCESS0(H.owner.chem_effects, CE_ANTIARRYTHMIC) * 10)

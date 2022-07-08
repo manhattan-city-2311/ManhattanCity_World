@@ -95,6 +95,8 @@
 					return
 
 				var/acls_quality = M.get_skill(SKILL_ACLS)
+				if(!isnum(acls_quality))
+					acls_quality = 0
 				var/is_precordial_blow = acls_quality >= SKILL_AMATEUR && is_vfib()
 
 				var/punches = is_precordial_blow ? rand(2, 5 + acls_quality) : rand(5, 9 + acls_quality)
@@ -103,13 +105,11 @@
 				var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
 
 				for(var/i in 1 to punches)
-					if(!do_after(H, rand(max(0, 4 - acls_quality), 8), src))
+					if(!do_after(H, rand(max(0, 8 - acls_quality), 16 - acls_quality * rand(1, 3)), src))
 						return
 
-					if("CPR" in heart.pulse_modificators)
-						heart.pulse_modificators["CPR"] += rand(15, 30) * (1 + acls_quality)
-					else
-						heart.pulse_modificators["CPR"] = rand(15, 30) * (1 + acls_quality)
+					if(heart)
+						heart.cpr = min(rand(110 - (3 - acls_quality) * 10, 130), heart.cpr + rand(15, 30) * (1 + acls_quality))
 
 					if(prob(1))
 						var/obj/item/organ/external/chest = get_organ(BP_TORSO)
@@ -135,6 +135,8 @@
 					if(prob(5))
 						var/obj/item/organ/external/chest = get_organ(BP_TORSO)
 						chest?.fracture()
+					
+					// TODO: add precordial blow function.
 
 		if(I_GRAB)
 			if(M == src || anchored)

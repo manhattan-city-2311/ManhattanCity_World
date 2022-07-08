@@ -19,8 +19,6 @@
 		badness += "jaundiced"
 	if(H.get_blood_perfusion() <= 0.5)
 		badness += "turning blue"
-	if(H.get_blood_perfusion() <= 0.6)
-		badness += "very pale"
 	if(O.status & ORGAN_DEAD)
 		badness += "rotting"
 	if(germ_level > INFECTION_LEVEL_ONE)

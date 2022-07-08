@@ -114,6 +114,7 @@
 	var/k = 1
 	var/gvr = 0 // general vascular resitance
 	var/mcv = 0 // minute circulation volume
+	var/mcv_add = 0
 	var/spressure = 120 // systolic pressure
 	var/dpressure = 80 // dyastolic pressure
 	var/mpressure = 93 // medium pressure

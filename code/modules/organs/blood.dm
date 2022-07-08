@@ -278,20 +278,21 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 
 // 0-1
 /mob/living/carbon/human/proc/get_blood_volume()
-	. = vessel.get_reagent_amount("blood") / species.blood_volume
+	. = vessel.total_volume / vessel.maximum_volume
 
 /mob/living/carbon/human/process()
 	var/hr = get_heart_rate()
-	if(hr <= 15)
-		dpressure = 0
-		spressure = 0
-		mpressure = 0
-		mcv = 0
-		return
-	var/hrp = 60.0/hr
-	var/hrpd = hrp * 0.109 + 0.159
-	var/coeff = get_blood_volume() * get_cardiac_output() * (hrpd * 3.73134328) // 1 = hrpd(where hr = 60) => 3.73...
 
+	var/hrp 
+	if(hr)
+		hrp = 60.0 / hr
+	else
+		hrp = 0
+	var/hrpd = hrp * 0.109 + 0.159
+	var/coeff = (hrpd * 3.73134328) // 1 = hrpd(where hr = 60) => 3.73...
+
+	if(get_cardiac_output() && get_blood_volume() && mcv < 100)
+		mcv = rand(100, 150) // MCV should'nt be zero if any circulation present
 // update GVR
 	gvr = k*218.50746//max(120, k * dpressure * ((hrp-hrpd)/hrpd))
 	gvr += LAZYACCESS0(chem_effects, CE_PRESSURE)
@@ -300,26 +301,38 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	var/hr53 = hr * coeff * 53.0
 	dpressure = max(0, LERP(dpressure, (gvr * (2180 + hr53))/(k * (17820 - hr53)), 0.5))
 // update spressure
-	spressure = clamp(LERP(spressure, (50 * mcv) / (27 * hr) + 2.0 * dpressure - (7646.0 * k)/54.0, 0.5), 0, MAX_PRESSURE)
-	dpressure = min(dpressure, spressure-10)
+
+	var/mcv50divhr27
+	if(hr)
+		mcv50divhr27 = (50 * mcv) / (27 * hr)
+	else
+		mcv50divhr27 = (50 * mcv) / 10000
+
+	spressure = clamp(LERP(spressure,  mcv50divhr27 + 2.0 * dpressure - (7646.0 * k)/54.0, 0.5), 0, MAX_PRESSURE)
+	dpressure = min(dpressure, spressure - rand(5, 15))
 // update mpressure
 	mpressure = dpressure + (spressure - dpressure) / 3.0
 // update MCV
-	mcv = clamp((((spressure + dpressure) * 4000) / gvr) * coeff, 0, MAX_MCV)
+	mcv = LERP(mcv, clamp(((((spressure + dpressure) * 4000) / gvr) * coeff * get_cardiac_output() + mcv_add) * get_blood_volume(), 0, MAX_MCV), 0.5)
+	mcv_add = 0
+// update perfusion
+	var/n_perfusion = CLAMP01((mcv / (NORMAL_MCV * k)) * get_blood_saturation())
+	perfusion = LERP(perfusion, n_perfusion, 0.2)
 
 /mob/living/carbon/human/proc/get_heart_rate()
 	var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
-	. = round(heart?.pulse)
+	return round(heart?.pulse)
 
 /mob/living/carbon/human/proc/get_cardiac_output()
 	var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
-	. = heart?.cardiac_output
+	if(!heart || !get_heart_rate())
+		return 0
+	return heart.cardiac_output
 
 /mob/living/carbon/human/proc/get_blood_saturation()
 	// TODO: make this by cm standards
-	. = Clamp(1 - (getOxyLoss() / 100) + rand(-0.05, 0.05), 0, 0.99)
+	return clamp(1 - (getOxyLoss() / 100) + rand(-0.05, 0.05), 0, 0.99)
 
 // 0-1
 /mob/living/carbon/human/proc/get_blood_perfusion()
-	var/n_perfusion = CLAMP01((mcv / (NORMAL_MCV * k)) * get_blood_saturation())
-	. = LERP(perfusion, n_perfusion, 0.3)
+	return perfusion
