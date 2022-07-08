@@ -174,17 +174,17 @@
 	id = "esmolol"
 	description = "Esmolol is β1-selective beta-blocker with very short duration of action."
 
-	metabolism = REM * 3
+	metabolism = REM * 2
 
 	overdose = 10
 
 /datum/reagent/esmolol/affect_blood(mob/living/carbon/human/H, alien, removed)
 	..()
-	H.add_chemical_effect(CE_BETABLOCKER, 5 * volume)
+	H.add_chemical_effect(CE_BETABLOCKER, round(7.5 * volume))
 	H.add_chemical_effect(CE_PULSE, H.chem_doses[type] * -7.5)
 
 /datum/reagent/esmolol/overdose(mob/living/carbon/human/H, alien)
-	H.add_chemical_effect(CE_PULSE, H.chem_doses[type] * -5)
+	H.add_chemical_effect(CE_PULSE, H.chem_doses[type] * -10)
 
 
 //ANALGESICS

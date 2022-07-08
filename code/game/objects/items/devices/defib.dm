@@ -355,7 +355,7 @@
 	playsound(get_turf(src), 'sound/machines/defib_success.ogg', 50, 0)
 	var/obj/item/organ/internal/heart/heart = H.internal_organs_by_name[O_HEART]
 	if(H.is_vfib())
-		heart.get_ow_arrythmia()?.weak()
+		heart.get_ow_arrythmia()?.weak(heart)
 	else if(!H.is_asystole() && quality <= SKILL_TRAINED)
 		heart.pulse_modificators["defibrillation"] = rand(80, 120)
 		heart.make_common_arrythmia(1)

@@ -40,7 +40,7 @@
 /datum/surgery_step/generic/cut_open/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
-		return affected && affected.open == 0 && target_zone != O_MOUTH
+		return affected && !affected.gauzed && affected.open == 0 && target_zone != O_MOUTH
 
 /datum/surgery_step/generic/cut_open/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -66,6 +66,41 @@
 	"<font color='red'>Your hand slips, slicing open [target]'s [affected.name] in the wrong place with \the [tool]!</font>")
 	affected.createwound(CUT, 10)
 
+
+/datum/surgery_step/generic/remove_gauze
+	allowed_tools = list(
+	/obj/item/weapon/surgical/scalpel = 100,		\
+	/obj/item/weapon/material/knife = 80,	\
+	/obj/item/weapon/material/shard = 70, 		\
+	)
+	req_open = 0
+
+	min_duration = 50
+	max_duration = 80
+
+/datum/surgery_step/generic/remove_gauze/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if(..())
+		var/obj/item/organ/external/affected = target.get_organ(target_zone)
+		return affected && affected.gauzed && target_zone != O_MOUTH
+
+/datum/surgery_step/generic/remove_gauze/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	user.visible_message("[user] starts removing gauze on [target]'s [affected.name] with \the [tool].", \
+	"You start removing gauze on [target]'s [affected.name] with \the [tool].")
+	..()
+
+/datum/surgery_step/generic/remove_gauze/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	user.visible_message("<font color='blue'>[user] has removed gauze on [target]'s [affected.name] with \the [tool].</font>", \
+	"<font color='blue'>You have removed gauze on [target]'s [affected.name] with \the [tool].</font>",)
+	affected.gauzed = 0
+
+/datum/surgery_step/generic/remove_gauze/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	user.visible_message("<font color='red'>[user]'s hand slips, slicing over [target]'s [affected.name] with \the [tool]!</font>", \
+	"<font color='red'>Your hand slips, slicing over [target]'s [affected.name]  with \the [tool]!</font>")
+	affected.createwound(CUT, 3)
+
 ///////////////////////////////////////////////////////////////
 // Laser Scalpel Surgery
 ///////////////////////////////////////////////////////////////
@@ -85,7 +120,7 @@
 /datum/surgery_step/generic/cut_with_laser/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
-		return affected && affected.open == 0 && target_zone != O_MOUTH
+		return affected && !affected.gauzed && affected.open == 0 && target_zone != O_MOUTH
 
 /datum/surgery_step/generic/cut_with_laser/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -128,7 +163,7 @@
 /datum/surgery_step/generic/incision_manager/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
-		return affected && affected.open == 0 && target_zone != O_MOUTH
+		return affected && !affected.gauzed && affected.open == 0 && target_zone != O_MOUTH
 
 /datum/surgery_step/generic/incision_manager/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -174,7 +209,7 @@
 /datum/surgery_step/generic/clamp_bleeders/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
-		return affected && affected.open && (affected.status & ORGAN_BLEEDING)
+		return affected && !affected.gauzed && affected.open && (affected.status & ORGAN_BLEEDING)
 
 /datum/surgery_step/generic/clamp_bleeders/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -213,7 +248,7 @@
 /datum/surgery_step/generic/retract_skin/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
-		return affected && affected.open == 1 //&& !(affected.status & ORGAN_BLEEDING)
+		return affected && !affected.gauzed && affected.open == 1 //&& !(affected.status & ORGAN_BLEEDING)
 
 /datum/surgery_step/generic/retract_skin/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -261,10 +296,7 @@
 
 /datum/surgery_step/generic/cauterize
 	allowed_tools = list(
-	/obj/item/weapon/surgical/cautery = 100,			\
-	/obj/item/clothing/mask/smokable/cigarette = 75,	\
-	/obj/item/weapon/flame/lighter = 50,			\
-	/obj/item/weapon/weldingtool = 25
+	/obj/item/weapon/surgical/cautery = 100,
 	)
 
 	min_duration = 70
@@ -273,7 +305,7 @@
 /datum/surgery_step/generic/cauterize/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
-		return affected && affected.open && target_zone != O_MOUTH
+		return affected && !affected.gauzed && affected.open && target_zone != O_MOUTH
 
 /datum/surgery_step/generic/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)

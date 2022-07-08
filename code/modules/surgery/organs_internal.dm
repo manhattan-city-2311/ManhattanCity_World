@@ -163,7 +163,7 @@
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	if(!(affected && !(affected.robotic >= ORGAN_ROBOT)))
+	if(!(affected && !(affected.robotic >= ORGAN_ROBOT) && !affected.gauzed))
 		return 0
 
 	target.op_stage.current_organ = null
@@ -277,7 +277,7 @@
 	var/obj/item/organ/internal/O = tool
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	if(!affected)
+	if(!affected || !affected.gauzed)
 		return
 
 	var/organ_compatible

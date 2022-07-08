@@ -44,7 +44,7 @@
 	return world.time > (appear_time + mutate_period)
 
 /datum/arrythmia/proc/can_weaken(var/obj/item/organ/internal/heart/H)
-	return weakening_type && (H.get_arrythmic() <= (severity - 1))
+	return (H.get_arrythmic() <= (severity - 1))
 
 /datum/arrythmia/proc/can_strengthen(var/obj/item/organ/internal/heart/H)
 	return strengthening_type && (H.get_arrythmic() >= (severity))
@@ -59,11 +59,11 @@
 	. = LAZYACCESS0(owner.chem_effects, CE_ARRYTHMIC) - LAZYACCESS0(owner.chem_effects, CE_ANTIARRYTHMIC)
 	. += (damage / max_damage) / 0.25
 	. += (owner.mpressure > BLOOD_PRESSURE_HCRITICAL) || (owner.mpressure < BLOOD_PRESSURE_LCRITICAL)
-	. += owner.gvr > 280
-	. += owner.mcv > 20000
+	. += max(0, round((owner.gvr - 250) / 40))
+	. += owner.mcv > 10000
 	. += (owner.mcv < 3000) * 2
 	. += (owner.mcv < 1000) * 2
-	. += (pulse > 250)
+	. += max(0, round((pulse - 180) / 50))
 	. = max(0, .)
 
 /obj/item/organ/internal/heart/proc/make_arrythmia(T, allocated = null)
@@ -132,7 +132,7 @@
 	mutate(H, strengthening_type)
 
 /datum/arrythmia/aflaunt
-	id = ARRYTHMIA_AFLAUNT
+	id = ARRYTHMIA_AFIB
 	name = "Atrial flaunt"
 	co_mod = 0.95
 	severity = 2
@@ -154,9 +154,6 @@
 
 /datum/arrythmia/afib/get_hr_mod()
 	return rand(-20, 20)
-
-/datum/arrythmia/afib/can_weaken(var/obj/item/organ/internal/heart/H)
-	return H.get_arrythmic() < 1
 
 /datum/arrythmia/afib/rr
 	name = "Atrial fibrillation with rapid heart rate"
@@ -181,6 +178,9 @@
 /datum/arrythmia/tachycardia/get_hr_mod()
 	return rand(40, 90)
 
+/datum/arrythmia/tachycardia/can_weaken(var/obj/item/organ/internal/heart/H)
+	return ..() || (H.pulse < 90)
+
 /datum/arrythmia/tachycardia/paroxysmal
 	name = "Paroxysmal tachycardia"
 	severity = 3
@@ -196,7 +196,6 @@
 /datum/arrythmia/extrasystolic
 	id = ARRYTHMIA_EXTRASYSTOLIC
 	name = "Extrasystolic"
-	severity = 1
 	co_mod = 0.87
 	ischemia_mod = 0.2
 	weakening_type = /datum/arrythmia/afib
@@ -211,7 +210,8 @@
 
 	severity = ARRYTHMIA_SEVERITY_OVERWRITING + 1
 
-	co_mod = 0.06
+	co_mod = 0.02
+	ischemia_mod = 0.5
 
 	weakening_type = list(/datum/arrythmia/vflaunt)
 	strengthening_type = /datum/arrythmia/asystole
@@ -226,7 +226,8 @@
 /datum/arrythmia/vflaunt
 	id = ARRYTHMIA_VFLAUNT
 	name = "Ventricular flaunt"
-	co_mod = 0.2
+	co_mod = 0.06
+	ischemia_mod = 0.3
 
 	severity = ARRYTHMIA_SEVERITY_OVERWRITING
 

@@ -135,6 +135,9 @@
 					if(prob(5))
 						var/obj/item/organ/external/chest = get_organ(BP_TORSO)
 						chest?.fracture()
+
+					if(prob(5 + 5 * acls_quality))
+						heart.get_ow_arrythmia()?.weak(heart)
 					
 					// TODO: add precordial blow function.
 
