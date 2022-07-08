@@ -16,6 +16,7 @@
 		owner.internal_organs_by_name -= organ_tag
 		while(null in owner.internal_organs_by_name)
 			owner.internal_organs_by_name -= null
+		owner.internal_organs -= src
 	..()
 
 // Brain is defined in brain_item.dm.

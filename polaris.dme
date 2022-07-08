@@ -2981,7 +2981,6 @@
 #include "code\ZAS\Zone.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
-#include "maps\example\example.dm"
 #include "maps\geminus_neue\turfs\neue_turfs.dm"
 #include "maps\Manhattan\manhattan.dm"
 #include "maps\submaps\_readme.dm"

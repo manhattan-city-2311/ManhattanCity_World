@@ -133,7 +133,7 @@
 	if(volume < 5)
 		return
 	// initial rush.
-	if(H.chem_doses[type] < 10)
+	if(H.chem_doses[type] < 5)
 		H.make_heart_rate(-heart.pulse - 150, "adenosine_av_blockage")
 		heart.pulse = 0
 		return
