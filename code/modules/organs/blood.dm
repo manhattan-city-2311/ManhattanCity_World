@@ -129,21 +129,30 @@
 	data["species"] = C.species.name
 	var/list/temp_chem = list()
 	for(var/datum/reagent/R in C.reagents.reagent_list)
-		temp_chem[R.type] = R.volume
+		temp_chem[R.id] = R.volume
 	data["trace_chem"] = list2params(temp_chem)
 	data["dose_chem"] = list2params(C.chem_doses)
 	data["blood_colour"] = C.species.get_blood_colour(C)
 	color = data["blood_colour"]
 
+/mob/living/carbon/human/proc/sync_vessel()
+	for(var/R in vessel.reagent_list)
+		var/datum/reagent/reagent = R
+		if(reagent && reagent.id == "blood")
+			var/datum/reagent/blood/blood = reagent
+			blood.sync_to(src)
+			return
+
 //For humans, blood does not appear from blue, it comes from vessels.
 /mob/living/carbon/human/take_blood(obj/item/weapon/reagent_containers/container, var/amount)
-
 	if(!should_have_organ(O_HEART))
 		reagents.trans_to_obj(container, amount)
 		return 1
 
 	if(vessel.get_reagent_amount("blood") < amount)
 		return null
+
+	sync_vessel()
 	vessel.trans_to_holder(container.reagents,amount)
 	return 1
 

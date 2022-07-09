@@ -101,8 +101,8 @@
 	if(overdose && (volume > overdose) && (active_metab.metabolism_class != CHEM_TOUCH))
 		overdose(M, alien, removed)
 	remove_self(removed)
-	M.chem_traces += src
-	return
+	
+	M.chem_traces |= id
 
 /datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)
 	return

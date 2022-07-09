@@ -7,16 +7,16 @@
 
 /datum/analysis/proc/form_reagent_list(var/datum/reagent/blood/B)
 	. = list()
-	var/list/chems = params2list(B.data["dose_chem"])
+	var/list/chems = params2list(B.data["trace_chem"])
 	for(var/C in chems)
-		.[text2path(C)] = text2num(chems[C])
+		.[C] = text2num(chems[C])
 
 /datum/analysis/proc/format_header(var/datum/reagent/R)
 	. = "[name] of [R.name]<br>"
 	. += "Time of analysis: [time_stamp()]<br>"
 	. += "<hr><br>"
 
-/datum/analysis/proc/format_reagent_level(name, amount, normal_l, normal_h, normal_a = "", ed = "u", desc)
+/datum/analysis/proc/format_reagent_level(name, amount, normal_l, normal_h, normal_a = "", ed = "ml", desc)
 	var/normal = "  ([normal_a][ed]) "
 	if(!(normal_l && normal_h))
 		if(normal_l)

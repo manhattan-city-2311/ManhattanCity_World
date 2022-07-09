@@ -61,7 +61,10 @@
 	if(mode == SYRINGE_BROKEN)
 		to_chat(user, "<span class='warning'>The needle is broken!</span>")
 
-/obj/item/weapon/reagent_containers/syringe/proc/use_needle(mob/living/carbon/human/user)
+/obj/item/weapon/reagent_containers/syringe/proc/use_needle(var/mob/living/carbon/human/user)
+	if(!user)
+		return
+
 	pain = initial(pain)
 	if(needle.use_times == 1)
 		pain += 15
