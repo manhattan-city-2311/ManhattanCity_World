@@ -414,6 +414,7 @@
 	icon_state = "lion"
 	name = "golden lion"
 	desc = "Looks like one of those chinese new year celebrations."
+	anchored = 1
 
 /obj/structure/sculpting_block/sculpted/large/venus
 	icon_state = "venus"
