@@ -1118,7 +1118,6 @@ window "infowindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 654x494
 	elem "info"
 		type = INFO
 		pos = 0,0
@@ -1149,15 +1148,12 @@ window "mainwindow"
 		icon = 'icons\\ws_64.png'
 		macro = "macro"
 		menu = "menu"
-		outer-size = 1693x1050
-		inner-size = 1677x991
 	elem "mainvsplit"
 		type = CHILD
 		pos = 1,0
 		size = 1674x959
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
@@ -1189,7 +1185,6 @@ window "mapwindow"
 		size = 892x566
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1197,8 +1192,6 @@ window "mapwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 906x580
-		inner-size = 892x566
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -1216,7 +1209,7 @@ window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
 		pos = 281,-30
-		size = 1456x941
+		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		background-color = none
@@ -1227,14 +1220,13 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 1470x955
-		inner-size = 1456x941
+		outer-size = 654x494
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
-		size = 1456x941
-		anchor1 = -1,-1
-		anchor2 = -1,-1
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
 		background-color = none
 		is-visible = false
 		is-disabled = true
@@ -1242,7 +1234,7 @@ window "outputwindow"
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
-		size = 1456x941
+		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = #221e21
@@ -1258,12 +1250,9 @@ window "popupwindow"
 		size = 120x120
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
-		outer-size = 136x159
-		inner-size = 120x120
 
 window "rpane"
 	elem "rpane"
@@ -1416,12 +1405,9 @@ window "browserwindow"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Browser"
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "browser"
 		type = BROWSER
 		pos = 0,0
