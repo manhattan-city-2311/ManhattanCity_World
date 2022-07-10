@@ -299,7 +299,6 @@
 		/obj/item/weapon/surgical/hemostat/alien,
 		/obj/item/weapon/surgical/retractor/alien,
 		/obj/item/weapon/surgical/circular_saw/alien,
-		/obj/item/weapon/surgical/FixOVein/alien,
 		/obj/item/weapon/surgical/bone_clamp/alien,
 		/obj/item/weapon/surgical/cautery/alien,
 		/obj/item/weapon/surgical/surgicaldrill/alien

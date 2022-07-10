@@ -254,7 +254,7 @@ HALOGEN COUNTER	- Radcount on mobs
 			if(!found_disloc && e.dislocated == 2)
 				dat += "<span class='warning'>Dislocation detected. Advanced scanner required for location.</span>"
 				found_disloc = TRUE
-			if(!found_bleed && (e.status & ORGAN_ARTERY_CUT))
+			if(!found_bleed && (e.is_artery_cut()))
 				dat += "<span class='warning'>Arterial bleeding detected. Advanced scanner required for location.</span>"
 				found_bleed = TRUE
 			if(!found_tendon && (e.status & ORGAN_TENDON_CUT))

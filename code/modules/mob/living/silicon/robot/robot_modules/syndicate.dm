@@ -153,7 +153,7 @@
 	src.modules += new /obj/item/weapon/surgical/retractor/cyborg(src)
 	src.modules += new /obj/item/weapon/surgical/cautery/cyborg(src)
 	src.modules += new /obj/item/weapon/surgical/bonegel/cyborg(src)
-	src.modules += new /obj/item/weapon/surgical/FixOVein/cyborg(src)
+	src.modules += new /obj/item/weapon/surgical/suture/cyborg(src)
 	src.modules += new /obj/item/weapon/surgical/bonesetter/cyborg(src)
 	src.modules += new /obj/item/weapon/surgical/circular_saw/cyborg(src)
 	src.modules += new /obj/item/weapon/surgical/surgicaldrill/cyborg(src)

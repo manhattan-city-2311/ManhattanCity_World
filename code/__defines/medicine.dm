@@ -27,7 +27,7 @@
 
 // in ml
 #define MAX_MCV 30000
-#define NORMAL_MCV 4100
+#define NORMAL_MCV 3800
 
 #define MAX_PRESSURE 280
 #define ARRYTHMIA_SEVERITY_OVERWRITING 5

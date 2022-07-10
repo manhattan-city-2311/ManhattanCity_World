@@ -23,7 +23,7 @@
 /datum/surgery_step/brainstem/mend_vessels
 	priority = 1
 	allowed_tools = list(
-		/obj/item/weapon/surgical/FixOVein = 100,
+		/obj/item/weapon/surgical/suture = 100,
 		/obj/item/stack/nanopaste = 50,
 		/obj/item/stack/cable_coil = 40,
 		/obj/item/device/assembly/mousetrap = 5)
@@ -137,7 +137,7 @@
 /datum/surgery_step/brainstem/mend_cord
 	priority = 1 //Do this after IB.
 	allowed_tools = list(
-		/obj/item/weapon/surgical/FixOVein = 100,
+		/obj/item/weapon/surgical/suture = 100,
 		/obj/item/stack/nanopaste = 50,
 		/obj/item/stack/cable_coil = 40,
 		/obj/item/device/assembly/mousetrap = 5)

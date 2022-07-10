@@ -134,7 +134,7 @@
 "cD" = (/obj/structure/table/reinforced,/obj/item/weapon/reagent_containers/glass/beaker/large,/obj/item/weapon/reagent_containers/spray/cleaner,/obj/machinery/light/small{dir = 8},/turf/simulated/floor{ icon_state = "vault"; dir = 5},/area/awaymission/labs/researchdivision)
 "cE" = (/obj/structure/table/reinforced,/obj/item/weapon/reagent_containers/blood/empty,/obj/item/weapon/storage/body_bag_box,/turf/simulated/floor{ icon_state = "vault"; dir = 5},/area/awaymission/labs/researchdivision)
 "cF" = (/obj/structure/table/reinforced,/obj/item/weapon/reagent_containers/hypospray,/turf/simulated/floor{ icon_state = "vault"; dir = 5},/area/awaymission/labs/researchdivision)
-"cG" = (/obj/structure/table/reinforced,/obj/item/weapon/FixOVein,/obj/item/weapon/retractor,/turf/simulated/floor{icon_state = "white"},/area/awaymission/labs/researchdivision)
+"cG" = (/obj/structure/table/reinforced,/obj/item/weapon/suture,/obj/item/weapon/retractor,/turf/simulated/floor{icon_state = "white"},/area/awaymission/labs/researchdivision)
 "cH" = (/obj/machinery/optable,/obj/item/stack/sheet/animalhide/lizard,/turf/simulated/floor{icon_state = "white"},/area/awaymission/labs/researchdivision)
 "cI" = (/obj/structure/table/reinforced,/obj/item/weapon/bonesetter,/obj/item/weapon/bonegel,/turf/simulated/floor{icon_state = "white"},/area/awaymission/labs/researchdivision)
 "cJ" = (/obj/machinery/door/window/westleft,/obj/machinery/door/window/eastright,/turf/simulated/floor{icon_state = "white"},/area/awaymission/labs/researchdivision)

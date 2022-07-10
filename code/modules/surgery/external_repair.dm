@@ -83,10 +83,8 @@
 
 /datum/surgery_step/repairflesh/repair_burns
 	allowed_tools = list(
-	/obj/item/stack/medical/advanced/ointment = 100,
-	/obj/item/weapon/surgical/FixOVein = 100,
-	/obj/item/weapon/surgical/hemostat = 60,
-	/obj/item/stack/medical/ointment = 50,
+	/obj/item/weapon/surgical/hemostat = 80,
+	/obj/item/stack/medical/ointment = 70,
 	/obj/item/weapon/tape_roll = 30,
 	/obj/item/taperoll = 10
 	)
@@ -112,7 +110,7 @@
 		user.visible_message("<span class='warning'>[user] begins taping up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You begin taping up [target]'s [affected] with \the [tool].</span>")
 		affected.jostle_bone(10)
-	else if(istype(tool, /obj/item/weapon/surgical/hemostat) || istype(tool, /obj/item/weapon/surgical/FixOVein))
+	else if(istype(tool, /obj/item/weapon/surgical/hemostat))
 		user.visible_message("<span class='notice'>[user] begins mending the charred blood vessels in [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You begin mending the charred blood vessels in [target]'s [affected] with \the [tool].</span>")
 	else
@@ -180,7 +178,7 @@
 		user.visible_message("<span class='warning'>[user] begins taping up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You begin taping up [target]'s [affected] with \the [tool].</span>")
 		affected.jostle_bone(10)
-	else if(istype(tool, /obj/item/weapon/surgical/FixOVein) || istype(tool, /obj/item/weapon/surgical/bonesetter))
+	else if(istype(tool, /obj/item/weapon/surgical/suture) || istype(tool, /obj/item/weapon/surgical/bonesetter))
 		user.visible_message("<span class='notice'>[user] begins mending the torn tissue in [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You begin mending the torn tissue in [target]'s [affected] with \the [tool].</span>")
 	else

@@ -962,6 +962,13 @@ Note that amputating the affected organ does in fact remove the infection from t
 			"\The [holder.legcuffed.name] falls off you.")
 		holder.drop_from_inventory(holder.legcuffed)
 
+/obj/item/organ/external/proc/is_artery_cut()
+	for(var/W in wounds)
+		var/datum/wound/wound = W
+		if(wound.internal)
+			return TRUE
+	return FALSE
+
 // checks if all wounds on the organ are bandaged
 /obj/item/organ/external/proc/is_bandaged()
 	for(var/datum/wound/W in wounds)
@@ -1341,11 +1348,11 @@ Note that amputating the affected organ does in fact remove the infection from t
 	for(var/obj/item/organ/external/C in children)
 		clamped = -1
 
-/obj/item/organ/external/proc/sever_artery()
+/obj/item/organ/external/proc/sever_artery(strength = 10)
 	if(species && species.has_organ[O_HEART])
 		var/obj/item/organ/internal/heart/O = species.has_organ[O_HEART]
-		if(robotic < ORGAN_ROBOT && !(status & ORGAN_ARTERY_CUT) && !initial(O.open))
-			status |= ORGAN_ARTERY_CUT
+		if(robotic < ORGAN_ROBOT && !is_artery_cut() && !initial(O.open))
+			wounds += new /datum/wound/internal_bleeding(strength)
 			return TRUE
 	return FALSE
 

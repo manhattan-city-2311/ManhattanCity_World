@@ -291,42 +291,41 @@
 	target.apply_damage(12, BRUTE, affected, sharp=1)
 
 ///////////////////////////////////////////////////////////////
-// Cauterize Surgery
+// Suture Surgery
 ///////////////////////////////////////////////////////////////
 
-/datum/surgery_step/generic/cauterize
+/datum/surgery_step/generic/stitching
 	allowed_tools = list(
-	/obj/item/weapon/surgical/cautery = 100,
+	/obj/item/weapon/surgical/suture = 100,
 	)
 
 	min_duration = 70
 	max_duration = 100
 
-/datum/surgery_step/generic/cauterize/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+/datum/surgery_step/generic/stitching/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
 		return affected && !affected.gauzed && affected.open && target_zone != O_MOUTH
 
-/datum/surgery_step/generic/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+/datum/surgery_step/generic/stitching/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] is beginning to cauterize the incision on [target]'s [affected.name] with \the [tool]." , \
-	"You are beginning to cauterize the incision on [target]'s [affected.name] with \the [tool].")
-	target.custom_pain("Your [affected.name] is being burned!", 40)
+	user.visible_message("[user] is beginning to suture the incision on [target]'s [affected.name] with \the [tool]." , \
+	"You are beginning to suture the incision on [target]'s [affected.name] with \the [tool].")
+	target.custom_pain("Your [affected.name] is being sutured!", 10)
 	..()
 
-/datum/surgery_step/generic/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+/datum/surgery_step/generic/stitching/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] cauterizes the incision on [target]'s [affected.name] with \the [tool].</font>", \
-	"<font color='blue'>You cauterize the incision on [target]'s [affected.name] with \the [tool].</font>")
+	user.visible_message("<font color='blue'>[user] sutures the incision on [target]'s [affected.name] with \the [tool].</font>", \
+	"<font color='blue'>You sutures the incision on [target]'s [affected.name] with \the [tool].</font>")
 	affected.open = 0
-	affected.germ_level = 0
 	affected.status &= ~ORGAN_BLEEDING
 
-/datum/surgery_step/generic/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+/datum/surgery_step/generic/stitching/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='red'>[user]'s hand slips, leaving a small burn on [target]'s [affected.name] with \the [tool]!</font>", \
-	"<font color='red'>Your hand slips, leaving a small burn on [target]'s [affected.name] with \the [tool]!</font>")
-	target.apply_damage(3, BURN, affected)
+	user.visible_message("<font color='red'>[user]'s hand slips, leaving a small cut on [target]'s [affected.name] with \the [tool]!</font>", \
+	"<font color='red'>Your hand slips, leaving a small cut on [target]'s [affected.name] with \the [tool]!</font>")
+	target.apply_damage(1, CUT, affected)
 
 ///////////////////////////////////////////////////////////////
 // Amputation Surgery

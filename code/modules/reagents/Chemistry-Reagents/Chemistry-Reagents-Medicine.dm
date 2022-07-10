@@ -114,7 +114,7 @@
 
 /datum/reagent/atropine/affect_blood(mob/living/carbon/human/H, alien, removed)
 	..()
-	H.add_chemical_effect(CE_PULSE, H.chem_doses[type] * 7.5)
+	H.add_chemical_effect(CE_PULSE, volume * 7.5)
 	H.add_chemical_effect(CE_ARRYTHMIC, 1)
 
 /datum/reagent/adenosine

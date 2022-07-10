@@ -107,7 +107,7 @@
 "oV" = (/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
 "pa" = (/obj/structure/bed/chair/office/light{dir = 1},/turf/simulated/floor/tiled/paleblue,/area/planets/Manhattan/outdoor)
 "pq" = (/obj/structure/window/reinforced/polarized{id = "beta"},/obj/structure/window/reinforced/polarized{id = "beta"; dir = 4},/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
-"pw" = (/obj/structure/table/glass,/obj/item/weapon/surgical/FixOVein,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
+"pw" = (/obj/structure/table/glass,/obj/item/weapon/surgical/suture,/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)
 "pE" = (/obj/structure/table/steel,/obj/structure/window/reinforced,/turf/simulated/floor/tiled/monotile,/area/planets/Manhattan/outdoor)
 "pR" = (/turf/simulated/floor/pavement/empty,/area/planets/Manhattan/outdoor)
 "qb" = (/obj/structure/table/marble,/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/tiled/white,/area/planets/Manhattan/outdoor)

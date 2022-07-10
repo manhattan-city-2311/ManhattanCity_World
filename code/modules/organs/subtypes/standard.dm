@@ -8,8 +8,8 @@
 	name = "upper body"
 	organ_tag = BP_TORSO
 	icon_name = "torso"
-	max_damage = 100
-	min_broken_damage = 35
+	max_damage = 300
+	min_broken_damage = 100
 	w_class = ITEMSIZE_HUGE
 	body_part = UPPER_TORSO
 	vital = 1
@@ -46,8 +46,8 @@
 	name = "lower body"
 	organ_tag = BP_GROIN
 	icon_name = "groin"
-	max_damage = 100
-	min_broken_damage = 35
+	max_damage = 200
+	min_broken_damage = 75
 	w_class = ITEMSIZE_LARGE
 	body_part = LOWER_TORSO
 	vital = 1
@@ -76,8 +76,8 @@
 	organ_tag = BP_L_ARM
 	name = "left arm"
 	icon_name = "l_arm"
-	max_damage = 80
-	min_broken_damage = 30
+	max_damage = 150
+	min_broken_damage = 50
 	w_class = ITEMSIZE_NORMAL
 	body_part = ARM_LEFT
 	parent_organ = BP_TORSO
@@ -116,8 +116,8 @@
 	organ_tag = BP_L_LEG
 	name = "left leg"
 	icon_name = "l_leg"
-	max_damage = 80
-	min_broken_damage = 30
+	max_damage = 150
+	min_broken_damage = 50
 	w_class = ITEMSIZE_NORMAL
 	body_part = LEG_LEFT
 	icon_position = LEFT
@@ -155,8 +155,8 @@
 	organ_tag = BP_L_FOOT
 	name = "left foot"
 	icon_name = "l_foot"
-	max_damage = 50
-	min_broken_damage = 15
+	max_damage = 75
+	min_broken_damage = 25
 	w_class = ITEMSIZE_SMALL
 	body_part = FOOT_LEFT
 	icon_position = LEFT
@@ -200,8 +200,8 @@
 	organ_tag = BP_L_HAND
 	name = "left hand"
 	icon_name = "l_hand"
-	max_damage = 50
-	min_broken_damage = 15
+	max_damage = 75
+	min_broken_damage = 25
 	w_class = ITEMSIZE_SMALL
 	body_part = HAND_LEFT
 	parent_organ = BP_L_ARM
@@ -249,8 +249,8 @@
 	icon_name = "head"
 	name = "head"
 	slot_flags = SLOT_BELT
-	max_damage = 75
-	min_broken_damage = 35
+	max_damage = 100
+	min_broken_damage = 50
 	w_class = ITEMSIZE_NORMAL
 	body_part = HEAD
 	vital = 1

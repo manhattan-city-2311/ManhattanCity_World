@@ -1118,6 +1118,7 @@ window "infowindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 654x494
 	elem "info"
 		type = INFO
 		pos = 0,0
@@ -1215,9 +1216,10 @@ window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
 		pos = 281,-30
-		size = 640x480
+		size = 1456x941
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1225,13 +1227,25 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 1470x955
+		inner-size = 1456x941
+	elem "browseroutput"
+		type = BROWSER
+		pos = 0,0
+		size = 1456x941
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		is-visible = false
+		is-disabled = true
+		saved-params = ""
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
-		size = 640x480
+		size = 1456x941
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #e5e5e5
+		background-color = #221e21
 		is-default = true
 		saved-params = "max-lines"
 		style = ".system {color:#ff0000;}"
@@ -1244,9 +1258,12 @@ window "popupwindow"
 		size = 120x120
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
+		outer-size = 136x159
+		inner-size = 120x120
 
 window "rpane"
 	elem "rpane"
@@ -1395,13 +1412,16 @@ window "rpane"
 window "browserwindow"
 	elem "browserwindow"
 		type = MAIN
-		pos = 281,0
+		pos = 281,-30
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Browser"
 		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
 	elem "browser"
 		type = BROWSER
 		pos = 0,0

@@ -121,8 +121,9 @@
 		cardiac_output_modificators["chem"] = owner.chem_effects[CE_CARDIAC_OUTPUT]
 
 /obj/item/organ/internal/heart/proc/make_modificators()
-	pulse_modificators["hypoperfusion"] = (1 - owner.get_blood_perfusion()) * 100
-	pulse_modificators["shock"] = Clamp(owner.shock_stage, 0, 110)
+	if(owner.get_blood_perfusion() < 0.95 && (owner.mcv + owner.mcv_add) < NORMAL_MCV * owner.k && owner.get_cardiac_output())
+		pulse_modificators["hypoperfusion"] = clamp((NORMAL_MCV * owner.k - (owner.mcv + owner.mcv_add)) / owner.get_cardiac_output(), 0, 115)
+	pulse_modificators["shock"] = Clamp(owner.shock_stage * 0.25, 0, 110 + rand(-10, 10))
 
 /obj/item/organ/internal/heart/proc/handle_rythme()
 	for(var/T in arrythmias)
@@ -130,7 +131,7 @@
 		ischemia += A.ischemia_mod
 		cardiac_output_modificators[A.name] = A.co_mod
 		pulse_modificators[A.name] = A.get_hr_mod(src)
-	ischemia = max(0, ischemia - 0.2)
+	ischemia = max(0, ischemia - 0.25)
 
 
 /obj/item/organ/internal/heart/proc/post_handle_rythme()
@@ -213,7 +214,7 @@
 				else
 					blood_max += W.damage / 40
 
-		if(temp.status & ORGAN_ARTERY_CUT)
+		if(temp.is_artery_cut())
 			var/bleed_amount = round((500 / (temp.applied_pressure || !open_wound ? 400 : 250)))
 			if(bleed_amount)
 				if(open_wound)

@@ -45,7 +45,17 @@
 	if(owa)
 		icon_state = "monitor-[owa.id]"
 	else
-		icon_state = "monitor-normal"
+		switch(H.pulse)
+			if(0 to 40)
+				icon_state = "monitor-normal0"
+			if(40 to 90)
+				icon_state = "monitor-normal1"
+			if(90 to 140)
+				icon_state = "monitor-normal2"
+			if(140 to 190)
+				icon_state = "monitor-normal3"
+			if(190 to INFINITY)
+				icon_state = "monitor-normal4"
 
 	if(attached.mpressure < BLOOD_PRESSURE_L2BAD || attached.mpressure > BLOOD_PRESSURE_H2BAD)
 		overlays += image(icon, "monitor-r")
@@ -111,7 +121,7 @@
 		data["ecg"] += list("Ischemia [round(H.ischemia, 0.5)]%")
 	data["ecg"] += list("GVR: [round(attached.gvr)] N·s·m<sup>-5</sup>")
 	data["ecg"] += list("MCV: [round(attached.mcv)/1000] L/m")
-	data["ecg"] += list("CO: [H.pulse ? round(attached.mcv / H.pulse) : "?"] ml")
+	data["ecg"] += list("CO: [H.pulse ? round(attached.get_cardiac_output()) : "?"] ml")
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)

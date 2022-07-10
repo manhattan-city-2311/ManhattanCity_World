@@ -486,7 +486,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 // May contain alien surgery equipment or powerful medication.
 /obj/structure/loot_pile/surface/alien/medical
 	uncommon_loot = list(
-		/obj/item/weapon/surgical/FixOVein/alien,
 		/obj/item/weapon/surgical/bone_clamp/alien,
 		/obj/item/weapon/surgical/cautery/alien,
 		/obj/item/weapon/surgical/circular_saw/alien,
@@ -524,7 +523,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/weapon/weldingtool/alien,
 		/obj/item/weapon/wirecutters/alien,
 		/obj/item/weapon/wrench/alien,
-		/obj/item/weapon/surgical/FixOVein/alien,
 		/obj/item/weapon/surgical/bone_clamp/alien,
 		/obj/item/weapon/surgical/cautery/alien,
 		/obj/item/weapon/surgical/circular_saw/alien,

@@ -49,11 +49,22 @@
  */
 /obj/item/weapon/surgical/cautery
 	name = "cautery"
-	desc = "This stops bleeding."
+	desc = "This cauterizes."
 	icon_state = "cautery"
 	matter = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500, "copper" = 250)
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	attack_verb = list("burnt")
+
+/*
+ * Suture
+ */
+/obj/item/weapon/surgical/suture
+	name = "suture"
+	desc = "Suture."
+	icon_state = "suture"
+	matter = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500, "copper" = 250)
+	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
+	attack_verb = list("attacked", "pinched")
 
 /*
  * Surgical Drill
@@ -161,15 +172,6 @@
 	force = 0
 	throwforce = 1.0
 
-/obj/item/weapon/surgical/FixOVein
-	name = "FixOVein"
-	desc = "Like bone gel. For veins."
-	icon_state = "fixovein"
-	force = 0
-	throwforce = 1.0
-	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 3)
-	var/usage_amount = 10
-
 /obj/item/weapon/surgical/bonesetter
 	name = "bone setter"
 	desc = "Put them in their place."
@@ -213,7 +215,7 @@
 /obj/item/weapon/surgical/bonegel/cyborg
 	toolspeed = 0.5
 
-/obj/item/weapon/surgical/FixOVein/cyborg
+/obj/item/weapon/surgical/suture/cyborg
 	toolspeed = 0.5
 
 /obj/item/weapon/surgical/bonesetter/cyborg
@@ -242,10 +244,6 @@
 	toolspeed = 0.25
 
 /obj/item/weapon/surgical/circular_saw/alien
-	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
-
-/obj/item/weapon/surgical/FixOVein/alien
 	icon = 'icons/obj/abductor.dmi'
 	toolspeed = 0.25
 

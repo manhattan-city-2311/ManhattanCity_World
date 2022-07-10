@@ -424,7 +424,6 @@ datum/wound/puncture/massive
 	return 0 //cannot be merged
 
 /datum/wound/proc/disinfect()
-	disinfected = 1
 	if(!disinfected)
 		germ_level *= 0.5
 		disinfected = 1

@@ -346,7 +346,7 @@
 
 /datum/surgery_step/internal/attach_organ
 	allowed_tools = list(
-	/obj/item/weapon/surgical/FixOVein = 100, \
+	/obj/item/weapon/surgical/suture = 100, \
 	/obj/item/stack/cable_coil = 75
 	)
 

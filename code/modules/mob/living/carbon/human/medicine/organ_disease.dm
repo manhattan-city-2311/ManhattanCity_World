@@ -210,7 +210,7 @@
 
 	severity = ARRYTHMIA_SEVERITY_OVERWRITING + 1
 
-	co_mod = 0.02
+	co_mod = 0.001
 	ischemia_mod = 0.5
 
 	weakening_type = list(/datum/arrythmia/vflaunt)
@@ -226,7 +226,7 @@
 /datum/arrythmia/vflaunt
 	id = ARRYTHMIA_VFLAUNT
 	name = "Ventricular flaunt"
-	co_mod = 0.06
+	co_mod = 0.005
 	ischemia_mod = 0.3
 
 	severity = ARRYTHMIA_SEVERITY_OVERWRITING

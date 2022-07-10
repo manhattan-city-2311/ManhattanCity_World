@@ -287,23 +287,21 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 
 // 0-1
 /mob/living/carbon/human/proc/get_blood_volume()
-	. = vessel.total_volume / vessel.maximum_volume
+	return vessel.total_volume ? vessel.total_volume / vessel.maximum_volume : 0
 
 /mob/living/carbon/human/process()
 	var/hr = get_heart_rate()
 
-	var/hrp 
-	if(hr)
-		hrp = 60.0 / hr
-	else
-		hrp = 0
-	var/hrpd = hrp * 0.109 + 0.159
+	var/hrp = hr ? (60.0 / hr) : 0 // hrp should be INFINITY, but will be zero.
+	var/hrpd = hr ? (hrp * 0.109 + 0.159) : 0
 	var/coeff = (hrpd * 3.73134328) // 1 = hrpd(where hr = 60) => 3.73...
 
 	if(get_cardiac_output() && get_blood_volume() && mcv < 100)
-		mcv = rand(100, 150) // MCV should'nt be zero if any circulation present
+		mcv = 1000 * get_cardiac_output_mod() * get_blood_volume() // MCV should'nt be zero if any circulation present
+	if(!get_blood_volume() && (spressure || mpressure || dpressure || mcv))
+		spressure = mpressure = dpressure = mcv = 0
 // update GVR
-	gvr = k*218.50746//max(120, k * dpressure * ((hrp-hrpd)/hrpd))
+	gvr = k*218.50746
 	gvr += LAZYACCESS0(chem_effects, CE_PRESSURE)
 	gvr += spressure * (0.0008 * spressure - 0.8833) + 94 // simulate elasticity of vascular resistance
 // update dpressure
@@ -322,21 +320,24 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 // update mpressure
 	mpressure = dpressure + (spressure - dpressure) / 3.0
 // update MCV
-	mcv = LERP(mcv, clamp(((((spressure + dpressure) * 4000) / gvr) * coeff * get_cardiac_output() + mcv_add) * get_blood_volume(), 0, MAX_MCV), 0.5)
+	mcv = LERP(mcv, clamp((((mpressure * 8610) / gvr) * coeff * get_cardiac_output_mod() + mcv_add) * get_blood_volume(), 0, MAX_MCV), 0.5)
 	mcv_add = 0
 // update perfusion
-	var/n_perfusion = CLAMP01((mcv / (NORMAL_MCV * k)) * get_blood_saturation())
+	var/n_perfusion = CLAMP01((mcv / (NORMAL_MCV * k)) * (get_blood_saturation() / 0.99))
 	perfusion = LERP(perfusion, n_perfusion, 0.2)
 
 /mob/living/carbon/human/proc/get_heart_rate()
 	var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
 	return round(heart?.pulse)
 
-/mob/living/carbon/human/proc/get_cardiac_output()
+/mob/living/carbon/human/proc/get_cardiac_output_mod()
 	var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
 	if(!heart || !get_heart_rate())
 		return 0
 	return heart.cardiac_output
+
+/mob/living/carbon/human/proc/get_cardiac_output()
+	return get_heart_rate() ? (max(mcv - mcv_add, 0) / get_heart_rate()) : 0
 
 /mob/living/carbon/human/proc/get_blood_saturation()
 	// TODO: make this by cm standards

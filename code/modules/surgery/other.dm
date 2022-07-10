@@ -10,7 +10,7 @@
 /datum/surgery_step/fix_vein
 	priority = 2
 	allowed_tools = list(
-	/obj/item/weapon/surgical/FixOVein = 100, \
+	/obj/item/weapon/surgical/suture = 100, \
 	/obj/item/stack/cable_coil = 75
 	)
 	can_infect = 1
@@ -25,35 +25,41 @@
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if(!affected) return
-	var/internal_bleeding = 0
-	for(var/datum/wound/W in affected.wounds) if(W.internal)
-		internal_bleeding = 1
-		break
 
-	return affected.open == (affected.encased ? 3 : 2) && internal_bleeding
+	if(!affected.is_artery_cut())
+		return FALSE
+
+	if(affected.open != (affected.encased ? 3 : 2))
+		return FALSE
+
+	if(affected.gauzed)
+		to_chat(user, SPAN_WARNING("Gauze on [target]'s [affected.name] blocks surgery!"))
+		return SURGERY_FAILURE
+
+	return TRUE
 
 /datum/surgery_step/fix_vein/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts patching the damaged vein in [target]'s [affected.name] with \the [tool]." , \
-	"You start patching the damaged vein in [target]'s [affected.name] with \the [tool].")
-	target.custom_pain("The pain in [affected.name] is unbearable!", 100)
+	user.visible_message("[user] starts patching the damaged [affected.artery_name] in [target]'s [affected.name] with \the [tool]." , \
+	"You start patching the damaged [affected.artery_name] in [target]'s [affected.name] with \the [tool].")
+	target.custom_pain("The pain in your [affected.name] is unbearable!",100,affecting = affected)
 	..()
 
 /datum/surgery_step/fix_vein/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] has patched the damaged vein in [target]'s [affected.name] with \the [tool].</font>", \
-		"<font color='blue'>You have patched the damaged vein in [target]'s [affected.name] with \the [tool].</font>")
+	user.visible_message("<span class='notice'>[user] has patched the [affected.artery_name] in [target]'s [affected.name] with \the [tool].</span>", \
+		"<span class='notice'>You have patched the [affected.artery_name] in [target]'s [affected.name] with \the [tool].</span>")
 
-	for(var/datum/wound/W in affected.wounds) if(W.internal)
-		affected.wounds -= W
-		affected.update_damages()
-	if (ishuman(user) && prob(40)) user:bloody_hands(target, 0)
+	for(var/datum/wound/W in affected.wounds)
+		if(W.internal)
+			affected.wounds -= W
+			affected.update_damages()
 
 /datum/surgery_step/fix_vein/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='red'>[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</font>" , \
-	"<font color='red'>Your hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</font>")
-	affected.take_damage(5, 0)
+	user.visible_message("<span class='warning'>[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>" , \
+	"<span class='warning'>Your hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>")
+	affected.take_damage(5, used_weapon = tool)
 
 ///////////////////////////////////////////////////////////////
 // Necrosis Surgery Step 1
@@ -229,7 +235,7 @@
 /datum/surgery_step/fix_tendon
 	priority = 2
 	allowed_tools = list(
-	/obj/item/weapon/surgical/FixOVein = 100, \
+	/obj/item/weapon/surgical/suture = 100, \
 	/obj/item/stack/cable_coil = 75,	\
 	/obj/item/weapon/tape_roll = 50
 	)
@@ -338,7 +344,7 @@
 
 	affected.disinfect()
 	for(var/obj/item/organ/internal/I in target.internal_organs_by_name)
-		I.germ_level = max(INFECTION_LEVEL_TWO, I.germ_level * 0.9)
+		I.germ_level = min(INFECTION_LEVEL_TWO, I.germ_level * 0.9)
 
 	var/trans = temp_reagents.trans_to_mob(target, temp_reagents.total_volume, CHEM_BLOOD) //technically it's contact, but the reagents are being applied to internal tissue
 	if (trans > 0)
@@ -360,50 +366,3 @@
 	user.visible_message("<span class='warning'>[user]'s hand slips, spilling \the [tool]'s contents over the [target]'s [affected.name]!</span>" , \
 	"<span class='warning'>Your hand slips, spilling \the [tool]'s contents over the [target]'s [affected.name]!</span>")
 	affected.disinfect()
-
-
-
-//////////////////////////////////////////////////////////////////
-//	 IB fix surgery step
-//////////////////////////////////////////////////////////////////
-/datum/surgery_step/fix_vein
-	priority = 3
-	allowed_tools = list(
-	/obj/item/weapon/surgical/FixOVein = 100, \
-	/obj/item/stack/cable_coil = 75,	\
-	/obj/item/weapon/tape_roll = 50
-	)
-	can_infect = 1
-	blood_level = 1
-
-	min_duration = 70
-	max_duration = 90
-
-/datum/surgery_step/fix_vein/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	if(!hasorgans(target))
-		return 0
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	if(affected.gauzed)
-		to_chat(user, SPAN_WARNING("Gauze on [target]'s [affected.name] blocks surgery!"))
-		return SURGERY_FAILURE
-	return affected && (affected.status & ORGAN_ARTERY_CUT)
-
-/datum/surgery_step/fix_vein/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts patching the damaged [affected.artery_name] in [target]'s [affected.name] with \the [tool]." , \
-	"You start patching the damaged [affected.artery_name] in [target]'s [affected.name] with \the [tool].")
-	target.custom_pain("The pain in your [affected.name] is unbearable!",100,affecting = affected)
-	..()
-
-/datum/surgery_step/fix_vein/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='notice'>[user] has patched the [affected.artery_name] in [target]'s [affected.name] with \the [tool].</span>", \
-		"<span class='notice'>You have patched the [affected.artery_name] in [target]'s [affected.name] with \the [tool].</span>")
-	affected.status &= ~ORGAN_ARTERY_CUT
-	affected.update_damages()
-
-/datum/surgery_step/fix_vein/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='warning'>[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>" , \
-	"<span class='warning'>Your hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>")
-	affected.take_damage(5, used_weapon = tool)

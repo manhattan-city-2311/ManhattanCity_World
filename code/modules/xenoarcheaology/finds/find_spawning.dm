@@ -425,7 +425,6 @@
 				/obj/item/weapon/weldingtool/alien,
 				/obj/item/weapon/wirecutters/alien,
 				/obj/item/weapon/wrench/alien,
-				/obj/item/weapon/surgical/FixOVein/alien,
 				/obj/item/weapon/surgical/bone_clamp/alien,
 				/obj/item/weapon/surgical/cautery/alien,
 				/obj/item/weapon/surgical/circular_saw/alien,

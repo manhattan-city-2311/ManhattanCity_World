@@ -56,10 +56,11 @@
 	name = "Surgery crate"
 	contains = list(
 			/obj/item/weapon/surgical/cautery,
+			/obj/item/weapon/surgical/suture,
 			/obj/item/weapon/surgical/surgicaldrill,
 			/obj/item/clothing/mask/breath/medical,
 			/obj/item/weapon/tank/anesthetic,
-			/obj/item/weapon/surgical/FixOVein,
+			/obj/item/weapon/surgical/suture,
 			/obj/item/weapon/surgical/hemostat,
 			/obj/item/weapon/surgical/scalpel,
 			/obj/item/weapon/surgical/bonegel,

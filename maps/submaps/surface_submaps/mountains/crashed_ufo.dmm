@@ -47,7 +47,7 @@
 "aU" = (/obj/structure/bed/alien,/obj/effect/decal/remains/xeno,/turf/simulated/shuttle/floor/alien,/area/submap/cave/crashed_ufo)
 "aV" = (/obj/structure/loot_pile/surface/alien/end,/turf/simulated/shuttle/floor/alienplating,/area/submap/cave/crashed_ufo)
 "aW" = (/obj/structure/table/alien,/obj/item/weapon/surgical/circular_saw/alien,/turf/simulated/shuttle/floor/alien,/area/submap/cave/crashed_ufo)
-"aX" = (/obj/structure/table/alien,/obj/item/weapon/surgical/FixOVein/alien,/turf/simulated/shuttle/floor/alien,/area/submap/cave/crashed_ufo)
+"aX" = (/obj/structure/table/alien,/obj/item/weapon/surgical/suture/alien,/turf/simulated/shuttle/floor/alien,/area/submap/cave/crashed_ufo)
 "aY" = (/obj/structure/table/alien,/obj/item/weapon/surgical/scalpel/alien,/turf/simulated/shuttle/floor/alien,/area/submap/cave/crashed_ufo)
 "aZ" = (/obj/item/weapon/surgical/hemostat/alien,/turf/simulated/shuttle/floor/alien,/area/submap/cave/crashed_ufo)
 "ba" = (/obj/machinery/door/airlock/alien/locked,/turf/simulated/shuttle/floor/alien,/area/submap/cave/crashed_ufo)
