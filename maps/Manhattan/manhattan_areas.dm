@@ -146,6 +146,10 @@
 /area/planets/Manhattan/indoor/north/police_dept
 	ambience = list('sound/ambience/MAIN0C.SAP.ogg', 'sound/ambience/MAIN05.SAP.ogg')
 
+/area/planets/Manhattan/indoor/north/police_dept/upper
+
+/area/planets/Manhattan/indoor/north/police_dept/underground
+
 /*
  		--------S O U T H---------
 */

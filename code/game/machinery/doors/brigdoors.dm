@@ -361,6 +361,18 @@
 	name = "Cell 6"
 	id = "Cell 6"
 
+/obj/machinery/door_timer/cell_7
+	name = "Cell 7"
+	id = "Cell 7"
+
+/obj/machinery/door_timer/cell_8
+	name = "Cell 8"
+	id = "Cell 8"
+
+/obj/machinery/door_timer/cell_9
+	name = "Cell 9"
+	id = "Cell 9"
+
 #undef DT_FONT_SIZE
 #undef FONT_COLOR
 #undef FONT_STYLE
