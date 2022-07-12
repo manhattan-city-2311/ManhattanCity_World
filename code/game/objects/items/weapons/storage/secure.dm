@@ -218,7 +218,7 @@
 				break
 			for(var/thing in T)
 				var/atom/A = thing
-				if(A.simulated && !A.CanPass(src, T))
+				if(A.simulated)
 					placing = checkdir
 					break
 

@@ -107,9 +107,7 @@
 			new/obj/item/clothing/head/bearpelt(src)
 		if(90)
 			new/obj/item/organ/internal/heart(src)
-		if(91)
-			new/obj/item/device/soulstone(src)
-		if(92)
+		if(92 || 91)
 			new/obj/item/weapon/material/sword/katana(src)
 		if(93)
 			new/obj/item/weapon/dnainjector/xraymut(src) // Probably the least OP

@@ -184,28 +184,15 @@ var/list/available_paintings = list(
 		if("thescream")
 			name = "\improper eerie painting"
 			desc = "An odd picture showing a figure with his hands clasped over his face, screaming in a cacophony of agony, disturbing"
-
-
-
 		else
 			name = "painting"
 			desc = "A blank painting."
 
-
-
 /obj/structure/painting/blank
 	paint = "blank"
 
-/obj/structure/painting/cultify()
-	new /obj/structure/painting/narsie(loc)
-	update_painting()
-	..()
-
 /obj/structure/painting/narsie
 	paint = "narsie"
-
-/obj/structure/painting/narsie/cultify()
-	return
 
 
 /obj/structure/painting/random/New()

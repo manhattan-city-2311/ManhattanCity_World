@@ -107,7 +107,7 @@
 		// In case they somehow end up with positive values for otherwise unobtainable damage...
 		if(H.getToxLoss() > 0)
 			H.adjustToxLoss(-(rand(1,3)))
-		if(H.getOxyLoss() > 0)
+		if(H.get_deprivation() > 0)
 			H.adjustOxyLoss(-(rand(1,3)))
 		if(H.getCloneLoss() > 0)
 			H.adjustCloneLoss(-(rand(1,3)))

@@ -29,7 +29,6 @@
 	special_attack_min_range = 1
 	special_attack_max_range = 7
 	special_attack_cooldown = 10 SECONDS
-	projectiletype = /obj/item/projectile/force_missile
 	projectilesound = 'sound/weapons/wave.ogg'
 	var/obj/effect/overlay/energy_ball/energy_ball = null
 
@@ -171,15 +170,8 @@
 	light_range = 4
 	light_power = 5
 	light_color = "#2ECCFA"
-	pulses_remaining = 10
-	pulse_delay = 0.5 SECONDS
 	var/pull_radius = 3
 	var/pull_strength = STAGE_THREE
-
-/obj/effect/temporary_effect/pulse/microsingulo/on_pulse()
-	for(var/atom/A in range(pull_radius, src))
-		A.singularity_pull(src, pull_strength)
-
 
 // The Advanced Dark Gygax's AI.
 // The mob has three special attacks, based on the current intent.

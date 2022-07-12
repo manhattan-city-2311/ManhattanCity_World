@@ -148,13 +148,6 @@
 /obj/structure/bonfire/permanent/consume_fuel()
 	return TRUE
 
-/obj/structure/bonfire/proc/check_oxygen()
-	var/datum/gas_mixture/G = loc.return_air()
-	if(G.gas["oxygen"] < 1)
-		return FALSE
-	return TRUE
-
-
 /obj/structure/bonfire/extinguish()
 	if(burning)
 		burning = FALSE
@@ -171,7 +164,7 @@
 
 /obj/structure/bonfire/burn()
 	var/turf/current_location = get_turf(src)
-	current_location.hotspot_expose(1000, 500)
+	//current_location.hotspot_expose(1000, 500)
 	for(var/A in current_location)
 		if(A == src)
 			continue
@@ -215,9 +208,6 @@
 
 
 /obj/structure/bonfire/process()
-	if(!check_oxygen())
-		extinguish()
-		return
 	if(world.time >= next_fuel_consumption)
 		if(!consume_fuel(pop(contents)))
 			extinguish()
@@ -332,12 +322,6 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/fireplace/proc/check_oxygen()
-	var/datum/gas_mixture/G = loc.return_air()
-	if(G.gas["oxygen"] < 1)
-		return FALSE
-	return TRUE
-
 /obj/structure/fireplace/extinguish()
 	if(burning)
 		burning = FALSE
@@ -354,7 +338,7 @@
 
 /obj/structure/fireplace/burn()
 	var/turf/current_location = get_turf(src)
-	current_location.hotspot_expose(1000, 500)
+	//current_location.hotspot_expose(1000, 500)
 	for(var/A in current_location)
 		if(A == src)
 			continue
@@ -387,9 +371,6 @@
 		set_light(0)
 
 /obj/structure/fireplace/process()
-	if(!check_oxygen())
-		extinguish()
-		return
 	if(world.time >= next_fuel_consumption)
 		if(!consume_fuel(pop(contents)))
 			extinguish()

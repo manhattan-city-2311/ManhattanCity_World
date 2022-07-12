@@ -1344,7 +1344,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				user.show_message("<span class='notice'>Analyzing Results for [C]:</span>")
 				user.show_message("<span class='notice'>    Overall Status: [C.stat > 1 ? "dead" : "[C.health - C.halloss]% healthy"]</span>", 1)
 				user.show_message(text("<span class='notice'>    Damage Specifics:</span> <span class='[]'>[]</span>-<span class='[]'>[]</span>-<span class='[]'>[]</span>-<span class='[]'>[]</span>",
-						(C.getOxyLoss() > 50) ? "warning" : "", C.getOxyLoss(),
+						(C.get_deprivation() > 50) ? "warning" : "", C.get_deprivation(),
 						(C.getToxLoss() > 50) ? "warning" : "", C.getToxLoss(),
 						(C.getFireLoss() > 50) ? "warning" : "", C.getFireLoss(),
 						(C.getBruteLoss() > 50) ? "warning" : "", C.getBruteLoss()
@@ -1462,7 +1462,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	if(!src.detonate) return
 	var/turf/T = get_turf(src.loc)
 	if(T)
-		T.hotspot_expose(700,125)
+		////T.hotspot_expose(700,125)
 		explosion(T, 0, 0, 1, rand(1,2))
 	return
 

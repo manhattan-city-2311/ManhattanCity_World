@@ -44,18 +44,7 @@
 	tunnel_tile_speed = 1
 
 /mob/living/simple_mob/animal/giant_spider/tunneler/should_special_attack(atom/A)
-	// Make sure its possible for the spider to reach the target so it doesn't try to go through a window.
-	var/turf/destination = get_turf(A)
-	var/turf/starting_turf = get_turf(src)
-	var/turf/T = starting_turf
-	for(var/i = 1 to get_dist(starting_turf, destination))
-		if(T == destination)
-			break
-
-		T = get_step(T, get_dir(T, destination))
-		if(T.check_density(ignore_mobs = TRUE))
-			return FALSE
-	return T == destination
+	return
 
 
 /mob/living/simple_mob/animal/giant_spider/tunneler/do_special_attack(atom/A)
@@ -133,12 +122,6 @@
 
 		// Update T.
 		T = get_step(src, get_dir(src, destination))
-		if(T.check_density(ignore_mobs = TRUE))
-			to_chat(src, span("critical", "You hit something really solid!"))
-			playsound(src, "punch", 75, 1)
-			Weaken(5)
-			add_modifier(/datum/modifier/tunneler_vulnerable, 10 SECONDS)
-			return FALSE // Hit a wall.
 
 		// Stun anyone in our way.
 		for(var/mob/living/L in T)

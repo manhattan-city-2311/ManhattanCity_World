@@ -26,10 +26,10 @@
 /obj/effect/energy_field/New(var/newloc, var/new_gen)
 	..(newloc)
 	my_gen = new_gen
-	update_nearby_tiles()
+	
 
 /obj/effect/energy_field/Destroy()
-	update_nearby_tiles()
+	
 	my_gen.field.Remove(src)
 	my_gen = null
 	var/turf/current_loc = get_turf(src)
@@ -101,7 +101,7 @@
 
 	if(density != old_density)
 		update_icon()
-		update_nearby_tiles()
+		
 
 /obj/effect/energy_field/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
 	//Purpose: Determines if the object (or airflow) can pass this atom.

@@ -15,7 +15,6 @@
 	throw_speed = 1
 	plane = MOB_PLANE
 	layer = MOB_LAYER
-	pressure_resistance = 1
 	slot_flags = SLOT_HEAD
 	body_parts_covered = HEAD
 	attack_verb = list("bapped")

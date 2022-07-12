@@ -110,7 +110,7 @@
 	item_state = "gloves-vox"
 	item_flags = PHORONGUARD
 	siemens_coefficient = 0
-	phoronproof = 1
+	
 	permeability_coefficient = 0.05
 	species_restricted = list("Vox")
 

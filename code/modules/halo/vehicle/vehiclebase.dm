@@ -99,14 +99,6 @@
 		return TRUE
 	return FALSE*/
 
-/obj/manhattan/vehicles/return_air_for_internal_lifeform(var/mob/living/carbon/human/form)
-	if(!internal_air || !istype(form))
-		return loc.return_air()
-	internal_air.gas[form.species.breath_type] = 0
-	for(var/gas in internal_air.gas)
-		internal_air.gas[gas] = 100/internal_air.gas.len
-	return internal_air
-
 /obj/manhattan/vehicles/return_air()
 	if(internal_air)
 		return internal_air

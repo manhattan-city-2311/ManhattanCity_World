@@ -895,11 +895,6 @@ FIRE ALARM
 		updateDialog()
 	last_process = world.timeofday
 
-	if(locate(/obj/fire) in src.loc)
-		alarm()
-
-	return
-
 /obj/machinery/firealarm/power_change()
 	..()
 	spawn(rand(0,15))

@@ -183,7 +183,6 @@
 
 /datum/reagent/adminordrazine/affect_blood(mob/living/carbon/M, alien, removed)
 	M.setCloneLoss(0)
-	M.setOxyLoss(0)
 	M.radiation = 0
 	M.heal_organ_damage(5,5)
 	M.adjustToxLoss(-5)
@@ -266,16 +265,9 @@
 	glass_name = "holy water"
 	glass_desc = "An ashen-obsidian-water mix, this solution will alter certain sections of the brain's rationality."
 
-/datum/reagent/water/holywater/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
-	..()
-	if(ishuman(M)) // Any location
-		if(M.mind && cult.is_antagonist(M.mind) && prob(10))
-			cult.remove_antagonist(M.mind)
-
 /datum/reagent/water/holywater/touch_turf(var/turf/T)
 	if(volume >= 5)
 		T.holy = 1
-	return
 
 /datum/reagent/ammonia
 	name = "Ammonia"

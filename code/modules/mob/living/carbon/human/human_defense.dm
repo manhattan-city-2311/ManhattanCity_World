@@ -300,11 +300,6 @@ emp_act
 	//	affecting.sever_tendon()
 	//	src.visible_message("<span class='danger'>[user] slices open [src]'s [affecting.tendon_name] tendon!</span>")
 
-	//Finally if we pass all that, we cut the limb off. This should reduce the number of one hit sword kills.
-	else if(I.sharp && I.edge)
-		if(prob(5))
-			affecting.droplimb(0, DROPLIMB_EDGE)
-
 	if((I.damtype == BRUTE) && prob(25 + (effective_force * 2)))//Knocking them out.
 		if(!stat)
 			if(headcheck(hit_zone))

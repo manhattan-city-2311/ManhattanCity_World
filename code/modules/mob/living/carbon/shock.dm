@@ -8,7 +8,7 @@
 		return 0
 
 	src.traumatic_shock = 			\
-	1	* src.getOxyLoss() + 		\
+	1	* src.get_deprivation() + 		\
 	0.7	* src.getToxLoss() + 		\
 	1.2	* src.getShockFireLoss() + 		\
 	1.2	* src.getShockBruteLoss() + 		\

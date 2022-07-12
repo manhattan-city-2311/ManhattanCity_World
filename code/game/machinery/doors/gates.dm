@@ -33,7 +33,7 @@ obj/machinery/door/blast/gate/proc/force_close_transparent()
 	src.layer = closed_layer
 	flick(icon_state_closing, src)
 	src.set_density(1)
-	update_nearby_tiles()
+	
 	src.update_icon()
 	src.set_opacity(0)
 	sleep(15)

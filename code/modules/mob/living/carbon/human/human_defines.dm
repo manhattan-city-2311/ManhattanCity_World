@@ -112,12 +112,18 @@
 	mob_swap_flags = ~HEAVY
 
 	var/k = 1
-	var/gvr = 0 // general vascular resitance
-	var/mcv = 0 // minute circulation volume
+	var/gvr // general vascular resitance
+	var/mcv // minute circulation volume
 	var/mcv_add = 0
 	var/spressure = 120 // systolic pressure
 	var/dpressure = 80 // dyastolic pressure
 	var/mpressure = 93 // medium pressure
+
+	var/oxy = 0 // oxygen amount in blood.
+	var/oxy_last_tick_demand = 0
+	var/oxy_demand = 0
+	var/co2 = 0 // co2 amount in blood avg 200..
+
 	var/perfusion = 1
 
 	var/identifying_gender // In case the human identifies as another gender than it's biological

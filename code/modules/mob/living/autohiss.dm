@@ -31,7 +31,6 @@
 		if(AUTOHISS_FULL)
 			to_chat(src, "Auto-hiss is now FULL.")
 		else
-			soft_assert(0, "invalid autohiss value [autohiss_mode]")
 			autohiss_mode = AUTOHISS_OFF
 			to_chat(src, "Auto-hiss is now OFF.")
 

@@ -28,9 +28,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 	species_language = LANGUAGE_SOL_COMMON
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)	// Prometheans are weird, let's just assume they can use basically any language.
 
-	breath_type = null
-	poison_type = null
-
 	speech_bubble_appearance = "slime"
 
 	male_cough_sounds = list('sound/effects/slime_squish.ogg')
@@ -155,7 +152,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	// Heal remaining damage.
 	if(H.fire_stacks >= 0)
-		if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss())
+		if(H.getBruteLoss() || H.getFireLoss() || H.get_deprivation() || H.getToxLoss())
 			H.adjustBruteLoss(-heal_rate)
 			H.adjustFireLoss(-heal_rate)
 			H.adjustOxyLoss(-heal_rate)

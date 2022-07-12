@@ -72,6 +72,13 @@
 	initialized = TRUE
 	return INITIALIZE_HINT_NORMAL
 
+/atom/proc/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
+	//Purpose: Determines if the object (or airflow) can pass this atom.
+	//Called by: Movement, airflow.
+	//Inputs: The moving atom (optional), target turf, "height" and air group
+	//Outputs: Boolean if can pass.
+	return (!density || (mover && mover.elevation != elevation) || !height || air_group)
+
 // Called after all object's normal initialize() if initialize() returns INITIALIZE_HINT_LATELOAD
 /atom/proc/LateInitialize()
 	return

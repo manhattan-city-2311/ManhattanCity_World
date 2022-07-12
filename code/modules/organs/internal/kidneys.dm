@@ -23,3 +23,5 @@
 		var/pressure_diff = BLOOD_PRESSURE_NORMAL
 		free_up_to_hormone("noradrenaline", pressure_diff / 7 / 2)
 		free_up_to_hormone("adrenaline", pressure_diff / 8 / 2)
+
+	owner.consume_oxygen(0.7 * owner.k)

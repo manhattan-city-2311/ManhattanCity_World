@@ -350,7 +350,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			if(isliving(M))
 				var/mob/living/L = M
 				info["damage"] = list2params(list(
-							oxy = L.getOxyLoss(),
+							oxy = L.get_deprivation(),
 							tox = L.getToxLoss(),
 							fire = L.getFireLoss(),
 							brute = L.getBruteLoss(),

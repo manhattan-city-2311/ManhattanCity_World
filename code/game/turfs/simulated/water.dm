@@ -32,29 +32,7 @@
 
 /turf/simulated/floor/water/get_edge_icon_state()
 	return "water_shallow"
-
-/turf/simulated/floor/water/return_air_for_internal_lifeform(var/mob/living/L)
-	if(L && L.lying)
-		if(L.can_breathe_water()) // For squid.
-			var/datum/gas_mixture/water_breath = new()
-			var/datum/gas_mixture/above_air = return_air()
-			var/amount = 300
-			water_breath.adjust_gas("oxygen", amount) // Assuming water breathes just extract the oxygen directly from the water.
-			water_breath.temperature = above_air.temperature
-			return water_breath
-		else
-			var/gasid = "carbon_dioxide"
-			if(ishuman(L))
-				var/mob/living/carbon/human/H = L
-				if(H.species && H.species.exhale_type)
-					gasid = H.species.exhale_type
-			var/datum/gas_mixture/water_breath = new()
-			var/datum/gas_mixture/above_air = return_air()
-			water_breath.adjust_gas(gasid, BREATH_MOLES) // They have no oxygen, but non-zero moles and temp
-			water_breath.temperature = above_air.temperature
-			return water_breath
-	return return_air() // Otherwise their head is above the water, so get the air from the atmosphere instead.
-
+W
 /turf/simulated/floor/water/Entered(atom/movable/AM, atom/oldloc)
 	if(istype(AM, /mob/living/carbon/human))
 		var/mob/living/carbon/human/L = AM

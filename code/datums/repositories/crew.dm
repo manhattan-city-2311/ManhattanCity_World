@@ -41,7 +41,7 @@ var/global/datum/repository/crew/crew_repository = new()
 					crewmemberData["dead"] = H.stat > UNCONSCIOUS
 
 				if(C.sensor_mode >= SUIT_SENSOR_VITAL)
-					crewmemberData["oxy"] = round(H.getOxyLoss(), 1)
+					crewmemberData["oxy"] = round(H.get_deprivation(), 1)
 					crewmemberData["tox"] = round(H.getToxLoss(), 1)
 					crewmemberData["fire"] = round(H.getFireLoss(), 1)
 					crewmemberData["brute"] = round(H.getBruteLoss(), 1)

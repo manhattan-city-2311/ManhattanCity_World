@@ -54,9 +54,6 @@
 	for(var/atom/A in washing)
 		A.clean_blood()
 
-	for(var/obj/item/I in washing)
-		I.decontaminate()
-
 	//Tanning!
 	for(var/obj/item/stack/material/hairlesshide/HH in washing)
 		var/obj/item/stack/material/wetleather/WL = new(src)

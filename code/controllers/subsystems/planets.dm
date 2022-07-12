@@ -105,14 +105,6 @@ SUBSYSTEM_DEF(planets)
 		if(MC_TICK_CHECK)
 			return
 
-	var/list/needs_temp_update = src.needs_temp_update
-	while(needs_temp_update.len)
-		var/datum/planet/P = needs_temp_update[needs_temp_update.len]
-		needs_temp_update.len--
-		updateTemp(P)
-		if(MC_TICK_CHECK)
-			return
-
 	var/list/currentrun = src.currentrun
 	while(currentrun.len)
 		var/datum/planet/P = currentrun[currentrun.len]
@@ -169,12 +161,6 @@ SUBSYSTEM_DEF(planets)
 	P.sun["lum_g"] = lum_g
 	P.sun["lum_b"] = lum_b
 
-/datum/controller/subsystem/planets/proc/updateTemp(var/datum/planet/P)
-	//Set new temperatures
-	for(var/W in P.planet_walls)
-		var/turf/unsimulated/wall/planetary/wall = W
-		wall.set_temperature(P.weather_holder.temperature)
-		CHECK_TICK
 
 /datum/controller/subsystem/planets/proc/weatherDisco()
 	var/count = 100000

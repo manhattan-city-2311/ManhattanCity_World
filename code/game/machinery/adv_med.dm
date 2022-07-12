@@ -274,7 +274,7 @@
 			occupantData["hasVirus"] = H.virus2.len
 
 			occupantData["bruteLoss"] = H.getBruteLoss()
-			occupantData["oxyLoss"] = H.getOxyLoss()
+			occupantData["oxyLoss"] = H.get_deprivation()
 			occupantData["toxLoss"] = H.getToxLoss()
 			occupantData["fireLoss"] = H.getFireLoss()
 
@@ -436,8 +436,8 @@
 			extra_font = "<font color=[occupant.getBruteLoss() < 60 ? "blue" : "red"]>"
 			dat += "[extra_font]\t-Brute Damage %: [occupant.getBruteLoss()]</font><br>"
 
-			extra_font = "<font color=[occupant.getOxyLoss() < 60 ? "blue" : "red"]>"
-			dat += "[extra_font]\t-Respiratory Damage %: [occupant.getOxyLoss()]</font><br>"
+			extra_font = "<font color=[occupant.get_deprivation() < 60 ? "blue" : "red"]>"
+			dat += "[extra_font]\t-Respiratory Damage %: [occupant.get_deprivation()]</font><br>"
 
 			extra_font = "<font color=[occupant.getToxLoss() < 60 ? "blue" : "red"]>"
 			dat += "[extra_font]\t-Toxin Content %: [occupant.getToxLoss()]</font><br>"

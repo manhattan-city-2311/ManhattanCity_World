@@ -19,7 +19,6 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 	var/no_attack_log = 0			//If it's an item we don't want to log attack_logs with, set this to 1
 	var/fixed_position = FALSE // because for some reason you don't want it adjusting when you click on tables???
 	pass_flags = PASSTABLE
-	pressure_resistance = 5
 //	causeerrorheresoifixthis
 	var/obj/item/master = null
 	var/list/origin_tech = null	//Used by R&D to determine what research bonuses it grants.

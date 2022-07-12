@@ -8,7 +8,6 @@ GLOBAL_LIST_BOILERPLATE(all_mopbuckets, /obj/structure/mopbucket)
 	density = 1
 	climbable = 1
 	w_class = ITEMSIZE_NORMAL
-	pressure_resistance = 5
 	flags = OPENCONTAINER
 	var/amount_per_transfer_from_this = 5	//shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
 

@@ -16,11 +16,11 @@
 						src.break_tile_to_plating()
 					else
 						src.break_tile()
-					src.hotspot_expose(1000,CELL_VOLUME)
+					//src.hotspot_expose(1000,CELL_VOLUME)
 		if(3.0)
 			if (prob(50))
 				src.break_tile()
-				src.hotspot_expose(1000,CELL_VOLUME)
+				//src.hotspot_expose(1000,CELL_VOLUME)
 	return
 
 /turf/simulated/floor/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)

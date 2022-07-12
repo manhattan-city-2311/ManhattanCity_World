@@ -164,7 +164,6 @@
 	..()
 
 /obj/item/projectile/beam/lightning/slime
-	power = 10
 	fire_sound = 'sound/effects/lightningbolt.ogg'
 
 
@@ -189,10 +188,9 @@
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/proc/ignite()
 	visible_message(span("critical", "\The [src] erupts in an inferno!"))
-	for(var/turf/simulated/target_turf in view(2, src))
-		target_turf.assume_gas("phoron", 30, 1500+T0C)
-		spawn(0)
-			target_turf.hotspot_expose(1500+T0C, 400)
+	//for(var/turf/simulated/target_turf in view(2, src))
+		//spawn(0)
+			//target_turf.hotspot_expose(1500+T0C, 400)
 	qdel(src)
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/ex_act(severity)
@@ -724,7 +722,6 @@
 	for(var/mob/living/L in view(src, 2))
 		if(L.stat == DEAD || !IIsAlly(L))
 			continue
-		L.add_modifier(/datum/modifier/technomancer/haste, 5 SECONDS, src)
 
 
 /mob/living/simple_mob/slime/xenobio/light_pink

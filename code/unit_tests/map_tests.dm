@@ -107,25 +107,3 @@
 		pass("All \[[wire_test_count]\] wires had no overlapping cables going the same direction.")
 
 	return 1
-
-/* //Not necessary
-/datum/unit_test/active_edges
-	name = "MAP: Active edges (all maps)"
-
-/datum/unit_test/active_edges/start_test()
-
-	var/active_edges = air_master.active_edges.len
-	var/list/edge_log = list()
-	if(active_edges)
-		for(var/connection_edge/E in air_master.active_edges)
-			edge_log += "Active Edge [E] ([E.type])"
-			for(var/turf/T in E.connecting_turfs)
-				edge_log += "+--- Connecting Turf [T] @ [T.x], [T.y], [T.z]"
-
-	if(active_edges)
-		fail("Maps contained [active_edges] active edges at round-start.\n" + edge_log.Join("\n"))
-	else
-		pass("No active edges.")
-
-	return 1
-*/

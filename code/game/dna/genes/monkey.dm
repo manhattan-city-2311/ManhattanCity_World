@@ -68,7 +68,8 @@
 	O.real_name = text("monkey ([])",copytext(md5(M.real_name), 2, 6))
 	O.take_overall_damage(M.getBruteLoss() + 40, M.getFireLoss())
 	O.adjustToxLoss(M.getToxLoss() + 20)
-	O.adjustOxyLoss(M.getOxyLoss())
+	O.oxy = M.oxy
+	O.co2 = M.co2
 	O.stat = M.stat
 	O.a_intent = I_HURT
 	for (var/obj/item/weapon/implant/I in implants)
@@ -153,7 +154,8 @@
 	O.UpdateAppearance()
 	O.take_overall_damage(M.getBruteLoss(), M.getFireLoss())
 	O.adjustToxLoss(M.getToxLoss())
-	O.adjustOxyLoss(M.getOxyLoss())
+	O.oxy = M.oxy
+	O.co2 = M.co2
 	O.stat = M.stat
 	for (var/obj/item/weapon/implant/I in implants)
 		I.loc = O

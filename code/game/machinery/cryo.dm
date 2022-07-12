@@ -111,7 +111,7 @@
 		occupantData["maxHealth"] = occupant.getMaxHealth()
 		occupantData["minHealth"] = config.health_threshold_dead
 		occupantData["bruteLoss"] = occupant.getBruteLoss()
-		occupantData["oxyLoss"] = occupant.getOxyLoss()
+		occupantData["oxyLoss"] = occupant.get_deprivation()
 		occupantData["toxLoss"] = occupant.getToxLoss()
 		occupantData["fireLoss"] = occupant.getFireLoss()
 		occupantData["bodyTemperature"] = occupant.bodytemperature
@@ -235,7 +235,7 @@
 			occupant.sleeping = max(5, (1/occupant.bodytemperature)*2000)
 			occupant.Paralyse(max(5, (1/occupant.bodytemperature)*3000))
 			if(air_contents.gas["oxygen"] > 2)
-				if(occupant.getOxyLoss()) occupant.adjustOxyLoss(-1)
+				if(occupant.get_deprivation()) occupant.adjustOxyLoss(-1)
 			else
 				occupant.adjustOxyLoss(-1)
 			//severe damage should heal waaay slower without proper chemicals

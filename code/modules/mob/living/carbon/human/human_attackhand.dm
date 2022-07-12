@@ -119,9 +119,8 @@
 					if(!L)
 						continue
 					for(var/i2 in 1 to acls_quality)
-						var/datum/gas_mixture/breath = H.get_breath_from_environment()
-						var/fail = L.handle_breath(breath, 1)
-						if(!fail && prob(20))
+						L.handle_breath()
+						if(prob(20))
 							to_chat(src, SPAN_NOTICE("You feel a breath of fresh air enter your lungs. It feels so good."))
 
 				if(is_precordial_blow && is_vfib())
@@ -138,7 +137,7 @@
 
 					if(prob(5 + 5 * acls_quality))
 						heart.get_ow_arrythmia()?.weak(heart)
-					
+
 					// TODO: add precordial blow function.
 
 		if(I_GRAB)

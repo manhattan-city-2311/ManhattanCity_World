@@ -37,11 +37,10 @@
 		set_opacity(1)
 	if(material.products_need_process())
 		processing_objects |= src
-	update_nearby_tiles(need_rebuild=1)
 
 /obj/structure/simple_door/Destroy()
 	processing_objects -= src
-	update_nearby_tiles()
+
 	return ..()
 
 /obj/structure/simple_door/get_material()
@@ -103,7 +102,7 @@
 	state = 1
 	update_icon()
 	isSwitchingStates = 0
-	update_nearby_tiles()
+
 
 /obj/structure/simple_door/proc/Close()
 	isSwitchingStates = 1
@@ -115,7 +114,7 @@
 	state = 0
 	update_icon()
 	isSwitchingStates = 0
-	update_nearby_tiles()
+
 
 /obj/structure/simple_door/update_icon()
 	if(state)
@@ -206,6 +205,6 @@
 /obj/structure/simple_door/cult/TryToSwitchState(atom/user)
 	if(isliving(user))
 		var/mob/living/L = user
-		if(!iscultist(L) && !istype(L, /mob/living/simple_mob/construct))
+		if(!istype(L, /mob/living/simple_mob/construct))
 			return
 	..()

@@ -41,13 +41,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(isliving(loc))
 		var/mob/living/M = loc
 		M.IgniteMob()
-	var/turf/location = get_turf(src)
 	smoketime--
 	if(smoketime < 1)
 		burn_out()
-		return
-	if(location)
-		location.hotspot_expose(700, 5)
 		return
 
 /obj/item/weapon/flame/match/dropped(mob/user as mob)
@@ -55,9 +51,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	//not before lighting up the turf we land on, though.
 	if(lit)
 		spawn(0)
-			var/turf/location = src.loc
-			if(istype(location))
-				location.hotspot_expose(700, 5)
 			burn_out()
 	return ..()
 
@@ -113,14 +106,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			reagents.remove_any(REM)
 
 /obj/item/clothing/mask/smokable/process()
-	var/turf/location = get_turf(src)
+	//var/turf/location = get_turf(src)
 	smoke(1)
 	if(smoketime < 1)
 		playsound(src.loc, 'sound/items/cigs_lighters/cig_snuff.ogg', 50, 1)
 		die()
 		return
-	if(location)
-		location.hotspot_expose(700, 5)
+	//if(location)
+		//location.hotspot_expose(700, 5)
 
 /obj/item/clothing/mask/smokable/update_icon()
 	if(lit)
@@ -651,11 +644,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else
 		..()
 
-/obj/item/weapon/flame/lighter/process()
-	var/turf/location = get_turf(src)
-	if(location)
-		location.hotspot_expose(700, 5)
-	return
+///obj/item/weapon/flame/lighter/process()
 
 //Here we add Zippo skins.
 

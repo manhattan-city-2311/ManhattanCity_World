@@ -3,7 +3,6 @@
 #define BLOOD_PERFUSION_BAD     0.60
 #define BLOOD_PERFUSION_SURVIVE 0.40
 
-#define BLOOD_MCV_NORMAL 4500
 #define BLOOD_PRESSURE_LCRITICAL 65
 #define BLOOD_PRESSURE_L2BAD 70
 #define BLOOD_PRESSURE_LBAD 80
@@ -41,3 +40,7 @@
 #define ARRYTHMIA_EXTRASYSTOLIC "extrasystolic"
 
 #define HUMAN_MAX_OXYLOSS 1
+
+// We dont care about too low CO2 levels.
+// ml/L
+#define CO2_LEVEL_NORMAL 25

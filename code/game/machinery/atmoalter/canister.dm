@@ -14,7 +14,6 @@
 	var/canister_color = "yellow"
 	var/can_label = 1
 	start_pressure = 45 * ONE_ATMOSPHERE
-	pressure_resistance = 7 * ONE_ATMOSPHERE
 	var/temperature_resistance = 1000 + T0C
 	volume = 1000
 	use_power = 0
@@ -211,8 +210,6 @@ update_flag
 	else
 		can_label = 0
 
-	air_contents.react() //cooking up air cans - add phoron and oxygen, then heat above PHORON_MINIMUM_BURN_TEMPERATURE
-
 /obj/machinery/portable_atmospherics/canister/return_air()
 	return air_contents
 
@@ -399,18 +396,6 @@ update_flag
 	src.update_icon()
 	return 1
 
-//Dirty way to fill room with gas. However it is a bit easier to do than creating some floor/engine/n2o -rastaf0
-/obj/machinery/portable_atmospherics/canister/sleeping_agent/roomfiller/New()
-	..()
-	air_contents.gas["sleeping_agent"] = 9*4000
-	spawn(10)
-		var/turf/simulated/location = src.loc
-		if (istype(src.loc))
-			while (!location.air)
-				sleep(10)
-			location.assume_air(air_contents)
-			air_contents = new
-	return 1
 
 /obj/machinery/portable_atmospherics/canister/nitrogen/New()
 

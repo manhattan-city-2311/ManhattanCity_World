@@ -41,9 +41,6 @@
 
 	virus_immune = 1
 
-	breath_type = null
-	poison_type = null
-
 	vision_flags = SEE_SELF|SEE_MOBS
 
 	has_organ = list(
@@ -130,7 +127,7 @@
 		mend_prob = 1
 
 	//first heal damages
-	if (H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss())
+	if (H.getBruteLoss() || H.getFireLoss() || H.get_deprivation() || H.getToxLoss())
 		H.adjustBruteLoss(-heal_rate)
 		H.adjustFireLoss(-heal_rate)
 		H.adjustOxyLoss(-heal_rate)

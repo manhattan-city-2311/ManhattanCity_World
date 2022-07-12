@@ -46,8 +46,6 @@
 	speech_sounds = list('sound/voice/zombie_groan.ogg')
 	death_sound = 'sound/voice/zombie_groan.ogg'
 	gluttonous = 1
-	breath_type = null
-	poison_type = null
 	warning_low_pressure = 0
 	hazard_low_pressure = 0
 	cold_level_1 = -1
@@ -100,7 +98,7 @@
 /datum/species/zombie/handle_environment_special(var/mob/living/carbon/human/H)
 	// Heal remaining damage.
 	if(H.fire_stacks >= 0)
-		if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss())
+		if(H.getBruteLoss() || H.getFireLoss() || H.get_deprivation() || H.getToxLoss())
 			H.adjustBruteLoss(-heal_rate)
 			H.adjustFireLoss(-heal_rate)
 			H.adjustOxyLoss(-heal_rate)

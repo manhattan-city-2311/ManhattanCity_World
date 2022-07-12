@@ -10,7 +10,7 @@
 	var/turf/space/T = locate()
 
 	H = new(T)
-	startOxyloss = H.getOxyLoss()
+	startOxyloss = H.get_deprivation()
 
 	return 1
 
@@ -18,7 +18,7 @@
 	if(H.life_tick < 10)
 		return 0
 
-	endOxyloss = H.getOxyLoss()
+	endOxyloss = H.get_deprivation()
 
 	if(startOxyloss < endOxyloss)
 		pass("Human mob takes oxygen damage in space. (Before: [startOxyloss]; after: [endOxyloss])")

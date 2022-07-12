@@ -305,11 +305,6 @@
 	mymob.ling_chem_display.icon_state = "ling_chems"
 	hud_elements |= mymob.ling_chem_display
 
-	mymob.wiz_instability_display = new /obj/screen/wizard/instability()
-	mymob.wiz_instability_display.screen_loc = ui_wiz_instability_display
-	mymob.wiz_instability_display.icon_state = "wiz_instability_none"
-	hud_elements |= mymob.wiz_instability_display
-
 	mymob.wiz_energy_display = new/obj/screen/wizard/energy()
 	mymob.wiz_energy_display.screen_loc = ui_wiz_energy_display
 	mymob.wiz_energy_display.icon_state = "wiz_energy"

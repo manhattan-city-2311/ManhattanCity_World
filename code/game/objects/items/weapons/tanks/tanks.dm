@@ -351,7 +351,6 @@ var/list/global/tank_gauge_cache = list()
 
 /obj/item/weapon/tank/process()
 	//Allow for reactions
-	air_contents.react() //cooking up air tanks - add phoron and oxygen, then heat above PHORON_MINIMUM_BURN_TEMPERATURE
 	if(gauge_icon)
 		update_gauge()
 	check_status()
@@ -407,11 +406,6 @@ var/list/global/tank_gauge_cache = list()
 				message_admins("Explosive tank rupture! last key to touch the tank was [src.fingerprintslast].")
 				log_game("Explosive tank rupture! last key to touch the tank was [src.fingerprintslast].")
 
-			//Give the gas a chance to build up more pressure through reacting
-			air_contents.react()
-			air_contents.react()
-			air_contents.react()
-
 			pressure = air_contents.return_pressure()
 			var/strength = ((pressure-TANK_FRAGMENT_PRESSURE)/TANK_FRAGMENT_SCALE)
 
@@ -421,7 +415,7 @@ var/list/global/tank_gauge_cache = list()
 
 
 			var/turf/simulated/T = get_turf(src)
-			T.hotspot_expose(src.air_contents.temperature, 70, 1)
+			////T.hotspot_expose(src.air_contents.temperature, 70, 1)
 			if(!T)
 				return
 
@@ -456,8 +450,6 @@ var/list/global/tank_gauge_cache = list()
 		log_debug("<span class='warning'>[x],[y] tank is rupturing: [pressure] kPa, integrity [integrity]</span>")
 		#endif
 
-		air_contents.react()
-
 		if(integrity <= 0)
 			var/turf/simulated/T = get_turf(src)
 			if(!T)
@@ -465,7 +457,7 @@ var/list/global/tank_gauge_cache = list()
 			T.assume_air(air_contents)
 			playsound(get_turf(src), 'sound/weapons/shotgun.ogg', 20, 1)
 			visible_message("\icon[src] <span class='danger'>\The [src] flies apart!</span>", "<span class='warning'>You hear a bang!</span>")
-			T.hotspot_expose(air_contents.temperature, 70, 1)
+			////T.hotspot_expose(air_contents.temperature, 70, 1)
 
 
 			var/strength = 1+((pressure-TANK_LEAK_PRESSURE)/TANK_FRAGMENT_SCALE)

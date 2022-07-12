@@ -16,7 +16,7 @@
 	siemens_coefficient = 0.9
 	species_restricted = list("exclude",SPECIES_DIONA)
 	preserve_item = 1
-	phoronproof = 1
+	
 	flash_protection = FLASH_PROTECTION_MAJOR
 	valid_accessory_slots = null
 
@@ -64,7 +64,7 @@
 	siemens_coefficient = 0.9
 	species_restricted = list("exclude",SPECIES_DIONA)
 	preserve_item = 1
-	phoronproof = 1
+	
 
 	var/list/supporting_limbs //If not-null, automatically splints breaks. Checked when removing the suit.
 

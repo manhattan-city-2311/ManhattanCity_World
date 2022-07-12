@@ -414,7 +414,7 @@
 	else
 		if(isliving(implanted))
 			var/mob/living/L = implanted
-			healthstring = "[round(L.getOxyLoss())] - [round(L.getFireLoss())] - [round(L.getToxLoss())] - [round(L.getBruteLoss())]"
+			healthstring = "[round(L.get_deprivation())] - [round(L.getFireLoss())] - [round(L.getToxLoss())] - [round(L.getBruteLoss())]"
 		if(!healthstring)
 			healthstring = "ERROR"
 		return healthstring

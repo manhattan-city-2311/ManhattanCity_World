@@ -82,12 +82,12 @@
 
 /obj/item/slime_crystal/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
 	target.visible_message("<span class='warning'>\The [target] has been teleported with \the [src] by \the [user]!</span>")
-	safe_blink(target, 14)
+	//safe_blink(target, 14)
 	qdel(src)
 
 /obj/item/slime_crystal/attack_self(mob/user)
 	user.visible_message("<span class='warning'>\The [user] teleports themselves with \the [src]!</span>")
-	safe_blink(user, 14)
+	//safe_blink(user, 14)
 	qdel(src)
 
 /obj/item/slime_crystal/throw_impact(atom/movable/AM)
@@ -98,7 +98,7 @@
 		return
 
 	AM.visible_message("<span class='warning'>\The [AM] has been teleported with \the [src]!</span>")
-	safe_blink(AM, 14)
+	//Ksafe_blink(AM, 14)
 	qdel(src)
 
 /obj/item/weapon/disposable_teleporter/slime
@@ -107,7 +107,6 @@
 	description_info = "This will teleport you to a specific area once, when used in-hand."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "slime_crystal_large"
-	uses = 1
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 4)
 

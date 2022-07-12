@@ -92,12 +92,6 @@
 		"<span class='danger'>No more blood... Please.</span>"
 		)
 
-/datum/modifier/trait/phobia/haemophobia/check_if_valid()
-	if(iscultist(holder)) // Nar-nar can't be having cultists afraid of blood.
-		expire()
-	else
-		..()
-
 /datum/modifier/trait/phobia/haemophobia/should_fear()
 	if(holder.blinded)
 		return 0 // Can't fear what cannot be seen.
@@ -439,8 +433,6 @@
 
 		if(istype(thing, /mob/living/carbon/human))
 			var/mob/living/carbon/human/S = thing
-			if(istype(S.species, /datum/species/skrell)) //Skrell ARE slimey.
-				fear_amount += 1
 			if(istype(S.species, /datum/species/shapeshifter/promethean))
 				fear_amount += 4
 
@@ -531,139 +523,3 @@
 
 
 	return fear_amount
-
-
-// Note for the below 'phobias' are of the xeno-phobic variety, and are less centered on pure fear as above, and more on a mix of distrust, fear, and disdainfulness.
-// As such, they are mechanically different than the fear-based phobias, in that instead of a buildup of fearful messages, it does intermittent messages specific to what holder sees.
-
-// This is the catch-all 'everyone but [my species] is up to no good' trait, as opposed to the other specialized variants.
-/datum/modifier/trait/phobia/xenophobia
-	name = "xenophobia"
-	desc = "The mind of the Alien is unknowable, and as such, their intentions cannot be known.  You always watch the xenos closely, as they most certainly are watching you \
-	closely, waiting to strike."
-
-	on_created_text = "<span class='warning'>You remain vigilant against the Alien.</span>"
-	on_expired_text = "<span class='notice'>Aliens aren't so bad after all.</span>"
-
-	var/last_message = null	// world.time we last did a message.
-	var/message_cooldown = 1 MINUTE
-
-/datum/modifier/trait/phobia/xenophobia/tick()
-	if(holder.stat)
-		return // You got bigger problems.
-	if(last_message + message_cooldown <= world.time)
-		if(intermittent_message())
-			last_message = world.time
-
-/datum/modifier/trait/phobia/xenophobia/proc/intermittent_message()
-	var/list/xenos = get_xenos()
-
-	if(xenos.len)
-		var/chosen_xeno = pick(xenos)
-		to_chat(holder, "<span class='warning'><font size='3'>[make_message(chosen_xeno)]</font></span>")
-		return TRUE
-	else
-		return FALSE // No xenos in sight, so don't apply the cooldown.
-
-/datum/modifier/trait/phobia/xenophobia/proc/get_xenos()
-	return list()
-
-
-/datum/modifier/trait/phobia/xenophobia/proc/make_message(var/mob/living/L)
-	return "Someone forgot to override this output message."
-
-
-// This is the catch-all 'everyone but [my species] is up to no good' trait, as opposed to the other specialized variants.
-/datum/modifier/trait/phobia/xenophobia/generic
-	name = "xenophobia"
-	desc = "The mind of the Alien is unknowable, and as such, their intentions cannot be known.  You always watch the xenos closely, as they most certainly are watching you \
-	closely, waiting to strike."
-
-	on_created_text = "<span class='warning'>You remain vigilant against the Alien.</span>"
-	on_expired_text = "<span class='notice'>Aliens aren't so bad afterall.</span>"
-
-/datum/modifier/trait/phobia/xenophobia/generic/get_xenos()
-	var/list/xenos = list()
-	if(!ishuman(holder))
-		return
-	var/mob/living/carbon/human/us = holder
-	for(var/mob/living/carbon/human/H in view(5, holder)) // See haemophobia for why this is 5.
-		if(!(istype(us.species, H.species) )) // Are they a different species?
-			xenos += H
-	return xenos
-
-/datum/modifier/trait/phobia/xenophobia/generic/make_message(var/mob/living/carbon/human/H)
-	// Do special responses first if possible.
-//	if(H.stat == DEAD)
-//		return pick( list("Unsurprising to see a weak and inferior [H.species.name] fail to survive.", "If that [H.species.name] were a [holder.species.name], this wouldn't've have happened.") )
-
-	// Generic responses if none of the above apply.
-	var/list/generic_responses = list(
-		"That [H.species.name] is likely trying to spy on you.",
-		"[H.species.name_plural] tend to be ugly, but this one near you is even worse!",
-		"[H.species.name] scum.",
-		"The [H.species.name] nearby is certainly a spy for Them.",
-		"That [H.species.name] smells awful.",
-		"Can't trust [H.species.name_plural]."
-		)
-	return pick(generic_responses)
-
-
-// *********
-// * Human *
-// *********
-
-/datum/modifier/trait/phobia/xenophobia/human
-	name = "anti-human sentiment"
-	desc = "Humans are bound to get us all killed with their reckless use of technology..."
-
-	on_created_text = "<span class='warning'>You unfortunately are likely to have to deal with humans today.</span>"
-	on_expired_text = "<span class='notice'>Humans aren't so bad after all.</span>"
-
-/datum/modifier/trait/phobia/xenophobia/human/get_xenos()
-	var/list/humans = list()
-	for(var/mob/living/carbon/human/H in view(5, holder)) // See haemophobia for why this is 5.
-		if(H == holder)
-			continue // No self loathing here.
-		if(istype(H.species, /datum/species/human) ) // Are they a human.
-			humans += H
-	return humans
-
-/datum/modifier/trait/phobia/xenophobia/human/make_message(var/mob/living/carbon/human/H)
-	// Do special responses first if possible.
-
-	// Generic responses if none of the above apply.
-	var/list/generic_responses = list(
-		"Why did you travel to human space?  It's full of them."
-		)
-	return pick(generic_responses)
-
-// **********
-// * Skrell *
-// **********
-
-/datum/modifier/trait/phobia/xenophobia/skrell
-	name = "anti-skrell sentiment"
-	desc = "The Skrell pretend that they are Humanity's enlightened allies, but you can see past that."
-
-	on_created_text = "<span class='warning'>Hopefully no Skrell show up today.</span>"
-	on_expired_text = "<span class='notice'>Skrell aren't so bad after all.</span>"
-
-/datum/modifier/trait/phobia/xenophobia/skrell/get_xenos()
-	var/list/skrell = list()
-	for(var/mob/living/carbon/human/H in view(5, holder)) // See haemophobia for why this is 5.
-		if(H == holder)
-			continue // No self loathing here.
-		if(istype(H.species, /datum/species/skrell) ) // Are they a squid now?
-			skrell += H
-	return skrell
-
-/datum/modifier/trait/phobia/xenophobia/skrell/make_message(var/mob/living/carbon/human/H)
-	// Do special responses first if possible.
-
-	// Generic responses if none of the above apply.
-	var/list/generic_responses = list(
-		"WetSkrell was a mistake."
-		)
-	return pick(generic_responses)
-

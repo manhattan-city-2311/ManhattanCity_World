@@ -51,7 +51,7 @@
 	below = GetBelow(src)
 	turf_changed_event.register(below, src)
 	levelupdate()
-	below.update_icon() // So the 'ceiling-less' overlay gets added.
+	below?.update_icon() // So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
 		A.fall()
 	OS_controller.add_turf(src, 1)

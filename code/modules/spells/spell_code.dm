@@ -193,11 +193,6 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	if(spell_flags & Z2NOCAST && (user_turf.z in using_map.admin_levels)) //Certain spells are not allowed on the CentCom zlevel
 		return 0
 
-	if(spell_flags & CONSTRUCT_CHECK)
-		for(var/turf/T in range(holder, 1))
-			if(findNullRod(T))
-				return 0
-
 	if(istype(user, /mob/living/simple_mob) && holder == user)
 		var/mob/living/simple_mob/SM = user
 		if(SM.purge)

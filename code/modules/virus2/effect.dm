@@ -132,7 +132,7 @@
 	mob.suiciding = 30
 	//instead of killing them instantly, just put them at -175 health and let 'em gasp for a while
 	viewers(mob) << "<font color='red'><b>[mob.name] is holding [TM.his] breath. It looks like [TM.he] [TM.is] trying to commit suicide.</b></font>"
-	mob.adjustOxyLoss(175 - mob.getToxLoss() - mob.getFireLoss() - mob.getBruteLoss() - mob.getOxyLoss())
+	mob.adjustOxyLoss(175 - mob.getToxLoss() - mob.getFireLoss() - mob.getBruteLoss() - mob.get_deprivation())
 	mob.updatehealth()
 
 /datum/disease2/effect/killertoxins

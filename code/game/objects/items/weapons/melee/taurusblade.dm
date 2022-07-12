@@ -28,32 +28,6 @@
 		return 1
 	return 0
 
-/obj/item/weapon/melee/taurusblade/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/device/soulstone))
-		var/mob/living/simple_mob/construct/A = locate() in W
-		if(!A)
-			to_chat(user,"<span class='notice'>\The [W] does nothing to \the [src]</span>")
-		else
-			maturity += 5
-			user.visible_message("<span class='danger'>[user]'s [W] glows menacingly and shatters as [A] is pulled out of \the [W] and into \the [src].</span>", \
-			"<span class='danger'>Your [W] glows menacingly and shatters as [A] is pulled out of \the [W] and into \the [src].</span>")
-			playsound(user.loc, 'sound/hallucinations/wail.ogg', 50, 1)
-			user.drop_item()
-			qdel(W)
-
-	if(istype(W, /obj/item/weapon/melee/cursedblade))
-		var/obj/item/weapon/melee/cursedblade/CB = W
-		if(!CB.voice_mobs)
-			to_chat(user,"<span class='notice'>\The [W] does nothing to \the [src]</span>")
-		else
-			maturity += 15
-			user.visible_message("<span class='danger'>[user]'s [W] glows menacingly and shatters as the soul inside is pulled out of [W] and into \the [src].</span>", \
-			"<span class='danger'>Your [W] glows menacingly and shatters as the soul inside is pulled out of [W] and into \the [src].</span>")
-			playsound(user.loc, 'sound/hallucinations/wail.ogg', 50, 1)
-			user.drop_item()
-			qdel(W)
-			new /obj/item/device/soulstone(get_turf(user))
-
 /obj/item/weapon/melee/taurusblade/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='danger'>[user] is falling on \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")

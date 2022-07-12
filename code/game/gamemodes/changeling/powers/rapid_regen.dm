@@ -28,7 +28,6 @@
 		spawn(0)
 			C.adjustBruteLoss(-healing_amount)
 			C.adjustFireLoss(-healing_amount)
-			C.adjustOxyLoss(-healing_amount)
 			C.adjustCloneLoss(-healing_amount)
 			C.adjustBrainLoss(-healing_amount)
 			C.restore_blood()

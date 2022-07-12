@@ -7,8 +7,6 @@
 	icon_state = "rift"
 
 	move_self = 0
-	announce=0
-	cause_hell=0
 
 	plane = PLANE_LIGHTING_ABOVE // ITS SO BRIGHT
 
@@ -26,9 +24,6 @@
 		if(M.client)
 			M.see_rift(src)
 	eat()
-
-/obj/singularity/narsie/large/exit/acquire(var/mob/food)
-	return
 
 /obj/singularity/narsie/large/exit/consume(const/atom/A)
 	if(!(A.singuloCanEat()))

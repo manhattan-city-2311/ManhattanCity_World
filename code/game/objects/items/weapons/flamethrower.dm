@@ -41,8 +41,8 @@
 		var/mob/living/M = location
 		if(M.item_is_in_hands(src))
 			location = M.loc
-	if(isturf(location)) //start a fire if possible
-		location.hotspot_expose(700, 2)
+	//if(isturf(location)) //start a fire if possible
+		////location.hotspot_expose(700, 2)
 	return
 
 
@@ -193,9 +193,9 @@
 	air_transfer.gas["phoron"] = 0
 	target.assume_air(air_transfer)
 	//Burn it based on transfered gas
-	//target.hotspot_expose(part4.air_contents.temperature*2,300)
-	target.hotspot_expose((ptank.air_contents.temperature*2) + 380,500) // -- More of my "how do I shot fire?" dickery. -- TLE
-	//location.hotspot_expose(1000,500,1)
+	////target.hotspot_expose(part4.air_contents.temperature*2,300)
+	////target.hotspot_expose((ptank.air_contents.temperature*2) + 380,500) // -- More of my "how do I shot fire?" dickery. -- TLE
+	////location.hotspot_expose(1000,500,1)
 	return
 
 /obj/item/weapon/flamethrower/full/New(var/loc)

@@ -147,7 +147,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/night/vox
 	name = "Alien Optics"
 	species_restricted = list("Vox")
-	phoronproof = 1
+	
 
 /obj/item/clothing/glasses/night/New()
 	..()

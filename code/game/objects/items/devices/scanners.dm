@@ -69,8 +69,8 @@ HALOGEN COUNTER	- Radcount on mobs
 		user.show_message(dat, 1)
 		return
 
-	var/fake_oxy = max(rand(1,40), M.getOxyLoss(), (300 - (M.getToxLoss() + M.getFireLoss() + M.getBruteLoss())))
-	var/OX = M.getOxyLoss() > 50 	? 	"<b>[M.getOxyLoss()]</b>" 		: M.getOxyLoss()
+	var/fake_oxy = max(rand(1,40), M.get_deprivation(), (300 - (M.getToxLoss() + M.getFireLoss() + M.getBruteLoss())))
+	var/OX = M.get_deprivation() > 50 	? 	"<b>[M.get_deprivation()]</b>" 		: M.get_deprivation()
 	var/TX = M.getToxLoss() > 50 	? 	"<b>[M.getToxLoss()]</b>" 		: M.getToxLoss()
 	var/BU = M.getFireLoss() > 50 	? 	"<b>[M.getFireLoss()]</b>" 		: M.getFireLoss()
 	var/BR = M.getBruteLoss() > 50 	? 	"<b>[M.getBruteLoss()]</b>" 	: M.getBruteLoss()
@@ -125,7 +125,7 @@ HALOGEN COUNTER	- Radcount on mobs
 			dat += "<span class='notice'>    Limbs are OK.</span><br>"
 
 	// Other general warnings.
-	if(M.getOxyLoss() > 50)
+	if(M.get_deprivation() > 50)
 		dat += "<font color='blue'><b>Severe oxygen deprivation detected.</b></font>"
 	if(M.getToxLoss() > 50)
 		dat += "<font color='green'><b>Major systemic organ failure detected.</b></font>"

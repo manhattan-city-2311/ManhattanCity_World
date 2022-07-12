@@ -323,34 +323,6 @@
 	return 1
 
 
-/datum/gas_mixture/proc/react()
-	zburn(null, force_burn=0, no_check=0) //could probably just call zburn() here with no args but I like being explicit.
-
-
-//Rechecks the gas_mixture and adjusts the graphic list if needed.
-//Two lists can be passed by reference if you need know specifically which graphics were added and removed.
-/datum/gas_mixture/proc/check_tile_graphic(list/graphic_add = null, list/graphic_remove = null)
-	var/list/cur_graphic = graphic // Cache for sanic speed
-	for(var/g in gas_data.overlay_limit)
-		if(cur_graphic && cur_graphic.Find(gas_data.tile_overlay[g]))
-			//Overlay is already applied for this gas, check if it's still valid.
-			if(gas[g] <= gas_data.overlay_limit[g])
-				LAZYADD(graphic_remove, gas_data.tile_overlay[g])
-		else
-			//Overlay isn't applied for this gas, check if it's valid and needs to be added.
-			if(gas[g] > gas_data.overlay_limit[g])
-				LAZYADD(graphic_add, gas_data.tile_overlay[g])
-
-	. = 0
-	//Apply changes
-	if(LAZYLEN(graphic_add))
-		LAZYADD(graphic, graphic_add)
-		. = 1
-	if(LAZYLEN(graphic_remove))
-		LAZYREMOVE(graphic, graphic_remove)
-		. = 1
-
-
 //Simpler version of merge(), adjusts gas amounts directly and doesn't account for temperature or group_multiplier.
 /datum/gas_mixture/proc/add(datum/gas_mixture/right_side)
 	for(var/g in right_side.gas)
@@ -463,9 +435,6 @@
 		if(total_heat_capacity > 0)
 			combined.temperature = total_thermal_energy / total_heat_capacity
 		combined.update_values()
-
-		//Allow for reactions
-		combined.react()
 
 		//Average out the gases
 		for(var/g in combined.gas)

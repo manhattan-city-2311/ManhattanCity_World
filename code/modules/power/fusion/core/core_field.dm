@@ -31,7 +31,6 @@
 	var/list/ignore_types = list(
 		/obj/item/projectile,
 		/obj/effect,
-		/obj/fire,
 		/obj/structure/cable,
 		/obj/machinery/atmospherics,
 		/obj/machinery/air_sensor,
@@ -303,7 +302,7 @@
 		plasma.temperature = (plasma_temperature/2)
 		plasma.update_values()
 		T.assume_air(plasma)
-		T.hotspot_expose(plasma_temperature)
+		//T.hotspot_expose(plasma_temperature)
 		plasma = null
 
 	// Radiate all our unspent fuel and energy.
@@ -631,7 +630,7 @@
 			plasma.temperature = (plasma_temperature/2)
 			plasma.update_values()
 			TT.assume_air(plasma)
-			TT.hotspot_expose(plasma_temperature)
+			//TT.hotspot_expose(plasma_temperature)
 			plasma = null
 	Destroy()
 	return
@@ -647,7 +646,7 @@
 		plasma.temperature = (plasma_temperature/2)
 		plasma.update_values()
 		TT.assume_air(plasma)
-		TT.hotspot_expose(plasma_temperature)
+		//TT.hotspot_expose(plasma_temperature)
 		plasma = null
 	Destroy()
 	owned_core.Shutdown()

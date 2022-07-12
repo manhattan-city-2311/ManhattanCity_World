@@ -46,12 +46,9 @@ obj/structure/windoor_assembly/New(Loc, start_dir=NORTH, constructed=0)
 		else //If the user is facing northeast. northwest, southeast, southwest or north, default to north
 			set_dir(NORTH)
 	update_state()
-
-	update_nearby_tiles(need_rebuild=1)
-
 obj/structure/windoor_assembly/Destroy()
 	density = 0
-	update_nearby_tiles()
+	
 	..()
 
 /obj/structure/windoor_assembly/update_icon()
@@ -309,16 +306,9 @@ obj/structure/windoor_assembly/Destroy()
 	if (src.anchored)
 		to_chat(usr,"It is fastened to the floor; therefore, you can't rotate it!")
 		return 0
-	if(src.state != "01")
-		update_nearby_tiles(need_rebuild=1) //Compel updates before
-
 	src.set_dir(turn(src.dir, 270))
 
-	if(src.state != "01")
-		update_nearby_tiles(need_rebuild=1)
-
 	update_icon()
-	return
 
 //Flips the windoor assembly, determines whather the door opens to the left or the right
 /obj/structure/windoor_assembly/verb/flip()
@@ -334,4 +324,3 @@ obj/structure/windoor_assembly/Destroy()
 		to_chat(usr,"The windoor will now slide to the left.")
 
 	update_icon()
-	return

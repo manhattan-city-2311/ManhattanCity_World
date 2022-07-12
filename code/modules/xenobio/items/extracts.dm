@@ -342,12 +342,6 @@
 			if(!istype(T))
 				return
 
-			for(var/turf/simulated/target_turf in view(2, T))
-				target_turf.assume_gas("volatile_fuel", 33, 1500+T0C)
-				target_turf.assume_gas("oxygen", 66, 1500+T0C)
-				spawn(0)
-					target_turf.hotspot_expose(1500+T0C, 400)
-
 			playsound(T, 'sound/effects/phasein.ogg', 75, 1)
 	..()
 
@@ -481,69 +475,6 @@
 	required_reagents = list("phoron" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/dark_blue
-
-// This iterates over a ZAS zone's contents, so that things seperated in other zones aren't subjected to the temperature drop.
-/datum/chemical_reaction/slime/dark_blue_cold_snap/on_reaction(var/datum/reagents/holder)
-	var/turf/simulated/T = get_turf(holder.my_atom)
-	if(!T) // Nullspace lacks zones.
-		return
-
-	if(!istype(T))
-		return
-
-	var/zone/Z = T.zone
-	if(!Z) // Paranoid.
-		return
-
-	log_and_message_admins("Dark Blue extract reaction (cold snap) has been activated in [get_area(holder.my_atom)].  Last fingerprints: [holder.my_atom.fingerprintslast]")
-
-	var/list/nearby_things = view(T)
-
-	// Hurt mobs.
-	for(var/mob/living/L in nearby_things)
-		var/turf/simulated/their_turf = get_turf(L)
-		if(!istype(their_turf)) // Not simulated.
-			continue
-
-		if(!(their_turf in Z.contents)) // Not in the same zone.
-			continue
-
-		if(istype(L, /mob/living/simple_mob/slime))
-			var/mob/living/simple_mob/slime/S = L
-			if(S.cold_resist >= 1) // Immune to cold.
-				to_chat(S, "<span class='warning'>A chill is felt around you, however it cannot harm you.</span>")
-				continue
-			if(S.client) // Don't instantly kill player slimes.
-				to_chat(S, "<span class='danger'>You feel your body crystalize as an intense chill overwhelms you!</span>")
-				S.inflict_cold_damage(100)
-			else
-				S.inflict_cold_damage(200) // Metal slimes can survive this 'slime nuke'.
-			continue
-
-		if(ishuman(L))
-			var/mob/living/carbon/human/H = L
-			var/protection = H.get_cold_protection()
-
-			if(protection < 1)
-				var/cold_factor = abs(protection - 1)
-				H.bodytemperature = between(50, (H.bodytemperature - ((H.bodytemperature - 50) * cold_factor) ), H.bodytemperature)
-
-			if(protection < 0.7)
-				to_chat(L, "<span class='danger'>A chilling wave of cold overwhelms you!</span>")
-			else
-				to_chat(L, "<span class='warning'>A chilling wave of cold passes by you, as your armor protects you from it.</span>")
-			continue
-
-	// Now make it very cold.
-	var/datum/gas_mixture/env = T.return_air()
-	if(env)
-		// This is most likely physically impossible but when has that stopped slimes before?
-		env.add_thermal_energy(-10 * 1000 * 1000) // For a moderately sized room this doesn't actually lower it that much.
-
-	playsound(T, 'sound/effects/phasein.ogg', 75, 1)
-
-	..()
-
 
 // **************
 // * Red slimes *

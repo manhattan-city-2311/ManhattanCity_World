@@ -101,11 +101,6 @@
 //called when the projectile stops flying because it collided with something
 /obj/item/projectile/proc/on_impact(var/atom/A)
 	impact_effect(effect_transform)		// generate impact effect
-	if(damage && damage_type == BURN)
-		var/turf/T = get_turf(A)
-		if(T)
-			T.hotspot_expose(700, 5)
-	return
 
 //Checks if the projectile is eligible for embedding. Not that it necessarily will.
 /obj/item/projectile/proc/can_embed()
@@ -150,9 +145,6 @@
 		s.start()
 	if (!istype(targloc) || !istype(curloc))
 		return 1
-
-	if(combustion)
-		curloc.hotspot_expose(700, 5)
 
 	if(targloc == curloc) //Shooting something in the same turf
 		target.bullet_act(src, target_zone)
@@ -236,6 +228,9 @@
 
 	return 1
 
+/obj/item/projectile/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+	return 1
+
 /obj/item/projectile/Bump(atom/A as mob|obj|turf|area, forced=0)
 	if(A == src)
 		return 0 //no
@@ -311,8 +306,6 @@
 /obj/item/projectile/ex_act()
 	return //explosions probably shouldn't delete projectiles
 
-/obj/item/projectile/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	return 1
 
 /obj/item/projectile/process()
 	var/first_step = 1

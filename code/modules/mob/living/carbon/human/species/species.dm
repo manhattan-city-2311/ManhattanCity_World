@@ -110,9 +110,6 @@
 
 	// Environment tolerance/life processes vars.
 	var/reagent_tag									//Used for metabolizing reagents.
-	var/breath_type = "oxygen"							// Non-oxygen gas breathed, if any.
-	var/poison_type = "phoron"							// Poisonous air.
-	var/exhale_type = "carbon_dioxide"						// Exhaled gas type.
 
 	var/body_temperature = 310.15							// Species will try to stabilize at this temperature. (also affects temperature processing)
 
@@ -155,8 +152,6 @@
 	var/warning_low_pressure = WARNING_LOW_PRESSURE			// Low pressure warning.
 	var/hazard_low_pressure = HAZARD_LOW_PRESSURE			// Dangerously low pressure.
 	var/light_dam											// If set, mob will be damaged in light over this value and heal in light below its negative.
-	var/minimum_breath_pressure = 16						// Minimum required pressure for breath, in kPa
-
 
 	var/metabolic_rate = 1
 
@@ -284,24 +279,8 @@
 	//Create the box
 	var/obj/item/weapon/storage/box/box = new boxtype(H)
 
-	//If not synth, they get an air tank (if they breathe)
-	if(!synth && breath_type)
-		//Create a tank (if such a thing exists for this species)
-		var/tanktext = "/obj/item/weapon/tank/emergency/" + "[breath_type]"
-		var/obj/item/weapon/tank/emergency/tankpath //Will force someone to come look here if they ever alter this path.
-		if(extendedtank)
-			tankpath = text2path(tanktext + "/engi")
-			if(!tankpath) //Is it just that there's no /engi?
-				tankpath = text2path(tanktext + "/double")
-
-		if(!tankpath)
-			tankpath = text2path(tanktext)
-
-		if(tankpath)
-			new tankpath(box)
-
 	//If they are synth, they get a smol battery
-	else if(synth)
+	if(synth)
 		new /obj/item/device/fbp_backup_cell(box)
 
 	box.calibrate_size()

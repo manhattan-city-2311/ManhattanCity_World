@@ -7,7 +7,7 @@
 	var/mob/living/carbon/human/attached = null
 	var/obj/item/weapon/tank/oxygen_tank = null
 
-	var/setting = BLOOD_MCV_NORMAL // mcv add rate.
+	var/setting = NORMAL_MCV // mcv add rate.
 
 	var/pumping_blood = FALSE
 	var/oxygenating_blood = FALSE
@@ -76,10 +76,8 @@
 			attached.custom_pain("<span class='warning'>Some strange tubes pump blood in and out of your body, it's weird!</span>", 1, affecting = "chest")
 	if(oxygenating_blood && oxygen_tank.air_contents.remove(0.0005))
 		var/obj/item/organ/internal/lungs/L = attached?.internal_organs_by_name[O_LUNGS]
-		L.oxygen_deprivation -= 2.5
-		L.oxygen_deprivation = clamp(L.oxygen_deprivation, 0, 100)
+		L.handle_breath()
 
 
 /obj/machinery/acm/attack_hand(mob/user)
 	. = ..()
-	

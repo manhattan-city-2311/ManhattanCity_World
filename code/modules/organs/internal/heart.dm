@@ -87,8 +87,11 @@
 		if(should_add_modificators)
 			make_modificators()
 			make_chem_modificators()
+
+		owner.consume_oxygen((pulse * owner.k) / 60)
 	else
 		pulse_modificators["!should_work"] = -initial(pulse) - 1
+		owner.consume_oxygen(0.15 * owner.k)
 
 	cardiac_output_modificators["damage"] = 1 - (damage / max_damage)
 
@@ -103,7 +106,6 @@
 
 	make_up_to_hormone("ast", 30 + ((damage / max_damage) * 2))
 	make_up_to_hormone("alt", 25 + ((damage / max_damage) * 0.1))
-
 
 /obj/item/organ/internal/heart/proc/handle_pulse()
 	var/n_pulse = max(initial(pulse) + sumListAndCutAssoc(pulse_modificators), cpr)
@@ -122,7 +124,7 @@
 
 /obj/item/organ/internal/heart/proc/make_modificators()
 	if(owner.get_blood_perfusion() < 0.95 && (owner.mcv + owner.mcv_add) < NORMAL_MCV * owner.k && owner.get_cardiac_output())
-		pulse_modificators["hypoperfusion"] = clamp((NORMAL_MCV * owner.k - (owner.mcv + owner.mcv_add)) / owner.get_cardiac_output(), 0, 115)
+		pulse_modificators["hypoperfusion"] = clamp((NORMAL_MCV * owner.k - (owner.mcv + owner.mcv_add)) / 30, 0, 115)
 	pulse_modificators["shock"] = Clamp(owner.shock_stage * 0.25, 0, 110 + rand(-10, 10))
 
 /obj/item/organ/internal/heart/proc/handle_rythme()
@@ -201,7 +203,7 @@
 				if(!open_wound && (W.damage_type == CUT || W.damage_type == PIERCE) && W.damage && !W.is_treated())
 					open_wound = TRUE
 
-				if(!W.bleeding())
+				if(!W.bleeding() || W.internal)
 					continue
 				if(temp.applied_pressure)
 					if(ishuman(temp.applied_pressure))
@@ -215,12 +217,13 @@
 					blood_max += W.damage / 40
 
 		if(temp.is_artery_cut())
-			var/bleed_amount = round((500 / (temp.applied_pressure || !open_wound ? 400 : 250)))
-			if(bleed_amount)
-				if(open_wound)
-					blood_max += bleed_amount
-				else
-					owner.vessel.remove_reagent("blood", bleed_amount)
+			var/bleed_amount = temp.get_artery_cut_damage()
+			if(temp.applied_pressure)
+				bleed_amount *= 0.5
+			if(open_wound)
+				blood_max += bleed_amount
+			else
+				owner.vessel.remove_reagent("blood", bleed_amount * owner.mpressure / BLOOD_PRESSURE_NORMAL)
 
 		blood_max *= owner.mpressure / BLOOD_PRESSURE_NORMAL
 

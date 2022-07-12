@@ -228,18 +228,6 @@
 		/obj/item/weapon/gun/projectile/colt/detective
 		)
 
-/obj/item/weapon/storage/belt/soulstone
-	name = "soul stone belt"
-	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away"
-	icon_state = "soulstone"
-	storage_slots = 6
-	can_hold = list(
-		/obj/item/device/soulstone
-		)
-
-/obj/item/weapon/storage/belt/soulstone/full
-	starts_with = list(/obj/item/device/soulstone = 6)
-
 /obj/item/weapon/storage/belt/utility/alien
 	name = "alien belt"
 	desc = "A belt(?) that can hold things."

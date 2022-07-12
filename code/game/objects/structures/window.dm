@@ -6,7 +6,6 @@
 	w_class = ITEMSIZE_NORMAL
 	alpha = 122
 	layer = 3.2//Just above doors
-	pressure_resistance = 4*ONE_ATMOSPHERE
 	anchored = 1.0
 	flags = ON_BORDER
 	var/maxhealth = 14.0
@@ -384,11 +383,8 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	update_nearby_tiles(need_rebuild=1) //Compel updates before
 	set_dir(turn(dir, 90))
 	updateSilicate()
-	update_nearby_tiles(need_rebuild=1)
-	return
 
 
 /obj/structure/window/proc/revrotate()
@@ -406,11 +402,8 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	update_nearby_tiles(need_rebuild=1) //Compel updates before
 	set_dir(turn(dir, 270))
 	updateSilicate()
-	update_nearby_tiles(need_rebuild=1)
-	return
 
 /obj/structure/window/New(Loc, start_dir=null, constructed=0)
 	..()
@@ -432,13 +425,12 @@
 
 	update_connections(1)
 
-	update_nearby_tiles(need_rebuild=1)
 	update_nearby_icons()
 
 
 /obj/structure/window/Destroy()
 	density = 0
-	update_nearby_tiles()
+	
 	var/turf/location = loc
 	. = ..()
 	for(var/obj/structure/window/W in orange(location, 1))
@@ -446,10 +438,8 @@
 
 /obj/structure/window/Move()
 	var/ini_dir = dir
-	update_nearby_tiles(need_rebuild=1)
 	..()
 	set_dir(ini_dir)
-	update_nearby_tiles(need_rebuild=1)
 
 //checks if this window is full-tile one
 /obj/structure/window/proc/is_fulltile()
@@ -457,7 +447,7 @@
 		return 1
 	return 0
 
-//This proc is used to update the icons of nearby windows. It should not be confused with update_nearby_tiles(), which is an atmos proc!
+//This proc is used to update the icons of nearby windows. It should not be confused with , which is an atmos proc!
 /obj/structure/window/proc/update_nearby_icons()
 	update_icon()
 	for(var/obj/structure/window/W in orange(src, 1))

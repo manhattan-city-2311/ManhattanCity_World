@@ -255,50 +255,11 @@
 	icon_state = "reinforced"
 	initial_flooring = /decl/flooring/reinforced
 
-/turf/simulated/floor/reinforced/airless
-	oxygen = 0
-	nitrogen = 0
-
-/turf/simulated/floor/reinforced/airmix
-	oxygen = MOLES_O2ATMOS
-	nitrogen = MOLES_N2ATMOS
-
-/turf/simulated/floor/reinforced/nitrogen
-	oxygen = 0
-	nitrogen = ATMOSTANK_NITROGEN
-
-/turf/simulated/floor/reinforced/oxygen
-	oxygen = ATMOSTANK_OXYGEN
-	nitrogen = 0
-
-/turf/simulated/floor/reinforced/phoron
-	oxygen = 0
-	nitrogen = 0
-	phoron = ATMOSTANK_PHORON
-
-/turf/simulated/floor/reinforced/carbon_dioxide
-	oxygen = 0
-	nitrogen = 0
-	carbon_dioxide = ATMOSTANK_CO2
-
-/turf/simulated/floor/reinforced/n20
-	oxygen = 0
-	nitrogen = 0
-
-/turf/simulated/floor/reinforced/n20/New()
-	..()
-	sleep(-1)
-	if(!air) make_air()
-	air.adjust_gas("sleeping_agent", ATMOSTANK_NITROUSOXIDE)
-
 /turf/simulated/floor/cult
 	name = "engraved floor"
 	icon = 'icons/turf/flooring/cult.dmi'
 	icon_state = "cult"
 	initial_flooring = /decl/flooring/reinforced/cult
-
-/turf/simulated/floor/cult/cultify()
-	return
 
 /turf/simulated/floor/tiled/dark
 	name = "dark floor"

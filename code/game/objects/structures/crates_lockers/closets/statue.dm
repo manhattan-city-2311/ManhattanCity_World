@@ -26,7 +26,6 @@
 		intialTox = L.getToxLoss()
 		intialFire = L.getFireLoss()
 		intialBrute = L.getBruteLoss()
-		intialOxy = L.getOxyLoss()
 		if(ishuman(L))
 			name = "statue of [L.name]"
 			if(L.gender == "female")
@@ -52,7 +51,6 @@
 		M.setToxLoss(intialTox)
 		M.adjustFireLoss(intialFire - M.getFireLoss())
 		M.adjustBruteLoss(intialBrute - M.getBruteLoss())
-		M.setOxyLoss(intialOxy)
 	if (timer <= 0)
 		dump_contents()
 		processing_objects.Remove(src)

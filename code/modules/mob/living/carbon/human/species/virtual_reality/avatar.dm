@@ -95,7 +95,7 @@
 	// Tally human damage
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		total_damage = H.getBruteLoss() + H.getFireLoss() + H.getOxyLoss() + H.getToxLoss()
+		total_damage = H.getBruteLoss() + H.getFireLoss() + H.get_deprivation() + H.getToxLoss()
 */
 	// Move the mind back to the original mob
 //	vr_holder.Sleeping(1)

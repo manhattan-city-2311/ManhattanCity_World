@@ -123,9 +123,6 @@
 		if(M.item_is_in_hands(src) || M.head == src)
 			location = M.loc
 
-	if (istype(location, /turf))
-		location.hotspot_expose(700, 1)
-
 /obj/item/clothing/head/cakehat/attack_self(mob/user as mob)
 	onfire = !(onfire)
 	if (onfire)

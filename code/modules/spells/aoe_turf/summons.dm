@@ -36,6 +36,4 @@
 	summon_amt = 10
 	range = 3
 
-	summon_type = list(/mob/living/simple_mob/creature)
-
 	hud_state = "wiz_creature"

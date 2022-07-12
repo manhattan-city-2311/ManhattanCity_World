@@ -180,7 +180,7 @@
 				host.reagents.add_reagent("leporazine", 2)
 				chemicals -= 50
 
-			if(host.getOxyLoss() >= 30 && chemicals > 50)
+			if(host.get_deprivation() >= 30 && chemicals > 50)
 				host.reagents.add_reagent("iron", 10)
 				chemicals -= 40
 

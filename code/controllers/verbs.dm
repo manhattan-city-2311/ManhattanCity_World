@@ -64,7 +64,7 @@
 		message_admins("Admin [key_name_admin(usr)] is debugging the [antag.role_text] template.")
 
 
-/client/proc/debug_controller(controller in list("Master","Ticker","Ticker Process","Air","Jobs","Sun","Economy","Payroll", \
+/client/proc/debug_controller(controller in list("Master","Ticker","Ticker Process","Jobs","Sun","Economy","Payroll", \
 	"Laws","Emails","Lots","Radio","Supply","Shuttles","Emergency Shuttle","Configuration","pAI", "Cameras", "Transfer Controller", \
 	"Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets", "Persistent Options", "Websites", "Businesses", "Bounties"))
 
@@ -83,9 +83,6 @@
 		if("Ticker Process")
 			debug_variables(tickerProcess)
 			feedback_add_details("admin_verb","DTickerProcess")
-		if("Air")
-			debug_variables(air_master)
-			feedback_add_details("admin_verb","DAir")
 		if("Jobs")
 			debug_variables(SSjobs)
 			feedback_add_details("admin_verb","DJobs")

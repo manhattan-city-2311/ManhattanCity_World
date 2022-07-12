@@ -87,7 +87,7 @@
 	if(total_damage >= 40) //threshold to make someone pass out
 		oxyloss = 60 // Brain lacks oxygen immediately, pass out
 
-	adjustOxyLoss(min(oxyloss, 100 - getOxyLoss())) //don't put them over 100 oxyloss
+	adjustOxyLoss(min(oxyloss, 100 - get_deprivation())) //don't put them over 100 oxyloss
 
 	if(total_damage)
 		if(oxyloss >= 40)

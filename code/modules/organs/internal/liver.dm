@@ -78,3 +78,5 @@
 			owner.nutrition -= 10
 		else if(owner.nutrition >= 200)
 			owner.nutrition -= 3
+
+	owner.consume_oxygen(2 * owner.k)

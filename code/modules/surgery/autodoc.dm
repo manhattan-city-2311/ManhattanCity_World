@@ -229,7 +229,7 @@
 	data["progress"] = (world.time - start_op_time) / processing_speed
 	data["over_brute"] = patient.getBruteLoss()
 	data["over_burn"] = patient.getFireLoss()
-	data["over_oxy"] = patient.getOxyLoss()
+	data["over_oxy"] = patient.get_deprivation()
 	data["over_tox"] = patient.getToxLoss()
 	data["blood_amount"] = patient.vessel.get_reagent_amount("blood") / patient.species.blood_volume * 100
 

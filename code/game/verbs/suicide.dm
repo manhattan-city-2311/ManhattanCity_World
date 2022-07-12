@@ -78,7 +78,7 @@
 
 			//If something went wrong, just do normal oxyloss
 			if(!(damagetype | BRUTELOSS) && !(damagetype | FIRELOSS) && !(damagetype | TOXLOSS) && !(damagetype | OXYLOSS))
-				adjustOxyLoss(max(175 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
+				adjustOxyLoss(max(175 - getToxLoss() - getFireLoss() - getBruteLoss() - get_deprivation(), 0))
 
 			updatehealth()
 			return
@@ -96,7 +96,7 @@
 			suicidemsg = "<span class='danger'>[src] is attempting to switch [T.his] power off! It looks like [T.he] [T.is] trying to commit suicide.</span>"
 		visible_message(suicidemsg)
 
-		adjustOxyLoss(max(175 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
+		adjustOxyLoss(max(175 - getToxLoss() - getFireLoss() - getBruteLoss() - get_deprivation(), 0))
 		updatehealth()
 
 /mob/living/carbon/brain/verb/suicide()
@@ -140,7 +140,7 @@
 		suiciding = 1
 		viewers(src) << "<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>"
 		//put em at -175
-		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
+		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - get_deprivation(), 0))
 		updatehealth()
 
 /mob/living/silicon/robot/verb/suicide()
@@ -160,7 +160,7 @@
 		suiciding = 1
 		viewers(src) << "<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>"
 		//put em at -175
-		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
+		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - get_deprivation(), 0))
 		updatehealth()
 
 /mob/living/silicon/pai/verb/suicide()

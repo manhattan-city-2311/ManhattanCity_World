@@ -147,7 +147,7 @@
 		set_pin_data(IC_OUTPUT, 3, H.getBruteLoss())
 		set_pin_data(IC_OUTPUT, 4, H.getFireLoss())
 		set_pin_data(IC_OUTPUT, 5, H.getToxLoss())
-		set_pin_data(IC_OUTPUT, 6, H.getOxyLoss())
+		set_pin_data(IC_OUTPUT, 6, H.get_deprivation())
 		set_pin_data(IC_OUTPUT, 7, H.getCloneLoss())
 
 	push_data()

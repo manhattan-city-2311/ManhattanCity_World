@@ -841,15 +841,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 						X.underlays = old_underlays
 						X.decals = old_decals
 
-					//Move the air from source to dest
-					var/turf/simulated/ST = T
-					if(istype(ST) && ST.zone)
-						var/turf/simulated/SX = X
-						if(!SX.air)
-							SX.make_air()
-						SX.air.copy_from(ST.zone.air)
-						ST.zone.remove(ST)
-
 					//Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
 					for(var/obj/O in T)
 						O.loc = X
@@ -1010,13 +1001,6 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 					refined_src -= T
 					refined_trg -= B
 					continue moving
-
-
-
-
-	if(toupdate.len)
-		for(var/turf/simulated/T1 in toupdate)
-			air_master.mark_for_update(T1)
 
 	return copiedobjs
 

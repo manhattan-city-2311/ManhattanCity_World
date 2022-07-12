@@ -45,8 +45,3 @@
 	icon_state = "empty"
 	name = "invisible wall"
 	desc = "You have a bad feeling about this."
-
-/obj/effect/forcefield/cultify()
-	new /obj/effect/forcefield/cult(get_turf(src))
-	qdel(src)
-	return

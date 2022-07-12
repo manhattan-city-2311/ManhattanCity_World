@@ -32,9 +32,9 @@
 
 /mob/living/carbon/human/proc/setup_cm()
 	calc_k()
-	gvr = k*218.50746
-	mcv = 799920/gvr
-
+	gvr = 218.50746 * k
+	mcv = NORMAL_MCV * k
+	oxy = get_max_blood_oxygen_delta()
 
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)

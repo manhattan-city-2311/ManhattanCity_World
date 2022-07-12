@@ -19,8 +19,10 @@
 
 	handle_weight()
 
-	process()
+	update_cm()
 
 	handle_glucose_level()
 
 	handle_additictions()
+
+	consume_oxygen(2 * k) // muscles resting

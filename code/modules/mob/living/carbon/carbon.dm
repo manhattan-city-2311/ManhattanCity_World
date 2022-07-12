@@ -33,6 +33,9 @@
 	touching.clear_reagents()
 	..()
 
+/mob/living/carbon/proc/nervous_system_failure()
+	return FALSE
+
 /mob/living/carbon/proc/set_nutrition(var/amt)
 	nutrition = Clamp(amt, 0, initial(nutrition))
 
@@ -403,9 +406,8 @@
 	return !(species.flags & NO_PAIN)
 
 /mob/living/carbon/human/proc/make_adrenaline(amount)
-	if(stat == CONSCIOUS)
-		var/limit = max(0, 15) - reagents.get_reagent_amount("adrenaline")
-		reagents.add_reagent("adrenaline", min(amount, limit))
+	var/limit = 15 - reagents.get_reagent_amount("adrenaline")
+	reagents.add_reagent("adrenaline", min(amount, limit))
 
 // Get fluffy numbers
 /mob/living/carbon/human/proc/get_blood_pressure_fluffy()
@@ -413,6 +415,9 @@
 		return "0/0"
 	return "[round(spressure)]/[round(dpressure)]"
 
-//Point at which you dun breathe no more. Separate from asystole crit, which is heart-related.
-/mob/living/carbon/human/proc/nervous_system_failure()
-	return getBrainLoss() >= maxHealth * 0.75
+/mob/living/carbon/human/proc/get_brain_damage()
+	var/obj/item/organ/internal/brain/B = internal_organs_by_name[O_BRAIN]
+	return B ? (100 * (B.damage / B.max_damage)) : 100
+
+/mob/living/carbon/human/nervous_system_failure()
+	return get_brain_damage() > 10

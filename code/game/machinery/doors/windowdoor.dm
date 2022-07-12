@@ -18,7 +18,7 @@
 
 /obj/machinery/door/window/New()
 	..()
-	update_nearby_tiles()
+	
 	if (src.req_access && src.req_access.len)
 		src.icon_state = "[src.icon_state]"
 		src.base_state = src.icon_state
@@ -59,7 +59,7 @@
 
 /obj/machinery/door/window/Destroy()
 	density = 0
-	update_nearby_tiles()
+	
 	return ..()
 
 /obj/machinery/door/window/Bumped(atom/movable/AM as mob|obj)
@@ -124,7 +124,7 @@
 	explosion_resistance = 0
 	density = 0
 	update_icon()
-	update_nearby_tiles()
+	
 
 	if(operating == 1) //emag again
 		operating = 0
@@ -140,7 +140,7 @@
 	density = 1
 	update_icon()
 	explosion_resistance = initial(explosion_resistance)
-	update_nearby_tiles()
+	
 
 	sleep(10)
 	operating = 0

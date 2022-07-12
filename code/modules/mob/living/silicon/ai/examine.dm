@@ -17,10 +17,10 @@
 				msg += "It looks slightly charred.\n"
 			else
 				msg += "<B>Its casing is melted and heat-warped!</B>\n"
-		if (src.getOxyLoss() && (aiRestorePowerRoutine != 0 && !APU_power))
-			if (src.getOxyLoss() > 175)
+		if (src.get_deprivation() && (aiRestorePowerRoutine != 0 && !APU_power))
+			if (src.get_deprivation() > 175)
 				msg += "<B>It seems to be running on backup power. Its display is blinking a \"BACKUP POWER CRITICAL\" warning.</B>\n"
-			else if(src.getOxyLoss() > 100)
+			else if(src.get_deprivation() > 100)
 				msg += "<B>It seems to be running on backup power. Its display is blinking a \"BACKUP POWER LOW\" warning.</B>\n"
 			else
 				msg += "It seems to be running on backup power.\n"

@@ -969,6 +969,13 @@ Note that amputating the affected organ does in fact remove the infection from t
 			return TRUE
 	return FALSE
 
+/obj/item/organ/external/proc/get_artery_cut_damage()
+	. = 0
+	for(var/W in wounds)
+		var/datum/wound/wound = W
+		if(wound.internal)
+			. += wound.damage
+
 // checks if all wounds on the organ are bandaged
 /obj/item/organ/external/proc/is_bandaged()
 	for(var/datum/wound/W in wounds)

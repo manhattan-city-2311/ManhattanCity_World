@@ -218,13 +218,10 @@
 	if(isliving(loc))
 		var/mob/living/M = loc
 		M.IgniteMob()
-	var/turf/location = get_turf(src)
-	if(location)
-		location.hotspot_expose(700, 5)
 
 	if(burn_time <= 0)
 		processing_objects -= src
-		new /obj/effect/decal/cleanable/ash(location)
+		new /obj/effect/decal/cleanable/ash(loc)
 		qdel(src)
 		return
 

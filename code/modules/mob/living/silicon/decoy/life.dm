@@ -12,4 +12,4 @@
 		health = 100
 		stat = CONSCIOUS
 	else
-		health = 100 - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss()
+		health = 100 - get_deprivation() - getToxLoss() - getFireLoss() - getBruteLoss()

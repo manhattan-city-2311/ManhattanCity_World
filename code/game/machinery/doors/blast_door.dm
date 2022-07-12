@@ -82,7 +82,7 @@
 	playsound(src.loc, open_sound, 100, 1)
 	flick(icon_state_opening, src)
 	src.density = 0
-	update_nearby_tiles()
+	
 	src.update_icon()
 	src.set_opacity(0)
 	sleep(15)
@@ -98,7 +98,7 @@
 	src.layer = closed_layer
 	flick(icon_state_closing, src)
 	src.density = 1
-	update_nearby_tiles()
+	
 	src.update_icon()
 	src.set_opacity(initial(opacity))
 	sleep(15)

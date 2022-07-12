@@ -31,13 +31,8 @@
 
 	var/health = 50.0
 
-
-/obj/structure/inflatable/New(location)
-	..()
-	update_nearby_tiles(need_rebuild=1)
-
 /obj/structure/inflatable/Destroy()
-	update_nearby_tiles()
+	
 	return ..()
 
 /obj/structure/inflatable/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
@@ -193,7 +188,7 @@
 		Close()
 	else
 		Open()
-	update_nearby_tiles()
+	
 
 /obj/structure/inflatable/door/proc/Open()
 	isSwitchingStates = 1

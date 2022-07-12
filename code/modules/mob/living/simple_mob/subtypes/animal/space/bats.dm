@@ -47,6 +47,3 @@
 /mob/living/simple_mob/animal/space/bats/cult
 	faction = "cult"
 	supernatural = TRUE
-
-/mob/living/simple_mob/animal/space/bats/cult/cultify()
-	return

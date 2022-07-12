@@ -80,6 +80,7 @@
 // Performs a linear interpolation between a and b.
 // Note that amount=0 returns a, amount=1 returns b, and
 // amount=0.5 returns the mean of a and b.
+// if a or amount is expressions(not variables), then you should use lerp as function instead macro.
 #define LERP(a, b, amount) ( amount ? ((a) + ((b) - (a)) * (amount)) : a )
 
 // Returns the nth root of x.

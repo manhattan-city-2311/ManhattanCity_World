@@ -46,7 +46,9 @@
 		icon_state = "monitor-[owa.id]"
 	else
 		switch(H.pulse)
-			if(0 to 40)
+			if(-INFINITY to 1)
+				icon_state = "monitor-asystole"
+			if(1 to 40)
 				icon_state = "monitor-normal0"
 			if(40 to 90)
 				icon_state = "monitor-normal1"

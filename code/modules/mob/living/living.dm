@@ -193,7 +193,7 @@ default behaviour is:
 		health = 100
 		stat = CONSCIOUS
 	else
-		health = getMaxHealth() - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
+		health = getMaxHealth() - get_deprivation() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
 
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
@@ -274,7 +274,7 @@ default behaviour is:
 	bruteloss = min(max(bruteloss + amount, 0),(getMaxHealth()*2))
 	updatehealth()
 
-/mob/living/proc/getOxyLoss()
+/mob/living/proc/get_deprivation()
 	return oxyloss
 
 /mob/living/proc/adjustOxyLoss(var/amount)
@@ -655,7 +655,6 @@ default behaviour is:
 
 	// shut down various types of badness
 	setToxLoss(0)
-	setOxyLoss(0)
 	setCloneLoss(0)
 	setBrainLoss(0)
 	SetParalysis(0)
@@ -1291,7 +1290,7 @@ default behaviour is:
 		BRUTE:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=brute'>[getBruteLoss()]</a>
 		FIRE:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=fire'>[getFireLoss()]</a>
 		TOXIN:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=toxin'>[getToxLoss()]</a>
-		OXY:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=oxygen'>[getOxyLoss()]</a>
+		OXY:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=oxygen'>[get_deprivation()]</a>
 		CLONE:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=clone'>[getCloneLoss()]</a>
 		BRAIN:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=brain'>[getBrainLoss()]</a>
 		</font>

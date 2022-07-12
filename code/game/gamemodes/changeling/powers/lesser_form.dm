@@ -98,7 +98,8 @@
 	domutcheck(O, null)
 	O.setToxLoss(C.getToxLoss())
 	O.adjustBruteLoss(C.getBruteLoss())
-	O.setOxyLoss(C.getOxyLoss())
+	O.oxy = C.oxy
+	O.co2 = C.co2
 	O.adjustFireLoss(C.getFireLoss())
 	O.stat = C.stat
 	for (var/obj/item/weapon/implant/I in implants)

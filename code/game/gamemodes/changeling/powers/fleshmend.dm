@@ -29,7 +29,6 @@
 		for(var/i = 0, i<50,i++)
 			if(C)
 				C.adjustBruteLoss(-heal_amount)
-				C.adjustOxyLoss(-heal_amount)
 				C.adjustFireLoss(-heal_amount)
 				sleep(1 SECOND)
 

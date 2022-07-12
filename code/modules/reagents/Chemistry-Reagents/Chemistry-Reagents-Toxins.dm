@@ -89,16 +89,10 @@
 
 /datum/reagent/toxin/hydrophoron/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	M.take_organ_damage(0, removed * 0.1) //being splashed directly with hydrophoron causes minor chemical burns
-	if(prob(10 * fire_mult))
-		M.pl_effects()
 
 /datum/reagent/toxin/hydrophoron/touch_turf(var/turf/simulated/T)
 	if(!istype(T))
 		return
-	T.assume_gas("phoron", ceil(volume/2), T20C)
-	for(var/turf/simulated/floor/target_tile in range(0,T))
-		target_tile.assume_gas("phoron", volume/2, 400+T0C)
-		spawn (0) target_tile.hotspot_expose(700, 400)
 	remove_self(volume)
 
 /datum/reagent/toxin/spidertoxin
@@ -131,11 +125,7 @@
 /datum/reagent/toxin/phoron/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	M.adjust_fire_stacks(removed / 5)
-	if(alien == IS_VOX)
-		return
 	M.take_organ_damage(0, removed * 0.1) //being splashed directly with phoron causes minor chemical burns
-	if(prob(50))
-		M.pl_effects()
 
 /datum/reagent/toxin/phoron/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_VOX)
@@ -146,7 +136,6 @@
 /datum/reagent/toxin/phoron/touch_turf(var/turf/simulated/T, var/amount)
 	if(!istype(T))
 		return
-	T.assume_gas("volatile_fuel", amount, T20C)
 	remove_self(amount)
 
 /datum/reagent/toxin/cyanide //Fast and Lethal

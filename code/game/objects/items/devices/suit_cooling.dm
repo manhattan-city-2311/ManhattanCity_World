@@ -46,7 +46,6 @@
 
 	var/mob/living/carbon/human/H = loc
 
-	var/efficiency = 1 - H.get_pressure_weakness()			// You need to have a good seal for effective cooling
 	var/temp_adj = 0										// How much the unit cools you. Adjusted later on.
 	var/env_temp = get_environment_temperature()			// This won't save you from a fire
 	var/thermal_protection = H.get_heat_protection(env_temp)	// ... unless you've got a good suit.
@@ -61,7 +60,7 @@
 
 	var/charge_usage = (temp_adj/max_cooling)*charge_consumption
 
-	H.bodytemperature -= temp_adj*efficiency
+	H.bodytemperature -= temp_adj
 
 	cell.use(charge_usage)
 

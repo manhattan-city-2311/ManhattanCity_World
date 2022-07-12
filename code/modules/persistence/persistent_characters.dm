@@ -11,7 +11,6 @@
 
 	var/obj/item/organ/internal/lungs/lungs = internal_organs_by_name[O_LUNGS]
 	client.prefs.lungs_data["damage"] = lungs.damage
-	client.prefs.lungs_data["oxygen_deprivation"] = lungs.oxygen_deprivation
 
 	var/obj/item/organ/internal/stomach/stomach = internal_organs_by_name[O_STOMACH]
 	client.prefs.stomach_data["damage"] = stomach.damage

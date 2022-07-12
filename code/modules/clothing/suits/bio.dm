@@ -9,7 +9,7 @@
 	body_parts_covered = HEAD|FACE|EYES
 	siemens_coefficient = 0.9
 	item_flags = THICKMATERIAL
-	phoronproof = 1
+	
 
 /obj/item/clothing/suit/bio_suit
 	name = "bio suit"
@@ -25,7 +25,7 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.9
 	item_flags = THICKMATERIAL
-	phoronproof = 1
+	
 
 //Standard biosuit, orange stripe
 /obj/item/clothing/head/bio_hood/general

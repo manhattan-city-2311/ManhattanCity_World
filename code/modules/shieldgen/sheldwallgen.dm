@@ -242,7 +242,7 @@
 
 /obj/machinery/shieldwall/New(var/obj/machinery/shieldwallgen/A, var/obj/machinery/shieldwallgen/B)
 	..()
-	update_nearby_tiles()
+	
 	src.gen_primary = A
 	src.gen_secondary = B
 	if(A && B && A.active && B.active)
@@ -255,7 +255,7 @@
 		qdel(src) //need at least two generator posts
 
 /obj/machinery/shieldwall/Destroy()
-	update_nearby_tiles()
+	
 	..()
 
 /obj/machinery/shieldwall/attack_hand(mob/user as mob)

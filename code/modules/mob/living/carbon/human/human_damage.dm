@@ -14,7 +14,7 @@
 		total_brute += O.brute_dam
 		total_burn  += O.burn_dam
 
-	health = getMaxHealth() - getOxyLoss() - getToxLoss() - getCloneLoss() - total_burn - total_brute
+	health = getMaxHealth() - get_deprivation() - getToxLoss() - getCloneLoss() - total_burn - total_brute
 
 	//TODO: fix husking
 	if( ((getMaxHealth() - total_burn) < config.health_threshold_dead) && stat == DEAD)
@@ -252,26 +252,8 @@
 				to_chat(src, "<span class = 'notice'>Your [O.name] is shaped normally again.</span>")
 	BITSET(hud_updateflag, HEALTH_HUD)
 
-/mob/living/carbon/human/getOxyLoss()
-	var/obj/item/organ/internal/lungs/breathe_organ = internal_organs_by_name[O_LUNGS]
-	if(!breathe_organ)
-		return maxHealth/2
-	return breathe_organ.get_oxygen_deprivation()
-
-
-/mob/living/carbon/human/setOxyLoss(var/amount)
-	adjustOxyLoss(getOxyLoss()-amount)
-
-/mob/living/carbon/human/adjustOxyLoss(var/amount)
-	var/heal = amount < 0
-	amount = abs(amount*species.oxy_mod)
-	var/obj/item/organ/internal/lungs/breathe_organ = internal_organs_by_name[O_LUNGS]
-	if(breathe_organ)
-		if(heal)
-			breathe_organ.remove_oxygen_deprivation(amount)
-		else
-			breathe_organ.add_oxygen_deprivation(amount)
-	BITSET(hud_updateflag, HEALTH_HUD)
+/mob/living/carbon/human/get_deprivation()
+	return (oxy && get_max_blood_oxygen_delta()) ? (100 - round(oxy / get_max_blood_oxygen_delta() * 100)) : 0
 
 /mob/living/carbon/human/getToxLoss()
 	if(species.flags & NO_POISON)

@@ -13,9 +13,6 @@
 
 	assisted_langs = list()
 
-	breath_type = null
-	poison_type = null
-
 	blood_color = "#515573"
 	flesh_color = "#137E8F"
 

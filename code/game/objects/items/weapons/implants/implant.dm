@@ -273,11 +273,6 @@ Implant Specifics:<BR>"}
 		else
 			explosion(get_turf(imp_in), 0, 1, 3, 6)
 
-	var/turf/t = get_turf(imp_in)
-
-	if(t)
-		t.hotspot_expose(3500,125)
-
 /obj/item/weapon/implant/explosive/post_implant(mob/source as mob)
 	elevel = alert("What sort of explosion would you prefer?", "Implant Intent", "Localized Limb", "Destroy Body", "Full Explosion")
 	phrase = input("Choose activation phrase:") as text

@@ -23,13 +23,7 @@
 	use_power(50)
 	on = !(on)
 	icon_state = text("igniter[]", on)
-	return
 
-/obj/machinery/igniter/process()	//ugh why is this even in process()?
-	if(on && !(stat & NOPOWER))
-		var/turf/location = src.loc
-		if(isturf(location))
-			location.hotspot_expose(1000,500,1)
 	return 1
 
 /obj/machinery/igniter/New()
@@ -106,9 +100,6 @@
 	s.start()
 	last_spark = world.time
 	use_power(1000)
-	var/turf/location = src.loc
-	if(isturf(location))
-		location.hotspot_expose(1000,500,1)
 	return 1
 
 /obj/machinery/sparker/emp_act(severity)

@@ -133,12 +133,9 @@
 	update_connections(1)
 	update_icon()
 
-	update_nearby_tiles(need_rebuild=1)
-	return
-
 /obj/machinery/door/Destroy()
 	density = 0
-	update_nearby_tiles()
+
 	. = ..()
 
 /obj/machinery/door/process()
@@ -213,8 +210,6 @@
 
 /obj/machinery/door/proc/bumpopen(mob/user as mob)
 	if(operating)	return
-	if(user.last_airflow > world.time - vsc.airflow_delay) //Fakkit
-		return
 	src.add_fingerprint(user)
 	if(density)
 		if(allowed(user))
@@ -495,7 +490,7 @@
 	set_opacity(0)
 	sleep(3)
 	src.density = 0
-	update_nearby_tiles()
+
 	sleep(7)
 	src.layer = open_layer
 	explosion_resistance = 0
@@ -522,18 +517,12 @@
 	src.density = 1
 	explosion_resistance = initial(explosion_resistance)
 	src.layer = closed_layer
-	update_nearby_tiles()
+
 	sleep(7)
 	update_icon()
 	if(visible && !glass)
 		set_opacity(1)	//caaaaarn!
 	operating = 0
-
-	//I shall not add a check every x ticks if a door has closed over some fire.
-	var/obj/fire/fire = locate() in loc
-	if(fire)
-		qdel(fire)
-	return
 
 /obj/machinery/door/proc/requiresID()
 	return 1
@@ -543,16 +532,6 @@
 		return ..(null) //don't care who they are or what they have, act as if they're NOTHING
 	return ..(M)
 
-/obj/machinery/door/update_nearby_tiles(need_rebuild)
-	if(!air_master)
-		return 0
-
-	for(var/turf/simulated/turf in locs)
-		update_heat_protection(turf)
-		air_master.mark_for_update(turf)
-
-	return 1
-
 /obj/machinery/door/proc/update_heat_protection(var/turf/simulated/source)
 	if(istype(source))
 		if(src.density && (src.opacity || src.heat_proof))
@@ -561,7 +540,6 @@
 			source.thermal_conductivity = initial(source.thermal_conductivity)
 
 /obj/machinery/door/Move(new_loc, new_dir)
-	//update_nearby_tiles()
 	. = ..()
 	if(width > 1)
 		if(dir in list(EAST, WEST))
@@ -571,7 +549,7 @@
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
 
-	update_nearby_tiles()
+
 
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/doormorgue.dmi'

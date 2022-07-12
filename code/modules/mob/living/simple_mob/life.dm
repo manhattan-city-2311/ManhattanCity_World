@@ -19,7 +19,7 @@
 
 //Should we be dead?
 /mob/living/simple_mob/updatehealth()
-	health = getMaxHealth() - getFireLoss() - getBruteLoss() - getToxLoss() - getOxyLoss() - getCloneLoss()
+	health = getMaxHealth() - getFireLoss() - getBruteLoss() - getToxLoss() - get_deprivation() - getCloneLoss()
 
 	//Alive, becoming dead
 	if((stat < DEAD) && (health <= 0))

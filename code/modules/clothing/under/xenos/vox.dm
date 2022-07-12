@@ -3,7 +3,7 @@
 	species_restricted = list(SPECIES_VOX)
 	valid_accessory_slots = list("vox")
 	restricted_accessory_slots = list("vox")
-	phoronproof = 1
+	
 
 /obj/item/clothing/under/vox/vox_casual
 	name = "alien clothing"

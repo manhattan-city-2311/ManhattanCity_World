@@ -92,8 +92,8 @@
 		set_dir(ndir)
 		..(nloc)
 
-		if(nloc)
-			nloc.hotspot_expose(temp,125)
+		//if(nloc)
+			//nloc.hotspot_expose(temp,125)
 
 		spawn(20)
 			loc = null

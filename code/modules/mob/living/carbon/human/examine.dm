@@ -290,13 +290,13 @@
 
 	if (src.stat)
 		msg += "<span class='warning'>[T.He] [T.is]n't responding to anything around [T.him] and seems to be unconscious.</span>\n"
-		if((stat == DEAD || is_asystole() || src.losebreath))
+		if((stat == DEAD || !src.is_breathing()))
 			msg += "<span class='warning'>[T.He] [T.does] not appear to be breathing.</span>\n"
 		if(ishuman(user) && !user.incapacitated() && Adjacent(user))
 			spawn(0)
 				user.visible_message("<b>\The [user]</b> checks \the [src]'s pulse.", "You check \the [src]'s pulse.")
 				if(do_after(user, 15, src))
-					if(get_pulse() == 0)
+					if(!get_heart_rate())
 						to_chat(user, "<span class='deadsay'>[T.He] [T.has] no pulse.</span>")
 					else
 						to_chat(user, "<span class='deadsay'>[T.He] [T.has] a pulse!</span>")

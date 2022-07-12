@@ -30,12 +30,12 @@
 /obj/machinery/shield/New()
 	src.set_dir(pick(1,2,3,4))
 	..()
-	update_nearby_tiles(need_rebuild=1)
+
 
 /obj/machinery/shield/Destroy()
 	opacity = 0
 	density = 0
-	update_nearby_tiles()
+
 	..()
 
 /obj/machinery/shield/CanPass(atom/movable/mover, turf/target, height, air_group)
@@ -126,7 +126,6 @@
 	density = 1
 	opacity = 0
 	anchored = 0
-	pressure_resistance = 2*ONE_ATMOSPHERE
 	req_access = list(access_engine)
 	var/const/max_health = 100
 	var/health = max_health

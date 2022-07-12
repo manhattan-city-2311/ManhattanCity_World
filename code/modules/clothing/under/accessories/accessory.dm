@@ -223,15 +223,15 @@
 							sound_strength = "hear"
 							sound = "no heartbeat"
 							if(heartbeat)
-								if(heart.is_bruised() || M.getOxyLoss() > 50)
+								if(heart.is_bruised() || M.get_deprivation() > 50)
 									sound = "[pick("odd noises in","weak")] heartbeat"
 								else
 									sound = "healthy heartbeat"
 
 							var/obj/item/organ/internal/heart/L = M.internal_organs_by_name[O_LUNGS]
-							if(!L || M.losebreath)
+							if(!L || M.is_breathing())
 								sound += " and no respiration"
-							else if(M.is_lung_ruptured() || M.getOxyLoss() > 50)
+							else if(M.is_lung_ruptured() || M.get_deprivation() > 50)
 								sound += " and [pick("wheezing","gurgling")] sounds"
 							else
 								sound += " and healthy respiration"

@@ -147,7 +147,7 @@
 					break
 				for(var/thing in T)
 					var/atom/O = thing
-					if(O.simulated && !O.CanPass(src, T))
+					if(O.simulated)
 						placing = checkdir
 						break
 			switch(placing)

@@ -47,7 +47,6 @@ var/list/ai_verbs_default = list(
 	anchored = 1 // -- TLE
 	density = 1
 	status_flags = CANSTUN|CANPARALYSE|CANPUSH
-	shouldnt_see = list(/obj/effect/rune)
 	sight = 60 // I don't know how this fixes AI sight or why it broke. But it does.
 	var/list/network = list(NETWORK_DEFAULT)
 	var/obj/machinery/camera/camera = null

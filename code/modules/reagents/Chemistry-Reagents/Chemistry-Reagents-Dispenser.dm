@@ -182,9 +182,6 @@
 	if(istype(O, /obj/item/weapon/book))
 		if(volume < 5)
 			return
-		if(istype(O, /obj/item/weapon/book/tome))
-			to_chat(usr, "<span class='notice'>The solution does nothing. Whatever this is, it isn't normal ink.</span>")
-			return
 		var/obj/item/weapon/book/affectedbook = O
 		affectedbook.dat = null
 		to_chat(usr, "<span class='notice'>The solution dissolves the ink on the book.</span>")
@@ -263,17 +260,22 @@
 	reagent_state = GAS
 	color = "#808080"
 
+#define CI_OXYGEN "oxygen"
 /datum/reagent/oxygen
 	name = "Oxygen"
-	id = "oxygen"
+	id = CI_OXYGEN
 	description = "A colorless, odorless gas."
 	taste_mult = 0
 	reagent_state = GAS
 	color = "#808080"
 
-/datum/reagent/oxygen/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien == IS_VOX)
-		M.adjustToxLoss(removed * 3)
+#define CI_CO2 "co2"
+/datum/reagent/carbon_dioxide
+	name = "CO2"
+	id = CI_CO2
+	taste_mult = 0
+	reagent_state = GAS
+	color = "#808080"
 
 /datum/reagent/phosphorus
 	name = "Phosphorus"

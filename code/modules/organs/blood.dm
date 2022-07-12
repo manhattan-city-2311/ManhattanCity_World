@@ -289,14 +289,14 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 /mob/living/carbon/human/proc/get_blood_volume()
 	return vessel.total_volume ? vessel.total_volume / vessel.maximum_volume : 0
 
-/mob/living/carbon/human/process()
+/mob/living/carbon/human/proc/update_cm()
 	var/hr = get_heart_rate()
 
-	var/hrp = hr ? (60.0 / hr) : 0 // hrp should be INFINITY, but will be zero.
+	var/hrp = hr ? (60.0 / hr) : 0 // hrp should be INFINITY when hr = 0, but will be zero.
 	var/hrpd = hr ? (hrp * 0.109 + 0.159) : 0
-	var/coeff = (hrpd * 3.73134328) // 1 = hrpd(where hr = 60) => 3.73...
+	var/coeff = (hrpd * 3.73134328358209) // 1 = hrpd(where hr = 60) => 3.73...
 
-	if(get_cardiac_output() && get_blood_volume() && mcv < 100)
+	if(get_cardiac_output_mod() && get_blood_volume() && mcv < 100)
 		mcv = 1000 * get_cardiac_output_mod() * get_blood_volume() // MCV should'nt be zero if any circulation present
 	if(!get_blood_volume() && (spressure || mpressure || dpressure || mcv))
 		spressure = mpressure = dpressure = mcv = 0
@@ -323,8 +323,11 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	mcv = LERP(mcv, clamp((((mpressure * 8610) / gvr) * coeff * get_cardiac_output_mod() + mcv_add) * get_blood_volume(), 0, MAX_MCV), 0.5)
 	mcv_add = 0
 // update perfusion
-	var/n_perfusion = CLAMP01((mcv / (NORMAL_MCV * k)) * (get_blood_saturation() / 0.99))
-	perfusion = LERP(perfusion, n_perfusion, 0.2)
+	var/n_perfusion = mcv ? CLAMP01((mcv / (NORMAL_MCV * k)) * (get_blood_saturation() / 0.99)) : 0
+
+	perfusion = round(LERP(perfusion, n_perfusion, 0.2), 0.01)
+
+	oxy = min(get_max_blood_oxygen_delta(), oxy)
 
 /mob/living/carbon/human/proc/get_heart_rate()
 	var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
@@ -341,7 +344,31 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 
 /mob/living/carbon/human/proc/get_blood_saturation()
 	// TODO: make this by cm standards
-	return clamp(1 - (getOxyLoss() / 100) + rand(-0.05, 0.05), 0, 0.99)
+	return clamp(1 - (get_deprivation() / 100), 0, 0.99)
+
+// in minute
+/mob/living/carbon/human/proc/get_max_blood_oxygen_delta()
+	return mcv / 5 // 100 ml of blood can consume ~20 ml oxygen
+     
+// in minute
+/mob/living/carbon/human/proc/get_max_blood_co2_delta()
+	return (80 / NORMAL_MCV) * mcv
+
+// metabolism place
+/mob/living/carbon/human/proc/consume_oxygen(amount, efficiency = 1)
+	var/max_delta = get_max_blood_oxygen_delta() / 300
+	amount = min(amount, max_delta)
+	if((oxy_last_tick_demand + amount) > max_delta)
+		var/diff = oxy_last_tick_demand + amount - max_delta
+		co2 += (diff / efficiency) * 2
+
+	if(amount <= 0)
+		return
+
+	co2 += amount / efficiency
+	oxy -= amount
+	oxy_demand += amount
+
 
 // 0-1
 /mob/living/carbon/human/proc/get_blood_perfusion()

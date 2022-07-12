@@ -22,7 +22,6 @@
 	throw_range = 15
 	matter = list(DEFAULT_WALL_MATERIAL = 10)
 	var/colour = "black"	//what colour the ink is!
-	pressure_resistance = 2
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	
 /obj/item/weapon/pen/attack_self(var/mob/user)

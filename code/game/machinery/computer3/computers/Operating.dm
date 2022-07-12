@@ -31,7 +31,7 @@
 					<B>Brute Damage:</B> [round(patient.getBruteLoss())]<BR>
 					<B>Toxins Damage:</B> [round(patient.getToxLoss())]<BR>
 					<B>Fire Damage:</B> [round(patient.getFireLoss())]<BR>
-					<B>Suffocation Damage:</B> [round(patient.getOxyLoss())]<BR>
+					<B>Suffocation Damage:</B> [round(patient.get_deprivation())]<BR>
 					"}
 		else
 			src.patient = null
