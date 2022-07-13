@@ -227,7 +227,7 @@
 				cameralist[C.network] = C.network
 
 	src.network = input(usr, "Which network would you like to view?") as null|anything in cameralist
-	to_chat(src, "<font color='blue'>Switched to [src.network] camera network.</font>")
+	to_chat(src, SPAN_INFO("Switched to [src.network] camera network."))
 //End of code by Mord_Sith
 */
 

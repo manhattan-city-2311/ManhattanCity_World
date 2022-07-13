@@ -60,9 +60,28 @@
 
 #define isclient(A) istype(A, /client)
 
-//#define to_chat(target, message) target << message
+/// General I/O helpers
+#define to_target(target, payload)            target << (payload)
+#define from_target(target, receiver)         target >> (receiver)
+
+/// Common use
+#define legacy_chat(target, message)          to_target(target, message)
+#define to_world(message)                     to_chat(world, message)
+#define to_world_log(message)                 to_target(world.log, message)
+#define sound_to(target, sound)               to_target(target, sound)
+#define image_to(target, image)               to_target(target, image)
+#define show_browser(target, content, title)  to_target(target, browse(content, title))
+#define close_browser(target, title)          to_target(target, browse(null, title))
+#define send_rsc(target, content, title)      to_target(target, browse_rsc(content, title))
+#define send_link(target, url)                to_target(target, link(url))
+#define send_output(target, msg, control)     to_target(target, output(msg, control))
+#define to_file(handle, value)                to_target(handle, value)
+#define to_save(handle, value)                to_target(handle, value) //semantics
+#define from_save(handle, target_var)         from_target(handle, target_var)//#define to_chat(target, message) target << message
 #define to_world(message) world << message
 #define to_world_log(message) world.log << message
+#define legacy_chat(target, message)          to_target(target, message)
+#define to_world(message)                     to_chat(world, message)
 // TODO - Baystation has this log to crazy places. For now lets just world.log, but maybe look into it later.
 #define log_world(message) world.log << message
 #define to_file(file_entry, source_var) file_entry << source_var
@@ -95,6 +114,7 @@
 
 #define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"
 
+#define SPAN_INFO(X) "<span class='info'>[X]</span>"
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
 
 #define SPAN_SUBTLE(X) "<span class='subtle'>[X]</span>"

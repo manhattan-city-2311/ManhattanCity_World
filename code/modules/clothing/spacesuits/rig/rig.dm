@@ -244,7 +244,7 @@
 	if(!failed_to_seal)
 
 		if(!instant)
-			M.visible_message("<font color='blue'>[M]'s suit emits a quiet hum as it begins to adjust its seals.</font>","<font color='blue'>With a quiet hum, the suit begins running checks and adjusting components.</font>")
+			M.visible_message(SPAN_INFO("[M]'s suit emits a quiet hum as it begins to adjust its seals."),SPAN_INFO("With a quiet hum, the suit begins running checks and adjusting components."))
 			if(seal_delay && !do_after(M,seal_delay))
 				if(M) to_chat(M, "<span class='warning'>You must remain still while the suit is adjusting the components.</span>")
 				failed_to_seal = 1
@@ -274,16 +274,16 @@
 					piece.icon_state = "[initial(icon_state)][!seal_target ? "_sealed" : ""]"
 					switch(msg_type)
 						if("boots")
-							to_chat(M, "<font color='blue'>\The [piece] [!seal_target ? "seal around your feet" : "relax their grip on your legs"].</font>")
+							to_chat(M, SPAN_INFO("\The [piece] [!seal_target ? "seal around your feet" : "relax their grip on your legs"]."))
 							M.update_inv_shoes()
 						if("gloves")
-							to_chat(M, "<font color='blue'>\The [piece] [!seal_target ? "tighten around your fingers and wrists" : "become loose around your fingers"].</font>")
+							to_chat(M, SPAN_INFO("\The [piece] [!seal_target ? "tighten around your fingers and wrists" : "become loose around your fingers"]."))
 							M.update_inv_gloves()
 						if("chest")
-							to_chat(M, "<font color='blue'>\The [piece] [!seal_target ? "cinches tight again your chest" : "releases your chest"].</font>")
+							to_chat(M, SPAN_INFO("\The [piece] [!seal_target ? "cinches tight again your chest" : "releases your chest"]."))
 							M.update_inv_wear_suit()
 						if("helmet")
-							to_chat(M, "<font color='blue'>\The [piece] hisses [!seal_target ? "closed" : "open"].</font>")
+							to_chat(M, SPAN_INFO("\The [piece] hisses [!seal_target ? "closed" : "open"]."))
 							M.update_inv_head()
 							if(helmet)
 								helmet.update_light(wearer)
@@ -318,7 +318,7 @@
 
 	// Success!
 	canremove = seal_target
-	to_chat(M, "<font color='blue'><b>Your entire suit [canremove ? "loosens as the components relax" : "tightens around you as the components lock into place"].</b></font>")
+	to_chat(M, SPAN_INFO("<b>Your entire suit [canremove ? "loosens as the components relax" : "tightens around you as the components lock into place"].</b>"))
 	M.client.screen -= booting_L
 	qdel(booting_L)
 	booting_R.icon_state = "boot_done"
@@ -690,7 +690,7 @@
 	..()
 
 	if(seal_delay > 0 && istype(M) && M.back == src)
-		M.visible_message("<font color='blue'>[M] starts putting on \the [src]...</font>", "<font color='blue'>You start putting on \the [src]...</font>")
+		M.visible_message(SPAN_INFO("[M] starts putting on \the [src]..."), SPAN_INFO("You start putting on \the [src]..."))
 		if(!do_after(M,seal_delay))
 			if(M && M.back == src)
 				if(!M.unEquip(src))
@@ -699,7 +699,7 @@
 			return
 
 	if(istype(M) && M.back == src)
-		M.visible_message("<font color='blue'><b>[M] struggles into \the [src].</b></font>", "<font color='blue'><b>You struggle into \the [src].</b></font>")
+		M.visible_message(SPAN_INFO("<b>[M] struggles into \the [src].</b>"), SPAN_INFO("<b>You struggle into \the [src].</b>"))
 		wearer = M
 		wearer.wearing_rig = src
 		update_icon()
@@ -749,7 +749,7 @@
 				holder = use_obj.loc
 				if(istype(holder))
 					if(use_obj && check_slot == use_obj)
-						to_chat(H, "<font color='blue'><b>Your [use_obj.name] [use_obj.gender == PLURAL ? "retract" : "retracts"] swiftly.</b></font>")
+						to_chat(H, SPAN_INFO("<b>Your [use_obj.name] [use_obj.gender == PLURAL ? "retract" : "retracts"] swiftly.</b>"))
 						use_obj.canremove = 1
 						holder.drop_from_inventory(use_obj)
 						use_obj.forceMove(get_turf(src))

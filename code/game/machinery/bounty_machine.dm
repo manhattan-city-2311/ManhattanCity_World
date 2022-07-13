@@ -75,10 +75,10 @@
 	if(current_bounty.check_item(I, bank_id))
 		playsound(src, 'sound/machines/chime.ogg', 25)
 		to_chat(user,"<span class='info'>[item_name] loses it's physical shape and morphs into a beam of light!</span>")
-		visible_message("\icon[src] <b>[src]</b> beeps, \"Thank you, this product has been accepted!\"")
+		visible_message("[icon2html(src, user)] <b>[src]</b> beeps, \"Thank you, this product has been accepted!\"")
 
 	else
-		to_chat(user,"\icon[src] <span class='notice'><b>[src]</b> beeps, \"ERROR: Unable to accept this item.\"</span>")
+		to_chat(user,"[icon2html(src, user)] <span class='notice'><b>[src]</b> beeps, \"ERROR: Unable to accept this item.\"</span>")
 		return
 
 
@@ -373,7 +373,7 @@
 
 				if(bounty.complete_bounty(FALSE, get_turf(src), usr))
 					playsound(src, 'sound/machines/chime.ogg', 25)
-					to_chat(usr, "\icon[src] <b>[bounty_name]</b> has been completed!")
+					to_chat(usr, "[icon2html(src, hearers(src))] <b>[bounty_name]</b> has been completed!")
 
 					if(LAZYLEN(current_department.bounties))
 						current_bounty = current_department.bounties[1]

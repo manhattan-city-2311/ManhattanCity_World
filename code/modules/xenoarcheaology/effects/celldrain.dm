@@ -10,7 +10,7 @@
 			var/mob/living/silicon/robot/R = user
 			for (var/obj/item/weapon/cell/D in R.contents)
 				D.charge = max(D.charge - rand() * 100, 0)
-				to_chat(R, "<font color='blue'>SYSTEM ALERT: Energy drain detected!</font>")
+				to_chat(R, SPAN_INFO("SYSTEM ALERT: Energy drain detected!"))
 			return 1
 
 		return 1

@@ -27,7 +27,7 @@
 			sandwich_limit += 4
 
 	if(istype(W,/obj/item/weapon/material/shard))
-		to_chat(user, "<font color='blue'>You hide [W] in \the [src].</font>")
+		to_chat(user, SPAN_INFO("You hide [W] in \the [src]."))
 		user.drop_item()
 		W.loc = src
 		update()
@@ -36,7 +36,7 @@
 		if(src.contents.len > sandwich_limit)
 			to_chat(user, "<font color='red'>If you put anything else on \the [src] it's going to collapse.</font>")
 			return
-		to_chat(user, "<font color='blue'>You layer [W] over \the [src].</font>")
+		to_chat(user, SPAN_INFO("You layer [W] over \the [src]."))
 		var/obj/item/weapon/reagent_containers/F = W
 		F.reagents.trans_to_obj(src, F.reagents.total_volume)
 		user.drop_item()
@@ -85,7 +85,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/csandwich/examine(mob/user)
 	..(user)
 	var/obj/item/O = pick(contents)
-	to_chat(user, "<font color='blue'>You think you can see [O.name] in there.</font>")
+	to_chat(user, SPAN_INFO("You think you can see [O.name] in there."))
 
 /obj/item/weapon/reagent_containers/food/snacks/csandwich/attack(mob/M as mob, mob/user as mob, def_zone)
 

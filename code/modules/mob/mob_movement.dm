@@ -76,7 +76,7 @@
 	set hidden = 1
 
 	if(!usr.pulling)
-		to_chat(usr, "<font color='blue'>You are not pulling anything.</font>")
+		to_chat(usr, SPAN_INFO("You are not pulling anything."))
 		return
 	usr.stop_pulling()
 
@@ -266,13 +266,13 @@
 			for(var/mob/M in range(mob, 1))
 				if(M.pulling == mob)
 					if(!M.restrained() && M.stat == 0 && M.canmove && mob.Adjacent(M))
-						to_chat(src, "<font color='blue'>You're restrained! You can't move!</font>")
+						to_chat(src, SPAN_INFO("You're restrained! You can't move!"))
 						return 0
 					else
 						M.stop_pulling()
 
 		if(mob.pinned.len)
-			to_chat(src, "<font color='blue'>You're pinned to a wall by [mob.pinned[1]]!</font>")
+			to_chat(src, SPAN_INFO("You're pinned to a wall by [mob.pinned[1]]!"))
 			return 0
 
 		mob.move_delay = world.time//set move delay
@@ -475,7 +475,7 @@
 
 	//Check to see if we slipped
 	if(prob(Process_Spaceslipping(5)) && !buckled)
-		to_chat(src, "<font color='blue'><B>You slipped!</B></font>")
+		to_chat(src, SPAN_INFO("<B>You slipped!</B>"))
 		src.inertia_dir = src.last_move
 		step(src, src.inertia_dir)
 		return 0

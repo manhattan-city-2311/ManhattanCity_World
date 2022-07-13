@@ -575,7 +575,7 @@
 				playsound(src, 'sound/machines/chime.ogg', 25)
 				flick("inv-tri_accept",src)
 
-				to_chat(usr, "\icon[src] <b>[withdraw_item]</b> has been withdrawn.")
+				to_chat(usr, "[icon2html(src, usr)] <b>[withdraw_item]</b> has been withdrawn.")
 
 				current_inventory.stored_items -= MO
 				qdel(MO)

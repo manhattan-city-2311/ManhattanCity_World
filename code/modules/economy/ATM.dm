@@ -252,7 +252,7 @@ log transactions
 						var/target_account_number = href_list["target_acc_number"]
 						var/transfer_purpose = href_list["purpose"]
 						if(charge_to_account(target_account_number, authenticated_account.owner_name, transfer_purpose, machine_id, transfer_amount))
-							to_chat(usr, "\icon[src]<span class='info'>Funds transfer successful.</span>")
+							to_chat(usr, "[icon2html(src, usr)]<span class='info'>Funds transfer successful.</span>")
 							authenticated_account.money -= transfer_amount
 							log_money(usr, "transferred money to [target_account_number] successfully", authenticated_account.account_number, authenticated_account.owner_name, transfer_amount)
 
@@ -261,13 +261,13 @@ log transactions
 								//create an entry in the account transaction log
 								authenticated_account.add_transaction_log("Account #[target_account_number]", transfer_purpose, -transfer_amount, machine_id)
 						else
-							to_chat(usr, "\icon[src]<span class='warning'>Funds transfer failed.</span>")
+							to_chat(usr, "[icon2html(src, usr)]<span class='warning'>Funds transfer failed.</span>")
 							log_money(usr, "failed to transfer money to [target_account_number] (unsuccesful)", authenticated_account.account_number, authenticated_account.owner_name, transfer_amount)
 
 
 
 					else
-						to_chat(usr, "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "[icon2html(src, usr)]<span class='warning'>You don't have enough funds to do that!</span>")
 			if("view_screen")
 				view_screen = text2num(href_list["view_screen"])
 			if("change_security_level")
@@ -336,7 +336,7 @@ log transactions
 
 						log_money(usr, "withdrew money from [src] (ewallet)", authenticated_account.account_number, authenticated_account.owner_name, amount)
 					else
-						to_chat(usr, "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "[icon2html(src, usr)]<span class='warning'>You don't have enough funds to do that!</span>")
 			if("withdrawal")
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
@@ -354,7 +354,7 @@ log transactions
 						authenticated_account.add_transaction_log(authenticated_account.owner_name, "Credit withdrawal", -amount, machine_id)
 						log_money(usr, "withdrew money from [src] (cash)", authenticated_account.account_number, authenticated_account.owner_name, amount)
 					else
-						to_chat(usr, "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "[icon2html(src, usr)]<span class='warning'>You don't have enough funds to do that!</span>")
 			if("balance_statement")
 				if(is_printing)
 					to_chat(usr, "The ATM is still printing, be patient!")

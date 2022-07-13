@@ -195,7 +195,7 @@
 				if(owner_uid)
 					var/obj/item/weapon/card/id/I = usr.GetIdCard()
 					if(I && (I.unique_ID != owner_uid))
-						to_chat(usr, "\icon[src]<span class='warning'>Error: Lack of identification or card's unique ID does not match the owner's.</span>")
+						to_chat(usr, "[icon2html(src, usr)]<span class='warning'>Error: Lack of identification or card's unique ID does not match the owner's.</span>")
 						return
 					else
 						locked = !locked
@@ -205,7 +205,7 @@
 				if(allowed(usr))
 					locked = !locked
 				else
-					to_chat(usr, "\icon[src]<span class='warning'>Insufficient access.</span>")
+					to_chat(usr, "[icon2html(src, usr)]<span class='warning'>Insufficient access.</span>")
 			if("toggle_cash_lock")
 				if(!locked)
 					cash_locked = !cash_locked
@@ -364,7 +364,7 @@
 
 			if("reset_log")
 				transaction_logs.Cut()
-				to_chat(usr, "\icon[src]<span class='notice'>Transaction log reset.</span>")
+				to_chat(usr, "[icon2html(src, usr)]<span class='notice'>Transaction log reset.</span>")
 			if("reset_owner")
 				var/choice = alert(usr,"Reset the owner of this machine and set back to factory settings?","Reset [src]?","Yes","No")
 				if(choice == "Yes")
@@ -387,7 +387,7 @@
 	var/obj/item/weapon/card/id/I = O.GetID()
 	if(I && !account_to_connect && (!owner_uid || !dept_id))
 		if(!I.unique_ID || !I.registered_name)
-			to_chat(usr, "\icon[src]<span class='notice'>Invalid card: Identification card lacks registered name and/or unique ID.</span>")
+			to_chat(usr, "[icon2html(src, usr)]<span class='notice'>Invalid card: Identification card lacks registered name and/or unique ID.</span>")
 			return
 
 		var/datum/business/B = get_business_by_owner_uid(I.unique_ID)
@@ -397,9 +397,9 @@
 			D = dept_by_id(B.business_uid)
 
 		if(!D || !D.bank_account)
-			to_chat(usr, "\icon[src]<span class='notice'>No Business: Please register a business before continuing.</span>")
+			to_chat(usr, "[icon2html(src, usr)]<span class='notice'>No Business: Please register a business before continuing.</span>")
 			return
-		to_chat(usr, "\icon[src]<span class='notice'>New owner set to [I.registered_name].</span>")
+		to_chat(usr, "[icon2html(src, usr)]<span class='notice'>New owner set to [I.registered_name].</span>")
 		owner_uid = I.unique_ID
 		owner_name = I.registered_name
 		dept_id = D.id
@@ -452,7 +452,7 @@
 
 	if (cash_open)
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
-		to_chat(usr, "\icon[src]<span class='warning'>The cash box is open.</span>")
+		to_chat(usr, "[icon2html(src, usr)]<span class='warning'>The cash box is open.</span>")
 		return
 
 	if((item_list.len > 1 || item_list[item_list[1]] > 1) && !confirm(I))
@@ -508,7 +508,7 @@
 
 	if (cash_open)
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
-		to_chat(usr, "\icon[src]<span class='warning'>The cash box is open.</span>")
+		to_chat(usr, "[icon2html(src, usr)]<span class='warning'>The cash box is open.</span>")
 		return
 
 	if((item_list.len > 1 || item_list[item_list[1]] > 1) && !confirm(E))
@@ -533,7 +533,7 @@
 
 	if (cash_open)
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
-		to_chat(usr, "\icon[src]<span class='warning'>The cash box is open.</span>")
+		to_chat(usr, "[icon2html(src, usr)]<span class='warning'>The cash box is open.</span>")
 		return
 
 	if((item_list.len > 1 || item_list[item_list[1]] > 1) && !confirm(SC))
@@ -576,7 +576,7 @@
 		return
 	if (cash_open)
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
-		to_chat(usr, "\icon[src]<span class='warning'>The cash box is open.</span>")
+		to_chat(usr, "[icon2html(src, usr)]<span class='warning'>The cash box is open.</span>")
 		return
 
 	// First check if item has a valid price

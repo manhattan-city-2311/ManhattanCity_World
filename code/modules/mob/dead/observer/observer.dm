@@ -164,7 +164,7 @@ Works together with spawning an observer, noted above.
 	client.screen += client.void
 	var/mob/new_player/M = new /mob/new_player()
 	M.ckey = ckey
-	to_chat(usr, "<font color='blue'><B>Make sure to play a different character, and please roleplay correctly!</B></font>")
+	to_chat(usr, SPAN_INFO("<B>Make sure to play a different character, and please roleplay correctly!</B>"))
 	M.mind.reset()
 
 /mob/proc/ghostize(can_reenter_corpse = 1)
@@ -270,7 +270,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	medHUD = !medHUD
 	plane_holder.set_vis(VIS_CH_HEALTH, medHUD)
 	plane_holder.set_vis(VIS_CH_STATUS_OOC, medHUD)
-	to_chat(src,"<font color='blue'><B>Medical HUD [medHUD ? "Enabled" : "Disabled"]</B></font>")
+	to_chat(src,SPAN_INFO("<B>Medical HUD [medHUD ? "Enabled" : "Disabled"]</B>"))
 
 /mob/observer/dead/verb/toggle_antagHUD()
 	set category = "Ghost"
@@ -292,7 +292,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	antagHUD = !antagHUD
 	plane_holder.set_vis(VIS_CH_SPECIAL, antagHUD)
-	to_chat(src,"<font color='blue'><B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B></font>")
+	to_chat(src,SPAN_INFO("<B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B>"))
 
 /mob/observer/dead/proc/dead_tele(var/area/A in return_sorted_areas())
 	set category = "Ghost"
@@ -461,16 +461,16 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/pressure = environment.return_pressure()
 	var/total_moles = environment.total_moles
 
-	to_chat(src, "<font color='blue'><B>Results:</B></font>")
+	to_chat(src, SPAN_INFO("<B>Results:</B>"))
 	if(abs(pressure - ONE_ATMOSPHERE) < 10)
-		to_chat(src, "<font color='blue'>Pressure: [round(pressure,0.1)] kPa</font>")
+		to_chat(src, SPAN_INFO("Pressure: [round(pressure,0.1)] kPa"))
 	else
 		to_chat(src, "<font color='red'>Pressure: [round(pressure,0.1)] kPa</font>")
 	if(total_moles)
 		for(var/g in environment.gas)
-			to_chat(src, "<font color='blue'>[gas_data.name[g]]: [round((environment.gas[g] / total_moles) * 100)]% ([round(environment.gas[g], 0.01)] moles)</font>")
-		to_chat(src, "<font color='blue'>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</font>")
-		to_chat(src, "<font color='blue'>Heat Capacity: [round(environment.heat_capacity(),0.1)]</font>")
+			to_chat(src, SPAN_INFO("[gas_data.name[g]]: [round((environment.gas[g] / total_moles) * 100)]% ([round(environment.gas[g], 0.01)] moles)"))
+		to_chat(src, SPAN_INFO("Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)"))
+		to_chat(src, SPAN_INFO("Heat Capacity: [round(environment.heat_capacity(),0.1)]"))
 
 /mob/observer/dead/verb/check_radiation()
 	set name = "Check Radiation"

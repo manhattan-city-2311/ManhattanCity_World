@@ -100,7 +100,7 @@
 
 	unload(user, direction)
 
-	to_chat(user, "<font color='blue'>You climb down from [src].</font>")
+	to_chat(user, SPAN_INFO("You climb down from [src]."))
 
 	return 1
 
@@ -174,7 +174,7 @@
 	set_dir(lead.dir)
 
 	if(user)
-		to_chat(user, "<font color='blue'>You hitch [src] to [T].</font>")
+		to_chat(user, SPAN_INFO("You hitch [src] to [T]."))
 
 	update_stats()
 
@@ -188,7 +188,7 @@
 	lead.tow = null
 	lead.update_stats()
 
-	to_chat(user, "<font color='blue'>You unhitch [src] from [lead].</font>")
+	to_chat(user, SPAN_INFO("You unhitch [src] from [lead]."))
 	lead = null
 
 	update_stats()

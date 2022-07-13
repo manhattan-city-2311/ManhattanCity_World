@@ -80,7 +80,7 @@
 		return
 
 	if (!istype(I, /obj/item/weapon/card/id) && !stored_id)
-		to_chat(user, "\icon[src] <span class='warning'>Error: [src] can only accept identification cards.</span>")
+		to_chat(user, "[icon2html(src, user)] <span class='warning'>Error: [src] can only accept identification cards.</span>")
 		return
 
 	if(business && !business_id)
@@ -88,7 +88,7 @@
 		return
 
 	if(stored_id)
-		to_chat(user, "\icon[src] <span class='warning'>Error: [src] already has an ID stored, please sell or eject this ID before continuing.</span>")
+		to_chat(user, "[icon2html(src, user)] <span class='warning'>Error: [src] already has an ID stored, please sell or eject this ID before continuing.</span>")
 		return
 
 	if(insert_id(I, user))
@@ -105,7 +105,7 @@
 
 		interact(user)
 	else
-		to_chat(user, "\icon[src] <span class='warning'>Error: Unable to accept ID card, this may be due to incorrect details. Contact an administrator for more information.</span>")
+		to_chat(user, "[icon2html(src, user)] <span class='warning'>Error: Unable to accept ID card, this may be due to incorrect details. Contact an administrator for more information.</span>")
 
 /obj/machinery/expense_manager/proc/set_new_owner(obj/item/O, mob/user)
 	if(!istype(O, /obj/item/weapon/card/id))
@@ -113,12 +113,12 @@
 	var/obj/item/weapon/card/id/I = O
 	var/datum/business/B = get_business_by_owner_uid(I.unique_ID)
 	if(!B)
-		to_chat(usr, "\icon[src]<span class='warning'>No business detected, please register one first.</span>")
+		to_chat(usr, "[icon2html(src, usr)]<span class='warning'>No business detected, please register one first.</span>")
 		return
 	if(!dept_acc_by_id(B.business_uid))
-		to_chat(usr, "\icon[src]<span class='warning'>No business bank account detected, please contact an administrator.</span>")
+		to_chat(usr, "[icon2html(src, usr)]<span class='warning'>No business bank account detected, please contact an administrator.</span>")
 		return
-	to_chat(usr, "\icon[src]<span class='notice'>Business set to [B.name].</span>")
+	to_chat(usr, "[icon2html(src, usr)]<span class='notice'>Business set to [B.name].</span>")
 	business_id = B.business_uid
 	owner_uid = I.unique_ID
 	owner_name = I.registered_name
@@ -181,21 +181,21 @@
 
 
 	if(istype(user, /mob/living/silicon))
-		to_chat(user, "\icon[src] <span class='warning'>A firewall prevents you from interfacing with this device!</span>")
+		to_chat(user, "[icon2html(src, user)] <span class='warning'>A firewall prevents you from interfacing with this device!</span>")
 		return
 
 	if(!stored_id)
-		to_chat(user, "\icon[src] <span class='warning'>Error: There is no identification card in this device, please insert an ID.</span>")
+		to_chat(user, "[icon2html(src, user)] <span class='warning'>Error: There is no identification card in this device, please insert an ID.</span>")
 		return
 
 	var/obj/item/weapon/card/id/iden = user.GetIdCard()
 
 	if(!check_access(iden))
-		to_chat(user, "\icon[src] <span class='warning'>Error: You do not have access to this terminal.</span>")
+		to_chat(user, "[icon2html(src, user)] <span class='warning'>Error: You do not have access to this terminal.</span>")
 		return
 
 	if(!iden || !iden.registered_name || !iden.unique_ID)
-		to_chat(user, "\icon[src] <span class='warning'>Error: You need a valid ID card to use this terminal.</span>")
+		to_chat(user, "[icon2html(src, user)] <span class='warning'>Error: You need a valid ID card to use this terminal.</span>")
 		return
 
 	interact(user)

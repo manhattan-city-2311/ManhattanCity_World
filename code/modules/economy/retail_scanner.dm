@@ -132,7 +132,7 @@
 				if(allowed(usr))
 					locked = !locked
 				else
-					to_chat(usr, "\icon[src]<span class='warning'>Insufficient access.</span>")
+					to_chat(usr, "[icon2html(src, usr)]<span class='warning'>Insufficient access.</span>")
 			if("link_account")
 				var/attempt_account_num = sanitize(input("Enter account number", "New account number") as text)
 				var/attempt_pin = input("Enter PIN", "Account PIN") as num
@@ -142,7 +142,7 @@
 						linked_account = null
 						src.visible_message("\icon[src]<span class='warning'>Account has been suspended.</span>")
 				else
-					to_chat(usr, "\icon[src]<span class='warning'>Account not found.</span>")
+					to_chat(usr, "[icon2html(src, usr)]<span class='warning'>Account not found.</span>")
 			if("custom_order")
 				var/t_purpose = sanitize(input("Enter purpose", "New purpose") as text)
 				if (!t_purpose || !Adjacent(usr)) return
@@ -250,7 +250,7 @@
 
 			if("reset_log")
 				transaction_logs.Cut()
-				to_chat(usr, "\icon[src]<span class='notice'>Transaction log reset.</span>")
+				to_chat(usr, "[icon2html(src, usr)]<span class='notice'>Transaction log reset.</span>")
 	updateDialog()
 
 

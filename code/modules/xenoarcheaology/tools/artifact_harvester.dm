@@ -23,7 +23,7 @@
 /obj/machinery/artifact_harvester/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(istype(I,/obj/item/weapon/anobattery))
 		if(!inserted_battery)
-			to_chat(user, "<font color='blue'>You insert [I] into [src].</font>")
+			to_chat(user, SPAN_INFO("You insert [I] into [src]."))
 			user.drop_item()
 			I.loc = src
 			src.inserted_battery = I

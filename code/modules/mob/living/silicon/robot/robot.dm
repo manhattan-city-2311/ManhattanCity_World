@@ -462,7 +462,7 @@
 					C.brute_damage = WC.brute
 					C.electronics_damage = WC.burn
 
-				to_chat(usr, "<font color='blue'>You install the [W.name].</font>")
+				to_chat(usr, SPAN_INFO("You install the [W.name]."))
 
 				return
 

@@ -76,7 +76,7 @@
 
 	log_say("(COMMUNE to [key_name(M)]) [text]",src)
 
-	to_chat(M, "<font color='blue'>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</font>")
+	to_chat(M, SPAN_INFO("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]"))
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == src.species.name)

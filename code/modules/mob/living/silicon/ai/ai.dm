@@ -509,7 +509,7 @@ var/list/ai_verbs_default = list(
 		if(network in C.network)
 			eyeobj.setLoc(get_turf(C))
 			break
-	to_chat(src, "<font color='blue'>Switched to [network] camera network.</font>")
+	to_chat(src, SPAN_INFO("Switched to [network] camera network."))
 //End of code by Mord_Sith
 
 /mob/living/silicon/ai/proc/ai_statuschange()
@@ -688,20 +688,20 @@ var/list/ai_verbs_default = list(
 	else if(istype(W, /obj/item/weapon/wrench))
 		if(anchored)
 			playsound(src, W.usesound, 50, 1)
-			user.visible_message("<font color='blue'>\The [user] starts to unbolt \the [src] from the plating...</font>")
+			user.visible_message(SPAN_INFO("\The [user] starts to unbolt \the [src] from the plating..."))
 			if(!do_after(user,40 * W.toolspeed))
-				user.visible_message("<font color='blue'>\The [user] decides not to unbolt \the [src].</font>")
+				user.visible_message(SPAN_INFO("\The [user] decides not to unbolt \the [src]."))
 				return
-			user.visible_message("<font color='blue'>\The [user] finishes unfastening \the [src]!</font>")
+			user.visible_message(SPAN_INFO("\The [user] finishes unfastening \the [src]!"))
 			anchored = 0
 			return
 		else
 			playsound(src, W.usesound, 50, 1)
-			user.visible_message("<font color='blue'>\The [user] starts to bolt \the [src] to the plating...</font>")
+			user.visible_message(SPAN_INFO("\The [user] starts to bolt \the [src] to the plating..."))
 			if(!do_after(user,40 * W.toolspeed))
-				user.visible_message("<font color='blue'>\The [user] decides not to bolt \the [src].</font>")
+				user.visible_message(SPAN_INFO("\The [user] decides not to bolt \the [src]."))
 				return
-			user.visible_message("<font color='blue'>\The [user] finishes fastening down \the [src]!</font>")
+			user.visible_message(SPAN_INFO("\The [user] finishes fastening down \the [src]!"))
 			anchored = 1
 			return
 	else

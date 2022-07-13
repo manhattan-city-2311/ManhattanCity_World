@@ -35,7 +35,7 @@
 		camera = new /obj/machinery/camera(src)
 		camera.replace_networks(camera_networks)
 		camera.c_tag = user.name
-		to_chat(user, "<font color='blue'>User scanned as [camera.c_tag]. Camera activated.</font>")
+		to_chat(user, SPAN_INFO("User scanned as [camera.c_tag]. Camera activated."))
 		user.update_action_buttons()
 		return 1
 

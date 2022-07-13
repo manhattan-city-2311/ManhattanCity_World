@@ -92,7 +92,7 @@
 	for (var/obj/item/weapon/ore/O in contents)
 		contents -= O
 		O.loc = src.loc
-	to_chat(usr, "<font color='blue'>You empty the ore box.</font>")
+	to_chat(usr, SPAN_INFO("You empty the ore box."))
 
 	return
 

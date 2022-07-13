@@ -48,8 +48,8 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	user.visible_message("<font color='blue'>[user] has cut [target]'s [affected.encased] open with \the [tool].</font>", \
-	"<font color='blue'>You have cut [target]'s [affected.encased] open with \the [tool].</font>")
+	user.visible_message(SPAN_INFO("[user] has cut [target]'s [affected.encased] open with \the [tool]."), \
+	SPAN_INFO("You have cut [target]'s [affected.encased] open with \the [tool]."))
 	affected.open = 2.5
 
 /datum/surgery_step/open_encased/saw/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -97,8 +97,8 @@
 	if (!hasorgans(target))
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	var/msg = "<font color='blue'>[user] forces open [target]'s [affected.encased] with \the [tool].</font>"
-	var/self_msg = "<font color='blue'>You force open [target]'s [affected.encased] with \the [tool].</font>"
+	var/msg = SPAN_INFO("[user] forces open [target]'s [affected.encased] with \the [tool].")
+	var/self_msg = SPAN_INFO("You force open [target]'s [affected.encased] with \the [tool].")
 	user.visible_message(msg, self_msg)
 
 	affected.open = 3
@@ -150,8 +150,8 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	var/msg = "<font color='blue'>[user] bends [target]'s [affected.encased] back into place with \the [tool].</font>"
-	var/self_msg = "<font color='blue'>You bend [target]'s [affected.encased] back into place with \the [tool].</font>"
+	var/msg = SPAN_INFO("[user] bends [target]'s [affected.encased] back into place with \the [tool].")
+	var/self_msg = SPAN_INFO("You bend [target]'s [affected.encased] back into place with \the [tool].")
 	user.visible_message(msg, self_msg)
 
 	affected.open = 2.5
@@ -207,8 +207,8 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	var/msg = "<font color='blue'>[user] applied \the [tool] to [target]'s [affected.encased].</font>"
-	var/self_msg = "<font color='blue'>You applied \the [tool] to [target]'s [affected.encased].</font>"
+	var/msg = SPAN_INFO("[user] applied \the [tool] to [target]'s [affected.encased].")
+	var/self_msg = SPAN_INFO("You applied \the [tool] to [target]'s [affected.encased].")
 	user.visible_message(msg, self_msg)
 
 	affected.open = 2

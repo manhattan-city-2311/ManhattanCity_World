@@ -207,4 +207,4 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		. += "</font>"
 
 	else
-		. = "<font color='blue'>[procname] returned: [!isnull(returnval) ? returnval : "null"]</font>"
+		. = SPAN_INFO("[procname] returned: [!isnull(returnval) ? returnval : "null"]")

@@ -54,6 +54,8 @@
 
 	preload_rsc = PRELOAD_RSC
 
+	var/fullscreen = FALSE
+
 	var/global/obj/screen/click_catcher/void
 
 	// Has the client been granted permission to mess with SSDs by an admin?

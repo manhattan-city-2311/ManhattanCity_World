@@ -437,4 +437,3 @@ proc/random_eye_color()
 		)
 
 	return eye_color
-

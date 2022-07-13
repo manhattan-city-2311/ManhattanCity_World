@@ -67,7 +67,7 @@
 		CC.update_icon()
 		overlays = list()
 		string_attached = null
-		to_chat(user, "<font color='blue'>You detach the string from the coin.</font>")
+		to_chat(user, SPAN_INFO("You detach the string from the coin."))
 	else ..()
 
 /obj/item/weapon/coin/attack_self(mob/user as mob)

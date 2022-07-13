@@ -262,7 +262,7 @@
 
 
 
-	to_chat(usr, "<font color='blue'>SQDL Query: [query_text]</font>")
+	to_chat(usr, SPAN_INFO("SQDL Query: [query_text]"))
 	message_admins("[usr] executed SDQL query: \"[query_text]\".")
 /*
 	for(var/t in types)

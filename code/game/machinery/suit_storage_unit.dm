@@ -401,9 +401,9 @@
 
 	if(OCCUPANT.client)
 		if(user != OCCUPANT)
-			to_chat(OCCUPANT, "<font color='blue'>The machine kicks you out!</font>")
+			to_chat(OCCUPANT, SPAN_INFO("The machine kicks you out!"))
 		if(user.loc != src.loc)
-			to_chat(OCCUPANT, "<font color='blue'>You leave the not-so-cozy confines of the SSU.</font>")
+			to_chat(OCCUPANT, SPAN_INFO("You leave the not-so-cozy confines of the SSU."))
 
 		OCCUPANT.client.eye = OCCUPANT.client.mob
 		OCCUPANT.client.perspective = MOB_PERSPECTIVE
@@ -473,7 +473,7 @@
 	if(istype(I, /obj/item/weapon/screwdriver))
 		panelopen = !panelopen
 		playsound(src, I.usesound, 100, 1)
-		user << text("<font color='blue'>You [] the unit's maintenance panel.</font>",(panelopen ? "open up" : "close"))
+		user << SPAN_INFO("You [panelopen ? "open up" : "close"] the unit's maintenance panel.")
 		updateUsrDialog()
 		return
 	if(istype(I, /obj/item/weapon/grab))
@@ -513,7 +513,7 @@
 			return
 		var/obj/item/clothing/suit/space/S = I
 		if(SUIT)
-			to_chat(user, "<font color='blue'>The unit already contains a suit.</font>")
+			to_chat(user, SPAN_INFO("The unit already contains a suit."))
 			return
 		to_chat(user, "You load the [S.name] into the storage compartment.")
 		user.drop_item()
@@ -527,7 +527,7 @@
 			return
 		var/obj/item/clothing/head/helmet/H = I
 		if(HELMET)
-			to_chat(user, "<font color='blue'>The unit already contains a helmet.</font>")
+			to_chat(user, SPAN_INFO("The unit already contains a helmet."))
 			return
 		to_chat(user, "You load the [H.name] into the storage compartment.")
 		user.drop_item()
@@ -541,7 +541,7 @@
 			return
 		var/obj/item/clothing/mask/M = I
 		if(MASK)
-			to_chat(user, "<font color='blue'>The unit already contains a mask.</font>")
+			to_chat(user, SPAN_INFO("The unit already contains a mask."))
 			return
 		to_chat(user, "You load the [M.name] into the storage compartment.")
 		user.drop_item()

@@ -241,7 +241,7 @@ obj/machinery/gateway/centerstation/process()
 			to_chat(user, "<font color='black'>The gate is already calibrated, there is no work for you to do here.</font>")
 			return
 		else
-			to_chat(user, "<font color='blue'><b>Recalibration successful!</b>:</font><font color='black'> This gate's systems have been fine tuned. Travel to this gate will now be on target.</font>")
+			to_chat(user, SPAN_INFO("<b>Recalibration successful!</b>:</font><font color='black'> This gate's systems have been fine tuned. Travel to this gate will now be on target."))
 			calibrated = 1
 			return
 

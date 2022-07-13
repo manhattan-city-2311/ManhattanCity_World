@@ -25,19 +25,19 @@
 
 /obj/machinery/selling_machine/attackby(obj/item/I as obj, mob/user as mob)
 	if(stored_item)
-		src.visible_message("\icon[src] \icon[I]<span class='warning'>Error: [src] already has an item stored, please sell or eject this item before continuing.</span>")
+		src.visible_message("[icon2html(src, user)] \icon[I]<span class='warning'>Error: [src] already has an item stored, please sell or eject this item before continuing.</span>")
 		return
 	// First check if item has a valid price
 	var/price = I.get_item_cost()
 	if(isnull(price))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
-		src.visible_message("\icon[src] \icon[I]<span class='warning'>Ineligible item. Only commercially accepted items can be sold at this vendor.</span>")
+		src.visible_message("[icon2html(src, user)] \icon[I]<span class='warning'>Ineligible item. Only commercially accepted items can be sold at this vendor.</span>")
 		return
 
 	stored_item = I
 	user.drop_from_inventory(I, src)
 	I.forceMove(src)
-	src.visible_message("\icon[src] \icon[I] [user] places [I] into [src].")
+	src.visible_message("[icon2html(src, user)] \icon[I] [user] places [I] into [src].")
 	interact(user)
 
 
@@ -87,7 +87,7 @@
 	adjust_dept_funds(selected_department, item_cost)
 
 	playsound(src, 'sound/machines/chime.ogg', 25)
-	src.visible_message("\icon[src] \icon[stored_item] <b>[src]</b> chimes, \"<span class='notice'>Transaction complete! [stored_item] sold for [item_cost]CR.</span>\"")
+	src.visible_message("[icon2html(src, user)] \icon[stored_item] <b>[src]</b> chimes, \"<span class='notice'>Transaction complete! [stored_item] sold for [item_cost]CR.</span>\"")
 
 	qdel(stored_item) // Deletes the item once sold. eh - maybe in future we'll have it send the item somewhere.
 	stored_item = null

@@ -50,12 +50,12 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 		var/obj/item/weapon/reagent_containers/food/snacks/grown/G = O
 		if(G.seed && G.seed.kitchen_tag == "wheat")
 			if(!stat && eggsleft < 8)
-				user.visible_message("<font color='blue'>[user] feeds [O] to [name]! It clucks happily.</font>","<font color='blue'>You feed [O] to [name]! It clucks happily.</font>")
+				user.visible_message(SPAN_INFO("[user] feeds [O] to [name]! It clucks happily."),"<font color='blue'>You feed [O] to [name]! It clucks happily.")
 				user.drop_item()
 				qdel(O)
 				eggsleft += rand(1, 4)
 			else
-				to_chat(user, "<font color='blue'>[name] doesn't seem hungry!</font>")
+				to_chat(user, SPAN_INFO("[name] doesn't seem hungry!"))
 		else
 			to_chat(user, "[name] doesn't seem interested in that.")
 	else

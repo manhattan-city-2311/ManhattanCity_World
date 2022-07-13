@@ -46,7 +46,7 @@
 	defence = !defence
 	if(defence)
 		deflect_chance = defence_deflect
-		src.occupant_message("<font color='blue'>You enable [src] defence mode.</font>")
+		src.occupant_message(SPAN_INFO("You enable [src] defence mode."))
 	else
 		deflect_chance = initial(deflect_chance)
 		src.occupant_message("<font color='red'>You disable [src] defence mode.</font>")

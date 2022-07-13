@@ -6,6 +6,9 @@ macro "borghotkeymode"
 		name = "Center+REP"
 		command = ".center"
 	elem 
+		name = "ALT+Return"
+		command = "Toggle-Fullscreen"
+	elem 
 		name = "Northeast"
 		command = ".northeast"
 	elem 
@@ -227,6 +230,9 @@ macro "macro"
 		name = "Center+REP"
 		command = ".center"
 	elem 
+		name = "ALT+Return"
+		command = "Toggle-Fullscreen"
+	elem 
 		name = "Northeast"
 		command = ".northeast"
 	elem 
@@ -396,6 +402,9 @@ macro "hotkeymode"
 	elem 
 		name = "Center+REP"
 		command = ".center"
+	elem 
+		name = "ALT+Return"
+		command = "Toggle-Fullscreen"
 	elem 
 		name = "Northeast"
 		command = ".northeast"
@@ -632,6 +641,9 @@ macro "borgmacro"
 	elem 
 		name = "Center+REP"
 		command = ".center"
+	elem 
+		name = "ALT+Return"
+		command = "Toggle-Fullscreen"
 	elem 
 		name = "Northeast"
 		command = ".northeast"
@@ -1212,7 +1224,6 @@ window "outputwindow"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1220,14 +1231,12 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 654x494
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		is-visible = false
 		is-disabled = true
 		saved-params = ""

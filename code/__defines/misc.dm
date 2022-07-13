@@ -329,3 +329,6 @@ var/global/list/SKILLS = null
 
 //Elevation Defines//
 #define BASE_ELEVATION 0
+
+//Misc text define. Does 4 spaces. Used as a makeshift tabulator.
+#define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"

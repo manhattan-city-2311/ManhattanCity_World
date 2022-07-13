@@ -54,7 +54,7 @@
 				if(1)
 					dat += "<font color='orange'>smelting</font>"
 				if(2)
-					dat += "<font color='blue'>compressing</font>"
+					dat += SPAN_INFO("compressing")
 				if(3)
 					dat += "<font color='gray'>alloying</font>"
 		else

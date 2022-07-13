@@ -126,7 +126,7 @@ HALOGEN COUNTER	- Radcount on mobs
 
 	// Other general warnings.
 	if(M.get_deprivation() > 50)
-		dat += "<font color='blue'><b>Severe oxygen deprivation detected.</b></font>"
+		dat += SPAN_INFO("<b>Severe oxygen deprivation detected.</b>")
 	if(M.getToxLoss() > 50)
 		dat += "<font color='green'><b>Major systemic organ failure detected.</b></font>"
 	if(M.getFireLoss() > 50)

@@ -8,6 +8,24 @@
 			return u_attack
 	return null
 
+/mob/living/carbon/human/proc/cpr_check(mob/living/carbon/human/H)
+	if(!H.check_has_mouth())
+		to_chat(H, SPAN_WARNING("You don't have a mouth, you cannot do mouth-to-mouth resustication!"))
+		return FALSE
+	if(!check_has_mouth())
+		to_chat(H, SPAN_WARNING("They don't have a mouth, you cannot do mouth-to-mouth resustication!"))
+		return FALSE
+	if((H.head && (H.head.body_parts_covered & FACE)) || (H.wear_mask && (H.wear_mask.body_parts_covered & FACE)))
+		to_chat(H, SPAN_WARNING("You need to remove your mouth covering for mouth-to-mouth resustication!"))
+		return FALSE
+	if((head && (head.body_parts_covered & FACE)) || (wear_mask && (wear_mask.body_parts_covered & FACE)))
+		to_chat(H, SPAN_WARNING("You need to remove \the [src]'s mouth covering for mouth-to-mouth resustication!"))
+		return FALSE
+	if (!H.internal_organs_by_name[O_LUNGS])
+		to_chat(H, SPAN_DANGER("You need lungs for mouth-to-mouth resustication!"))
+		return FALSE
+	return TRUE
+
 /mob/living/carbon/human/attack_hand(mob/living/M as mob)
 	var/datum/gender/TT = gender_datums[M.get_visible_gender()]
 	var/mob/living/carbon/human/H = M
@@ -16,7 +34,7 @@
 		if(H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(!temp || !temp.is_usable())
-			to_chat(H, "<font color='red'>You can't use your hand.</font>")
+			to_chat(H, SPAN_DANGER("You can't use your hand."))
 			return
 	M.break_cloak()
 
@@ -29,7 +47,7 @@
 			if(!hit_zone)
 				H.do_attack_animation(src)
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-				visible_message("<font color='red'><B>[H] reaches for [src], but misses!</B></font>")
+				visible_message(SPAN_DANGER("<B>[H] reaches for [src], but misses!</B>"))
 				return 0
 
 		if(H != src && check_shields(0, null, H, H.zone_sel.selecting, H.name))
@@ -41,7 +59,7 @@
 			var/damage = rand(0, 9)
 			if(!damage)
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-				visible_message("<font color='red'><B>[H] has attempted to punch [src]!</B></font>")
+				visible_message(SPAN_DANGER("<B>[H] has attempted to punch [src]!</B>"))
 				return 0
 			var/obj/item/organ/external/affecting = get_organ(ran_zone(H.zone_sel.selecting))
 			var/armor_block = run_armor_check(affecting, "melee")
@@ -52,14 +70,14 @@
 
 			playsound(loc, "punch", 25, 1, -1)
 
-			visible_message("<font color='red'><B>[H] has punched [src]!</B></font>")
+			visible_message(SPAN_DANGER("<B>[H] has punched [src]!</B>"))
 
 			if(armor_soak >= damage)
 				return
 
 			apply_damage(damage, HALLOSS, affecting, armor_block, armor_soak)
 			if(damage >= 9)
-				visible_message("<font color='red'><B>[H] has weakened [src]!</B></font>")
+				visible_message(SPAN_DANGER("<B>[H] has weakened [src]!</B>"))
 				apply_effect(4, WEAKEN, armor_block)
 
 			return
@@ -78,21 +96,8 @@
 				spawn(50)
 					cpr_time = 1
 
-				if(!H.check_has_mouth())
-					to_chat(H, "<span class='warning'>You don't have a mouth, you cannot do mouth-to-mouth resustication!</span>")
-					return
-				if(!check_has_mouth())
-					to_chat(H, "<span class='warning'>They don't have a mouth, you cannot do mouth-to-mouth resustication!</span>")
-					return
-				if((H.head && (H.head.body_parts_covered & FACE)) || (H.wear_mask && (H.wear_mask.body_parts_covered & FACE)))
-					to_chat(H, "<span class='warning'>You need to remove your mouth covering for mouth-to-mouth resustication!</span>")
-					return 0
-				if((head && (head.body_parts_covered & FACE)) || (wear_mask && (wear_mask.body_parts_covered & FACE)))
-					to_chat(H, "<span class='warning'>You need to remove \the [src]'s mouth covering for mouth-to-mouth resustication!</span>")
-					return 0
-				if (!H.internal_organs_by_name[O_LUNGS])
-					to_chat(H, "<span class='danger'>You need lungs for mouth-to-mouth resustication!</span>")
-					return
+				if(!cpr_check(H))
+					return				
 
 				var/acls_quality = M.get_skill(SKILL_ACLS)
 				if(!isnum(acls_quality))
@@ -118,10 +123,9 @@
 					var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
 					if(!L)
 						continue
-					for(var/i2 in 1 to acls_quality)
-						L.handle_breath()
-						if(prob(20))
-							to_chat(src, SPAN_NOTICE("You feel a breath of fresh air enter your lungs. It feels so good."))
+					L.handle_breath(0.1 + acls_quality * 0.25)
+					if(prob(20))
+						to_chat(src, SPAN_NOTICE("You feel a breath of fresh air enter your lungs. It feels so good."))
 
 				if(is_precordial_blow && is_vfib())
 					H.visible_message(SPAN_NOTICE("\The [H] is performing precordial blow on \the [src]."))
@@ -137,11 +141,36 @@
 
 					if(prob(5 + 5 * acls_quality))
 						heart.get_ow_arrythmia()?.weak(heart)
+			else if(istype(H) && !is_breathing())
+				if (!cpr_time)
+					return 0
 
-					// TODO: add precordial blow function.
+				cpr_time = 0
+				spawn(50)
+					cpr_time = 1
 
+				if(!cpr_check())
+					return
+
+				var/acls_quality = M.get_skill(SKILL_ACLS)
+				if(!isnum(acls_quality))
+					acls_quality = 0
+
+				var/breathes = 1 + acls_quality
+				var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+				if(!L)
+					return
+
+				H.visible_message(SPAN_NOTICE("\The [H] is performing mouth-to-mouth pulmonary resuscitation on \the [src]."))
+
+				for(var/i in 1 to breathes)
+					if(!do_after(H, round(rand(8, 20 - acls_quality * 2.5)), src))
+						return
+					L.handle_breath(1 + acls_quality * 0.25)
+					if(prob(20))
+						to_chat(src, SPAN_NOTICE("You feel a breath of fresh air enter your lungs. It feels so good."))
 		if(I_GRAB)
-			if(M == src || anchored)
+			if(M == src)
 				return 0
 			for(var/obj/item/weapon/grab/G in src.grabbed_by)
 				if(G.assailant == M)
@@ -165,8 +194,6 @@
 			return 1
 
 		if(I_HURT)
-
-
 			if(M.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/weapon/grenade))
 				var/obj/item/weapon/grenade/G = wear_mask
 				if(!G.active)
@@ -204,7 +231,7 @@
 					// We didn't see this coming, so we get the full blow
 					rand_damage = 5
 					accurate = 1
-				if(I_HURT, I_GRAB)
+				if(I_HURT, I_GRAB, I_DISARM)
 					// We're in a fighting stance, there's a chance we block
 					if(src.canmove && src!=H && prob(20))
 						block = 1

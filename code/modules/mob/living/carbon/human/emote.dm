@@ -934,7 +934,7 @@
 					twitch_v, vomit, whimper, whistle, wwhistle, qwhistle, swhistle, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping, dwoop"
 
 		else
-			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>")
+			to_chat(src, SPAN_INFO("Unusable emote '[act]'. Say *help for a list."))
 
 	if (message)
 

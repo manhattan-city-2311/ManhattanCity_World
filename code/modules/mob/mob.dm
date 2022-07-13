@@ -320,7 +320,7 @@
 	if (flavor_text && flavor_text != "")
 		var/msg = replacetext_char(flavor_text, "\n", " ")
 		if(length(msg) <= 40)
-			return "<font color='blue'>[msg]</font>"
+			return SPAN_INFO("[msg]")
 		else
 			return "<font color='blue'>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
 
@@ -350,7 +350,7 @@
 		if(istype(src,/mob/observer/dead))
 			var/mob/observer/dead/G = src
 			if(G.has_enabled_antagHUD == 1 && config.antag_hud_restricted && !client.holder)
-				to_chat(usr, "<font color='blue'><B>Upon using the antagHUD you forfeighted the ability to join the round.</B></font>")
+				to_chat(usr, SPAN_INFO("<B>Upon using the antagHUD you forfeighted the ability to join the round.</B>"))
 				return
 		var/deathtimeminutes = round(deathtime / 600)
 		var/pluralcheck = "minute"
@@ -379,7 +379,7 @@
 		else
 			to_chat(H, "<span class='notice'><b>As this is not a canon round, your character will not be saved this time.</b></span>")
 
-	to_chat(usr, "<font color='blue'><B>Make sure to play a different character, and please roleplay correctly!</B></font>")
+	to_chat(usr, SPAN_INFO("<B>Make sure to play a different character, and please roleplay correctly!</B>"))
 
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
@@ -440,7 +440,7 @@
 	if(client.holder && (client.holder.rights & R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
-		to_chat(usr, "<font color='blue'>You must be observing to use this!</font>")
+		to_chat(usr, SPAN_INFO("You must be observing to use this!"))
 		return
 
 	if(is_admin && stat == DEAD)

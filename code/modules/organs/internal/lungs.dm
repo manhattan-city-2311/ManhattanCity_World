@@ -12,7 +12,7 @@
 	var/breath_cycle = 0
 	var/respiratory_rate = 15
 	var/list/respiratory_rate_modificators = list()
-	var/last_breath
+	var/last_breath = 0
 
 /obj/item/organ/internal/lungs/New()
 	..()
@@ -28,18 +28,20 @@
 	return (!owner.nervous_system_failure()) && (damage < min_broken_damage) && (!owner.losebreath)
 
 /obj/item/organ/internal/lungs/proc/is_breathing()
-	return respiratory_rate > 0 || (!owner.losebreath)
+	return respiratory_rate > 0
 
 /mob/living/carbon/proc/is_breathing()
 	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
 
-	return L ? L.is_breathing() : FALSE
+	return L ? (L.is_breathing()) : FALSE
 
 /obj/item/organ/internal/lungs/proc/make_modificators()
-	return
+	if(!can_breathe())
+		respiratory_rate_modificators["losebreath"] = -100
+		return
 
 /obj/item/organ/internal/lungs/proc/handle_respiratory_rate()
-	respiratory_rate = initial(respiratory_rate) + sumListAndCutAssoc(respiratory_rate_modificators)
+	respiratory_rate = max(0, initial(respiratory_rate) + sumListAndCutAssoc(respiratory_rate_modificators))
 
 /obj/item/organ/internal/lungs/Process()
 	..()
@@ -60,7 +62,10 @@
 				)
 			owner.drip(100)
 
-	if(can_breathe())
+	make_modificators()
+	handle_respiratory_rate()
+
+	if(is_breathing())
 		breath_cycle += respiratory_rate / 30
 	else
 		breath_cycle = 0

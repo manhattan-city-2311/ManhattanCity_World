@@ -169,7 +169,7 @@
 	visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
 	var/datum/money_account/CH = get_account(C.associated_account_number)
 	if(!CH)
-		to_chat(usr, "\icon[src]<span class='warning'>No valid account number is associated with this card.</span>")
+		to_chat(usr, "[icon2html(src, usr)]<span class='warning'>No valid account number is associated with this card.</span>")
 		return
 	if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 		if(vendor_account)
@@ -178,9 +178,9 @@
 			if(D)
 				transfer_and_vend(D, C)
 			else
-				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+				to_chat(usr, "[icon2html(src, usr)]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
 		else
-			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+			to_chat(usr, "[icon2html(src, usr)]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
 	else
 		transfer_and_vend(CH, C)
 
@@ -206,7 +206,7 @@
 		network = 0
 		power = 0
 	else
-		to_chat(usr, "\icon[src]<span class='warning'>You don't have that much money!</span>")
+		to_chat(usr, "[icon2html(src, usr)]<span class='warning'>You don't have that much money!</span>")
 
 /obj/machinery/lapvend/proc/total()
 	var/total = 0
@@ -295,7 +295,7 @@
 	visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
 	var/datum/money_account/CH = get_account(C.associated_account_number)
 	if(!CH)
-		to_chat(usr, "\icon[src]<span class='warning'>No valid account number is associated with this card.</span>")
+		to_chat(usr, "[icon2html(src, usr)]<span class='warning'>No valid account number is associated with this card.</span>")
 		return 0
 	if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 		if(vendor_account)
@@ -305,10 +305,10 @@
 				transfer_and_reimburse(D)
 				return 1
 			else
-				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+				to_chat(usr, "[icon2html(src, usr)]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
 				return 0
 		else
-			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+			to_chat(usr, "[icon2html(src, usr)]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
 			return 0
 	else
 		transfer_and_reimburse(CH)

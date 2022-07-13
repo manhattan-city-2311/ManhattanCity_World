@@ -136,11 +136,11 @@
 	if (bitecount==0)
 		return
 	else if (bitecount==1)
-		to_chat(user, "<font color='blue'>\The [src] was bitten by someone!</font>")
+		to_chat(user, SPAN_INFO("\The [src] was bitten by someone!"))
 	else if (bitecount<=3)
-		to_chat(user, "<font color='blue'>\The [src] was bitten [bitecount] times!</font>")
+		to_chat(user, SPAN_INFO("\The [src] was bitten [bitecount] times!"))
 	else
-		to_chat(user, "<font color='blue'>\The [src] was bitten multiple times!</font>")
+		to_chat(user, SPAN_INFO("\The [src] was bitten multiple times!"))
 
 /obj/item/weapon/reagent_containers/food/snacks/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/weapon/storage))
@@ -160,7 +160,7 @@
 
 			user.visible_message( \
 				"[user] scoops up some [src] with \the [U]!", \
-				"<font color='blue'>You scoop up some [src] with \the [U]!</font>" \
+				SPAN_INFO("You scoop up some [src] with \the [U]!") \
 			)
 
 			src.bitecount++
@@ -607,10 +607,10 @@
 		var/clr = C.colourName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-			to_chat(usr, "<font color='blue'>The egg refuses to take on this color!</font>")
+			to_chat(usr, SPAN_INFO("The egg refuses to take on this color!"))
 			return
 
-		to_chat(usr, "<font color='blue'>You color \the [src] [clr]</font>")
+		to_chat(usr, SPAN_INFO("You color \the [src] [clr]"))
 		icon_state = "egg-[clr]"
 	else
 		..()

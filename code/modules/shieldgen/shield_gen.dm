@@ -67,7 +67,7 @@
 	else if(istype(W, /obj/item/weapon/wrench))
 		src.anchored = !src.anchored
 		playsound(src, W.usesound, 75, 1)
-		src.visible_message("<font color='blue'>\icon[src] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].</font>")
+		src.visible_message(SPAN_INFO("\icon[src] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user]."))
 
 		if(active)
 			toggle()
@@ -248,7 +248,7 @@
 		covered_turfs = null
 
 		for(var/mob/M in view(5,src))
-			to_chat(M, "\icon[src] You hear heavy droning start up.")
+			to_chat(M, "[icon2html(src, M)] You hear heavy droning start up.")
 		for(var/obj/effect/energy_field/E in field) // Update the icons here to ensure all the shields have been made already.
 			E.update_icon()
 	else
@@ -258,7 +258,7 @@
 			qdel(D)
 
 		for(var/mob/M in view(5,src))
-			to_chat(M, "\icon[src] You hear heavy droning fade out.")
+			to_chat(M, "[icon2html(src, M)] You hear heavy droning fade out.")
 
 /obj/machinery/shield_gen/update_icon()
 	if(stat & BROKEN)

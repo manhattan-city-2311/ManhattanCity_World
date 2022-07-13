@@ -120,7 +120,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 	if(processing==1)
-		to_chat(usr, "<font color='blue'>The machine is processing.</font>")
+		to_chat(usr, SPAN_INFO("The machine is processing."))
 		return
 	if(href_list["choose"])
 		chosen = href_list["choose"]

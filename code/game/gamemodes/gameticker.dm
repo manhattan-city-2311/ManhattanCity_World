@@ -46,7 +46,7 @@ var/global/datum/controller/gameticker/ticker
 
 	do
 		pregame_timeleft = 180
-		to_chat(world, "<B><FONT color='blue'>Welcome to the pregame lobby!</FONT></B>")
+		to_chat(world, SPAN_INFO("<B>Welcome to the pregame lobby!</B>"))
 		to_chat(world, "Please set up your character and select ready. The round will start in [pregame_timeleft] seconds.")
 		while(current_state == GAME_STATE_PREGAME)
 			if(round_progressing)
@@ -135,7 +135,7 @@ var/global/datum/controller/gameticker/ticker
 			//Deleting Startpoints but we need the ai point to AI-ize people later
 			if (S.name != "AI")
 				qdel(S)
-		to_chat(world, "<FONT color='blue'><B>Enjoy the game!</B></FONT>")
+		to_chat(world, SPAN_INFO("<B>Enjoy the game!</B>"))
 		world << sound('sound/AI/welcome.ogg') // Skie
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
@@ -415,7 +415,7 @@ var/global/datum/controller/gameticker/ticker
 				var/turf/playerTurf = get_turf(Player)
 				if(emergency_shuttle.departed && emergency_shuttle.evac)
 					if(isNotAdminLevel(playerTurf.z))
-						to_chat(Player, "<font color='blue'><b>You survived the round, but remained on [station_name()] as [Player.real_name].</b></font>")
+						to_chat(Player, SPAN_INFO("<b>You survived the round, but remained on [station_name()] as [Player.real_name].</b>"))
 					else
 						to_chat(Player, "<font color='green'><b>You managed to survive the events in [station_name()] as [Player.real_name].</b></font>")
 				else if(isAdminLevel(playerTurf.z))
@@ -423,7 +423,7 @@ var/global/datum/controller/gameticker/ticker
 				else if(issilicon(Player))
 					to_chat(Player, "<font color='green'><b>You remain operational after the events in [station_name()] as [Player.real_name].</b></font>")
 				else
-					to_chat(Player, "<font color='blue'><b>You missed the crew transfer after the events in [station_name()] as [Player.real_name].</b></font>")
+					to_chat(Player, SPAN_INFO("<b>You missed the crew transfer after the events in [station_name()] as [Player.real_name].</b>"))
 			else
 				if(istype(Player,/mob/observer/dead))
 					var/mob/observer/dead/O = Player

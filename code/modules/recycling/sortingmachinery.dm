@@ -294,7 +294,7 @@
 		else if(src.amount < 3)
 			to_chat(user, "<span class='warning'>You need more paper.</span>")
 	else
-		to_chat(user, "<font color='blue'>The object you are trying to wrap is unsuitable for the sorting machinery!</font>")
+		to_chat(user, SPAN_INFO("The object you are trying to wrap is unsuitable for the sorting machinery!"))
 	if (src.amount <= 0)
 		new /obj/item/weapon/c_tube(src.loc)
 		qdel(src)
@@ -303,7 +303,7 @@
 
 /obj/item/weapon/packageWrap/examine(mob/user)
 	if(..(user, 0))
-		to_chat(user, "<font color='blue'>There are [amount] units of package wrap left!</font>")
+		to_chat(user, SPAN_INFO("There are [amount] units of package wrap left!"))
 
 	return
 

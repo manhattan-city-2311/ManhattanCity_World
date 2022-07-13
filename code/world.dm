@@ -406,7 +406,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			rank = "Admin"
 
 		var/message =	"<font color='red'>IRC-[rank] PM from <b><a href='?irc_msg=[input["sender"]]'>IRC-[input["sender"]]</a></b>: [input["msg"]]</font>"
-		var/amessage =  "<font color='blue'>IRC-[rank] PM from <a href='?irc_msg=[input["sender"]]'>IRC-[input["sender"]]</a> to <b>[key_name(C)]</b> : [input["msg"]]</font>"
+		var/amessage =  SPAN_INFO("IRC-[rank] PM from <a href='?irc_msg=[input["sender"]]'>IRC-[input["sender"]]</a> to <b>[key_name(C)]</b> : [input["msg"]]")
 
 		C.received_irc_pm = world.time
 		C.irc_admin = input["sender"]
@@ -472,10 +472,17 @@ var/world_topic_spam_protect_time = world.timeofday
 	Master.Shutdown()	//run SS shutdowns
 	processScheduler.stop()
 
+	var/chatOutput/co
 	for(var/client/C in GLOB.clients)
+		co = C.chatOutput
+		if(co)
+			co.ehjax_send(data = "roundrestart")
+
+	for(var/client/C in GLOB.clients)
+		if(!C)
+			continue
 		if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[config.server]")
-		C?.tgui_panel?.send_roundrestart()
 	..(reason)
 
 /hook/startup/proc/loadMode()

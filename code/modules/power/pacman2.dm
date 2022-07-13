@@ -52,7 +52,7 @@
 
 	examine(mob/user)
 		..(user)
-		to_chat(user, "<font color='blue'>The generator has [P.air_contents.phoron] units of fuel left, producing [power_gen] per cycle.</font>")
+		to_chat(user, SPAN_INFO("The generator has [P.air_contents.phoron] units of fuel left, producing [power_gen] per cycle."))
 
 	handleInactive()
 		heat -= 2
@@ -75,23 +75,23 @@
 			P = O
 			user.drop_item()
 			O.loc = src
-			to_chat(user, "<font color='blue'>You add the phoron tank to the generator.</font>")
+			to_chat(user, SPAN_INFO("You add the phoron tank to the generator."))
 		else if(!active)
 			if(istype(O, /obj/item/weapon/wrench))
 				anchored = !anchored
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 				if(anchored)
-					to_chat(user, "<font color='blue'>You secure the generator to the floor.</font>")
+					to_chat(user, SPAN_INFO("You secure the generator to the floor."))
 				else
-					to_chat(user, "<font color='blue'>You unsecure the generator from the floor.</font>")
+					to_chat(user, SPAN_INFO("You unsecure the generator from the floor."))
 				SSmachines.makepowernets()
 			else if(istype(O, /obj/item/weapon/screwdriver))
 				open = !open
 				playsound(loc, O.usesound, 50, 1)
 				if(open)
-					to_chat(user, "<font color='blue'>You open the access panel.</font>")
+					to_chat(user, SPAN_INFO("You open the access panel."))
 				else
-					to_chat(user, "<font color='blue'>You close the access panel.</font>")
+					to_chat(user, SPAN_INFO("You close the access panel."))
 			else if(istype(O, /obj/item/weapon/crowbar) && !open)
 				playsound(loc, O.usesound, 50, 1)
 				var/obj/machinery/constructable_frame/machine_frame/new_frame = new /obj/machinery/constructable_frame/machine_frame(src.loc)
