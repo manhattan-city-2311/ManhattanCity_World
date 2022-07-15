@@ -1167,7 +1167,7 @@
 			return
 
 		if(config.allow_admin_rev)
-			L.revive()
+			L.rejuvenate()
 			message_admins("<font color='red'>Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!</font>", 1)
 			log_admin("[key_name(usr)] healed / Rrvived [key_name(L)]")
 		else

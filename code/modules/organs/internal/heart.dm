@@ -27,15 +27,22 @@
 
 	var/cpr = 0
 
+/obj/item/organ/internal/heart/rejuvenate()
+	. = ..()
+	pulse_modificators.Cut()
+	cardiac_output_modificators.Cut()
+	arrythmias.Cut()
+	ischemia = 0
+	
 /obj/item/organ/internal/heart/New()
 	..()
 	if(!owner.client)
 		return
-	damage = owner.client.prefs.heart_data["damage"]
-	pulse = owner.client.prefs.heart_data["pulse"]
-	cardiac_output = owner.client.prefs.heart_data["cardiac_output"]
-	ischemia = owner.client.prefs.heart_data["ischemia"]
-	germ_level = owner.client.prefs.heart_data["germ_level"]
+	damage = owner.client.prefs.heart_data?["damage"] || 0
+	pulse = owner.client.prefs.heart_data?["pulse"] || initial(pulse)
+	cardiac_output = owner.client.prefs.heart_data?["cardiac_output"] || 1
+	ischemia = owner.client.prefs.heart_data?["ischemia"] || 0
+	germ_level = owner.client.prefs.heart_data?["germ_level"] || 0
 
 
 /obj/item/organ/internal/heart/influence_hormone(T, amount)

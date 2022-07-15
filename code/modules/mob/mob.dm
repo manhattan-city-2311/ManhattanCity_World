@@ -811,7 +811,7 @@
 /mob/proc/Weaken(amount)
 	if(status_flags & CANWEAKEN)
 		facing_dir = null
-		weakened = max(max(weakened,amount),0)
+		weakened = max(max(weakened, amount), 0)
 		update_canmove()	//updates lying, canmove and icons
 	return
 

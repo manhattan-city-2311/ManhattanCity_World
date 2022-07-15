@@ -379,7 +379,8 @@ This function restores all organs.
 */
 /mob/living/carbon/human/restore_all_organs(var/ignore_prosthetic_prefs)
 	for(var/obj/item/organ/external/current_organ in organs_by_name)
-		current_organ.rejuvenate(ignore_prosthetic_prefs)
+		if(istype(current_organ))
+			current_organ.rejuvenate(ignore_prosthetic_prefs)
 
 /mob/living/carbon/human/proc/HealDamage(zone, brute, burn)
 	var/obj/item/organ/external/E = get_organ(zone)

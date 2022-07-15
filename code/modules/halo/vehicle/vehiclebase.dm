@@ -85,25 +85,6 @@
 		set_light(0) //Switch off at spawn.
 	cargo_capacity = base_storage_capacity(capacity_flag)
 
-/*/obj/vehicles/Initialize()
-	. = ..()
-	if(spawn_datum)
-		spawn_datum = new spawn_datum
-		verbs += /obj/vehicles/proc/toggle_mobile_spawn_deploy
-	if(internal_air)
-		internal_air.volume = 2500
-		internal_air.temperature = T20C
-
-/obj/vehicles/lost_in_space()
-	if(!can_space_move)
-		return TRUE
-	return FALSE*/
-
-/obj/manhattan/vehicles/return_air()
-	if(internal_air)
-		return internal_air
-	return loc.return_air()
-
 /obj/manhattan/vehicles/attack_generic(var/mob/living/simple_animal/attacker,var/damage,var/text)
 	visible_message("<span class = 'danger'>[attacker] [text] [src]</span>")
 	var/pos_to_dam = should_damage_occ()
@@ -352,7 +333,20 @@
 		return
 	spawn()
 		while (moving_x || moving_y)
-			sleep(max(min_speed - (abs(speed[1]) + abs(speed[2]) ),max_speed))
+			var/delay = max(min_speed - vector_modulus(speed), max_speed)
+			sleep(delay)
+
+			glide_size = 0
+
+			for(var/mob/occupant in occupants)
+				if(!ismob(occupant))
+					continue
+
+				occupant.update_glide(delay)
+
+				if(!glide_size)
+					glide_size = occupant.glide_size
+
 			if(speed[1] == 0)
 				moving_x = 0
 			else
@@ -411,24 +405,16 @@
 /obj/manhattan/vehicles/relaymove(var/mob/user, var/direction)
 	if(world.time < next_move_input_at)
 		return 0
-/*	if(isspace(loc) && !can_space_move)
-		to_chat(user,"<span class = 'notice'>[src] cannot move in space!</span>")
-		return*/
 	if(movement_destroyed)
 		to_chat(user,"<span class = 'notice'>[src] is in no state to move!</span>")
 		return 0
 	if(!active)
 		to_chat(user,"<span class = 'notice'>[src] needs to be active to move!</span>")
 		return 0
-	var/list/driver_list = get_occupants_in_position("driver")
-	var/is_driver = FALSE
-	for(var/mob/driver in driver_list)
-		if(user == driver)
-			is_driver = TRUE
-			break
-	if(!is_driver)
+	if(!(user in get_occupants_in_position("driver")))
 		return -1 //doesn't return 0 so we can differentiate this from the other problems for simple mobs.
-	if(!(direction in list(NORTH,SOUTH,EAST,WEST)))
+
+	if(!(direction in list(NORTH, SOUTH, EAST, WEST)))
 		var/dirturn = 45
 		if(prob(50))
 			dirturn = -45
@@ -436,22 +422,18 @@
 	switch(direction)
 		if(NORTH)
 			last_moved_axis = 2
-			speed[2] = min(speed[2] + acceleration,min_speed)
-
+			speed[2] = min(speed[2] + acceleration, min_speed)
 		if(SOUTH)
 			last_moved_axis = 2
-			speed[2] = max(speed[2] - acceleration,-min_speed)
-
+			speed[2] = max(speed[2] - acceleration, -min_speed)
 		if(EAST)
 			last_moved_axis = 1
-			speed[1] = min(speed[1] + acceleration,min_speed)
-
+			speed[1] = min(speed[1] + acceleration, min_speed)
 		if(WEST)
 			last_moved_axis = 1
-			speed[1] = max(speed[1] - acceleration,-min_speed)
+			speed[1] = max(speed[1] - acceleration, -min_speed)
 	if(braking_mode == 1) //If we're braking, we don't get the leeway in movement.
 		last_moved_axis = 0
-
 
 	if(speed[1] != 0 && !moving_x)
 		spawn()
@@ -459,6 +441,7 @@
 	else if(speed[2] != 0 && !moving_y)
 		spawn()
 			movement_loop(2)
+
 	next_move_input_at = world.time + acceleration
 	return 1
 

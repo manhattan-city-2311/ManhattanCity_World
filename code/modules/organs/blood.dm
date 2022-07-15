@@ -352,7 +352,7 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 
 // in minute
 /mob/living/carbon/human/proc/get_max_blood_co2_delta()
-	return (80 * NORMAL_MCV) / mcv
+	return mcv ? ((80 * NORMAL_MCV) / mcv) : 0
 
 /mob/living/carbon/human/proc/make_oxygen(amount, force = FALSE)
 	if(!force)

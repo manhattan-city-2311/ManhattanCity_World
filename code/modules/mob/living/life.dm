@@ -51,9 +51,9 @@
 	for(var/obj/item/weapon/grab/G in src)
 		G.process()
 
-	if(handle_regular_status_updates()) // Status & health update, are we dead or alive etc.
-		handle_disabilities() // eye, ear, brain damages
-		handle_statuses() //all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
+	handle_regular_status_updates() // Status & health update, are we dead or alive etc.
+	handle_disabilities() // eye, ear, brain damages
+	handle_statuses() //all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
 
 	handle_actions()
 
@@ -118,7 +118,7 @@
 
 /mob/living/proc/handle_weakened()
 	if(weakened)
-		weakened = max(weakened-1,0)
+		weakened = max(weakened - 1,0)
 	return weakened
 
 /mob/living/proc/handle_stuttering()

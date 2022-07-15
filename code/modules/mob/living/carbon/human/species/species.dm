@@ -290,6 +290,31 @@
 	else
 		H.equip_to_slot_or_del(box, slot_in_backpack)
 
+/datum/species/proc/restore_missed_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
+	for(var/obj/item/organ/external/stump/S in H.organs_by_name)
+		qdel(S)
+
+	var/list/organs_ids = list()
+
+	for(var/obj/item/organ/E in H.organs_by_name)
+		organs_ids += E.organ_tag
+
+	for(var/limb_type in (has_limbs - organs_ids))
+		var/list/organ_data = has_limbs[limb_type]
+		var/limb_path = organ_data["path"]
+		//var/limb_descriptor = organ_data["descriptor"]
+
+		var/obj/item/organ/O = new limb_path(H)
+		organ_data["descriptor"] = O.name
+
+	for(var/organ_tag in (has_organ - organs_ids))
+		var/organ_type = has_organ[organ_tag]
+		var/obj/item/organ/O = new organ_type(H,1)
+		if(organ_tag != O.organ_tag)
+			warning("[O.type] has a default organ tag \"[O.organ_tag]\" that differs from the species' organ tag \"[organ_tag]\". Updating organ_tag to match.")
+			O.organ_tag = organ_tag
+		H.internal_organs_by_name[organ_tag] = O
+
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
 
 	H.mob_size = mob_size
@@ -297,10 +322,10 @@
 		if((organ in H.organs_by_name) || (organ in H.internal_organs_by_name))
 			qdel(organ)
 
-	if(H.organs_by_name)									H.organs_by_name.Cut()
-	if(H.internal_organs_by_name)				 H.internal_organs_by_name.Cut()
-	if(H.organs_by_name)					H.organs_by_name.Cut()
-	if(H.internal_organs_by_name) H.internal_organs_by_name.Cut()
+	if(H.organs_by_name)			H.organs_by_name.Cut()
+	if(H.internal_organs_by_name)	H.internal_organs_by_name.Cut()
+	if(H.organs_by_name)			H.organs_by_name.Cut()
+	if(H.internal_organs_by_name) 	H.internal_organs_by_name.Cut()
 
 	H.organs_by_name = list()
 	H.internal_organs_by_name = list()

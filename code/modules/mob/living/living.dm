@@ -625,30 +625,6 @@ default behaviour is:
 /mob/living/proc/restore_all_organs()
 	return
 
-
-
-/mob/living/proc/revive()
-	rejuvenate()
-//	if(buckled)
-//		buckled.unbuckle_mob()
-	if(iscarbon(src))
-		var/mob/living/carbon/C = src
-
-		if (C.handcuffed && !initial(C.handcuffed))
-			C.drop_from_inventory(C.handcuffed)
-		C.handcuffed = initial(C.handcuffed)
-
-		if (C.legcuffed && !initial(C.legcuffed))
-			C.drop_from_inventory(C.legcuffed)
-		C.legcuffed = initial(C.legcuffed)
-	BITSET(hud_updateflag, HEALTH_HUD)
-	BITSET(hud_updateflag, STATUS_HUD)
-	BITSET(hud_updateflag, LIFE_HUD)
-	ExtinguishMob()
-	fire_stacks = 0
-	if(ai_holder) // AI gets told to sleep when killed. Since they're not dead anymore, wake it up.
-		ai_holder.go_wake()
-
 /mob/living/proc/rejuvenate()
 	if(reagents)
 		reagents.clear_reagents()
@@ -696,10 +672,14 @@ default behaviour is:
 	BITSET(hud_updateflag, STATUS_HUD)
 	BITSET(hud_updateflag, LIFE_HUD)
 
+	ExtinguishMob()
+
 	failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 	reload_fullscreen()
 
-	return
+	fire_stacks = 0
+	if(ai_holder) // AI gets told to sleep when killed. Since they're not dead anymore, wake it up.
+		ai_holder.go_wake()
 
 /mob/living/rejuvenate()
 	var/was_dead = stat == DEAD

@@ -31,6 +31,9 @@
 	bloodstr.clear_reagents()
 	ingested.clear_reagents()
 	touching.clear_reagents()
+
+	handle_regular_hud_updates()
+	
 	..()
 
 /mob/living/carbon/proc/nervous_system_failure()

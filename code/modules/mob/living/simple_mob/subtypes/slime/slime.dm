@@ -87,12 +87,6 @@
 	handle_light()
 	..()
 
-/mob/living/simple_mob/slime/revive()
-	// Make revived slimes resume glowing.
-	glow_toggle = initial(glow_toggle)
-	handle_light()
-	..()
-
 /mob/living/simple_mob/slime/update_icon()
 	..() // Do the regular stuff first.
 

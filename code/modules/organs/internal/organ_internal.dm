@@ -136,6 +136,9 @@
 
 /obj/item/organ/internal/Process()
 	..()
+	if(!owner)
+		return
+
 	for(var/datum/organ_disease/OD in SANITIZE_LIST(diseases))
 		if(OD.can_gone())
 			diseases -= OD
@@ -153,4 +156,4 @@
 	if(!vital && damage && owner.bloodstr.get_reagent_amount("glucose") >= GLUCOSE_LEVEL_NORMAL)
 		var/regen = min(2, damage)
 		absorb_hormone("glucose", regen)
-		damage = max(0, damage)
+		damage = max(0, damage - regen)

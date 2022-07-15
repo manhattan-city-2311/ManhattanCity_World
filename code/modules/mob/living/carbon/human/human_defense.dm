@@ -312,7 +312,6 @@ emp_act
 				if(prob(effective_force + 10))
 					visible_message("<span class='danger'>[src] has been knocked down!</span>")
 					apply_effect(6, WEAKEN, blocked)
-
 	return 1
 
 

@@ -39,7 +39,6 @@ var/global/datum/controller/gameticker/ticker
 	'sound/music/halloween/halloween.ogg',\
 	'sound/music/halloween/ghosts.ogg'
 	'sound/music/ravenheart1.ogg',*/
-	'sound/music/menu1.ogg',\
 	'sound/music/nightexpess.ogg')
 
 	send2mainirc("Server lobby is loaded and open at byond://[config.serverurl ? config.serverurl : (config.server ? config.server : "[world.address]:[world.port]")]")

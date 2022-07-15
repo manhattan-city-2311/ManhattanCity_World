@@ -83,7 +83,7 @@
 				src.spread_disease_to(M)
 
 /mob/living/carbon/human/proc/handle_some_updates()
-	if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > 6000))	//We are long dead, or we're junk mobs spawned like the clowns on the clown shuttle
+	if(life_tick % 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > 6000))	//We are long dead, or we're junk mobs spawned like the clowns on the clown shuttle
 		return 0
 	return 1
 
@@ -1264,16 +1264,24 @@
 
 	var/thermal_protection = get_heat_protection(fire_stacks * 1500) // Arbitrary but below firesuit max temp when below 20 stacks.
 
-	if(thermal_protection == 1) // Immune.
-		return
-	else
+	if(thermal_protection != 1) // Immune.
 		bodytemperature += (BODYTEMP_HEATING_MAX + (fire_stacks * 15)) * (1-thermal_protection)
 
 /mob/living/carbon/human/rejuvenate()
+	species.restore_missed_organs(src)
+
+	setup_cm()
 	restore_blood()
 	shock_stage = 0
 	traumatic_shock = 0
-	..()
+
+	for (var/ID in virus2)
+		var/datum/disease2/disease/V = virus2[ID]
+		V.cure(src)
+
+	losebreath = 0
+
+	. = ..()
 
 /mob/living/carbon/human/proc/handle_defib_timer()
 	if(!should_have_organ(O_BRAIN))

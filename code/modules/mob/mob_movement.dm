@@ -307,7 +307,7 @@
 			mob.update_glide(V.move_delay)
 			mob.buckled.glide_size = mob.glide_size
 
-			return mob.buckled.relaymove(mob,direct)
+			return mob.buckled.relaymove(mob, direct)
 
 		if(istype(mob.machine, /obj/machinery))
 			if(mob.machine.relaymove(mob,direct))
