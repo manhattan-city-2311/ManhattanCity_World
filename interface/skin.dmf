@@ -1160,18 +1160,21 @@ window "mainwindow"
 		icon = 'icons\\ws_64.png'
 		macro = "macro"
 		menu = "menu"
+		outer-size = 1693x1050
+		inner-size = 1677x991
 	elem "mainvsplit"
 		type = CHILD
-		pos = 1,0
+		pos = 0,0
 		size = 1674x959
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
 	elem "input"
 		type = INPUT
-		pos = 0,956
+		pos = 0,957
 		size = 1675x20
 		anchor1 = 0,100
 		anchor2 = 100,100

@@ -25,7 +25,7 @@
 	icon_state = "lungs-prosthetic"
 
 /obj/item/organ/internal/lungs/proc/can_breathe()
-	return (!owner.nervous_system_failure()) && (damage < min_broken_damage) && (!owner.losebreath)
+	return (!owner.nervous_system_failure()) && (damage < min_broken_damage) && (owner.losebreath <= 0)
 
 /obj/item/organ/internal/lungs/proc/is_breathing()
 	return respiratory_rate > 0
@@ -90,25 +90,25 @@
 		return
 
 	var/volume           = BREATH_VOLUME * number * (1 - damage / max_damage)
-	var/oxygen_volume    = volume * O2STANDARD
+	var/oxygen_volume    = volume * O2STANDARD * 0.55
 
 	var/minutes_passed   = (world.time - last_breath) / (1.0 MINUTE)
 
-	var/max_delta_oxygen = owner.get_max_blood_oxygen_delta() / minutes_passed
-	var/max_delta_co2    = owner.get_max_blood_co2_delta() / minutes_passed
+	var/max_delta_oxygen = owner.get_max_blood_oxygen_delta() * minutes_passed
+	var/max_delta_co2    = owner.get_max_blood_co2_delta() * minutes_passed
 
-	owner.oxy = min(owner.oxy + max_delta_oxygen, owner.oxy + oxygen_volume)
-	owner.co2 = max(owner.co2 - max_delta_co2, 0)
+	owner.remove_co2(max_delta_co2)
+	owner.make_oxygen(min(max_delta_oxygen, oxygen_volume))
 
 	last_breath = world.time
 
 /obj/item/organ/internal/lungs/proc/handle_failed_breath()
-	if(owner.losebreath)
-		if(prob(15))
-			if(can_breathe())
-				owner.emote("gasp")
-			else
-				to_chat(owner, SPAN_DANGER("You're having trouble getting enough oxygen!"))
+	if(prob(5))
+		if(can_breathe())
+			owner.emote("gasp")
+		else
+			to_chat(owner, SPAN_DANGER("You're having trouble getting enough oxygen!"))
+	if(owner.losebreath > 0)
 		--owner.losebreath
 
 // TODO: lungs listening

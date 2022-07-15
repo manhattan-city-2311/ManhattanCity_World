@@ -88,7 +88,9 @@
 
 	switch(M.a_intent)
 		if(I_HELP)
-			if(istype(H) && (is_asystole() || is_vfib()))
+			if(!istype(H))
+				return
+			if(is_asystole() || is_vfib())
 				if (!cpr_time)
 					return 0
 
@@ -141,7 +143,7 @@
 
 					if(prob(5 + 5 * acls_quality))
 						heart.get_ow_arrythmia()?.weak(heart)
-			else if(istype(H) && !is_breathing())
+			else if(!is_breathing())
 				if (!cpr_time)
 					return 0
 

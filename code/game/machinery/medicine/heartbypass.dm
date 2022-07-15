@@ -5,12 +5,13 @@
 	anchored = 0
 	density = 0
 	var/mob/living/carbon/human/attached = null
-	var/obj/item/weapon/tank/oxygen_tank = null
 
-	var/setting = NORMAL_MCV // mcv add rate.
+	var/setting = NORMAL_MCV / 2 // mcv add rate.
 
 	var/pumping_blood = FALSE
 	var/oxygenating_blood = FALSE
+
+	var/oxygen_setting = 15
 
 /obj/machinery/acm/update_icon()
 	if(pumping_blood)
@@ -51,19 +52,17 @@
 		oxygenating_blood = TRUE
 		if(!do_after(usr, 15, src))
 			return
-		visible_message("[usr] finishes setting up the [src].")
+		visible_message("[usr] finishes setting up \the [src].")
 
 
 /obj/machinery/acm/process()
-	set background = 1
-
 	if(!attached)
 		return
 
-	if(!(get_dist(src, attached) <= 1 && isturf(attached.loc)))
+	if(!(get_dist(src, attached) <= 1 || !isturf(attached.loc)))
 		visible_message("<span class='warning'>The [src] tubes are violently ripped out of [attached]!</span>")
 		var/affected = "chest"
-		attached:apply_damage(65, BRUTE, affected)
+		attached.apply_damage(65, BRUTE, affected)
 		attached.custom_pain("<span class='warning'>You feel like something was ripped straight out of your chest!</span>", 1, affecting = affected)
 		attached = null
 		pumping_blood = FALSE
@@ -71,13 +70,38 @@
 		update_icon()
 		return
 	if(pumping_blood)
-		attached.mcv_add += setting
+		attached.mcv_add = min(setting, attached.mcv_add)
 		if(prob(10))
-			attached.custom_pain("<span class='warning'>Some strange tubes pump blood in and out of your body, it's weird!</span>", 1, affecting = "chest")
-	if(oxygenating_blood && oxygen_tank.air_contents.remove(0.0005))
-		var/obj/item/organ/internal/lungs/L = attached?.internal_organs_by_name[O_LUNGS]
-		L.handle_breath()
-
+			to_chat(attached, SPAN_DANGER("Some strange tubes pump blood in and out of your body, it's weird!"))
+	if(oxygenating_blood)
+		attached.make_oxygen(oxygen_setting) // FIXME: possible overflow issues
+		attached.remove_co2(oxygen_setting * 0.8)
 
 /obj/machinery/acm/attack_hand(mob/user)
+	var/setting = input(user, "Select a CPB setting", "Setting") as null|anything in list("Blood pumping", "Blood oxygenating", "Pumping setting")
+
+	if(!setting)
+		return
+	
+	switch(setting)
+		if("Blood pumping")
+			pumping_blood = !pumping_blood
+			visible_message("[icon2html(src, viewers(src))]\the [src] beeps as \the [usr] [pumping_blood ? "enables" : "disables"] blood pumping.")
+		if("Blood oxygenating")
+			oxygenating_blood = !oxygenating_blood
+			visible_message("[icon2html(src, viewers(src))]\the [src] beeps as \the [usr] [oxygenating_blood ? "enables" : "disables"] blood oxygenating.")
+		if("Pumping setting")
+			var/amount = input("Select pumping setting in mL/M", "Pumping setting") as null|num
+			if(!amount)
+				return
+			
+			amount = clamp(amount, 100, initial(setting))
+
+			if(amount == setting)
+				return 
+	
+			visible_message("[icon2html(src, viewers(src))]\the [src] beeps as \the [usr] [(amount > setting ? "increases" : "decreases")] blood pumping rate.")
+
+			setting = amount 
+
 	. = ..()

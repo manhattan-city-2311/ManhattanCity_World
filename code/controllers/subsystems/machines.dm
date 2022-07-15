@@ -115,20 +115,20 @@ SUBSYSTEM_DEF(machines)
 
 /datum/controller/subsystem/machines/proc/process_machinery(resumed = 0)
 	if (!resumed)
-		src.current_run = global.machines.Copy()
+		current_run = global.machines.Copy()
 
-	var/list/current_run = src.current_run
-	while(current_run.len)
-		var/obj/machinery/M = current_run[current_run.len]
-		current_run.len--
-		if(istype(M) && !QDELETED(M) && !(M.process(wait) == PROCESS_KILL))
-			if(M.use_power)
-				M.auto_use_power()
-		else
-			global.machines.Remove(M)
-			if(!QDELETED(M))
-				M.is_processing = null
+	var/obj/machinery/machine
+	for(var/i = current_run.len to 1 step -1)
+		machine = current_run[i]
+
+		if(QDELETED(machine) || machine.process(wait) == PROCESS_KILL)
+			global.machines.Remove(machine)
+			machine?.is_processing = null
+		else if(machine.use_power)
+			machine.auto_use_power()
+
 		if(MC_TICK_CHECK)
+			current_run.Cut(i)
 			return
 
 /datum/controller/subsystem/machines/proc/process_powernets(resumed = 0)

@@ -262,7 +262,7 @@
 				price_list[t_purpose] += t_amount
 
 				playsound(src, 'sound/effects/checkout.ogg', 25)
-				src.visible_message("\icon[src][transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
+				src.visible_message("[icon2html(src, viewers(src))][transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
 
 			if("add_menu")
 				if(!Adjacent(usr)) return
@@ -312,7 +312,7 @@
 				transaction_amount += t_amount
 
 				playsound(src, 'sound/effects/checkout.ogg', 25)
-				src.visible_message("\icon[src] <b>[item_desc]:</b> [transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
+				src.visible_message("[icon2html(src, viewers(src))] <b>[item_desc]:</b> [transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
 
 			if("set_amount")
 				var/item_name = locate(href_list["item"])
@@ -441,7 +441,7 @@
 		return 1
 	else
 		confirm_item = I
-		src.visible_message("\icon[src]<b>Total price:</b> [cash2text( transaction_amount, FALSE, TRUE, TRUE )] credit\s. Swipe again to confirm.")
+		src.visible_message("[icon2html(src, viewers(src))]<b>Total price:</b> [cash2text( transaction_amount, FALSE, TRUE, TRUE )] credit\s. Swipe again to confirm.")
 		playsound(src, 'sound/machines/twobeep.ogg', 25)
 		return 0
 
@@ -459,7 +459,7 @@
 		return
 
 	if (!linked_account)
-		usr.visible_message("\icon[src]<span class='warning'>Unable to connect to linked account.</span>")
+		usr.visible_message("[icon2html(src, viewers(src))]<span class='warning'>Unable to connect to linked account.</span>")
 		return
 
 	// Access account for transaction
@@ -473,13 +473,13 @@
 		D = attempt_account_access(I.associated_account_number, attempt_pin, 2)
 
 		if(!D)
-			src.visible_message("\icon[src]<span class='warning'>Unable to access account. Check security settings and try again.</span>")
+			src.visible_message("[icon2html(src, viewers(src))]<span class='warning'>Unable to access account. Check security settings and try again.</span>")
 		else
 			if(D.suspended)
-				src.visible_message("\icon[src]<span class='warning'>Your account has been suspended.</span>")
+				src.visible_message("[icon2html(src, viewers(src))]<span class='warning'>Your account has been suspended.</span>")
 			else
 				if(transaction_amount > D.money)
-					src.visible_message("\icon[src]<span class='warning'>Not enough funds.</span>")
+					src.visible_message("[icon2html(src, viewers(src))]<span class='warning'>Not enough funds.</span>")
 				else
 					// Transfer the money
 					D.money -= transaction_amount
@@ -517,7 +517,7 @@
 	// Access account for transaction
 	if(check_account())
 		if(transaction_amount > E.worth)
-			src.visible_message("\icon[src]<span class='warning'>Not enough funds.</span>")
+			src.visible_message("[icon2html(src, viewers(src))]<span class='warning'>Not enough funds.</span>")
 		else
 			// Transfer the money
 			E.worth -= transaction_amount
@@ -540,7 +540,7 @@
 		return
 
 	if(transaction_amount > SC.worth)
-		src.visible_message("\icon[src]<span class='warning'>Not enough money.</span>")
+		src.visible_message("[icon2html(src, viewers(src))]<span class='warning'>Not enough money.</span>")
 	else
 		// Insert cash into magical slot
 		SC.worth -= transaction_amount
@@ -567,12 +567,12 @@
 
 /obj/machinery/cash_register/proc/show_shopping_list()
 	for(var/O in item_list)
-		src.visible_message("\icon[src] <b>[O]:</b> [price_list[O] ? "[price_list[O]] credit\s" : "free of charge"][tax_list[O] ? "([tax_list[O] * 100]% tax)" : ""].")
+		src.visible_message("[icon2html(src, viewers(src))] <b>[O]:</b> [price_list[O] ? "[price_list[O]] credit\s" : "free of charge"][tax_list[O] ? "([tax_list[O] * 100]% tax)" : ""].")
 
 /obj/machinery/cash_register/proc/scan_item_price(obj/O)
 	if(!istype(O))	return
 	if(item_list.len > 10)
-		src.visible_message("\icon[src]<span class='warning'>Only up to ten different items allowed per purchase.</span>")
+		src.visible_message("[icon2html(src, viewers(src))]<span class='warning'>Only up to ten different items allowed per purchase.</span>")
 		return
 	if (cash_open)
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
@@ -591,10 +591,10 @@
 		tax = O.get_tax()
 		price += O.post_tax_cost()
 	if(isnull(price))
-		src.visible_message("\icon[src]<span class='warning'>Unable to find item in database.</span>")
+		src.visible_message("[icon2html(src, viewers(src))]<span class='warning'>Unable to find item in database.</span>")
 		return
 	// Call out item cost
-	src.visible_message("\icon[src]\A [O]: [price ? "[price] credit\s" : "free of charge"][tax ? "([tax * 100]% tax)" : ""].")
+	src.visible_message("[icon2html(src, viewers(src))]\A [O]: [price ? "[price] credit\s" : "free of charge"][tax ? "([tax * 100]% tax)" : ""].")
 	// Note the transaction purpose for later use
 	if(transaction_purpose)
 		transaction_purpose += "<br>"
@@ -700,11 +700,11 @@
 		return
 
 	if (!get_account(linked_account.account_number))
-		usr.visible_message("\icon[src]<span class='warning'>Unable to connect to linked account.</span>")
+		usr.visible_message("[icon2html(src, viewers(src))]<span class='warning'>Unable to connect to linked account.</span>")
 		return 0
 
 	if(check_account_suspension(linked_account.account_number))
-		src.visible_message("\icon[src]<span class='warning'>Connected account has been suspended.</span>")
+		src.visible_message("[icon2html(src, viewers(src))]<span class='warning'>Connected account has been suspended.</span>")
 		return 0
 	return 1
 
@@ -718,7 +718,7 @@
 
 	/// Visible confirmation
 	playsound(src, 'sound/machines/chime.ogg', 25)
-	src.visible_message("\icon[src]<span class='notice'>Transaction complete.</span>")
+	src.visible_message("[icon2html(src, viewers(src))]<span class='notice'>Transaction complete.</span>")
 	flick("register_approve", src)
 	reset_memory()
 	updateDialog()

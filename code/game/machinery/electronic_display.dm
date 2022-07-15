@@ -496,7 +496,7 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 
 		// This is not a status display message, since it's something the character
 		// themselves is meant to see BEFORE putting the money in
-		to_chat(user, "\icon[cashmoney] <span class='warning'>That is not enough money.</span>")
+		to_chat(user, "[icon2html(cashmoney, user)] <span class='warning'>That is not enough money.</span>")
 		return 0
 
 	if(istype(cashmoney, /obj/item/weapon/spacecash))
@@ -537,7 +537,7 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 	user.drop_from_inventory(O, src)
 	O.forceMove(src)
 	stored_products += O
-	src.visible_message("\icon[O] [user] places [O] into [src].")
+	src.visible_message("[icon2html(O, hearers(O))] [user] places [O] into [src].")
 	updateDialog()
 	return
 

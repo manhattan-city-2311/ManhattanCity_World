@@ -1,14 +1,22 @@
+/turf/simulated/wall/proc/fetch_material()
+	if(istext(material))
+		material = get_material_by_name(material)
+	else if(!material)
+		material = get_material_by_name(DEFAULT_WALL_MATERIAL)
+
+/turf/simulated/wall/proc/fetch_reinf_material()
+	if(istext(reinf_material))
+		reinf_material = get_material_by_name(reinf_material)
+
 /turf/simulated/wall/proc/update_material()
-
-	if(!material)
-		return
-
 	if(reinf_material)
 		construction_stage = 6
 	else
 		construction_stage = null
-	if(!material)
-		material = get_material_by_name(DEFAULT_WALL_MATERIAL)
+	
+	fetch_material()
+
+
 	if(material && material.explosion_resistance)
 		explosion_resistance = material.explosion_resistance
 	else
@@ -43,8 +51,7 @@
 	update_material()
 
 /turf/simulated/wall/update_icon()
-	if(!material)
-		return
+	fetch_material()
 
 	if(!damage_overlays[1]) //list hasn't been populated
 		generate_overlays()
@@ -69,6 +76,7 @@
 			overlays += I
 		*/
 
+	fetch_reinf_material()
 	if(reinf_material)
 		var/reinf_color = paint_color ? paint_color : reinf_material.icon_colour
 		if(construction_stage != null && construction_stage < 6)
@@ -126,8 +134,8 @@
 
 
 /turf/simulated/wall/proc/update_connections(propagate = 0)
-	if(!material)
-		return
+	fetch_material()
+
 	var/list/wall_dirs = list()
 	var/list/other_dirs = list()
 	for(var/turf/simulated/wall/W in orange(src, 1))
@@ -166,6 +174,7 @@
 	other_connections = dirs_to_corner_states(other_dirs)
 
 /turf/simulated/wall/proc/can_join_with(var/turf/simulated/wall/W)
+	W.fetch_material()
 	if(!W.material.icon_base)
 		return 1
 	if(material && W.material && material.icon_base == W.material.icon_base)

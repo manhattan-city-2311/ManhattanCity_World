@@ -3,8 +3,8 @@
 /turf/simulated/wall/dungeon
 	block_tele = TRUE // Anti-cheese.
 
-/turf/simulated/wall/dungeon/New(var/newloc)
-	..(newloc,"dungeonium")
+/turf/simulated/wall/dungeon/initialize()
+	..("dungeonium")
 
 /turf/simulated/wall/dungeon/attackby()
 	return

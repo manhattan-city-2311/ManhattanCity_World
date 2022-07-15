@@ -28,7 +28,7 @@
 
 	if(message)
 		var/obj/item/device/text_to_speech/O = src
-		audible_message("\icon[O] \The [O.name] states, \"[message]\"")
+		audible_message("[icon2html(O, hearers(O))] \The [O.name] states, \"[message]\"")
 		log_say("(TTS SAY) [message]", user)
 	else
 		visible_message(user, "<span class='notice'>[user] stops typing on \the [src], reconsidering.</span>")

@@ -194,7 +194,7 @@
 		user.drop_from_inventory(I, src)
 		I.forceMove(src)
 		stored_item = I
-		src.visible_message("\icon[src] \icon[I] [user] places [I] into [src].")
+		src.visible_message("[icon2html(src, viewers(src))] \icon[I] [user] places [I] into [src].")
 		return
 	else
 		to_chat(user, "<span class='notice'>You refrain from putting things into the plant pot.</span>")

@@ -69,6 +69,9 @@
 
 
 /obj/structure/table/proc/update_material()
+	if(material && istext(material))
+		material = get_material_by_name(material)
+
 	var/old_maxhealth = maxhealth
 	if(!material)
 		maxhealth = 10

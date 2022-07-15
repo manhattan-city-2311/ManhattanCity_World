@@ -299,7 +299,7 @@
 				global_announcer.autosay ("<FONT size=3>Emergency message from <B>[src]</B> <FONT size=2>([exonet.address])</FONT>: [text] </FONT>", "Emergency Hotline", "Fire")
 
 			to_chat(usr, "<span class='danger'>You sent over the message \"[text]\" over to the [service_name] hotline.</span>")
-			usr.visible_message("\icon[src] [usr] types something on [src]'s screen.") //snitches get stitches
+			usr.visible_message("[icon2html(src, viewers(src))] [usr] types something on [src]'s screen.") //snitches get stitches
 
 			log_pda("(COMM: [src]) sent \"[text]\" to [service_name]", usr)
 

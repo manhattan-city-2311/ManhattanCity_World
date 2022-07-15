@@ -309,7 +309,7 @@
 /obj/structure/closet/secure_closet/medical_wall/pills
 	name = "pill cabinet"
 
-/obj/structure/closet/secure_closet/medical_wall/pills/New()
+/obj/structure/closet/secure_closet/medical_wall/pills/initialize()
 		..()
 		new /obj/item/weapon/storage/pill_bottle/tramadol(src)
 		new /obj/item/weapon/storage/pill_bottle/antitox(src)
@@ -323,7 +323,7 @@
 	req_access = list(access_surgery)
 	dont_save = TRUE
 
-/obj/structure/closet/secure_closet/medical_wall/anesthetics/New()
+/obj/structure/closet/secure_closet/medical_wall/anesthetics/initialize()
 		..()
 		new /obj/item/weapon/tank/anesthetic(src)
 		new /obj/item/weapon/tank/anesthetic(src)

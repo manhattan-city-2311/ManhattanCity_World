@@ -12,7 +12,7 @@
 	blocks_air = 0
 
 
-/turf/unsimulated/wall/planetary/New()
+/turf/unsimulated/wall/planetary/initialize()
 	..()
 	SSplanets.addTurf(src)
 

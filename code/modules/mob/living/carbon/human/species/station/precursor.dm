@@ -139,7 +139,6 @@
 					"<span class='notice'>You warp [target] in your tendrils to make [t_him] feel better!</span>")
 
 /datum/hud_data/precursor
-	has_internals = FALSE
 	gear = list(
 		"l_ear" = list("loc" = ui_iclothing, "name" = "Aux Port", "slot" = slot_l_ear,   "state" = "ears", "toggle" = 1),
 		"head" =  list("loc" = ui_glasses,   "name" = "Hat",      "slot" = slot_head,    "state" = "hair", "toggle" = 1),

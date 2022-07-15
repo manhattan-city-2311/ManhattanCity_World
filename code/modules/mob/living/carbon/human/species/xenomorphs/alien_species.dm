@@ -328,7 +328,6 @@
 	has_pressure =  0
 	has_nutrition = 0
 	has_bodytemp =  0
-	has_internals = 0
 
 	gear = list(
 		"o_clothing" =   list("loc" = ui_belt,      "name" = "Suit",         "slot" = slot_wear_suit, "state" = "equip",  "dir" = SOUTH),

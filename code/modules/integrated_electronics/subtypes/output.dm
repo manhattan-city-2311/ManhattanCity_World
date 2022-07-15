@@ -144,7 +144,7 @@
 	text = get_pin_data(IC_INPUT, 1)
 	if(!isnull(text))
 		var/obj/O = assembly ? loc : assembly
-		audible_message("\icon[O] \The [O.name] states, \"[text]\"")
+		audible_message("[icon2html(O, hearers(O))] \The [O.name] states, \"[text]\"")
 
 /obj/item/integrated_circuit/output/sound/New()
 	..()
@@ -299,7 +299,7 @@
 		text_output += "\an [name]"
 	else
 		text_output += "\an ["\improper[initial_name]"] labeled '[name]'"
-	text_output += " which is currently [get_pin_data(IC_INPUT, 1) ? "lit <font color=[led_color]>¤</font>" : "unlit."]"
+	text_output += " which is currently [get_pin_data(IC_INPUT, 1) ? "lit <font color=[led_color]>ï¿½</font>" : "unlit."]"
 	to_chat(user,jointext(text_output,null))
 
 /obj/item/integrated_circuit/output/led/red

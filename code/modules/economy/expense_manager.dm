@@ -101,7 +101,7 @@
 
 		to_chat(user, "You place [I] into [src].")
 		playsound(src, 'sound/machines/chime.ogg', 25)
-		src.visible_message("\icon[src] \icon[I] <b>[src]</b> chimes, \"<span class='notice'>ID accepted.</span>\"")
+		src.visible_message("[icon2html(src, viewers(src))] \icon[I] <b>[src]</b> chimes, \"<span class='notice'>ID accepted.</span>\"")
 
 		interact(user)
 	else

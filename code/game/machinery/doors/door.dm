@@ -130,8 +130,12 @@
 			bound_height = width * world.icon_size
 
 	health = maxhealth
+
+/obj/machinery/door/initialize()
 	update_connections(1)
 	update_icon()
+
+	. = ..()
 
 /obj/machinery/door/Destroy()
 	density = 0
