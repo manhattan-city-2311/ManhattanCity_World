@@ -301,6 +301,12 @@
 			//drunk driving
 			if(mob.confused && prob(20)) //vehicles tend to keep moving in the same direction
 				direct = turn(direct, pick(90, -90))
+
+			var/obj/vehicle/V = mob.buckled
+
+			mob.update_glide(V.move_delay)
+			mob.buckled.glide_size = mob.glide_size
+
 			return mob.buckled.relaymove(mob,direct)
 
 		if(istype(mob.machine, /obj/machinery))
@@ -311,6 +317,7 @@
 			if(istype(mob.loc, /turf/space))
 				return // No wheelchair driving in space
 			if(istype(mob.pulledby, /obj/structure/bed/chair/wheelchair))
+				mob.buckled.glide_size = mob.glide_size
 				return mob.pulledby.relaymove(mob, direct)
 			else if(istype(mob.buckled, /obj/structure/bed/chair/wheelchair))
 				if(ishuman(mob))
@@ -327,6 +334,9 @@
 						if("walk")
 							if(prob(25))	direct = turn(direct, pick(90, -90))
 				mob.move_delay += 2
+
+				mob.update_glide(movement_delay + 2)
+				mob.buckled.glide_size = mob.glide_size
 				return mob.buckled.relaymove(mob,direct)
 
 		//We are now going to move
