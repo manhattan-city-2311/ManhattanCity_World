@@ -277,14 +277,22 @@
 
 		mob.move_delay = world.time//set move delay
 
+		var/movement_delay = 0
 		switch(mob.m_intent)
 			if("run")
 				if(mob.drowsyness > 0)
-					mob.move_delay += 6
-				mob.move_delay += config.run_speed
+					movement_delay += 6
+				movement_delay += config.run_speed
 			if("walk")
-				mob.move_delay += config.walk_speed
-		mob.move_delay += mob.movement_delay()
+				movement_delay += config.walk_speed
+		movement_delay += mob.movement_delay()
+		mob.move_delay += movement_delay
+
+
+		mob.update_glide(movement_delay)
+
+		if(mob.pulling)
+			mob.pulling.glide_size = mob.glide_size
 
 		if(istype(mob.buckled, /obj/vehicle))
 			//manually set move_delay for vehicles so we don't inherit any mob movement penalties
@@ -341,6 +349,7 @@
 								else
 									diag = null
 								if ((get_dist(mob, M) > 1 || diag))
+									M.update_glide(movement_delay)
 									step(M, get_dir(M.loc, T))
 				else
 					for(var/mob/M in L)
@@ -349,6 +358,7 @@
 							M.animate_movement = 3
 					for(var/mob/M in L)
 						spawn( 0 )
+							M.update_glide(movement_delay)
 							step(M, direct)
 							return
 						spawn( 1 )
@@ -579,3 +589,9 @@
 /obj/item/weapon/storage/on_loc_moved(atom/oldloc)
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
+
+//Updates Glide_size of mob according to its speed.
+/mob/proc/update_glide(movement_delay = 2)
+	if (movement_delay != lastmovementdelay)
+		lastmovementdelay = movement_delay
+		glide_size = 32 * (world.tick_lag) / lastmovementdelay

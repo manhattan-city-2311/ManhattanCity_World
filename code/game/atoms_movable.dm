@@ -1,9 +1,9 @@
 /atom/movable
 	layer = OBJ_LAYER
-	appearance_flags = TILE_BOUND|PIXEL_SCALE
+	appearance_flags = TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
 	var/last_move = null
 	var/anchored = 0
-	// var/elevation = 2    - not used anywhere
+	glide_size = 8
 	var/move_speed = 10
 	var/l_move_time = 1
 	var/m_flag = 1
@@ -20,6 +20,8 @@
 	var/old_x = 0
 	var/old_y = 0
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
+	var/lastmovementdelay = 0
+
 
 /atom/movable/Destroy()
 	. = ..()

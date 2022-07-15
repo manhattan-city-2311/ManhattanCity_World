@@ -57,7 +57,7 @@ var/list/preferences_datums = list()
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/tooltipstyle = "Midnight"		//Style for popup tooltips
-	var/client_fps = 60
+	var/client_fps = 100
 
 	//character preferences
 	var/real_name						//our character's name

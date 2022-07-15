@@ -37,7 +37,7 @@ var/global/datum/global_init/init = new ()
 	view = "15x15"
 	cache_lifespan = 7
 
-	fps = 60
+	fps = 30
 
 /var/game_id = null
 /proc/generate_gameid()
