@@ -44,3 +44,8 @@
 // We dont care about too low CO2 levels.
 // ml/L
 #define CO2_LEVEL_NORMAL 25
+
+#define SHOCK_STAGE_PAIN_MESSAGE 10
+#define SHOCK_STAGE_SCREAM 20
+#define SHOCK_STAGE_STUN 50
+#define SHOCK_STAGE_AGONY 100 

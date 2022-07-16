@@ -1,12 +1,17 @@
 /mob/proc/flash_weakest_pain()
-	flick("weakest_pain",pain)
+	flick("weakest_pain", pain)
 
 /mob/proc/flash_pain()
-	flick("pain",pain)
+	flick("pain", pain)
 
-mob/var/list/pain_stored = list()
-mob/var/last_pain_message = ""
-mob/var/next_pain_time = 0
+/mob/var/list/pain_stored = list()
+/mob/var/last_pain_message = ""
+/mob/var/next_pain_time = 0
+
+/mob/living/carbon/var/shock_stage = 0
+/mob/living/carbon/var/pain_coeff = 1 / 25
+/mob/living/carbon/proc/add_shock_from_pain(pain)
+	shock_stage += pain * pain_coeff 
 
 /mob/living/carbon/proc/custom_pain(var/message, var/power, var/force, var/obj/item/organ/external/affecting, var/nohalloss, var/flash_pain)
 	if(stat || !can_feel_pain() || chem_effects[CE_PAINKILLER] > power)//!message
@@ -14,8 +19,8 @@ mob/var/next_pain_time = 0
 
 	// Excessive halloss is horrible, just give them enough to make it visible.
 	if(!nohalloss && (power || flash_pain))//Flash pain is so that handle_pain actually makes use of this proc to flash pain.
-		var/actual_flash
 		if(affecting)
+			var/actual_flash
 			affecting.add_pain(ceil(power/2))
 			if(power > flash_pain)
 				actual_flash = power
@@ -23,15 +28,15 @@ mob/var/next_pain_time = 0
 				actual_flash = flash_pain
 
 			switch(actual_flash)
-				if(1 to 10)
+				if(1 to 40)
 					flash_weakest_pain()
 					emote(pick("groan", "whimper"))
-				if(11 to 90)
+				if(40 to 80)
 					flash_weak_pain()
 					emote(pick("scream", "cry"))
 					if(stuttering < 10)
 						stuttering += 5
-				if(91 to INFINITY)
+				if(80 to INFINITY)
 					flash_pain()
 					emote(pick("scream", "cry", "agony"))
 					if(stuttering < 10)
@@ -41,6 +46,8 @@ mob/var/next_pain_time = 0
 						shake_camera(src, 20, 3)
 		else
 			adjustHalLoss(ceil(power/2))
+		
+		add_shock_from_pain(power + flash_pain)		
 
 	// Anti message spam checks
 	if((force || (message != last_pain_message) || (world.time >= next_pain_time)) && message)
@@ -56,36 +63,35 @@ mob/var/next_pain_time = 0
 		return
 	if(!can_feel_pain())
 		return
-	if(!pulse)
-		return
 	if(world.time < next_pain_time)
 		return
 	var/maxdam = 0
 	var/obj/item/organ/external/damaged_organ = null
 	for(var/obj/item/organ/external/E in organs_by_name)
 		if(!E.can_feel_pain()) continue
-		var/dam = E.get_pain() + E.get_damage()
+		var/dam = E.get_pain() + E.get_damage() - LAZYACCESS0(chem_effects, CE_PAINKILLER)
 		// make the choice of the organ depend on damage,
 		// but also sometimes use one of the less damaged ones
 		if(dam > maxdam && (maxdam == 0 || prob(70)) )
 			damaged_organ = E
 			maxdam = dam
-	if(damaged_organ && chem_effects[CE_PAINKILLER] < maxdam)
+	if(damaged_organ)
 		if(maxdam > 10 && paralysis)
 			paralysis = max(0, paralysis - round(maxdam/10))
 		//if(maxdam > 50 && prob(maxdam / 5))
 		//	drop_item()
-		//var/burning = damaged_organ.burn_dam > damaged_organ.brute_dam
+		var/burning = damaged_organ.burn_dam > damaged_organ.brute_dam
 		var/msg
-		//switch(maxdam)
-		//	if(1 to 10)
-				//msg = "Your [damaged_organ.name] [burning ? "burns" : "hurts"]."
+		switch(maxdam)
+			if(1 to 10)
+				msg = "Your [damaged_organ.name] [burning ? "burns" : "hurts"]."
 
-		//	if(11 to 90)
-				//msg = "<font size=2>Your [damaged_organ.name] [burning ? "burns" : "hurts"] badly!</font>"
+			if(11 to 90)
+				msg = "<font size=2>Your [damaged_organ.name] [burning ? "burns" : "hurts"] badly!</font>"
 
-		//	if(91 to 10000)
-				//msg = "<font size=3>OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!</font>"
+			if(91 to INFINITY)
+				msg = "<font size=3>OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!</font>"
+
 		custom_pain(msg, 0, prob(10), affecting = damaged_organ, flash_pain = maxdam)
 
 	// Damage to internal organs hurts a lot.

@@ -551,6 +551,8 @@ This function completely restores a damaged organ to perfect condition.
 		if(W)
 			wounds += W
 
+	owner.regenerate_icons() // FIXME: fucking shit
+
 /****************************************************
 			   PROCESSING & UPDATING
 ****************************************************/
@@ -715,7 +717,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 			continue
 			// let the GC handle the deletion of the wound
 
-			owner.vessel.remove_reagent("blood", wound_update_accuracy * W.damage/40) //line should possibly be moved to handle_blood, so all the bleeding stuff is in one place.
 			if(prob(1 * wound_update_accuracy))
 				owner.custom_pain("You feel a stabbing pain in your [name]!", 50)
 
@@ -865,7 +866,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	var/use_blood_colour = species.get_blood_colour(owner)
 
 	removed(null, ignore_children)
-	victim.traumatic_shock += 60
+	victim.shock_stage += 20
 
 	if(parent_organ)
 		var/datum/wound/lost_limb/W = new (src, disintegrate, clean)
@@ -1381,5 +1382,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 		pain = 0
 		return
 	var/last_pain = pain
-	pain = max(0,min(max_damage,pain+amount))
+	pain = max(0,min(max_damage,pain + amount))
+	
 	return pain-last_pain
