@@ -39,6 +39,7 @@
 	var/old_corners = corners
 	var/old_outdoors = outdoors
 	var/old_dangerous_objects = dangerous_objects
+	var/old_ao_neighbors = ao_neighbors
 
 	//world << "Replacing [src.type] with [N]"
 
@@ -71,6 +72,7 @@
 		W.levelupdate()
 		W.update_icon(1)
 		W.post_change()
+		W.ao_neighbors = old_ao_neighbors
 		. =  W
 
 	recalc_atom_opacity()

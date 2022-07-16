@@ -11,8 +11,11 @@ var/image/no_ceiling_image = null
 	no_ceiling_image.plane = PLANE_MESONS
 
 /turf/simulated/floor/update_icon(var/update_neighbors)
+	//update_flood_overlay()
 
 	if(lava)
+		if(permit_ao)
+			queue_ao(FALSE)
 		return
 
 	cut_overlays()
@@ -104,10 +107,10 @@ var/image/no_ceiling_image = null
 		if(!isnull(burnt) && (flooring.flags & TURF_CAN_BURN))
 			add_overlay(get_flooring_overlay("[flooring.icon_base]-burned-[burnt]","[flooring.icon_base]_burned[burnt]"))
 
+	queue_ao(FALSE)
 	if(update_neighbors)
-		for(var/turf/simulated/floor/F in range(src, 1))
-			if(F == src)
-				continue
+		for(var/turf/simulated/floor/F in orange(src, 1))
+			F.queue_ao(FALSE)
 			F.update_icon()
 
 	// Show 'ceilingless' overlay.

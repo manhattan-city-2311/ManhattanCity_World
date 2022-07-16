@@ -414,3 +414,7 @@ var/const/enterloopsanity = 100
 
 /turf/proc/is_floor()
 	return FALSE
+
+/turf/update_icon()
+	//update_flood_overlay()
+	queue_ao(FALSE)
