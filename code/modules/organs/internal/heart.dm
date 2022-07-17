@@ -210,7 +210,7 @@
 				if(!open_wound && (W.damage_type == CUT || W.damage_type == PIERCE) && W.damage && !W.is_treated())
 					open_wound = TRUE
 
-				if(!W.bleeding() || W.internal)
+				if(!W.bleeding())
 					continue
 				if(temp.applied_pressure)
 					if(ishuman(temp.applied_pressure))
@@ -219,9 +219,9 @@
 					//somehow you can apply pressure to every wound on the organ at the same time
 					//you're basically forced to do nothing at all, so let's make it pretty effective
 					var/min_eff_damage = max(0, W.damage - 10) / 6 //still want a little bit to drip out, for effect
-					blood_max += max(min_eff_damage, W.damage - 30) / 40
+					blood_max += max(min_eff_damage, W.damage - 30) / 100
 				else
-					blood_max += W.damage / 40
+					blood_max += W.damage / 100
 
 		if(temp.is_artery_cut())
 			var/bleed_amount = temp.get_artery_cut_damage()

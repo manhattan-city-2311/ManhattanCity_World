@@ -778,7 +778,7 @@
 				var/no_damage = 1
 				var/trauma_val = 0 // Used in calculating softcrit/hardcrit indicators.
 				if(!(species.flags & NO_PAIN))
-					trauma_val = max(traumatic_shock,halloss)/species.total_health
+					trauma_val = max(shock_stage, halloss) / species.total_health
 				var/limb_trauma_val = trauma_val*0.3
 				// Collect and apply the images all at once to avoid appearance churn.
 				var/list/health_images = list()
@@ -1040,60 +1040,58 @@
 		if(mind && hud_used)
 			ling_chem_display.invisibility = 101
 
+/mob/living/carbon/human/var/shock_decrease = 0.1
 
-/mob/living/carbon/human/handle_shock()
-	..()
+/mob/living/carbon/human/proc/handle_shock()
 	if(status_flags & GODMODE)	return 0	//godmode
 	if(!can_feel_pain()) return
 
-	if(health < config.health_threshold_softcrit)// health 0 makes you immediately collapse
-		shock_stage = max(shock_stage, 61)
-
-	if(traumatic_shock >= 80)
-		shock_stage += 1
-	else if(health < config.health_threshold_softcrit)
-		shock_stage = max(shock_stage, 61)
-	else
-		shock_stage = min(shock_stage, 160)
-		shock_stage = max(shock_stage-1, 0)
-		return
+	shock_stage = min(shock_stage, 160)
+	shock_stage = max(shock_stage - shock_decrease, 0)
 
 	if(stat)
 		return 0
 
-	if(shock_stage == 10)
-		custom_pain("[pick("It hurts so much", "You really need some painkillers", "Dear god, the pain")]!", 40)
 
-	if(shock_stage >= 30)
-		if(shock_stage == 30) emote("me",1,"is having trouble keeping their eyes open.")
-		eye_blurry = max(2, eye_blurry)
-		stuttering = max(stuttering, 5)
+	switch(shock_stage)
+		if(SHOCK_STAGE_PAIN_MESSAGE to SHOCK_STAGE_SCREAM-5)
+			custom_pain(SPAN_DANGER("[pick("It hurts so much", "You really need some painkillers", "Dear god, the pain")]!"))
+			if(prob(5))
+				emote("whimper")
+		if(SHOCK_STAGE_SCREAM-5 to SHOCK_STAGE_STUN - 15)
+			custom_pain(SPAN_DANGER("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!"), 20)
+			if(prob(5))
+				emote(pick("whimper", "cry", "scream"))
+		if(SHOCK_STAGE_STUN-15 to SHOCK_STAGE_STUN-1)
+			custom_pain(SPAN_DANGER("[pick("The pain is excruciating", "Please, just end the pain", "STOP THIS!!", "You feel you are dying right now.", "You are losing consiciousness!")]"), 30)
+			if(life_tick % 4 == 0)
+				Weaken(20)
+			if(prob(7))
+				emote(pick("whimper", "cry", "scream"))
+		if(SHOCK_STAGE_STUN)
+			if(prob(20))
+				custom_pain(SPAN_NOTICE("You feel a sudden relief..."))
+				emote("collapse")
+				Paralyse(5)
+			else
+				custom_pain(SPAN_DANGER("You cannot resist any more!"))
+				if(prob(12))
+					emote(pick("cry", "scream", "scream", "cry", "agony"))
+					Weaken(5)
+		if(SHOCK_STAGE_STUN+1 to SHOCK_STAGE_AGONY)
+			custom_pain(SPAN_DANGER("[pick("The pain is excruciating", "Please, just end the pain!", "STOP THIS!!", "You feel you are dying right now.", "You are losing consiciousness!")]"), 40)
+			if(life_tick % 4 == 0)
+				Weaken(20)
+			if(prob(5))
+				Stun(rand(10, 15))
+			if(prob(15))
+				emote(pick("whimper", "cry", "scream"))
 
-	if(shock_stage == 40)
-		to_chat(src, "<span class='danger'>[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!</span>")
+		if(SHOCK_STAGE_AGONY to INFINITY)
+			custom_pain(SPAN_DANGER("[pick("The pain is excruciating", "Please, just end the pain", "STOP THIS!!", "You feel you are dying right now.", "You are losing consiciousness!")]"), 55)
+			if(life_tick % 4 == 0)
+				emote("agony")
 
-	if (shock_stage >= 60)
-		if(shock_stage == 60) emote("me",1,"'s body becomes limp.")
-		if (prob(2))
-			to_chat(src, "<span class='danger'>[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!</span>")
-			Weaken(20)
-
-	if(shock_stage >= 80)
-		if (prob(5))
-			to_chat(src, "<span class='danger'>[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!</span>")
-			Weaken(20)
-
-	if(shock_stage >= 120)
-		if (prob(2))
-			to_chat(src, "<span class='danger'>[pick("You black out", "You feel like you could die any moment now", "You're about to lose consciousness")]!</span>")
-			Paralyse(5)
-
-	if(shock_stage == 150)
-		emote("me",1,"can no longer stand, collapsing!")
-		Weaken(20)
-
-	if(shock_stage >= 150)
-		Weaken(20)
 
 /mob/living/carbon/human/proc/handle_pulse()
 	return
@@ -1273,7 +1271,6 @@
 	setup_cm()
 	restore_blood()
 	shock_stage = 0
-	traumatic_shock = 0
 
 	for (var/ID in virus2)
 		var/datum/disease2/disease/V = virus2[ID]
