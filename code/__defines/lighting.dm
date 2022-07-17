@@ -59,13 +59,19 @@
 #define LIGHT_COLOR_BLUEGREEN  "#7DE1AF" //Light blueish green. rgb(125, 225, 175)
 #define LIGHT_COLOR_CYAN       "#7DE1E1" //Diluted cyan. rgb(125, 225, 225)
 #define LIGHT_COLOR_LIGHT_CYAN "#40CEFF" //More-saturated cyan. rgb(64, 206, 255)
-#define LIGHT_COLOR_DARK_BLUE  "#6496FA" //Saturated blue. rgb(51, 117, 248)
+#define LIGHT_COLOR_DARK_BLUE  "#3375f8" //Saturated blue. rgb(51, 117, 248)
 #define LIGHT_COLOR_PINK       "#E17DE1" //Diluted, mid-warmth pink. rgb(225, 125, 225)
+#define LIGHT_COLOR_HOTPINK    "#F419A0"
 #define LIGHT_COLOR_YELLOW     "#E1E17D" //Dimmed yellow, leaning kaki. rgb(225, 225, 125)
 #define LIGHT_COLOR_BROWN      "#966432" //Clear brown, mostly dim. rgb(150, 100, 50)
 #define LIGHT_COLOR_ORANGE     "#FA9632" //Mostly pure orange. rgb(250, 150, 50)
 #define LIGHT_COLOR_PURPLE     "#952CF4" //Light Purple. rgb(149, 44, 244)
 #define LIGHT_COLOR_LAVENDER   "#9B51FF" //Less-saturated light purple. rgb(155, 81, 255)
+#define LIGHT_COLOR_NEONGREEN  "#1FFF0F"
+#define LIGHT_COLOR_NEONRED    "#F72119"
+#define LIGHT_COLOR_NEONYELLOW "#FFF01F"
+#define LIGHT_COLOR_COOPER     "#E69E7F"
+#define LIGHT_COLOR_SKYBLUE    "#7DD3FF"
 
 //These ones aren't a direct colour like the ones above, because nothing would fit
 #define LIGHT_COLOR_FIRE       "#FAA019" //Warm orange color, leaning strongly towards yellow. rgb(250, 160, 25)
@@ -82,4 +88,4 @@
 #define LIGHT_COLOR_INCANDESCENT_FLASHLIGHT "#FFCC66"
 
 //
-#define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-2, size=4, color="#04080FAA")
+#define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-3, size=4, color="#04080FAA")

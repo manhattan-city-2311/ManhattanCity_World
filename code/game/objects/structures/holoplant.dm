@@ -3,7 +3,9 @@
 	desc = "One of those Ward-Takahashi holoplants! Give your space a bit of the comfort of being outdoors, by buying this blue buddy. A rugged case guarantees that your flower will outlive you, and variety of plant types won't let you to get bored along the way!"
 	icon = 'icons/obj/holoplants.dmi'
 	icon_state = "holopot"
-	light_color = "#3C94C5"
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+	light_range = 3.5
+	light_power = 6
 	anchored = TRUE
 	idle_power_usage = 0
 	active_power_usage = 5

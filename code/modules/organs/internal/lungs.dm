@@ -106,7 +106,7 @@
 	if(prob(5))
 		if(can_breathe())
 			owner.emote("gasp")
-		else
+		else if(prob(25))
 			to_chat(owner, SPAN_DANGER("You're having trouble getting enough oxygen!"))
 	if(owner.losebreath > 0)
 		--owner.losebreath

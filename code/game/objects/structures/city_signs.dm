@@ -1,11 +1,3 @@
-
-/*| Neon Signs
-   ----------------------------------------------*/
-
-   //| Note: for a more varied range of colors, I chose not to use the
-   //pre- #defined colors and instead individually converted the RGB
-   //values from each sprite into hex code - Mal
-
 /obj/structure/sign/neon/Destroy()
 	set_light(0)
 	return ..()
@@ -14,98 +6,98 @@
 	desc = "A glowing sign."
 	icon = 'icons/obj/signs.dmi'
 	plane = ABOVE_PLANE
-	light_range = 4
-	light_power = 2
+	light_range = 3
+	light_power = 6.5
 
 /obj/structure/sign/neon/item
 	name = "item store"
 	icon_state = "item"
-	light_color = "#B79F41" //copper
+	light_color = LIGHT_COLOR_COOPER
 
 /obj/structure/sign/neon/motel
 	name = "motel"
 	icon_state = "motel"
-	light_color = "#59FF9B" //teal
+	light_color = LIGHT_COLOR_GREEN
 
 /obj/structure/sign/neon/hotel
 	name = "hotel"
 	icon_state = "hotel"
-	light_color = "#59FF9B" //teal
+	light_color = LIGHT_COLOR_GREEN
 
 /obj/structure/sign/neon/flashhotel
 	name = "hotel"
 	icon_state = "flashhotel"
-	light_color = "#FF8FF8" //hot pink
+	light_color = LIGHT_COLOR_HOTPINK
 
 /obj/structure/sign/neon/lovehotel
 	name = "hotel"
 	icon_state = "lovehotel"
-	light_color = "#59FF9B" //teal
+	light_color = LIGHT_COLOR_GREEN
 
 /obj/structure/sign/neon/sushi
 	name = "sushi"
 	icon_state = "sushi"
-	light_color = "#7DD3FF"  //sky blue
+	light_color = LIGHT_COLOR_SKYBLUE
 
 /obj/structure/sign/neon/bakery
 	name = "bakery"
 	icon_state = "bakery"
-	light_color = "#FF8FEE" //hot pink
+	light_color = LIGHT_COLOR_HOTPINK
 
 /obj/structure/sign/neon/beer
 	name = "pub"
 	icon_state = "beer"
-	light_color = "#CBDC54" //yellow
+	light_color = LIGHT_COLOR_YELLOW
 
 /obj/structure/sign/neon/inn
 	name = "inn"
 	icon_state = "inn"
-	light_color = "#F070FF"  //deeper hot pink
+	light_color = LIGHT_COLOR_HOTPINK
 
 /obj/structure/sign/neon/cafe
 	name = "cafe"
 	icon_state = "cafe"
-	light_color = "#FF8FEE" //hot pink
+	light_color = LIGHT_COLOR_PINK
 
 /obj/structure/sign/neon/diner
 	name = "diner"
 	icon_state = "diner"
-	light_color = "#39FFA4" //teal
+	light_color = LIGHT_COLOR_GREEN
 
 /obj/structure/sign/neon/bar_alt
 	name = "bar"
 	icon_state = "bar_alt"
-	light_color = "#39FFA4" //teal
+	light_color = LIGHT_COLOR_GREEN
 
 /obj/structure/sign/neon/casino
 	name = "casino"
 	icon_state = "casino"
-	light_color = "#6CE08A" //teal
+	light_color = LIGHT_COLOR_NEONGREEN
 
 /obj/structure/sign/neon/peace
 	name = "peace"
 	icon_state = "peace"
-	light_color = "#8559FF" //a cross between the blue and purple
+	light_color = LIGHT_COLOR_LAVENDER
 
 /obj/structure/sign/neon/sale
 	name = "neon sale sign"
 	icon_state = "neon_sale"
-	light_color = "#6EB6FF" //sky blue
+	light_color = LIGHT_COLOR_SKYBLUE
 
 /obj/structure/sign/neon/exit
 	name = "exit"
 	icon_state = "exit"
-	light_color = "#7FEA6A" //lime green
+	light_color = LIGHT_COLOR_NEONGREEN
 
 /obj/structure/sign/neon/close
 	name = "close"
 	icon_state = "close"
-	light_color = "#7FEA6A" //lime green
+	light_color = LIGHT_COLOR_NEONGREEN
 
 /obj/structure/sign/neon/open
 	name = "open"
 	icon_state = "open"
-	light_color = "#FFFFFF" //white
+	light_color = LIGHT_COLOR_HALOGEN
 
 /obj/structure/sign/neon/disco
 	name = "disco"
@@ -114,46 +106,46 @@
 /obj/structure/sign/neon/phone
 	name = "phone"
 	icon_state = "phone"
-	light_color = "#7FEA6A" //lime green
+	light_color = LIGHT_COLOR_GREEN
 
 /obj/structure/sign/neon/armory
 	name = "armory"
 	icon_state = "armory"
-	light_color = "#7FEA6A" //lime green
+	light_color = LIGHT_COLOR_GREEN
 
 /obj/structure/sign/neon/barber
 	name = "\improper barber shop sign"
 	desc = "A spinning sign indicating a barbershop is near."
 	icon_state = "barber"
-	light_color = "#6EB6FF" //sky blue
+	light_color = LIGHT_COLOR_SKYBLUE
 
 /obj/structure/sign/neon/cocktails
 	name = "cocktails sign"
 	desc = "The sign has has a cocktail symbol on it."
 	icon_state = "cocktails"
-	light_color = "#63C4D6" //light blue
+	light_color = LIGHT_COLOR_SKYBLUE
 
 /obj/structure/sign/neon/bathrooms
 	name = "bathroom sign"
 	desc = "A sign that indicates a unisex bathroom is here."
 	icon_state = "bathroom_unisex"
-	light_color = "#63C4D6" //light blue
+	light_color = LIGHT_COLOR_SKYBLUE
 
 /obj/structure/sign/neon/cryo
 	name = "cryo area sign"
 	desc = "A sign that indicates a cryogenic storage area is nearby."
 	icon_state = "cryo"
-	light_color = "#6CE08A" //teal
+	light_color = LIGHT_COLOR_GREEN
 
 /obj/structure/sign/neon/heath
 	name = "hospital sign"
 	desc = "A neon hospital sign"
 	icon_state = "medical_on"
-	light_color = "#7FEA6A" //lime green
+	light_color = LIGHT_COLOR_GREEN
 
 /obj/structure/sign/neon/heath/red
 	icon_state = "medicalred_on"
-	light_color = "#da0205" //red
+	light_color = LIGHT_COLOR_NEONRED
 
 /obj/structure/sign/neon/airbus
 	name = "airbus sign"
@@ -216,7 +208,7 @@
 	name = "casino sign"
 	desc = "A neon yellow airbus sign that says CASINO in big letters."
 	icon_state = "casino"
-	light_color = "#ffff99"
+	light_color = LIGHT_COLOR_NEONYELLOW
 
 	plane = 25
 
@@ -224,7 +216,7 @@
 	name = "large blue sign"
 	desc = "A neon blue sign in cryptic letters."
 	icon_state = "aeoiu"
-	light_color = "#006fff"
+	light_color = LIGHT_COLOR_DARK_BLUE
 	light_power = 20
 	light_range = 2
 
@@ -232,7 +224,7 @@
 	name = "luckystar sign"
 	desc = "A luckystar sign in cryptic letters."
 	icon_state = "luckystar"
-	light_color = "#de0000"
+	light_color = LIGHT_COLOR_NEONRED
 	light_power = 8
 	light_range = 3
 
@@ -240,7 +232,7 @@
 	name = "cryptic wall sign"
 	desc = "A luckystar sign in cryptic letters that is pinned to a wall."
 	icon_state = "ianhi"
-	light_color = "#ab00ff"
+	light_color = LIGHT_COLOR_PURPLE
 	light_power = 11
 	light_range = 2
 
@@ -256,19 +248,19 @@
 	name = "laboratory sign"
 	desc = "A neony purple sign with the word laboratory on it."
 	icon_state = "labs"
-	light_color = "#F070FF"  //deeper hot pink
+	light_color = LIGHT_COLOR_PINK
 
 /obj/structure/sign/neon/big/gym
 	name = "yeka gym sign"
 	desc = "A sign that represents the yekarina institute of wellness first erected by president Katya Petrovna."
 	icon_state = "gym"
-	light_color = "#63C4D6" //light blue
+	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 /obj/structure/sign/neon/big/police_dept
 	name = "police department sign"
 	desc = "A sign for the police department of Geminus City. It glows blue."
 	icon_state = "police_dept"
-	light_color = "#63C4D6" //light blue
+	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 
 /obj/structure/sign/neon/big/mall
@@ -281,13 +273,13 @@
 	name = "court sign"
 	desc = "A sign for the courtroom."
 	icon_state = "court"
-	light_color = "#63C4D6" //light blue
+	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 /obj/structure/sign/neon/big/city_hall
 	name = "city hall sign"
 	desc = "A sign for the city hall."
 	icon_state = "city_hall"
-	light_color = "#63C4D6" //light blue
+	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 
 /*|	                                             */
@@ -328,7 +320,7 @@
 /obj/structure/sign/neon/drivethru
 	name = "drivethru sign"
 	icon_state = "drivethru1"
-	light_color = "#7FEA6A" //lime green
+	light_color = LIGHT_COLOR_NEONGREEN
 
 /obj/structure/sign/neon/drivethru/right
 	icon_state = "drivethru2"

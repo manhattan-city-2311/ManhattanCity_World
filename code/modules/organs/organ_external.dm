@@ -456,6 +456,7 @@ This function completely restores a damaged organ to perfect condition.
 	brute_dam = 0
 	burn_dam = 0
 	germ_level = 0
+	pain = 0
 	wounds.Cut()
 	number_wounds = 0
 

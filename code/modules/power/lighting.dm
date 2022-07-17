@@ -260,77 +260,78 @@ var/global/list/light_type_cache = list()
 	base_state = "yellow"		// base description and icon_state
 	icon_state = "yellow1"
 	desc = "A lighting fixture."
-	brightness_range = 8
+	brightness_range = 10
 	brightness_power = 6
-	light_color = "#ffff99"
+	light_range = 10
+	light_color = LIGHT_COLOR_HALOGEN
 
 /obj/machinery/light/colored/orange
 	base_state = "orange"		// base description and icon_state
 	icon_state = "orange1"
-	light_color = "#ffcc66"
+	light_color = LIGHT_COLOR_ORANGE
 
 /obj/machinery/light/colored/purple
 	base_state = "purple"		// base description and icon_state
 	icon_state = "purple1"
-	light_color = "#571d7e"
+	light_color = LIGHT_COLOR_PURPLE
 
 /obj/machinery/light/colored/red
 	base_state = "red"		// base description and icon_state
 	icon_state = "red1"
-	light_color = "#f9bab1"
+	light_color = LIGHT_COLOR_RED
 
 /obj/machinery/light/colored/pink
 	base_state = "pink"		// base description and icon_state
 	icon_state = "pink1"
-	light_color = "#ff6699"
+	light_color = LIGHT_COLOR_PINK
 
 /obj/machinery/light/colored/blue
 	base_state = "blue"		// base description and icon_state
 	icon_state = "blue1"
-	light_color = "#99ccff"
+	light_color = LIGHT_COLOR_BLUE
 
 /obj/machinery/light/colored/green
 	base_state = "green"		// base description and icon_state
 	icon_state = "green1"
-	light_color = "#ccff66"
+	light_color = LIGHT_COLOR_GREEN
 
 
 //colored bulbs
 
 /obj/item/weapon/light/tube/large/neon/red
-	color = "#ff9999"
-	brightness_color = "#ff9999"
-	light_color = "#ff9999"
+	color = LIGHT_COLOR_RED
+	brightness_color = LIGHT_COLOR_RED
+	light_color = LIGHT_COLOR_RED
 
 /obj/item/weapon/light/tube/large/neon/orange
-	color = "#ffcc66"
-	brightness_color = "#ffcc66"
-	light_color = "#ffcc66"
+	color = LIGHT_COLOR_ORANGE
+	brightness_color = LIGHT_COLOR_ORANGE
+	light_color = LIGHT_COLOR_ORANGE
 
 /obj/item/weapon/light/tube/large/neon/purple
-	color = "#cc66ff"
-	brightness_color = "#cc66ff"
-	light_color = "#cc66ff"
+	color = LIGHT_COLOR_PURPLE
+	brightness_color = LIGHT_COLOR_PURPLE
+	light_color = LIGHT_COLOR_PURPLE
 
 /obj/item/weapon/light/tube/large/neon/pink
-	color = "#ff6699"
-	brightness_color = "#ff6699"
-	light_color = "#ff6699"
+	color = LIGHT_COLOR_PINK
+	brightness_color = LIGHT_COLOR_PINK
+	light_color = LIGHT_COLOR_PINK
 
 /obj/item/weapon/light/tube/large/neon/blue
-	color = "#b6e2fb"
-	brightness_color = "#99ccff"
-	light_color = "#99ccff"
+	color = LIGHT_COLOR_BLUE
+	brightness_color = LIGHT_COLOR_BLUE
+	light_color = LIGHT_COLOR_BLUE
 
 /obj/item/weapon/light/tube/large/neon/green
-	color = "#ccff66"
-	brightness_color = "#ccff66"
-	light_color = "#ccff66"
+	color = LIGHT_COLOR_GREEN
+	brightness_color = LIGHT_COLOR_GREEN
+	light_color = LIGHT_COLOR_GREEN
 
 /obj/item/weapon/light/tube/large/neon/yellow
-	color = "#ffff99"
-	brightness_color = "#ffff99"
-	light_color = "#ffff99"
+	color = LIGHT_COLOR_YELLOW
+	brightness_color = LIGHT_COLOR_YELLOW
+	light_color = LIGHT_COLOR_YELLOW
 
 
 /obj/machinery/light/floor
@@ -341,7 +342,7 @@ var/global/list/light_type_cache = list()
 	plane = UNDER_MOB_PLANE
 	brightness_range = 6
 	brightness_power = 11
-	brightness_color = "#f7f1b9"
+	brightness_color = LIGHT_COLOR_INCANDESCENT_TUBE
 	on_wall = 0
 
 /obj/machinery/light/overhead_blue
@@ -349,14 +350,14 @@ var/global/list/light_type_cache = list()
 	base_state = "inv"
 	brightness_range = 12
 	brightness_power = 2
-	brightness_color = "#0080ff"
+	brightness_color = LIGHT_COLOR_DARK_BLUE
 
 /obj/machinery/light/street
 	icon = 'icons/obj/street.dmi'
 	icon_state = "streetlamp1"
 	base_state = "streetlamp"
 	desc = "A street lighting fixture."
-	brightness_color = "#67c7c7"
+	brightness_color = LIGHT_COLOR_CYAN
 	brightness_range = 7
 	brightness_power = 5
 	plane = ABOVE_MOB_PLANE
@@ -376,7 +377,7 @@ var/global/list/light_type_cache = list()
 	base_state = "bulb"
 	brightness_range = 4
 	brightness_power = 10
-	brightness_color = "#FFCE99"
+	brightness_color = LIGHT_COLOR_INCANDESCENT_BULB
 	desc = "A small lighting fixture."
 	light_type = /obj/item/weapon/light/bulb
 
@@ -387,10 +388,10 @@ var/global/list/light_type_cache = list()
 	icon_state = "flamp1"
 	base_state = "flamp"
 	construct_type = /obj/machinery/light_construct/flamp
-	brightness_range = 6
-	brightness_power = 2.5
+	brightness_range = 8
+	brightness_power = 4
 	layer = OBJ_LAYER
-	brightness_color = "#FFE6CC"
+	brightness_color = LIGHT_COLOR_INCANDESCENT_TUBE
 	desc = "A floor lamp."
 	light_type = /obj/item/weapon/light/bulb
 	var/lamp_shade = 1
@@ -405,10 +406,13 @@ var/global/list/light_type_cache = list()
 	icon_state = "flamp1"
 	base_state = "flamp"
 	construct_type = /obj/machinery/light_construct/flamp
-	brightness_range = 8
-	brightness_power = 6
-	plane = ABOVE_MOB_PLANE
-	brightness_color = "#FFE6CC"
+	light_range = 9
+	light_power = 6.25
+	brightness_range = 9
+	brightness_power = 6.25
+	plane = OBJ_PLANE
+	layer = OBJ_LAYER
+	brightness_color = LIGHT_COLOR_HALOGEN
 	desc = "A floor lamp."
 	light_type = /obj/item/weapon/light/bulb
 	icon = 'icons/obj/big_floodlight.dmi'
@@ -419,11 +423,14 @@ var/global/list/light_type_cache = list()
 	icon_state = "streetlight1"
 	base_state = "streetlight"
 	construct_type = /obj/machinery/light_construct/flamp
-	brightness_range = 8
-	brightness_power = 6
+	light_range = 9
+	light_power = 6.25
+	brightness_range = 9
+	brightness_power = 6.25
 	pixel_x = -32
-	plane = ABOVE_MOB_PLANE
-	light_color = "#59FF9B"
+	plane = OBJ_PLANE
+	layer = OBJ_LAYER
+	light_color = LIGHT_COLOR_GREEN
 	desc = "A street pole."
 	light_type = /obj/item/weapon/light/bulb/neon/blue
 	icon = 'icons/obj/manhattan/streetpoles.dmi'

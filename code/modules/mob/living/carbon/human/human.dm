@@ -35,6 +35,7 @@
 	gvr = 218.50746 * k
 	mcv = NORMAL_MCV * k
 	oxy = get_max_blood_oxygen_delta()
+	co2 = 0
 
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
