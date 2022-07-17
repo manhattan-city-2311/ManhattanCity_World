@@ -63,6 +63,8 @@ What is the naming convention for planes or layers?
 	#define WATER_LAYER			3.0 // Layer for water overlays.
 	#define ABOVE_TURF_LAYER	3.1	// Snow and wallmounted/floormounted equipment
 	#define AO_LAYER            3.09
+
+#define TREE_LAYER 				5
 #define DECAL_PLANE				-44 // Permanent decals
 #define DIRTY_PLANE				-43 // Nonpermanent decals
 #define BLOOD_PLANE				-42 // Blood is really dirty, but we can do special stuff if we separate it

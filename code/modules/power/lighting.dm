@@ -260,8 +260,8 @@ var/global/list/light_type_cache = list()
 	base_state = "yellow"		// base description and icon_state
 	icon_state = "yellow1"
 	desc = "A lighting fixture."
-	brightness_range = 6
-	brightness_power = 4
+	brightness_range = 8
+	brightness_power = 6
 	light_color = "#ffff99"
 
 /obj/machinery/light/colored/orange
@@ -339,16 +339,16 @@ var/global/list/light_type_cache = list()
 	light_type = /obj/item/weapon/light/bulb
 	layer = TURF_LAYER+0.002
 	plane = UNDER_MOB_PLANE
-	brightness_range = 4
-	brightness_power = 10
+	brightness_range = 6
+	brightness_power = 11
 	brightness_color = "#f7f1b9"
 	on_wall = 0
 
 /obj/machinery/light/overhead_blue
 	icon_state = "inv1"
 	base_state = "inv"
-	brightness_range = 10
-	brightness_power = 1.5
+	brightness_range = 12
+	brightness_power = 2
 	brightness_color = "#0080ff"
 
 /obj/machinery/light/street
@@ -357,8 +357,8 @@ var/global/list/light_type_cache = list()
 	base_state = "streetlamp"
 	desc = "A street lighting fixture."
 	brightness_color = "#67c7c7"
-	brightness_range = 4
-	brightness_power = 6
+	brightness_range = 7
+	brightness_power = 5
 	plane = ABOVE_MOB_PLANE
 	density = 1
 	light_type = /obj/item/weapon/light/bulb
@@ -374,7 +374,7 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/small
 	icon_state = "bulb1"
 	base_state = "bulb"
-	brightness_range = 3
+	brightness_range = 4
 	brightness_power = 10
 	brightness_color = "#FFCE99"
 	desc = "A small lighting fixture."
@@ -387,8 +387,8 @@ var/global/list/light_type_cache = list()
 	icon_state = "flamp1"
 	base_state = "flamp"
 	construct_type = /obj/machinery/light_construct/flamp
-	brightness_range = 5
-	brightness_power = 2
+	brightness_range = 6
+	brightness_power = 2.5
 	layer = OBJ_LAYER
 	brightness_color = "#FFE6CC"
 	desc = "A floor lamp."

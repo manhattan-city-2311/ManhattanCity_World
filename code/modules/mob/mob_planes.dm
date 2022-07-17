@@ -33,6 +33,11 @@
 
 	plane_masters[VIS_MESONS]		= new /obj/screen/plane_master{plane = PLANE_MESONS} 			//Meson-specific things like open ceilings.
 
+	// Real tangible stuff planes
+	plane_masters[VIS_TURFS]	= new /obj/screen/plane_master/main{plane = TURF_PLANE}
+	plane_masters[VIS_OBJS]		= new /obj/screen/plane_master/main{plane = OBJ_PLANE}
+	plane_masters[VIS_MOBS]		= new /obj/screen/plane_master/main{plane = MOB_PLANE}
+
 	..()
 
 /datum/plane_holder/Destroy()
@@ -70,6 +75,17 @@ as far as i can tell, this is unused.
 		for(var/SP in subplanes)
 			set_vis(which = SP, new_alpha = new_alpha)
 */
+
+/datum/plane_holder/proc/set_ao(var/which = null, var/enabled = FALSE)
+	ASSERT(which)
+	var/obj/screen/plane_master/PM = plane_masters[which]
+	if(!PM)
+		crash_with("Tried to set_ao [which] in plane_holder on [my_mob]!")
+	PM.set_ambient_occlusion(enabled)
+	if(PM.sub_planes)
+		var/list/subplanes = PM.sub_planes
+		for(var/SP in subplanes)
+			set_ao(SP, enabled)
 
 /datum/plane_holder/proc/alter_values(var/which = null, var/list/values = null)
 	ASSERT(which)
@@ -120,6 +136,11 @@ as far as i can tell, this is unused.
 			alpha = 0
 			mouse_opacity = 0
 
+/obj/screen/plane_master/proc/set_ambient_occlusion(var/enabled = FALSE)
+	filters -= AMBIENT_OCCLUSION
+	if(enabled)
+		filters += AMBIENT_OCCLUSION
+
 /obj/screen/plane_master/proc/set_alpha(var/new_alpha = 255)
 	if(new_alpha != alpha)
 		new_alpha = sanitize_integer(new_alpha, 0, 255, 255)
@@ -152,3 +173,9 @@ as far as i can tell, this is unused.
 /obj/screen/plane_master/ghosts
 	plane = PLANE_GHOSTS
 	desired_alpha = 127 //When enabled, they're like half-transparent
+
+/////////////////
+//The main game planes start normal and visible
+/obj/screen/plane_master/main
+	alpha = 255
+	mouse_opacity = 1
