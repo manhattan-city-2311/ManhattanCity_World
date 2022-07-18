@@ -33,7 +33,7 @@
 	cardiac_output_modificators.Cut()
 	arrythmias.Cut()
 	ischemia = 0
-	
+
 /obj/item/organ/internal/heart/New()
 	..()
 	if(!owner.client)
@@ -198,7 +198,7 @@
 	if(owner.stat == DEAD)
 		return
 
-	if(pulse <= 0)
+	if(owner.mpressure <= 5)
 		return
 	//Bleeding out
 	var/blood_max = 0
@@ -212,6 +212,7 @@
 
 				if(!W.bleeding())
 					continue
+
 				if(temp.applied_pressure)
 					if(ishuman(temp.applied_pressure))
 						var/mob/living/carbon/human/H = temp.applied_pressure
@@ -228,13 +229,13 @@
 			if(temp.applied_pressure)
 				bleed_amount *= 0.5
 			if(open_wound)
-				blood_max += bleed_amount
+				blood_max += bleed_amount * 0.005
 			else
-				owner.vessel.remove_reagent("blood", bleed_amount * owner.mpressure / BLOOD_PRESSURE_NORMAL)
+				owner.vessel.remove_reagent("blood", bleed_amount * 0.005 * owner.mpressure / BLOOD_PRESSURE_NORMAL)
 
 		blood_max *= owner.mpressure / BLOOD_PRESSURE_NORMAL
 
-		if(world.time >= next_blood_squirt && istype(owner.loc, /turf) && do_spray.len)
+		if(world.time >= next_blood_squirt && isturf(owner.loc) && do_spray.len)
 			owner.visible_message("<span class='danger'>Blood squirts from [pick(do_spray)]!</span>")
 			// It becomes very spammy otherwise. Arterial bleeding will still happen outside of this block, just not the squirt effect.
 			next_blood_squirt = world.time + 100

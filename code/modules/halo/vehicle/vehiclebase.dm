@@ -2,7 +2,6 @@
 	name = "Vehicle"
 	desc = "Vehicle"
 	density = 1
-	plane = -16
 	layer = ABOVE_MOB_LAYER
 
 	var/active = 1
@@ -54,7 +53,7 @@
 	var/datum/gas_mixture/internal_air = null//If this is new()'d, the vehicle provides air to the occupants.
 	//I would make it require refilling, but that's likely to just be boring tedium for players.
 
-	light_power = 4
+	light_power = 6
 	light_range = 6
 
 	var/list/compatible_details

@@ -246,10 +246,10 @@ var/global/list/limb_icon_cache = list()
 // damage amount to represent the pain of the injuries involved.
 
 // Global scope, used in code below.
-var/list/flesh_hud_colours = list("#02BA08","#9ECF19","#DEDE10","#FFAA00","#FF0000","#AA0000","#660000")
+var/list/flesh_hud_colours = list("#6496FA", "#e7a30c","#ef6f08","#f25506","#FF0000","#880000","#330000")
 var/list/robot_hud_colours = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F4F","#2F2F2F","#000000")
 
-/obj/item/organ/external/proc/get_damage_hud_image(var/min_dam_state)
+/obj/item/organ/external/proc/get_damage_hud_image(min_dam_state)
 
 	// Generate the greyscale base icon and cache it for later.
 	// icon_cache_key is set by any get_icon() calls that are made.
@@ -276,11 +276,12 @@ var/list/robot_hud_colours = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F
 		hud_damage_image.overlays += temp
 
 	// Calculate the required color index.
-	var/dam_state = min(1,((brute_dam+burn_dam)/max_damage))
+	var/dam_state = min(1, (get_pain() / max_damage))
 	// Apply traumatic shock min damage state.
 	if(!isnull(min_dam_state) && dam_state < min_dam_state)
 		dam_state = min_dam_state
 	// Apply colour and return product.
 	var/list/hud_colours = (robotic < ORGAN_ROBOT) ? flesh_hud_colours : robot_hud_colours
-	hud_damage_image.color = hud_colours[max(1,min(ceil(dam_state*hud_colours.len),hud_colours.len))]
+	hud_damage_image.color = hud_colours[max(1, min(ceil(dam_state * hud_colours.len), hud_colours.len))]
+	
 	return hud_damage_image

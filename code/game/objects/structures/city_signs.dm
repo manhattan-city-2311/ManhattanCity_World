@@ -37,7 +37,7 @@
 /obj/structure/sign/neon/sushi
 	name = "sushi"
 	icon_state = "sushi"
-	light_color = LIGHT_COLOR_SKYBLUE
+	light_color = LIGHT_COLOR_NEONBLUE
 
 /obj/structure/sign/neon/bakery
 	name = "bakery"
@@ -82,12 +82,12 @@
 /obj/structure/sign/neon/sale
 	name = "neon sale sign"
 	icon_state = "neon_sale"
-	light_color = LIGHT_COLOR_SKYBLUE
+	light_color = LIGHT_COLOR_NEONBLUE
 
 /obj/structure/sign/neon/exit
 	name = "exit"
 	icon_state = "exit"
-	light_color = LIGHT_COLOR_NEONGREEN
+	light_color = LIGHT_COLOR_RED
 
 /obj/structure/sign/neon/close
 	name = "close"
@@ -117,19 +117,19 @@
 	name = "\improper barber shop sign"
 	desc = "A spinning sign indicating a barbershop is near."
 	icon_state = "barber"
-	light_color = LIGHT_COLOR_SKYBLUE
+	light_color = LIGHT_COLOR_NEONBLUE
 
 /obj/structure/sign/neon/cocktails
 	name = "cocktails sign"
 	desc = "The sign has has a cocktail symbol on it."
 	icon_state = "cocktails"
-	light_color = LIGHT_COLOR_SKYBLUE
+	light_color = LIGHT_COLOR_NEONBLUE
 
 /obj/structure/sign/neon/bathrooms
 	name = "bathroom sign"
 	desc = "A sign that indicates a unisex bathroom is here."
 	icon_state = "bathroom_unisex"
-	light_color = LIGHT_COLOR_SKYBLUE
+	light_color = LIGHT_COLOR_NEONBLUE
 
 /obj/structure/sign/neon/cryo
 	name = "cryo area sign"
@@ -216,7 +216,7 @@
 	name = "large blue sign"
 	desc = "A neon blue sign in cryptic letters."
 	icon_state = "aeoiu"
-	light_color = LIGHT_COLOR_DARK_BLUE
+	light_color = LIGHT_COLOR_NEONDARKBLUE
 	light_power = 20
 	light_range = 2
 

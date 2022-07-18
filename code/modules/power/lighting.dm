@@ -260,9 +260,8 @@ var/global/list/light_type_cache = list()
 	base_state = "yellow"		// base description and icon_state
 	icon_state = "yellow1"
 	desc = "A lighting fixture."
-	brightness_range = 10
+	brightness_range = 8
 	brightness_power = 6
-	light_range = 10
 	light_color = LIGHT_COLOR_HALOGEN
 
 /obj/machinery/light/colored/orange
@@ -402,19 +401,33 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/flamp/shadeless // for mapping
 	lamp_shade = 0
 
+/obj/item/weapon/light/bulb/street
+	color = LIGHT_COLOR_INCANDESCENT_BULB
+	brightness_color = LIGHT_COLOR_INCANDESCENT_BULB
+	light_color = LIGHT_COLOR_INCANDESCENT_BULB
+	brightness_range = 8
+	brightness_power = 6
+
+/obj/item/weapon/light/bulb/street2
+	color = LIGHT_COLOR_NEONBLUE
+	brightness_color = LIGHT_COLOR_NEONBLUE
+	light_color = LIGHT_COLOR_NEONBLUE
+	brightness_range = 10
+	brightness_power = 6.5
+
+
 /obj/machinery/light/normal_lamp
 	icon_state = "flamp1"
 	base_state = "flamp"
 	construct_type = /obj/machinery/light_construct/flamp
-	light_range = 9
-	light_power = 6.25
-	brightness_range = 9
-	brightness_power = 6.25
-	plane = OBJ_PLANE
-	layer = OBJ_LAYER
+	light_range = 8
+	light_power = 6
+	brightness_range = 8
+	brightness_power = 6
+	plane = ABOVE_MOB_PLANE
 	brightness_color = LIGHT_COLOR_HALOGEN
 	desc = "A floor lamp."
-	light_type = /obj/item/weapon/light/bulb
+	light_type = /obj/item/weapon/light/bulb/street
 	icon = 'icons/obj/big_floodlight.dmi'
 	anchored = 1
 	density = 1
@@ -423,16 +436,15 @@ var/global/list/light_type_cache = list()
 	icon_state = "streetlight1"
 	base_state = "streetlight"
 	construct_type = /obj/machinery/light_construct/flamp
-	light_range = 9
-	light_power = 6.25
-	brightness_range = 9
-	brightness_power = 6.25
+	light_range = 8
+	light_power = 6
+	brightness_range = 8
+	brightness_power = 6
 	pixel_x = -32
-	plane = OBJ_PLANE
-	layer = OBJ_LAYER
+	plane = ABOVE_MOB_PLANE
 	light_color = LIGHT_COLOR_GREEN
 	desc = "A street pole."
-	light_type = /obj/item/weapon/light/bulb/neon/blue
+	light_type = /obj/item/weapon/light/bulb/street2
 	icon = 'icons/obj/manhattan/streetpoles.dmi'
 	anchored = 1
 	density = 1

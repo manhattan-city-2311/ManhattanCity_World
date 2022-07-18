@@ -778,12 +778,12 @@
 				var/no_damage = 1
 				var/trauma_val = 0 // Used in calculating softcrit/hardcrit indicators.
 				if(!(species.flags & NO_PAIN))
-					trauma_val = max(shock_stage, halloss) / species.total_health
+					trauma_val = max(shock_stage, halloss) / SHOCK_STAGE_AGONY
 				var/limb_trauma_val = trauma_val*0.3
 				// Collect and apply the images all at once to avoid appearance churn.
 				var/list/health_images = list()
 				for(var/obj/item/organ/external/E in organs_by_name)
-					if(no_damage && (E.brute_dam || E.burn_dam))
+					if(no_damage && E.get_pain())
 						no_damage = 0
 					health_images += E.get_damage_hud_image(limb_trauma_val)
 
@@ -791,14 +791,7 @@
 				if(on_fire)
 					health_images += image('icons/mob/OnFire.dmi',"[get_fire_icon_state()]")
 
-				// Show a general pain/crit indicator if needed.
-				if(trauma_val)
-					if(!(species.flags & NO_PAIN))
-						if(trauma_val > 0.7)
-							health_images += image('icons/mob/screen1_health.dmi',"softcrit")
-						if(trauma_val >= 1)
-							health_images += image('icons/mob/screen1_health.dmi',"hardcrit")
-				else if(no_damage)
+				if(!trauma_val && no_damage)
 					health_images += image('icons/mob/screen1_health.dmi',"fullhealth")
 
 				healths_ma.overlays += health_images
@@ -1040,60 +1033,84 @@
 		if(mind && hud_used)
 			ling_chem_display.invisibility = 101
 
-/mob/living/carbon/human/var/shock_decrease = 0.1
+/mob/living/carbon/human/var/shock_decrease_coeff = 0.016666
 
 /mob/living/carbon/human/proc/handle_shock()
 	if(status_flags & GODMODE)	return 0	//godmode
 	if(!can_feel_pain()) return
 
-	shock_stage = min(shock_stage, 160)
-	shock_stage = max(shock_stage - shock_decrease, 0)
+	shock_stage = min(shock_stage, SHOCK_STAGE_MAX)
+	shock_stage = max(shock_stage - shock_decrease_coeff * shock_stage , 0)
+	shock_stage = lerp(shock_stage, total_pain, 0.1)
 
 	if(stat)
 		return 0
 
-
+	var/font_size
+	var/message
+	var/emote_pick
 	switch(shock_stage)
 		if(SHOCK_STAGE_PAIN_MESSAGE to SHOCK_STAGE_SCREAM-5)
-			if(prob(25))
-				custom_pain(SPAN_DANGER("[pick("It hurts so much", "You really need some painkillers", "Dear god, the pain")]!"))
-			if(prob(5))
-				emote("whimper")
+			message = pick(SHOCK_PAIN_MESSAGES)
+			emote_pick = "whimper"
+
 		if(SHOCK_STAGE_SCREAM-5 to SHOCK_STAGE_STUN - 15)
-			if(prob(25))
-				custom_pain(SPAN_DANGER("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!"), 20)
-			if(prob(5))
-				emote(pick("whimper", "cry", "scream"))
-		if(SHOCK_STAGE_STUN-15 to SHOCK_STAGE_STUN-1)
-			if(prob(25))
-				custom_pain(SPAN_DANGER("[pick("The pain is excruciating", "Please, just end the pain", "STOP THIS!!", "You feel you are dying right now.", "You are losing consiciousness!")]"), 30)
-			if(life_tick % 12 == 0)
+			message = pick(SHOCK_PAIN_MESSAGES)
+			emote_pick = pick("whimper", "cry", "scream")
+
+		if(SHOCK_STAGE_STUN-15 to SHOCK_STAGE_STUN-2)
+			message = pick(SHOCK_PAIN_MESSAGES_SEVERE)
+
+			if(life_tick % SHOCK_STAGE_STUN == 0)
 				Weaken(20)
-			if(prob(7))
-				emote(pick("whimper", "cry", "scream"))
-		if(SHOCK_STAGE_STUN)
+			
+			font_size = 3
+			emote_pick = pick("whimper", "cry", "scream")
+
+		if(SHOCK_STAGE_STUN - 1 to SHOCK_STAGE_STUN + 1)
 			if(prob(20))
 				custom_pain(SPAN_NOTICE("You feel a sudden relief..."))
 				emote("collapse")
 				Paralyse(5)
 			else
-				custom_pain(SPAN_DANGER("You cannot resist any more!"))
-				if(prob(12))
-					emote(pick("cry", "scream", "scream", "cry", "agony"))
+				message = "You cannot resist any more!"
+				emote_pick = pick("cry", "scream", "scream", "cry", "agony")
+
+				if((life_tick % SHOCK_STAGE_STUN) == 0)
 					Weaken(5)
-		if(SHOCK_STAGE_STUN+1 to SHOCK_STAGE_AGONY)
-			custom_pain(SPAN_DANGER("[pick("The pain is excruciating", "Please, just end the pain!", "STOP THIS!!", "You feel you are dying right now.", "You are losing consiciousness!")]"), 40)
-			if(life_tick % 12 == 0)
+			font_size = 2
+
+		if(SHOCK_STAGE_STUN+2 to SHOCK_STAGE_AGONY)
+			message = pick(SHOCK_PAIN_MESSAGES_SEVERE)
+			if((life_tick % SHOCK_STAGE_STUN) == 0)
 				Weaken(20)
-			if(prob(5))
+			if(prob(7))
 				Stun(rand(10, 15))
-			if(prob(15))
-				emote(pick("whimper", "cry", "scream"))
+	
+			font_size = 3
+			emote_pick = pick("whimper", "cry", "scream")
 
 		if(SHOCK_STAGE_AGONY to INFINITY)
-			custom_pain(SPAN_DANGER("[pick("The pain is excruciating", "Please, just end the pain", "STOP THIS!!", "You feel you are dying right now.", "You are losing consiciousness!")]"), 55)
-			if(life_tick % 15 == 0)
-				emote("agony")
+			message = pick(SHOCK_PAIN_MESSAGES_SEVERE)
+
+			if((life_tick % SHOCK_STAGE_STUN) == 0)
+				Weaken(20)
+
+			if(prob(7))
+				Stun(rand(10, 15))
+
+			if(prob(1))
+				emote("collapse")
+				Paralyse(5)
+			
+			font_size = 3
+			emote_pick = "agony"
+
+	if(message)
+		throttle_message("shock", message, bold = TRUE, font_size = font_size, span = "danger", delay = SHOCK_MESSAGE_PERIOD)
+
+	if(emote_pick && (life_tick % SHOCK_EMOTE_PERIOD) == 0)
+		emote(emote_pick)	
 
 
 /mob/living/carbon/human/proc/handle_pulse()

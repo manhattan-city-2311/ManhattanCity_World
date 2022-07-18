@@ -28,7 +28,7 @@
 #define MAX_MCV 30000
 #define NORMAL_MCV 3800
 
-#define MAX_PRESSURE 280
+#define MAX_PRESSURE 283
 #define ARRYTHMIA_SEVERITY_OVERWRITING 5
 
 #define ARRYTHMIA_AFIB "afib"
@@ -45,7 +45,13 @@
 // ml/L
 #define CO2_LEVEL_NORMAL 25
 
-#define SHOCK_STAGE_PAIN_MESSAGE 10
-#define SHOCK_STAGE_SCREAM 20
-#define SHOCK_STAGE_STUN 50
-#define SHOCK_STAGE_AGONY 100 
+#define SHOCK_STAGE_PAIN_MESSAGE 20
+#define SHOCK_STAGE_SCREAM 30
+#define SHOCK_STAGE_STUN 60
+#define SHOCK_STAGE_AGONY 110 
+#define SHOCK_STAGE_MAX 160
+#define SHOCK_EMOTE_PERIOD 50
+#define SHOCK_MESSAGE_PERIOD 200
+
+#define SHOCK_PAIN_MESSAGES "The pain is excruciating!", "Please, just end the pain!", "It hurts so much!", "You really need some painkillers!"
+#define SHOCK_PAIN_MESSAGES_SEVERE "FUCKING STOP THIS!!", "You feel you are dying right now!", "You are losing consiciousness!", "The pain is driving you insane!", "OH-H GODNESS, PAIN IS INSANE!", "Pain is depriving you consiciousness!", "It's too hard to resist!"

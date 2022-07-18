@@ -9,13 +9,36 @@
 /mob/var/next_pain_time = 0
 
 /mob/living/carbon/var/shock_stage = 0
-/mob/living/carbon/var/pain_coeff = 1 / 25
+/mob/living/carbon/var/pain_coeff = 1 / 50
 /mob/living/carbon/proc/add_shock_from_pain(pain)
-	shock_stage += pain * pain_coeff 
+	shock_stage += pain * pain_coeff
+
+/mob/living/carbon/var/list/messages_throttles = list()
+/mob/living/carbon/proc/throttle_message(id, message, bold, font_size, span, delay = 70)
+	var/last_message = LAZYACCESS0(messages_throttles, id)
+
+	if(world.time < (last_message + delay))
+		return
+
+	if(span)
+		message = SPAN(span, message)
+	if(font_size)
+		message = "<font size = [font_size]>[message]</font>"
+	if(bold)
+		message = "<b>[message]</b>"
+
+	to_chat(src, message)
+
+	messages_throttles[id] = world.time
+
 
 /mob/living/carbon/proc/custom_pain(var/message, var/power, var/force, var/obj/item/organ/external/affecting, var/nohalloss, var/flash_pain)
-	if(stat || !can_feel_pain() || chem_effects[CE_PAINKILLER] > power)//!message
+	power = LAZYACCESS0(chem_effects, CE_PAINKILLER)
+	flash_pain -= LAZYACCESS0(chem_effects, CE_PAINKILLER)
+	if(stat || !can_feel_pain() || (power <= 0 && flash_pain <= 0))//!message
 		return 0
+
+	var/disp_emote
 
 	// Excessive halloss is horrible, just give them enough to make it visible.
 	if(!nohalloss && (power || flash_pain))//Flash pain is so that handle_pain actually makes use of this proc to flash pain.
@@ -30,34 +53,40 @@
 			switch(actual_flash)
 				if(1 to 40)
 					flash_weakest_pain()
-					emote(pick("groan", "whimper"))
+					disp_emote = pick("groan", "whimper")
+					emote()
 				if(40 to 80)
 					flash_weak_pain()
-					emote(pick("scream", "cry"))
+					disp_emote = pick("scream", "cry", "groan", "whimper")
 					if(stuttering < 10)
 						stuttering += 5
 				if(80 to INFINITY)
 					flash_pain()
-					emote(pick("scream", "cry", "agony"))
-					if(stuttering < 10)
+					disp_emote = pick("scream", "cry", "agony")
+					if(stuttering < 10 && rand(25))
 						stuttering += 10
 					if(prob(2))
 						Stun(5)//makes you drop what you're holding.
 						shake_camera(src, 20, 3)
 		else
 			adjustHalLoss(ceil(power/2))
-		
-		add_shock_from_pain(power + flash_pain)		
+
+		add_shock_from_pain(power + flash_pain)
 
 	// Anti message spam checks
 	if((force || (message != last_pain_message) || (world.time >= next_pain_time)) && message)
 		last_pain_message = message
+
 		if(power >= 50)
 			to_chat(src, "<b><font size=3>[message]</font></b>")
 		else
 			to_chat(src, "<b>[message]</b>")
-	next_pain_time = world.time + (100-power)
+		if(disp_emote)
+			emote(disp_emote)
 
+	next_pain_time = world.time + (70 - power) SECONDS
+
+/mob/living/carbon/human/var/total_pain = 0
 /mob/living/carbon/human/proc/handle_pain()
 	if(stat)
 		return
@@ -65,16 +94,20 @@
 		return
 	if(world.time < next_pain_time)
 		return
+
+	total_pain = 0
+
 	var/maxdam = 0
 	var/obj/item/organ/external/damaged_organ = null
 	for(var/obj/item/organ/external/E in organs_by_name)
 		if(!E.can_feel_pain()) continue
-		var/dam = E.get_pain() + E.get_damage() - LAZYACCESS0(chem_effects, CE_PAINKILLER)
-		// make the choice of the organ depend on damage,
-		// but also sometimes use one of the less damaged ones
+		var/dam = E.get_pain()
 		if(dam > maxdam && (maxdam == 0 || prob(70)) )
 			damaged_organ = E
 			maxdam = dam
+
+		total_pain += dam
+
 	if(damaged_organ)
 		if(maxdam > 10 && paralysis)
 			paralysis = max(0, paralysis - round(maxdam/10))
@@ -92,7 +125,7 @@
 			if(91 to INFINITY)
 				msg = "<font size=3>OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!</font>"
 
-		custom_pain(msg, 0, prob(10), affecting = damaged_organ, flash_pain = maxdam)
+		custom_pain(SPAN_DANGER(msg), 0, prob(10), affecting = damaged_organ, flash_pain = maxdam)
 
 	// Damage to internal organs hurts a lot.
 	for(var/obj/item/organ/I in internal_organs)
@@ -100,8 +133,9 @@
 		if(I.damage > 2) if(prob(2))
 			var/obj/item/organ/external/parent = get_organ(I.parent_organ)
 			src.custom_pain("You feel a sharp pain in your [parent.name]", 50, affecting = parent)
+			total_pain += 50
 
-	if(prob(2))
+	if(prob(3))
 		switch(getToxLoss())
 			if(10 to 25)
 				custom_pain("Your body stings slightly.", getToxLoss())
@@ -109,3 +143,7 @@
 				custom_pain("Your whole body hurts badly.", getToxLoss())
 			if(61 to INFINITY)
 				custom_pain("Your body aches all over, it's driving you mad.", getToxLoss())
+		total_pain += getToxLoss()
+
+	total_pain -= LAZYACCESS0(chem_effects, CE_PAINKILLER)
+	

@@ -61,7 +61,8 @@
 		msg += "[line]\n"
 
 	msg += "<b>Total Players: [length(Lines)]</b>"
-	src << msg
+
+	to_chat(src, msg)
 
 /client/verb/staffwho()
 	set category = "Admin"
@@ -183,4 +184,4 @@
 	if(config.show_SSeventss)
 		msg += "\n<b> Current Event Managers ([num_SSeventss_online]):</b>\n" + eventMmsg
 
-	src << msg
+	to_chat(src, msg)
