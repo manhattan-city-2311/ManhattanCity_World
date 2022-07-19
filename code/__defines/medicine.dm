@@ -3,8 +3,8 @@
 #define BLOOD_PERFUSION_BAD     0.60
 #define BLOOD_PERFUSION_SURVIVE 0.40
 
-#define BLOOD_PRESSURE_LCRITICAL 65
-#define BLOOD_PRESSURE_L2BAD 70
+#define BLOOD_PRESSURE_LCRITICAL 50
+#define BLOOD_PRESSURE_L2BAD 65
 #define BLOOD_PRESSURE_LBAD 80
 #define BLOOD_PRESSURE_NORMAL 93
 #define BLOOD_PRESSURE_HBAD 130
@@ -50,8 +50,8 @@
 #define SHOCK_STAGE_STUN 60
 #define SHOCK_STAGE_AGONY 110 
 #define SHOCK_STAGE_MAX 160
-#define SHOCK_EMOTE_PERIOD 50
-#define SHOCK_MESSAGE_PERIOD 200
+#define SHOCK_EMOTE_PERIOD 100
+#define SHOCK_MESSAGE_PERIOD 300
 
 #define SHOCK_PAIN_MESSAGES "The pain is excruciating!", "Please, just end the pain!", "It hurts so much!", "You really need some painkillers!"
 #define SHOCK_PAIN_MESSAGES_SEVERE "FUCKING STOP THIS!!", "You feel you are dying right now!", "You are losing consiciousness!", "The pain is driving you insane!", "OH-H GODNESS, PAIN IS INSANE!", "Pain is depriving you consiciousness!"

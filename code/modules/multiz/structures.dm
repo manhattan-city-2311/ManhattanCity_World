@@ -172,12 +172,13 @@
 		var/turf/target = get_step(GetAbove(A), dir)
 		var/turf/source = A.loc
 		if(target.Enter(A, source))
-			A.loc = target
+			A.forceMove(target)
 			target.Entered(A, source)
 			if(isliving(A))
 				var/mob/living/L = A
 				if(L.pulling)
 					L.pulling.forceMove(target)
+			source.update_mimic()
 		return 0
 	return 1
 

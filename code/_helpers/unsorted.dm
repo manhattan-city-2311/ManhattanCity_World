@@ -846,12 +846,12 @@ Turf and target are seperate in case you want to teleport some distance from a t
 						O.loc = X
 
 					//Move the mobs unless it's an AI eye or other eye type.
-					for(var/mob/M in T)
-						if(istype(M, /mob/observer/eye)) continue // If we need to check for more mobs, I'll add a variable
-						M.loc = X
-						if(istype(M, /mob/living))
-							var/mob/living/LM = M
-							LM.check_shadow() // Need to check their Z-shadow, which is normally done in forceMove().
+					//for(var/mob/M in T)
+						//if(istype(M, /mob/observer/eye)) continue // If we need to check for more mobs, I'll add a variable
+						//M.loc = X
+						//if(istype(M, /mob/living))
+							//var/mob/living/LM = M
+							//LM.check_shadow() // Need to check their Z-shadow, which is normally done in forceMove().
 
 					if(shuttlework)
 						var/turf/simulated/shuttle/SS = T

@@ -10,6 +10,7 @@
 
 /mob/living/carbon/var/shock_stage = 0
 /mob/living/carbon/var/pain_coeff = 1 / 50
+/mob/living/carbon/var/shock_coeff = 0.25
 /mob/living/carbon/proc/add_shock_from_pain(pain)
 	shock_stage += pain * pain_coeff
 

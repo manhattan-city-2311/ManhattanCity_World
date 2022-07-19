@@ -87,7 +87,8 @@ Notes:
 
 /datum/tooltip/proc/hide()
 	if (queueHide)
-		schedule_task_with_source_in(1, src, .proc/do_hide)
+		//schedule_task_with_source_in(1, src, .proc/do_hide)
+		// FIXME:
 	else
 		do_hide()
 

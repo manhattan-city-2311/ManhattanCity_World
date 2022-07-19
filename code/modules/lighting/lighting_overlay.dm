@@ -129,7 +129,7 @@
 
 /atom/movable/lighting_overlay/Destroy(var/force)
 	if (force)
-		total_lighting_overlays--
+		--total_lighting_overlays
 		global.lighting_update_overlays     -= src
 		LAZYREMOVE(SSlighting.currentrun, src)
 

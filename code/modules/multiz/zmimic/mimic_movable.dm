@@ -79,11 +79,8 @@
 	plane = OPENTURF_MAX_PLANE
 	layer = MIMICED_LIGHTING_LAYER
 	blend_mode = BLEND_MULTIPLY
-	color = list(
-		SHADOWER_DARKENING_FACTOR, 0, 0,
-		0, SHADOWER_DARKENING_FACTOR, 0,
-		0, 0, SHADOWER_DARKENING_FACTOR
-	)
+	alpha = 55
+	color = SHADOWER_DARKENING_COLOR
 
 /atom/movable/openspace/multiplier/Destroy()
 	var/turf/myturf = loc
@@ -95,7 +92,7 @@
 /atom/movable/openspace/multiplier/proc/copy_lighting(atom/movable/lighting_overlay/LO)
 	appearance = LO
 	layer = MIMICED_LIGHTING_LAYER
-	plane = OPENTURF_MAX_PLANE
+	plane = PLANE_LIGHTING + 0.01
 	invisibility = 0
 	blend_mode = BLEND_MULTIPLY
 	if (icon_state == null)
@@ -103,27 +100,24 @@
 		// Bay stores lights as inverted so the lighting PM can invert it for darksight, but
 		//   we don't have a plane master, so invert it again.
 		var/list/c_list = color
-		c_list[CL_MATRIX_RR] *= -SHADOWER_DARKENING_FACTOR
-		c_list[CL_MATRIX_RG] *= -SHADOWER_DARKENING_FACTOR
-		c_list[CL_MATRIX_RB] *= -SHADOWER_DARKENING_FACTOR
-		c_list[CL_MATRIX_GR] *= -SHADOWER_DARKENING_FACTOR
-		c_list[CL_MATRIX_GG] *= -SHADOWER_DARKENING_FACTOR
-		c_list[CL_MATRIX_GB] *= -SHADOWER_DARKENING_FACTOR
-		c_list[CL_MATRIX_BR] *= -SHADOWER_DARKENING_FACTOR
-		c_list[CL_MATRIX_BG] *= -SHADOWER_DARKENING_FACTOR
-		c_list[CL_MATRIX_BB] *= -SHADOWER_DARKENING_FACTOR
-		c_list[CL_MATRIX_AR] *= -SHADOWER_DARKENING_FACTOR
-		c_list[CL_MATRIX_AG] *= -SHADOWER_DARKENING_FACTOR
-		c_list[CL_MATRIX_AB] *= -SHADOWER_DARKENING_FACTOR
+		c_list[CL_MATRIX_RR] *= SHADOWER_DARKENING_FACTOR
+		c_list[CL_MATRIX_RG] *= SHADOWER_DARKENING_FACTOR
+		c_list[CL_MATRIX_RB] *= SHADOWER_DARKENING_FACTOR
+		c_list[CL_MATRIX_GR] *= SHADOWER_DARKENING_FACTOR
+		c_list[CL_MATRIX_GG] *= SHADOWER_DARKENING_FACTOR
+		c_list[CL_MATRIX_GB] *= SHADOWER_DARKENING_FACTOR
+		c_list[CL_MATRIX_BR] *= SHADOWER_DARKENING_FACTOR
+		c_list[CL_MATRIX_BG] *= SHADOWER_DARKENING_FACTOR
+		c_list[CL_MATRIX_BB] *= SHADOWER_DARKENING_FACTOR
+		c_list[CL_MATRIX_AR] *= SHADOWER_DARKENING_FACTOR
+		c_list[CL_MATRIX_AG] *= SHADOWER_DARKENING_FACTOR
+		c_list[CL_MATRIX_AB] *= SHADOWER_DARKENING_FACTOR
 		color = c_list
 	else
 		// Not a color matrix, so we just ignore the lighting values.
 		icon_state = "dark"	// this is actually just a white sprite, which is what this blending needs
-		color = list(
-			SHADOWER_DARKENING_FACTOR, 0, 0,
-			0, SHADOWER_DARKENING_FACTOR, 0,
-			0, 0, SHADOWER_DARKENING_FACTOR
-		)
+		color = SHADOWER_DARKENING_COLOR
+		alpha = 55
 
 	var/turf/parent = loc
 	ASSERT(isturf(parent))
@@ -141,6 +135,8 @@
 	var/queued = FALSE
 	var/destruction_timer
 	var/mimiced_type
+	var/original_z
+	var/override_depth
 
 /atom/movable/openspace/overlay/New()
 	SSzcopy.openspace_overlays += 1
@@ -163,9 +159,6 @@
 /atom/movable/openspace/overlay/attack_hand(mob/user)
 	to_chat(user, SPAN_NOTICE("You cannot reach \the [src] from here."))
 
-/atom/movable/openspace/overlay/attack_generic(mob/user)
-	to_chat(user, SPAN_NOTICE("You cannot reach \the [src] from here."))
-
 /atom/movable/openspace/overlay/examine(...)
 	. = associated_atom.examine(arglist(args))	// just pass all the args to the copied atom
 
@@ -183,18 +176,51 @@
 	if (!destruction_timer)
 		destruction_timer = addtimer(CALLBACK(src, /datum/.proc/qdel_self), 10 SECONDS, TIMER_STOPPABLE)
 
-// This one's a little different because it's mimicing a turf.
-/atom/movable/openspace/turf_overlay
-	plane = OPENTURF_MAX_PLANE
+/atom/movable/openspace/overlay/proc/update()
+	appearance = associated_atom.appearance
 
-/atom/movable/openspace/turf_overlay/attackby(obj/item/W, mob/user)
+// -- TURF DELEGATE --
+
+// This thing holds the mimic appearance for non-OVERWRITE turfs.
+/atom/movable/openspace/turf_delegate
+	plane = OPENTURF_MAX_PLANE
+	mouse_opacity = 0
+	no_z_overlay = TRUE  // Only one of these should ever be visible at a time, the mimic logic will handle that.
+
+/atom/movable/openspace/turf_delegate/attackby(obj/item/W, mob/user)
 	loc.attackby(W, user)
 
-/atom/movable/openspace/turf_overlay/attack_hand(mob/user as mob)
+/atom/movable/openspace/turf_delegate/attack_hand(mob/user as mob)
 	loc.attack_hand(user)
 
-/atom/movable/openspace/turf_overlay/attack_generic(mob/user as mob)
+/atom/movable/openspace/turf_delegate/attack_generic(mob/user as mob)
 	loc.attack_generic(user)
 
-/atom/movable/openspace/turf_overlay/examine(mob/examiner)
-	loc.examine(examiner)
+/atom/movable/openspace/turf_delegate/examine(mob/examiner)
+	. = loc.examine(examiner)
+
+
+// -- DELEGATE COPY --
+
+// A type for copying delegates' self-appearance.
+/atom/movable/openspace/delegate_copy
+	plane = OPENTURF_MAX_PLANE	// These *should* only ever be at the top?
+	mouse_opacity = 0
+	var/turf/delegate
+
+/atom/movable/openspace/delegate_copy/initialize(mapload, ...)
+	. = ..()
+	ASSERT(isturf(loc))
+	delegate = loc:below
+
+/atom/movable/openspace/delegate_copy/attackby(obj/item/W, mob/user)
+	loc.attackby(W, user)
+
+/atom/movable/openspace/delegate_copy/attack_hand(mob/user as mob)
+	to_chat(user, SPAN_NOTICE("You cannot reach \the [src] from here."))
+
+/atom/movable/openspace/delegate_copy/attack_generic(mob/user as mob)
+	to_chat(user, SPAN_NOTICE("You cannot reach \the [src] from here."))
+
+/atom/movable/openspace/delegate_copy/examine(mob/examiner)
+	. = delegate.examine(examiner)

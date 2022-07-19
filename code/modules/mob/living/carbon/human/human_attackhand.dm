@@ -88,7 +88,7 @@
 
 	switch(M.a_intent)
 		if(I_HELP)
-			if(!istype(H))
+			if(!H || !istype(H))
 				return
 			if(is_asystole() || is_vfib())
 				if (!cpr_time)

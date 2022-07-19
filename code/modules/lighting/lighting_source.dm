@@ -201,6 +201,7 @@
 	applied_lum_b = lum_b
 
 	FOR_DVIEW(var/turf/T, light_range, source_turf, INVISIBILITY_LIGHTING)
+		check_t:
 		if(!T.lighting_corners_initialised)
 			T.generate_missing_corners()
 
@@ -222,6 +223,11 @@
 
 		T.affecting_lights += src
 		affecting_turfs    += T
+
+		if (T.above && T.above.z_flags & ZM_ALLOW_LIGHTING)
+			T = T.above
+			goto check_t
+	END_FOR_DVIEW
 
 	update_gen++
 
@@ -258,6 +264,12 @@
 		corners |= T.get_corners()
 		turfs   += T
 
+		var/turf/simulated/open/O = T
+		if(istype(O) && O.below)
+			// Consider the turf below us as well. (Z-lights)
+			for(T = O.below; !isnull(T); T = update_the_turf(T,corners, turfs));
+	END_FOR_DVIEW
+
 	var/list/L = turfs - affecting_turfs // New turfs, add us to the affecting lights of them.
 	affecting_turfs += L
 	for(var/turf/T in L)
@@ -283,6 +295,18 @@
 		REMOVE_CORNER(C)
 		C.affecting -= src
 		effect_str -= C
+
+/datum/light_source/proc/update_the_turf(var/turf/T, var/list/datum/lighting_corner/corners, var/list/turf/turfs)
+	if(!T.lighting_corners_initialised)
+		T.generate_missing_corners()
+	corners |= T.get_corners()
+	turfs   += T
+
+	var/turf/simulated/open/O = T
+	if(istype(O) && O.below)
+		return O.below
+	return null
+
 
 #undef effect_update
 #undef LUM_FALLOFF

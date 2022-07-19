@@ -422,5 +422,6 @@
 	var/obj/item/organ/internal/brain/B = internal_organs_by_name[O_BRAIN]
 	return B ? (100 * (B.damage / B.max_damage)) : 100
 
+// TODO: add total paralysis from nervous system failure
 /mob/living/carbon/human/nervous_system_failure()
-	return get_brain_damage() > 10
+	return get_brain_damage() > 20

@@ -42,11 +42,7 @@ What is the naming convention for planes or layers?
 
 #define PARALLAX_PLANE  		-80	// Reserved for use in space/parallax
 
-// OPENSPACE_PLANE reserves all planes between OPENSPACE_PLANE_START and OPENSPACE_PLANE_END inclusive
-#define OPENSPACE_PLANE 		-75 // /turf/simulated/open will use OPENSPACE_PLANE + z (Valid z's being 2 thru 17)
-#define OPENSPACE_PLANE_START	-73
-#define OPENSPACE_PLANE_END		-58
-#define OVER_OPENSPACE_PLANE	-57
+#define OVER_OPENSPACE_PLANE     -3
 
 // Turf Planes
 #define SPACE_PLANE				-43 // Space turfs themselves
@@ -91,6 +87,8 @@ What is the naming convention for planes or layers?
 	#define UNDER_MOB_PLANE			-35
 	#define BELOW_MOB_LAYER			3.9 // Should be converted to plane swaps
 	#define ABOVE_MOB_LAYER			4.1	// Should be converted to plane swaps
+	
+	#define MIMICED_LIGHTING_LAYER      4.21	// Z-Mimic-managed lighting
 
 // Top plane (in the sense that it's the highest in 'the world' and not a UI element)
 #define ABOVE_PLANE				-10

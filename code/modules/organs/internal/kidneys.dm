@@ -16,12 +16,13 @@
 
 	absorb_hormone("potassium_hormone", 0.5)
 
-	generate_hormone("noradrenaline", 0.1, 2.5)
-	generate_hormone("adrenaline", 0.1, 2.5)
+	generate_hormone("noradrenaline", 0.1, 4)
+	generate_hormone("adrenaline", 0.1, 4)
 
-	if(owner.get_blood_perfusion() <= BLOOD_PERFUSION_OKAY)
-		var/pressure_diff = BLOOD_PRESSURE_NORMAL
-		free_up_to_hormone("noradrenaline", pressure_diff / 7 / 2)
-		free_up_to_hormone("adrenaline", pressure_diff / 8 / 2)
+	if(owner.get_blood_perfusion() <= BLOOD_PERFUSION_OKAY + 0.05)
+		var/pressure_diff = BLOOD_PRESSURE_NORMAL - owner.mpressure
+		free_up_to_hormone("noradrenaline", pressure_diff / 7)
+		free_up_to_hormone("adrenaline", pressure_diff / 8)
+		owner.consume_oxygen(0.1 * owner.k)
 
 	owner.consume_oxygen(0.7 * owner.k)

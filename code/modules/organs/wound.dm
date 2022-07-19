@@ -213,7 +213,7 @@
 		if (current_stage > max_bleeding_stage)
 			return 0
 
-		if (bandaged||clamped)
+		if (bandaged || clamped)
 			return 0
 
 		if (bleed_timer <= 0 && wound_damage() <= bleed_threshold)

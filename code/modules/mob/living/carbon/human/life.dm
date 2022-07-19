@@ -1041,7 +1041,7 @@
 
 	shock_stage = min(shock_stage, SHOCK_STAGE_MAX)
 	shock_stage = max(shock_stage - shock_decrease_coeff * shock_stage , 0)
-	shock_stage = lerp(shock_stage, total_pain, 0.1)
+	shock_stage = lerp(shock_stage, total_pain * shock_coeff, 0.5)
 
 	if(stat)
 		return 0
@@ -1290,7 +1290,17 @@
 
 	setup_cm()
 	restore_blood()
+
+	total_pain = 0
 	shock_stage = 0
+
+	spressure = initial(spressure)
+	mpressure = initial(mpressure)
+	dpressure = initial(dpressure)
+
+	perfusion = 1
+
+	mcv_add = 0
 
 	for (var/ID in virus2)
 		var/datum/disease2/disease/V = virus2[ID]

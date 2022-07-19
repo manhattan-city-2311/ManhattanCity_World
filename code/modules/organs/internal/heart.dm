@@ -132,7 +132,7 @@
 /obj/item/organ/internal/heart/proc/make_modificators()
 	if(owner.get_blood_perfusion() < 0.95 && (owner.mcv + owner.mcv_add) < NORMAL_MCV * owner.k && owner.get_cardiac_output())
 		pulse_modificators["hypoperfusion"] = clamp((NORMAL_MCV * owner.k - (owner.mcv + owner.mcv_add)) / 30, 0, 115)
-	pulse_modificators["shock"] = Clamp(owner.shock_stage * 0.25, 0, 110 + rand(-10, 10))
+	pulse_modificators["shock"] = Clamp(owner.shock_stage * 0.55, 0, 110)
 
 /obj/item/organ/internal/heart/proc/handle_rythme()
 	for(var/T in arrythmias)
@@ -220,9 +220,9 @@
 					//somehow you can apply pressure to every wound on the organ at the same time
 					//you're basically forced to do nothing at all, so let's make it pretty effective
 					var/min_eff_damage = max(0, W.damage - 10) / 6 //still want a little bit to drip out, for effect
-					blood_max += max(min_eff_damage, W.damage - 30) / 100
+					blood_max += max(min_eff_damage, W.damage - 30) * 0.016
 				else
-					blood_max += W.damage / 100
+					blood_max += W.damage * 0.016
 
 		if(temp.is_artery_cut())
 			var/bleed_amount = temp.get_artery_cut_damage()

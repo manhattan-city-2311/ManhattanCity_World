@@ -1,6 +1,7 @@
 #define OPENTURF_MAX_PLANE -70
 #define OPENTURF_MAX_DEPTH 10		// The maxiumum number of planes deep we'll go before we just dump everything on the same plane.
-#define SHADOWER_DARKENING_FACTOR 0.6	// The multiplication factor for openturf shadower darkness. Lighting will be multiplied by this.
+#define SHADOWER_DARKENING_FACTOR 0.7	// The multiplication factor for openturf shadower darkness. Lighting will be multiplied by this.
+#define SHADOWER_DARKENING_COLOR "#9999cc"	// The above, but as an RGB string for lighting-less turfs.
 
 SUBSYSTEM_DEF(zcopy)
 	name = "Z-Copy"
@@ -16,6 +17,10 @@ SUBSYSTEM_DEF(zcopy)
 
 	var/openspace_overlays = 0
 	var/openspace_turfs = 0
+
+	// Highest Z level in a given Z-group for absolute layering used by FIX_BIGTURF.
+	// zstm[zlev] = group_max
+	var/list/zlev_maximums = list()
 
 // for admin proc-call
 /datum/controller/subsystem/zcopy/proc/update_all()
@@ -77,9 +82,26 @@ SUBSYSTEM_DEF(zcopy)
 	..("Q:{T:[queued_turfs.len - (qt_idex - 1)]|O:[queued_overlays.len - (qo_idex - 1)]} T:{T:[openspace_turfs]|O:[openspace_overlays]}")
 
 /datum/controller/subsystem/zcopy/Initialize(timeofday)
+	calculate_zstack_limits()
 	// Flush the queue.
 	fire(FALSE, TRUE)
 	return ..()
+
+// If you add a new Zlevel or change Z-connections, call this.
+/datum/controller/subsystem/zcopy/proc/calculate_zstack_limits()
+	zlev_maximums = new(world.maxz)
+	var/start_zlev = 1
+	for (var/z in 1 to world.maxz)
+		if (!HasAbove(z))
+			for (var/member_zlev in start_zlev to z)
+				zlev_maximums[member_zlev] = z
+			if (z - start_zlev > OPENTURF_MAX_DEPTH)
+				log_debug("WARNING: Z-levels [start_zlev] through [z] exceed maximum depth of [OPENTURF_MAX_DEPTH]; layering may behave strangely in this Z-stack.")
+			else if (z - start_zlev > 1)
+				log_debug("Found Z-Stack: [start_zlev] -> [z] = [z - start_zlev] zl")
+			start_zlev = z + 1
+
+	log_debug("Z-Level maximums: [json_encode(zlev_maximums)]")
 
 /datum/controller/subsystem/zcopy/fire(resumed = FALSE, no_mc_tick = FALSE)
 	if (!resumed)
@@ -98,59 +120,77 @@ SUBSYSTEM_DEF(zcopy)
 		curr_turfs[qt_idex] = null
 		qt_idex++
 
-		if (!istype(T) || !T.below)
+		if (!isturf(T) || !T.below || !(T.z_flags & ZM_MIMIC_BELOW) || !T.z_queued)
 			if (no_mc_tick)
 				CHECK_TICK
 			else if (MC_TICK_CHECK)
 				break
 			continue
 
+		// If we're not at our most recent queue position, don't bother -- we're updating again later anyways.
+		if (T.z_queued > 1)
+			T.z_queued -= 1
+			if (no_mc_tick)
+				CHECK_TICK
+			else if (MC_TICK_CHECK)
+				return
+			continue
+
 		if (!T.shadower)	// If we don't have a shadower yet, something has gone horribly wrong.
 			WARNING("Turf [T] at [T.x],[T.y],[T.z] was queued, but had no shadower.")
 			continue
 
-		// Figure out how many z-levels down we are.
-		var/depth = 0
+		// Get the bottom-most turf, the one we want to mimic.
 		var/turf/Td = T
 
 		while (Td.below)
 			Td = Td.below
-			depth += 1
 
-		if (depth > OPENTURF_MAX_DEPTH)
-			depth = OPENTURF_MAX_DEPTH
+		// Depth must be the depth of the *visible* turf, not self.
+		var/turf_depth
+		turf_depth = T.z_depth = zlev_maximums[Td.z] - Td.z
 
-		var/t_target = OPENTURF_MAX_PLANE - depth	// this is where the openturf gets put
+		var/t_target = OPENTURF_MAX_PLANE - turf_depth	// This is where the turf (but not the copied atoms) gets put.
 
-		// Handle space parallax.
-		if (T.below.z_eventually_space)
-			T.z_eventually_space = TRUE
+		if (T.below.z_flags & ZM_FIX_BIGTURF)
+			T.z_flags |= ZM_FIX_BIGTURF	// this flag is infectious
 
-			if (istype(T.below, /turf/space))
-				t_target = SPACE_PLANE
-
-		if (!(T.z_flags & ZM_MIMIC_OVERWRITE))
-			// Some openturfs have icons, so we can't overwrite their appearance.
-			if (!T.below.bound_overlay)
-				T.below.bound_overlay = new(T)
-			var/atom/movable/openspace/turf_overlay/TO = T.below.bound_overlay
-			TO.appearance = T.below
-			TO.name = T.name
-			TO.gender = T.gender	// Need to grab this too so PLURAL works properly in examine.
-			TO.opacity = FALSE
-			TO.plane = t_target
-		else
+		if (T.z_flags & ZM_MIMIC_OVERWRITE)
 			// This openturf doesn't care about its icon, so we can just overwrite it.
 			if (T.below.bound_overlay)
 				QDEL_NULL(T.below.bound_overlay)
 			T.appearance = T.below
 			T.name = initial(T.name)
 			T.desc = initial(T.desc)
-			T.gender = NEUTER
+			T.gender = initial(T.gender)
 			T.opacity = FALSE
 			T.plane = t_target
+		else
+			// Some openturfs have icons, so we can't overwrite their appearance.
+			if (!T.below.bound_overlay)
+				T.below.bound_overlay = new(T)
+			var/atom/movable/openspace/turf_delegate/TO = T.below.bound_overlay
+			TO.appearance = Td
+			TO.name = T.name
+			TO.gender = T.gender	// Need to grab this too so PLURAL works properly in examine.
+			TO.opacity = FALSE
+			TO.plane = t_target
+			TO.mouse_opacity = initial(TO.mouse_opacity)
 
-		T.queue_ao()
+		T.queue_ao(T.ao_neighbors_mimic == null)	// If ao_neighbors hasn't been set yet, we need to do a rebuild
+		// Explicitly copy turf delegates so they show up properly on below levels.
+		//   I think it's possible to get this to work without discrete delegate copy objects, but I'd rather this just work.
+		if ((T.below.z_flags & (ZM_MIMIC_BELOW|ZM_MIMIC_OVERWRITE)) == ZM_MIMIC_BELOW)
+			// Below is a delegate, gotta explicitly copy it for recursive copy.
+			if (!T.below.z_delegate)
+				T.below.z_delegate = new(T)
+			var/atom/movable/openspace/delegate_copy/DC = T.below.z_delegate
+			DC.appearance = T.below
+			DC.mouse_opacity = initial(DC.mouse_opacity)
+			DC.plane = OPENTURF_MAX_PLANE
+
+		else if (T.below.z_delegate)
+			QDEL_NULL(T.below.z_delegate)
 
 		// Add everything below us to the update queue.
 		for (var/thing in T.below)
@@ -161,18 +201,30 @@ SUBSYSTEM_DEF(zcopy)
 
 			// Special case: these are merged into the shadower to reduce memory usage.
 			if (object.type == /atom/movable/lighting_overlay)
-				// T.shadower.copy_lighting(object)
+				T.shadower.copy_lighting(object)
 			else
 				if (!object.bound_overlay)	// Generate a new overlay if the atom doesn't already have one.
 					object.bound_overlay = new(T)
 					object.bound_overlay.associated_atom = object
 
-				var/target_depth = depth
+				var/override_depth
 				var/original_type = object.type
-				if (object.type == /atom/movable/openspace/overlay)
-					var/atom/movable/openspace/overlay/OOO = object
-					target_depth = OOO.depth
-					original_type = OOO.mimiced_type
+				var/original_z = object.z
+				switch (object.type)
+					if (/atom/movable/openspace/overlay)
+						var/atom/movable/openspace/overlay/OOO = object
+						original_type = OOO.mimiced_type
+						override_depth = OOO.override_depth
+						original_z = OOO.original_z
+
+					if (/atom/movable/openspace/turf_delegate, /atom/movable/openspace/delegate_copy)
+						// If we're a turf overlay (the mimic for a non-OVERWRITE turf), we need to make sure copies of us respect space parallax too
+						if (T.z_eventually_space)
+							// Yes, this is an awful hack; I don't want to add yet another override_* var.
+							override_depth = OPENTURF_MAX_PLANE - SPACE_PLANE
+
+				if ((T.z_flags & ZM_FIX_BIGTURF) && original_type == /atom/movable/openspace/multiplier)
+					override_depth = turf_depth
 
 				var/atom/movable/openspace/overlay/OO = object.bound_overlay
 
@@ -181,8 +233,10 @@ SUBSYSTEM_DEF(zcopy)
 					deltimer(OO.destruction_timer)
 					OO.destruction_timer = null
 
-				OO.depth = target_depth
+				OO.depth = override_depth || min(T.z - original_z, OPENTURF_MAX_DEPTH)
 				OO.mimiced_type = original_type
+				OO.override_depth = override_depth
+				OO.original_z = original_z
 
 				if (!OO.queued)
 					OO.queued = TRUE
@@ -226,7 +280,9 @@ SUBSYSTEM_DEF(zcopy)
 			continue
 
 		// Actually update the overlay.
-		OO.dir = OO.associated_atom.dir
+		if (OO.dir != OO.associated_atom.dir)
+			OO.set_dir(OO.associated_atom.dir)
+
 		OO.appearance = OO.associated_atom
 		OO.plane = OPENTURF_MAX_PLANE - OO.depth
 

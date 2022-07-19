@@ -54,6 +54,10 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 			var/atom/A = thing
 			COMPILE_OVERLAYS(A)
 			STAT_STOP_STOPWATCH
+
+			if(istype(A, /atom/movable))
+				var/atom/movable/M = A
+				M.bound_overlay?.update()
 			STAT_LOG_ENTRY(stats, A.type)
 		if(mc_check)
 			if(MC_TICK_CHECK)
