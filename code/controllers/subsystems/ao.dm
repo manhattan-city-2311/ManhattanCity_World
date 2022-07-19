@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(ao)
 	init_order = INIT_ORDER_AO
 	wait = 1
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
+	flags = SS_NO_INIT
 	var/list/queue = list()
 	var/list/cache = list()
 

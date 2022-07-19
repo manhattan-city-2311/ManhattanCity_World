@@ -54,4 +54,4 @@
 #define SHOCK_MESSAGE_PERIOD 200
 
 #define SHOCK_PAIN_MESSAGES "The pain is excruciating!", "Please, just end the pain!", "It hurts so much!", "You really need some painkillers!"
-#define SHOCK_PAIN_MESSAGES_SEVERE "FUCKING STOP THIS!!", "You feel you are dying right now!", "You are losing consiciousness!", "The pain is driving you insane!", "OH-H GODNESS, PAIN IS INSANE!", "Pain is depriving you consiciousness!", "It's too hard to resist!"
+#define SHOCK_PAIN_MESSAGES_SEVERE "FUCKING STOP THIS!!", "You feel you are dying right now!", "You are losing consiciousness!", "The pain is driving you insane!", "OH-H GODNESS, PAIN IS INSANE!", "Pain is depriving you consiciousness!"

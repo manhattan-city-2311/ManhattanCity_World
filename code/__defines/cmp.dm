@@ -31,3 +31,6 @@ var/global/cmp_field = "name"
 
 /proc/cmp_timer(datum/timedevent/a, datum/timedevent/b)
 	return a.timeToRun - b.timeToRun
+
+/proc/cmp_planelayer(atom/A, atom/B)
+	return (B.plane - A.plane) || (B.layer - A.layer)

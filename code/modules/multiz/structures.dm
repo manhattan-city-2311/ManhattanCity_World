@@ -11,7 +11,7 @@
 	opacity = 0
 	anchored = 1
 	flags = ON_BORDER
-	layer = STAIRS_LAYER
+//	layer = STAIRS_LAYER
 
 	var/allowed_directions = DOWN
 	var/obj/structure/ladder/target_up
