@@ -301,21 +301,21 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	if(!get_blood_volume() && (spressure || mpressure || dpressure || mcv))
 		spressure = mpressure = dpressure = mcv = 0
 // update GVR
-	gvr = k*218.50746
+	gvr = 218.50746
 	gvr += LAZYACCESS0(chem_effects, CE_PRESSURE)
 	gvr += spressure * (0.0008 * spressure - 0.8833) + 94 // simulate elasticity of vascular resistance
 // update dpressure
 	var/hr53 = hr * coeff * 53.0
-	dpressure = max(0, LERP(dpressure, (gvr * (2180 + hr53))/(k * (17820 - hr53)), 0.5))
+	dpressure = max(0, LERP(dpressure, (gvr * (2180 + hr53))/((17820 - hr53)), 0.5))
 // update spressure
 
 	var/mcv50divhr27
 	if(hr)
-		mcv50divhr27 = (50 * mcv) / (27 * hr)
+		mcv50divhr27 = (50 * mcv) / (27 * hr) / k
 	else
-		mcv50divhr27 = (50 * mcv) / 10000
+		mcv50divhr27 = (50 * mcv) / 10000 / k
 
-	spressure = clamp(LERP(spressure,  mcv50divhr27 + 2.0 * dpressure - (7646.0 * k)/54.0, 0.5), 0, MAX_PRESSURE)
+	spressure = clamp(LERP(spressure,  mcv50divhr27 + 2.0 * dpressure - (7646.0)/54.0, 0.5), 0, MAX_PRESSURE)
 	dpressure = min(dpressure, spressure - rand(5, 15))
 // update mpressure
 	mpressure = dpressure + (spressure - dpressure) / 3.0
@@ -343,7 +343,6 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	return get_heart_rate() ? (max(mcv - mcv_add, 0) / get_heart_rate()) : 0
 
 /mob/living/carbon/human/proc/get_blood_saturation()
-	// TODO: make this by cm standards
 	return clamp(1 - (get_deprivation() / 100), 0, 0.99)
 
 // in minute

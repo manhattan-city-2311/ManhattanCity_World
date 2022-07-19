@@ -194,10 +194,14 @@
 	if(!mob)
 		return // Moved here to avoid nullrefs below
 
-	if(mob.control_object)	Move_object(direct)
+	if(mob.control_object)
+		Move_object(direct)
 
 	if(mob.incorporeal_move && isobserver(mob))
 		Process_Incorpmove(direct)
+		DEBUG_INPUT("--------")
+		next_move_dir_add = 0	// This one I *think* exists so you can tap move and it will move even if delay isn't quite up.
+		next_move_dir_sub = 0 	// I'm not really sure why next_move_dir_sub even exis
 		return
 
 	if(moving)	return 0
@@ -205,12 +209,19 @@
 	if(!mob.check_move_cooldown())
 		return
 
+	next_move_dir_add = 0	// This one I *think* exists so you can tap move and it will move even if delay isn't quite up.
+	next_move_dir_sub = 0 	// I'm not really sure why next_move_dir_sub even exists.
+
+	if(!n || !direct)
+		return
+
 	if(locate(/obj/effect/stop/, mob.loc))
 		for(var/obj/effect/stop/S in mob.loc)
 			if(S.victim == mob)
 				return
 
-	if(mob.stat==DEAD && isliving(mob) && !mob.forbid_seeing_deadchat)
+	if(mob.stat == DEAD && isliving(mob) && !mob.forbid_seeing_deadchat)
+		mob.setMoveCooldown(mob.movement_delay(n, direct))
 		mob.ghostize()
 		return
 
@@ -286,8 +297,12 @@
 			if("walk")
 				movement_delay += config.walk_speed
 		movement_delay += mob.movement_delay()
-		mob.move_delay += movement_delay
 
+		// If we ended up moving diagonally, increase delay.
+		if(isDiagonal(direct))
+			movement_delay *= SQRT_2
+
+		mob.move_delay += movement_delay
 
 		mob.update_glide(movement_delay)
 

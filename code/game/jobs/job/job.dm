@@ -45,6 +45,8 @@
 
 	var/portal_whitelist = null // id of persistent option. only works if hard_whitelisted and this id is valid to a select_person portal option
 
+	var/has_headset = FALSE
+
 /datum/job/proc/sanitize_job()
 	if(!exclusive_employees)
 		exclusive_employees = list()

@@ -111,6 +111,8 @@
 	handle_blood()
 	post_handle_rythme()
 
+	handle_heartbeat()
+
 	make_up_to_hormone("ast", 30 + ((damage / max_damage) * 2))
 	make_up_to_hormone("alt", 25 + ((damage / max_damage) * 0.1))
 
@@ -121,7 +123,7 @@
 	pulse = round(Clamp(pulse, 0, 476))
 
 /obj/item/organ/internal/heart/proc/handle_cardiac_output()
-	cardiac_output = initial(cardiac_output) * mulListAndCutAssoc(cardiac_output_modificators)
+	cardiac_output = initial(cardiac_output) * mulListAndCutAssoc(cardiac_output_modificators) * (owner?.k || 1)
 
 /obj/item/organ/internal/heart/proc/make_chem_modificators()
 	if(CE_PULSE in owner.chem_effects)
@@ -167,6 +169,7 @@
 
 
 /obj/item/organ/internal/heart/proc/handle_heartbeat()
+	// This is very weird..
 	if(pulse >= 90 || owner.shock_stage >= 10 || is_below_sound_pressure(get_turf(owner)))
 		var/rate = 0.0119 * pulse - 0.1795
 

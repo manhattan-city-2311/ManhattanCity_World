@@ -98,7 +98,7 @@
 		sight &= ~SEE_TURFS
 		sight &= ~SEE_MOBS
 		sight &= ~SEE_OBJS
-		see_in_dark = 2
+		see_in_dark = 4
 		see_invisible = SEE_INVISIBLE_LIVING
 
 	if (healths)

@@ -564,7 +564,7 @@ SUBSYSTEM_DEF(jobs)
 
 	to_chat(H, "<B>You are [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
 
-	if(job.idtype)
+	if(job.idtype && job.has_headset)
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_l_ear)
 		to_chat(H, "<b>To speak on your department's radio channel use :h. For the use of other channels, examine your headset.</b>")
 

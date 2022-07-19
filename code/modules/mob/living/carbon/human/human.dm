@@ -25,21 +25,17 @@
 
 /mob/living/carbon/human/proc/calc_k()
 	var/isMale = gender == MALE
-	k = (weight * 160) / (isMale ? 9440 : 7350)
-
-	if(weight > (isMale ? 59 : 49))
-		k = 1.0/k
+	k = (weight * 160) / (isMale ? 14240 : 10000)
 
 /mob/living/carbon/human/proc/setup_cm()
 	calc_k()
-	gvr = 218.50746 * k
+	gvr = 218.50746
 	mcv = NORMAL_MCV * k
 	oxy = get_max_blood_oxygen_delta()
 	co2 = 0
 
 
-/mob/living/carbon/human/New(var/new_loc, var/new_species = null)
-	setup_cm()
+/mob/living/carbon/human/initialize(var/new_loc, var/new_species = null)
 	if(!dna)
 		dna = new /datum/dna(null)
 		// Species name is handled by set_species()
@@ -72,6 +68,9 @@
 
 	verbs |= /mob/living/proc/toggle_selfsurgery
 
+	spawn()
+		setup_cm()
+
 /mob/living/carbon/human/Destroy()
 	human_mob_list -= src
 	for(var/organ in organs_by_name)
@@ -89,30 +88,12 @@
 			if(eta_status)
 				stat(null, eta_status)
 
-		if (internal)
-			if (!internal.air_contents)
-				qdel(internal)
-			else
-				stat("Internal Atmosphere Info", internal.name)
-				stat("Tank Pressure", internal.air_contents.return_pressure())
-				stat("Distribution Pressure", internal.distribute_pressure)
-
-		var/obj/item/organ/internal/xenos/plasmavessel/P = internal_organs_by_name[O_PLASMA] //Xenomorphs. Mech.
-		if(P)
-			stat(null, "Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
-
-
 		if(back && istype(back,/obj/item/weapon/rig))
 			var/obj/item/weapon/rig/suit = back
 			var/cell_status = "ERROR"
 			if(suit.cell) cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
 			stat(null, "Suit charge: [cell_status]")
 
-		if(mind)
-			if(mind.changeling)
-				stat("Chemical Storage", mind.changeling.chem_charges)
-				stat("Genetic Damage Time", mind.changeling.geneticdamage)
-				stat("Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
 	if(species)
 		species.Stat(src)
 

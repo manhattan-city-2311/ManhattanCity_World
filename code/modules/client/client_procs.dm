@@ -264,8 +264,6 @@
 
 	client.update_chat_position()
 
-	client.toggle_fullscreen()
-
 /client/proc/add_ip_cid_list(ip, cid)
 	// This is for hard saving.
 	if(ip && !(ip in prefs.ips_associated))
@@ -674,19 +672,19 @@ client/verb/character_setup()
 	fullscreen = !fullscreen
 
 	if (fullscreen)
-		winset(usr, "mainwindow", "titlebar=false")
-		winset(usr, "mainwindow", "can-resize=false")
-		winset(usr, "mainwindow", "is-maximized=false")
-		winset(usr, "mainwindow", "is-maximized=true")
-		winset(usr, "mainwindow", "statusbar=false")
-		winset(usr, "mainwindow", "menu=")
+		winset(src, "mainwindow", "titlebar=false")
+		winset(src, "mainwindow", "can-resize=false")
+		winset(src, "mainwindow", "is-maximized=false")
+		winset(src, "mainwindow", "is-maximized=true")
+		winset(src, "mainwindow", "statusbar=false")
+		winset(src, "mainwindow", "menu=")
 //		winset(usr, "mainwindow.mainvsplit", "size=0x0")
 	else
-		winset(usr, "mainwindow", "is-maximized=false")
-		winset(usr, "mainwindow", "titlebar=true")
-		winset(usr, "mainwindow", "can-resize=true")
-		winset(usr, "mainwindow", "statusbar=true")
-		winset(usr, "mainwindow", "menu=menu")
+		winset(src, "mainwindow", "is-maximized=false")
+		winset(src, "mainwindow", "titlebar=true")
+		winset(src, "mainwindow", "can-resize=true")
+		winset(src, "mainwindow", "statusbar=true")
+		winset(src, "mainwindow", "menu=menu")
 
 	fit_viewport()
 

@@ -84,6 +84,25 @@
 		if (UP)  return "up"
 		if (DOWN)  return "down"
 
+// Turns a direction into text showing all bits set
+/proc/dirs2text(direction)
+	if(!direction)
+		return ""
+	var/list/dirs = list()
+	if(direction & NORTH)
+		dirs += "NORTH"
+	if(direction & SOUTH)
+		dirs += "SOUTH"
+	if(direction & EAST)
+		dirs += "EAST"
+	if(direction & WEST)
+		dirs += "WEST"
+	if(direction & UP)
+		dirs += "UP"
+	if(direction & DOWN)
+		dirs += "DOWN"
+	return dirs.Join(" ")
+
 // Turns text into proper directions
 /proc/text2dir(direction)
 	switch (uppertext(direction))

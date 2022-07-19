@@ -40,12 +40,13 @@
 	spell_masters = null
 	zone_sel = null
 
-/mob/New()
+/mob/initialize()
 	mob_list += src
 	if(stat == DEAD)
 		dead_mob_list += src
 	else
 		living_mob_list += src
+	set_focus(src) // Key Handling
 	update_transform() // Some mobs may start bigger or smaller than normal.
 	..()
 
@@ -757,6 +758,7 @@
 
 /mob/proc/facedir(var/ndir)
 	if(!canface() || (client && (client.moving || (world.time < move_delay))))
+		DEBUG_INPUT("Denying Facedir for [src] (moving=[client?.moving])")
 		return 0
 	set_dir(ndir)
 	if(buckled && buckled.buckle_movable)

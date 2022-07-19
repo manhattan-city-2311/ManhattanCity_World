@@ -53,11 +53,12 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
-#define INIT_ORDER_CHAT 			20
-#define INIT_ORDER_EARLY     		19
-#define INIT_ORDER_CHEMISTRY		18
-#define INIT_ORDER_MAPPING			17
-#define INIT_ORDER_DECALS			16
+#define INIT_ORDER_CHAT 			25
+#define INIT_ORDER_INPUT			24
+#define INIT_ORDER_EARLY     		23
+#define INIT_ORDER_CHEMISTRY		21
+#define INIT_ORDER_MAPPING			19
+#define INIT_ORDER_DECALS			17
 #define INIT_ORDER_ATOMS			15
 #define INIT_ORDER_MACHINES			10
 #define INIT_ORDER_SHUTTLES			3
@@ -106,6 +107,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_MACHINES		100
 #define FIRE_PRIORITY_PROJECTILES	150
 #define FIRE_PRIORITY_OVERLAYS		500
+#define FIRE_PRIORITY_INPUT			1000
 
 // Macro defining the actual code applying our overlays lists to the BYOND overlays list. (I guess a macro for speed)
 // TODO - I don't really like the location of this macro define.  Consider it. ~Leshana
