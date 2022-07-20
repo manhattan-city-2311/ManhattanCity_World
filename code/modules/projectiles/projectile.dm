@@ -169,8 +169,8 @@
 		qdel(src)
 		return 0
 
-	if(istype(user.loc,/obj/manhattan/vehicles))
-		var/obj/manhattan/vehicles/V = user.loc
+	if(istype(user.loc,/obj/manhattan/vehicle))
+		var/obj/manhattan/vehicle/V = user.loc
 		permutated += V
 		loc = pick(user.locs)
 	else

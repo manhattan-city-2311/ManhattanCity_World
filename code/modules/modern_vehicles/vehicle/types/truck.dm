@@ -1,4 +1,4 @@
-/obj/manhattan/vehicles/truck
+/obj/manhattan/vehicle/truck
 	name = "Car truck"
 	desc = "A vehicle for transporting stuff, can hold 4 people."
 
@@ -26,14 +26,14 @@
 	min_speed = 7
 	max_speed = 2.5
 
-/obj/manhattan/vehicles/truck/update_object_sprites()
+/obj/manhattan/vehicle/truck/update_object_sprites()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
 		bounds = "64,96"
 	else
 		bounds = "96,64"
 
-/obj/manhattan/vehicles/truck/on_death()
+/obj/manhattan/vehicle/truck/on_death()
 	. = ..()
 
 /obj/item/vehicle_component/health_manager/truck

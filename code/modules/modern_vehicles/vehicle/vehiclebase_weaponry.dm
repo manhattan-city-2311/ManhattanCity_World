@@ -2,7 +2,7 @@
 /obj/item/weapon/gun/vehicle_turret
 	name = "Vehicle Turret"
 
-	icon = 'code/modules/halo/vehicle/turret_items.dmi'
+	icon = 'code/modules/modern_vehicle/vehicle/turret_items.dmi'
 	icon_state = "chaingun_obj"
 	item_state = "chaingun_obj"
 	w_class = ITEMSIZE_LARGE

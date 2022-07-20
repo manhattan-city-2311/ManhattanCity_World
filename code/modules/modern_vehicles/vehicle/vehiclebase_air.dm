@@ -3,11 +3,11 @@
 #define TAKEOFF_LAND_DELAY 4 SECONDS
 #define WAYPOINT_FLIGHT_DELAY 7.5 SECONDS
 
-/obj/manhattan/vehicles/air
+/obj/manhattan/vehicle/air
 	name = "Dropship"
 	desc = "A dropship."
 
-	icon = 'code/modules/halo/vehicle/pelican.dmi'
+	icon = 'code/modules/modern_vehicles/vehicle/pelican.dmi'
 	icon_state = "base"
 
 	density = 1
@@ -26,7 +26,7 @@
 
 	vehicle_size = 128//Way too big
 
-/obj/manhattan/vehicles/air/proc/takeoff_vehicle(var/message_n_sound_override = 0)
+/obj/manhattan/vehicle/air/proc/takeoff_vehicle(var/message_n_sound_override = 0)
 	active = 1
 	change_elevation(2)
 	if(!message_n_sound_override)
@@ -38,7 +38,7 @@
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	block_enter_exit = 1
 
-/obj/manhattan/vehicles/air/proc/land_vehicle(var/message_n_sound_override = 0)
+/obj/manhattan/vehicle/air/proc/land_vehicle(var/message_n_sound_override = 0)
 	active = 0
 	change_elevation(-2)
 	if(!message_n_sound_override)
@@ -49,7 +49,7 @@
 	block_enter_exit = 0
 	overlays.Cut()
 
-/obj/manhattan/vehicles/air/verb/takeoff_land()
+/obj/manhattan/vehicle/air/verb/takeoff_land()
 	set name = "Takeoff/Land"
 	set desc = "Takeoff or land."
 	set category = "Vehicle"
@@ -70,13 +70,13 @@
 	else
 		takeoff_vehicle()
 
-/obj/manhattan/vehicles/air/proc/perform_move_sequence(var/obj/move_to_obj)
+/obj/manhattan/vehicle/air/proc/perform_move_sequence(var/obj/move_to_obj)
 	if(isnull(move_to_obj))
 		return
 	var/move_to_loc = move_to_obj.loc
 	loc = move_to_loc
 
-/obj/manhattan/vehicles/air/inactive_pilot_effects()
+/obj/manhattan/vehicle/air/inactive_pilot_effects()
 	//Crashing this vehicle with potential casualties.
 	active = 0
 	if(elevation <= 0)//Nocrash if we're not flying

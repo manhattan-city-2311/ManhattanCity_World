@@ -17,7 +17,7 @@
 		return eyeobj.zMove(direction)
 	var/turf/start = loc
 	var/atom/movable/to_move = src
-	if(!istype(loc,/obj/manhattan/vehicles))
+	if(!istype(loc,/obj/manhattan/vehicle))
 		if(!can_ztravel())
 			to_chat(src, "<span class='warning'>You lack means of travel in that direction.</span>")
 			return
@@ -26,7 +26,7 @@
 			to_chat(src, "<span class='notice'>You are unable to move from here.</span>")
 			return 0
 	else
-		var/obj/manhattan/vehicles/v = loc
+		var/obj/manhattan/vehicle/v = loc
 		if(!v.can_traverse_zs)
 			to_chat(src,"<span class = 'notice'>Your vehicle can't traverse z-levels</span>")
 			return

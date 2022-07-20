@@ -2,7 +2,7 @@
 	name = "D77-TC Pelican"
 	desc = "A versatile aircraft used by the UNSC for medium-lift operations of personnel, vehicles and equipment. It can also be used as a support gunship. An M370 Autocannon is mounted on the nose."
 
-	icon = 'code/modules/halo/vehicle/pelican.dmi'
+	icon = 'code/modules/modern_vehicle/vehicle/pelican.dmi'
 	icon_state = "base"
 
 	density = 1
@@ -14,7 +14,7 @@
 	pixel_y = -32
 
 	takeoff_overlay_icon_state = "thrust"
-	takeoff_sound = 'code/modules/halo/vehicle/pelican_takeoff.ogg'
+	takeoff_sound = 'code/modules/modern_vehicle/vehicle/pelican_takeoff.ogg'
 
 	comp_prof = /datum/component_profile/pelican
 
@@ -47,7 +47,6 @@
 /obj/item/weapon/gun/vehicle_turret/pelican_autocannon
 	name = "M370 Autocannon"
 
-	icon = 'code/modules/halo/vehicle/turret_items.dmi'
 	icon_state = "chaingun_obj"
 	item_state = "chaingun_obj"
 

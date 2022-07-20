@@ -552,3 +552,7 @@
 // Will skip attackby() and afterattack() if returning TRUE.
 /atom/proc/grab_attack(var/obj/item/weapon/grab/G)
 	return FALSE
+
+/atom/proc/handle_vehicle_collision(var/obj/manhattan/vehicle/vehicle)
+	playsound(loc,vehicle.collision_sound,100,0,4)
+	return 0

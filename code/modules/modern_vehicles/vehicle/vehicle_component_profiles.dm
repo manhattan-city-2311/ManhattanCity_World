@@ -4,15 +4,15 @@
 
 /datum/component_profile
 
-	var/list/gunner_weapons = list(/obj/item/weapon/gun/vehicle_turret)
+	var/list/gunner_weapons = list()
 	var/pos_to_check = "gunner" //Allows for overriding position checks for equip/firing of mounted weapon.
-	var/obj/manhattan/vehicles/contained_vehicle
+	var/obj/manhattan/vehicle/contained_vehicle
 
 	var/list/components = list() //Non-vital components such as armor plating, ect.
 	var/list/vital_components = newlist(/obj/item/vehicle_component/health_manager) //Vital components, engine, thrusters etc.
 	var/obj/item/vehicle_component/component_last_inspected
 
-/datum/component_profile/New(var/obj/manhattan/vehicles/creator)
+/datum/component_profile/New(var/obj/manhattan/vehicle/creator)
 	. = ..()
 	contained_vehicle = creator
 	for(var/obj/comp in components)
@@ -52,27 +52,19 @@
 		var/comp_resistance = component.get_resistance_for("bomb")
 		component.damage_integrity(600/ex_severity * (1- comp_resistance/100),)
 
-/datum/component_profile/proc/give_gunner_weapons(var/obj/manhattan/vehicles/source_vehicle)
+/datum/component_profile/proc/give_gunner_weapons(var/obj/manhattan/vehicle/source_vehicle)
 	var/list/gunners = source_vehicle.get_occupants_in_position(pos_to_check)
 	for(var/mob/living/carbon/human/gunner in gunners)
 		if(gunner.get_active_hand() || gunner.get_inactive_hand()) //Let's not give anyone a gun if they're messing with their inventory, or already have a gun.
 			continue
-		var/obj/item/weapon/gun/vehicle_turret/weapon = gunner_weapons[gunners.Find(gunner)]
-		if(isnull(weapon))
-			continue
-		weapon = new weapon(source_vehicle)
-		gunner.put_in_hands(weapon)
 		source_vehicle.update_user_view(gunner,1)
 		spawn(1)
 			source_vehicle.update_user_view(gunner)
 
-/datum/component_profile/proc/gunner_fire_check(var/mob/user,var/obj/manhattan/vehicles/source_vehicle,var/obj/gun)
+/datum/component_profile/proc/gunner_fire_check(var/mob/user,var/obj/manhattan/vehicle/source_vehicle,var/obj/gun)
 	if(!(gun.type in gunner_weapons))
 		return 0
 	var/list/gunners = source_vehicle.get_occupants_in_position(pos_to_check)
-	if(source_vehicle.guns_disabled)
-		to_chat(user,"<span class = 'notice'>[source_vehicle]'s weapons have been heavily damaged.</span>")
-		return 0
 	if(user in gunners)
 		return 1
 	else
@@ -218,7 +210,7 @@
 	coverage = 10000
 
 /obj/item/vehicle_component/health_manager/full_integ_loss()
-	var/obj/manhattan/vehicles/vehicle_contain = loc
+	var/obj/manhattan/vehicle/vehicle_contain = loc
 	if(!istype(loc))
 		return
 	if(vehicle_contain.movement_destroyed)
@@ -227,7 +219,7 @@
 
 /obj/item/vehicle_component/health_manager/finalise_repair()
 	. = ..()
-	var/obj/manhattan/vehicles/vehicle_contain = loc
+	var/obj/manhattan/vehicle/vehicle_contain = loc
 	if(!istype(loc))
 		return
 	vehicle_contain.movement_destroyed = 0
