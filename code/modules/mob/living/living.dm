@@ -1283,4 +1283,9 @@ default behaviour is:
 		</font>
 		"}
 
+/mob/living/handle_vehicle_collision()
+	..()
+	Weaken(2)
+	return 0
+
 // ++++ROCKDTBEN++++ MOB PROCS //END

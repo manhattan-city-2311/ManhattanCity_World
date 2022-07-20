@@ -1,4 +1,4 @@
-/obj/manhattan/vehicles/aventa
+/obj/manhattan/vehicle/aventa
 	name = "Aventa sport car"
 	desc = "A vehicle for racing across the streets."
 
@@ -24,14 +24,14 @@
 	min_speed = 6
 	max_speed = 1
 
-/obj/manhattan/vehicles/aventa/update_object_sprites()
+/obj/manhattan/vehicle/aventa/update_object_sprites()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
 		bounds = "64,96"
 	else
 		bounds = "96,64"
 
-/obj/manhattan/vehicles/aventa/on_death()
+/obj/manhattan/vehicle/aventa/on_death()
 	. = ..()
 
 /obj/item/vehicle_component/health_manager/aventa

@@ -329,20 +329,9 @@
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	set background = TRUE
 	if(!user || !target) return
-	if(target.elevation != last_elevation && (istype(target,/obj/manhattan/vehicles) || istype(target,/mob/living)))
+	if(target.elevation != last_elevation && (istype(target,/obj/manhattan/vehicle) || istype(target,/mob/living)))
 		last_elevation = target.elevation
 		visible_message("<span class = 'warning'>[user.name] changes their firing elevation to target [target.name]</span>")
-	if(istype(user.loc,/obj/manhattan/vehicles))
-		var/obj/manhattan/vehicles/V = user.loc
-		if(!istype(src,/obj/item/weapon/gun/vehicle_turret))
-			var/user_position = V.occupants[user]
-			if(isnull(user_position)) return
-			if(user_position == "driver")
-				to_chat(user,"<span class = 'warning'>You can't fire from the driver's position!</span>")
-				return
-			if(!(user_position in V.exposed_positions))
-				to_chat(user,"<span class = 'warning'>You can't fire [src.name] from this position in [V.name].</span>")
-				return
 
 	add_fingerprint(user)
 

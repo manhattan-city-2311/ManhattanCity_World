@@ -1,12 +1,12 @@
 
-/obj/manhattan/vehicles/verb/verb_exit_vehicle()
+/obj/manhattan/vehicle/verb/verb_exit_vehicle()
 	set name = "Exit Vehicle"
 	set category = "Vehicle"
 	set src in view(1)
 
 	exit_vehicle(usr)
 
-/obj/manhattan/vehicles/proc/exit_vehicle(var/mob/user,var/ignore_incap_check = 0)
+/obj/manhattan/vehicle/proc/exit_vehicle(var/mob/user,var/ignore_incap_check = 0)
 	if(user.loc != src)
 		to_chat(user,"<span class = 'notice'>You must be inside [src] to exit it.</span>")
 		return
@@ -24,7 +24,7 @@
 	update_user_view(user,1)
 	return
 
-/obj/manhattan/vehicles/verb/enter_vehicle()
+/obj/manhattan/vehicle/verb/enter_vehicle()
 	set name = "Enter Vehicle"
 	set category = "Vehicle"
 	set src in view(1)
@@ -43,7 +43,7 @@
 	else
 		enter_as_position(user,player_pos_choice)
 
-/obj/manhattan/vehicles/proc/show_occupants_contained(var/mob/user)
+/obj/manhattan/vehicle/proc/show_occupants_contained(var/mob/user)
 	var/has_passengers = 0
 	for(var/mob/M in occupants)
 		has_passengers = 1
@@ -54,27 +54,27 @@
 			if(occupants[M] in exposed_positions)
 				M.examine(user)
 
-/obj/manhattan/vehicles/proc/kick_occupants()
+/obj/manhattan/vehicle/proc/kick_occupants()
 	for(var/mob/m in occupants)
 		exit_vehicle(m,1)
 
-/obj/manhattan/vehicles/proc/get_occupants_in_position(var/position = null)
+/obj/manhattan/vehicle/proc/get_occupants_in_position(var/position = null)
 	var/list/to_return = list()
 	for(var/mob/occupant in occupants)
 		if(occupants[occupant] == position)
 			to_return += occupant
 	return to_return
 
-/obj/manhattan/vehicles/proc/get_occupant_amount()
+/obj/manhattan/vehicle/proc/get_occupant_amount()
 	return (occupants.len - 2)
 
 //Returns null to allow the enter, a string to disallow.
-/obj/manhattan/vehicles/proc/check_enter_invalid()
+/obj/manhattan/vehicle/proc/check_enter_invalid()
 	if(get_occupant_amount() + 1 > (1 + occupants[1] + occupants[2]))
 		return "[src] is full!"
 	return
 
-/obj/manhattan/vehicles/proc/check_position_blocked(var/position)
+/obj/manhattan/vehicle/proc/check_position_blocked(var/position)
 	if(block_enter_exit)
 		return 1
 	var/list/occupants_in_pos = get_occupants_in_position(position)
@@ -86,7 +86,7 @@
 		return 1
 	return 0
 
-/obj/manhattan/vehicles/proc/enter_as_position(var/mob/user,var/position = "passenger")
+/obj/manhattan/vehicle/proc/enter_as_position(var/mob/user,var/position = "passenger")
 	if(check_position_blocked(position))
 		to_chat(user,"<span class = 'notice'>No [position] spaces in [src]</span>")
 		return 0
@@ -115,9 +115,10 @@
 	update_user_view(user)
 	visible_message("<span class = 'notice'>[user] enters the [position] position of [src].</span>")
 	to_chat(user,"<span class = 'info'>You are now in the [position] position of [src].</span>")
+	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 50, 1, 5)
 	return 1
 
-/obj/manhattan/vehicles/proc/do_seat_switch(var/mob/user,var/position)
+/obj/manhattan/vehicle/proc/do_seat_switch(var/mob/user,var/position)
 	var/list/occ_in_pos = get_occupants_in_position(position)
 	if(!occ_in_pos||occ_in_pos.len == 0)
 		to_chat(user,"<span class = 'notice'>There are no [position] slots in [src]</span>")
@@ -132,7 +133,7 @@
 	enter_as_position(user,position)
 	enter_as_position(occ_tradewith,user_position)
 
-/obj/manhattan/vehicles/verb/switch_seats()
+/obj/manhattan/vehicle/verb/switch_seats()
 	set name = "Switch Seats"
 	set category = "Vehicle"
 	set src in view(1)
@@ -149,7 +150,7 @@
 		enter_as_position(user,position_switchto)
 	update_object_sprites()
 
-/obj/manhattan/vehicles/proc/damage_occupant(var/position,var/obj/item/P,var/mob/user = null)
+/obj/manhattan/vehicle/proc/damage_occupant(var/position,var/obj/item/P,var/mob/user = null)
 	var/list/occ_list = get_occupants_in_position(position)
 	if(isnull(occ_list) || !occ_list.len)
 		return 1
@@ -163,7 +164,7 @@
 		mob_to_hit.bullet_act(P)
 		return 0
 
-/obj/manhattan/vehicles/proc/should_damage_occ()
+/obj/manhattan/vehicle/proc/should_damage_occ()
 	for(var/position in exposed_positions)
 		var/hit_chance = exposed_positions[position]
 		if(isnull(hit_chance))
@@ -172,7 +173,7 @@
 			return position
 	return null
 
-/obj/manhattan/vehicles/proc/update_user_view(var/mob/user,var/reset = 0)
+/obj/manhattan/vehicle/proc/update_user_view(var/mob/user,var/reset = 0)
 	if(user.client)
 		if(reset)
 			user.client.view = world.view

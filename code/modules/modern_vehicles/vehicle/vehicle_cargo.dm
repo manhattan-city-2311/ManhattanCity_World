@@ -1,5 +1,5 @@
 
-/obj/manhattan/vehicles/proc/can_put_cargo(var/obj/object)
+/obj/manhattan/vehicle/proc/can_put_cargo(var/obj/object)
 	if(!istype(object))
 		return 0
 	if(object.anchored)
@@ -8,18 +8,18 @@
 	var/space_needed = base_storage_cost(get_cargo_size(object))
 	return space_needed <= (cargo_capacity - used_cargo_space)
 
-/obj/manhattan/vehicles/proc/get_cargo_size(var/obj/object)
+/obj/manhattan/vehicle/proc/get_cargo_size(var/obj/object)
 	var/item_size = object.w_class
 	if(istype(object, /obj/structure))
 		item_size = ITEMSIZE_HUGE
 	if(istype(object, /obj/machinery))
 		item_size = ITEMSIZE_HUGE
-	if(istype(object, /obj/manhattan/vehicles))
-		var/obj/manhattan/vehicles/vehicle = object
+	if(istype(object, /obj/manhattan/vehicle))
+		var/obj/manhattan/vehicle/vehicle = object
 		item_size = vehicle.vehicle_size
 	return item_size
 
-/obj/manhattan/vehicles/proc/put_cargo_item(var/mob/user, var/obj/O)
+/obj/manhattan/vehicle/proc/put_cargo_item(var/mob/user, var/obj/O)
 
 	if(!src.Adjacent(user) || !src.Adjacent(O))
 		return
@@ -37,9 +37,9 @@
 	O.loc = src
 	cargo_contents += O
 	used_cargo_space += base_storage_cost(get_cargo_size(O))
-	src.verbs |= /obj/manhattan/vehicles/proc/get_cargo_item
+	src.verbs |= /obj/manhattan/vehicle/proc/get_cargo_item
 
-/obj/manhattan/vehicles/proc/load_vehicle(var/obj/manhattan/vehicles/v,var/mob/user)
+/obj/manhattan/vehicle/proc/load_vehicle(var/obj/manhattan/vehicle/v,var/mob/user)
 	if(!vehicle_carry_size)
 		to_chat(user,"<span class = 'notice'>[src] cannot carry vehicles!</span>")
 		return
@@ -62,29 +62,29 @@
 	user.visible_message("<span class = 'info'>[user] loads [v] into [src].</span>")
 	carried_vehicle = v
 	v.loc = src
-	verbs += /obj/manhattan/vehicles/proc/detach_vehicle
+	verbs += /obj/manhattan/vehicle/proc/detach_vehicle
 
-/obj/manhattan/vehicles/proc/detach_vehicle()
+/obj/manhattan/vehicle/proc/detach_vehicle()
 	set category = "Vehicle"
 	set name = "Detach vehicle"
 	set src in view(1)
 
-	verbs -= /obj/manhattan/vehicles/proc/detach_vehicle
+	verbs -= /obj/manhattan/vehicle/proc/detach_vehicle
 	carried_vehicle.loc = pick_valid_exit_loc()
 	carried_vehicle = null
 
-/obj/manhattan/vehicles/MouseDrop_T(atom/dropping, mob/user)
+/obj/manhattan/vehicle/MouseDrop_T(atom/dropping, mob/user)
 	if(dropping == src)
 		return
 	if(dropping == user)
 		return
-	var/obj/manhattan/vehicles/v = dropping
+	var/obj/manhattan/vehicle/v = dropping
 	if(istype(v))
 		load_vehicle(v,user)
 	else
 		put_cargo_item(user, dropping)
 
-/obj/manhattan/vehicles/proc/get_cargo_item()
+/obj/manhattan/vehicle/proc/get_cargo_item()
 	set name = "Retrieve Cargo"
 	set category = "Vehicle"
 	set src in view(1)
@@ -106,7 +106,7 @@
 		return
 	eject_cargo_item(cargo_list_names[item_name_remove], user)
 
-/obj/manhattan/vehicles/proc/eject_cargo_item(var/obj/object_removed, var/atom/movable/target)
+/obj/manhattan/vehicle/proc/eject_cargo_item(var/obj/object_removed, var/atom/movable/target)
 	object_removed.forceMove(target)
 	if(isliving(target))
 		var/mob/living/user = target
@@ -115,9 +115,9 @@
 	cargo_contents -= object_removed
 	used_cargo_space -= base_storage_cost(get_cargo_size(object_removed))
 	if(!cargo_contents.len)
-		src.verbs -= /obj/manhattan/vehicles/proc/get_cargo_item
+		src.verbs -= /obj/manhattan/vehicle/proc/get_cargo_item
 
-/obj/manhattan/vehicles/proc/handle_grab_attack(var/obj/item/weapon/grab/I, var/mob/user)
+/obj/manhattan/vehicle/proc/handle_grab_attack(var/obj/item/weapon/grab/I, var/mob/user)
 	var/mob/living/grabbed_mob = I.affecting
 	var/mob/living/carbon/human/h = user
 	if(!istype(grabbed_mob) || !istype(h) || !src.Adjacent(grabbed_mob) || !src.Adjacent(h))
@@ -131,7 +131,7 @@
 		to_chat(user,"<span class = 'notice'>Something stops you putting [grabbed_mob] in [src.name]'s passenger seat.</span>")
 	return
 
-/obj/manhattan/vehicles/verb/pull_occupant_out()
+/obj/manhattan/vehicle/verb/pull_occupant_out()
 	set name = "Remove Occupant"
 	set category = "Vehicle"
 	set src in view(1)
