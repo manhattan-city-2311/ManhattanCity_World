@@ -404,3 +404,9 @@
 #define EXAMINE_SKIPHANDS			0x0040
 #define EXAMINE_SKIPLEGS			0x0080
 #define EXAMINE_SKIPFEET			0x0100
+
+#define RUN_DELAY   1
+#define WALK_DELAY  4
+
+#define M_RUN "run"
+#define M_WALK "walk"

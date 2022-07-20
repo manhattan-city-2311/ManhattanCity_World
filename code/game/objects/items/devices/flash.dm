@@ -83,10 +83,6 @@
 
 	var/flashfail = 0
 
-
-	if(user.IsAntiGrief())
-		flashfail = 1
-
 	if(iscarbon(M))
 		if(!synthetic_only)
 			var/mob/living/carbon/C = M

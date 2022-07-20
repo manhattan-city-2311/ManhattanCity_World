@@ -1042,21 +1042,6 @@
 		log_admin("[key_name(usr)] has [onoff] SSD Guard for [key_name(M)].")
 		message_admins("[key_name_admin(usr)] has [onoff] SSD Guard for [key_name(M)]")
 
-	else if(href_list["toggleantigrief"])
-		var/mob/M = locate(href_list["toggleantigrief"])
-
-		if(!check_rights(R_ADMIN))
-			return
-
-		if(!M.client)
-			to_chat(usr, "<span class='warning'>[M] doesn't have an attached client.</span>")
-			return
-
-		M.client.antigrief = !M.client.antigrief
-
-		log_admin("[key_name(usr)] has [M.client.antigrief ? "Enabled" : "Disabled"] antigrief for [key_name(M)].")
-		message_admins("[key_name_admin(usr)] has [M.client.antigrief ? "Enabled" : "Disabled"] antigrief for [key_name(M)]")
-
 	else if(href_list["tdome1"])
 		if(!check_rights(R_FUN))	return
 

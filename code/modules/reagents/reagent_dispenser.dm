@@ -142,15 +142,7 @@
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 
-	if (W.is_hot() && user.IsAntiGrief())
-		to_chat(user, "<span class='danger'>Yikes, that might be a bad idea.</span>")
-		return 0
-
 	if (istype(W,/obj/item/weapon/wrench))
-		if(user.IsAntiGrief())
-			to_chat(user, "<span class='danger'>You don't want to unwrench the faucet...</span>")
-			return 0
-
 		user.visible_message("[user] wrenches [src]'s faucet [modded ? "closed" : "open"].", \
 			"You wrench [src]'s faucet [modded ? "closed" : "open"]")
 		modded = modded ? 0 : 1
@@ -163,11 +155,6 @@
 		if (rig)
 			to_chat(user, "<span class='warning'>There is another device in the way.</span>")
 			return ..()
-
-
-		if(user && user.IsAntiGrief())
-			to_chat(user, "<span class='danger'>You don't feel like rigging the fueltank.</span>")
-			return 0
 
 		user.visible_message("[user] begins rigging [W] to \the [src].", "You begin rigging [W] to \the [src]")
 		if(do_after(user, 20))
@@ -194,11 +181,6 @@
 	//lot protection
 	var/area/this_area = get_area(src)
 	if(this_area.lot_id)
-		return
-
-	// grief protection
-	var/mob/fueltank_shooter = Proj.firer
-	if(fueltank_shooter.IsAntiGrief() )
 		return
 
 	if(Proj.get_structure_damage())

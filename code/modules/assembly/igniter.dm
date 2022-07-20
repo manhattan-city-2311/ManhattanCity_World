@@ -31,11 +31,6 @@
 
 
 /obj/item/device/assembly/igniter/attack_self(mob/user as mob)
-
-	if(user && user.IsAntiGrief())
-		to_chat(user, "<span class='danger'>You can't bring yourself to do this.</span>")
-		return 0
-
 	activate()
 	add_fingerprint(user)
 	return

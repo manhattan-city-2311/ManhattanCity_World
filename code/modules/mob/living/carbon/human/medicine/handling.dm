@@ -25,7 +25,10 @@
 
 	handle_additictions()
 
-	consume_oxygen(2 * k) // muscles resting
+	consume_oxygen(REST_OXYGEN_CONSUMING * k) // muscles resting
 
 	oxy_last_tick_demand = oxy_demand
 	oxy_demand = 0
+
+	avail_oxygen_last_tick = avail_oxygen
+	avail_oxygen = 0

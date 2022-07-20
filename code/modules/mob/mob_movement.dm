@@ -290,12 +290,13 @@
 
 		var/movement_delay = 0
 		switch(mob.m_intent)
-			if("run")
+			if(M_RUN)
 				if(mob.drowsyness > 0)
-					movement_delay += 6
-				movement_delay += config.run_speed
-			if("walk")
-				movement_delay += config.walk_speed
+					movement_delay += WALK_DELAY - 1
+				else 
+					movement_delay += RUN_DELAY
+			if(M_WALK)
+				movement_delay += WALK_DELAY
 		movement_delay += mob.movement_delay()
 
 		// If we ended up moving diagonally, increase delay.
@@ -344,9 +345,9 @@
 				//drunk wheelchair driving
 				else if(mob.confused)
 					switch(mob.m_intent)
-						if("run")
+						if(M_RUN)
 							if(prob(50))	direct = turn(direct, pick(90, -90))
-						if("walk")
+						if(M_WALK)
 							if(prob(25))	direct = turn(direct, pick(90, -90))
 				mob.move_delay += 2
 

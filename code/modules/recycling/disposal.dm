@@ -173,10 +173,6 @@
 		if(target != user && !user.restrained() && !user.stat && !user.weakened && !user.stunned && !user.paralysis)
 			if(target.anchored) return
 
-			if(user.IsAntiGrief())
-				to_chat(user, "<span class='danger'>You realise doing this might be an awful thing to do and stop.</span>")
-				return
-
 			V.show_message("[usr] starts stuffing [target.name] into the disposal.", 3)
 	if(!do_after(usr, 20))
 		return

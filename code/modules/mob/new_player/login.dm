@@ -37,7 +37,7 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 	loc = null
 	client.screen += lobby_image
 	my_client = client
-	sight |= SEE_TURFS
+	sight |= SEE_TURFS | SEE_OBJS
 	player_list |= src
 
 	new_player_panel()

@@ -32,11 +32,6 @@
 
 
 /obj/item/device/assembly_holder/attach(var/obj/item/device/D, var/obj/item/device/D2, var/mob/user)
-	if(user && user.IsAntiGrief())
-		to_chat(user, "<span class='danger'>You can't bring yourself to do this.</span>")
-		return 0
-
-
 	if((!D)||(!D2))	return 0
 	if((!isassembly(D))||(!isassembly(D2)))	return 0
 	if((D:secured)||(D2:secured))	return 0
@@ -256,12 +251,6 @@
 	set name = "Set Timer"
 	set category = "Object"
 	set src in usr
-
-	var/mob/user = usr
-	if(user && user.IsAntiGrief())
-		to_chat(user, "<span class='danger'>You can't bring yourself to do this.</span>")
-		return 0
-
 
 	if ( !(usr.stat || usr.restrained()) )
 		var/obj/item/device/assembly_holder/holder

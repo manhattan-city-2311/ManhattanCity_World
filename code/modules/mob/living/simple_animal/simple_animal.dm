@@ -705,7 +705,7 @@
 			tally = 1
 		tally *= purge
 
-	if(m_intent == "walk")
+	if(m_intent == M_WALK)
 		tally *= 1.5
 
 	return tally+config.animal_delay

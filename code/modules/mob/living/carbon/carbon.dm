@@ -33,7 +33,7 @@
 	touching.clear_reagents()
 
 	handle_regular_hud_updates()
-	
+
 	..()
 
 /mob/living/carbon/proc/nervous_system_failure()
@@ -57,31 +57,49 @@
 /mob/living/carbon/proc/adjust_calories(var/amt)
 	set_calories(calories + amt)
 
+
 /mob/living/carbon/Move(NewLoc, direct)
 	. = ..()
 	if(!.)
 		return
 	if(stat != DEAD)
-/*
-		if((MUTATION_FAT in src.mutations) && src.bodytemperature <= 360)
-			bodytemperature += 2
-*/
 		var/nut_removed = DEFAULT_HUNGER_FACTOR/10
 		var/hyd_removed = DEFAULT_THIRST_FACTOR/10
 		var/cal_removed = DEFAULT_THIRST_FACTOR/10
-		if(src.m_intent == "run")
+
+		if(src.m_intent == M_RUN)
 			nut_removed *= 2
 			hyd_removed *= 2
 		adjust_nutrition(-nut_removed)
 		adjust_hydration(-hyd_removed)
 		adjust_calories(-cal_removed)
 
-		if((FAT in src.mutations) && src.m_intent == "run" && src.bodytemperature <= 360)
+		if((FAT in src.mutations) && src.m_intent == M_RUN && src.bodytemperature <= 360)
 			src.bodytemperature += 2
 
 		// Moving around increases germ_level faster
 		if(germ_level < GERM_LEVEL_MOVE_CAP && prob(8))
 			germ_level++
+
+/mob/living/carbon/human/Move()
+	. = ..()
+	if(!.)
+		return
+	if(stat != CONSCIOUS)
+		return
+
+	var/oxy_use
+
+	switch(m_intent)
+		if(M_RUN)
+			if(get_blood_saturation() < 0.9)
+				to_chat(src, SPAN_WARNING("You feel exhausted."))
+				m_intent = M_WALK
+				hud_used.move_intent.icon_state = "walking"
+			oxy_use = RUN_OXYGEN_CONSUMING
+		if(M_WALK)
+			oxy_use = WALK_OXYGEN_CONSUMING
+	consume_oxygen(oxy_use)
 
 /mob/living/carbon/relaymove(var/mob/living/user, direction)
 	if((user in src.stomach_contents) && istype(user))

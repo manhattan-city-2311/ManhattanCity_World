@@ -78,12 +78,6 @@ Code:
 		onclose(usr, "radio")
 		return
 
-	var/mob/user = usr
-	if(user && user.IsAntiGrief())
-		to_chat(user, "<span class='danger'>You can't bring yourself to do this.</span>")
-		return 0
-
-
 	if (href_list["freq"])
 		var/new_frequency = (frequency + text2num(href_list["freq"]))
 		if(new_frequency < RADIO_LOW_FREQ || new_frequency > RADIO_HIGH_FREQ)

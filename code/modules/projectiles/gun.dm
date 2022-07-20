@@ -323,10 +323,6 @@
 				usr.put_in_l_hand(src)
 		src.add_fingerprint(usr)
 
-/obj/item/weapon/gun/proc/check_z_compatible(var/atom/target,var/mob/living/user)
-	if(target.z != user.z) return 0
-	return 1
-
 /obj/item/weapon/gun/proc/pershot_check(var/mob/user) //Placeholder for any checks that must be performed per-shot. Used for vehicles.
 	return 1
 
@@ -347,9 +343,6 @@
 			if(!(user_position in V.exposed_positions))
 				to_chat(user,"<span class = 'warning'>You can't fire [src.name] from this position in [V.name].</span>")
 				return
-		if(target.z != V.z) return
-	else
-		if(!check_z_compatible(target,user)) return
 
 	add_fingerprint(user)
 
@@ -414,7 +407,6 @@
 		if(process_projectile(projectile, user, user.last_mouse_target, user.zone_sel.selecting, clickparams))
 			handle_post_fire(user, target, pointblank, reflex)
 			update_icon()
-
 
 		if(i < burst)
 			sleep(burst_delay)

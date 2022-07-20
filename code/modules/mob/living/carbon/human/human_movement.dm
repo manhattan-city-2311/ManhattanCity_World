@@ -183,18 +183,18 @@
 	var/S = pick(footstep_sounds)
 	if(!S) return
 
-	// Play every 20 steps while walking, for the sneak
-	if(m_intent == "walk" && step_count++ % 20 != 0)
+	// Play every 5 steps while walking, for the sneak
+	if(m_intent == M_WALK && step_count++ % WALK_DELAY != 0)
 		return
 
 	// Play every other step while running
-	if(m_intent == "run" && step_count++ % 2 != 0)
+	if(m_intent == M_RUN && step_count++ % RUN_DELAY != 0)
 		return
 
 	var/volume = config.footstep_volume
 
 	// Reduce volume while walking or barefoot
-	if(!shoes || m_intent == "walk")
+	if(!shoes || m_intent == M_WALK)
 		volume *= 0.5
 	else if(shoes)
 		var/obj/item/clothing/shoes/feet = shoes

@@ -59,10 +59,6 @@
 
 
 /obj/item/weapon/grenade/attack_self(mob/user as mob)
-	if(user.IsAntiGrief())
-		to_chat(user, "<span class='danger'>How do these things work again?</span>")
-		return 0
-
 	if(!active)
 		if(clown_check(user))
 			to_chat(user, "<span class='warning'>You prime \the [name]! [det_time/10] seconds!</span>")
@@ -72,7 +68,6 @@
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.throw_mode_on()
-	return
 
 
 /obj/item/weapon/grenade/proc/activate(mob/user as mob)

@@ -112,11 +112,6 @@ var/list/gamemode_cache = list()
 
 	var/min_byond_age = 0				//This denies anyone under this byond age from joining.
 
-	var/byond_antigrief_age = 0
-	var/player_antigrief_age = 0
-	//A softer option. Clients under this age will be marked with "antigrief" which prevents certain items
-	//from being used such as weapons, explosives, atmos, etc. until they reach a certain age
-
 	var/allow_byond_links = 0
 	var/allow_discord_links = 0
 	var/allow_url_links = 0					// honestly if I were you i'd leave this one off, only use in dire situations
@@ -181,11 +176,6 @@ var/list/gamemode_cache = list()
 	var/welder_vision = 1
 	var/generate_map = 0
 	var/no_click_cooldown = 0
-
-	//Used for modifying movement speed for mobs.
-	//Unversal modifiers
-	var/run_speed = 0
-	var/walk_speed = 0
 
 	//Mob specific modifiers. NOTE: These will affect different mob types in different ways
 	var/human_delay = 0
@@ -812,12 +802,6 @@ var/list/gamemode_cache = list()
 				if ("min_byond_age")
 					config.min_byond_age = text2num(value)
 
-				if ("byond_antigrief_age")
-					config.byond_antigrief_age = text2num(value)
-
-				if ("player_antigrief_age")
-					config.player_antigrief_age = text2num(value)
-
 				if ("allow_byond_links")
 					config.allow_byond_links = 1
 
@@ -949,12 +933,6 @@ var/list/gamemode_cache = list()
 					config.bones_can_break = value
 				if("limbs_can_break")
 					config.limbs_can_break = value
-
-				if("run_speed")
-					config.run_speed = value
-				if("walk_speed")
-					config.walk_speed = value
-
 				if("human_delay")
 					config.human_delay = value
 				if("robot_delay")

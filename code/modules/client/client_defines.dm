@@ -60,7 +60,6 @@
 
 	// Has the client been granted permission to mess with SSDs by an admin?
 	var/bypass_ssd_guard = FALSE
-	var/antigrief = FALSE		// given to certain clients to prevent grief
 
 	var/last_ooc_message = ""
 	var/last_ping_time = 0 // Stores the last time this cilent pinged someone in OOC, to protect against spamming pings

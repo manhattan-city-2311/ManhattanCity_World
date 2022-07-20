@@ -213,11 +213,6 @@
 			if(H == src) // no more punching yourself to death
 				return
 
-			if(H.IsAntiGrief())
-				to_chat(H, "<span class='danger'>You wish to do no harm. (You currently have anti-grief enabled either due to being a brand new player or grief-banned.)</span>")
-				visible_message("<b>[H]</b> has raises their fist to punch [M], but lowers it, reconsidering.")
-				return 0
-
 			var/rand_damage = rand(1, 5)
 			var/block = 0
 			var/accurate = 0
@@ -429,10 +424,6 @@
 		return 0
 	var/obj/item/organ/external/organ = get_organ(check_zone(target_zone))
 	if(!organ || organ.dislocated > 0 || organ.dislocated == -1) //don't use is_dislocated() here, that checks parent
-		return 0
-
-	if(user.IsAntiGrief())
-		to_chat(user, "<span class='danger'>Actually, that might be painful - I'll stop.</span>")
 		return 0
 
 	user.visible_message("<span class='warning'>[user] begins to dislocate [src]'s [organ.joint]!</span>")

@@ -177,15 +177,6 @@
 
 	var/player_byond_age = get_byond_age()
 
-	if(config.byond_antigrief_age && config.byond_antigrief_age > player_byond_age)
-		log_adminwarn("Player [ckey] has joined with a newly registered byond account ([player_byond_age] days). Antigrief has been applied.")
-		antigrief = TRUE
-
-	if(config.player_antigrief_age)
-		if(isnum(player_age) && (config.player_antigrief_age > player_age))
-			log_adminwarn("Player [ckey] is new to the server ([player_age] days). Antigrief has been applied.")
-			antigrief = TRUE
-
 	if(config.min_byond_age)
 		if(config.min_byond_age > player_byond_age)
 			log_adminwarn("Failed Login: [key] - New account registered on [byond_join_date] (Age: [player_byond_age] days) - Minimum: [config.min_byond_age] days.")
@@ -542,21 +533,6 @@ client/verb/character_setup()
 	if(check_rights(R_ADMIN, 0, mob))
 		return 1
 	return 0
-
-
-/client/proc/IsAntiGrief()
-	if(!config.byond_antigrief_age)
-		return FALSE
-
-	return antigrief
-
-/mob/proc/IsAntiGrief()
-	if(!client)
-		return FALSE
-	if(jobban_isbanned(src, "Grief"))
-		return TRUE
-
-	return client.IsAntiGrief()
 
 //This is for getipintel.net.
 //You're welcome to replace this proc with your own that does your own cool stuff.

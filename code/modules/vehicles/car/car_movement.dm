@@ -46,12 +46,6 @@
 			A.Move(T)	//bump things away when hit
 
 	if(istype(A, /mob/living))
-		if(istype(buckled_mobs[1], /mob/living/carbon/human))
-			var/mob/D = buckled_mobs[1]
-
-			if(D.IsAntiGrief())
-				return
-
 		var/mob/living/M = A
 		visible_message("<span class='danger'>[src] knocks over [M]!</span>")
 		playsound(src.loc, 'sound/vehicles/car_hit.ogg', 80, 0, 10)
@@ -89,13 +83,6 @@
 
 /obj/vehicle/car/RunOver(var/mob/living/carbon/human/H)
 	..()
-	if(istype(buckled_mobs[1], /mob/living/carbon/human))
-		var/mob/D = buckled_mobs[1]
-
-		if(D.IsAntiGrief())
-			return
-
-
 	visible_message("<span class='danger'>[src] run over [H]!</span>")
 	playsound(src.loc, 'sound/vehicles/car_hit.ogg', 80, 0, 10)
 	var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)

@@ -1077,12 +1077,6 @@
 		to_chat(usr,"<span class='warning'>You can't climb into the exosuit while buckled!</span>")
 		return
 
-	var/mob/user = usr
-
-	if(user.IsAntiGrief())
-		to_chat(user, "<span class='danger'>You're not confident using this yet.</span>")
-		return
-
 	src.log_message("[usr] tries to move in.")
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
