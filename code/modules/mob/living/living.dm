@@ -176,10 +176,9 @@ default behaviour is:
 				if(!T2) // Map edge
 					now_pushing = 0
 					return
-				var/move_time = movement_delay(loc, t) * sqrt(2) / 2
-				//move_time = DS2NEARESTTICK(move_time)
-				if(AM.Move(T2, t, move_time))
-					Move(T, t, move_time)
+				AM.glide_size = glide_size
+				if(AM.Move(T2, t))
+					Move(T, t)
 				if(ishuman(AM) && AM:grabbed_by)
 					for(var/obj/item/weapon/grab/G in AM:grabbed_by)
 						step(G:assailant, get_dir(G:assailant, AM))

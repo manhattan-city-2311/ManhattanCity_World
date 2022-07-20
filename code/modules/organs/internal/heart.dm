@@ -172,7 +172,7 @@
 
 /obj/item/organ/internal/heart/proc/handle_heartbeat()
 	// This is very weird..
-	if(pulse >= 90 || owner.shock_stage >= 10 || is_below_sound_pressure(get_turf(owner)))
+	if(pulse >= 140 || owner.shock_stage >= 10)
 		var/rate = 0.0119 * pulse - 0.1795
 
 		if(heartbeat >= rate)

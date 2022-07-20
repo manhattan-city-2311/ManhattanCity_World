@@ -69,11 +69,11 @@ var/list/global_huds = list(
 	whitense.icon = 'icons/effects/static.dmi'
 	whitense.icon_state = "1 light"
 
-	////darksight 'hanger' for attached icons
-	//darksight = new /obj/screen()
-	//darksight.icon = null
-	//darksight.screen_loc = "1,1"
-	//darksight.plane = PLANE_LIGHTING
+	//darksight 'hanger' for attached icons
+	darksight = new /obj/screen()
+	darksight.icon = null
+	darksight.screen_loc = "1,1"
+	darksight.plane = PLANE_LIGHTING
 
 	//Marks the center of the screen, for things like ventcrawl
 	centermarker = new /obj/screen()
