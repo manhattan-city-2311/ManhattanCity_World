@@ -48,7 +48,6 @@
 
 	var/vehicle_view_modifier = 1 //The view-size modifier to apply to the occupants of the vehicle.
 	var/move_sound = null
-	var/collision_sound = 'sound/effects/clang.ogg'
 
 	var/datum/mobile_spawn/spawn_datum //Setting this makes this a mobile spawn point.
 
@@ -65,6 +64,8 @@
 		VC_LEFT_BACK_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_ENGINE = /obj/item/vehicle_part/engine
 	)
+
+	var/serial_number
 
 /obj/manhattan/vehicle/verb/toggle_headlights()
 	set name = "Toggle Headlights"
@@ -96,7 +97,7 @@
 	else
 		to_chat(user,"<span class = 'notice'>You insert the keys into the ignition.</span>")
 		keys_in_ignition = TRUE
-	playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1, 5)
+	playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1)
 
 /obj/manhattan/vehicle/verb/engine()
 	set name = "Start/Stop engine"
@@ -106,11 +107,16 @@
 	if(!istype(user) || !(user in get_occupants_in_position("driver")))
 		to_chat(user,"<span class = 'notice'>You must be the driver of [src] to reach for the ignition.</span>")
 		return
-	for(var/obj/item/vehicle_part/engine/engine in components)
-		if(!engine.needs_processing == TRUE)
-			engine.start()
-		else
-			engine.stop()
+	if(!keys_in_ignition)
+		to_chat(user,"<span class = 'notice'>There are no keys in the ignition.</span>")
+		return
+	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
+	if(!engine.needs_processing == TRUE)
+		engine.start()
+		to_chat(user,"<span class = 'notice'>You attempt to start the engine.</span>")
+	else
+		engine.stop()
+		to_chat(user,"<span class = 'notice'>You stop the engine.</span>")
 
 /obj/manhattan/vehicle/New()
 	. = ..()
@@ -123,11 +129,14 @@
 	cargo_capacity = base_storage_capacity(capacity_flag)
 
 /obj/manhattan/vehicles/attack_generic(var/mob/living/simple_animal/attacker,var/damage,var/text)
+
 /obj/manhattan/vehicle/initialize()
 	. = ..()
 	for(var/id in components)
 		var/type = components[id]
 		components[id] = new type
+		components[id].vehicle = src
+	serial_number = rand(1, 9999)
 
 /obj/manhattan/vehicle/return_air_for_internal_lifeform(var/mob/living/carbon/human/form)
 	return
@@ -210,8 +219,8 @@
 /obj/manhattan/vehicle/proc/inactive_pilot_effects() //Overriden on a vehicle-by-vehicle basis.
 
 /obj/manhattan/vehicle/process()
-	for(var/obj/item/vehicle_part in components)
-		process()
+	for(var/obj/item/vehicle_part/vp in components)
+		vp.process()
 
 	if(world.time % 3)
 		comp_prof.give_gunner_weapons(src)
@@ -333,6 +342,7 @@
 	speed[2] = 0
 	if(!obstacle.handle_vehicle_collision(obstacle))
 		visible_message("<span class = 'danger'>[src] collides with [obstacle]!</span>")
+	comp_prof.take_component_damage(5,"brute") //very minor, in case we hit something small
 
 /obj/manhattan/vehicle/Bump(var/atom/obstacle)
 	..()
@@ -432,11 +442,11 @@
 	if(movement_destroyed)
 		to_chat(user,"<span class = 'notice'>[src] is in no state to move!</span>")
 		return 0
-	for(var/obj/item/vehicle_part/engine/engine in components)
-		if(engine.needs_processing == 0)
-			to_chat(user,"<span class = 'notice'>The engine is shut down!</span>")
-			return 0
-		engine.rpm += 100
+	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
+	if(engine.needs_processing == 0)
+		to_chat(user,"<span class = 'notice'>The engine is shut down!</span>")
+		return 0
+	engine.rpm += 100
 	var/list/driver_list = get_occupants_in_position("driver")
 	var/is_driver = FALSE
 	for(var/mob/driver in driver_list)
@@ -509,6 +519,18 @@
 	if(istype(I,/obj/item/weapon/grab))
 		handle_grab_attack(I,user)
 		return
+	if(istype(I, /obj/item/car_key))
+		var/obj/item/car_key/key = I
+		if(key.serial_number == serial_number)
+			playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1, 5)
+			if(block_enter_exit)
+				visible_message("<span class = 'notice'>[user] unlocks the [src].</span>")
+				block_enter_exit = 0
+			else
+				visible_message("<span class = 'notice'>[user] locks the [src].</span>")
+				block_enter_exit = 1
+		else
+			to_chat(user,"<span class = 'notice'>The key doesn't fit!</span>")
 	if(user.a_intent == I_HURT)
 		if(comp_prof.is_repair_tool(I))
 			comp_prof.repair_inspected_with_tool(I,user)

@@ -2233,6 +2233,7 @@
 #include "code\modules\modern_vehicles\parts\_part.dm"
 #include "code\modules\modern_vehicles\parts\engine.dm"
 #include "code\modules\modern_vehicles\parts\wheels.dm"
+#include "code\modules\modern_vehicles\service\keys.dm"
 #include "code\modules\modern_vehicles\vehicle\__defs.dm"
 #include "code\modules\modern_vehicles\vehicle\vehicle_cargo.dm"
 #include "code\modules\modern_vehicles\vehicle\vehicle_component_profiles.dm"
