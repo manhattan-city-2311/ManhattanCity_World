@@ -433,7 +433,7 @@
 		to_chat(user,"<span class = 'notice'>[src] is in no state to move!</span>")
 		return 0
 	for(var/obj/item/vehicle_part/engine/engine in components)
-		if(!engine.needs_processing)
+		if(engine.needs_processing == 0)
 			to_chat(user,"<span class = 'notice'>The engine is shut down!</span>")
 			return 0
 		engine.rpm += 100
