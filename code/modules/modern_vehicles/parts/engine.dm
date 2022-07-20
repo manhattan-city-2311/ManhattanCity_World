@@ -26,26 +26,26 @@
 /obj/item/vehicle_part/engine/proc/start()
     if(prob(integrity))
         needs_processing = TRUE
-        playsound(vehicle, start_sound, 50, 1, 5)
+        playsound(vehicle, start_sound, 150, 1, 5)
         spawn(15)
             playsound(vehicle, 'sound/vehicles/modern/zb_fb_idle.ogg', 30, 1, 5)
             rpm = RPM_IDLE - 1
     else
-        playsound(vehicle, failstart_sound, 50, 1, 5)
+        playsound(vehicle, failstart_sound, 150, 1, 5)
 
 /obj/item/vehicle_part/engine/proc/stop()
     needs_processing = FALSE
-    playsound(vehicle, stop_sound, 50, 1, 5)
+    playsound(vehicle, stop_sound, 150, 1, 5)
     rpm = 0
 
 /obj/item/vehicle_part/engine/part_process()
     rpm = LERP(rpm, RPM_IDLE, 0.25)
     switch(rpm)
         if(1 to RPM_IDLE)
-            playsound(vehicle, 'sound/vehicles/modern/zb_fb_idle.ogg', 20, 1, 5)
+            playsound(vehicle, 'sound/vehicles/modern/zb_fb_idle.ogg', 100, 1, 5)
         if(RPM_IDLE to RPM_SLOW)
-            playsound(vehicle, 'sound/vehicles/modern/zb_fb_slow.ogg', 30, 1, 5)
+            playsound(vehicle, 'sound/vehicles/modern/zb_fb_slow.ogg', 100, 1, 5)
         if(RPM_SLOW to RPM_FAST)
-            playsound(vehicle, 'sound/vehicles/modern/zb_fb_med.ogg', 40, 1, 5)
+            playsound(vehicle, 'sound/vehicles/modern/zb_fb_med.ogg', 100, 1, 5)
         if(RPM_FAST to INFINITY)
-            playsound(vehicle, 'sound/vehicles/modern/zb_fb_fast.ogg', 50, 1, 5)
+            playsound(vehicle, 'sound/vehicles/modern/zb_fb_fast.ogg', 100, 1, 5)

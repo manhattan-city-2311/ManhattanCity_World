@@ -96,7 +96,7 @@
 	else
 		to_chat(user,"<span class = 'notice'>You insert the keys into the ignition.</span>")
 		keys_in_ignition = TRUE
-	playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 50, 1, 5)
+	playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1, 5)
 
 /obj/manhattan/vehicle/verb/engine()
 	set name = "Start/Stop engine"
@@ -107,7 +107,7 @@
 		to_chat(user,"<span class = 'notice'>You must be the driver of [src] to reach for the ignition.</span>")
 		return
 	for(var/obj/item/vehicle_part/engine/engine in components)
-		if(engine.needs_processing == TRUE)
+		if(!engine.needs_processing == TRUE)
 			engine.start()
 		else
 			engine.stop()
@@ -210,7 +210,7 @@
 /obj/manhattan/vehicle/proc/inactive_pilot_effects() //Overriden on a vehicle-by-vehicle basis.
 
 /obj/manhattan/vehicle/process()
-	for(var/obj/item/vehicle_part/vp in components)
+	for(var/obj/item/vehicle_part in components)
 		process()
 
 	if(world.time % 3)
