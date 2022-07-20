@@ -27,7 +27,7 @@
     if(break_message)
         vehicle.visible_message(break_message)
     if(break_sound)
-        playsound(vehicle, break_sound, 50, 1, 5)
+        playsound(vehicle, break_sound, 100, 1, 5)
 
 /obj/item/vehicle_part/proc/handle_damage(var/strength)
     if(broken)

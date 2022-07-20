@@ -115,7 +115,7 @@
 	update_user_view(user)
 	visible_message("<span class = 'notice'>[user] enters the [position] position of [src].</span>")
 	to_chat(user,"<span class = 'info'>You are now in the [position] position of [src].</span>")
-	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 50, 1, 5)
+	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
 	return 1
 
 /obj/manhattan/vehicle/proc/do_seat_switch(var/mob/user,var/position)
