@@ -217,7 +217,6 @@
 		return 0
 
 	spawning = 1
-	close_spawn_windows()
 
 	SSjobs.AssignRole(src, rank, 1)
 
@@ -279,7 +278,6 @@
 
 /mob/new_player/proc/create_character(var/turf/T)
 	spawning = 1
-	close_spawn_windows()
 
 	var/mob/living/carbon/human/new_character
 
@@ -356,14 +354,6 @@
 
 /mob/new_player/Move()
 	return 0
-
-/mob/new_player/proc/close_spawn_windows()
-
-	src << browse(null, "window=latechoices") //closes late choices window
-	src << browse(null, "window=News") //closes news window
-	src << browse(null, "window=joinasantag") //closes news window
-	//src << browse(null, "window=playersetup") //closes the player setup window
-	panel.close()
 
 /mob/new_player/proc/has_admin_rights()
 	return check_rights(R_ADMIN, 0, src)
