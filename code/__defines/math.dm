@@ -17,6 +17,9 @@
 
 #define PERCENT(val) (round((val)*100, 0.1))
 
+#define TO_MPS(kph) (kph / 3.6)
+#define TO_KPH(mps) (mps * 3.6)
+
 //time of day but automatically adjusts to the server going into the next day within the same round.
 //for when you need a reliable time number that doesn't depend on byond time.
 #define REALTIMEOFDAY (world.timeofday + (MIDNIGHT_ROLLOVER * MIDNIGHT_ROLLOVER_CHECK))
@@ -231,3 +234,14 @@
 // Performs a linear interpolation between a and b.
 /proc/lerp(a, b, t = 0.5)
 	return a + t * (b - a)
+
+// Lagrage interpolation
+/proc/interpolate_list(x, list/xs, list/ys)
+	. = 0
+	for(var/i in 1 to xs.len)
+		var/l = 1
+		for(var/j in 1 to xs.len)
+			if(j != i)
+				l *= (x - xs[j]) / (xs[i] - xs[j])
+		. += ys[i] * l
+		

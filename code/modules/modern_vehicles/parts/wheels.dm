@@ -15,22 +15,6 @@
 	break_sound = 'sound/vehicles/modern/tire_explode.ogg'
 	break_message = "<span class = 'danger'>A tire pops!</span>"
 
-	var/mass = 2
-	var/d = 2
-	var/rpm
-	var/torque = 0
-
-/obj/item/vehicle_part/wheel/proc/apply_torque(torque, rpm = INFINITY)
-	if(rpm < src.rpm)
-        return
-
-	src.torque += torque / mass 
-
-	if(src.torque > vehicle.weight)
-		vehicle.skid = TRUE
-	
-    rpm += torque / mass
-
 /obj/item/vehicle_part/wheel/initialize()
 	pressure += rand(-5, 5)
 
@@ -40,8 +24,12 @@
 	var/delta_damage = Clamp(strength, 0, pressure)
 	pressure -= delta_damage
 
+// N
+/obj/item/vehicle_part/wheel/proc/get_traction()
+	return ((WHEEL_PRESSURE_MAXIMUM + 5) - pressure)
+
 /obj/item/vehicle_part/wheel/part_process()
-	if(vehicle.speed[1] < 3)
+	if(vehicle.speed.modulus() > TO_MPS(70))
 		handle_damage(1)
 	switch(integrity)
 		if(75 to 90)
@@ -51,5 +39,5 @@
 			if(prob(10))
 				handle_pressure(2)
 
-	rpm = max(0, rpm - (WHEEL_PRESSURE_MAXIMUM - pressure))
+	rpm = max(0, rpm)
 	torque = 0

@@ -1,3 +1,6 @@
+/obj/manhattan/vehicle/proc/update_angle_vector()
+	angle_vector = vector2_from_angle(angle)
+
 /obj/manhattan/vehicle/Move(var/newloc,var/newdir)
 	if(abs(speed[1]) > abs(speed[2]))
 		if(speed[1] > 0)
@@ -120,16 +123,24 @@
 
 	return 1
 
-/obj/manhattan/vehicle/proc/handle_movement()
-	// Aero drag
-	acceleration -= speed * speed.modulus() * aerodynamics_coefficent
+/obj/manhattan/vehicle/proc/get_force()
 
-	speed += acceleration
+/obj/manhattan/vehicle/proc/handle_movement(delta = 2)
+	var/friction = 0
+	for(var/obj/item/vehicle_part/wheel/W in get_wheels())
+		friction += W.get_traction()
+
+	friction /= weight
+
+	// Drag
+	acceleration -= speed * (speed.modulus() * aerodynamics_coefficent + friction)
+
+	speed += acceleration * delta
 
 	acceleration = vector2(0, 0)
 
-	step_x += speed.x / 32
-	step_y += speed.y / 32
+	step_x += speed.x / 32 * delta
+	step_y += speed.y / 32 * delta
 
 	if(step_x >= 32 || step_y >= 32)
 		var/x_step = step_x / 32

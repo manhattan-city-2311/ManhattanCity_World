@@ -76,16 +76,15 @@
 	var/is_brake_pressed		= FALSE
 	var/aerodynamics_coefficent = 0.32
 
-
-/obj/manhattan/vehicle/proc/update_angle_vector()
-	angle_vector = vector2_from_angle(angle)
-
 /mob/living/carbon/human/Stat()
 	. = ..()
 	if(istype(loc, /obj/manhattan/vehicle))
 		if(statpanel("Status"))
-			stat("Speed:", speed.modulus())
+			stat("Speed:", TO_KPS(speed.modulus()))
 			stat("RPM:", components[VC_ENGINE]?.rpm)
+
+/obj/manhattan/vehicle/proc/get_wheel_diameter()
+	return 0.34
 
 /obj/manhattan/vehicle/proc/get_components(type)
 	. = list()

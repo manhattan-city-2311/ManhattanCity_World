@@ -22,6 +22,10 @@
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
 	var/lastmovementdelay = 0
 
+/atom/movable/proc/update_glide(movement_delay = 2)
+	if (movement_delay != lastmovementdelay)
+		lastmovementdelay = movement_delay
+		glide_size = 32 * (world.tick_lag) / lastmovementdelay
 
 /atom/movable/Destroy()
 	. = ..()

@@ -1,8 +1,7 @@
-#define TORQUE_CONSTANT 400
-#define RPM_IDLE 1200
-#define RPM_SLOW 1500
-#define RPM_MED 1700
-#define RPM_FAST 1900
+#define RPM_IDLE 700
+#define RPM_SLOW 2000
+#define RPM_MED  3500
+#define RPM_FAST 6500
 
 #define VC_ENGINE "engine"
 
@@ -18,6 +17,10 @@
     var/start_sound = 'sound/vehicles/modern/vehicle_start.ogg'
     var/failstart_sound = 'sound/vehicles/modern/vehicle_failing_to_start.ogg'
     break_message = "<span class = 'danger'>The car's engine whines like an injured animal and shuts down!</span>"
+
+    var/list/xs = list(0, 1000, 2000, 3000, 4000, 5000, 5500, 6000)
+    var/list/ys = list(0, 60,   70,   80,   90,   80,   70,   60)
+    var/max_rpm = 6200
 
 /obj/item/vehicle_part/engine/fail()
     ..()
@@ -40,7 +43,6 @@
     rpm = 0
 
 /obj/item/vehicle_part/engine/part_process()
-    rpm = LERP(rpm, RPM_IDLE, 0.25)
     switch(rpm)
         if(1 to RPM_IDLE)
             playsound(vehicle, 'sound/vehicles/modern/zb_fb_idle.ogg', 100, 1, 5)
