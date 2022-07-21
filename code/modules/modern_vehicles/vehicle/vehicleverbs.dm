@@ -7,13 +7,6 @@
 		to_chat(user,"<span class = 'notice'>You must be the driver of [src] to toggle the headlights.</span>")
 		return
 
-	if(light_range == 0)
-		to_chat(user,"<span class = 'notice'>You toggle [src]'s headlights on.</span>")
-		set_light(initial(light_range))
-	else
-		to_chat(user,"<span class = 'notice'>You toggle [src]'s headlights off.</span>")
-		set_light(0)
-
 /obj/manhattan/vehicle/verb/keys()
 	set name = "Insert/Remove keys"
 	set category = "Vehicle"
@@ -28,7 +21,7 @@
 	else
 		to_chat(user,"<span class = 'notice'>You insert the keys into the ignition.</span>")
 		keys_in_ignition = TRUE
-	playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1, 5)
+	playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1)
 
 /obj/manhattan/vehicle/verb/engine()
 	set name = "Start/Stop engine"
@@ -38,11 +31,16 @@
 	if(!istype(user) || !(user in get_occupants_in_position("driver")))
 		to_chat(user,"<span class = 'notice'>You must be the driver of [src] to reach for the ignition.</span>")
 		return
-	for(var/obj/item/vehicle_part/engine/engine in components)
-		if(!engine.needs_processing == TRUE)
-			engine.start()
-		else
-			engine.stop()
+	if(!keys_in_ignition)
+		to_chat(user,"<span class = 'notice'>There are no keys in the ignition.</span>")
+		return
+	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
+	if(!engine.needs_processing == TRUE)
+		engine.start()
+		to_chat(user,"<span class = 'notice'>You attempt to start the engine.</span>")
+	else
+		engine.stop()
+		to_chat(user,"<span class = 'notice'>You stop the engine.</span>")
 
 /obj/manhattan/vehicle/examine(var/mob/user)
 	. = ..()
@@ -163,3 +161,4 @@
 		else if(mag.stored_ammo.len > mag.initial_ammo * 0.25)
 			msg = "is about a quarter full."
 		to_chat(user,"<span class = 'notice'>[src]'s [mag] [msg]</span>")
+

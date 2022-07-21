@@ -122,7 +122,11 @@
 
 /obj/manhattan/vehicle/proc/handle_movement()
 	// Aero drag
-	acceleration -= speed.modulus() ** 2 * aerodynamics_coefficent
+	acceleration -= speed * speed.modulus() * aerodynamics_coefficent
+
+	speed += acceleration
+
+	acceleration = vector2(0, 0)
 
 	step_x += speed.x / 32
 	step_y += speed.y / 32
