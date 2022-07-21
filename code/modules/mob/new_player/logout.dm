@@ -1,9 +1,11 @@
 /mob/new_player/Logout()
 	ready = 0
 
+	send_output(client, ready, "lobbybrowser:imgsrc")
+
 	// see login.dm
 	if(my_client)
-		my_client.screen -= lobby_image
+		using_map.hide_titlescreen(my_client)
 		my_client = null
 
 	..()

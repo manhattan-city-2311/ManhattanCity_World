@@ -80,13 +80,8 @@
 #define to_file(handle, value)                to_target(handle, value)
 #define to_save(handle, value)                to_target(handle, value) //semantics
 #define from_save(handle, target_var)         from_target(handle, target_var)//#define to_chat(target, message) target << message
-#define to_world(message) world << message
-#define to_world_log(message) world.log << message
-#define legacy_chat(target, message)          to_target(target, message)
-#define to_world(message)                     to_chat(world, message)
 // TODO - Baystation has this log to crazy places. For now lets just world.log, but maybe look into it later.
 #define log_world(message) world.log << message
-#define to_file(file_entry, source_var) file_entry << source_var
 #define from_file(file_entry, target_var) file_entry >> target_var
 
 // From TG, might be useful to have.
@@ -103,16 +98,9 @@
 
 #define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
 
-#define sound_to(target, sound)                             target << sound
-#define show_browser(target, browser_content, browser_name) target << browse(browser_content, browser_name)
 #define show_image(target, image)                           target << image
-#define send_rsc(target, rsc_content, rsc_name)             target << browse_rsc(rsc_content, rsc_name)
 
 #define any2ref(x) "\ref[x]"
-
-//Currently used in SDQL2 stuff
-#define send_output(target, msg, control) target << output(msg, control)
-#define send_link(target, url) target << link(url)
 
 #define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"
 

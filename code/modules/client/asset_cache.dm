@@ -349,3 +349,8 @@ var/decl/asset_cache/asset_cache = new()
 		"font-awesome.css"    = 'html/font-awesome/css/all.min.css',
 		"v4shim.css"          = 'html/font-awesome/css/v4-shims.min.css'
 	)
+
+/datum/asset/simple/lobby
+	assets = list(
+		"FixedsysExcelsior3.01Regular.ttf" = 'html/browser/FixedsysExcelsior3.01Regular.ttf',
+	)

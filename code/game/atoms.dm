@@ -30,6 +30,7 @@
 	var/list/original_atom
 	// Track if we are already had initialize() called to prevent double-initialization.
 	var/initialized = FALSE
+	var/collision_sound
 
 
 /atom/New(loc, ...)
@@ -554,5 +555,6 @@
 	return FALSE
 
 /atom/proc/handle_vehicle_collision(var/obj/manhattan/vehicle/vehicle)
-	playsound(loc,vehicle.collision_sound,100,0,4)
+	if(collision_sound)
+		playsound(loc,vehicle.collision_sound,100,0,4)
 	return 0

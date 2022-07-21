@@ -186,6 +186,12 @@
 /datum/reagent/esmolol/overdose(mob/living/carbon/human/H, alien)
 	H.add_chemical_effect(CE_PULSE, H.chem_doses[type] * -10)
 
+/datum/reagent/marker
+	name = "Blood marker"
+	id = "marker"
+	description = "General blood marker for use in MRI machines."
+
+	metabolism = REM * 0.1
 
 //ANALGESICS
 

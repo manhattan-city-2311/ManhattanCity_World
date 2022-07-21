@@ -8,8 +8,7 @@
 	full_name = "New-Manhattan City"
 	path = "manhattan"
 
-	lobby_icon = 'icons/lobby.dmi'
-	lobby_screens = list("manhattan")
+	lobby_screens = list('icons/lobby.gif')
 
 	zlevel_datum_type = /datum/map_z_level/new_manhattan
 

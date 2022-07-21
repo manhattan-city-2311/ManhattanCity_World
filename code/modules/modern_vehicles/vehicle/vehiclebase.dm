@@ -45,7 +45,6 @@
 
 	var/vehicle_view_modifier = 1 //The view-size modifier to apply to the occupants of the vehicle.
 	var/move_sound = null
-	var/collision_sound = 'sound/effects/clang.ogg'
 
 	var/datum/mobile_spawn/spawn_datum //Setting this makes this a mobile spawn point.
 
@@ -65,7 +64,7 @@
 
 	var/weight = 1500
 	var/skid = FALSE
-
+	var/serial_number
 	var/angle = 0
 
 	var/vector2/angle_vector = new
@@ -75,7 +74,6 @@
 	var/is_acceleration_pressed = FALSE
 	var/is_clutch_pressed		= FALSE
 	var/is_brake_pressed		= FALSE
-
 	var/aerodynamics_coefficent = 0.32
 
 
@@ -110,9 +108,12 @@
 		verbs += /obj/manhattan/vehicle/verb/toggle_headlights
 		set_light(0) //Switch off at spawn.
 	cargo_capacity = base_storage_capacity(capacity_flag)
+
 	for(var/id in components)
 		var/type = components[id]
 		components[id] = new type
+		components[id].vehicle = src
+	serial_number = rand(1, 9999)
 
 /obj/manhattan/vehicle/attack_generic(mob/living/simple_animal/attacker, damage, text)
 	visible_message("<span class = 'danger'>[attacker] [text] [src]</span>")
@@ -154,8 +155,8 @@
 /obj/manhattan/vehicle/proc/inactive_pilot_effects() //Overriden on a vehicle-by-vehicle basis.
 
 /obj/manhattan/vehicle/process()
-	for(var/obj/item/vehicle_part in components)
-		process()
+	for(var/obj/item/vehicle_part/vp in components)
+		vp.process()
 
 	if(world.time % 3)
 		comp_prof.give_gunner_weapons(src)
@@ -184,6 +185,7 @@
 	speed[2] = 0
 	if(!obstacle.handle_vehicle_collision(obstacle))
 		visible_message("<span class = 'danger'>[src] collides with [obstacle]!</span>")
+	comp_prof.take_component_damage(5,"brute") //very minor, in case we hit something small
 
 /obj/manhattan/vehicle/Bump(var/atom/obstacle)
 	..()
@@ -232,6 +234,18 @@
 	if(istype(I,/obj/item/weapon/grab))
 		handle_grab_attack(I,user)
 		return
+	if(istype(I, /obj/item/car_key))
+		var/obj/item/car_key/key = I
+		if(key.serial_number == serial_number)
+			playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1, 5)
+			if(block_enter_exit)
+				visible_message("<span class = 'notice'>[user] unlocks the [src].</span>")
+				block_enter_exit = 0
+			else
+				visible_message("<span class = 'notice'>[user] locks the [src].</span>")
+				block_enter_exit = 1
+		else
+			to_chat(user,"<span class = 'notice'>The key doesn't fit!</span>")
 	if(user.a_intent == I_HURT)
 		if(comp_prof.is_repair_tool(I))
 			comp_prof.repair_inspected_with_tool(I,user)

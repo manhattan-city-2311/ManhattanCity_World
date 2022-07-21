@@ -121,6 +121,7 @@ var/list/admin_verbs_sounds = list(
 	)
 
 var/list/admin_verbs_fun = list(
+	/client/proc/change_lobby_screen,
 	/client/proc/object_talk,
 	/datum/admins/proc/cmd_admin_dress,
 	/client/proc/cmd_admin_gib_self,
@@ -1115,3 +1116,29 @@ var/list/admin_verbs_event_manager = list(
 	SSpayroll.city_charges()
 
 	command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
+
+/client/proc/change_lobby_screen()
+	set name = "Lobby Screen: Change"
+	set category = "Fun"
+
+	if(!check_rights(R_FUN))
+		return
+
+	log_admin("[key_name(usr)] is trying to change the title screen.")
+	message_admins("[key_name_admin(usr)] is trying to change the title screen.")
+	feedback_add_details("admin_verb", "LSC")
+
+	switch(alert(usr, "How change Lobby Screen?", "Lobby Screen", "Change", "Reset", "Cancel"))
+		if("Change")
+			var/file = input(usr) as icon|null
+
+			if(!file) 
+				return
+
+			change_lobbyscreen(file)
+
+		if("Reset")
+			change_lobbyscreen()
+
+		if("Cancel")
+			return

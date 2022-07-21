@@ -64,6 +64,11 @@
 		new /obj/item/stack/rods(get_turf(src))
 		qdel(src)
 
+/obj/structure/railing/handle_vehicle_collision(var/obj/manhattan/vehicle/vehicle)
+	..()
+	take_damage(75)
+	vehicle.comp_prof.take_component_damage(15,"brute")
+
 /obj/structure/railing/proc/NeighborsCheck(var/UpdateNeighbors = 1)
 	check = 0
 	//if (!anchored) return
