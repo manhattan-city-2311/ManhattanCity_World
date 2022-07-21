@@ -4,6 +4,7 @@
 /obj/item/vehicle_part
     name = "vehicle component"
     desc = "An unknown part for some kind of vehicle."
+    var/id
     var/integrity = 100 //0-100
     var/broken = FALSE
     var/needs_processing = FALSE
@@ -13,7 +14,7 @@
     var/break_sound = null
 
 /obj/item/vehicle_part/process()
-    if(!needs_processing)
+    if(!needs_processing || broken || !vehicle)
         return
     part_process()
 

@@ -10,6 +10,7 @@
     name = "car engine"
     icon_state = "engine"
     armor = 50
+    id = VC_ENGINE
     var/rpm = 0
     var/torque = 0
     break_sound = 'sound/vehicles/modern/vehicle_running_out_of_gas.ogg'

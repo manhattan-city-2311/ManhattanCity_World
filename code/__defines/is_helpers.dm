@@ -15,6 +15,8 @@
 
 #define isorgan(A)		istype(A, /obj/item/organ/external)
 
+#define iscomponent(C) istype(C, /obj/item/vehicle_part)
+
 //---------------
 //#define isarea(D)		istype(D, /area)	//Built in
 /*

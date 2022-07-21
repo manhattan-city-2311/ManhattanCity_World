@@ -37,7 +37,7 @@
 
 //	planet_datums_to_make = list(/datum/planet/pollux)
 
-	usable_email_tlds = list("freemail.net", "ntmail.nt", "interpollux.org", "solnet.org", "vetralife.nt", "andromedian.org")
+	usable_email_tlds = list("freemail.net", "solnet.org")
 	default_law_type = /datum/ai_laws/pollux
 
 	station_networks = list(

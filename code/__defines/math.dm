@@ -219,6 +219,9 @@
 #define ISPOWEROFTWO(x) ((x & (x - 1)) == 0)
 #define ROUNDUPTOPOWEROFTWO(x) (2 ** -round(-log(2,x)))
 
+/proc/vector_neg(list/vector)
+	return list(-vector[1], -vector[2])
+
 /proc/frac(x)
 	return x % 1
 

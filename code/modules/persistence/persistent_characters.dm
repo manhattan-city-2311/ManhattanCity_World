@@ -78,10 +78,6 @@
 	mind.prefs.h_style = h_style
 	mind.prefs.f_style = f_style
 	mind.prefs.b_type = b_type
-	mind.prefs.synth_color = synth_color
-	mind.prefs.r_synth = r_synth
-	mind.prefs.g_synth = g_synth
-	mind.prefs.b_synth = b_synth
 	mind.prefs.med_record = med_record
 	mind.prefs.sec_record = sec_record
 	mind.prefs.gen_record = gen_record

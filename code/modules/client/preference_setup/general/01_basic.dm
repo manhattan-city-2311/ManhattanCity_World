@@ -139,16 +139,11 @@ F
 	else
 		. += "[pref.real_name]<br>"
 //	. += "<a href='?src=\ref[src];always_random_name=1'>Always Random Name: [pref.be_random_name ? "Yes" : "No"]</a><br>"
-	. += "<b>Прозвище:</b><br>"
-	. += "<a href='?src=\ref[src];nickname=1'><b>[pref.nickname]</b></a>"
-	. += "<br>"
 	. += "<b>Биологический пол:</b><br>"
 	if(!pref.existing_character)
 		. += "<a href='?src=\ref[src];bio_gender=1'><b>[gender2text(pref.biological_gender)]</b></a><br>"
 	else
 		. += "[gender2text(pref.biological_gender)]<br>"
-
-	. += "<b>Половая идентичность:</b><br> <a href='?src=\ref[src];id_gender=1'><b>[gender2text(pref.identifying_gender)]</b></a><br>"
 
 	. += "<b>Возраст:</b><br>"
 	. += "<a href='?src=\ref[src];age=1'>[pref.age] ([age2agedescription(pref.age)])</a><br><br>"

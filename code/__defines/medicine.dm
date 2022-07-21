@@ -57,5 +57,5 @@
 #define SHOCK_PAIN_MESSAGES_SEVERE "FUCKING STOP THIS!!", "You feel you are dying right now!", "You are losing consiciousness!", "The pain is driving you insane!", "OH-H GODNESS, PAIN IS INSANE!", "Pain is depriving you consiciousness!"
 
 #define REST_OXYGEN_CONSUMING 2
-#define WALK_OXYGEN_CONSUMING (3/WALK_DELAY)
-#define RUN_OXYGEN_CONSUMING  (10/RUN_DELAY)
+#define WALK_OXYGEN_CONSUMING (2/WALK_DELAY)
+#define RUN_OXYGEN_CONSUMING  (5/RUN_DELAY)

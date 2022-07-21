@@ -42,7 +42,7 @@ var/money_log			= null
 // var/const/starsys_name	= "Vir"
 var/const/game_version	= "World Server Redux"
 var/changelog_hash		= ""
-var/game_year			= (text2num(time2text(world.realtime, "YYYY")) + 244)
+var/game_year			= (text2num(time2text(world.realtime, "YYYY")) + 289)
 var/round_progressing = 1
 
 var/master_mode       = "canon" // "canon" aka spicier extended

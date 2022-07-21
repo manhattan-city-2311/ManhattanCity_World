@@ -1,3 +1,5 @@
+#define VECTOR_CHANGE_ANGLE 25
+
 /obj/manhattan/vehicle
 	name = "Vehicle"
 	desc = "Vehicle"
@@ -15,11 +17,6 @@
 	var/next_move_input_at = 0//When can we send our next movement input?
 	var/moving_x = 0
 	var/moving_y = 0
-	var/last_moved_axis = 0 //1 = X axis, 2 = Y axis.
-	var/list/speed = list(0,0) //The delay on movement in these directions.
-	var/drag = 1 //How much do we slow down per tick if no input is applied in a direction?
-	var/min_speed = 5 //What's the highest delay we can have?
-	var/max_speed = 1//What's the lowest number we can go to in terms of delay?
 	var/acceleration = 1 //By how much does our speed change per input?
 	var/braking_mode = 0 //1 = brakes active, -1 = purposefully reducing drag to slide.
 	var/can_space_move = 0
@@ -66,78 +63,58 @@
 		VC_ENGINE = /obj/item/vehicle_part/engine
 	)
 
-/obj/manhattan/vehicle/verb/toggle_headlights()
-	set name = "Toggle Headlights"
-	set category = "Vehicle"
-	set src in view(1)
-	var/mob/living/user = usr
-	if(!istype(user) || !(user in get_occupants_in_position("driver")))
-		to_chat(user,"<span class = 'notice'>You must be the driver of [src] to toggle the headlights.</span>")
-		return
+	var/weight = 1500
+	var/skid = FALSE
 
-	if(light_range == 0)
-		to_chat(user,"<span class = 'notice'>You toggle [src]'s headlights on.</span>")
-		set_light(initial(light_range))
-	else
-		to_chat(user,"<span class = 'notice'>You toggle [src]'s headlights off.</span>")
-		set_light(0)
+	var/angle = 0
 
-/obj/manhattan/vehicle/verb/keys()
-	set name = "Insert/Remove keys"
-	set category = "Vehicle"
-	set src in view(1)
-	var/mob/living/user = usr
-	if(!istype(user) || !(user in get_occupants_in_position("driver")))
-		to_chat(user,"<span class = 'notice'>You must be the driver of [src] to reach for the keys.</span>")
-		return
-	if(keys_in_ignition)
-		to_chat(user,"<span class = 'notice'>You remove the keys from the ignition.</span>")
-		keys_in_ignition = FALSE
-	else
-		to_chat(user,"<span class = 'notice'>You insert the keys into the ignition.</span>")
-		keys_in_ignition = TRUE
-	playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1, 5)
+	var/vector2/angle_vector = new
+	var/vector2/speed 		 = new
+	var/vector2/acceleration = new
 
-/obj/manhattan/vehicle/verb/engine()
-	set name = "Start/Stop engine"
-	set category = "Vehicle"
-	set src in view(1)
-	var/mob/living/user = usr
-	if(!istype(user) || !(user in get_occupants_in_position("driver")))
-		to_chat(user,"<span class = 'notice'>You must be the driver of [src] to reach for the ignition.</span>")
-		return
-	for(var/obj/item/vehicle_part/engine/engine in components)
-		if(!engine.needs_processing == TRUE)
-			engine.start()
-		else
-			engine.stop()
+	var/is_acceleration_pressed = FALSE
+	var/is_clutch_pressed		= FALSE
+	var/is_brake_pressed		= FALSE
 
-/obj/manhattan/vehicle/New()
+	var/aerodynamics_coefficent = 0.32
+
+
+/obj/manhattan/vehicle/proc/update_angle_vector()
+	angle_vector = vector2_from_angle(angle)
+
+/mob/living/carbon/human/Stat()
+	. = ..()
+	if(istype(loc, /obj/manhattan/vehicle))
+		if(statpanel("Status"))
+			stat("Speed:", speed.modulus())
+			stat("RPM:", components[VC_ENGINE]?.rpm)
+
+/obj/manhattan/vehicle/proc/get_components(type)
+	. = list()
+	for(var/i in components)
+		var/component = components[i]
+		if(istype(component, type))
+			. += component
+		
+/obj/manhattan/vehicle/proc/get_wheels()
+	return get_components(/obj/item/vehicle_part/wheel)
+
+/obj/manhattan/vehicle/initialize()
 	. = ..()
 	comp_prof = new comp_prof(src)
-	processing_objects += src
+	
+	START_PROCESSING(SSobj, src)
+
 	update_object_sprites()
 	if(light_range != 0)
 		verbs += /obj/manhattan/vehicle/verb/toggle_headlights
 		set_light(0) //Switch off at spawn.
 	cargo_capacity = base_storage_capacity(capacity_flag)
-
-/obj/manhattan/vehicles/attack_generic(var/mob/living/simple_animal/attacker,var/damage,var/text)
-/obj/manhattan/vehicle/initialize()
-	. = ..()
 	for(var/id in components)
 		var/type = components[id]
 		components[id] = new type
 
-/obj/manhattan/vehicle/return_air_for_internal_lifeform(var/mob/living/carbon/human/form)
-	return
-
-/obj/manhattan/vehicle/return_air()
-	if(internal_air)
-		return internal_air
-	return loc.return_air()
-
-/obj/manhattan/vehicle/attack_generic(var/mob/living/simple_animal/attacker,var/damage,var/text)
+/obj/manhattan/vehicle/attack_generic(mob/living/simple_animal/attacker, damage, text)
 	visible_message("<span class = 'danger'>[attacker] [text] [src]</span>")
 	var/pos_to_dam = should_damage_occ()
 	if(!isnull(pos_to_dam))
@@ -149,39 +126,6 @@
 			return 1
 		attacker.UnarmedAttack(mob_to_hit)
 	comp_prof.take_component_damage(damage,"brute")
-
-/obj/manhattan/vehicle/proc/display_ammo_status(var/mob/user)
-	for(var/m in ammo_containers)
-		var/obj/item/ammo_magazine/mag = m
-		var/msg = "is full!"
-		if(mag.stored_ammo.len >= mag.initial_ammo * 0.75)
-			msg = "is about 3 quarters full."
-		else if(mag.stored_ammo.len > mag.initial_ammo * 0.5)
-			msg = "is about half full."
-		else if(mag.stored_ammo.len > mag.initial_ammo * 0.25)
-			msg = "is about a quarter full."
-		to_chat(user,"<span class = 'notice'>[src]'s [mag] [msg]</span>")
-
-/obj/manhattan/vehicle/examine(var/mob/user)
-	. = ..()
-	if(!active)
-		to_chat(user,"[src]'s engine is inactive.")
-	if(guns_disabled)
-		to_chat(user,"[src]'s guns are damaged beyond use.")
-	if(movement_destroyed)
-		to_chat(user,"[src]'s movement is damaged beyond use.")
-	if(cargo_capacity)
-		if(!src.Adjacent(user))
-			if(used_cargo_space > 0)
-				to_chat(user,"<span>It looks like there is something in the cargo hold.</span>")
-		else
-			to_chat(user,"<span>It's cargo hold contains [used_cargo_space] of [cargo_capacity] units of cargo ([round(100*used_cargo_space/cargo_capacity)]% full).</span>")
-	if(carried_vehicle)
-		to_chat(user,"<span>It has a [carried_vehicle] mounted on it.</span>")
-
-	show_occupants_contained(user)
-
-	display_ammo_status(user)
 
 /obj/manhattan/vehicle/proc/pick_valid_exit_loc()
 	var/list/valid_exit_locs = list()
@@ -220,105 +164,12 @@
 			var/list/drivers = get_occupants_in_position("driver")
 			if(!drivers.len || isnull(drivers) || movement_destroyed)
 				inactive_pilot_effects()
+	
+	handle_movement()
 
 /obj/manhattan/vehicle/proc/update_object_sprites() //This is modified on a vehicle-by-vehicle basis to render mobsprites etc, a basic render of playerheads in the top right is used if no overidden.
 	underlays.Cut()
 	overlays.Cut()
-
-/obj/manhattan/vehicle/verb/verb_toggle_brakes()
-	set name = "Toggle Brakes"
-	set category = "Vehicle"
-	set src in view(1)
-
-	var/mob/living/user = usr
-	if(!istype(user))
-		return
-
-	var/list/driver_list = get_occupants_in_position("driver")
-	var/is_driver = FALSE
-	for(var/mob/driver in driver_list)
-		if(user == driver)
-			is_driver = TRUE
-			break
-	if(!is_driver)
-		to_chat(user,"<span class = 'notice'>You need to be the driver to do that.</span>")
-		return
-
-	toggle_brakes(user)
-
-/obj/manhattan/vehicle/proc/toggle_brakes(var/mob/toggler)
-	var/message = ""
-	switch(braking_mode)
-		if(0)
-			braking_mode = 1
-			drag *= 3
-			message = "Braking system enabled."
-		if(1)
-			braking_mode = 0
-			drag = initial(drag)
-			message = "Braking system disabled."
-		if(-1)
-			message = "Enable brake safeties first."
-
-	if(toggler)
-		to_chat(toggler,"<span class = 'notice'>[message]</span>")
-
-/obj/manhattan/vehicle/verb/verb_toggle_brake_safeties()
-	set name = "Toggle Brake Safeties"
-	set category = "Vehicle"
-	set src in view(1)
-
-	var/mob/living/user = usr
-	if(!istype(user))
-		return
-
-	var/list/driver_list = get_occupants_in_position("driver")
-	var/is_driver = FALSE
-	for(var/mob/driver in driver_list)
-		if(user == driver)
-			is_driver = TRUE
-			break
-	if(!is_driver)
-		to_chat(user,"<span class = 'notice'>You need to be the driver to do that.</span>")
-		return
-
-	toggle_brake_safeties(user)
-
-/obj/manhattan/vehicle/proc/toggle_brake_safeties(var/mob/toggler)
-	var/message = ""
-	switch(braking_mode)
-		if(0)
-			braking_mode = -1
-			drag /= 2
-			message = "Braking system safeties disabled."
-		if(-1)
-			braking_mode = 0
-			drag = initial(drag)
-			message = "Braking system safeties enabled."
-		if(1)
-			message = "Disable the brakes first."
-
-	if(toggler)
-		to_chat(toggler,"<span class = 'notice'>[message]</span>")
-
-/obj/manhattan/vehicle/Move(var/newloc,var/newdir)
-	if(abs(speed[1]) > abs(speed[2]))
-		if(speed[1] > 0)
-			newdir = EAST
-		else
-			newdir = WEST
-	else
-		if(speed[2] > 0)
-			newdir = NORTH
-		else
-			newdir = SOUTH
-	if(anchored)
-		anchored = 0
-		. = ..()
-		anchored = 1
-	else
-		. = ..()
-	update_object_sprites()
 
 /obj/manhattan/vehicle/fall()
 	if(can_traverse_zs && active)
@@ -337,68 +188,6 @@
 /obj/manhattan/vehicle/Bump(var/atom/obstacle)
 	..()
 	. = collide_with_obstacle(obstacle)
-
-/obj/manhattan/vehicle/proc/drag_slowdown(var/index,var/slowdown_amount = drag)
-	if(speed[index] > 0)
-		speed[index] = max(speed[index] - drag,0)
-	else
-		speed[index] = min(speed[index] + drag,0)
-
-/obj/manhattan/vehicle/proc/movement_loop(var/speed_index_target = 1)
-	var/noprocstart = 0
-	if(moving_x || moving_y)
-		noprocstart = 1
-	switch(speed_index_target)
-		if(1)
-			moving_x = 1
-		if(2)
-			moving_y = 1
-	if(noprocstart)
-		return
-	spawn()
-		while (moving_x || moving_y)
-			var/delay = max(min_speed - vector_modulus(speed), max_speed)
-			sleep(delay)
-
-			glide_size = 0
-
-			for(var/mob/occupant in occupants)
-				if(!ismob(occupant))
-					continue
-
-				occupant.update_glide(delay)
-
-				if(!glide_size)
-					glide_size = occupant.glide_size
-
-			if(speed[1] == 0)
-				moving_x = 0
-			else
-				if(speed[1] > 0)
-					last_move = EAST
-					. = Move(get_step(loc,EAST),EAST)
-				else
-					last_move = WEST
-					. = Move(get_step(loc,WEST),WEST)
-
-			if(speed[2] == 0)
-				moving_y = 0
-			else
-				if(speed[2] > 0)
-					last_move = NORTH
-					. = Move(get_step(loc,NORTH),NORTH)
-				else
-					last_move = SOUTH
-					. = Move(get_step(loc,SOUTH),SOUTH)
-			var/list/index_list = list(1,2)
-			for(var/index in index_list)
-				if(last_moved_axis == index)
-					continue
-				drag_slowdown(index)
-			if(world.time >= next_move_input_at)
-				last_moved_axis = 0
-			if(move_sound && world.time % 2 == 0)
-				playsound(loc,move_sound,75,0,4)
 
 /obj/manhattan/vehicle/bullet_act(var/obj/item/projectile/P, var/def_zone)
 	var/pos_to_dam = should_damage_occ()
@@ -426,68 +215,6 @@
 		for(var/mob/living/m in get_occupants_in_position(position))
 			m.apply_damage((250/severity)*(exposed_positions[position]/100),BRUTE,,m.run_armor_check(null,"bomb"))
 
-/obj/manhattan/vehicle/relaymove(var/mob/user, var/direction)
-	if(world.time < next_move_input_at)
-		return 0
-	if(movement_destroyed)
-		to_chat(user,"<span class = 'notice'>[src] is in no state to move!</span>")
-		return 0
-	for(var/obj/item/vehicle_part/engine/engine in components)
-		if(engine.needs_processing == 0)
-			to_chat(user,"<span class = 'notice'>The engine is shut down!</span>")
-			return 0
-		engine.rpm += 100
-	var/list/driver_list = get_occupants_in_position("driver")
-	var/is_driver = FALSE
-	for(var/mob/driver in driver_list)
-		if(user == driver)
-			is_driver = TRUE
-			break
-	if(!is_driver)
-		return -1 //doesn't return 0 so we can differentiate this from the other problems for simple mobs.
-
-	if(!(direction in list(NORTH, SOUTH, EAST, WEST)))
-		var/dirturn = 45
-		if(prob(50))
-			dirturn = -45
-		direction = turn(direction,dirturn)
-	switch(direction)
-		if(NORTH)
-			last_moved_axis = 2
-			speed[2] = min(speed[2] + acceleration, min_speed)
-		if(SOUTH)
-			last_moved_axis = 2
-			speed[2] = max(speed[2] - acceleration, -min_speed)
-		if(EAST)
-			last_moved_axis = 1
-			speed[1] = min(speed[1] + acceleration, min_speed)
-		if(WEST)
-			last_moved_axis = 1
-			speed[1] = max(speed[1] - acceleration, -min_speed)
-	if(braking_mode == 1) //If we're braking, we don't get the leeway in movement.
-		last_moved_axis = 0
-
-	if(speed[1] != 0 && !moving_x)
-		spawn()
-			movement_loop(1)
-	else if(speed[2] != 0 && !moving_y)
-		spawn()
-			movement_loop(2)
-
-	next_move_input_at = world.time + acceleration
-	return 1
-
-/obj/manhattan/vehicle/verb/verb_inspect_components()
-	set name = "Inspect Components"
-	set category = "Vehicle"
-	set src in view(1)
-
-	var/mob/living/user = usr
-	if(!istype(user))
-		return
-
-	comp_prof.inspect_components(user)
-
 /obj/manhattan/vehicle/attack_hand(var/mob/user)
 	if(user.a_intent != "harm")
 		if(!enter_as_position(user,"driver"))
@@ -495,10 +222,6 @@
 				enter_as_position(user,"passenger")
 	else
 		. = ..()
-
-/*/obj/vehicles/attack_ghost(var/mob/observer/ghost/user)
-	if(spawn_datum && spawn_datum.is_spawn_active)
-		spawn_datum.handle_spawn(user,src)*/
 
 /obj/manhattan/vehicle/attackby(var/obj/item/I,var/mob/user)
 	if(elevation > user.elevation || elevation > I.elevation)
