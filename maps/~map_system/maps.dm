@@ -81,7 +81,7 @@ var/list/all_maps = list()
 
 	var/allowed_spawns = list("Arrivals Shuttle", "Cryogenic Storage", "Cyborg Storage")
 
-	var/lobby_icon = 'icons/misc/title.dmi' // The icon which contains the lobby image(s)
+	var/current_lobby_screen = 'icons/misc/title.dmi' // The icon which contains the lobby image(s)
 	var/list/lobby_screens = list("mockingjay00")                 // The list of lobby screen to pick() from. If left unset the first icon state is always selected.
 
 	var/default_law_type = /datum/ai_laws/pollux // The default lawset use by synth units, if not overriden by their laws var.
@@ -131,6 +131,9 @@ var/list/all_maps = list()
 		map_levels = station_levels.Copy()
 	if(!allowed_jobs || !allowed_jobs.len)
 		allowed_jobs = subtypesof(/datum/job)
+
+	spawn()
+		change_lobbyscreen()
 
 /datum/map/proc/setup_map()
 	return
@@ -271,3 +274,20 @@ var/list/all_maps = list()
 
 /datum/map/proc/get_map_info()
 	return "No map information available"
+
+/datum/map/proc/show_titlescreen(client/C)
+	winset(C, "lobbybrowser", "is-disabled=false;is-visible=true")
+
+	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/lobby)
+	assets.send(C)
+
+	show_browser(C, current_lobby_screen, "file=titlescreen.gif;display=0")
+
+	if(isnewplayer(C.mob))
+		var/mob/new_player/player = C.mob
+		show_browser(C, player.get_lobby_html(), "window=lobbybrowser")
+
+/datum/map/proc/hide_titlescreen(client/C)
+	if(C.mob) // Check if the client is still connected to something
+		// Hide title screen, allowing player to see the map
+		winset(C, "lobbybrowser", "is-disabled=true;is-visible=false")

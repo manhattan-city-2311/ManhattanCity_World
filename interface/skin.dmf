@@ -2,22 +2,22 @@ macro "borghotkeymode"
 	elem 
 		name = "Tab"
 		command = ".winset \"mainwindow.macro=borgmacro hotkey_toggle.is-checked=false input.focus=true input.background-color=#D3B5B5\""
-	elem
+	elem 
 		name = "Shift"
 		command = "KeyDown Shift"
-	elem
+	elem 
 		name = "Shift+UP"
 		command = "KeyUp Shift"
-	elem
+	elem 
 		name = "Ctrl"
 		command = "KeyDown Ctrl"
-	elem
+	elem 
 		name = "Ctrl+UP"
 		command = "KeyUp Ctrl"
-	elem
+	elem 
 		name = "Alt"
 		command = "KeyDown Alt"
-	elem
+	elem 
 		name = "Alt+UP"
 		command = "KeyUp Alt"
 	elem 
@@ -41,7 +41,7 @@ macro "borghotkeymode"
 	elem 
 		name = "West"
 		command = "KeyDown West"
-	elem
+	elem 
 		name = "West+UP"
 		command = "KeyUp West"
 	elem 
@@ -53,7 +53,7 @@ macro "borghotkeymode"
 	elem 
 		name = "North"
 		command = "KeyDown North"
-	elem
+	elem 
 		name = "North+UP"
 		command = "KeyUp North"
 	elem 
@@ -65,7 +65,7 @@ macro "borghotkeymode"
 	elem 
 		name = "East"
 		command = "KeyDown East"
-	elem
+	elem 
 		name = "East+UP"
 		command = "KeyUp East"
 	elem 
@@ -77,7 +77,7 @@ macro "borghotkeymode"
 	elem 
 		name = "South"
 		command = "KeyDown South"
-	elem
+	elem 
 		name = "South+UP"
 		command = "KeyUp South"
 	elem 
@@ -116,13 +116,13 @@ macro "borghotkeymode"
 	elem 
 		name = "A"
 		command = "KeyDown A"
-	elem
+	elem 
 		name = "A+UP"
 		command = "KeyUp A"
 	elem 
 		name = "D"
 		command = "KeyDown D"
-	elem
+	elem 
 		name = "D+UP"
 		command = "KeyUp D"
 	elem 
@@ -158,7 +158,7 @@ macro "borghotkeymode"
 	elem "s_key"
 		name = "S"
 		command = "KeyDown S"
-	elem
+	elem 
 		name = "S+UP"
 		command = "KeyUp S"
 	elem 
@@ -170,7 +170,7 @@ macro "borghotkeymode"
 	elem "w_key"
 		name = "W"
 		command = "KeyDown W"
-	elem
+	elem 
 		name = "W+UP"
 		command = "KeyUp W"
 	elem 
@@ -259,19 +259,19 @@ macro "macro"
 	elem 
 		name = "Shift"
 		command = "KeyDown Shift"
-	elem
+	elem 
 		name = "Shift+UP"
 		command = "KeyUp Shift"
-	elem
+	elem 
 		name = "Ctrl"
 		command = "KeyDown Ctrl"
-	elem
+	elem 
 		name = "Ctrl+UP"
 		command = "KeyUp Ctrl"
-	elem
+	elem 
 		name = "Alt"
 		command = "KeyDown Alt"
-	elem
+	elem 
 		name = "Alt+UP"
 		command = "KeyUp Alt"
 	elem 
@@ -298,7 +298,7 @@ macro "macro"
 	elem 
 		name = "West"
 		command = "KeyDown West"
-	elem
+	elem 
 		name = "West+UP"
 		command = "KeyUp West"
 	elem 
@@ -310,7 +310,7 @@ macro "macro"
 	elem 
 		name = "North"
 		command = "KeyDown North"
-	elem
+	elem 
 		name = "North+UP"
 		command = "KeyUp North"
 	elem 
@@ -322,7 +322,7 @@ macro "macro"
 	elem 
 		name = "East"
 		command = "KeyDown East"
-	elem
+	elem 
 		name = "East+UP"
 		command = "KeyUp East"
 	elem 
@@ -334,7 +334,7 @@ macro "macro"
 	elem 
 		name = "South"
 		command = "KeyDown South"
-	elem
+	elem 
 		name = "South+UP"
 		command = "KeyUp South"
 	elem 
@@ -358,13 +358,13 @@ macro "macro"
 	elem 
 		name = "CTRL+A"
 		command = "KeyDown A"
-	elem
+	elem 
 		name = "CTRL+A+UP"
 		command = "KeyUp A"
 	elem 
 		name = "CTRL+D"
 		command = "KeyDown D"
-	elem
+	elem 
 		name = "CTRL+D+UP"
 		command = "KeyUp D"
 	elem 
@@ -385,13 +385,13 @@ macro "macro"
 	elem 
 		name = "CTRL+S"
 		command = "KeyDown S"
-	elem
+	elem 
 		name = "CTRL+S+UP"
 		command = "KeyUp S"
 	elem 
 		name = "CTRL+W"
 		command = "KeyDown W"
-	elem
+	elem 
 		name = "CTRL+W+UP"
 		command = "KeyUp W"
 	elem 
@@ -471,19 +471,19 @@ macro "hotkeymode"
 	elem 
 		name = "Shift"
 		command = "KeyDown Shift"
-	elem
+	elem 
 		name = "Shift+UP"
 		command = "KeyUp Shift"
-	elem
+	elem 
 		name = "Ctrl"
 		command = "KeyDown Ctrl"
-	elem
+	elem 
 		name = "Ctrl+UP"
 		command = "KeyUp Ctrl"
-	elem
+	elem 
 		name = "Alt"
 		command = "KeyDown Alt"
-	elem
+	elem 
 		name = "Alt+UP"
 		command = "KeyUp Alt"
 	elem 
@@ -510,7 +510,7 @@ macro "hotkeymode"
 	elem 
 		name = "West"
 		command = "KeyDown West"
-	elem
+	elem 
 		name = "West+UP"
 		command = "KeyUp West"
 	elem 
@@ -522,7 +522,7 @@ macro "hotkeymode"
 	elem 
 		name = "North"
 		command = "KeyDown North"
-	elem
+	elem 
 		name = "North+UP"
 		command = "KeyUp North"
 	elem 
@@ -534,7 +534,7 @@ macro "hotkeymode"
 	elem 
 		name = "East"
 		command = "KeyDown East"
-	elem
+	elem 
 		name = "East+UP"
 		command = "KeyUp East"
 	elem 
@@ -543,10 +543,10 @@ macro "hotkeymode"
 	elem 
 		name = "CTRL+South"
 		command = "southface"
-	elem
+	elem 
 		name = "South"
 		command = "KeyDown South"
-	elem
+	elem 
 		name = "South+UP"
 		command = "KeyUp South"
 	elem 
@@ -585,7 +585,7 @@ macro "hotkeymode"
 	elem 
 		name = "A"
 		command = "KeyDown A"
-	elem
+	elem 
 		name = "A+UP"
 		command = "KeyUp A"
 	elem 
@@ -594,7 +594,7 @@ macro "hotkeymode"
 	elem 
 		name = "D"
 		command = "KeyDown D"
-	elem
+	elem 
 		name = "D+UP"
 		command = "KeyUp D"
 	elem 
@@ -645,7 +645,7 @@ macro "hotkeymode"
 	elem "s_key"
 		name = "S"
 		command = "KeyDown S"
-	elem
+	elem 
 		name = "S+UP"
 		command = "KeyUp S"
 	elem 
@@ -657,7 +657,7 @@ macro "hotkeymode"
 	elem "w_key"
 		name = "W"
 		command = "KeyDown W"
-	elem
+	elem 
 		name = "W+UP"
 		command = "KeyUp W"
 	elem 
@@ -746,22 +746,22 @@ macro "borgmacro"
 	elem 
 		name = "Tab"
 		command = ".winset \"mainwindow.macro=borghotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true input.background-color=#F0F0F0\""
-	elem
+	elem 
 		name = "Shift"
 		command = "KeyDown Shift"
-	elem
+	elem 
 		name = "Shift+UP"
 		command = "KeyUp Shift"
-	elem
+	elem 
 		name = "Ctrl"
 		command = "KeyDown Ctrl"
-	elem
+	elem 
 		name = "Ctrl+UP"
 		command = "KeyUp Ctrl"
-	elem
+	elem 
 		name = "Alt"
 		command = "KeyDown Alt"
-	elem
+	elem 
 		name = "Alt+UP"
 		command = "KeyUp Alt"
 	elem 
@@ -788,7 +788,7 @@ macro "borgmacro"
 	elem 
 		name = "West"
 		command = "KeyDown West"
-	elem
+	elem 
 		name = "West+UP"
 		command = "KeyUp West"
 	elem 
@@ -800,7 +800,7 @@ macro "borgmacro"
 	elem 
 		name = "North"
 		command = "KeyDown North"
-	elem
+	elem 
 		name = "North+UP"
 		command = "KeyUp North"
 	elem 
@@ -812,7 +812,7 @@ macro "borgmacro"
 	elem 
 		name = "East"
 		command = "KeyDown East"
-	elem
+	elem 
 		name = "East+UP"
 		command = "KeyUp East"
 	elem 
@@ -821,10 +821,10 @@ macro "borgmacro"
 	elem 
 		name = "CTRL+South"
 		command = "southface"
-	elem
+	elem 
 		name = "South"
 		command = "KeyDown South"
-	elem
+	elem 
 		name = "South+UP"
 		command = "KeyUp South"
 	elem 
@@ -848,13 +848,13 @@ macro "borgmacro"
 	elem 
 		name = "CTRL+A"
 		command = "KeyDown A"
-	elem
+	elem 
 		name = "CTRL+A+UP"
 		command = "KeyUp A"
 	elem 
 		name = "CTRL+D"
 		command = "KeyDown D"
-	elem
+	elem 
 		name = "CTRL+D+UP"
 		command = "KeyUp D"
 	elem 
@@ -872,13 +872,13 @@ macro "borgmacro"
 	elem 
 		name = "CTRL+S"
 		command = "KeyDown S"
-	elem
+	elem 
 		name = "CTRL+S+UP"
 		command = "KeyUp S"
 	elem 
 		name = "CTRL+W"
 		command = "KeyDown W"
-	elem
+	elem 
 		name = "CTRL+W+UP"
 		command = "KeyUp W"
 	elem 
@@ -1310,15 +1310,12 @@ window "mainwindow"
 		icon = 'icons\\ws_64.png'
 		macro = "macro"
 		menu = "menu"
-		outer-size = 1693x1050
-		inner-size = 1677x991
 	elem "mainvsplit"
 		type = CHILD
 		pos = 0,0
 		size = 1674x959
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
@@ -1346,10 +1343,11 @@ window "mainwindow"
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
-		pos = 281,-30
+		pos = 281,0
 		size = 892x566
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1357,6 +1355,8 @@ window "mapwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 906x580
+		inner-size = 892x566
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -1369,6 +1369,16 @@ window "mapwindow"
 		saved-params = "icon-size"
 		on-show = ".winset\"mainwindow.mainvsplit.left=mapwindow\""
 		on-hide = ".winset\"mainwindow.mainvsplit.left=\""
+	elem "lobbybrowser"
+		type = BROWSER
+		pos = 0,0
+		size = 892x566
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = none
+		is-visible = false
+		is-disabled = true
+		saved-params = ""
 
 window "outputwindow"
 	elem "outputwindow"

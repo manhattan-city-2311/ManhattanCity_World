@@ -385,7 +385,7 @@ SUBSYSTEM_DEF(jobs)
 	for(var/mob/new_player/player in unassigned)
 		if(player.client.prefs.alternate_option == RETURN_TO_LOBBY)
 			player.ready = 0
-			player.new_player_panel_proc()
+			send_output(player.client, player.ready, "lobbybrowser:imgsrc")
 			unassigned -= player
 	return 1
 

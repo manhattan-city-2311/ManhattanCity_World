@@ -67,3 +67,11 @@ GLOBAL_LIST_INIT(floating_chat_colors, list())
 	for(var/client/C in show_to)
 		C.images -= I
 		qdel(I)
+
+/proc/refresh_lobby_browsers()
+	for(var/mob/new_player/player in player_list)
+		INVOKE_ASYNC(using_map, /datum/map/proc/show_titlescreen, player.client)
+
+/proc/change_lobbyscreen(new_screen)
+	using_map.current_lobby_screen = new_screen || pick(using_map.lobby_screens)
+	refresh_lobby_browsers()

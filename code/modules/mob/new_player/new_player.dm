@@ -26,51 +26,9 @@
 	if (client)
 		client.ooc(message)
 
-/mob/new_player/verb/new_player_panel()
-	set src = usr
-
-	new_player_panel_proc()
-
-/mob/new_player/proc/new_player_panel_proc()
-	var/output = "<div align='center'>"
-	output += "[using_map.get_map_info()]"
-	output +="<hr>"
-
-	output += "<a href='byond://?src=\ref[src];show_preferences=1'>Character Panel</A></p>"
-
-	output +="<hr>"
-
-	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
-		if(ready)
-			output += "<p>\[ <span class='linkOn'><b>Ready</b></span> | <a href='byond://?src=\ref[src];ready=0'>Not Ready</a> \]"
-		else
-			output += "<p>\[ <a href='byond://?src=\ref[src];ready=1'>Ready</a> | <span class='linkOn'><b>Not Ready</b></span> \]"
-
-	else
-		output += "<a href='byond://?src=\ref[src];manifest=1'>Citizen's Roster</A><br>"
-		output += "<p><a href='byond://?src=\ref[src];late_join=1'>Join Game!</A>"
-
-
-	output += "<hr>Current character: <b>[client.prefs.real_name]</b>, [client.prefs.economic_status]<br>"
-	output += "Money: <b>[cash2text( client.prefs.money_balance, FALSE, TRUE, TRUE )]</b><br>"
-	if(SSbusiness)
-		var/datum/business/B = get_business_by_owner_uid(client.prefs.unique_id)
-		if(B)
-			output += "Business Funds: <b>[cash2text( B.get_funds(), FALSE, TRUE, TRUE )]</b><br>"
-	if(SSpersistent_options && SSpersistent_options.get_persistent_formatted_value("president_msg"))
-		output += "<b>President Broadcast:</b><br>"
-		output += "<div class='statusDisplay'>[SSpersistent_options.get_persistent_formatted_value("president_msg")]</div><br>"
-	output += "</div>"
-
-	if(news_data.city_newspaper && !client.seen_news)
-		show_latest_news(news_data.city_newspaper)
-
-	panel = new(src, "Welcome","Welcome, [client.prefs.real_name]", 600, 580, src)
-	panel.set_window_options("can_close=0")
-	panel.set_content(output)
-	panel.open()
-	return
-
+/hook/roundstart/proc/update_lobby_browsers()
+	refresh_lobby_browsers()
+	return TRUE
 
 /mob/new_player/Stat()
 	..()
@@ -124,22 +82,14 @@
 	return TRUE
 
 /mob/new_player/Topic(href, href_list[])
-	if(!client)	return 0
+	if (usr != src || !client)
+		return 0
 
-	if(href_list["show_preferences"])
+	if(href_list["lobby_setup"])
 		client.prefs.open_load_dialog(src)
 		return 1
 
-	if(href_list["ready"])
-		ready = !ready
-		new_player_panel_proc()
-
-	if(href_list["refresh"])
-		//src << browse(null, "window=playersetup") //closes the player setup window
-		panel.close()
-		new_player_panel_proc()
-
-	if(href_list["late_join"])
+	if(href_list["lobby_join"])
 
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
@@ -147,9 +97,9 @@
 
 		LateChoices()
 
-	if(href_list["manifest"])
-		ViewManifest()
-
+	if(href_list["lobby_ready"])
+		ready = !ready
+		return 1
 
 	if(href_list["set_alt_title"])
 		var/E = locate(href_list["job"])
@@ -194,8 +144,6 @@
 	if(!ready && href_list["preference"])
 		if(client)
 			client.prefs.process_link(src, href_list)
-	else if(!href_list["late_join"])
-		new_player_panel()
 
 /mob/new_player/proc/handle_server_news()
 	if(!client)
