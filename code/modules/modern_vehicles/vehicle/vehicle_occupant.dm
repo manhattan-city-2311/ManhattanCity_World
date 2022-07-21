@@ -20,6 +20,7 @@
 	occupants -= user
 	contents -= user
 	user.forceMove(loc_moveto)
+	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
 	update_object_sprites()
 	update_user_view(user,1)
 	return
@@ -75,8 +76,6 @@
 	return
 
 /obj/manhattan/vehicle/proc/check_position_blocked(var/position)
-	if(block_enter_exit)
-		return 1
 	var/list/occupants_in_pos = get_occupants_in_position(position)
 	if(position == "passenger" && occupants_in_pos.len + 1 > occupants[1])
 		return 1
@@ -87,6 +86,9 @@
 	return 0
 
 /obj/manhattan/vehicle/proc/enter_as_position(var/mob/user,var/position = "passenger")
+	if(block_enter_exit)
+		to_chat(user,"<span class = 'notice'>The [src] is locked.</span>")
+		return 0
 	if(check_position_blocked(position))
 		to_chat(user,"<span class = 'notice'>No [position] spaces in [src]</span>")
 		return 0

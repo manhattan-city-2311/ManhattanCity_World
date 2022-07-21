@@ -30,6 +30,7 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	var/list/attracted = list()
 	var/obj/machinery/mri_console/console
 	var/operating = FALSE
+	var/mob_has_marker = FALSE
 
 /obj/machinery/mri/initialize()
 	. = ..()
@@ -77,9 +78,14 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	operating = FALSE
 	src << sound(null, repeat = 0, wait = 0, channel = MRI_SOUND_CHANNEL)
 
+/obj/machinery/mri/proc/check_for_marker(var/mob/living/carbon/human/occupant)
+	mob_has_marker = FALSE
+	if(occupant.reagents.has_reagent("marker"))
+		mob_has_marker = TRUE
+
 /obj/machinery/mri/proc/generate_printing_text(var/mob/living/carbon/human/occupant)
 	var/dat = ""
-
+	check_for_marker()
 	if(src)
 		dat = "<font color='blue'><b>MRI Scan Results:</b></font><br>" //Blah obvious
 		if(istype(occupant)) //is there REALLY someone in there?
@@ -95,14 +101,16 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 			if(occupant.has_brain_worms())
 				dat += "Large growth detected in frontal lobe, possibly cancerous. Surgical removal is recommended.<br>"
 
-			if(occupant.vessel)
+			if(occupant.vessel && mob_has_marker)
 				var/blood_volume = round(occupant.vessel.get_reagent_amount("blood"))
 				var/blood_max = occupant.species.blood_volume
 				var/blood_percent =  blood_volume / blood_max
 				blood_percent *= 100
-
 				extra_font = "<font color=[blood_volume > 448 ? "blue" : "red"]>"
 				dat += "[extra_font]\tBlood Level %: [blood_percent] ([blood_volume] units)</font><br>"
+			else
+				extra_font = "<font color=red>"
+				dat += "[extra_font]\tNo blood marker found.</font><br>"
 
 			dat += "<hr><table border='1'>"
 			dat += "<tr>"

@@ -92,6 +92,11 @@
 		die()
 		return
 
+/obj/structure/flora/tree/handle_vehicle_collision(var/obj/manhattan/vehicle/vehicle)
+	..()
+	die()
+	vehicle.comp_prof.take_component_damage(40,"brute")
+
 // Called when the tree loses all health, for whatever reason.
 /obj/structure/flora/tree/proc/die()
 	if(is_stump)

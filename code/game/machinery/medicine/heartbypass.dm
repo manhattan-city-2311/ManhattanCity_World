@@ -11,7 +11,7 @@
 	var/pumping_blood = FALSE
 	var/oxygenating_blood = FALSE
 
-	var/oxygen_setting = 15
+	var/oxygen_setting = 50
 
 /obj/machinery/acm/update_icon()
 	if(pumping_blood)
