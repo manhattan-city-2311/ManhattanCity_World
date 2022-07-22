@@ -281,9 +281,9 @@
 		var/obj/item/organ/external/o = get_organ(organ)
 		if(o && o.splinted && o.splinted.loc == o)
 			msg += "<span class='warning'>[T.He] [T.has] \a [o.splinted] on [T.his] [o.name]!</span><br>"
-
-	if(suiciding)
-		msg += "<span class='warning'>[T.He] appears to have commited suicide... there is no hope of recovery.</span><br>"
+	
+	if(intubated)
+		msg += "<span class='notice'>[T.he] [T.is] intubated.</span>\n"
 
 	if(mSmallsize in mutations)
 		msg += "[T.He] [T.is] very short!<br>"

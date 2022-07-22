@@ -2040,6 +2040,7 @@
 #include "code\modules\mob\living\carbon\human\medicine\handling.dm"
 #include "code\modules\mob\living\carbon\human\medicine\hormones.dm"
 #include "code\modules\mob\living\carbon\human\medicine\infections.dm"
+#include "code\modules\mob\living\carbon\human\medicine\intubation.dm"
 #include "code\modules\mob\living\carbon\human\medicine\organ_disease.dm"
 #include "code\modules\mob\living\carbon\human\medicine\regeneration.dm"
 #include "code\modules\mob\living\carbon\human\species\species.dm"

@@ -27,6 +27,11 @@
 			if(do_after(user,HUMAN_STRIP_DELAY,src))
 				remove_splints(user)
 			return
+		if("intubation")
+			visible_message("<span class='danger'>\The [user] is trying to remove \the [src]'s intubation tube!</span>")
+			if(do_after(user,HUMAN_STRIP_DELAY,src))
+				remove_intubation(user)
+			return
 		if("sensors")
 			visible_message("<span class='danger'>\The [user] is trying to set \the [src]'s sensors!</span>")
 			if(do_after(user,HUMAN_STRIP_DELAY,src))
@@ -137,3 +142,10 @@
 			visible_message("<span class='danger'>\The [user] removes \the [src]'s splints!</span>")
 		else
 			to_chat(user, "<span class='warning'>\The [src] has no splints to remove.</span>")
+
+/mob/living/carbon/human/proc/remove_intubation(var/mob/living/user)
+	if(!intubated)
+		to_chat(user, "<span class='warning'>\The [src] is not intubated.</span>")
+		return
+	visible_message("<span class='danger'>\The [user] pulls an intubation tube out of [src]'s throat!</span>")
+	intubated = FALSE

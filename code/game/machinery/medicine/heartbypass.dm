@@ -3,7 +3,7 @@
 	icon = 'icons/obj/iv_drip.dmi'
 	icon_state = "cpb_idle"
 	anchored = 0
-	density = 0
+	density = 1
 	var/mob/living/carbon/human/attached = null
 
 	var/setting = NORMAL_MCV / 2 // mcv add rate.
@@ -38,7 +38,6 @@
 			return
 		visible_message("[usr] attaches \the [src] tubes to the aorta in \the [over_object]'s chest cavity.")
 		attached = over_object
-		update_icon()
 		if(!do_after(usr, 25, src))
 			return
 		visible_message("\the [src] beeps as \the [usr] sets up the necessary telemetry.")
@@ -46,10 +45,12 @@
 			return
 		visible_message("[usr] switches on the blood pump.")
 		pumping_blood = TRUE
+		update_icon()
 		if(!do_after(usr, 10, src))
 			return
 		visible_message("[usr] turns on the artificial blood oxygenation.")
 		oxygenating_blood = TRUE
+		update_icon()
 		if(!do_after(usr, 15, src))
 			return
 		visible_message("[usr] finishes setting up \the [src].")
@@ -86,9 +87,11 @@
 	switch(setting)
 		if("Blood pumping")
 			pumping_blood = !pumping_blood
+			update_icon()
 			visible_message("[icon2html(src, viewers(src))]\the [src] beeps as \the [usr] [pumping_blood ? "enables" : "disables"] blood pumping.")
 		if("Blood oxygenating")
 			oxygenating_blood = !oxygenating_blood
+			update_icon()
 			visible_message("[icon2html(src, viewers(src))]\the [src] beeps as \the [usr] [oxygenating_blood ? "enables" : "disables"] blood oxygenating.")
 		if("Pumping setting")
 			var/amount = input("Select pumping setting in mL/M", "Pumping setting") as null|num

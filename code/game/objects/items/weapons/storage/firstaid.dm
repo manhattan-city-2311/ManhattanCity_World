@@ -210,3 +210,25 @@
 	name = "bottle of Iron pills"
 	desc = "Contains pills used to aid in blood regeneration."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/iron = 7)
+
+/obj/item/weapon/storage/backpack/dufflebag/med/emt
+	name = "emergency medical operations kit"
+	desc = "A dufflebag full of supplies for emergency medical operations."
+	icon_state = "duffle_emt"
+	starts_with = list(
+		/obj/item/intubation_tube,
+		/obj/item/intubation_baloon,
+		/obj/item/weapon/reagent_containers/syringe,
+		/obj/item/weapon/needle,
+		/obj/item/weapon/needle,
+		/obj/item/weapon/needle,
+		/obj/item/weapon/defibrillator/loaded,
+		/obj/item/weapon/surgical/scalpel,
+		/obj/item/stack/medical/gauze,
+		/obj/item/stack/medical/harness,
+		/obj/item/stack/medical/splint,
+		/obj/item/stack/medical/ointment,
+		/obj/item/weapon/reagent_containers/glass/bottle/adenosine,
+		/obj/item/weapon/reagent_containers/glass/bottle/ampoule/lidocaine,
+		/obj/item/weapon/reagent_containers/glass/bottle/ampoule/morphine
+	)

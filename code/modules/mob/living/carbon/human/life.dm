@@ -238,7 +238,6 @@
 		return
 	if(head && (head.item_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
-	..()
 
 /mob/living/carbon/human/proc/handle_glucose_level()
 	var/level = bloodstr.get_reagent_amount("glucose")
@@ -1359,4 +1358,3 @@
 				H.vomit()
 
 #undef HUMAN_MAX_OXYLOSS
-#undef HUMAN_CRIT_MAX_OXYLOSS

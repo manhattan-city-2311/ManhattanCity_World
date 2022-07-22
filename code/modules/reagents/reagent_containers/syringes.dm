@@ -34,6 +34,7 @@
 	desc = "A cheap disposable needle for a syringe or an IV."
 	icon = 'icons/obj/syringe.dmi'
 	icon_state = "syringe_pack"
+	w_class = ITEMSIZE_TINY
 	var/possible_transfer_amounts = list(1,2,3,4,5,10,15,20)
 	var/use_times = 0
 	var/transfer_amount = 5
