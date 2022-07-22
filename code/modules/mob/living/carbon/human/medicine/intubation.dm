@@ -50,6 +50,7 @@
 		return
 	visible_message("<span class='warning'>[user] starts bagging [M]!</span>")
 	bagging = TRUE
+	patient = M
 	update_icon()
 	bag_loop()
 
@@ -58,7 +59,8 @@
 		bagging = FALSE
 		update_icon()
 		return
-	patient.consume_oxygen(0.015)
+	var/obj/item/organ/internal/lungs/lungs = patient.internal_organs_by_name[O_LUNGS]
+	lungs.handle_breath(1)
 	if(bagging)
 		bag_loop()
 	else
@@ -74,6 +76,8 @@
 /obj/machinery/lung_ventilator
 	name = "lung ventilation system"
 	desc = "Ventilators help a patient breathe by assisting the lungs to inhale and exhale air."
+	icon = 'icons/obj/medicine.dmi'
+	icon_state = "av_idle"
 	var/respiratory_rate = 15
 	var/respiratory_volume = 0.013
 	var/mob/living/carbon/human/attached = null
@@ -125,6 +129,8 @@
 	if(!attached)
 		return
 
+	var/obj/item/organ/internal/lungs/lungs = attached.internal_organs_by_name[O_LUNGS]
+
 	if(!(get_dist(src, attached) <= 1 || !isturf(attached.loc)))
 		visible_message("<span class='warning'>The [src] tube is violently ripped out of [attached]!</span>")
 		var/affected = "head"
@@ -137,4 +143,4 @@
 		update_icon()
 		return
 	if(turned_on)
-		attached.consume_oxygen(respiratory_volume * respiratory_rate * attached.k)
+		lungs.handle_breath(1)

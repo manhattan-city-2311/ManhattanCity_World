@@ -151,7 +151,7 @@
 				spawn(50)
 					cpr_time = 1
 
-				if(!cpr_check())
+				if(!cpr_check(H))
 					return
 
 				var/acls_quality = M.get_skill(SKILL_ACLS)
