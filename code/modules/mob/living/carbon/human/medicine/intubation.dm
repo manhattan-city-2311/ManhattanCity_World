@@ -135,7 +135,6 @@
 		visible_message("<span class='warning'>The [src] tube is violently ripped out of [attached]!</span>")
 		var/affected = "head"
 		attached.apply_damage(25, BRUTE, affected)
-		var/obj/item/organ/internal/lungs/lungs = attached.internal_organs_by_name[O_LUNGS]
 		lungs.take_damage(25, 1)
 		attached.custom_pain("<span class='warning'>You feel like something was ripped straight out of your throat!</span>", 5, affecting = affected)
 		attached = null
