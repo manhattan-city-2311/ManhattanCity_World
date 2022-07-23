@@ -81,24 +81,29 @@
 
 	return TRUE
 
+/mob/new_player/proc/update_lobby()
+	show_browser(src, get_lobby_html(), "window=lobbybrowser")
 /mob/new_player/Topic(href, href_list[])
 	if (usr != src || !client)
 		return 0
 
 	if(href_list["lobby_setup"])
 		client.prefs.open_load_dialog(src)
+		update_lobby()
 		return 1
 
 	if(href_list["lobby_join"])
-
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
 
 		LateChoices()
+		update_lobby()
+		return 1
 
 	if(href_list["lobby_ready"])
 		ready = !ready
+		update_lobby()
 		return 1
 
 	if(href_list["set_alt_title"])

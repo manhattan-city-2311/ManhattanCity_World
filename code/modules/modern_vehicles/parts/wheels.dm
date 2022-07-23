@@ -38,6 +38,3 @@
 		if(1 to 74)
 			if(prob(10))
 				handle_pressure(2)
-
-	rpm = max(0, rpm)
-	torque = 0

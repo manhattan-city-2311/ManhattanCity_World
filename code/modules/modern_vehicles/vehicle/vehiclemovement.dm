@@ -1,17 +1,8 @@
 /obj/manhattan/vehicle/proc/update_angle_vector()
+	angle = SIMPLIFY_DEGREES(angle)
 	angle_vector = vector2_from_angle(angle)
 
 /obj/manhattan/vehicle/Move(var/newloc,var/newdir)
-	if(abs(speed[1]) > abs(speed[2]))
-		if(speed[1] > 0)
-			newdir = EAST
-		else
-			newdir = WEST
-	else
-		if(speed[2] > 0)
-			newdir = NORTH
-		else
-			newdir = SOUTH
 	if(anchored)
 		anchored = 0
 		. = ..()
@@ -19,68 +10,6 @@
 	else
 		. = ..()
 	update_object_sprites()
-
-/obj/manhattan/vehicle/proc/drag_slowdown(var/index,var/slowdown_amount = drag)
-	if(speed[index] > 0)
-		speed[index] = max(speed[index] - drag,0)
-	else
-		speed[index] = min(speed[index] + drag,0)
-
-/obj/manhattan/vehicle/proc/movement_loop(var/speed_index_target = 1)
-	var/noprocstart = 0
-	if(moving_x || moving_y)
-		noprocstart = 1
-	switch(speed_index_target)
-		if(1)
-			moving_x = 1
-		if(2)
-			moving_y = 1
-	if(noprocstart)
-		return
-	spawn()
-		while (moving_x || moving_y)
-			var/delay = max(min_speed - vector_modulus(speed), max_speed)
-			sleep(delay)
-
-			glide_size = 0
-
-			for(var/mob/occupant in occupants)
-				if(!ismob(occupant))
-					continue
-
-				occupant.update_glide(delay)
-
-				if(!glide_size)
-					glide_size = occupant.glide_size
-
-			if(speed[1] == 0)
-				moving_x = 0
-			else
-				if(speed[1] > 0)
-					last_move = EAST
-					. = Move(get_step(loc,EAST),EAST)
-				else
-					last_move = WEST
-					. = Move(get_step(loc,WEST),WEST)
-
-			if(speed[2] == 0)
-				moving_y = 0
-			else
-				if(speed[2] > 0)
-					last_move = NORTH
-					. = Move(get_step(loc,NORTH),NORTH)
-				else
-					last_move = SOUTH
-					. = Move(get_step(loc,SOUTH),SOUTH)
-			var/list/index_list = list(1,2)
-			for(var/index in index_list)
-				if(last_moved_axis == index)
-					continue
-				drag_slowdown(index)
-			if(world.time >= next_move_input_at)
-				last_moved_axis = 0
-			if(move_sound && world.time % 2 == 0)
-				playsound(loc,move_sound,75,0,4)
 
 /obj/manhattan/vehicle/relaymove(var/mob/user, var/direction)
 	if(world.time < next_move_input_at)
@@ -92,7 +21,6 @@
 		if(engine.needs_processing == 0)
 			to_chat(user,"<span class = 'notice'>The engine is shut down!</span>")
 			return 0
-		engine.rpm += 100
 	var/list/driver_list = get_occupants_in_position("driver")
 	var/is_driver = FALSE
 
@@ -111,7 +39,7 @@
 			is_brake_pressed = FALSE
 		if(SOUTH)
 			is_acceleration_pressed = FALSE
-			is_brake_pressed = TRUE 
+			is_brake_pressed = TRUE
 		if(EAST)
 			angle += VECTOR_CHANGE_ANGLE
 			update_angle_vector()
@@ -119,35 +47,69 @@
 			angle -= VECTOR_CHANGE_ANGLE
 			update_angle_vector()
 
-	next_move_input_at = world.time + 2
+	next_move_input_at = world.time + 10
 
 	return 1
 
-/obj/manhattan/vehicle/proc/get_force()
+// processes not only movement, but its will be in this file.
+/obj/manhattan/vehicle/proc/process_vehicle(delta = 2)
+	for(var/obj/item/vehicle_part/vp in components)
+		if(vp.can_process())
+			vp.part_process(delta)
 
-/obj/manhattan/vehicle/proc/handle_movement(delta = 2)
-	var/friction = 0
-	for(var/obj/item/vehicle_part/wheel/W in get_wheels())
-		friction += W.get_traction()
+	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
+	var/obj/item/vehicle_part/clutch/clutch = components[VC_CLUTCH]
+	var/obj/item/vehicle_part/gearbox/gearbox = components[VC_GEARBOX]
+	var/obj/item/vehicle_part/cardan/cardan = components[VC_CARDAN]
 
-	friction /= weight
+	if(!(engine && clutch && gearbox && cardan))
+		return
+
+	var/F = 0
+	var/torque = engine.handle_torque(delta)
+	if(is_clutch_transfering())
+		F += torque * gearbox.get_efficiency() / gearbox.get_ratio()
+
+		var/wheels_rpm = speed.modulus() / get_wheel_diameter() * 60
+		var/desired_rpm = wheels_rpm * gearbox.get_ratio()
+
+		var/wheels_inertia = get_wheels_mass() * MASS_TO_INERTIA_COEFFICENT
+		var/engine_inertia = engine.mass * MASS_TO_INERTIA_COEFFICENT
+		var/base_torque = (desired_rpm - engine.rpm) / (wheels_inertia + engine_inertia)
+
+		engine.rpm += base_torque * wheels_inertia * delta
+
+		F += base_torque * engine_inertia
+
+	acceleration += angle_vector * F
 
 	// Drag
-	acceleration -= speed * (speed.modulus() * aerodynamics_coefficent + friction)
+	acceleration -= speed * (speed.modulus() * aerodynamics_coefficent)
+	acceleration -= speed * traction_coefficent
+	//calc_force()
 
-	speed += acceleration * delta
+	if(is_brake_pressed)
+		acceleration.x -= min(speed.x, 10)
+		acceleration.y -= min(speed.y, 10)
 
-	acceleration = vector2(0, 0)
+	speed += acceleration * (1 / weight) * delta
 
-	step_x += speed.x / 32 * delta
-	step_y += speed.y / 32 * delta
+	acceleration.x = 0
+	acceleration.y = 0
 
-	if(step_x >= 32 || step_y >= 32)
-		var/x_step = step_x / 32
-		var/y_step = step_y / 32
+	pixel_x += round(speed.x * 32 * delta)
+	pixel_y += round(speed.y * 32 * delta)
 
-		step_x /= 32
-		step_y /= 32
+	if(abs(pixel_x) >= 32 || abs(pixel_y) >= 32)
+		var/x_step = 0
+		var/y_step = 0
+
+		if(abs(pixel_x) >= 32)
+			x_step  += SIGN(pixel_x)
+			pixel_x -= SIGN(pixel_x) * 32
+		if(abs(pixel_y) >= 32)
+			y_step  += SIGN(pixel_y)
+			pixel_y -= SIGN(pixel_y) * 32
 
 		var/turf/newLoc = locate(x + x_step, y + y_step, z)
-		Move(newloc, angle2dir(angle))
+		Move(newLoc, get_dir(loc, newLoc))

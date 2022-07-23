@@ -22,9 +22,6 @@
 
 	light_color = "#E1FDFF"
 
-	min_speed = 9
-	max_speed = 2
-
 /obj/manhattan/vehicle/ambulance/update_object_sprites()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)

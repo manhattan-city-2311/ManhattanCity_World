@@ -1,7 +1,6 @@
 #if !defined(USING_MAP_DATUM)
 
 	#include "example-1.dmm"
-	#include "example-2.dmm"
 
 	#include "example_defines.dm"
 	#include "example_elevator.dm"
