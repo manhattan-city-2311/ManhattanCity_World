@@ -177,16 +177,17 @@
 
 	if(!should_have_organ(O_HEART))
 		reagents.add_reagent("blood", amount, injected.data)
-		reagents.update_total()
 		return
 
 	if(blood_incompatible(injected.data["blood_type"], injected.data["species"]))
-		reagents.add_reagent("toxin", amount * 0.5)
-		reagents.update_total()
-	else
-		vessel.add_reagent("blood", amount, injected.data)
-		vessel.update_total()
+		reagents.add_reagent("toxin", amount * 0.0625)
+	vessel.add_reagent("blood", amount, injected.data)
+	vessel.update_total()
 	..()
+
+/mob/living/carbon/human/proc/inject_saline(var/datum/reagent/saline/injected, var/amount)
+	vessel.add_reagent("blood", amount, injected.data)
+	vessel.update_total()
 
 //Gets human's own blood.
 /mob/living/carbon/proc/get_blood(datum/reagents/container)

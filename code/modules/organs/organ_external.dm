@@ -688,16 +688,16 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(parent.germ_level < INFECTION_LEVEL_ONE * 2 || prob(30 - antibiotics))
 				parent.germ_level++
 
-	if(germ_level >= INFECTION_LEVEL_THREE && antibiotics < 15) // Overdosing is necessary to stop severe infections
+	if(germ_level >= INFECTION_LEVEL_MAX && antibiotics < 15) // Overdosing is necessary to stop severe infections
 		if(!(status & ORGAN_DEAD))
 			status |= ORGAN_DEAD
 			to_chat(owner, "<span class='notice'>You can't feel your [name] anymore...</span>")
 			owner.bloodstr.add_reagent("potassium_hormone", 30)
 
 		germ_level++
-		owner.bloodstr.add_reagent("potassium_hormone", 0.25)
+		owner.bloodstr.add_reagent("potassium_hormone", 1)
 	if(germ_level >= INFECTION_LEVEL_THREE)
-		owner.bloodstr.add_reagent("potassium_hormone", 0.5)
+		owner.bloodstr.add_reagent("potassium_hormone", 2.75)
 
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
 /obj/item/organ/external/proc/update_wounds()
@@ -723,10 +723,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 		// slow healing
 		var/heal_amt = 0
-
-		// if damage >= 50 AFTER treatment then it's probably too severe to heal within the timeframe of a round.
-		if (W.can_autoheal() && W.wound_damage() < 50)
-			heal_amt += 0.5
 
 		//we only update wounds once in [wound_update_accuracy] ticks so have to emulate realtime
 		heal_amt = heal_amt * wound_update_accuracy
@@ -1056,13 +1052,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if (prob(25))
 		release_restraints()
 
-	// This is mostly for the ninja suit to stop ninja being so crippled by breaks.
-	// TODO: consider moving this to a suit proc or process() or something during
-	// hardsuit rewrite.
-
-	if(!(splinted) && owner && istype(owner.wear_suit, /obj/item/clothing/suit/space))
-		var/obj/item/clothing/suit/space/suit = owner.wear_suit
-		suit.handle_fracture(owner, src)
+	//if(!(splinted) && owner && istype(owner.wear_suit, /obj/item/clothing/suit/space))
+	//	var/obj/item/clothing/suit/space/suit = owner.wear_suit
+	//	suit.handle_fracture(owner, src)
 
 /obj/item/organ/external/proc/mend_fracture()
 	if(robotic >= ORGAN_ROBOT)

@@ -85,8 +85,8 @@
 	metabolism = REM * 5
 	var/volume_mod = 0.75
 
-/datum/reagent/saline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.inject_blood(src, volume * volume_mod)
+/datum/reagent/saline/affect_blood(var/mob/living/carbon/human/M, var/alien, var/removed)
+	M.inject_saline(src, volume * volume_mod)
 	remove_self(volume)
 
 /datum/reagent/blood/synthblood

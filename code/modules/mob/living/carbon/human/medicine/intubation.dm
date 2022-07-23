@@ -21,14 +21,14 @@
 		to_chat(user, "<span class='warning'>\The [M] is already intubated!</span>")
 		return
 
-	visible_message("<span class='warning'>[user] starts intubating [M]!</span>")
+	user.visible_message("<span class='warning'>[user] starts intubating [M]!</span>")
 	if(lubed)
 		M.custom_pain("<span class='notice'>You feel a tube gently lowered down your throat.</span>", pain, affecting = /obj/item/organ/external/head)
 	else
 		M.custom_pain("<span class='warning'>You feel a dry tube violently shoved up your throat!.</span>", pain * 2, affecting = /obj/item/organ/external/head)
 	if(!do_after(usr, 50, src))
 		return
-	visible_message("<span class='warning'>[user] intubates [M]!</span>")
+	user.visible_message("<span class='warning'>[user] intubates [M]!</span>")
 	M.intubated = TRUE
 	qdel(src)
 
@@ -55,7 +55,7 @@
 	bag_loop()
 
 /obj/item/intubation_baloon/proc/bag_loop()
-	if(!do_after(usr, rand(30, 40), src))
+	if(!do_after(usr, rand(20, 30), src))
 		bagging = FALSE
 		update_icon()
 		return

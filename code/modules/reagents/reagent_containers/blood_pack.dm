@@ -116,15 +116,14 @@
 /obj/item/weapon/reagent_containers/blood/saline
 	blood_type = "Saline Solution Pack"
 	reag_id = "salinesolution"
-	desc = "Holds liquids used for transfusion. Contains 2 liters of saline solution."
+	desc = "Holds liquids used for transfusion. Contains 2 liters of 4% saline solution."
 
 /obj/item/weapon/reagent_containers/blood/saline/New()
 	..()
 	base_name = name
 	base_desc = desc
 	if(blood_type != null)
-		label_text = "96% saline"
-		update_iv_label()
+		label_text = "4% saline"
 		reagents.add_reagent(reag_id, 2000)
 		update_icon()
 

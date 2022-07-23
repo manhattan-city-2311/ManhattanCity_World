@@ -56,9 +56,9 @@
 	M.add_chemical_effect(CE_ANTIBIOTIC, volume * 2)
 
 /datum/reagent/cetrifiaxon
-	name = "Cetrifiaxon"
-	id = "cetrifiaxon"
-	description = "Cetrifiaxon is an extremely strong antibiotic, toxic."
+	name = "Cetrifiaxone"
+	id = "cetrifiaxone"
+	description = "Cetrifiaxone is an extremely strong antibiotic, toxic."
 	taste_description = "cell genocide"
 	taste_mult = 5
 	reagent_state = LIQUID
@@ -75,7 +75,7 @@
 /datum/reagent/amiodarone
 	name = "Amiodarone"
 	id = "amiodarone"
-	description = "Amiodarone is a light antiarrythmic. Safe for urban use."
+	description = "Amiodarone is a light antiarrythmic medication. Safe for urban use."
 	taste_description = "calmness"
 	taste_mult = 3
 	reagent_state = LIQUID
@@ -186,12 +186,23 @@
 /datum/reagent/esmolol/overdose(mob/living/carbon/human/H, alien)
 	H.add_chemical_effect(CE_PULSE, H.chem_doses[type] * -10)
 
-/datum/reagent/marker
-	name = "Blood marker"
-	id = "marker"
-	description = "General blood marker for use in MRI machines."
+//XRAY MARKERS
 
+/datum/reagent/marker
+	var/mtype = "blood" //blood, gastro, brain
 	metabolism = REM * 0.1
+
+/datum/reagent/marker/ioxaglate
+	name = "Hexabrix"
+	id = "ioxaglate"
+	mtype = "blood"
+	description = "Ioxaglic acid is a pharmaceutical drug used as an iodinated contrast medium for blood X-ray imaging."
+
+/datum/reagent/marker/bariumsulphate
+	name = "Barium Sulfate"
+	id = "bariumsulfate"
+	mtype = "gastro"
+	description = "Barium sulfate in suspension is often used medically as a radiocontrast agent for X-ray imaging and other diagnostic procedures. It is most often used in imaging of the GI tract during what is colloquially known as a 'barium meal'."
 
 //ANALGESICS
 
