@@ -860,13 +860,6 @@
 			else
 				message = "makes a light spitting noise, a poor attempt at a whistle."
 
-		if("qwhistle")
-			if(!muzzled)
-				message = "whistles quietly." //small short whistle
-				playsound(src.loc, 'sound/voice/human/shortwhistle.ogg', 50, 1)
-			else
-				message = "makes a light spitting noise, a poor attempt at a whistle."
-
 		if("wwhistle")
 			if(!muzzled)
 				message = "whistles inappropriately." //wolf whistle

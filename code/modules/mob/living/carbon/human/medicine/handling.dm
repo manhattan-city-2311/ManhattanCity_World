@@ -1,6 +1,15 @@
 /mob/living/carbon/human/proc/handle_medicine()
 	if(stat == DEAD)
 		handle_decay()
+		handle_organs()
+		stabilize_body_temperature()
+		update_cm()
+		handle_glucose_level()
+		consume_oxygen(REST_OXYGEN_CONSUMING * k) // muscles resting
+		oxy_last_tick_demand = oxy_demand
+		oxy_demand = 0
+		avail_oxygen_last_tick = avail_oxygen
+		avail_oxygen = 0
 		return
 	//Organs and blood
 	handle_organs()

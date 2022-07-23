@@ -11,7 +11,7 @@
 	var/cardiac_output = 1
 	var/list/pulse_modificators = list()
 	var/list/cardiac_output_modificators = list() // *
-	var/list/arrythmias = list()
+	var/list/datum/arrythmia/arrythmias = list()
 	var/ischemia = 0
 	var/heartbeat = 0
 	var/beat_sound = 'sound/effects/singlebeat.ogg'

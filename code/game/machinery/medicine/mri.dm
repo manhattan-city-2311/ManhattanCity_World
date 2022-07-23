@@ -31,11 +31,18 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	var/obj/machinery/mri_console/console
 	var/operating = FALSE
 	var/mob_has_marker = FALSE
+	var/locked = FALSE
 
 /obj/machinery/mri/initialize()
 	. = ..()
 	for(var/obj/machinery/mri_console/new_console in range(5, src))
 		console = new_console
+
+/obj/machinery/mri/proc/handle_sound()
+	playsound(src, 'sound/effects/mri.ogg', 50, channel = MRI_SOUND_CHANNEL)
+	spawn(630)
+		if(!operating)
+			handle_sound()
 
 /obj/machinery/mri/process()
 
@@ -56,23 +63,18 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	if(attracted.len)
 		for(var/obj/A in attracted)
 			A.throw_at(src, 1, 3)
-			src.visible_message("<span class='warning'>\The [A] gets pulled by [src]!</span>")
+			visible_message("<span class='warning'>\The [A] gets pulled by [src]!</span>")
 		for(var/mob/living/carbon/human/H in attracted)
 			H.throw_at(src, 3, 3)
-			src.visible_message("<span class='warning'>\The [H] gets flung towards [src]!</span>")
+			visible_message("<span class='warning'>\The [H] gets flung towards [src]!</span>")
 
 /obj/machinery/mri/proc/start_scan()
 	operating = TRUE
+	handle_sound()
 	var/mob/living/carbon/human/occupant
 	for(var/mob/living/carbon/human/H in src.contents)
 		occupant = H
-	playsound(src, 'sound/effects/mri.ogg', 50, channel = MRI_SOUND_CHANNEL)
-	sleep(630)
-	if(!operating)
-		return
 	new /obj/item/weapon/paper(loc, generate_printing_text(occupant), "MRI scan report")
-	src.visible_message("<span class='notice'>\The [src] finishes scanning and prints out a report.</span>")
-	stop_scan()
 
 /obj/machinery/mri/proc/stop_scan()
 	operating = FALSE
@@ -165,7 +167,7 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 
 				if(unknown_body)
 					imp += "Unknown body present:"
-				if(!AN && !open && !infected & !imp)
+				if(!open && !infected & !imp)
 					AN = "None:"
 				if(!(e.status))
 					dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured][o_dead]</td>"
@@ -230,8 +232,6 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		qdel(src.connected)
 		src.connected = null
-		user.visible_message("<span class='warning'>\The [user] switches the [src] on, it winds up and starts the scan!</span>")
-		start_scan()
 	else
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		src.connected = new /obj/structure/mri_tray( src.loc )
@@ -311,13 +311,160 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	if (!ismob(user) || user.stat || user.lying || user.stunned)
 		return
 	O.forceMove(src.loc)
-	if (user != O)
-		for(var/mob/B in viewers(user, 3))
-			if ((B.client && !( B.blinded )))
-				to_chat(B, "<span class='warning'>\The [user] places [O] onto [src]!</span>")
+	visible_message("<span class='warning'>\The [user] places [O] onto [src]!</span>")
 	return
 
 
 
 /obj/machinery/mri_console
 	name = "magnetic resonance imager console"
+	desc = "Used in pair with MRI."
+	var/obj/machinery/mri/mri = null
+
+/obj/machinery/mri_console/proc/ask_confirmation(mob/user, datum/mri_scan/scan)
+	var/action = alert(src, "Are you sure you want to begin this scan? It will take [scan.time / 10] seconds.", "", "Yes", "No")
+	if(action == "Yes")
+		return 1
+	else
+		return 0
+
+/obj/machinery/mri_console/attack_hand(mob/user)
+	. = ..()
+	if(!mri)
+		return
+	if(mri.operating)
+		to_chat(user, "<span class='warning'>You stop the MRI.</span>")
+		mri.stop_scan()
+		return
+
+	var/list/scan_list = list()
+	for(var/T in subtypesof(/datum/mri_scan))
+		scan_list += new T()
+	var/list/scan_names = list()
+	for(var/datum/mri_scan/S in scan_list)
+		scan_names += S.name
+
+	var/setting = input(user, "Select a scan to perform.", "MRI scan") as null|anything in scan_names
+
+	if(!setting)
+		return
+	if(!ask_confirmation(user, scan_list[setting]))
+		return
+
+	scan_list[setting].perform_scan(mri, src)
+
+
+/datum/mri_scan
+	var/name = ""
+	var/time
+
+/datum/mri_scan/proc/perform_scan(var/obj/machinery/mri/mri, var/obj/machinery/mri_console/mri_console, var/mob/living/carbon/human/occupant)
+	mri.start_scan()
+	spawn(time)
+		if(!mri.operating)
+			return
+		mri.stop_scan()
+		new /obj/item/weapon/paper(mri_console.loc, generate_printing_text(occupant), "[name]")
+
+/datum/mri_scan/proc/generate_printing_text(var/mob/living/carbon/human/occupant)
+	return
+
+/datum/mri_scan/proc/format_header(var/mob/living/carbon/human/occupant)
+	var/dat = ""
+	dat += "<tr><td><strong>Scan Results For:</strong></td><td>[occupant.name]</td></tr>"
+	dat += "<tr><td><strong>Scan performed at:</strong></td><td>[time_stamp()]</td></tr>"
+	return dat
+
+/datum/mri_scan/fullbodyexternal
+	name = "Full external body scan"
+	time = 1800
+
+/datum/mri_scan/fullbodyexternal/generate_printing_text(var/mob/living/carbon/human/occupant)
+	var/dat = ""
+	dat += format_header(occupant)
+	for(var/obj/item/organ/external/e in occupant.organs_by_name)
+		dat += "<tr>"
+		var/AN = ""
+		var/open = ""
+		var/infected = ""
+		var/robot = ""
+		var/imp = ""
+		var/bled = ""
+		var/splint = ""
+		if(e.status & ORGAN_BLEEDING)
+			bled = "Bleeding:"
+		if(e.robotic >= ORGAN_ROBOT)
+			robot = "Prosthetic:"
+		if(e.open)
+			open = "Open:"
+		switch (e.germ_level)
+			if (INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
+				infected = "Mild Infection:"
+			if (INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
+				infected = "Mild Infection+:"
+			if (INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
+				infected = "Mild Infection++:"
+			if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
+				infected = "Acute Infection:"
+			if (INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
+				infected = "Acute Infection+:"
+			if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
+				infected = "Acute Infection++:"
+			if (INFECTION_LEVEL_THREE -49 to INFINITY)
+				infected = "Gangrene Detected:"
+
+		var/unknown_body = 0
+
+		if(unknown_body)
+			imp += "Unknown body present:"
+		if(!open && !infected & !imp)
+			AN = "None:"
+		if(!(e.status))
+			dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp]</td>"
+		else
+			dat += "<td>[e.name]</td><td>-</td><td>-</td><td>Not Found</td>"
+		dat += "</tr>"
+	dat += "</table>"
+	return dat
+
+/datum/mri_scan/fullbodyinternal
+	name = "Full internal body scan"
+	time = 3000
+
+/datum/mri_scan/fullbodyinternal/generate_printing_text(var/mob/living/carbon/human/occupant)
+	var/dat = ""
+	dat += format_header(occupant)
+	for(var/obj/item/organ/internal/i in occupant.internal_organs_by_name)
+		var/mech = ""
+		var/i_dead = ""
+		if(i.status & ORGAN_ASSISTED)
+			mech = "Assisted:"
+		if(i.robotic >= ORGAN_ROBOT)
+			mech = "Mechanical:"
+		if(i.status & ORGAN_DEAD)
+			i_dead = "Necrotic:"
+		var/infection = "None"
+		switch (i.germ_level)
+			if (INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
+				infection = "Mild Infection:"
+			if (INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
+				infection = "Mild Infection+:"
+			if (INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
+				infection = "Mild Infection++:"
+			if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
+				infection = "Acute Infection:"
+			if (INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
+				infection = "Acute Infection+:"
+			if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
+				infection = "Acute Infection++:"
+			if (INFECTION_LEVEL_THREE -49 to INFINITY)
+				infection = "Necrosis Detected:"
+				dat += "<tr>"
+				dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech][i_dead]</td><td></td>"
+				dat += "</tr>"
+	dat += "</table>"
+	return dat
+
+/datum/mri_scan/gastric
+	name = "Gastric tract scan"
+	time = 600

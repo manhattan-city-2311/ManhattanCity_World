@@ -51,7 +51,7 @@
 
 	var/cost
 	for(var/datum/reagent/reagent in reagents.reagent_list)
-		cost += reagent.volume * price_tag
+		cost += reagent.volume * reagent.price_tag
 	desc += " It's cost label reads: [cost]."
 	
 

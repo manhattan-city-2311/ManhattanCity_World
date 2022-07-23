@@ -140,13 +140,13 @@
 
 	// TODO: rewrite this more compact
 	if(ARRYTHMIA_AFIB in heart.arrythmias)
-		var/required = 5 * heart.arrythmias[ARRYTHMIA_AFIB].strength
+		var/required = 2 * heart.arrythmias[ARRYTHMIA_AFIB].severity
 		if(volume >= required)
 			heart.arrythmias[ARRYTHMIA_AFIB].weak(heart)
 			volume -= required
 		return
 	if(ARRYTHMIA_TACHYCARDIA in heart.arrythmias)
-		var/required = 5 * heart.arrythmias[ARRYTHMIA_TACHYCARDIA].strength
+		var/required = 2 * heart.arrythmias[ARRYTHMIA_TACHYCARDIA].severity
 		if(volume >= required)
 			heart.arrythmias[ARRYTHMIA_TACHYCARDIA].weak(heart)
 			volume -= required
