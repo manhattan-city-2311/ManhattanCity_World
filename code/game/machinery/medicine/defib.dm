@@ -2,7 +2,7 @@
     name = "manual external defibrillator"
     desc = "A very expensive and fragile device that are capable of defibrillation, cardioversion and heart pacing."
     icon = 'icons/obj/medicine.dmi'
-    icon = "defib_machine"
+    icon_state = "defib_machine"
     var/mode = "defibrillation" //defibrillation, cardioversion, pacing
 
     var/joule_setting = 240
