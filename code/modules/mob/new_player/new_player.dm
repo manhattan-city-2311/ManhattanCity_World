@@ -82,7 +82,8 @@
 	return TRUE
 
 /mob/new_player/proc/update_lobby()
-	show_browser(src, get_lobby_html(), "window=lobbybrowser")
+	send_output(client, null, "lobbybrowser:imgsrc")
+
 /mob/new_player/Topic(href, href_list[])
 	if (usr != src || !client)
 		return 0

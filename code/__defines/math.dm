@@ -5,6 +5,7 @@
 #define NUM_E 2.71828183
 #define SQRT_2 1.41421356237
 #define M_PI						(3.14159265)
+#define M_2PI						(6.28318530)
 #define INFINITY				(1.#INF)	//closer then enough
 
 #define SHORT_REAL_LIMIT 16777216
@@ -120,7 +121,7 @@
 
 // Will filter out extra rotations and negative rotations
 // E.g: 540 becomes 180. -180 becomes 180.
-#define SIMPLIFY_DEGREES(degrees) (MODULUS((degrees), 360))
+#define SIMPLIFY_DEGREES(degrees) (MODULUS((degrees < 0 ? (360 + degrees) : degrees), 360))
 
 #define GET_ANGLE_OF_INCIDENCE(face, input) (MODULUS((face) - (input), 360))
 

@@ -75,6 +75,8 @@
 	var/aerodynamics_coefficent = 0.32
 	var/traction_coefficent = 9.6
 
+	var/turning = 0
+
 /mob/living/carbon/human/Stat()
 	. = ..()
 	if(istype(loc, /obj/manhattan/vehicle))
@@ -82,13 +84,16 @@
 			var/obj/manhattan/vehicle/V = loc
 			stat("Speed:", TO_KPH(V.speed.modulus()))
 			stat("RPM:", V.components[VC_ENGINE]?.rpm)
-			stat("Angle:", V.angle)
+			stat("Angle:", "[V.angle] [angle2dir(V.angle)] [Atan2(V.speed.x, V.speed.y)]")
 
 /obj/manhattan/vehicle/proc/get_wheel_diameter()
 	return 0.34
 
 /obj/manhattan/vehicle/proc/get_wheels_mass()
 	return 12
+
+/obj/manhattan/vehicle/proc/get_braking_force()
+	return 1000
 
 /obj/manhattan/vehicle/proc/is_clutch_transfering()
 	var/obj/item/vehicle_part/clutch/clutch = components[VC_CLUTCH]

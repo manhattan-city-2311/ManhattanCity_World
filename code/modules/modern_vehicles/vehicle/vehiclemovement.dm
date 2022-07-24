@@ -1,6 +1,7 @@
 /obj/manhattan/vehicle/proc/update_angle_vector()
 	angle = SIMPLIFY_DEGREES(angle)
 	angle_vector = vector2_from_angle(angle)
+	angle_vector.round_components(0.01)
 
 /obj/manhattan/vehicle/Move(var/newloc,var/newdir)
 	if(anchored)
@@ -12,6 +13,7 @@
 	update_object_sprites()
 
 /obj/manhattan/vehicle/relaymove(var/mob/user, var/direction)
+/*
 	if(world.time < next_move_input_at)
 		return 0
 	if(movement_destroyed)
@@ -32,6 +34,7 @@
 		return -1 //doesn't return 0 so we can differentiate this from the other problems for simple mobs.
 
 	is_clutch_pressed = user.client?.mod_keys_held & ALT_KEY
+	turning = 0
 
 	switch(direction)
 		if(NORTH)
@@ -41,18 +44,39 @@
 			is_acceleration_pressed = FALSE
 			is_brake_pressed = TRUE
 		if(EAST)
-			angle += VECTOR_CHANGE_ANGLE
-			update_angle_vector()
+			turning = 1
 		if(WEST)
-			angle -= VECTOR_CHANGE_ANGLE
-			update_angle_vector()
-
-	next_move_input_at = world.time + 10
-
+			turning = -1
+	next_move_input_at = world.time + 5
+*/
 	return 1
+
+/obj/manhattan/vehicle/proc/handle_input()
+	var/mob/user = listHead(get_occupants_in_position("driver"))
+	is_clutch_pressed = FALSE
+	is_acceleration_pressed = FALSE
+	is_brake_pressed = FALSE
+	turning = 0
+	if(!user || !user.client)
+		return
+
+	var/move_keys_held = user.client.move_keys_held
+	if(move_keys_held & NORTH)
+		is_acceleration_pressed = TRUE
+	else if(move_keys_held & SOUTH)
+		is_brake_pressed = TRUE
+
+	if(move_keys_held & EAST)
+		turning = 1
+	else if(move_keys_held & WEST)
+		turning = -1
+
+	is_clutch_pressed = user.client.mod_keys_held & ALT_KEY
 
 // processes not only movement, but its will be in this file.
 /obj/manhattan/vehicle/proc/process_vehicle(delta = 2)
+	handle_input()
+
 	for(var/obj/item/vehicle_part/vp in components)
 		if(vp.can_process())
 			vp.part_process(delta)
@@ -68,37 +92,55 @@
 	var/F = 0
 	var/torque = engine.handle_torque(delta)
 	if(is_clutch_transfering())
-		F += torque * gearbox.get_efficiency() / gearbox.get_ratio()
+		var/wheels_rpm = speed.modulus() / get_wheel_diameter() * 60 / M_2PI
+		if(engine.rpm >= wheels_rpm * gearbox.get_ratio())
+			F += torque * gearbox.get_efficiency() / gearbox.get_ratio()
 
-		var/wheels_rpm = speed.modulus() / get_wheel_diameter() * 60
-		var/desired_rpm = wheels_rpm * gearbox.get_ratio()
+		var/desired_engine_rpm = wheels_rpm * gearbox.get_ratio()
 
-		var/wheels_inertia = get_wheels_mass() * MASS_TO_INERTIA_COEFFICENT
-		var/engine_inertia = engine.mass * MASS_TO_INERTIA_COEFFICENT
-		var/base_torque = (desired_rpm - engine.rpm) / (wheels_inertia + engine_inertia)
+		var/engineInertia = engine.mass * MASS_TO_INERTIA_COEFFICENT
+		var/wheelsInertia = get_wheels_mass() * MASS_TO_INERTIA_COEFFICENT
 
-		engine.rpm += base_torque * wheels_inertia * delta
+		var/baseTorque = (desired_engine_rpm - engine.rpm) / (engineInertia + wheelsInertia)
 
-		F += base_torque * engine_inertia
+		engine.rpm += baseTorque * wheelsInertia * delta
+		F          += baseTorque * engineInertia
 
 	acceleration += angle_vector * F
 
 	// Drag
-	acceleration -= speed * (speed.modulus() * aerodynamics_coefficent)
-	acceleration -= speed * traction_coefficent
-	//calc_force()
+
+	var/vector2/aerodrag = speed * (speed.modulus() * aerodynamics_coefficent)
+	var/vector2/traction_drag = speed * traction_coefficent
+
+	//VECTOR_DEBUG(aerodrag)
+	//VECTOR_DEBUG(traction_drag)
+
+	acceleration -= aerodrag + traction_drag
 
 	if(is_brake_pressed)
-		acceleration.x -= min(speed.x, 10)
-		acceleration.y -= min(speed.y, 10)
+		acceleration.x -= min(speed.x * weight, get_braking_force())
+		acceleration.y -= min(speed.y * weight, get_braking_force())
 
-	speed += acceleration * (1 / weight) * delta
+	//VECTOR_DEBUG(acceleration)
+	//VECTOR_DEBUG(angle_vector)
 
+	speed += acceleration / weight * delta
 	acceleration.x = 0
 	acceleration.y = 0
 
+/obj/manhattan/vehicle/proc/process_movement(delta)
 	pixel_x += round(speed.x * 32 * delta)
 	pixel_y += round(speed.y * 32 * delta)
+
+	if(turning)
+		var/rotate_speed = 22.5 * turning * delta
+		speed.rotate(SIMPLIFY_DEGREES(rotate_speed))
+		angle += rotate_speed
+		update_angle_vector()
+	else
+		angle = Atan2(speed.x, speed.y)
+		update_angle_vector()
 
 	if(abs(pixel_x) >= 32 || abs(pixel_y) >= 32)
 		var/x_step = 0
@@ -112,4 +154,9 @@
 			pixel_y -= SIGN(pixel_y) * 32
 
 		var/turf/newLoc = locate(x + x_step, y + y_step, z)
-		Move(newLoc, get_dir(loc, newLoc))
+		if(!Move(newLoc, get_dir(loc, newLoc)))
+			speed.x = 0
+			speed.y = 0
+			if(is_clutch_transfering())
+				var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
+				engine?.stop()

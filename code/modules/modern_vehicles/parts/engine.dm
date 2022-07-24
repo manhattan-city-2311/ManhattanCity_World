@@ -16,8 +16,9 @@
 	var/failstart_sound = 'sound/vehicles/modern/vehicle_failing_to_start.ogg'
 	break_message = "<span class = 'danger'>The car's engine whines like an injured animal and shuts down!</span>"
 
-	var/list/xs = list(0, 1000, 2000, 3000, 4000, 5000, 5500, 6000)
-	var/list/ys = list(0, 90,   100,  110,  120,  110,  100,  90)
+	// Note: 
+	var/list/xs = list(0, 1000, 2000, 3000, 4000, 5000, 5500, 6000, 6178)
+	var/list/ys = list(0, 140,   150,  160,  175,  155,  144,  122, 0)
 	var/max_rpm = 6200
 
 	mass = 150
@@ -44,17 +45,19 @@
 	rpm = 0
 
 /obj/item/vehicle_part/engine/proc/handle_torque(delta = 2)
-	if(!rpm)
-		return
-
 	if(rpm < RPM_IDLE - 100)
-		stop()
+		//stop()
+		rpm = RPM_IDLE
 		return
 
-	var/dtorque = interpolate_list(rpm, xs, ys) * delta
+	if(rpm > max_rpm)
+		rpm = max_rpm - 50
+		return
+
+	var/dtorque = interpolate_list(rpm, xs, ys) * delta * 5
 
 	if(!vehicle.is_acceleration_pressed)
-		dtorque *= -0.7
+		dtorque *= -0.25
 
 	. = dtorque / (mass * MASS_TO_INERTIA_COEFFICENT)
 

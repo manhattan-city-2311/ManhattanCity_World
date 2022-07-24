@@ -794,6 +794,11 @@ proc/dd_sortedTextList(list/incoming)
 	var/atom/A = atom_type
 	return initial(A.name)
 
+// Returns first element
+/proc/listHead(list/L)
+	for(var/x in L)
+		return x
+
 /proc/sumList(list/L)
 	. = 0
 	for(var/i in L)
