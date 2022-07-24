@@ -3,7 +3,7 @@
     desc = "A very expensive and fragile device that are capable of defibrillation, cardioversion and heart pacing."
     icon = 'icons/obj/medicine.dmi'
     icon_state = "defib_machine"
-    var/mode = "defibrillation" //defibrillation, cardioversion, pacing
+    var/mode = "Defibrillation" //defibrillation, cardioversion, pacing
 
     var/joule_setting = 240
 
@@ -151,19 +151,19 @@
     if(pads)
         options += "Detach pads"
     switch(mode)
-        if("defibrillation")
+        if("Defibrillation")
             if(shock_charged)
                 options += "Deliver shock"
             else
                 options += "Charge for shock"
                 options += "Determine shock power"
-        if("cardioversion")
+        if("Cardioversion")
             if(shock_charged)
                 options += "Cardiovert"
             else
                 options += "Charge for shock"
                 options += "Determine cardioversion power"
-        if("pacing")
+        if("Pacing")
             options += "Change pacing rate"
             if(!pace_sync)
                 options += "Synchronize pacer"
@@ -200,18 +200,23 @@
             detach_pads(user)
 
 /obj/machinery/defibrillator/attackby(obj/item/W, mob/user)
-    . = ..()
     if(istype(W, /obj/item/clothing/suit/electrode_pads))
         var/obj/item/clothing/suit/electrode_pads/P = W
         if(P == pads)
-            P.forceMove(src)
+            if(ismob(pads.loc))
+                var/mob/M = pads.loc
+                if(M.drop_from_inventory(pads, src))
+                    to_chat(user, "<span class='notice'>\The [pads] snap back into the main unit.</span>")
+            else
+                pads.forceMove(src)
             P.taken_out = FALSE
             P.attached = null
         else
             pads.forceMove(src.loc)
             pads = P
             user.visible_message("<span class='notice'>\The [user] replaces the [src] pads.</span>", "<span class='warning'>You replace the defibrillator pads.</span>")
-
+        return
+    . = ..()
 
 
 /obj/item/clothing/suit/electrode_pads
@@ -235,4 +240,3 @@
 /obj/item/clothing/suit/electrode_pads/dropped(mob/user)
     ..()
     attached = null
-    used = TRUE

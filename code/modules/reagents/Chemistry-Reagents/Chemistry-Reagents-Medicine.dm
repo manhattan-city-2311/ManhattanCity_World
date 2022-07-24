@@ -123,7 +123,7 @@
 	description = "Adenosine is a drug used to produce controlled AV blockade."
 	reagent_state = LIQUID
 	color = "#aa7766"
-	metabolism = 0.5
+	metabolism = 1.5
 
 /datum/reagent/adenosine/affect_blood(mob/living/carbon/human/H, alien, removed)
 	var/obj/item/organ/internal/heart/heart = H.internal_organs_by_name[O_HEART]
@@ -136,7 +136,6 @@
 	if(H.chem_doses[type] < 5)
 		H.make_heart_rate(-heart.pulse - 150, "adenosine_av_blockage")
 		heart.pulse = 0
-		return
 
 	// TODO: rewrite this more compact
 	if(ARRYTHMIA_AFIB in heart.arrythmias)

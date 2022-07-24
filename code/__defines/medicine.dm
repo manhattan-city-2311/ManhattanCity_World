@@ -54,7 +54,7 @@
 #define SHOCK_MESSAGE_PERIOD 300
 
 #define SHOCK_PAIN_MESSAGES "The pain is excruciating!", "Please, just end the pain!", "It hurts so much!", "You really need some painkillers!"
-#define SHOCK_PAIN_MESSAGES_SEVERE "FUCKING STOP THIS!!", "You feel you are dying right now!", "You are losing consiciousness!", "The pain is driving you insane!", "OH-H GODNESS, PAIN IS INSANE!", "Pain is depriving you consiciousness!"
+#define SHOCK_PAIN_MESSAGES_SEVERE "FUCKING STOP THIS!!", "You feel like you are dying right now!", "You are losing consciousness!", "The pain is driving you insane!", "OH-H GODNESS, PAIN IS INSANE!", "Pain is depriving you of consciousness!"
 
 #define REST_OXYGEN_CONSUMING 2
 #define WALK_OXYGEN_CONSUMING (3/WALK_DELAY)

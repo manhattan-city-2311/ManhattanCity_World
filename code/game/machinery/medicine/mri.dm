@@ -37,6 +37,7 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	. = ..()
 	for(var/obj/machinery/mri_console/new_console in range(5, src))
 		console = new_console
+		console.mri = src
 
 /obj/machinery/mri/proc/handle_sound()
 	playsound(src, 'sound/effects/mri.ogg', 50, channel = MRI_SOUND_CHANNEL)
@@ -85,136 +86,6 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	if(occupant.reagents.has_reagent("marker"))
 		mob_has_marker = TRUE
 
-/obj/machinery/mri/proc/generate_printing_text(var/mob/living/carbon/human/occupant)
-	var/dat = ""
-	check_for_marker()
-	if(src)
-		dat = "<font color='blue'><b>MRI Scan Results:</b></font><br>" //Blah obvious
-		if(istype(occupant)) //is there REALLY someone in there?
-			var/extra_font = null
-			extra_font = "<font color=[occupant.getBruteLoss() < 60 ? "blue" : "red"]>"
-			dat += "[extra_font]\t-Brute Damage %: [occupant.getBruteLoss()]</font><br>"
-
-			extra_font = "<font color=[occupant.getFireLoss() < 60 ? "blue" : "red"]>"
-			dat += "[extra_font]\t-Burn Severity %: [occupant.getFireLoss()]</font><br>"
-
-			dat += "<hr>"
-
-			if(occupant.has_brain_worms())
-				dat += "Large growth detected in frontal lobe, possibly cancerous. Surgical removal is recommended.<br>"
-
-			if(occupant.vessel && mob_has_marker)
-				var/blood_volume = round(occupant.vessel.get_reagent_amount("blood"))
-				var/blood_max = occupant.species.blood_volume
-				var/blood_percent =  blood_volume / blood_max
-				blood_percent *= 100
-				extra_font = "<font color=[blood_volume > 448 ? "blue" : "red"]>"
-				dat += "[extra_font]\tBlood Level %: [blood_percent] ([blood_volume] units)</font><br>"
-			else
-				extra_font = "<font color=red>"
-				dat += "[extra_font]\tNo blood marker found.</font><br>"
-
-			dat += "<hr><table border='1'>"
-			dat += "<tr>"
-			dat += "<th>Organ</th>"
-			dat += "<th>Burn Damage</th>"
-			dat += "<th>Brute Damage</th>"
-			dat += "<th>Other Wounds</th>"
-			dat += "</tr>"
-
-			for(var/obj/item/organ/external/e in occupant.organs_by_name)
-				dat += "<tr>"
-				var/AN = ""
-				var/open = ""
-				var/infected = ""
-				var/robot = ""
-				var/imp = ""
-				var/bled = ""
-				var/splint = ""
-				var/internal_bleeding = ""
-				var/lung_ruptured = ""
-				var/o_dead = ""
-				for(var/datum/wound/W in e.wounds) if(W.internal)
-					internal_bleeding = "<br>Internal bleeding"
-					break
-				if(istype(e, /obj/item/organ/external/chest) && occupant.is_lung_ruptured())
-					lung_ruptured = "Lung ruptured:"
-				if(e.status & ORGAN_BLEEDING)
-					bled = "Bleeding:"
-				if(e.robotic >= ORGAN_ROBOT)
-					robot = "Prosthetic:"
-				if(e.status & ORGAN_DEAD)
-					o_dead = "Necrotic:"
-				if(e.open)
-					open = "Open:"
-				switch (e.germ_level)
-					if (INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
-						infected = "Mild Infection:"
-					if (INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-						infected = "Mild Infection+:"
-					if (INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-						infected = "Mild Infection++:"
-					if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
-						infected = "Acute Infection:"
-					if (INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
-						infected = "Acute Infection+:"
-					if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
-						infected = "Acute Infection++:"
-					if (INFECTION_LEVEL_THREE -49 to INFINITY)
-						infected = "Gangrene Detected:"
-
-				var/unknown_body = 0
-
-				if(unknown_body)
-					imp += "Unknown body present:"
-				if(!open && !infected & !imp)
-					AN = "None:"
-				if(!(e.status))
-					dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured][o_dead]</td>"
-				else
-					dat += "<td>[e.name]</td><td>-</td><td>-</td><td>Not Found</td>"
-				dat += "</tr>"
-			for(var/obj/item/organ/internal/i in occupant.internal_organs_by_name)
-				var/mech = ""
-				var/i_dead = ""
-				if(i.status & ORGAN_ASSISTED)
-					mech = "Assisted:"
-				if(i.robotic >= ORGAN_ROBOT)
-					mech = "Mechanical:"
-				if(i.status & ORGAN_DEAD)
-					i_dead = "Necrotic:"
-				var/infection = "None"
-				switch (i.germ_level)
-					if (INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
-						infection = "Mild Infection:"
-					if (INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-						infection = "Mild Infection+:"
-					if (INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-						infection = "Mild Infection++:"
-					if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
-						infection = "Acute Infection:"
-					if (INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
-						infection = "Acute Infection+:"
-					if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
-						infection = "Acute Infection++:"
-					if (INFECTION_LEVEL_THREE -49 to INFINITY)
-						infection = "Necrosis Detected:"
-
-				dat += "<tr>"
-				dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech][i_dead]</td><td></td>"
-				dat += "</tr>"
-			dat += "</table>"
-			if(occupant.sdisabilities & BLIND)
-				dat += "<font color='red'>Cataracts detected.</font><BR>"
-			if(occupant.disabilities & NEARSIGHTED)
-				dat += "<font color='red'>Retinal misalignment detected.</font><BR>"
-		else
-			dat += "\The [src] is empty."
-	else
-		dat = "<font color='red'> Error: No MRI detected.</font>"
-
-	return dat
-
 /obj/machinery/mri/Destroy()
 	if(connected)
 		qdel(connected)
@@ -222,9 +93,6 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	return ..()
 
 /obj/machinery/mri/attack_hand(mob/user)
-	if(operating)
-		to_chat(user, "<span class='warning'>\The [src] is currently operating, it's unsafe to stop it now!</span>")
-		return
 	if (src.connected)
 		for(var/atom/movable/A as mob|obj in src.connected.loc)
 			if (!( A.anchored ))
@@ -249,9 +117,6 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	return
 
 /obj/machinery/mri/relaymove(mob/user as mob)
-	if(operating)
-		to_chat(user, "<span class='warning'>\The [src] is currently operating, it's unsafe to stop it now!</span>")
-		return
 	if (user.stat)
 		return
 	src.connected = new /obj/structure/mri_tray( src.loc )
@@ -319,6 +184,8 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 /obj/machinery/mri_console
 	name = "magnetic resonance imager console"
 	desc = "Used in pair with MRI."
+	icon = 'icons/obj/modular_laptop.dmi'
+	icon_state = "hybrid-open"
 	var/obj/machinery/mri/mri = null
 
 /obj/machinery/mri_console/proc/ask_confirmation(mob/user, datum/mri_scan/scan)
@@ -417,7 +284,7 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 
 		if(unknown_body)
 			imp += "Unknown body present:"
-		if(!open && !infected & !imp)
+		if(!open && !infected && !imp)
 			AN = "None:"
 		if(!(e.status))
 			dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp]</td>"
