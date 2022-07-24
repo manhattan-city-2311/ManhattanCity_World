@@ -76,7 +76,7 @@
 /obj/machinery/lung_ventilator
 	name = "lung ventilation system"
 	desc = "Ventilators help a patient breathe by assisting the lungs to inhale and exhale air."
-	icon = 'icons/obj/medicine.dmi'
+	icon = 'icons/obj/iv_drip.dmi'
 	icon_state = "av_idle"
 	var/respiratory_rate = 15
 	var/respiratory_volume = 0.013

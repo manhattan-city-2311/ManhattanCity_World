@@ -356,9 +356,9 @@
 	var/obj/item/organ/internal/heart/heart = H.internal_organs_by_name[O_HEART]
 	if(H.is_vfib())
 		heart.get_ow_arrythmia()?.weak(heart)
-	else if(!H.is_asystole() && quality <= SKILL_TRAINED)
-		heart.pulse_modificators["defibrillation"] = rand(80, 120)
+	else if(!H.is_asystole())
 		heart.make_common_arrythmia(1)
+	heart.pulse_modificators["defibrillation"] = rand(80, 120)
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
 
 /obj/item/weapon/shockpaddles/proc/do_electrocute(mob/living/carbon/human/H, mob/user, var/target_zone)
@@ -395,8 +395,6 @@
 	log_admin(user, H, "Electrocuted using \a [src]", "Was electrocuted with \a [src]", "used \a [src] to electrocute")
 
 /obj/item/weapon/shockpaddles/proc/make_alive(mob/living/carbon/human/M) //This revives the mob
-	var/deadtime = world.time - M.timeofdeath
-
 	M.timeofdeath = 0
 	M.set_stat(UNCONSCIOUS) //Life() can bring them back to consciousness if it needs to.
 	M.regenerate_icons()
@@ -406,18 +404,6 @@
 	M.emote("gasp")
 	M.Weaken(rand(10,25))
 	M.updatehealth()
-	apply_brain_damage(M, deadtime)
-
-/obj/item/weapon/shockpaddles/proc/apply_brain_damage(mob/living/carbon/human/H, var/deadtime)
-	if(deadtime < DEFIB_TIME_LOSS) return
-
-	if(!H.should_have_organ(O_BRAIN)) return //no brain
-
-	var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[O_BRAIN]
-	if(!brain) return //no brain
-
-	var/brain_damage = Clamp((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
-	H.setBrainLoss(brain_damage)
 
 /obj/item/weapon/shockpaddles/proc/make_announcement(var/message, var/msg_class)
 	audible_message("<b>\The [src]</b> [message]", "\The [src] vibrates slightly.")
