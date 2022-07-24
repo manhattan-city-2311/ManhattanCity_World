@@ -1,7 +1,7 @@
 /obj/manhattan/vehicle/proc/update_angle_vector()
 	//angle = angle
-	angle_vector = vector2_from_angle(angle - 180)
-	angle_vector.round_components(0.01)
+	angle_vector = vector2_from_angle(angle + 180)
+	//angle_vector.round_components(0.01)
 
 /obj/manhattan/vehicle/Move(var/newloc,var/newdir)
 	if(anchored)
@@ -108,15 +108,7 @@
 
 	acceleration += angle_vector * F
 
-	// Drag
-
-	var/vector2/aerodrag = speed * (speed.modulus() * aerodynamics_coefficent)
-	var/vector2/traction_drag = speed * traction_coefficent
-
-	//VECTOR_DEBUG(aerodrag)
-	//VECTOR_DEBUG(traction_drag)
-
-	acceleration -= aerodrag + traction_drag
+	acceleration -= speed * (speed.modulus() * aerodynamics_coefficent + traction_coefficent)
 
 	if(is_brake_pressed)
 		acceleration.x -= min(speed.x * weight, get_braking_force())
@@ -126,15 +118,24 @@
 	//VECTOR_DEBUG(angle_vector)
 
 	speed += acceleration / weight * delta
+
+	if(abs(speed.angle() - angle) > 1)
+		speed.rotate(closer_angle_difference(speed.angle(), angle))
+
 	acceleration.x = 0
 	acceleration.y = 0
 
 /obj/manhattan/vehicle/proc/handle_turning()
 	if(!turning)
 		return
-	var/curDegree = Atan2(speed.x, speed.y)
-	var/destDegree = MODULUS(angle + 90 * turning, 360)
-	speed.rotate(closer_angle_difference(curDegree, destDegree))
+	var/destDegree = round(angle - 90 * turning, 90)
+	if(destDegree > 360)
+		destDegree -= 360
+	else if(destDegree < -360)
+		destDegree += 360
+	
+	speed.rotate(closer_angle_difference(speed.angle(), destDegree))
+	speed.round_components(0.01)
 	angle = destDegree
 	update_angle_vector()
 

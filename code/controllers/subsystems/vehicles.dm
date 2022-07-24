@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(vehicles)
 		for(var/i = 0, i < n, ++i)
 			vehicle.process_vehicle(wait / 10.0 / n)
 		vehicle.process_movement(wait / 10.0)
-		if(i % 20 == 0)
+		if(i % 10 == 0)
 			vehicle.handle_turning()
 	++i
 

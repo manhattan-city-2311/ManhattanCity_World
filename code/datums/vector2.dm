@@ -63,11 +63,19 @@
 	x -= b.x
 	y -= b.y
 
-/vector2/proc/rotate(degrees)
+/vector2/proc/rotate(degrees, epsilon = 0.00001)
 	var/x1 = x 
 	var/y1 = y
 	x = x1 * cos(degrees) + y1 * sin(degrees)
 	y = x1 * sin(degrees) + y1 * cos(degrees)
+
+	if(abs(x) < epsilon)
+		x = 0
+	if(abs(y) < epsilon)
+		y = 0
+
+/vector2/proc/angle()
+	return arctan(x, y)
 
 /vector2/proc/modulus()
 	return sqrt(x ** 2 + y ** 2)

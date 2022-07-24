@@ -84,7 +84,7 @@
 			var/obj/manhattan/vehicle/V = loc
 			stat("Speed:", TO_KPH(V.speed.modulus()))
 			stat("RPM:", V.components[VC_ENGINE]?.rpm)
-			stat("Angle:", "[V.angle] [angle2dir(V.angle)] [SIMPLIFY_DEGREES(Atan2(V.speed.x, V.speed.y))]")
+			stat("Angle:", "[V.angle]=[V.angle_vector.angle()] [V.speed.angle()]")
 
 /obj/manhattan/vehicle/proc/get_wheel_diameter()
 	return 0.34

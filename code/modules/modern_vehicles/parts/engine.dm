@@ -54,7 +54,7 @@
 		rpm = max_rpm - 50
 		return
 
-	var/dtorque = interpolate_list(rpm, xs, ys) * delta * 5
+	var/dtorque = interpolate_list(rpm, xs, ys) * delta
 
 	if(!vehicle.is_acceleration_pressed)
 		dtorque *= -0.25
