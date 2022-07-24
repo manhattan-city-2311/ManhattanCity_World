@@ -1,6 +1,6 @@
 /obj/manhattan/vehicle/proc/update_angle_vector()
-	angle = SIMPLIFY_DEGREES(angle)
-	angle_vector = vector2_from_angle(angle)
+	//angle = angle
+	angle_vector = vector2_from_angle(angle - 180)
 	angle_vector.round_components(0.01)
 
 /obj/manhattan/vehicle/Move(var/newloc,var/newdir)
@@ -129,18 +129,18 @@
 	acceleration.x = 0
 	acceleration.y = 0
 
+/obj/manhattan/vehicle/proc/handle_turning()
+	if(!turning)
+		return
+	var/curDegree = Atan2(speed.x, speed.y)
+	var/destDegree = MODULUS(angle + 90 * turning, 360)
+	speed.rotate(closer_angle_difference(curDegree, destDegree))
+	angle = destDegree
+	update_angle_vector()
+
 /obj/manhattan/vehicle/proc/process_movement(delta)
 	pixel_x += round(speed.x * 32 * delta)
 	pixel_y += round(speed.y * 32 * delta)
-
-	if(turning)
-		var/rotate_speed = 22.5 * turning * delta
-		speed.rotate(SIMPLIFY_DEGREES(rotate_speed))
-		angle += rotate_speed
-		update_angle_vector()
-	else
-		angle = Atan2(speed.x, speed.y)
-		update_angle_vector()
 
 	if(abs(pixel_x) >= 32 || abs(pixel_y) >= 32)
 		var/x_step = 0

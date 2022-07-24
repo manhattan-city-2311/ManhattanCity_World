@@ -40,7 +40,6 @@
 // Real modulus that handles decimals
 #define MODULUS(x, y) ( (x) - (y) * round((x) / (y)) )
 
-
 // Cotangent
 #define COT(x) (1 / TAN(x))
 
@@ -121,7 +120,7 @@
 
 // Will filter out extra rotations and negative rotations
 // E.g: 540 becomes 180. -180 becomes 180.
-#define SIMPLIFY_DEGREES(degrees) (MODULUS((degrees < 0 ? (360 + degrees) : degrees), 360))
+#define SIMPLIFY_DEGREES(degrees) (MODULUS((degrees), 360))
 
 #define GET_ANGLE_OF_INCIDENCE(face, input) (MODULUS((face) - (input), 360))
 

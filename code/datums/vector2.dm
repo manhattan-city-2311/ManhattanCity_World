@@ -30,8 +30,8 @@
 	return vector2(0, 0)
 
 /proc/vector2_from_angle(degrees)
-	return vector2_from_dir(angle2dir(degrees))
-	//return vector2(cos(degrees), sin(degrees))
+	//return vector2_from_dir(angle2dir(degrees))
+	return vector2(cos(degrees), sin(degrees))
 
 /vector2/proc/operator-(vector2/b)
 	return vector2(x - b.x, y - b.y)
