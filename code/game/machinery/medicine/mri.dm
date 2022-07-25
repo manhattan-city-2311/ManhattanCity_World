@@ -72,10 +72,6 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 /obj/machinery/mri/proc/start_scan()
 	operating = TRUE
 	handle_sound()
-	var/mob/living/carbon/human/occupant
-	for(var/mob/living/carbon/human/H in src.contents)
-		occupant = H
-	new /obj/item/weapon/paper(loc, generate_printing_text(occupant), "MRI scan report")
 
 /obj/machinery/mri/proc/stop_scan()
 	operating = FALSE

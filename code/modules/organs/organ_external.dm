@@ -693,6 +693,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			die()
 			to_chat(owner, "<span class='notice'>You can't feel your [name] anymore...</span>")
 			owner.bloodstr.add_reagent("potassium_hormone", 30) //septic shock
+		germ_level++
 
 	switch(germ_level)
 		if(INFECTION_LEVEL_ONE to INFECTION_LEVEL_TWO)
@@ -703,7 +704,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 			owner.bloodstr.add_reagent("potassium_hormone", 2)
 		if(INFECTION_LEVEL_MAX to INFINITY)
 			owner.bloodstr.add_reagent("potassium_hormone", 4)
-		germ_level++
 
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
 /obj/item/organ/external/proc/update_wounds()
