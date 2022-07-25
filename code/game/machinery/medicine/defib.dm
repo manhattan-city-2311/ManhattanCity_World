@@ -19,7 +19,7 @@
 
 /obj/machinery/defibrillator/process()
     . = ..()
-    if(pacing && pace_sync)
+    if(pacing && pace_sync && pads)
         var/obj/item/organ/internal/heart/heart = pads.attached.internal_organs_by_name[O_HEART]
         heart.cpr += pace_rate
         playsound(get_turf(src), "bodyfall", 25, 1)
@@ -57,13 +57,14 @@
     playsound(get_turf(src), "bodyfall", 50, 1)
     playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 50, 1, -1)
     pads.attached.apply_damage(rand(5, 20), BURN, BP_TORSO)
-    playsound(get_turf(src), 'sound/machines/defib_success.ogg', 50, 0)
+    //playsound(get_turf(src), 'sound/machines/defib_success.ogg', 50, 0)
     var/obj/item/organ/internal/heart/heart = pads.attached.internal_organs_by_name[O_HEART]
     if(pads.attached.is_vfib())
         heart.get_ow_arrythmia()?.weak(heart)
     else if(!pads.attached.is_asystole())
         heart.make_common_arrythmia(1)
     heart.pulse_modificators["defibrillation"] = rand(80, 120)
+    shock_charged = FALSE
     log_and_message_admins("used \a [src] to electrocute [key_name(pads.attached)].")
 
 
@@ -97,14 +98,18 @@
     playsound(get_turf(src), "bodyfall", 50, 1)
     playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 50, 1, -1)
     pads.attached.apply_damage(rand(1, 5), BURN, BP_TORSO)
-    playsound(get_turf(src), 'sound/machines/defib_success.ogg', 50, 0)
+    //playsound(get_turf(src), 'sound/machines/defib_success.ogg', 50, 0)
     var/obj/item/organ/internal/heart/heart = pads.attached.internal_organs_by_name[O_HEART]
     heart.pulse_modificators["defibrillation"] = rand(20, 40)
+    shock_charged = FALSE
     if(ARRYTHMIA_AFIB in heart.arrythmias)
         heart.arrythmias[ARRYTHMIA_AFIB].weak(heart)
         return
     if(ARRYTHMIA_TACHYCARDIA in heart.arrythmias)
         heart.arrythmias[ARRYTHMIA_TACHYCARDIA].weak(heart)
+        return
+    if(ARRYTHMIA_EXTRASYSTOLIC in heart.arrythmias)
+        heart.arrythmias[ARRYTHMIA_EXTRASYSTOLIC].weak(heart)
         return
 
 /obj/machinery/defibrillator/proc/change_pacing_rate(mob/user)
@@ -212,7 +217,8 @@
             P.taken_out = FALSE
             P.attached = null
         else
-            pads.forceMove(src.loc)
+            if(pads)
+                pads.forceMove(src.loc)
             pads = P
             user.visible_message("<span class='notice'>\The [user] replaces the [src] pads.</span>", "<span class='warning'>You replace the defibrillator pads.</span>")
         return

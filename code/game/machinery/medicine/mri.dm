@@ -200,21 +200,18 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 		mri.stop_scan()
 		return
 
-	var/list/scan_list = list()
+	var/list/scans = list()
 	for(var/T in subtypesof(/datum/mri_scan))
-		scan_list += new T()
-	var/list/scan_names = list()
-	for(var/datum/mri_scan/S in scan_list)
-		scan_names += S.name
-
-	var/setting = input(user, "Select a scan to perform.", "MRI scan") as null|anything in scan_names
+		var/datum/mri_scan/S = new T
+		scans[S.name] = S
+	var/datum/mri_scan/setting = input(user, "Select a scan to perform.", "MRI scan") as null|anything in scans
 
 	if(!setting)
 		return
-	if(!ask_confirmation(user, scan_list[setting]))
+	if(!ask_confirmation(user, setting))
 		return
 
-	scan_list[setting].perform_scan(mri, src)
+	setting.perform_scan(mri, src)
 
 
 /datum/mri_scan
