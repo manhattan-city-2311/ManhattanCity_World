@@ -78,6 +78,13 @@
 	..()
 	reagents.add_reagent("water", 10000)
 
+/obj/structure/reagent_dispensers/vat/fuel
+	name = "fuel cistern"
+
+/obj/structure/reagent_dispensers/vat/fuel/New()
+	..()
+	reagents.add_reagent("fuel", 1000)
+
 
 //Dispensers
 /obj/structure/reagent_dispensers/watertank

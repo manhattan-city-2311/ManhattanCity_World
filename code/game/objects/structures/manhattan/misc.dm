@@ -195,6 +195,11 @@
 	icon_state = "transit"
 	light_color = COLOR_YELLOW
 
+/obj/structure/sign/neon/big/transit/south
+	name = "south transit station sign"
+	desc = "A sign for the city transit station."
+	icon_state = "transit_alt"
+
 /obj/structure/sign/neon/big/train
 	name = "transit station sign"
 	desc = "A sign for the city transit station."
@@ -230,6 +235,13 @@
 	desc = "A sign for the city local bar."
 	icon_state = "bar"
 	light_color = LIGHT_COLOR_HOTPINK
+
+/obj/structure/sign/neon/big/gym_neon
+	name = "neon gym sign"
+	desc = "A neon flickering sign for the local gym."
+	icon_state = "gym_neon"
+	light_color = "#F070FF"
+	alpha = 170
 
 /obj/structure/sign/neon/big/casino
 	name = "neon casino sign"
