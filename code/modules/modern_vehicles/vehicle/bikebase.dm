@@ -5,7 +5,7 @@
 	name = "Motorcycle"
 	icon = 'icons/obj/bike.dmi'
 	icon_state = "bike_off"
-	var/list/components = list(
+	components = list(
 		VC_FRONT_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_BACK_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_ENGINE = /obj/item/vehicle_part/engine,
