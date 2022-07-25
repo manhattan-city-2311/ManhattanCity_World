@@ -12,7 +12,6 @@
 	..()
 	concussion_blast(get_turf(src), blast_radius)
 	qdel(src)
-	return
 
 /obj/proc/concussion_blast(atom/target, var/radius = 5)
 	var/turf/T = get_turf(target)
@@ -32,35 +31,36 @@
 
 				var/bang_effectiveness = 1
 
-				if((get_dist(H, T) <= round(radius * 0.3 * bang_effectiveness) || src.loc == H.loc || src.loc == H))
+				if((get_dist(H, T) <= round(radius * 0.3 * bang_effectiveness) || loc == H.loc || loc == H))
 					if(ear_safety > 0)
 						H.Confuse(2)
 					else
 						H.Confuse(8)
 						H.Weaken(1)
-						if ((prob(14) || (H == src.loc && prob(70))))
+						if ((prob(14) || (H == loc && prob(70))))
 							H.ear_damage += rand(1, 10)
 						else
 							H.ear_damage += rand(0, 5)
 							H.ear_deaf = max(H.ear_deaf,15)
+/*
 					if(H.client)
 						if(prob(50))
 							H.client.spinleft()
 						else
 							H.client.spinright()
-
+*/
 				else if(get_dist(H, T) <= round(radius * 0.5 * bang_effectiveness))
 					if(!ear_safety)
 						H.Confuse(6)
 						H.ear_damage += rand(0, 3)
 						H.ear_deaf = max(H.ear_deaf,10)
-
+/*
 					if(H.client)
 						if(prob(50))
 							H.client.spinleft()
 						else
 							H.client.spinright()
-
+*/
 				else if(!ear_safety && get_dist(H, T) <= (radius * bang_effectiveness))
 					H.Confuse(4)
 					H.ear_damage += rand(0, 1)
@@ -76,10 +76,11 @@
 					to_chat(H, "<span class='danger'>Your ears start to ring!</span>")
 			if(istype(L, /mob/living/silicon/robot))
 				var/mob/living/silicon/robot/R = L
+/*
 				if(L.client)
 					if(prob(50))
 						L.client.spinleft()
 					else
 						L.client.spinright()
+*/
 				to_chat(R, "<span class='critical'>Gyroscopic failure.</span>")
-	return
