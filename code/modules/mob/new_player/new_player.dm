@@ -84,7 +84,7 @@
 	return TRUE
 
 /mob/new_player/proc/update_lobby()
-	send_output(client, null, "lobbybrowser:imgsrc")
+	send_output(client, ready, "lobbybrowser:imgsrc")
 
 /mob/new_player/Topic(href, href_list[])
 	if (usr != src || !client)
