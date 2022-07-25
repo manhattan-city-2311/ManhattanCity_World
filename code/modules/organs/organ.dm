@@ -170,7 +170,7 @@ var/list/organ_cache = list()
 			parent.germ_level++
 
 		if (prob(3))	//about once every 30 seconds
-			take_damage(germ_level / INFECTION_LEVEL_TWO, silent = prob(30))
+			take_damage(germ_level / INFECTION_LEVEL_TWO)
 
 /obj/item/organ/proc/handle_rejection()
 	// Process unsuitable transplants. TODO: consider some kind of

@@ -204,14 +204,14 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	for(var/T in subtypesof(/datum/mri_scan))
 		var/datum/mri_scan/S = new T
 		scans[S.name] = S
-	var/datum/mri_scan/setting = input(user, "Select a scan to perform.", "MRI scan") as null|anything in scans
+	var/setting = input(user, "Select a scan to perform.", "MRI scan") as null|anything in scans
 
 	if(!setting)
 		return
-	if(!ask_confirmation(user, setting))
+	if(!ask_confirmation(user, scans[setting]))
 		return
 
-	setting.perform_scan(mri, src)
+	scans[setting].perform_scan(mri, src)
 
 
 /datum/mri_scan
