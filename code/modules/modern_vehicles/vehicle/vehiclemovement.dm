@@ -1,28 +1,22 @@
 /obj/manhattan/vehicle/proc/update_angle_vector()
-	//angle = angle
 	angle_vector = vector2_from_angle(angle + 180)
-	//angle_vector.round_components(0.01)
 
-/obj/manhattan/vehicle/Move(var/newloc,var/newdir)
-	if(anchored)
-		anchored = 0
-		. = ..()
-		anchored = 1
-	else
-		. = ..()
-	update_object_sprites()
+// direction is -1 or 1
+/obj/manhattan/vehicle/proc/handle_turning(direction)
+	var/destDegree = round(angle - 90 * direction, 90)
+	if(destDegree > 360)
+		destDegree -= 360
+	else if(destDegree < -360)
+		destDegree += 360
 
-/obj/manhattan/vehicle/relaymove(var/mob/user, var/direction)
-/*
-	if(world.time < next_move_input_at)
+	speed.rotate(closer_angle_difference(speed.angle(), destDegree))
+	angle = destDegree
+	update_angle_vector()
+
+/obj/manhattan/vehicle/var/next_steering_input = 0
+/obj/manhattan/vehicle/relaymove(mob/user, direction)
+	if(world.time < next_steering_input)
 		return 0
-	if(movement_destroyed)
-		to_chat(user,"<span class = 'notice'>[src] is in no state to move!</span>")
-		return 0
-	for(var/obj/item/vehicle_part/engine/engine in components)
-		if(engine.needs_processing == 0)
-			to_chat(user,"<span class = 'notice'>The engine is shut down!</span>")
-			return 0
 	var/list/driver_list = get_occupants_in_position("driver")
 	var/is_driver = FALSE
 
@@ -33,22 +27,22 @@
 	if(!is_driver)
 		return -1 //doesn't return 0 so we can differentiate this from the other problems for simple mobs.
 
-	is_clutch_pressed = user.client?.mod_keys_held & ALT_KEY
-	turning = 0
+	if(movement_destroyed)
+		to_chat(user, SPAN_NOTICE("[src] is in no state to move!"))
+		return 0
+
+	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
+
+	if(!engine.rpm)
+		to_chat(user, SPAN_NOTICE("The engine is shut down!"))
+		return 0
 
 	switch(direction)
-		if(NORTH)
-			is_acceleration_pressed = TRUE
-			is_brake_pressed = FALSE
-		if(SOUTH)
-			is_acceleration_pressed = FALSE
-			is_brake_pressed = TRUE
-		if(EAST)
-			turning = 1
-		if(WEST)
-			turning = -1
-	next_move_input_at = world.time + 5
-*/
+		if(EAST, NORTHEAST, SOUTHEAST)
+			handle_turning(1)
+		if(WEST, NORTHWEST, SOUTHWEST)
+			handle_turning(-1)
+	next_steering_input = world.time + 10
 	return 1
 
 /obj/manhattan/vehicle/proc/handle_input()
@@ -56,7 +50,6 @@
 	is_clutch_pressed = FALSE
 	is_acceleration_pressed = FALSE
 	is_brake_pressed = FALSE
-	turning = 0
 	if(!user || !user.client)
 		return
 
@@ -66,20 +59,11 @@
 	else if(move_keys_held & SOUTH)
 		is_brake_pressed = TRUE
 
-	if(move_keys_held & EAST)
-		turning = 1
-	else if(move_keys_held & WEST)
-		turning = -1
-
 	is_clutch_pressed = user.client.mod_keys_held & ALT_KEY
 
 // processes not only movement, but its will be in this file.
 /obj/manhattan/vehicle/proc/process_vehicle(delta = 2)
 	handle_input()
-
-	for(var/obj/item/vehicle_part/vp in components)
-		if(vp.can_process())
-			vp.part_process(delta)
 
 	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
 	var/obj/item/vehicle_part/clutch/clutch = components[VC_CLUTCH]
@@ -93,18 +77,12 @@
 	var/torque = engine.handle_torque(delta)
 	if(is_clutch_transfering())
 		var/wheels_rpm = speed.modulus() / get_wheel_diameter() * 60 / M_2PI
-		if(engine.rpm >= wheels_rpm * gearbox.get_ratio())
-			F += torque * gearbox.get_efficiency() / gearbox.get_ratio()
+		if((engine.rpm / gearbox.get_ratio()) >= wheels_rpm)
+			F += torque * gearbox.get_efficiency() * gearbox.get_ratio()
 
 		var/desired_engine_rpm = wheels_rpm * gearbox.get_ratio()
 
-		var/engineInertia = engine.mass * MASS_TO_INERTIA_COEFFICENT
-		var/wheelsInertia = get_wheels_mass() * MASS_TO_INERTIA_COEFFICENT
-
-		var/baseTorque = (desired_engine_rpm - engine.rpm) / (engineInertia + wheelsInertia)
-
-		engine.rpm += baseTorque * wheelsInertia * delta
-		F          += baseTorque * engineInertia
+		engine.rpm += (desired_engine_rpm - engine.rpm) * delta
 
 	acceleration += angle_vector * F
 
@@ -125,39 +103,64 @@
 	acceleration.x = 0
 	acceleration.y = 0
 
-/obj/manhattan/vehicle/proc/handle_turning()
-	if(!turning)
+/obj/manhattan/vehicle/Move(var/newloc,var/newdir)
+	if(anchored)
+		anchored = 0
+		. = ..()
+		anchored = 1
+	else
+		. = ..()
+	update_object_sprites()
+
+/obj/manhattan/vehicle/var/last_movement = 0
+/obj/manhattan/vehicle/proc/move_helper(x_step, y_step)
+	if(!(x_step || y_step))
 		return
-	var/destDegree = round(angle - 90 * turning, 90)
-	if(destDegree > 360)
-		destDegree -= 360
-	else if(destDegree < -360)
-		destDegree += 360
-	
-	speed.rotate(closer_angle_difference(speed.angle(), destDegree))
-	speed.round_components(0.01)
-	angle = destDegree
-	update_angle_vector()
+
+	if(last_movement)
+		update_glide(world.time - last_movement)
+	last_movement = world.time
+
+	var/newLoc = locate(x + x_step, y + y_step, z)
+	if(Move(newLoc, get_dir(loc, newLoc)))
+		return
+	speed.x = 0
+	speed.y = 0
+	if(is_clutch_transfering())
+		var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
+		engine?.stop()
 
 /obj/manhattan/vehicle/proc/process_movement(delta)
-	pixel_x += round(speed.x * 32 * delta)
-	pixel_y += round(speed.y * 32 * delta)
+	if(speed.modulus() < (delta / 32))
+		return
 
-	if(abs(pixel_x) >= 32 || abs(pixel_y) >= 32)
-		var/x_step = 0
-		var/y_step = 0
+	var/x_step = 0
+	var/y_step = 0
+	if(speed.x < 1 && speed.y < 1)
+		// delta-relative low speed pixel movement
+		var/dx = speed.x * 32 * delta
+		var/dy = speed.y * 32 * delta
 
-		if(abs(pixel_x) >= 32)
-			x_step  += SIGN(pixel_x)
-			pixel_x -= SIGN(pixel_x) * 32
-		if(abs(pixel_y) >= 32)
-			y_step  += SIGN(pixel_y)
-			pixel_y -= SIGN(pixel_y) * 32
+		if(abs(pixel_x + dx) >= 32)
+			var/temp = pixel_x + dx
+			x_step  += SIGN(temp)
+			pixel_x -= SIGN(temp) * 32
+		else
+			pixel_x += dx
 
-		var/turf/newLoc = locate(x + x_step, y + y_step, z)
-		if(!Move(newLoc, get_dir(loc, newLoc)))
-			speed.x = 0
-			speed.y = 0
-			if(is_clutch_transfering())
-				var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
-				engine?.stop()
+		if(abs(pixel_y + dy) >= 32)
+			var/temp = pixel_y + dy
+			y_step  += SIGN(temp)
+			pixel_y -= SIGN(temp) * 32
+		else
+			pixel_y += dy
+	else
+		// high speed
+		if(pixel_x || pixel_y)
+			pixel_x = 0
+			pixel_y = 0
+
+		x_step += speed.x * delta
+		y_step += speed.y * delta
+
+	move_helper(x_step, y_step)

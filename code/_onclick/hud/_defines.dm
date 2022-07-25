@@ -27,8 +27,8 @@
 
 //Lower center, persistant menu
 #define ui_sstore1 "WEST+2:10,SOUTH:5"
-#define ui_id "WEST+3:12,SOUTH:5"
-#define ui_belt "WEST+4:14,SOUTH:5"
+#define ui_id "CENTER-4:14,SOUTH:5"
+#define ui_belt "CENTER-3:14,SOUTH:5"
 #define ui_back "CENTER-2:14,SOUTH:5"
 #define ui_rhand "CENTER-1:16,SOUTH:5"
 #define ui_lhand "CENTER:16,SOUTH:5"

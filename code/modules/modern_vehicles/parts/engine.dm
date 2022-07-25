@@ -21,7 +21,7 @@
 	var/list/ys = list(0, 140,   150,  160,  175,  155,  144,  122, 0)
 	var/max_rpm = 6200
 
-	mass = 150
+	mass = 70
 	var/rpm = 0
 
 /obj/item/vehicle_part/engine/fail()

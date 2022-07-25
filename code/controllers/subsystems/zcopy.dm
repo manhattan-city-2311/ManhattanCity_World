@@ -118,7 +118,7 @@ SUBSYSTEM_DEF(zcopy)
 	while (qt_idex <= curr_turfs.len)
 		var/turf/T = curr_turfs[qt_idex]
 		curr_turfs[qt_idex] = null
-		qt_idex++
+		qt_idex += 1
 
 		if (!isturf(T) || !T.below || !(T.z_flags & ZM_MIMIC_BELOW) || !T.z_queued)
 			if (no_mc_tick)
@@ -297,7 +297,7 @@ SUBSYSTEM_DEF(zcopy)
 		else if (MC_TICK_CHECK)
 			break
 
-		if (qo_idex > 1 && qo_idex <= curr_ov.len)
+		if (qo_idex > 1)
 			curr_ov.Cut(1, qo_idex)
 			qo_idex = 1
 

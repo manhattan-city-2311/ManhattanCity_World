@@ -21,6 +21,8 @@
 
 /mob/new_player/New()
 	mob_list += src
+	spawn(5)
+		client?.view = 7
 
 /mob/new_player/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", whispering)
 	if (client)
@@ -98,8 +100,7 @@
 			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
 
-		LateChoices()
-		update_lobby()
+		AttemptLateSpawn("Civilian")
 		return 1
 
 	if(href_list["lobby_ready"])
@@ -344,6 +345,8 @@
 	new_character.force_update_limbs()
 	new_character.update_icons_body()
 	new_character.update_eyes()
+
+	client.view = world.view
 
 	new_character.key = key		//Manually transfer the key to log them in
 

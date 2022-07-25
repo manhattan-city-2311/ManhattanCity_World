@@ -14,7 +14,6 @@
 
 	var/keys_in_ignition = FALSE
 
-	var/next_move_input_at = 0//When can we send our next movement input?
 	var/moving_x = 0
 	var/moving_y = 0
 	var/can_space_move = 0
@@ -75,8 +74,6 @@
 	var/aerodynamics_coefficent = 0.32
 	var/traction_coefficent = 9.6
 
-	var/turning = 0
-
 /mob/living/carbon/human/Stat()
 	. = ..()
 	if(istype(loc, /obj/manhattan/vehicle))
@@ -90,7 +87,7 @@
 	return 0.34
 
 /obj/manhattan/vehicle/proc/get_wheels_mass()
-	return 12
+	return 25
 
 /obj/manhattan/vehicle/proc/get_braking_force()
 	return 1000
@@ -128,6 +125,8 @@
 		components[id] = new type
 		components[id].vehicle = src
 	serial_number = rand(1, 9999)
+
+	START_PROCESSING(SSobj, src)
 
 /obj/manhattan/vehicle/attack_generic(mob/living/simple_animal/attacker, damage, text)
 	visible_message("<span class = 'danger'>[attacker] [text] [src]</span>")
@@ -176,6 +175,9 @@
 			var/list/drivers = get_occupants_in_position("driver")
 			if(!drivers.len || isnull(drivers) || movement_destroyed)
 				inactive_pilot_effects()
+	for(var/obj/item/vehicle_part/vp in components)
+		if(vp.can_process())
+			vp.part_process()
 
 /obj/manhattan/vehicle/proc/update_object_sprites() //This is modified on a vehicle-by-vehicle basis to render mobsprites etc, a basic render of playerheads in the top right is used if no overidden.
 	underlays.Cut()
