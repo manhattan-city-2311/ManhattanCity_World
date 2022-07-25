@@ -183,9 +183,6 @@ var/list/wrapped_species_by_ref = list()
 	r_skin =   hex2num(copytext(new_skin, 2, 4))
 	g_skin =   hex2num(copytext(new_skin, 4, 6))
 	b_skin =   hex2num(copytext(new_skin, 6, 8))
-	r_synth = r_skin
-	g_synth = g_skin
-	b_synth = b_skin
 
 	var/datum/species/shapeshifter/S = species
 	if(S.monochromatic)

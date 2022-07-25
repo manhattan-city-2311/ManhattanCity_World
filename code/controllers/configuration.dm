@@ -7,7 +7,7 @@ var/list/gamemode_cache = list()
 	var/nudge_script_path = "nudge.py"  	// where the nudge.py script is located
 
 	var/canonicity = 0					// if we're canon or not.
-	var/years_in_future = 544			// how many years in the future are we?
+	var/years_in_future = 289			// how many years in the future are we?
 	var/days_in_future = 0				// how many years in the future are we?
 	var/months_in_future = 0				// how many years in the future are we?
 
@@ -89,7 +89,7 @@ var/list/gamemode_cache = list()
 	var/cult_ghostwriter = 1                //Allows ghosts to write in blood in cult rounds...
 	var/cult_ghostwriter_req_cultists = 10  //...so long as this many cultists are active.
 
-	var/character_slots = 10				// The number of available character slots
+	var/character_slots = 4				// The number of available character slots
 	var/loadout_slots = 3				// The number of loadout slots per character
 
 	var/max_maint_drones = 5				//This many drones can spawn,

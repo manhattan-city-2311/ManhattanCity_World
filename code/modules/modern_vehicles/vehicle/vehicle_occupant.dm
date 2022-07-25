@@ -22,8 +22,6 @@
 	user.forceMove(loc_moveto)
 	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
 	update_object_sprites()
-	update_user_view(user,1)
-	return
 
 /obj/manhattan/vehicle/verb/enter_vehicle()
 	set name = "Enter Vehicle"
@@ -114,7 +112,6 @@
 	user.loc = contents
 	contents += user
 	update_object_sprites()
-	update_user_view(user)
 	visible_message("<span class = 'notice'>[user] enters the [position] position of [src].</span>")
 	to_chat(user,"<span class = 'info'>You are now in the [position] position of [src].</span>")
 	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
@@ -174,12 +171,3 @@
 		if(prob(hit_chance))
 			return position
 	return null
-
-/obj/manhattan/vehicle/proc/update_user_view(var/mob/user,var/reset = 0)
-	if(user.client)
-		if(reset)
-			user.client.view = world.view
-			user.client.pixel_x = 0
-			user.client.pixel_y = 0
-		else
-			user.client.view *= vehicle_view_modifier

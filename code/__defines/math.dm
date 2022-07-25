@@ -5,6 +5,7 @@
 #define NUM_E 2.71828183
 #define SQRT_2 1.41421356237
 #define M_PI						(3.14159265)
+#define M_2PI						(6.28318530)
 #define INFINITY				(1.#INF)	//closer then enough
 
 #define SHORT_REAL_LIMIT 16777216
@@ -16,6 +17,9 @@
 #define TICK_USAGE_TO_MS(starting_tickusage) (TICK_DELTA_TO_MS(world.tick_usage - starting_tickusage))
 
 #define PERCENT(val) (round((val)*100, 0.1))
+
+#define TO_MPS(kph) (kph / 3.6)
+#define TO_KPH(mps) (mps * 3.6)
 
 //time of day but automatically adjusts to the server going into the next day within the same round.
 //for when you need a reliable time number that doesn't depend on byond time.
@@ -35,7 +39,6 @@
 
 // Real modulus that handles decimals
 #define MODULUS(x, y) ( (x) - (y) * round((x) / (y)) )
-
 
 // Cotangent
 #define COT(x) (1 / TAN(x))
@@ -219,6 +222,9 @@
 #define ISPOWEROFTWO(x) ((x & (x - 1)) == 0)
 #define ROUNDUPTOPOWEROFTWO(x) (2 ** -round(-log(2,x)))
 
+/proc/vector_neg(list/vector)
+	return list(-vector[1], -vector[2])
+
 /proc/frac(x)
 	return x % 1
 
@@ -228,3 +234,14 @@
 // Performs a linear interpolation between a and b.
 /proc/lerp(a, b, t = 0.5)
 	return a + t * (b - a)
+
+// Lagrage interpolation
+/proc/interpolate_list(x, list/xs, list/ys)
+	. = 0
+	for(var/i in 1 to xs.len)
+		var/l = 1
+		for(var/j in 1 to xs.len)
+			if(j != i)
+				l *= (x - xs[j]) / (xs[i] - xs[j])
+		. += ys[i] * l
+		

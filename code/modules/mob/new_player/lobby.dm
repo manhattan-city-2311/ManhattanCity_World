@@ -81,7 +81,7 @@
 		. += {"<a id="ready" class="menu_a" href='?src=\ref[src];lobby_ready=1'>[ready ? "READY ☑" : "READY ☒"]</a>
 	"}
 	else
-		. += {"<a class="menu_a" href='?src=\ref[src];lobby_join=1'>JOIN</a>
+		. += {"<a class="menu_a" href='?src=\ref[src];lobby_join=1'>ENTER CITY</a>
 	"}
 
 	. += "</div>"

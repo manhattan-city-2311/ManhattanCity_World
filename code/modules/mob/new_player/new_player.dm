@@ -21,6 +21,8 @@
 
 /mob/new_player/New()
 	mob_list += src
+	spawn(5)
+		client?.view = 7
 
 /mob/new_player/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", whispering)
 	if (client)
@@ -81,24 +83,29 @@
 
 	return TRUE
 
+/mob/new_player/proc/update_lobby()
+	send_output(client, null, "lobbybrowser:imgsrc")
+
 /mob/new_player/Topic(href, href_list[])
 	if (usr != src || !client)
 		return 0
 
 	if(href_list["lobby_setup"])
 		client.prefs.open_load_dialog(src)
+		update_lobby()
 		return 1
 
 	if(href_list["lobby_join"])
-
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
 
-		LateChoices()
+		AttemptLateSpawn("Civilian")
+		return 1
 
 	if(href_list["lobby_ready"])
 		ready = !ready
+		update_lobby()
 		return 1
 
 	if(href_list["set_alt_title"])
@@ -338,6 +345,8 @@
 	new_character.force_update_limbs()
 	new_character.update_icons_body()
 	new_character.update_eyes()
+
+	client.view = world.view
 
 	new_character.key = key		//Manually transfer the key to log them in
 

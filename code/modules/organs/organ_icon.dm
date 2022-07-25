@@ -19,8 +19,6 @@ var/global/list/limb_icon_cache = list()
 	if(robotic >= ORGAN_ROBOT)
 		var/datum/robolimb/franchise = all_robolimbs[model]
 		if(!(franchise && franchise.skin_tone))
-			if(human.synth_color)
-				s_col = list(human.r_synth, human.g_synth, human.b_synth)
 			return
 	if(species && human.species && species.name != human.species.name)
 		return

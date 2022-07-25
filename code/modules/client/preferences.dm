@@ -106,10 +106,6 @@ var/list/preferences_datums = list()
 	var/list/gear_list = list()			//Custom/fluff item loadouts.
 	var/gear_slot = 1					//The current gear save slot
 	var/list/traits						//Traits which modifier characters for better or worse (mostly worse).
-	var/synth_color	= 0					//Lets normally uncolorable synth parts be colorable.
-	var/r_synth							//Used with synth_color to color synth parts that normaly can't be colored.
-	var/g_synth							//Same as above
-	var/b_synth							//Same as above
 
 		//Some faction information.
 	var/home_system = "Mars"           //System of birth.

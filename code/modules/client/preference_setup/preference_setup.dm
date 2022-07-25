@@ -9,15 +9,19 @@
 	sort_order = 2
 	category_item_type = /datum/category_item/player_setup_item/skills
 
-/datum/category_group/player_setup_category/occupation_preferences
-	name = "Должность"
+/*
+/datum/category_group/player_setup_category/backstory
+	name = "Бэкстори"
 	sort_order = 3
-	category_item_type = /datum/category_item/player_setup_item/occupation
+	category_item_type = /datum/category_item/player_setup_item/backstory
+*/
 
+/*
 /datum/category_group/player_setup_category/trait_preferences
 	name = "Черты"
 	sort_order = 6
-//	category_item_type = /datum/category_item/player_setup_item/traits
+	category_item_type = /datum/category_item/player_setup_item/traits
+*/
 
 /datum/category_group/player_setup_category/loadout_preferences
 	name = "Предметы"

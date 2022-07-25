@@ -42,10 +42,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["organ_data"]			>> pref.organ_data
 	S["rlimb_data"]			>> pref.rlimb_data
 	S["body_markings"]		>> pref.body_markings
-	S["synth_color"]		>> pref.synth_color
-	S["synth_red"]			>> pref.r_synth
-	S["synth_green"]		>> pref.g_synth
-	S["synth_blue"]			>> pref.b_synth
 	pref.preview_icon = null
 	S["bgstate"]			>> pref.bgstate
 	S["cyber_control"]		>> pref.cyber_control
@@ -82,10 +78,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["organ_data"]			<< pref.organ_data
 	S["rlimb_data"]			<< pref.rlimb_data
 	S["body_markings"]		<< pref.body_markings
-	S["synth_color"]		<< pref.synth_color
-	S["synth_red"]			<< pref.r_synth
-	S["synth_green"]		<< pref.g_synth
-	S["synth_blue"]			<< pref.b_synth
 	S["bgstate"]			<< pref.bgstate
 	S["cyber_control"]		<< pref.cyber_control
 
@@ -118,10 +110,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.organ_data = null
 	pref.rlimb_data = null
 	pref.body_markings = null
-	pref.synth_color = null
-	pref.r_synth = null
-	pref.g_synth = null
-	pref.b_synth	= null
 	pref.bgstate = null
 	pref.calories = null
 	pref.weight = null
@@ -197,10 +185,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.h_style	= pref.h_style
 	character.f_style	= pref.f_style
 	character.b_type	= pref.b_type
-	character.synth_color = pref.synth_color
-	character.r_synth	= pref.r_synth
-	character.g_synth	= pref.g_synth
-	character.b_synth	= pref.b_synth
 	character.weight	= pref.weight
 	character.calories	= pref.calories
 	character.hydration	= pref.hydration
@@ -466,9 +450,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		. += "<br>"
 
 	. += "<br>"
-	. += "<b>Разрешить синтетический цвет:</b> <a href='?src=\ref[src];synth_color=1'><b>[pref.synth_color ? "Да" : "Нет"]</b></a><br>"
-	if(pref.synth_color)
-		. += "<a href='?src=\ref[src];synth2_color=1'>Изменить цвет</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_synth, 2)][num2hex(pref.g_synth, 2)][num2hex(pref.b_synth, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_synth, 2)][num2hex(pref.g_synth, 2)][num2hex(pref.b_synth, 2)]'><tr><td>__</td></tr></table></font> "
 
 	. = jointext(.,null)
 
@@ -891,18 +872,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else if(href_list["toggle_preview_value"])
 		pref.equip_preview_mob ^= text2num(href_list["toggle_preview_value"])
 		return TOPIC_REFRESH_UPDATE_PREVIEW
-
-	else if(href_list["synth_color"])
-		pref.synth_color = !pref.synth_color
-		return TOPIC_REFRESH_UPDATE_PREVIEW
-
-	else if(href_list["synth2_color"])
-		var/new_color = input(user, "Choose your character's synth colour: ", "Character Preference", rgb(pref.r_synth, pref.g_synth, pref.b_synth)) as color|null
-		if(new_color && CanUseTopic(user))
-			pref.r_synth = hex2num(copytext(new_color, 2, 4))
-			pref.g_synth = hex2num(copytext(new_color, 4, 6))
-			pref.b_synth = hex2num(copytext(new_color, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["cycle_bg"])
 		pref.bgstate = next_in_list(pref.bgstate, pref.bgstate_options)

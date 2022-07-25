@@ -21,9 +21,6 @@
 
 	light_color = "#E1FDFF"
 
-	min_speed = 6
-	max_speed = 1
-
 /obj/manhattan/vehicle/aventa/update_object_sprites()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)

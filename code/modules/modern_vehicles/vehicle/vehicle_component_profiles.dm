@@ -53,13 +53,7 @@
 		component.damage_integrity(600/ex_severity * (1- comp_resistance/100),)
 
 /datum/component_profile/proc/give_gunner_weapons(var/obj/manhattan/vehicle/source_vehicle)
-	var/list/gunners = source_vehicle.get_occupants_in_position(pos_to_check)
-	for(var/mob/living/carbon/human/gunner in gunners)
-		if(gunner.get_active_hand() || gunner.get_inactive_hand()) //Let's not give anyone a gun if they're messing with their inventory, or already have a gun.
-			continue
-		source_vehicle.update_user_view(gunner,1)
-		spawn(1)
-			source_vehicle.update_user_view(gunner)
+	return
 
 /datum/component_profile/proc/gunner_fire_check(var/mob/user,var/obj/manhattan/vehicle/source_vehicle,var/obj/gun)
 	if(!(gun.type in gunner_weapons))

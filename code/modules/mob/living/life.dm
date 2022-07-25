@@ -212,7 +212,7 @@
 		dsoverlay.alpha = 255
 		return
 
-	var/darksightedness = min(see_in_dark/world.view,1.0)	//A ratio of how good your darksight is, from 'nada' to 'really darn good'
+	var/darksightedness = min(see_in_dark/8,1.0)	//A ratio of how good your darksight is, from 'nada' to 'really darn good'
 	var/current = dsoverlay.alpha/255						//Our current adjustedness
 
 	var/brightness = 0.0 //We'll assume it's superdark if we can't find something else.

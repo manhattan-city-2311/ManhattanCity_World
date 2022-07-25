@@ -615,9 +615,3 @@
 /obj/item/weapon/storage/on_loc_moved(atom/oldloc)
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
-
-//Updates Glide_size of mob according to its speed.
-/mob/proc/update_glide(movement_delay = 2)
-	if (movement_delay != lastmovementdelay)
-		lastmovementdelay = movement_delay
-		glide_size = 32 * (world.tick_lag) / lastmovementdelay
