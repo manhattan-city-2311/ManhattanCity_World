@@ -32,7 +32,6 @@
 #include "code\__defines\business.dm"
 #include "code\__defines\calendar_zodiac.dm"
 #include "code\__defines\callback.dm"
-#include "code\__defines\callbacks.dm"
 #include "code\__defines\chat.dm"
 #include "code\__defines\chemistry.dm"
 #include "code\__defines\cmp.dm"

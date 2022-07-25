@@ -8,7 +8,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/tmp/iconCache.sav"))
 
 /// Should match the value set in the browser js
 #define MAX_COOKIE_LENGTH 5
-#define SPAM_TRIGGER_AUTOMUTE 10
+//#define SPAM_TRIGGER_AUTOMUTE 10
 
 /client/var/chatOutput/chatOutput
 

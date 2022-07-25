@@ -15,7 +15,6 @@
 			if(D)
 				if(!D.ckey || !D.client)
 					D.death()
-		return 1
 
 /obj/item/organ/external/diona
 	name = "tendril"

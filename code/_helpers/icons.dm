@@ -711,7 +711,7 @@ The _flatIcons list is a cache for generated icon files.
 	// Before processing overlays, make sure any pending overlays are applied
 	if (isloc(A))
 		var/atom/aAtom = A
-		if(aAtom.flags & OVERLAY_QUEUED)
+		if(aAtom.flags && flags == OVERLAY_QUEUED)
 			COMPILE_OVERLAYS(aAtom)
 
 	// Layers will be a sorted list of icons/overlays, based on the order in which they are displayed

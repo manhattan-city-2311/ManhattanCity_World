@@ -96,5 +96,3 @@
 	..()
 	if(robotic >= ORGAN_ASSISTED)
 		owner.eye_blurry += (4/severity)
-
-#undef PROCESS_ACCURACY

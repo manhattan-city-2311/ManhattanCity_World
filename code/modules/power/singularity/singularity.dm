@@ -334,13 +334,6 @@
 	turfs.Add(T)
 	var/dir2 = 0
 	var/dir3 = 0
-	switch(direction)
-		if(NORTH||SOUTH)
-			dir2 = 4
-			dir3 = 8
-		if(EAST||WEST)
-			dir2 = 1
-			dir3 = 2
 	var/turf/T2 = T
 	for(var/j = 1 to steps)
 		T2 = get_step(T2,dir2)

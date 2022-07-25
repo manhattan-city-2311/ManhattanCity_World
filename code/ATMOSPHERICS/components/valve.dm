@@ -41,11 +41,7 @@
 	update_underlays()
 
 /obj/machinery/atmospherics/valve/init_dir()
-	switch(dir)
-		if(NORTH || SOUTH)
-			initialize_directions = NORTH|SOUTH
-		if(EAST || WEST)
-			initialize_directions = EAST|WEST
+	return
 
 /obj/machinery/atmospherics/valve/get_neighbor_nodes_for_init()
 	return list(node1, node2)
