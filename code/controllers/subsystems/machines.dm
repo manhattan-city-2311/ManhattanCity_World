@@ -150,6 +150,5 @@ SUBSYSTEM_DEF(machines)
 			queue.Cut(i)
 			return
 
-#undef SSMACHINES_PIPENETS
 #undef SSMACHINES_MACHINERY
 #undef SSMACHINES_POWER_OBJECTS

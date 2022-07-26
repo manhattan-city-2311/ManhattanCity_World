@@ -122,19 +122,6 @@ obj/machinery/atmospherics/mains_pipe/simple
 	New()
 		nodes.len = 2
 		..()
-		switch(dir)
-			if(SOUTH || NORTH)
-				initialize_mains_directions = SOUTH|NORTH
-			if(EAST || WEST)
-				initialize_mains_directions = EAST|WEST
-			if(NORTHEAST)
-				initialize_mains_directions = NORTH|EAST
-			if(NORTHWEST)
-				initialize_mains_directions = NORTH|WEST
-			if(SOUTHEAST)
-				initialize_mains_directions = SOUTH|EAST
-			if(SOUTHWEST)
-				initialize_mains_directions = SOUTH|WEST
 
 	proc/normalize_dir()
 		if(dir==3)

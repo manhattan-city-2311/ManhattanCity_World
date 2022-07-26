@@ -22,7 +22,8 @@
 					height: 100%;
 					-ms-interpolation-mode: nearest-neighbor
 				}
-				.fone {
+				.lobby_image
+				{
 					position: absolute;
 					width: auto;
 					height: 100vmin;
@@ -51,11 +52,11 @@
 					font-family: "Fixedsys";
 					font-weight: lighter;
 					text-decoration: none;
-					width: 25%;
+					width: 40%;
 					text-align: left;
 					color:white;
 					margin-right: 100%;
-					margin-top: 5px;
+					margin-top: 8px;
 					padding-left: 6px;
 					font-size: 4vmin;
 					line-height: 4vmin;
@@ -64,44 +65,43 @@
 					text-shadow: 2px 2px 0px #000000;
 				}
 				.menu_a:hover {
-					border-left: 3px solid white;
-					font-weight: bolder;
+					color: #aaffff;
+					/*border-left: 3px solid #00ffff;*/
+					text-shadow: 0 0 6px #00ffff;
+					/* font-weight: bolder; */
 					padding-left: 3px;
+					/* transition: 0.25s linear border-left, 0.1s linear color, 0.25s linear font-weight; */
 				}
 			</style>
 		</head>
 		<body>
 	"}
 
-
-	. += {"<div class="container_nav">
-		<a class="menu_a" href='?src=\ref[src];lobby_setup=1'>SETUP</a>
+	. += {"<img src="titlescreen.gif" class="lobby_image background" alt="">"}
+	. += "<img src='menu_cyberui.png' class='lobby_image' alt=''>"
+	. += {"
+		<div class="container_nav">
+		<a class="menu_a" href='?src=\ref[src];lobby_setup=1'>CHARACTERS</a>
 	"}
 	if(ticker.current_state <= GAME_STATE_SETTING_UP)
-		. += {"<a id="ready" class="menu_a" href='?src=\ref[src];lobby_ready=1'>[ready ? "READY ☑" : "READY ☒"]</a>
-	"}
+		. += {"<a id="ready" class="menu_a" href='?src=\ref[src];lobby_ready=1'>READY [ready ? " <font color='#00ff00'>☑</font>" : "<font color='#ff0000'>☒</font>"]</a>"}
 	else
-		. += {"<a class="menu_a" href='?src=\ref[src];lobby_join=1'>ENTER CITY</a>
-	"}
+		. += {"<a id = "enter" class="menu_a" href='?src=\ref[src];lobby_join=1'>ENTER MANHATTAN</a>"}
 
 	. += "</div>"
 
-	. += {"<img src="titlescreen.gif" class="fone" alt="">"}
 	. += {"
 	<script language="JavaScript">
-		var i=0;
-		var mark=document.getElementById("ready");
-		var marks=new Array('READY ☒', 'READY ☑');
-		function imgsrc(setReady) {
-			if(setReady) {
-				i = setReady;
-				mark.textContent = marks\[i\];
-			}
-			else {
-				i++;
-				if (i == marks.length)
-					i = 0;
-				mark.textContent = marks\[i\];
+		var ready = [ready];
+		var mark = document.getElementById("ready");
+		var marks = new Array("<font color='#ff0000'>☒</font>", "<font color='#00ff00'>☑</font>");
+		function imgsrc(setReady)
+		{
+			if(!isNaN(setReady)) ready = setReady;
+			if(mark)
+			{
+				ready = setReady;
+				mark.innerHTML = "READY " + marks\[ready];
 			}
 		}
 	</script>

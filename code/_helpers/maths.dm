@@ -91,7 +91,7 @@
 	// Pi / 180 ~ 0.0174532925
 	return degrees * 0.0174532925
 
-#define SIGN(x) ((x) < 0 ? -1 : ((x) > 0))
+//#define SIGN(x) ((x) < 0 ? -1 : ((x) > 0))
 // Vector algebra.
 /proc/squaredNorm(x, y)
 	return x*x + y*y
