@@ -36,9 +36,10 @@
 	switch(direction)
 		if(EAST, NORTHEAST, SOUTHEAST)
 			handle_turning(1)
+			next_steering_input = world.time + 10
 		if(WEST, NORTHWEST, SOUTHWEST)
 			handle_turning(-1)
-	next_steering_input = world.time + 10
+			next_steering_input = world.time + 10
 	return 1
 
 /obj/manhattan/vehicle/proc/handle_input()
@@ -59,6 +60,9 @@
 
 // processes not only movement, but its will be in this file.
 /obj/manhattan/vehicle/proc/process_vehicle(delta = 2)
+	if(!components?.len)
+		return
+
 	handle_input()
 
 	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
@@ -74,7 +78,7 @@
 	if(is_clutch_transfering())
 		var/wheels_rpm = speed.modulus() / get_wheel_diameter() * 60 / M_2PI
 		if((engine.rpm / gearbox.get_ratio()) >= wheels_rpm)
-			F += torque * gearbox.get_efficiency() * gearbox.get_ratio() / get_wheel_diameter()
+			F += torque * gearbox.get_efficiency() * gearbox.get_ratio() / get_wheel_diameter() / delta
 		else
 			engine.receive_torque(torque)
 
@@ -91,12 +95,19 @@
 
 	acceleration -= speed * (speed.modulus() * aerodynamics_coefficent + traction_coefficent)
 
-	if(is_brake_pressed)
-		acceleration.x -= min(speed.x * weight, get_braking_force())
-		acceleration.y -= min(speed.y * weight, get_braking_force())
-
 	speed += acceleration / weight * delta
 
+	if(is_brake_pressed)
+		var/x_sign = SIGN(speed.x)
+		speed.x -= x_sign * (get_braking_force() / weight)
+		if(SIGN(speed.x) != x_sign)
+			speed.x = 0
+
+		var/y_sign = SIGN(speed.y)
+		speed.y -= y_sign * (get_braking_force() / weight)
+		if(SIGN(speed.y) != y_sign)
+			speed.y = 0
+		
 	if(abs(speed.angle() - angle_vector.angle()) > 1)
 		speed.rotate(closer_angle_difference(speed.angle(), angle_vector.angle()))
 
@@ -111,6 +122,23 @@
 	else
 		. = ..()
 	update_object_sprites()
+
+/obj/manhattan/vehicle/proc/collide_with_obstacle(atom/obstacle)
+	if(!obstacle.handle_vehicle_collision(obstacle))
+		visible_message(SPAN_DANGER("[src] collides with [obstacle]!"))
+	comp_prof.take_component_damage(speed.modulus() * 0.83, "brute")
+
+	for(var/mob/living/carbon/human/H in occupants)
+		for(var/i in 1 to 5)
+			H.adjustBruteLoss(speed.modulus() * 0.83 / 5)
+	speed.x = 0
+	speed.y = 0
+	step_x = 0
+	step_y = 0
+
+/obj/manhattan/vehicle/Bump(atom/obstacle)
+	..()
+	. = collide_with_obstacle(obstacle)
 
 /obj/manhattan/vehicle/var/last_movement
 /obj/manhattan/vehicle/proc/move_helper(x_step, y_step)

@@ -6,7 +6,7 @@
 	density = 1
 	layer = ABOVE_MOB_LAYER
 
-	appearance_flags = DEFAULT_APPEARANCE
+	appearance_flags = DEFAULT_APPEARANCE_UNBOUND
 
 	var/active = 1
 	var/guns_disabled = 0
@@ -16,8 +16,6 @@
 
 	var/keys_in_ignition = FALSE
 
-	var/moving_x = 0
-	var/moving_y = 0
 	var/can_space_move = 0
 
 	//Advanced Damage Handling
@@ -84,7 +82,7 @@
 			stat("Скорость:", "[TO_KPH(V.speed.modulus())] км/ч")
 			stat("Тахометр:", "[V.components[VC_ENGINE]?.rpm] об/м")
 			stat("Передача:", V.components[VC_GEARBOX]?.selected_gear)
-			stat("Angle:", "[V.angle]=[V.angle_vector.angle()] [V.speed.angle()]")
+					
 
 /obj/manhattan/vehicle/proc/get_wheel_diameter()
 	return 0.34
@@ -93,7 +91,7 @@
 	return 25
 
 /obj/manhattan/vehicle/proc/get_braking_force()
-	return 1500
+	return 500
 
 /obj/manhattan/vehicle/proc/is_clutch_transfering()
 	var/obj/item/vehicle_part/clutch/clutch = components[VC_CLUTCH]
@@ -111,13 +109,7 @@
 	return get_components(/obj/item/vehicle_part/wheel)
 
 /obj/manhattan/vehicle/initialize()
-	. = ..()
 	comp_prof = new comp_prof(src)
-
-	START_PROCESSING(SSobj, src)
-	SSvehicles.queue += src
-
-	update_object_sprites()
 	if(light_range != 0)
 		verbs += /obj/manhattan/vehicle/verb/toggle_headlights
 		set_light(0) //Switch off at spawn.
@@ -127,9 +119,13 @@
 		var/type = components[id]
 		components[id] = new type
 		components[id].vehicle = src
+
+	SSvehicles.queue += src
+
 	serial_number = rand(1, 9999)
 
 	START_PROCESSING(SSobj, src)
+	update_object_sprites()
 
 /obj/manhattan/vehicle/attack_generic(mob/living/simple_animal/attacker, damage, text)
 	visible_message("<span class = 'danger'>[attacker] [text] [src]</span>")
@@ -161,7 +157,7 @@
 	. = ..()
 
 /obj/manhattan/vehicle/proc/on_death()
-	explosion(loc,-1,-1,2,5)
+	explosion(loc, -1, -1, 2, 5)
 	movement_destroyed = 1
 	guns_disabled = 1
 	icon_state = "[initial(icon_state)]_destroyed"

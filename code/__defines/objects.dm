@@ -19,3 +19,6 @@
 // unidentified object due to a typo or some other unique difference in message output.
 #define ROGUELIKE_MESSAGE_NOTHING "Nothing happens."
 #define ROGUELIKE_MESSAGE_UNKNOWN "Something happened, but you're not sure what."
+
+#define DEFAULT_APPEARANCE_UNBOUND PIXEL_SCALE|LONG_GLIDE
+#define DEFAULT_APPEARANCE TILE_BOUND|DEFAULT_APPEARANCE_UNBOUND

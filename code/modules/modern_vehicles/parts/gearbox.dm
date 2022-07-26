@@ -17,7 +17,7 @@
 		"4" = 1.1,
 		"5" = 0.87
 	)
-	var/topgear = 18
+	var/topgear = 4.2
 	var/efficiency = 0.9
 
 /obj/item/vehicle_part/gearbox/proc/get_efficiency()
@@ -47,4 +47,5 @@
 			return
 		if("1")
 			selected_gear = "N"
+			return
 	selected_gear = "[text2num(selected_gear) - 1]"

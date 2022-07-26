@@ -5,6 +5,8 @@
 	name = "Motorcycle"
 	icon = 'icons/obj/bike.dmi'
 	icon_state = "bike_off"
+	var/overlay_icon_state = "bike_off_overlay"
+
 	components = list(
 		VC_FRONT_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_BACK_WHEEL = /obj/item/vehicle_part/wheel,
@@ -17,29 +19,33 @@
 	var/rider_x = 0
 	var/rider_y = 0
 
-	var/list/rider_xs = list(
-		EAST = 0,
-		WEST = 16,
-		NORTH = 8,
-		SOUTH = 8
+	var/list/rider_xs
 
-	)
-	var/list/rider_ys = list(
-		EAST = 5,
-		WEST = 5,
-		NORTH = 12,
-		SOUTH = 12
-	)
+	var/list/rider_ys
 
 	weight = 150
 	aerodynamics_coefficent = 0.15
 	traction_coefficent = 4.5
 
+/obj/manhattan/vehicle/motorcycle/get_braking_force()
+	return 100
+
 /obj/manhattan/vehicle/motorcycle/update_object_sprites()
-	..()
 	vis_contents.Cut()
-	var/list/drivers = get_occupants_in_position("driver")
-	var/mob/living/carbon/human/driver = drivers[1]
-	driver.pixel_x = rider_xs[dir]
-	driver.pixel_y = rider_ys[dir]
+	overlays.Cut()
+	overlays += icon(icon, overlay_icon_state, dir)
+
+	if(!occupants)
+		return
+
+	var/mob/living/carbon/human/driver = null
+	for(var/possible_driver in occupants)
+		if(ishuman(possible_driver))
+			driver = possible_driver
+			break
+	if(!driver)
+		return
+
+	driver.pixel_x = rider_xs[dir2text(dir & ALL_CARDINALS)]
+	driver.pixel_y = rider_ys[dir2text(dir & ALL_CARDINALS)]
 	vis_contents += driver

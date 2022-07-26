@@ -12,5 +12,5 @@ SUBSYSTEM_DEF(vehicles)
 			continue
 		for(var/i = 0, i < n, ++i)
 			vehicle.process_vehicle(wait / 10.0 / n)
-		vehicle.process_movement(wait / 10.0)
+			vehicle.process_movement(wait / 10.0 / n)
 

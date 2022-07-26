@@ -5,6 +5,33 @@
 	var/obj/item/vehicle_part/gearbox/gearbox = components[VC_GEARBOX]
 	gearbox.upshift()
 
+/client/proc/upshift()
+	var/obj/manhattan/vehicle/V = mob?.loc
+	if(!V)
+		return FALSE
+	V.upshift()
+	return TRUE
+
+/client/proc/downshift()
+	var/obj/manhattan/vehicle/V = mob?.loc
+	if(!V)
+		return FALSE
+	V.downshift()
+	return TRUE
+
+// God sorry
+
+/client/Northwest()
+	if(!downshift())
+		..()
+
+/mob/living/carbon/human/quick_equip()
+	set name = "quick-equip"
+	set hidden = 1
+	
+	if(!client?.upshift())
+		..()
+
 /obj/manhattan/vehicle/verb/downshift()
 	set name = "Понизить передачу"
 	set category = "Транспорт"

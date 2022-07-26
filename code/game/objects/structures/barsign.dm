@@ -1,7 +1,6 @@
 /obj/structure/sign/double/barsign
 	icon = 'icons/obj/barsigns.dmi'
 	icon_state = "empty"
-	appearance_flags = 0
 	light_range = 4
 	light_power = 2
 	light_color = "#ff6699"

@@ -1,5 +1,3 @@
-#define DEFAULT_APPEARANCE TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
-
 /atom/movable
 	layer = OBJ_LAYER
 	appearance_flags = DEFAULT_APPEARANCE | TILE_MOVER
@@ -25,7 +23,7 @@
 	var/lastmovementdelay = 0
 
 /atom/movable/proc/update_glide(movement_delay = 2)
-	if (movement_delay != lastmovementdelay)
+	if (movement_delay != lastmovementdelay && movement_delay)
 		lastmovementdelay = movement_delay
 		glide_size = 32 * (world.tick_lag) / lastmovementdelay
 

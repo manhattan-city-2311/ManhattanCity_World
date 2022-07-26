@@ -22,7 +22,7 @@
 		"6" = 0.967,
 		"7" = 0.844
 	)
-	topgear = 8
+	topgear = 3.42
 	efficiency = 0.92
 
 /obj/manhattan/vehicle/aventa
@@ -58,6 +58,9 @@
 	aerodynamics_coefficent = 0.23
 	traction_coefficent = 6.9
 
+/obj/manhattan/vehicle/aventa/get_braking_force()
+	return 1000
+
 /obj/manhattan/vehicle/aventa/update_object_sprites()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
@@ -65,32 +68,9 @@
 	else
 		bounds = "96,64"
 
-/obj/manhattan/vehicle/aventa/on_death()
-	. = ..()
-
 /obj/item/vehicle_component/health_manager/aventa
 	integrity = 100
 	resistances = list("brute"=30,"burn"=40,"emp"=25,"bomb"=10)
 
 /datum/component_profile/aventa
 	vital_components = newlist(/obj/item/vehicle_component/health_manager/aventa)
-
-/*/obj/manhattan/vehicles/aventa/Move(var/newloc,var/newdir)
-	icon_state = "aventador_moving"
-	if(abs(speed[1]) > abs(speed[2]))
-		if(speed[1] > 0)
-			newdir = EAST
-		else
-			newdir = WEST
-	else
-		if(speed[2] > 0)
-			newdir = NORTH
-		else
-			newdir = SOUTH
-	if(anchored)
-		anchored = 0
-		. = ..()
-		anchored = 1
-	else
-		. = ..()
-	update_object_sprites()*/

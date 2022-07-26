@@ -2249,6 +2249,7 @@
 #include "code\modules\modern_vehicles\vehicle\vehiclebase_air.dm"
 #include "code\modules\modern_vehicles\vehicle\vehiclemovement.dm"
 #include "code\modules\modern_vehicles\vehicle\vehicleverbs.dm"
+#include "code\modules\modern_vehicles\vehicle\types\ae86.dm"
 #include "code\modules\modern_vehicles\vehicle\types\ambulance.dm"
 #include "code\modules\modern_vehicles\vehicle\types\aventa.dm"
 #include "code\modules\modern_vehicles\vehicle\types\truck.dm"
