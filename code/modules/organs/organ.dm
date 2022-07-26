@@ -171,6 +171,7 @@ var/list/organ_cache = list()
 
 		if (prob(3))	//about once every 30 seconds
 			take_damage(germ_level / INFECTION_LEVEL_TWO)
+	return germ_level
 
 /obj/item/organ/proc/handle_rejection()
 	// Process unsuitable transplants. TODO: consider some kind of
