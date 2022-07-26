@@ -69,8 +69,8 @@ GLOBAL_LIST_INIT(floating_chat_colors, list())
 		qdel(I)
 
 /proc/refresh_lobby_browsers()
-	//for(var/mob/new_player/player in player_list)
-	//	INVOKE_ASYNC(using_map, /datum/map/proc/show_titlescreen, player.client)
+	for(var/mob/new_player/player in player_list)
+		INVOKE_ASYNC(using_map, /datum/map/proc/show_titlescreen, player.client)
 	return
 
 /proc/change_lobbyscreen(new_screen)

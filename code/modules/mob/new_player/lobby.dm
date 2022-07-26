@@ -69,7 +69,7 @@
 					/*border-left: 3px solid #00ffff;*/
 					text-shadow: 0 0 6px #00ffff;
 					/* font-weight: bolder; */
-					padding-left: 3px;
+					/* padding-left: 3px;*/
 					/* transition: 0.25s linear border-left, 0.1s linear color, 0.25s linear font-weight; */
 				}
 			</style>
@@ -97,7 +97,6 @@
 		var marks = new Array("<font color='#ff0000'>☒</font>", "<font color='#00ff00'>☑</font>");
 		function imgsrc(setReady)
 		{
-			if(!isNaN(setReady)) ready = setReady;
 			if(mark)
 			{
 				ready = setReady;
