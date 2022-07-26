@@ -44,7 +44,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 					far_volume += (dist <= far_dist * 0.5 ? 50 : 0) // add 50 volume if the mob is pretty close to the explosion
 					M.playsound_local(epicenter, 'sound/effects/explosionfar.ogg', far_volume, 1, frequency, falloff = 5)
 
-		var/close = range(world.view+round(devastation_range,1), epicenter)
+		var/close = range(8 + round(devastation_range,1), epicenter)
 		// to all distanced mobs play a different sound
 		for(var/mob/M in world)
 			if(M.z == epicenter.z)

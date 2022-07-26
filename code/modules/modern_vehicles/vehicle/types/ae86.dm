@@ -31,9 +31,6 @@
 	icon_state = "ae86"
 	anchored = 1
 
-	bound_height = 96
-	bound_width = 64
-
 	comp_prof = /datum/component_profile/ae86
 
 //	move_sound = 'code/modules/halo/sounds/warthog_move.ogg'

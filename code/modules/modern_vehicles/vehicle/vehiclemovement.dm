@@ -142,6 +142,7 @@
 
 /obj/manhattan/vehicle/var/last_movement
 /obj/manhattan/vehicle/proc/move_helper(x_step, y_step)
+	dir = angle2dir(speed.angle() - 180)
 	if(!(x_step || y_step))
 		return
 
@@ -150,7 +151,7 @@
 	last_movement = world.time
 
 	var/newLoc = locate(x + x_step, y + y_step, z)
-	if(Move(newLoc, get_dir(loc, newLoc), x_step ? 0 : step_x, y_step ? 0 : step_y))
+	if(Move(newLoc, dir, x_step ? 0 : step_x, y_step ? 0 : step_y))
 		return
 	speed.x = 0
 	speed.y = 0

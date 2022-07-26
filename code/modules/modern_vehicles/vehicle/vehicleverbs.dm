@@ -19,18 +19,11 @@
 	V.downshift()
 	return TRUE
 
-// God sorry
+// God sorry please
 
 /client/Northwest()
 	if(!downshift())
-		..()
-
-/mob/living/carbon/human/quick_equip()
-	set name = "quick-equip"
-	set hidden = 1
-	
-	if(!client?.upshift())
-		..()
+		diagonal_action(NORTHWEST)
 
 /obj/manhattan/vehicle/verb/downshift()
 	set name = "Понизить передачу"

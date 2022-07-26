@@ -33,9 +33,6 @@
 	icon_state = "aventador"
 	anchored = 1
 
-	bound_height = 96
-	bound_width = 64
-
 	comp_prof = /datum/component_profile/aventa
 
 //	move_sound = 'code/modules/halo/sounds/warthog_move.ogg'

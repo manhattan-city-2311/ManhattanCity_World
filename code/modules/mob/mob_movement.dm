@@ -38,8 +38,6 @@
 
 /client/Northeast()
 	diagonal_action(NORTHEAST)
-/client/Northwest()
-	diagonal_action(NORTHWEST)
 /client/Southeast()
 	diagonal_action(SOUTHEAST)
 /client/Southwest()

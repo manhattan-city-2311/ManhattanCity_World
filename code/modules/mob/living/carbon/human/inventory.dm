@@ -10,6 +10,9 @@ This saves us from having to call add_fingerprint() any time something is put in
 	set name = "quick-equip"
 	set hidden = 1
 
+	if(client?.upshift())
+		return
+
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		var/obj/item/I = H.get_active_hand()
