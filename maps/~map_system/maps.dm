@@ -285,6 +285,7 @@ var/list/all_maps = list()
 
 	if(isnewplayer(C.mob))
 		var/mob/new_player/player = C.mob
+		player.set_viewsize(7)
 		show_browser(C, player.get_lobby_html(), "window=lobbybrowser")
 
 /datum/map/proc/hide_titlescreen(client/C)

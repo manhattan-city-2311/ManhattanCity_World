@@ -38,7 +38,7 @@ var/global/datum/global_init/init = new ()
 	cache_lifespan = 7
 	movement_mode = PIXEL_MOVEMENT_MODE
 
-	fps = 30
+	fps = 100
 
 /var/game_id = null
 /proc/generate_gameid()
