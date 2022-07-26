@@ -9,7 +9,7 @@
         "тако",
         "киску",
         "кисуля",
-        "вагина",
+        "вагину",
         "влагалище"
     )
     var/list/fellational_adjectives = list(
