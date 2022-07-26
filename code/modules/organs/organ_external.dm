@@ -617,19 +617,18 @@ Note that amputating the affected organ does in fact remove the infection from t
 */
 /obj/item/organ/external/proc/update_germs()
 
-	if(robotic >= ORGAN_ROBOT || (owner.species && (owner.species.flags & IS_PLANT || (owner.species.flags & NO_INFECT)))) //Robotic limbs shouldn't be infected, nor should nonexistant limbs.
+	if(robotic >= ORGAN_ROBOT) //Robotic limbs shouldn't be infected, nor should nonexistant limbs.
 		germ_level = 0
 		return
 
-	if(owner.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
-		//** Syncing germ levels with external wounds
-		handle_germ_sync()
+	//** Syncing germ levels with external wounds
+	handle_germ_sync()
 
-		//** Handle antibiotics and curing infections
-		handle_antibiotics()
+	//** Handle antibiotics and curing infections
+	handle_antibiotics()
 
-		//** Handle the effects of infections
-		handle_germ_effects()
+	//** Handle the effects of infections
+	handle_germ_effects()
 
 /obj/item/organ/external/proc/handle_germ_sync()
 	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]
@@ -692,7 +691,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(!(status & ORGAN_DEAD))
 			die()
 			to_chat(owner, "<span class='notice'>You can't feel your [name] anymore...</span>")
-			owner.bloodstr.add_reagent("potassium_hormone", 30) //septic shock
+			owner.bloodstr.add_reagent("potassium_hormone", 35) //septic shock
 		germ_level++
 
 	switch(germ_level)
