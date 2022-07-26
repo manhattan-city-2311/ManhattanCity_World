@@ -1084,6 +1084,7 @@ mob/proc/yank_out_object()
 /mob/proc/set_viewsize(var/new_view = world.view)
 	if (client && new_view != client.view)
 		client.view = new_view
+		client.fit_viewport()
 		return TRUE
 	return FALSE
 

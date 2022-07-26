@@ -1,20 +1,20 @@
 /obj/manhattan/vehicle/verb/upshift()
-	set name = "Upshift"
-	set category = "Vehicle"
+	set name = "Повысить передачу"
+	set category = "Транспорт"
 	set src in view(1)
 	var/obj/item/vehicle_part/gearbox/gearbox = components[VC_GEARBOX]
 	gearbox.upshift()
 
 /obj/manhattan/vehicle/verb/downshift()
-	set name = "Downshift"
-	set category = "Vehicle"
+	set name = "Понизить передачу"
+	set category = "Транспорт"
 	set src in view(1)
 	var/obj/item/vehicle_part/gearbox/gearbox = components[VC_GEARBOX]
 	gearbox.downshift()
 
 /obj/manhattan/vehicle/verb/toggle_headlights()
-	set name = "Toggle Headlights"
-	set category = "Vehicle"
+	set name = "Переключить фары"
+	set category = "Транспорт"
 	set src in view(1)
 	var/mob/living/user = usr
 	if(!istype(user) || !(user in get_occupants_in_position("driver")))
@@ -22,8 +22,8 @@
 		return
 
 /obj/manhattan/vehicle/verb/keys()
-	set name = "Insert/Remove keys"
-	set category = "Vehicle"
+	set name = "Вставить/достать ключ"
+	set category = "Транспорт"
 	set src in view(1)
 	var/mob/living/user = usr
 	if(!istype(user) || !(user in get_occupants_in_position("driver")))
@@ -38,8 +38,8 @@
 	playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1)
 
 /obj/manhattan/vehicle/verb/engine()
-	set name = "Start/Stop engine"
-	set category = "Vehicle"
+	set name = "Зажигание"
+	set category = "Транспорт"
 	set src in view(1)
 	var/mob/living/user = usr
 	if(!istype(user) || !(user in get_occupants_in_position("driver")))
@@ -78,8 +78,8 @@
 	display_ammo_status(user)
 
 /obj/manhattan/vehicle/verb/verb_inspect_components()
-	set name = "Inspect Components"
-	set category = "Vehicle"
+	set name = "Осмотреть детали"
+	set category = "Транспорт"
 	set src in view(1)
 
 	var/mob/living/user = usr

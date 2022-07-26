@@ -5,9 +5,9 @@
 	desc = "Gearbox. Modificates torque from the engine."
 	id = VC_GEARBOX
 
-	mass = 70
-
 	var/selected_gear = "N"
+
+	mass = 70
 	var/list/gears = list(
 		"R"  = -4.2,
 		"N"  = 0,
@@ -17,7 +17,7 @@
 		"4" = 1.1,
 		"5" = 0.87
 	)
-	var/topgear = 26.4
+	var/topgear = 18
 	var/efficiency = 0.9
 
 /obj/item/vehicle_part/gearbox/proc/get_efficiency()

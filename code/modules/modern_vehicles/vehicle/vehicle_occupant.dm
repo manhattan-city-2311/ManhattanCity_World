@@ -1,7 +1,7 @@
 
 /obj/manhattan/vehicle/verb/verb_exit_vehicle()
-	set name = "Exit Vehicle"
-	set category = "Vehicle"
+	set name = "Выйти из транспорта"
+	set category = "Транспорт"
 	set src in view(1)
 
 	exit_vehicle(usr)
@@ -24,8 +24,8 @@
 	update_object_sprites()
 
 /obj/manhattan/vehicle/verb/enter_vehicle()
-	set name = "Enter Vehicle"
-	set category = "Vehicle"
+	set name = "Войти в транспорт"
+	set category = "Транспорт"
 	set src in view(1)
 
 	var/mob/living/user = usr
@@ -133,8 +133,8 @@
 	enter_as_position(occ_tradewith,user_position)
 
 /obj/manhattan/vehicle/verb/switch_seats()
-	set name = "Switch Seats"
-	set category = "Vehicle"
+	set name = "Пересесть"
+	set category = "Транспорт"
 	set src in view(1)
 	var/mob/user = usr
 	if(!istype(user) || !src.Adjacent(user))

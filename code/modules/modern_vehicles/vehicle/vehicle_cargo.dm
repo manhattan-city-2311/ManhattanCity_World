@@ -65,8 +65,8 @@
 	verbs += /obj/manhattan/vehicle/proc/detach_vehicle
 
 /obj/manhattan/vehicle/proc/detach_vehicle()
-	set category = "Vehicle"
-	set name = "Detach vehicle"
+	set category = "Транспорт"
+	set name = "Отсоединить транспорт"
 	set src in view(1)
 
 	verbs -= /obj/manhattan/vehicle/proc/detach_vehicle
@@ -85,8 +85,8 @@
 		put_cargo_item(user, dropping)
 
 /obj/manhattan/vehicle/proc/get_cargo_item()
-	set name = "Retrieve Cargo"
-	set category = "Vehicle"
+	set name = "Достать груз"
+	set category = "Транспорт"
 	set src in view(1)
 
 	var/mob/living/user = usr
@@ -132,8 +132,8 @@
 	return
 
 /obj/manhattan/vehicle/verb/pull_occupant_out()
-	set name = "Remove Occupant"
-	set category = "Vehicle"
+	set name = "Вытащить пассажира"
+	set category = "Транспорт"
 	set src in view(1)
 
 	var/mob/living/puller = usr

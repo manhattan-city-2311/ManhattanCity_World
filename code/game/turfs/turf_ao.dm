@@ -49,7 +49,7 @@
 	var/image/I = image('icons/turf/flooring/shadows.dmi', cstr, dir = 1 << (i-1))
 	I.alpha = WALL_AO_ALPHA
 	I.blend_mode = BLEND_OVERLAY
-	I.appearance_flags = RESET_ALPHA|RESET_COLOR|TILE_BOUND
+	I.appearance_flags = RESET_ALPHA|RESET_COLOR|TILE_BOUND|TILE_MOVER|PIXEL_SCALE
 	I.layer = AO_LAYER
 	//I.plane = AO_PLANE
 	// If there's an offset, counteract it.

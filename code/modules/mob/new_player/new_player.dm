@@ -21,8 +21,6 @@
 
 /mob/new_player/New()
 	mob_list += src
-	spawn(5)
-		client?.view = 7
 
 /mob/new_player/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", whispering)
 	if (client)
@@ -346,7 +344,7 @@
 	new_character.update_icons_body()
 	new_character.update_eyes()
 
-	client.view = world.view
+	set_viewsize()
 
 	new_character.key = key		//Manually transfer the key to log them in
 

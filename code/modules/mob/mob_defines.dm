@@ -4,6 +4,7 @@
 	plane = MOB_PLANE
 	animate_movement = 2
 	flags = PROXMOVE
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_DIR
 	var/datum/mind/mind
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak

@@ -1,6 +1,8 @@
+#define DEFAULT_APPEARANCE TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
+
 /atom/movable
 	layer = OBJ_LAYER
-	appearance_flags = TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
+	appearance_flags = DEFAULT_APPEARANCE | TILE_MOVER
 	var/last_move = null
 	var/anchored = 0
 	glide_size = 8

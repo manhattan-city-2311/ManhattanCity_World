@@ -46,7 +46,7 @@
 				to_chat(user, "<span class='notice'>You add a rod to \the [src].</span>")
 				var/mutable_appearance/rod_underlay = mutable_appearance('icons/obj/structures.dmi', "bonfire_rod")
 				rod_underlay.pixel_y = 16
-				rod_underlay.appearance_flags = RESET_COLOR|PIXEL_SCALE|TILE_BOUND
+				rod_underlay.appearance_flags = RESET_COLOR|PIXEL_SCALE|TILE_BOUND|TILE_MOVER
 				underlays += rod_underlay
 			if("Grill")
 				R.use(1)

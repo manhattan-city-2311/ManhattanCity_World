@@ -31,11 +31,7 @@
 		to_chat(user, SPAN_NOTICE("[src] is in no state to move!"))
 		return 0
 
-	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
-
-	if(!engine.rpm)
-		to_chat(user, SPAN_NOTICE("The engine is shut down!"))
-		return 0
+	//var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
 
 	switch(direction)
 		if(EAST, NORTHEAST, SOUTHEAST)
@@ -78,11 +74,18 @@
 	if(is_clutch_transfering())
 		var/wheels_rpm = speed.modulus() / get_wheel_diameter() * 60 / M_2PI
 		if((engine.rpm / gearbox.get_ratio()) >= wheels_rpm)
-			F += torque * gearbox.get_efficiency() * gearbox.get_ratio()
+			F += torque * gearbox.get_efficiency() * gearbox.get_ratio() / get_wheel_diameter()
+		else
+			engine.receive_torque(torque)
 
 		var/desired_engine_rpm = wheels_rpm * gearbox.get_ratio()
 
-		engine.rpm += (desired_engine_rpm - engine.rpm) * delta
+		var/rpm_add = (desired_engine_rpm - engine.rpm) * delta
+		if(engine.rpm + rpm_add > engine.max_rpm)
+			F -= (engine.rpm + rpm_add - engine.max_rpm) * engine.mass * MASS_TO_INERTIA_COEFFICENT
+		else
+			engine.rpm += rpm_add
+
 
 	acceleration += angle_vector * F
 
@@ -92,13 +95,10 @@
 		acceleration.x -= min(speed.x * weight, get_braking_force())
 		acceleration.y -= min(speed.y * weight, get_braking_force())
 
-	//VECTOR_DEBUG(acceleration)
-	//VECTOR_DEBUG(angle_vector)
-
 	speed += acceleration / weight * delta
 
-	if(abs(speed.angle() - angle) > 1)
-		speed.rotate(closer_angle_difference(speed.angle(), angle))
+	if(abs(speed.angle() - angle_vector.angle()) > 1)
+		speed.rotate(closer_angle_difference(speed.angle(), angle_vector.angle()))
 
 	acceleration.x = 0
 	acceleration.y = 0
@@ -112,7 +112,7 @@
 		. = ..()
 	update_object_sprites()
 
-/obj/manhattan/vehicle/var/last_movement = 0
+/obj/manhattan/vehicle/var/last_movement
 /obj/manhattan/vehicle/proc/move_helper(x_step, y_step)
 	if(!(x_step || y_step))
 		return
@@ -122,7 +122,7 @@
 	last_movement = world.time
 
 	var/newLoc = locate(x + x_step, y + y_step, z)
-	if(Move(newLoc, get_dir(loc, newLoc)))
+	if(Move(newLoc, get_dir(loc, newLoc), x_step ? 0 : step_x, y_step ? 0 : step_y))
 		return
 	speed.x = 0
 	speed.y = 0
@@ -136,31 +136,21 @@
 
 	var/x_step = 0
 	var/y_step = 0
-	if(speed.x < 1 && speed.y < 1)
-		// delta-relative low speed pixel movement
-		var/dx = speed.x * 32 * delta
-		var/dy = speed.y * 32 * delta
+	var/dx = speed.x * 32 * delta
+	var/dy = speed.y * 32 * delta
 
-		if(abs(pixel_x + dx) >= 32)
-			var/temp = pixel_x + dx
-			x_step  += SIGN(temp)
-			pixel_x -= SIGN(temp) * 32
-		else
-			pixel_x += dx
-
-		if(abs(pixel_y + dy) >= 32)
-			var/temp = pixel_y + dy
-			y_step  += SIGN(temp)
-			pixel_y -= SIGN(temp) * 32
-		else
-			pixel_y += dy
+	if(abs(step_x + dx) >= 32)
+		var/temp = step_x + dx
+		x_step += SIGN(temp)
+		step_x -= SIGN(temp) * 32
 	else
-		// high speed
-		if(pixel_x || pixel_y)
-			pixel_x = 0
-			pixel_y = 0
+		step_x += dx
 
-		x_step += speed.x * delta
-		y_step += speed.y * delta
+	if(abs(step_y + dy) >= 32)
+		var/temp = step_y + dy
+		y_step += SIGN(temp)
+		step_y -= SIGN(temp) * 32
+	else
+		step_y += dy
 
 	move_helper(x_step, y_step)

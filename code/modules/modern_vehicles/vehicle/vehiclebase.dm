@@ -6,6 +6,8 @@
 	density = 1
 	layer = ABOVE_MOB_LAYER
 
+	appearance_flags = DEFAULT_APPEARANCE
+
 	var/active = 1
 	var/guns_disabled = 0
 	var/movement_destroyed = 0
@@ -79,8 +81,9 @@
 	if(istype(loc, /obj/manhattan/vehicle))
 		if(statpanel("Status"))
 			var/obj/manhattan/vehicle/V = loc
-			stat("Speed:", TO_KPH(V.speed.modulus()))
-			stat("RPM:", V.components[VC_ENGINE]?.rpm)
+			stat("Скорость:", "[TO_KPH(V.speed.modulus())] км/ч")
+			stat("Тахометр:", "[V.components[VC_ENGINE]?.rpm] об/м")
+			stat("Передача:", V.components[VC_GEARBOX]?.selected_gear)
 			stat("Angle:", "[V.angle]=[V.angle_vector.angle()] [V.speed.angle()]")
 
 /obj/manhattan/vehicle/proc/get_wheel_diameter()
@@ -90,7 +93,7 @@
 	return 25
 
 /obj/manhattan/vehicle/proc/get_braking_force()
-	return 1000
+	return 1500
 
 /obj/manhattan/vehicle/proc/is_clutch_transfering()
 	var/obj/item/vehicle_part/clutch/clutch = components[VC_CLUTCH]

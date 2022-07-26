@@ -36,6 +36,7 @@ var/global/datum/global_init/init = new ()
 	area = /area/space
 	view = "19x15"
 	cache_lifespan = 7
+	movement_mode = PIXEL_MOVEMENT_MODE
 
 	fps = 30
 
