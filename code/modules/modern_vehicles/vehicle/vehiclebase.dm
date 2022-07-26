@@ -8,6 +8,8 @@
 
 	appearance_flags = DEFAULT_APPEARANCE_UNBOUND
 
+	step_size = 64
+
 	var/active = 1
 	var/guns_disabled = 0
 	var/movement_destroyed = 0
@@ -82,7 +84,7 @@
 			stat("Скорость:", "[TO_KPH(V.speed.modulus())] км/ч")
 			stat("Тахометр:", "[V.components[VC_ENGINE]?.rpm] об/м")
 			stat("Передача:", V.components[VC_GEARBOX]?.selected_gear)
-					
+
 
 /obj/manhattan/vehicle/proc/get_wheel_diameter()
 	return 0.34

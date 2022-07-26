@@ -27,13 +27,19 @@
 	aerodynamics_coefficent = 0.15
 	traction_coefficent = 4.5
 
+	var/image/img
+
 /obj/manhattan/vehicle/motorcycle/get_braking_force()
 	return 100
 
 /obj/manhattan/vehicle/motorcycle/update_object_sprites()
 	vis_contents.Cut()
 	overlays.Cut()
-	overlays += icon(icon, overlay_icon_state, dir)
+
+	if(img)
+		del(img)
+	img = image(icon, icon_state = overlay_icon_state, dir = dir, layer = ABOVE_MOB_LAYER + 1)
+	img.plane = MOB_PLANE
 
 	if(!occupants)
 		return
@@ -49,3 +55,4 @@
 	driver.pixel_x = rider_xs[dir2text(dir & ALL_CARDINALS)]
 	driver.pixel_y = rider_ys[dir2text(dir & ALL_CARDINALS)]
 	vis_contents += driver
+	overlays += img	

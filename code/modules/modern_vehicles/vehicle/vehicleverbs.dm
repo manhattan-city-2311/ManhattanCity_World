@@ -48,6 +48,11 @@
 		to_chat(user,"<span class = 'notice'>You must be the driver of [src] to toggle the headlights.</span>")
 		return
 
+	if(light_power)
+		set_light(6, 4)
+	else
+		set_light(0, 0)
+
 /obj/manhattan/vehicle/verb/keys()
 	set name = "Вставить/достать ключ"
 	set category = "Транспорт"
