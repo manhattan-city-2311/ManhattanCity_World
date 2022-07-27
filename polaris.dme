@@ -2617,6 +2617,7 @@
 #include "code\modules\reagents\reagent_containers\food.dm"
 #include "code\modules\reagents\reagent_containers\glass.dm"
 #include "code\modules\reagents\reagent_containers\hypospray.dm"
+#include "code\modules\reagents\reagent_containers\ivpack.dm"
 #include "code\modules\reagents\reagent_containers\patch.dm"
 #include "code\modules\reagents\reagent_containers\pill.dm"
 #include "code\modules\reagents\reagent_containers\spray.dm"
