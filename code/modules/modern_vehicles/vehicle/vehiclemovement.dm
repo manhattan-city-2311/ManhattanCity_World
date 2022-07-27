@@ -1,6 +1,7 @@
 /obj/manhattan/vehicle/proc/update_angle_vector()
 	angle_vector.set_angle(90 - angle)
 
+/obj/manhattan/vehicle/var/c = -90
 // direction is -1 or 1
 /obj/manhattan/vehicle/proc/handle_turning(direction)
 	var/destDegree = round(angle + 90 * direction, 90)
@@ -11,7 +12,7 @@
 	else if(destDegree < 0)
 		destDegree = 360 + destDegree
 
-	dir = turn(dir, 90 * direction)
+	dir = turn(dir, c * direction)
 
 	speed.rotate(closer_angle_difference(speed.angle(), destDegree))
 	angle = destDegree

@@ -1051,7 +1051,6 @@
 	switch(shock_stage)
 		if(SHOCK_STAGE_PAIN_MESSAGE to SHOCK_STAGE_SCREAM-5)
 			message = pick(SHOCK_PAIN_MESSAGES)
-			emote_pick = "whimper"
 
 		if(SHOCK_STAGE_SCREAM-5 to SHOCK_STAGE_STUN - 15)
 			message = pick(SHOCK_PAIN_MESSAGES)

@@ -8,6 +8,7 @@ var/global/list/image/splatter_cache=list()
 	desc = "It's thick and gooey. Perhaps it's the chef's cooking?"
 	var/drydesc = "It's dry and crusty. Someone is not doing their job."
 	gender = PLURAL
+	blend_mode = BLEND_MULTIPLY
 	density = 0
 	anchored = 1
 	plane = BLOOD_PLANE
