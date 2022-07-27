@@ -23,12 +23,12 @@
             middle_turf = T
             template = SSmapping.map_templates[interior_template]
             if(!template.load(T, centered = TRUE))
-                log_debug("Vehicle interior template failed to load!")
+                log_error("Vehicle interior template failed to load!")
                 qdel(src)
             qdel(spawns)
             break
     if(!template)
-        log_debug("No template for vehicle interior found.")
+        log_error("No template for vehicle interior found.")
         return
 
     id = rand(1, 999999) //Will never match
