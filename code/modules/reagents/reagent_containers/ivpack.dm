@@ -13,7 +13,7 @@
 	volume = 1500
 	var/list/prefill = null
 
-/obj/item/weapon/reagent_containers/ivpack/bottle/New()
+/obj/item/weapon/reagent_containers/ivpack/New()
 	..()
 	if(LAZYLEN(prefill))
 		for(var/R in prefill)
