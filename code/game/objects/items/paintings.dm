@@ -207,3 +207,13 @@ var/list/available_paintings = list(
 	paint = "hospital"
 	icon_state = "hospital"
 	..()
+
+/obj/structure/painting_custom
+	name = "painting"
+	desc = "A beautiful painting."
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "0,0" // 0,0 - first painting
+	item_state = "painting"
+	anchored = 1
+	burn_state = 0
+	burntime = SHORT_BURN

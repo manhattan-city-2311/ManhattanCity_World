@@ -310,6 +310,9 @@ var/list/flooring_types
 /decl/flooring/tiling/new_tile/monotile
 	icon_base = "monotile"
 
+/decl/flooring/tiling/new_tile/monotile_dark
+	icon_base = "monotile_dark"
+
 /decl/flooring/tiling/new_tile/steel_grid
 	icon_base = "steel_grid"
 
