@@ -695,14 +695,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 		germ_level++
 
 	switch(germ_level)
-		if(INFECTION_LEVEL_ONE to INFECTION_LEVEL_TWO)
-			owner.bloodstr.add_reagent("potassium_hormone", 0.5)
 		if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_THREE)
-			owner.bloodstr.add_reagent("potassium_hormone", 1)
+			owner.bloodstr.add_reagent("potassium_hormone", 0.3)
 		if(INFECTION_LEVEL_THREE to INFECTION_LEVEL_MAX)
-			owner.bloodstr.add_reagent("potassium_hormone", 1.25)
+			owner.bloodstr.add_reagent("potassium_hormone", 0.5)
 		if(INFECTION_LEVEL_MAX to INFINITY)
-			owner.bloodstr.add_reagent("potassium_hormone", 1.5)
+			owner.bloodstr.add_reagent("potassium_hormone", 2.5)
 
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
 /obj/item/organ/external/proc/update_wounds()
@@ -1381,5 +1379,5 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return
 	var/last_pain = pain
 	pain = max(0,min(max_damage,pain + amount))
-	
+
 	return pain-last_pain
