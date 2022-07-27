@@ -89,7 +89,7 @@
 //space cleaner
 /obj/item/weapon/reagent_containers/spray/cleaner
 	name = "cleaner"
-	desc = "BLAM!-brand non-foaming space cleaner!"
+	desc = "A special spray with a high-power cleaning solution"
 
 /obj/item/weapon/reagent_containers/spray/cleaner/drone
 	name = "space cleaner"
@@ -98,7 +98,9 @@
 
 /obj/item/weapon/reagent_containers/spray/cleaner/New()
 	..()
-	reagents.add_reagent("cleaner", volume)
+	reagents.add_reagent("water", volume * 0.8)
+	reagents.add_reagent("formaldehyde", volume * 0.1)
+	reagents.add_reagent("hydrochloric_acid", volume * 0.1)
 
 /obj/item/weapon/reagent_containers/spray/sterilizine
 	name = "sterilizine"
@@ -106,7 +108,8 @@
 
 /obj/item/weapon/reagent_containers/spray/sterilizine/New()
 	..()
-	reagents.add_reagent("sterilizine", volume)
+	reagents.add_reagent("formaldehyde", volume * 0.3)
+	reagents.add_reagent("water", volume * 0.7)
 
 /obj/item/weapon/reagent_containers/spray/pepper
 	name = "pepperspray"
