@@ -161,6 +161,9 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 			sleep(4)
 			animate(O, transform = turn(O.transform, 20), time = 2)
 
+/atom/Cross()
+	return TRUE
+
 /turf/Enter(atom/movable/mover as mob|obj, atom/forget as mob|obj|turf|area)
 	if(movement_disabled && usr.ckey != movement_disabled_exception)
 		to_chat(usr, "<span class='warning'>Movement is admin-disabled.</span>") //This is to identify lag problems

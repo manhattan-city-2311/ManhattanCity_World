@@ -25,7 +25,7 @@
 /atom/movable/proc/update_glide(movement_delay = 2)
 	if (movement_delay != lastmovementdelay && movement_delay)
 		lastmovementdelay = movement_delay
-		glide_size = 32 * (world.tick_lag) / lastmovementdelay
+		glide_size = 32 * (world.tick_lag) / lastmovementdelay * step_size / WORLD_ICON_SIZE
 
 /atom/movable/Destroy()
 	. = ..()
