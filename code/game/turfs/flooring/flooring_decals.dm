@@ -540,7 +540,7 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/spline/fancy/black
 	name = "spline - fancy"
-	color = "#242424"
+	color = "#4b4b4b"
 
 /obj/effect/floor_decal/spline/fancy/black/corner
 	icon_state = "spline_fancy_corner"
@@ -549,6 +549,45 @@ var/list/floor_decals = list()
 	icon_state = "spline_fancy_cee"
 
 /obj/effect/floor_decal/spline/fancy/black/three_quarters
+	icon_state = "spline_fancy_full"
+
+/obj/effect/floor_decal/spline/fancy/red
+	name = "spline - fancy"
+	color = "#ac1c1c"
+
+/obj/effect/floor_decal/spline/fancy/red/corner
+	icon_state = "spline_fancy_corner"
+
+/obj/effect/floor_decal/spline/fancy/red/cee
+	icon_state = "spline_fancy_cee"
+
+/obj/effect/floor_decal/spline/fancy/red/three_quarters
+	icon_state = "spline_fancy_full"
+
+/obj/effect/floor_decal/spline/fancy/blue
+	name = "spline - fancy"
+	color = "#2d78a3"
+
+/obj/effect/floor_decal/spline/fancy/blue/corner
+	icon_state = "spline_fancy_corner"
+
+/obj/effect/floor_decal/spline/fancy/blue/cee
+	icon_state = "spline_fancy_cee"
+
+/obj/effect/floor_decal/spline/fancy/blue/three_quarters
+	icon_state = "spline_fancy_full"
+
+/obj/effect/floor_decal/spline/fancy/purple
+	name = "spline - fancy"
+	color = "#983BBF"
+
+/obj/effect/floor_decal/spline/fancy/purple/corner
+	icon_state = "spline_fancy_corner"
+
+/obj/effect/floor_decal/spline/fancy/purple/cee
+	icon_state = "spline_fancy_cee"
+
+/obj/effect/floor_decal/spline/fancy/purple/three_quarters
 	icon_state = "spline_fancy_full"
 
 /obj/effect/floor_decal/industrial/warning

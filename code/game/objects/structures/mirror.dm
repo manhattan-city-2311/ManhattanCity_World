@@ -120,6 +120,26 @@
 		user.visible_message("<span class='danger'>[user] hits [src] and bounces off!</span>")
 	return 1
 
+/obj/structure/mirror/wide
+	name = "wide mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "mirror_wide"
+	var/image/overlay
+
+/obj/structure/mirror/wide/shatter()
+	if(!glass) return
+	if(shattered)	return
+	shattered = 1
+	icon_state = "mirror_broke"
+	playsound(src, "shatter", 70, 1)
+	desc = "Oh no, seven years of bad luck!"
+
+/obj/structure/mirror/wide/update_icon()
+	overlays.Cut()
+	if(!shattered)
+		overlays += image(icon, "mirror_wide_overlay")
+
 // The following mirror is ~special~.
 /obj/structure/mirror/raider
 	name = "cracked mirror"

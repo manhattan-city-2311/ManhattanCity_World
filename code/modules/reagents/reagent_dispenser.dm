@@ -83,7 +83,7 @@
 
 /obj/structure/reagent_dispensers/vat/fuel/New()
 	..()
-	reagents.add_reagent("fuel", 1000)
+	reagents.add_reagent("fuel", 80000)
 
 
 //Dispensers

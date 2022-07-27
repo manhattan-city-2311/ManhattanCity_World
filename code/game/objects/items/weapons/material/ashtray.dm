@@ -3,7 +3,7 @@ var/global/list/ashtray_cache = list()
 /obj/item/weapon/material/ashtray
 	name = "ashtray"
 	icon = 'icons/obj/objects.dmi'
-	icon_state = "blank"
+	icon_state = "ashtray"
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
 	var/image/base_image
