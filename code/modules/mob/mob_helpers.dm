@@ -201,7 +201,7 @@ proc/slur(phrase)
 			if(lowertext(newletter)=="г")	newletter="гэ"
 			if(lowertext(newletter)=="х")	newletter="хэ"
 		switch(rand(1,15))
-			if(1,3,5,8)	newletter="[lowertext(newletter)]"
+			if(1,3,5,8,14)	newletter="[lowertext(newletter)]"
 			if(2,4,6,15)	newletter="[uppertext(newletter)]"
 			if(7)	newletter+="'"
 			if(9,10)	newletter="<b>[newletter]</b>"
