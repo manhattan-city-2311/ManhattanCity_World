@@ -66,7 +66,7 @@
 /obj/item/vehicle_part/engine/proc/receive_torque(amount)
 	rpm += amount / (mass * MASS_TO_INERTIA_COEFFICENT)
 
-/obj/item/vehicle_part/engine/part_process()
+/obj/item/vehicle_part/engine/part_process(delta)
 	handle_sound()
 
 /obj/item/vehicle_part/engine/proc/handle_sound()

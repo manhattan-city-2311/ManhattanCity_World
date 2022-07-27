@@ -29,10 +29,6 @@
 			return vector2(-0.5, -0.5)
 	return vector2(0, 0)
 
-/proc/vector2_from_angle(degrees)
-	//return vector2_from_dir(angle2dir(degrees))
-	return vector2(cos(degrees), sin(degrees))
-
 /vector2/proc/operator-(vector2/b)
 	return vector2(x - b.x, y - b.y)
 
@@ -80,8 +76,22 @@
 /vector2/proc/modulus()
 	return sqrt(x ** 2 + y ** 2)
 
+/vector2/proc/normalized()
+	return src / modulus()
+
 /vector2/proc/round_components(res = 0.1)
 	x = round(x, res)
 	y = round(y, res)
+
+/vector2/proc/set_angle(degrees)
+	x = cos(degrees)
+	y = sin(degrees)
+
+/proc/vector2_from_angle(degrees)
+	var/vector2/vec = new
+
+	vec.set_angle(degrees)
+
+var/global/vector2/zero_vector = vector2(0, 0)
 
 #define VECTOR_DEBUG(vec) to_world(#vec + " = \[[vec.x], [vec.y]\]")

@@ -76,6 +76,8 @@
 	var/aerodynamics_coefficent = 0.32
 	var/traction_coefficent = 9.6
 
+	var/handling_quality = 1
+
 /mob/living/carbon/human/Stat()
 	. = ..()
 	if(istype(loc, /obj/manhattan/vehicle))
@@ -176,6 +178,10 @@
 			var/list/drivers = get_occupants_in_position("driver")
 			if(!drivers.len || isnull(drivers) || movement_destroyed)
 				inactive_pilot_effects()
+
+	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
+	engine?.handle_sound()
+
 	for(var/obj/item/vehicle_part/vp in components)
 		if(vp.can_process())
 			vp.part_process()

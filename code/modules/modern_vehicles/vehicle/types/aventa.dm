@@ -53,7 +53,7 @@
 	)
 
 	aerodynamics_coefficent = 0.23
-	traction_coefficent = 6.9
+	traction_coefficent = 13.8
 
 /obj/manhattan/vehicle/aventa/get_braking_force()
 	return 1000

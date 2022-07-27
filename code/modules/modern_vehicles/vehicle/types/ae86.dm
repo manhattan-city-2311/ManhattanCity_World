@@ -50,8 +50,8 @@
 		VC_CARDAN = /obj/item/vehicle_part/cardan
 	)
 
-	aerodynamics_coefficent = 0.23
-	traction_coefficent = 6.9
+	aerodynamics_coefficent = 0.33
+	traction_coefficent = 19.8
 
 /obj/manhattan/vehicle/ae86/get_braking_force()
 	return 400

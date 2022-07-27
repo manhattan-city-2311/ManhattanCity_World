@@ -24,8 +24,8 @@
 	var/list/rider_ys
 
 	weight = 150
-	aerodynamics_coefficent = 0.15
-	traction_coefficent = 4.5
+	aerodynamics_coefficent = 0.2
+	traction_coefficent = 12
 
 	var/image/img
 
@@ -56,3 +56,8 @@
 	driver.pixel_y = rider_ys[dir2text(dir & ALL_CARDINALS)]
 	vis_contents += driver
 	overlays += img	
+
+/obj/manhattan/vehicle/motorcycle/exit_vehicle(mob/user)
+	. = ..()
+	user.pixel_x = 0
+	user.pixel_y = 0

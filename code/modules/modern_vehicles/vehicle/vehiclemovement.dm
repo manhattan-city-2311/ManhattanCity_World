@@ -1,17 +1,23 @@
 /obj/manhattan/vehicle/proc/update_angle_vector()
-	angle_vector = vector2_from_angle(angle + 180)
+	angle_vector.set_angle(90 - angle)
 
 // direction is -1 or 1
 /obj/manhattan/vehicle/proc/handle_turning(direction)
-	var/destDegree = round(angle - 90 * direction, 90)
+	var/destDegree = round(angle + 90 * direction, 90)
 	if(destDegree > 360)
 		destDegree -= 360
 	else if(destDegree < -360)
 		destDegree += 360
+	else if(destDegree < 0)
+		destDegree = 360 + destDegree
+
+	dir = turn(dir, 90 * direction)
 
 	speed.rotate(closer_angle_difference(speed.angle(), destDegree))
 	angle = destDegree
+
 	update_angle_vector()
+	update_object_sprites()
 
 /obj/manhattan/vehicle/var/next_steering_input = 0
 /obj/manhattan/vehicle/relaymove(mob/user, direction)
@@ -91,7 +97,7 @@
 			engine.rpm += rpm_add
 
 
-	acceleration += angle_vector * F
+	acceleration = angle_vector * F
 
 	acceleration -= speed * (speed.modulus() * aerodynamics_coefficent + traction_coefficent)
 
@@ -110,9 +116,6 @@
 		
 	if(abs(speed.angle() - angle_vector.angle()) > 1)
 		speed.rotate(closer_angle_difference(speed.angle(), angle_vector.angle()))
-
-	acceleration.x = 0
-	acceleration.y = 0
 
 /obj/manhattan/vehicle/Move(var/newloc,var/newdir)
 	if(anchored)
@@ -142,7 +145,6 @@
 
 /obj/manhattan/vehicle/var/last_movement
 /obj/manhattan/vehicle/proc/move_helper(x_step, y_step)
-	dir = angle2dir(speed.angle() - 180)
 	if(!(x_step || y_step))
 		return
 
@@ -151,7 +153,7 @@
 	last_movement = world.time
 
 	var/newLoc = locate(x + x_step, y + y_step, z)
-	if(Move(newLoc, dir, x_step ? 0 : step_x, y_step ? 0 : step_y))
+	if(Move(newLoc, get_dir(loc, newLoc), x_step ? 0 : step_x, y_step ? 0 : step_y))
 		return
 	speed.x = 0
 	speed.y = 0

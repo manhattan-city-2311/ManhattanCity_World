@@ -1,5 +1,6 @@
 /turf
 	icon = 'icons/turf/floors.dmi'
+	appearance_flags = TILE_MOVER | PIXEL_SCALE
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 	level = 1

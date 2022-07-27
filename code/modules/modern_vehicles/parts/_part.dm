@@ -1,6 +1,6 @@
 #define COMPONENT_MESSAGE_MODE_OCCUPANTS        1
 #define COMPONENT_MESSAGE_MODE_SURROUNDINGS     2
-#define MASS_TO_INERTIA_COEFFICENT 0.0001
+#define MASS_TO_INERTIA_COEFFICENT 0.0005
 
 /obj/item/vehicle_part
 	name = "vehicle component"

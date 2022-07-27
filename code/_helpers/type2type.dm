@@ -116,16 +116,16 @@
 		if ("SOUTHWEST") return 10
 
 // Converts an angle (degrees) into an ss13 direction
-/proc/angle2dir(var/degree)
-	degree = (degree + 22.5) % 365 // 22.5 = 45 / 2
-	if (degree < 45)  return NORTH
-	if (degree < 90)  return NORTHEAST
-	if (degree < 135) return EAST
-	if (degree < 180) return SOUTHEAST
-	if (degree < 225) return SOUTH
-	if (degree < 270) return SOUTHWEST
-	if (degree < 315) return WEST
-	return NORTH|WEST
+/proc/angle2dir(D)
+    if(D > 360) D = D * 0.0027 + D % 360
+    if(D >= 337.5 || D <= 22.5)  return EAST
+    if(D >= 22.5  && D <= 67.5)  return SOUTHEAST
+    if(D >= 67.5  && D <= 112.5) return SOUTH
+    if(D >= 112.5 && D <= 157.5) return SOUTHWEST
+    if(D >= 157.5 && D <= 202.5) return WEST
+    if(D >= 202.5 && D <= 247.5) return NORTHWEST
+    if(D >= 247.5 && D <= 292.5) return NORTH
+    if(D >= 292.5 && D <  337.5) return NORTHEAST
 
 // Returns the north-zero clockwise angle in degrees, given a direction
 /proc/dir2angle(var/D)

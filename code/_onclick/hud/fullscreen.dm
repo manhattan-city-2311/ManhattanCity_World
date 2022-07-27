@@ -66,10 +66,13 @@
 	plane = PLANE_FULLSCREEN
 	mouse_opacity = 0
 	var/severity = 0
+	var/should_be_scaled = TRUE
 
 /obj/screen/fullscreen/New()
 	..()
-	transform = matrix().Scale(19.0 / 15.0, 1)
+	if(should_be_scaled)
+		transform = matrix().Scale(19.0 / 15.0, 1)
+
 /obj/screen/fullscreen/Destroy()
 	severity = 0
 	return ..()
@@ -97,6 +100,7 @@
 	icon = 'icons/mob/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "blurry"
+	should_be_scaled = FALSE
 
 /obj/screen/fullscreen/flash
 	icon = 'icons/mob/screen1.dmi'
