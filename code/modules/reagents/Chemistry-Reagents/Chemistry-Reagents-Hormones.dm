@@ -50,6 +50,7 @@
 	id = "insulin"
 	metabolism = 0.1
 	overdose = 1
+	price_tag = 12
 
 /datum/reagent/hormone/insulin/affect_blood(mob/living/carbon/human/M, alien, removed)
 	var/amount = min(M.bloodstr.get_reagent_amount("glucose"), 0.1)
@@ -62,6 +63,7 @@
 /datum/reagent/hormone/glucagone
 	name = "Glucagone"
 	id = "glucagone"
+	price_tag = 1.5
 
 // MARKERS
 
