@@ -1572,3 +1572,9 @@
 
 	msg += get_display_species()
 	return msg
+
+/mob/living/carbon/human/proc/absorb_hormone(T, amount, desired = 0, hold = FALSE)
+	if(!desired)
+		desired = bloodstr.get_reagent_amount(T) // TODO: remove this hack.
+	var/to_absorb = min(desired, bloodstr.get_reagent_amount(T), amount)
+	bloodstr.remove_reagent(T, to_absorb)

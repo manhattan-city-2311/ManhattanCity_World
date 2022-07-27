@@ -2233,6 +2233,8 @@
 #include "code\modules\mob\new_player\preferences_setup.dm"
 #include "code\modules\mob\new_player\referendum_voting.dm"
 #include "code\modules\mob\new_player\sprite_accessories.dm"
+#include "code\modules\modern_vehicles\interiors\_interiors.dm"
+#include "code\modules\modern_vehicles\interiors\ambulance.dm"
 #include "code\modules\modern_vehicles\parts\_part.dm"
 #include "code\modules\modern_vehicles\parts\cardan.dm"
 #include "code\modules\modern_vehicles\parts\clutch.dm"

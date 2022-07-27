@@ -13,6 +13,7 @@
 	var/respiratory_rate = 15
 	var/list/respiratory_rate_modificators = list()
 	var/last_breath = 0
+	ischemia_mod = 0.2
 
 /obj/item/organ/internal/lungs/New()
 	..()
@@ -75,7 +76,7 @@
 		handle_breath(breath_cycle)
 		breath_cycle = 0
 
-	owner.consume_oxygen(0.013 * respiratory_rate * owner.k)
+	oxygen_consumption = 0.013 * respiratory_rate * owner.k
 
 /obj/item/organ/internal/lungs/proc/rupture()
 	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)

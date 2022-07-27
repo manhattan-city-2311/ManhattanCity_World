@@ -12,7 +12,6 @@
 	var/list/pulse_modificators = list()
 	var/list/cardiac_output_modificators = list() // *
 	var/list/datum/arrythmia/arrythmias = list()
-	var/ischemia = 0
 	var/heartbeat = 0
 	var/beat_sound = 'sound/effects/singlebeat.ogg'
 	var/tmp/next_blood_squirt = 0
@@ -32,7 +31,6 @@
 	pulse_modificators.Cut()
 	cardiac_output_modificators.Cut()
 	arrythmias.Cut()
-	ischemia = 0
 
 /obj/item/organ/internal/heart/New()
 	..()
@@ -62,7 +60,6 @@
 /obj/item/organ/internal/heart/die()
 	make_arrythmia(/datum/arrythmia/asystole)
 	pulse = 0
-	ischemia = 100
 	if(dead_icon)
 		icon_state = dead_icon
 	..()
@@ -95,10 +92,10 @@
 			make_modificators()
 			make_chem_modificators()
 
-		owner.consume_oxygen((pulse * owner.k) / 60)
+		oxygen_consumption = (pulse * owner.k) / 60
 	else
 		pulse_modificators["!should_work"] = -initial(pulse) - 1
-		owner.consume_oxygen(0.15 * owner.k)
+		oxygen_consumption = 0.15 * owner.k
 
 	cardiac_output_modificators["damage"] = 1 - (damage / max_damage)
 
@@ -189,8 +186,6 @@
 
 	ischemia = min(ischemia, 100 + infarct_strength)
 
-	if(ischemia > 30)
-		damage += lerp(0.1, 0.5, (ischemia - 30) / 70)
 	cardiac_output_modificators["ischemia"] = max(1 - (ischemia / 100), 0.3)
 	if(damage / max_damage > (20 / max_damage))
 		make_up_to_hormone("troponint", damage / max_damage * 2)
@@ -290,4 +285,6 @@
 	if(rythmes.len)
 		return english_list(rythmes)
 	else
+		if(pulse < 1)
+			return "Asystole"
 		return "Normal"

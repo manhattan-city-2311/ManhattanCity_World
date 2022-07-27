@@ -11,6 +11,18 @@
 		"potassium_hormone" = 0.02
 	)
 
+	var/ischemia = 0
+	var/ischemia_mod = 0.1
+	var/oxygen_consumption = 0
+
+/obj/item/organ/internal/rejuvenate(ignore_prosthetic_prefs)
+	..()
+	ischemia = 0
+
+/obj/item/organ/internal/New()
+	..()
+	oxygen_consumption = oxygen_consumption * owner.k
+
 /obj/item/organ/internal/get_view_variables_options()
 	return ..() + {"
 		<option value='?_src_=vars;add_organ_disease=\ref[src]'>Add disease</option>
@@ -82,6 +94,7 @@
 	..()
 	if((status & ORGAN_DEAD) && dead_icon)
 		icon_state = dead_icon
+	ischemia = 100
 
 /obj/item/organ/internal/Destroy()
 	if(owner)
@@ -157,3 +170,8 @@
 		var/regen = min(2, damage)
 		absorb_hormone("glucose", regen)
 		damage = max(0, damage - regen)
+	owner.consume_oxygen(oxygen_consumption)
+	if(oxygen_consumption > owner.oxy)
+		ischemia = clamp(ischemia + ischemia_mod, 0, 100)
+		if(ischemia > 30)
+			damage += lerp(0.1, 0.5, (ischemia - 30) / 70)

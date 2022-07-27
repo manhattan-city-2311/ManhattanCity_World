@@ -1,4 +1,4 @@
-/obj/manhattan/vehicle/ambulance
+/obj/manhattan/vehicle/large/ambulance
 	name = "City Ambulance"
 	desc = "A vehicle for transporting wounded and unstable patients. Can hold 3 people"
 
@@ -22,14 +22,14 @@
 
 	light_color = "#E1FDFF"
 
-/obj/manhattan/vehicle/ambulance/update_object_sprites()
+/obj/manhattan/vehicle/large/ambulance/update_object_sprites()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
 		bounds = "64,96"
 	else
 		bounds = "96,64"
 
-/obj/manhattan/vehicle/ambulance/on_death()
+/obj/manhattan/vehicle/large/ambulance/on_death()
 	. = ..()
 
 /obj/item/vehicle_component/health_manager/ambulance

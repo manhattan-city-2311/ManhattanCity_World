@@ -16,6 +16,8 @@
 	)
 
 	var/bilirubine_norm = -1
+	oxygen_consumption = 2
+	ischemia_mod = 1.1
 
 /obj/item/organ/internal/liver/influence_hormone(T, amount)
 	if(ishormone(T, glucose))
@@ -78,5 +80,3 @@
 			owner.nutrition -= 10
 		else if(owner.nutrition >= 200)
 			owner.nutrition -= 3
-
-	owner.consume_oxygen(2 * owner.k)
