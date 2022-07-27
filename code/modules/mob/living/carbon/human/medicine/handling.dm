@@ -35,6 +35,8 @@
 	handle_additictions()
 
 	consume_oxygen(REST_OXYGEN_CONSUMING * k) // muscles resting
+	absorb_hormone("glucose", DEFAULT_HUNGER_FACTOR)
+	absorb_hormone("potassium_hormone", max(DEFAULT_HUNGER_FACTOR * 10, 0.1))
 
 	oxy_last_tick_demand = oxy_demand
 	oxy_demand = 0

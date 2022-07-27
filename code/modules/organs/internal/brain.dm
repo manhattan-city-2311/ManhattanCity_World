@@ -18,6 +18,8 @@
 	var/const/damage_threshold_count = 10
 	var/damage_threshold_value
 	var/healed_threshold = 1
+	oxygen_consumption = 2.1
+	ischemia_mod = 0.4
 
 /obj/item/organ/internal/brain/mechassist()
 	replace_self_with(/obj/item/organ/internal/mmi_holder)
@@ -124,7 +126,6 @@
 
 /obj/item/organ/internal/brain/Process()
 	if(owner)
-		owner.consume_oxygen(2.1 * owner.k)
 		if(damage > max_damage / 2 && healed_threshold)
 			spawn()
 				alert(owner, "You have taken massive brain damage! You will not be able to remember the events leading up to your injury.", "Brain Damaged")

@@ -7,6 +7,8 @@
 	min_bruised_damage = 45
 	min_broken_damage = 75
 	max_damage = 100
+	oxygen_consumption = 0.7
+	ischemia_mod = 0.3
 
 /obj/item/organ/internal/kidneys/Process()
 	..()
@@ -23,6 +25,3 @@
 		var/pressure_diff = BLOOD_PRESSURE_NORMAL - owner.mpressure
 		free_up_to_hormone("noradrenaline", pressure_diff / 7)
 		free_up_to_hormone("adrenaline", pressure_diff / 8)
-		owner.consume_oxygen(0.1 * owner.k)
-
-	owner.consume_oxygen(0.7 * owner.k)

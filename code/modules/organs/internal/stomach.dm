@@ -34,11 +34,6 @@
 		create_reagents(30)
 
 /obj/item/organ/internal/stomach/proc/handle_organ_proc_special()
-	// wer simulate glucose-nutrition system by this..
-	// TODO: detach this from stomach, remove this copy-paste from insulin code.
-	absorb_hormone("glucose", DEFAULT_HUNGER_FACTOR)
-	absorb_hormone("potassium_hormone", max(DEFAULT_HUNGER_FACTOR * 10, 0.1))
-
 	generate_hormone("insulin", 0.1, 15)
 	if(owner && istype(owner, /mob/living/carbon/human))
 		if(reagents)

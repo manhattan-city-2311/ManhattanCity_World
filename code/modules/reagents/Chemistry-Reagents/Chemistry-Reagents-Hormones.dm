@@ -101,15 +101,15 @@
 	switch(amount)
 		if(POTASSIUM_LEVEL_HBAD to POTASSIUM_LEVEL_HCRITICAL)
 			heart.cardiac_output_modificators["potassium_level"] = 0.7
-			if(prob(10) && heart.get_arrythmia_score() < 1)
+			if(prob(5) && heart.get_arrythmia_score() < 1)
 				heart.make_common_arrythmia(1)
 
-			heart.pulse_modificators["potassium_level"] = -volume * 10
+			heart.pulse_modificators["potassium_level"] = volume * 0.2
 		if(POTASSIUM_LEVEL_HCRITICAL to INFINITY)
 			heart.cardiac_output_modificators["potassium_level"] = 0.65
-			if(prob(20) && !(heart.get_ow_arrythmia()))
+			if(prob(10) && !(heart.get_ow_arrythmia()))
 				heart.make_common_arrythmia(rand(1, ARRYTHMIA_SEVERITY_OVERWRITING))
-			heart.pulse_modificators["potassium_level"] = -volume * 8
+			heart.pulse_modificators["potassium_level"] = volume * 0.4
 
 /datum/reagent/potassium/affect_blood(mob/living/carbon/human/H, alien, removed)
 	H.bloodstr.add_reagent("potassium_hormone", volume * 0.5)
