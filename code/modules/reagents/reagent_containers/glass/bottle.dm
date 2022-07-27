@@ -53,7 +53,7 @@
 	for(var/datum/reagent/reagent in reagents.reagent_list)
 		cost += reagent.volume * reagent.price_tag
 	desc += " It's cost label reads: [cost]."
-	
+
 
 /obj/item/weapon/reagent_containers/glass/bottle/update_icon()
 	overlays.Cut()
@@ -186,8 +186,8 @@
 	prefill = list("morphine" = 8)
 
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/ceftriaxone
-	name = "cetriaxone ampoule"
-	prefill = list("cetriaxone" = 8)
+	name = "cetrifiaxone ampoule"
+	prefill = list("cetrifiaxone" = 8)
 
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/glucose
 	name = "glucose ampoule"
