@@ -7,14 +7,14 @@
 
 /client/proc/upshift()
 	var/obj/manhattan/vehicle/V = mob?.loc
-	if(!V)
+	if(!(V && istype(V)))
 		return FALSE
 	V.upshift()
 	return TRUE
 
 /client/proc/downshift()
 	var/obj/manhattan/vehicle/V = mob?.loc
-	if(!V)
+	if(!(V && istype(V)))
 		return FALSE
 	V.downshift()
 	return TRUE
