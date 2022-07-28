@@ -8,7 +8,7 @@
     var/size_y = 0
 
     var/list/mob/living/carbon/human/occupants = null
-    var/interior_template = /datum/map_template
+    var/datum/map_template/interior_template = /datum/map_template
     var/turf/middle_turf
     var/obj/effect/vehicle_entrance/entrance = null
     var/obj/structure/vehicledoor/door = null
@@ -20,7 +20,7 @@
     for(var/obj/effect/interior_spawn/spawns in GLOB.vehicle_spawnpoints)
         var/turf/T = spawns.loc
         middle_turf = T
-        template = SSmapping.map_templates[interior_template]
+        template = new template
         if(!template.load(T, centered = TRUE))
             log_error("Vehicle interior template failed to load!")
             qdel(src)
