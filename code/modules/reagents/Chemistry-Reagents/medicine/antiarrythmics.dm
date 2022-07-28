@@ -24,13 +24,11 @@
 		if(volume >= required)
 			heart.arrythmias[ARRYTHMIA_AFIB].weak(heart)
 			volume -= required
-		return
 	if(ARRYTHMIA_TACHYCARDIA in heart.arrythmias)
 		var/required = 2 * heart.arrythmias[ARRYTHMIA_TACHYCARDIA].severity
 		if(volume >= required)
 			heart.arrythmias[ARRYTHMIA_TACHYCARDIA].weak(heart)
 			volume -= required
-		return
 
 /datum/reagent/lidocaine
 	name = "Lidocaine"
@@ -42,7 +40,7 @@
 	overdose = 10
 
 /datum/reagent/lidocaine/affect_blood(mob/living/carbon/human/H, alien, removed)
-	H.add_chemical_effect(CE_ANTIARRYTHMIC, 2)
+	H.add_chemical_effect(CE_ANTIARRYTHMIC, 3)
 	H.add_chemical_effect(CE_PAINKILLER, 40)
 
 /datum/reagent/lidocaine/overdose(mob/living/carbon/human/H, alien)
@@ -62,4 +60,4 @@
 	tax_type = PHARMA_TAX
 
 /datum/reagent/amiodarone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.add_chemical_effect(CE_ANTIARRYTHMIC, 1)
+	M.add_chemical_effect(CE_ANTIARRYTHMIC, 2)
