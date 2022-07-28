@@ -30,6 +30,8 @@ datum/preferences/proc/set_biological_gender(var/gender)
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
 	S["real_name"]				<< pref.real_name
+	if(pref.client)
+		send_output(pref.client, pref.real_name, "lobbybrowser:change_cname")
 	S["nickname"]				<< pref.nickname
 //	S["name_is_always_random"]	<< pref.be_random_name
 	S["gender"]				<< pref.biological_gender
@@ -49,6 +51,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 /datum/category_item/player_setup_item/general/basic/delete_character()
 	if(pref.played)
 		pref.characters_created += pref.real_name
+
 	pref.real_name = null
 	pref.nickname = null
 //	pref.be_random_name = null
@@ -73,7 +76,8 @@ datum/preferences/proc/set_biological_gender(var/gender)
 
 	pref.biological_gender  = sanitize_inlist(pref.biological_gender, get_genders(), pick(get_genders()))
 	pref.identifying_gender = (pref.identifying_gender in all_genders_define_list) ? pref.identifying_gender : pref.biological_gender
-	pref.real_name		= sanitize_name(pref.real_name, pref.species, is_FBP())
+	// pref.real_name		= sanitize_name(pref.real_name, pref.species, is_FBP())
+	change_real_name(sanitize_name(pref.real_name, pref.species, is_FBP()))
 	if(!pref.real_name || (pref.real_name in pref.characters_created))
 		pref.real_name      = random_name(pref.identifying_gender, pref.species)
 
@@ -174,7 +178,10 @@ F
 	if(config.allow_Metadata)
 		. += "<b>OOC Заметки:</b><br> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
 	. = jointext(.,null)
-
+/datum/category_item/player_setup_item/general/basic/proc/change_real_name(newname)
+	pref.real_name = newname
+	if(pref.client)
+		send_output(pref.client, newname, "lobbybrowser:change_cname")
 /datum/category_item/player_setup_item/general/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["rename"])
 		var/raw_name = input(user, "Выберите имя персонажа:", "Имя персонажа")  as text|null
@@ -186,14 +193,18 @@ F
 				return TOPIC_NOACTION
 
 			if(new_name)
-				pref.real_name = new_name
+				change_real_name(new_name)
+				// pref.real_name = new_name
+				// send_output(pref.client, pref.real_name, "lobbybrowser:change_cname")
 				return TOPIC_REFRESH
 			else
 				to_chat(user, "<span class='warning'>Неправильное имя. Ваше имя должно содержать как минимум 2 и как максимум [MAX_NAME_LEN] символов. Оно может содержать только символы A-Z, a-z, -, ' и .</span>")
 				return TOPIC_NOACTION
 
 	else if(href_list["random_name"])
-		pref.real_name = random_name(pref.identifying_gender, pref.species)
+		change_real_name(random_name(pref.identifying_gender, pref.species))
+		// pref.real_name = random_name(pref.identifying_gender, pref.species)
+		// send_output(pref.client, pref.real_name, "lobbybrowser:change_cname")
 		return TOPIC_REFRESH
 /*
 	else if(href_list["always_random_name"])
