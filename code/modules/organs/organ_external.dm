@@ -650,7 +650,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(!.) return
 	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]
 
-	germ_level += 1.5
+	germ_level += 0.1
 
 	// Spread the infection to internal organs
 	var/obj/item/organ/target_organ = null	// Make internal organs become infected one at a time instead of all at once
@@ -672,8 +672,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(target_organ.germ_level < germ_level - 250)
 			if(prob(Interpolate(20, 70, germ_level / INFECTION_LEVEL_THREE) - antibiotics))
 				target_organ.germ_level = max(0, target_organ.germ_level + (germ_level - 250) / 5)
-
-	if(target_organ)
 		target_organ.germ_level++
 
 	// Spread the infection to child and parent organs
@@ -696,10 +694,13 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	switch(germ_level)
 		if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_THREE)
+			take_damage(0.5)
 			owner.bloodstr.add_reagent("potassium_hormone", 0.3)
 		if(INFECTION_LEVEL_THREE to INFECTION_LEVEL_MAX)
-			owner.bloodstr.add_reagent("potassium_hormone", 0.5)
+			take_damage(1)
+			owner.bloodstr.add_reagent("potassium_hormone", 0.9)
 		if(INFECTION_LEVEL_MAX to INFINITY)
+			take_damage(2.5)
 			owner.bloodstr.add_reagent("potassium_hormone", 2.5)
 
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
