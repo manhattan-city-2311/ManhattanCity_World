@@ -504,46 +504,6 @@ other types of metals and chemistry for reagents).
 	sort_string = "MBAAA"
 	price = 75
 
-/datum/design/item/medical/scalpel_laser1
-	name = "Basic Laser Scalpel"
-	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks basic and could be improved."
-	id = "scalpel_laser1"
-	req_tech = list(TECH_BIO = 2, TECH_MATERIAL = 2, TECH_MAGNET = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "copper" = 2500)
-	build_path = /obj/item/weapon/surgical/scalpel/laser1
-	sort_string = "MBBAA"
-	price = 100
-
-/datum/design/item/medical/scalpel_laser2
-	name = "Improved Laser Scalpel"
-	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks somewhat advanced."
-	id = "scalpel_laser2"
-	req_tech = list(TECH_BIO = 3, TECH_MATERIAL = 4, TECH_MAGNET = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "silver" = 2500)
-	build_path = /obj/item/weapon/surgical/scalpel/laser2
-	sort_string = "MBBAB"
-	price = 150
-
-/datum/design/item/medical/scalpel_laser3
-	name = "Advanced Laser Scalpel"
-	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks to be the pinnacle of precision energy cutlery!"
-	id = "scalpel_laser3"
-	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 6, TECH_MAGNET = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "silver" = 2000, "gold" = 1500)
-	build_path = /obj/item/weapon/surgical/scalpel/laser3
-	sort_string = "MBBAC"
-	price = 200
-
-/datum/design/item/medical/scalpel_manager
-	name = "Incision Management System"
-	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
-	id = "scalpel_manager"
-	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 7, TECH_MAGNET = 5, TECH_DATA = 4)
-	materials = list (DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "silver" = 1500, "gold" = 1500, "diamond" = 750, "copper" = 500)
-	build_path = /obj/item/weapon/surgical/scalpel/manager
-	sort_string = "MBBAD"
-	price = 300
-
 /datum/design/item/medical/bone_clamp
 	name = "Bone Clamp"
 	desc = "A miracle of modern science, this tool rapidly knits together bone, without the need for bone gel."
