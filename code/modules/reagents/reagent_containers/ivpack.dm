@@ -50,3 +50,7 @@
 /obj/item/weapon/reagent_containers/ivpack/antibiotics
 	name = "Agressive Antibiotics Pack"
 	prefill = list("amicile" = 175, "cetrifiaxone" = 175, "penicillin" = 175, "corophizine" = 175, "saline" = 800)
+
+/obj/item/weapon/reagent_containers/ivpack/sodium_bicarbonate
+	name = "Sodium Bicarbonate Pack"
+	prefill = list("sodiumbicarbonate" = 150, "saline" = 1350)
