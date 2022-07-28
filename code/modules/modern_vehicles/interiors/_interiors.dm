@@ -18,15 +18,14 @@
     . = ..()
     var/datum/map_template/template
     for(var/obj/effect/interior_spawn/spawns in GLOB.vehicle_spawnpoints)
-        if(spawns.free_x == size_x && spawns.free_y == size_y)
-            var/turf/T = spawns.loc
-            middle_turf = T
-            template = SSmapping.map_templates[interior_template]
-            if(!template.load(T, centered = TRUE))
-                log_error("Vehicle interior template failed to load!")
-                qdel(src)
-            qdel(spawns)
-            break
+        var/turf/T = spawns.loc
+        middle_turf = T
+        template = SSmapping.map_templates[interior_template]
+        if(!template.load(T, centered = TRUE))
+            log_error("Vehicle interior template failed to load!")
+            qdel(src)
+        qdel(spawns)
+        break
     if(!template)
         log_error("No template for vehicle interior found.")
         return
