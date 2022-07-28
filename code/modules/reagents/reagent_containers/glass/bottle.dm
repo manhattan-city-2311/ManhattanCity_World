@@ -43,7 +43,7 @@
 	desc += " It contains:"
 	if(reagents.reagent_list.len > 1)
 		for(var/datum/reagent/reagent in reagents.reagent_list)
-			desc += " [reagent.name]"
+			desc += " [reagent.name],"
 		desc += "."
 	else
 		var/datum/reagent/reagent = pick(reagents.reagent_list)
