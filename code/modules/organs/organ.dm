@@ -213,7 +213,7 @@ var/list/organ_cache = list()
 
 //Germs
 /obj/item/organ/proc/handle_antibiotics()
-	var/antibiotics = 0
+	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]
 
 	if (!germ_level || antibiotics < 5)
 		return
