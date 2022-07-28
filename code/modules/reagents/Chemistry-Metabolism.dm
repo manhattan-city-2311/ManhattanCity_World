@@ -2,6 +2,7 @@
 	var/metabolism_class //CHEM_TOUCH, CHEM_INGEST, or CHEM_BLOOD
 	var/metabolism_speed = 1	// Multiplicative, 1 is full speed, 0.5 is half, etc.
 	var/tmp/mob/living/carbon/parent
+	maximum_volume = 2500
 
 /datum/reagents/metabolism/New(var/max = 100, mob/living/carbon/parent_mob, var/met_class = null)
 	..(max, parent_mob)
