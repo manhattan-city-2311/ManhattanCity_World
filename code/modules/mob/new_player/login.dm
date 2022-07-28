@@ -16,7 +16,8 @@
 	my_client = client
 	sight |= SEE_TURFS | SEE_OBJS
 	player_list |= src
-
+	if(client.prefs)
+		send_output(client, client.prefs.real_name, "lobbybrowser:change_cname")
 	spawn(40)
 		if(client)
 			handle_privacy_poll()

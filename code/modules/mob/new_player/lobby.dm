@@ -34,6 +34,10 @@
 					transform: translate(-50%, -50%);
 					z-index: 0;
 				}
+				.lobby_decor
+				{
+					z-index: 1;
+				}
 				.container_nav {
 					position: absolute;
 					width: auto;
@@ -45,7 +49,7 @@
 					top: 50%;
 					left:50%;
 					transform: translate(-50%, -50%);
-					z-index: 1;
+					z-index: 3;
 				}
 				.menu_a {
 					display: inline-block;
@@ -60,7 +64,7 @@
 					padding-left: 6px;
 					font-size: 4vmin;
 					line-height: 4vmin;
-					height: 4vmin;
+					height: 3.5vmin;
 					letter-spacing: 1px;
 					text-shadow: 2px 2px 0px #000000;
 				}
@@ -72,13 +76,50 @@
 					/* padding-left: 3px;*/
 					/* transition: 0.25s linear border-left, 0.1s linear color, 0.25s linear font-weight; */
 				}
+				.data_output
+				{
+					z-index: 3;
+					font-family: "Fixedsys";
+					color: #ff93d7;
+					position: absolute;
+					letter-spacing: 1px;
+					font-size: 1.1em;
+					margin: 0;
+				}
+				.container_nav .data_output
+				{
+					top: 30%;
+				}
+				#time
+				{
+					top: 124.5%;
+					left: 82%;
+					transform: scale(0.8,1);
+				}
+				#charactername
+				{
+					top: 72%;
+					left: 7.8%;
+					transform: scale(0.8,1);
+					transform-origin: left;
+				}
 			</style>
 		</head>
 		<body>
 	"}
 
 	. += {"<img src="titlescreen.gif" class="lobby_image background" alt="">"}
-	. += "<img src='menu_cyberui.png' class='lobby_image' alt=''>"
+	. += "<img src='menu_cyberui.png' class='lobby_image lobby_decor' alt=''>"
+	. += {"
+		<div class="container_nav">
+	"}
+	. += {"<span class = "data_output" id = "time">[stationdate2text()]</span>
+	<span class = "data_output" id = "charactername">"}
+	if(client?.prefs?.real_name)
+		. += client.prefs.real_name
+	else
+		. += "Unknown"
+	. += {"</span></div>"}
 	. += {"
 		<div class="container_nav">
 		<a class="menu_a" href='?src=\ref[src];lobby_setup=1'>CHARACTERS</a>
@@ -94,6 +135,7 @@
 	<script language="JavaScript">
 		var ready = [ready];
 		var mark = document.getElementById("ready");
+		var charname = document.getElementById("charactername");
 		var marks = new Array("<font color='#ff0000'>☒</font>", "<font color='#00ff00'>☑</font>");
 		function imgsrc(setReady)
 		{
@@ -102,6 +144,11 @@
 				ready = setReady;
 				mark.innerHTML = "READY " + marks\[ready];
 			}
+		}
+		function change_cname(name)
+		{
+			if(charname)
+				charname.innerHTML = name;
 		}
 	</script>
 	"}

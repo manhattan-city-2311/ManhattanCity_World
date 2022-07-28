@@ -1,7 +1,9 @@
 /mob/new_player/Logout()
 	ready = 0
 
-	send_output(client, ready, "lobbybrowser:imgsrc")
+	// send_output(client, ready, "lobbybrowser:imgsrc")
+	// if(client.prefs)
+		// send_output(client, client.prefs.real_name, "lobbybrowser:change_cname")
 
 	// see login.dm
 	if(my_client)
