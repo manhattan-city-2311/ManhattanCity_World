@@ -59,9 +59,9 @@
 	. = LAZYACCESS0(owner.chem_effects, CE_ARRYTHMIC) - LAZYACCESS0(owner.chem_effects, CE_ANTIARRYTHMIC)
 	. += (damage / max_damage) / 0.25
 	. += (owner.mpressure > BLOOD_PRESSURE_HCRITICAL) || (owner.mpressure < BLOOD_PRESSURE_LCRITICAL)
-	//. += max(0, round((owner.gvr - 250) / 40))
+	. += max(0, round((owner.gvr - 250) / 40))
 	. += owner.mcv > 10000
-	//. += (owner.mcv < 2000)
+	. += (owner.mcv < 2000)
 	. += (owner.mcv < 1000) * 2
 	. += max(0, round((pulse - 180) / 50))
 	. = max(0, .)
