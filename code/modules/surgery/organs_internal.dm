@@ -149,7 +149,7 @@
 /datum/surgery_step/internal/detatch_organ/
 
 	allowed_tools = list(
-	/obj/item/weapon/surgical/scalpel = 100,		\
+	/obj/item/weapon/surgical/scalpel/precise = 90,		\
 	/obj/item/weapon/material/knife = 75,	\
 	/obj/item/weapon/material/shard = 50, 		\
 	)
@@ -211,7 +211,7 @@
 /datum/surgery_step/internal/remove_organ
 
 	allowed_tools = list(
-	/obj/item/weapon/surgical/hemostat = 100,	\
+	/obj/item/weapon/surgical/hemostat = 90,	\
 	/obj/item/weapon/wirecutters = 75,	\
 	/obj/item/weapon/material/kitchen/utensil/fork = 20
 	)
@@ -298,10 +298,6 @@
 	var/o_a =  (O.gender == PLURAL) ? "" : "a "
 	var/o_do = (O.gender == PLURAL) ? "don't" : "doesn't"
 
-	if(O.damage > (O.max_damage * 0.75))
-		to_chat(user, "<span class='warning'>\The [O.organ_tag] [o_is] in no state to be transplanted.</span>")
-		return SURGERY_FAILURE
-
 	if(!target.internal_organs_by_name[O.organ_tag])
 		organ_missing = 1
 	else
@@ -346,7 +342,7 @@
 
 /datum/surgery_step/internal/attach_organ
 	allowed_tools = list(
-	/obj/item/weapon/surgical/suture = 100, \
+	/obj/item/weapon/surgical/suture = 90, \
 	/obj/item/stack/cable_coil = 75
 	)
 
