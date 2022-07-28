@@ -829,3 +829,28 @@
 			H.clean_blood(1)
 			return
 	M.clean_blood()
+
+/datum/reagent/chlorhexidine
+	name = "Chlorhexidine"
+	id = "chlorhexidine"
+	description = "Sterilizes wounds in preparation for surgery and thoroughly removes blood."
+	taste_description = "bitterness"
+	reagent_state = LIQUID
+	color = "#a5dcae"
+	touch_met = 5
+
+	tax_type = PHARMA_TAX
+
+
+/datum/reagent/chlorhexidine/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	M.germ_level -= min(removed*20, M.germ_level)
+	for(var/obj/item/I in M.contents)
+		I.was_bloodied = null
+	M.was_bloodied = null
+
+/datum/reagent/chlorhexidine/touch_obj(var/obj/O)
+	O.germ_level -= min(volume*20, O.germ_level)
+	O.was_bloodied = null
+
+/datum/reagent/chlorhexidine/touch_turf(var/turf/T)
+	T.germ_level -= min(volume*20, T.germ_level)
