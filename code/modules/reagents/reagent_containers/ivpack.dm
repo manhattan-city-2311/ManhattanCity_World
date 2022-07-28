@@ -23,7 +23,7 @@
 	desc += " It contains:"
 	if(reagents.reagent_list.len > 1)
 		for(var/datum/reagent/reagent in reagents.reagent_list)
-			desc += " [reagent.name]"
+			desc += " [reagent.name],"
 		desc += "."
 	else
 		var/datum/reagent/reagent = pick(reagents.reagent_list)
@@ -41,16 +41,16 @@
 
 /obj/item/weapon/reagent_containers/ivpack/insulin_glucagone
 	name = "Insulin-Glucagone Pack"
-	prefill = list("insulin" = 750, "glucagone" = 750)
+	prefill = list("insulin" = 150, "glucagone" = 150, "salinesolution" = 1200)
 
 /obj/item/weapon/reagent_containers/ivpack/nutrition
 	name = "Nutrition Pack"
-	prefill = list("glucagone" = 150, "saline" = 1350)
+	prefill = list("glucagone" = 150, "salinesolution" = 1350)
 
 /obj/item/weapon/reagent_containers/ivpack/antibiotics
 	name = "Agressive Antibiotics Pack"
-	prefill = list("amicile" = 175, "cetrifiaxone" = 175, "penicillin" = 175, "corophizine" = 175, "saline" = 800)
+	prefill = list("amicile" = 175, "cetrifiaxone" = 175, "penicillin" = 175, "corophizine" = 175, "salinesolution" = 800)
 
 /obj/item/weapon/reagent_containers/ivpack/sodium_bicarbonate
 	name = "Sodium Bicarbonate Pack"
-	prefill = list("sodiumbicarbonate" = 150, "saline" = 1350)
+	prefill = list("sodiumbicarbonate" = 150, "salinesolution" = 1350)
