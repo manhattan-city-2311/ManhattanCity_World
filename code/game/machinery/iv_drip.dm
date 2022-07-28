@@ -6,6 +6,8 @@
 
 	unique_save_vars = list("id")
 
+	var/transfer_volume = 2
+
 
 /obj/machinery/iv_drip/var/mob/living/carbon/human/attached = null
 /obj/machinery/iv_drip/var/mode = 1 // 1 is injecting, 0 is taking blood.
@@ -65,6 +67,11 @@
 		beaker = W
 		to_chat(user, "You attach \the [W] to \the [src].")
 		update_icon()
+		if(istype(beaker, /obj/item/weapon/reagent_containers/blood))
+			// speed up transfer on blood packs
+			transfer_volume = 40
+		else
+			transfer_volume = initial(transfer_volume)
 		return
 
 	if(istype(W, /obj/item/weapon/screwdriver))
@@ -101,11 +108,7 @@
 		// Give blood
 		if(mode)
 			if(beaker.volume > 0)
-				var/transfer_amount = 1
-				if(istype(beaker, /obj/item/weapon/reagent_containers/blood))
-					// speed up transfer on blood packs
-					transfer_amount = 40
-				beaker.reagents.trans_to_mob(attached, transfer_amount, CHEM_BLOOD)
+				beaker.reagents.trans_to_mob(attached, transfer_volume, CHEM_BLOOD)
 				update_icon()
 
 		// Take blood
