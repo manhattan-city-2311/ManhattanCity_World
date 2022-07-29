@@ -135,7 +135,7 @@
 						return
 					if(!is_vfib())
 						return
-					H.visible_message(SPAN_NOTICE("\The [H] is performed precordial blow on \the [src]!"))
+					H.visible_message(SPAN_NOTICE("\The [H] has performed precordial blow on \the [src]!"))
 
 					if(prob(5))
 						var/obj/item/organ/external/chest = get_organ(BP_TORSO)
