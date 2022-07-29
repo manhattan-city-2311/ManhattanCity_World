@@ -43,10 +43,10 @@
 	switch(direction)
 		if(EAST, NORTHEAST, SOUTHEAST)
 			handle_turning(1)
-			next_steering_input = world.time + 10
+			next_steering_input = world.time + 5
 		if(WEST, NORTHWEST, SOUTHWEST)
 			handle_turning(-1)
-			next_steering_input = world.time + 10
+			next_steering_input = world.time + 5
 	return 1
 
 /obj/manhattan/vehicle/proc/handle_input()
