@@ -723,12 +723,12 @@
 			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
 
 		if(!seedarkness)
-			sight = species.get_vision_flags(src) | SEE_PIXELS
+			sight = species.get_vision_flags(src)
 			see_in_dark = 8
 			see_invisible = SEE_INVISIBLE_NOLIGHTING
 
 		else
-			sight = species.get_vision_flags(src) | SEE_PIXELS
+			sight = species.get_vision_flags(src)
 			see_in_dark = species.darksight
 			see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
 

@@ -83,7 +83,7 @@
 					color: #ff93d7;
 					position: absolute;
 					letter-spacing: 1px;
-					font-size: 1.1em;
+					font-size: 2.5vmin;
 					margin: 0;
 				}
 				.container_nav .data_output
@@ -93,8 +93,9 @@
 				#time
 				{
 					top: 124.5%;
-					left: 82%;
+					left: 83.7%;
 					transform: scale(0.8,1);
+					transform-origin: left;
 				}
 				#charactername
 				{

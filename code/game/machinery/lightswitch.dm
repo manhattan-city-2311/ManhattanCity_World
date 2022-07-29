@@ -14,6 +14,7 @@
 	var/area/area = null
 	var/otherarea = null
 	var/image/overlay
+	var/override_automatic_dir_pixel_offset = FALSE
 
 /obj/machinery/light_switch/New()
 	..()
@@ -28,9 +29,7 @@
 
 		on = area.lightswitch
 		updateicon()
-
-	if(pixel_x == 0 && pixel_y == 0)
-
+	if(!override_automatic_dir_pixel_offset)
 		var/turf/here = get_turf(src)
 		var/placing = 0
 		for(var/checkdir in GLOB.cardinal)
@@ -43,19 +42,19 @@
 				if(A.simulated && !A.CanPass(src, T))
 					placing = checkdir
 					break
-
+		dir = turn(placing, 180)
 		switch(placing)
 			if(NORTH)
 				pixel_x = 0
-				pixel_y = 30
+				pixel_y = 26
 			if(SOUTH)
 				pixel_x = 0
-				pixel_y = -30
+				pixel_y = -20
 			if(EAST)
-				pixel_x = 30
+				pixel_x = 21
 				pixel_y = 0
 			if(WEST)
-				pixel_x = -30
+				pixel_x = -21
 				pixel_y = 0
 
 /obj/machinery/light_switch/proc/updateicon()
