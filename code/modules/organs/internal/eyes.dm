@@ -78,10 +78,10 @@
 	if(!.) return
 
 	//Conjunctivitis
-	if (. >= 1)
+	if (. >= INFECTION_LEVEL_ONE)
 		if(prob(1))
 			owner.custom_pain("The corners of your eyes itch! It's quite frustrating.",0)
-	if (. >= 2)
+	if (. >= INFECTION_LEVEL_TWO)
 		if(prob(1))
 			owner.custom_pain("Your eyes are watering, making it harder to see clearly for a moment.",1)
 			owner.eye_blurry += 10
