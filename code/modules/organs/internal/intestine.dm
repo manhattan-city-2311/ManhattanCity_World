@@ -9,11 +9,11 @@
 	if(!.) return
 
 	//Viral Gastroenteritis
-	if (. >= 1)
+	if (. >= INFECTION_LEVEL_ONE)
 		if(prob(1))
 			owner.custom_pain("There's a twisting pain in your abdomen!",1)
 			owner.vomit()
-	if (. >= 2)
+	if (. >= INFECTION_LEVEL_TWO)
 		if(prob(1))
 			owner.custom_pain("Your abdomen feels like it's tearing itself apart!",1)
 

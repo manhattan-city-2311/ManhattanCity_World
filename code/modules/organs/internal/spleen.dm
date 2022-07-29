@@ -37,11 +37,11 @@
 	if(!.) return
 
 	// Low levels can cause pain and haemophilia, high levels can cause brain infections.
-	if (. >= 1)
+	if (. >= INFECTION_LEVEL_ONE)
 		if(prob(1))
 			owner.custom_pain("There's a sharp pain in your [owner.get_organ(parent_organ)]!",1)
 			owner.add_modifier(/datum/modifier/trait/haemophilia, 2 MINUTES * spleen_efficiency)
-	if (. >= 2)
+	if (. >= INFECTION_LEVEL_TWO)
 		if(prob(1))
 			if(owner.getToxLoss() < owner.getMaxHealth() * 0.2 * spleen_efficiency)
 				owner.adjustToxLoss(2 * spleen_efficiency)

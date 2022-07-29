@@ -454,17 +454,6 @@
 		if(calories > 0 && stat != DEAD && client) //Calories won't burn when you're SSD or dead.
 			adjust_calories(-species.metabolic_rate / 100)
 
-		if(calories <= species.min_calories | calories >= species.max_calories)
-			if (prob(5))
-				adjustToxLoss(10)
-		//If you're too fat or skinny, you're gon die. Maybe make better symptoms later.
-			if (prob(5))
-				vomit()
-
-			if (prob(15))
-				to_chat(src, "<span class='danger'>[pick("You feel dizzy and incredibly sick", "Your head is pounding", "Your entire body feels like it's dying")]!</span>")
-				Weaken(20)
-
 		if (nutrition > 450)
 			if(overeatduration < 600) //capped so people don't take forever to unfat
 				overeatduration++
