@@ -152,7 +152,7 @@
 				else if(directionToCheck == WEST)
 					Tbottom = get_step(get_turf(src), SOUTHWEST)
 					Tupper = get_step(get_turf(src), NORTHWEST)
-				if(debugenabled)
+				if(icondebugenabled)
 					to_world("B[!Tbottom.contains_dense_objects()] U[Tupper.contains_dense_objects()]")
 				if(!Tbottom.contains_dense_objects() && Tupper.contains_dense_objects())
 					pixel_y = 18
@@ -169,7 +169,7 @@
 				else if(directionToCheck == SOUTH)
 					Tleft = get_step(get_turf(src), SOUTHWEST)
 					Tright = get_step(get_turf(src), SOUTHEAST)
-				if(debugenabled)
+				if(icondebugenabled)
 					to_world("L[!Tleft.contains_dense_objects()] R[Tright.contains_dense_objects()]")
 					to_world("L[Tleft.contains_dense_objects()] R[!Tright.contains_dense_objects()]")
 				if(!Tleft.contains_dense_objects() && Tright.contains_dense_objects())
@@ -214,12 +214,19 @@
 					update_icon()
 					on = 0
 					set_light(0)
+					if(LocationOfLightSource)
+						LocationOfLightSource.set_light(0)
 			else
 				use_power = 2
-				set_light(brightness_range, brightness_power, brightness_color)
+				if(LocationOfLightSource)
+					LocationOfLightSource.set_light(brightness_range, brightness_power, brightness_color)
+					set_light(0)
+				else
+					set_light(brightness_range, brightness_power, brightness_color)
 	else
 		use_power = 1
 		set_light(0)
+		LocationOfLightSource?.set_light(0)
 
 	active_power_usage = ((light_range * light_power) * LIGHTING_POWER_FACTOR)
 

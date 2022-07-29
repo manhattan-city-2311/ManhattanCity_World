@@ -20,7 +20,7 @@
 	construct_type = /obj/machinery/light_construct/flamp
 	light_range = 8
 	light_power = 6
-	brightness_range = 8
+	brightness_range = 6
 	brightness_power = 6
 	pixel_x = -32
 	layer = ABOVE_MOB_LAYER
@@ -28,6 +28,8 @@
 	light_type = /obj/item/weapon/light/bulb/street2
 	anchored = 1
 	density = 1
+	offset_of_light_forward = 2
+	offset_of_light_sides = 0
 
 /obj/machinery/light/normal_lamp2/update_icon()
 	return FALSE

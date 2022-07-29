@@ -2495,6 +2495,7 @@
 #include "code\modules\power\lighting\_presets.dm"
 #include "code\modules\power\lighting\colored.dm"
 #include "code\modules\power\lighting\colored_tubes.dm"
+#include "code\modules\power\lighting\offset.dm"
 #include "code\modules\power\lighting\street_pole.dm"
 #include "code\modules\power\sensors\powernet_sensor.dm"
 #include "code\modules\power\sensors\sensor_monitoring.dm"
