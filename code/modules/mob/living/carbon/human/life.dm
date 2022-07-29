@@ -791,7 +791,7 @@
 			switch(bloodstr?.get_reagent_amount("glucose"))
 				if(GLUCOSE_LEVEL_HBAD - 2   to INFINITY)				    nutrition_icon.icon_state = "nutrition0"
 				if(GLUCOSE_LEVEL_NORMAL - 0.1 to INFINITY)		nutrition_icon.icon_state = "nutrition1"
-				if(GLUCOSE_LEVEL_LBAD   to GLUCOSE_LEVEL_NORMAL - 0.1)	nutrition_icon.icon_state = "nutrition2"
+				if(GLUCOSE_LEVEL_LBAD   to GLUCOSE_LEVEL_NORMAL_LOW + 2)	nutrition_icon.icon_state = "nutrition2"
 				if(GLUCOSE_LEVEL_LBAD - 0.5  to GLUCOSE_LEVEL_LBAD)		nutrition_icon.icon_state = "nutrition3"
 				else														nutrition_icon.icon_state = "nutrition4"
 		if(!isSynthetic())
