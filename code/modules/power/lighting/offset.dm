@@ -10,6 +10,8 @@
 /obj/machinery/light/proc/SetLightOffSet(_x, _y)
 	offset_of_light_forward = _x
 	offset_of_light_sides = _y
+	LocationOfLightSource.offsetForward = offset_of_light_forward
+	LocationOfLightSource.offsetSides = offset_of_light_sides
 	update()
 
 /obj/machinery/light/update()
