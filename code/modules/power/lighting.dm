@@ -417,6 +417,8 @@ var/global/list/light_type_cache = list()
 
 
 /obj/machinery/light/normal_lamp
+	desc = "A floor lamp."
+	icon = 'icons/obj/big_floodlight.dmi'
 	icon_state = "flamp1"
 	base_state = "flamp"
 	construct_type = /obj/machinery/light_construct/flamp
@@ -426,13 +428,14 @@ var/global/list/light_type_cache = list()
 	brightness_power = 6
 	layer = ABOVE_MOB_LAYER
 	brightness_color = LIGHT_COLOR_HALOGEN
-	desc = "A floor lamp."
 	light_type = /obj/item/weapon/light/bulb/street
-	icon = 'icons/obj/big_floodlight.dmi'
 	anchored = 1
 	density = 1
 
 /obj/machinery/light/normal_lamp2
+	name = "street light"
+	desc = "A street pole with big light tube up there. Be vigilant of an ambush."
+	icon = 'icons/obj/manhattan/streetpoles.dmi'
 	icon_state = "streetlight1"
 	base_state = "streetlight"
 	construct_type = /obj/machinery/light_construct/flamp
@@ -443,9 +446,7 @@ var/global/list/light_type_cache = list()
 	pixel_x = -32
 	layer = ABOVE_MOB_LAYER
 	light_color = LIGHT_COLOR_GREEN
-	desc = "A street pole."
 	light_type = /obj/item/weapon/light/bulb/street2
-	icon = 'icons/obj/manhattan/streetpoles.dmi'
 	anchored = 1
 	density = 1
 
@@ -499,19 +500,61 @@ var/global/list/light_type_cache = list()
 		on = 0
 //		A.update_lights()
 	return ..()
+/obj/machinery/light/var/debugenabled = FALSE
 
 /obj/machinery/light/update_icon()
 	if(on_wall)
 		pixel_y = 0
 		pixel_x = 0
-		var/turf/T = get_step(get_turf(src), src.dir)
+		var/turf/T = get_step(get_turf(src), dir)
 		if(istype(T, /turf/simulated/wall))
-			if(src.dir == NORTH)
-				pixel_y = 21
-			else if(src.dir == EAST)
+			if(dir == NORTH) // 1
+				pixel_y = 18
+			else if(dir == EAST) // 4
 				pixel_x = 10
-			else if(src.dir == WEST)
+			else if(dir == WEST) // 8
 				pixel_x = -10
+			//
+			var/directionToCheck = dir
+			if(directionToCheck % 4 == 0)
+				var/turf/Tbottom
+				var/turf/Tupper
+				if(directionToCheck == EAST)
+					Tbottom = get_step(get_turf(src), SOUTHEAST)
+					Tupper = get_step(get_turf(src), NORTHEAST)
+				else if(directionToCheck == WEST)
+					Tbottom = get_step(get_turf(src), SOUTHWEST)
+					Tupper = get_step(get_turf(src), NORTHWEST)
+				if(debugenabled)
+					to_world("B[!Tbottom.contains_dense_objects()] U[Tupper.contains_dense_objects()]")
+				if(!Tbottom.contains_dense_objects() && Tupper.contains_dense_objects())
+					pixel_y = 18
+					//  |  |
+					// >\__/<
+					// pixel_y = 18
+					//
+			else
+				var/turf/Tleft
+				var/turf/Tright
+				if(directionToCheck == NORTH)
+					Tleft = get_step(get_turf(src), NORTHWEST)
+					Tright = get_step(get_turf(src), NORTHEAST)
+				else if(directionToCheck == SOUTH)
+					Tleft = get_step(get_turf(src), SOUTHWEST)
+					Tright = get_step(get_turf(src), SOUTHEAST)
+				if(debugenabled)
+					to_world("L[!Tleft.contains_dense_objects()] R[Tright.contains_dense_objects()]")
+					to_world("L[Tleft.contains_dense_objects()] R[!Tright.contains_dense_objects()]")
+				if(!Tleft.contains_dense_objects() && Tright.contains_dense_objects())
+					pixel_x = 10
+				else if(Tleft.contains_dense_objects() && !Tright.contains_dense_objects())
+					pixel_x = -10
+					//  |  |
+					//  \__/
+					//   ^^
+					// pixel_x = +/- 10
+					//
+
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
 			icon_state = "[base_state][on]"
@@ -524,23 +567,12 @@ var/global/list/light_type_cache = list()
 		if(LIGHT_BROKEN)
 			icon_state = "[base_state]-broken"
 			on = 0
-	return
 
 /obj/machinery/light/colored/update_icon()
-	if(on_wall)
-		pixel_y = 0
-		pixel_x = 0
-		var/turf/T = get_step(get_turf(src), src.dir)
-		if(istype(T, /turf/simulated/wall))
-			if(src.dir == NORTH)
-				pixel_y = 21
-			else if(src.dir == EAST)
-				pixel_x = 10
-			else if(src.dir == WEST)
-				pixel_x = -10
-	switch(status)		// set icon_states
+	. = ..()
+	switch(status)
 		if(LIGHT_OK)
-			icon_state = "[base_state][on]"
+			icon_state = (on ? "[base_state]1" : "off")
 		if(LIGHT_EMPTY)
 			icon_state = "empty"
 			on = 0
@@ -548,9 +580,8 @@ var/global/list/light_type_cache = list()
 			icon_state = "tube-burned"
 			on = 0
 		if(LIGHT_BROKEN)
-			icon_state = "tube-burned" //REEE NO SPRITE
+			icon_state = "tube-broken"
 			on = 0
-	return
 
 
 /obj/machinery/light/flamp/update_icon()
@@ -568,10 +599,9 @@ var/global/list/light_type_cache = list()
 			if(LIGHT_BROKEN)
 				on = 0
 				icon_state = "[base_state][on]"
-		return
 	else
 		base_state = "flamp"
-		..()
+		. = ..()
 
 
 // update the icon_state and luminosity of the light depending on its state
@@ -761,7 +791,6 @@ var/global/list/light_type_cache = list()
 			new /obj/item/weapon/lampshade(src.loc)
 			update_icon()
 			return
-
 	..()
 
 // returns whether this light has power
@@ -795,11 +824,9 @@ var/global/list/light_type_cache = list()
 
 /obj/machinery/light/attack_ai(mob/user)
 	src.flicker(1)
-	return
 
 /obj/machinery/light/flamp/attack_ai(mob/user)
 	attack_hand()
-	return
 
 // attack with hand - remove tube/bulb
 // if hands aren't protected and the light is on, burn the player
@@ -916,7 +943,6 @@ var/global/list/light_type_cache = list()
 		if(3.0)
 			if (prob(50))
 				broken()
-	return
 
 //blob effect
 
@@ -1073,7 +1099,6 @@ var/global/list/light_type_cache = list()
 		S.reagents.clear_reagents()
 	else
 		..()
-	return
 
 // called after an attack with a light item
 // shatter light, unless it was an attempt to put it in a light socket
