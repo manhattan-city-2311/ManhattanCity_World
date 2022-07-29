@@ -15,7 +15,8 @@
 	overdose = 10
 
 /datum/reagent/hormone/adrenaline/affect_blood(mob/living/carbon/human/M, alien, removed)
-    M.add_chemical_effect(CE_PULSE, min(2 * volume, 40))
+	M.add_chemical_effect(CE_PULSE, min(2 * volume, 40))
+	M.reagents.remove_reagent("glucagone", removed * 0.8)
 
 /datum/reagent/hormone/noradrenaline
 	name = "Noradrenaline"
@@ -64,6 +65,16 @@
 	name = "Glucagone"
 	id = "glucagone"
 	price_tag = 1.5
+
+/datum/reagent/hormone/glucagone/affect_blood(mob/living/carbon/M, alien, removed)
+	M.reagents.remove_reagent("glycogen", removed * 0.2)
+	M.reagents.add_reagent("glucose", removed * 0.1)
+
+// 1ml glycogen equals 0.5ml glucose
+/datum/reagent/hormone/glycogen
+	name = "Glycogen"
+	id = "glycogen"
+	metabolism = 0 // reduced only by glucagone.
 
 // MARKERS
 

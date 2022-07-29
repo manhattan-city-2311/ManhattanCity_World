@@ -248,10 +248,12 @@
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.1)
 			if(prob(8) && H.get_arrythmia_score() < ARRYTHMIA_SEVERITY_OVERWRITING)
 				H?.make_common_arrythmia(rand(2, ARRYTHMIA_SEVERITY_OVERWRITING - 1))
+			bloodstr.add_reagent("glucagone", 0.5)
 		if(GLUCOSE_LEVEL_LCRITICAL to GLUCOSE_LEVEL_L2BAD)
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.45)
 			if(prob(2) && H.get_arrythmia_score() < (ARRYTHMIA_SEVERITY_OVERWRITING-1))
 				H?.make_common_arrythmia(rand(1, ARRYTHMIA_SEVERITY_OVERWRITING - 2))
+			bloodstr.add_reagent("glucagone", 0.1)
 		if(GLUCOSE_LEVEL_LBAD to GLUCOSE_LEVEL_NORMAL_LOW)
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.7)
 
@@ -1296,6 +1298,8 @@
 	losebreath = 0
 
 	. = ..()
+	bloodstr.add_reagent("glucose", GLUCOSE_LEVEL_NORMAL)
+	bloodstr.add_reagent("glycogen", GLYCOGEN_LEVEL_NORMAL)
 
 /mob/living/carbon/human/proc/handle_defib_timer()
 	if(!should_have_organ(O_BRAIN))

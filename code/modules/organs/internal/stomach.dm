@@ -27,11 +27,11 @@
 
 /obj/item/organ/internal/stomach/New()
 	..()
-	absolutely_normal_glucose_level = rand(GLUCOSE_LEVEL_NORMAL + 0.1, GLUCOSE_LEVEL_HBAD - 0.55)
+	absolutely_normal_glucose_level = rand(GLUCOSE_LEVEL_NORMAL_LOW + 5, GLUCOSE_LEVEL_HBAD - 5)
 	if(reagents)
-		reagents.maximum_volume = 30
+		reagents.maximum_volume = 1200
 	else
-		create_reagents(30)
+		create_reagents(1200)
 
 /obj/item/organ/internal/stomach/proc/handle_organ_proc_special()
 	generate_hormone("insulin", 0.1, 15)
@@ -46,6 +46,9 @@
 		if(is_broken() && prob(1))
 			owner.custom_pain("There's a twisting pain in your abdomen!",1)
 			owner.vomit(FALSE, TRUE)
+	if(owner.reagents.get_reagent_amount("glycogen") < GLYCOGEN_LEVEL_NORMAL && owner.reagents.get_reagent_amount("glycogen") > GLUCOSE_LEVEL_NORMAL_LOW + 5)
+		owner.reagents.remove_reagent("glucose", 1)
+		owner.reagents.add_reagent("glycogen", 0.5)
 
 /obj/item/organ/internal/stomach/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer

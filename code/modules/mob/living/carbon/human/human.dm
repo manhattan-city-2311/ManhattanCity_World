@@ -1126,7 +1126,8 @@
 	spawn(0)
 		if(regen_icons) regenerate_icons()
 		make_blood()
-		bloodstr.add_reagent("glucose", GLUCOSE_LEVEL_NORMAL_LOW + 0.2)
+		bloodstr.add_reagent("glucose", GLUCOSE_LEVEL_NORMAL)
+		bloodstr.add_reagent("glycogen", GLYCOGEN_LEVEL_NORMAL)
 /*		if(vessel.total_volume < species.blood_volume)
 			vessel.maximum_volume = species.blood_volume
 			vessel.add_reagent("blood", species.blood_volume - vessel.total_volume)

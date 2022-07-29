@@ -8,8 +8,8 @@
 	reagent_state = SOLID
 	metabolism = REM * 4
 	ingest_met = REM * 4
-	var/nutriment_factor = 30 // Per unit
-	calories_factor = 40 // Per unit
+	var/nutriment_factor = 30 // Per ml
+	calories_factor = 40 // Per ml
 	var/injectable = 0
 	color = "#664330"
 	price_tag = 0.6
@@ -53,6 +53,7 @@
 	if(nutriment_factor)
 		M.adjust_nutrition(nutriment_factor * nut_removed) // For hunger and fatness
 	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
+	M.bloodstr.add_reagent("glucose", calories_factor * removed * 0.1)
 
 /datum/reagent/nutriment/glucose
 	name = "Glucose"
