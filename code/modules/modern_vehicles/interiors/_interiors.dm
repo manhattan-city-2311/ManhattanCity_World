@@ -16,6 +16,7 @@
 
 /datum/vehicle_interior/New()
     . = ..()
+    sleep(1)
     var/datum/map_template/template
     for(var/obj/effect/interior_spawn/spawns in GLOB.vehicle_spawnpoints)
         var/turf/T = spawns.loc
@@ -60,10 +61,15 @@
 
 
 /obj/manhattan/vehicle/large
-	var/datum/vehicle_interior/interior = new
+	var/datum/vehicle_interior/interior = null
+	var/size_x = 0
+	var/size_y = 0
+	var/datum/map_template/interior_template = /datum/map_template
 
 /obj/manhattan/vehicle/large/New()
+	interior = new
 	interior.vehicle = src
+	interior.interior_template = interior_template
 
 /obj/manhattan/vehicle/large/enter_vehicle()
     set name = "Войти в транспорт"
@@ -149,20 +155,22 @@
 
 
 /obj/structure/vehiclewall
-    name = "vehicle wall"
-    breakable = FALSE
-    icon = 'icons/vehicles/interior/walls.dmi'
-    icon_state = "noborder"
-    layer = ABOVE_MOB_LAYER
+	name = "vehicle wall"
+	breakable = FALSE
+	icon = 'icons/vehicles/interior/walls.dmi'
+	icon_state = "noborder"
+	layer = ABOVE_MOB_LAYER
+	density = 1
 
 /obj/structure/vehicledoor
-    name = "vehicle door"
-    desc = "Don't joke about the back door!"
-    icon = 'icons/vehicles/interior/walls.dmi'
-    icon_state = "ambulancedoor"
-    var/id
-    var/datum/vehicle_interior/interior = null
-    layer = ABOVE_MOB_LAYER
+	name = "vehicle door"
+	desc = "Don't joke about the back door!"
+	icon = 'icons/vehicles/interior/walls.dmi'
+	icon_state = "ambulancedoor"
+	var/id
+	var/datum/vehicle_interior/interior = null
+	layer = ABOVE_MOB_LAYER
+	density = 1
 
 /obj/structure/vehicledoor/attack_hand(mob/user)
     . = ..()
