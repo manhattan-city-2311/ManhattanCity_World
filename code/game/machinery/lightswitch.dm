@@ -42,7 +42,7 @@
 				if(A.simulated && !A.CanPass(src, T))
 					placing = checkdir
 					break
-		dir = turn(placing, 180)
+		set_dir(turn(placing, 180))
 		switch(placing)
 			if(NORTH)
 				pixel_x = 0

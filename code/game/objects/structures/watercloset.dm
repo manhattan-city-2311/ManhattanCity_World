@@ -423,6 +423,9 @@
 	anchored = 1
 	var/busy = 0 	//Something's being washed at the moment
 
+/obj/structure/sink/update_icon()
+	return ..()
+
 /obj/structure/sink/MouseDrop_T(var/obj/item/thing, var/mob/user)
 	..()
 	if(!istype(thing) || !thing.is_open_container())
@@ -460,8 +463,10 @@
 	to_chat(usr, "<span class='notice'>You start washing your hands.</span>")
 
 	busy = 1
+	update_icon()
 	sleep(40)
 	busy = 0
+	update_icon()
 
 	if(!Adjacent(user)) return		//Person has moved away from the sink
 
@@ -542,8 +547,10 @@
 	to_chat(usr, "<span class='notice'>You start washing \the [I].</span>")
 
 	busy = 1
+	update_icon()
 	sleep(40)
 	busy = 0
+	update_icon()
 
 	if(user.loc != location) return				//User has moved
 	if(!I) return 								//Item's been destroyed while washing

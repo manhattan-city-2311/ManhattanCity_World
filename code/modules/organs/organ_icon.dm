@@ -244,7 +244,7 @@ var/global/list/limb_icon_cache = list()
 // damage amount to represent the pain of the injuries involved.
 
 // Global scope, used in code below.
-var/list/flesh_hud_colours = list("#6496FA", "#e7a30c","#ef6f08","#f25506","#FF0000","#880000","#330000")
+var/list/flesh_hud_colours = list("#6496FA", "#e3e77c", "#d5e72c", "#e7cd0c", "#e7a30c","#ef6f08","#f25506","#FF0000","#880000","#330000")
 var/list/robot_hud_colours = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F4F","#2F2F2F","#000000")
 
 /obj/item/organ/external/proc/get_damage_hud_image(min_dam_state)

@@ -291,6 +291,8 @@
 		H.equip_to_slot_or_del(box, slot_in_backpack)
 
 /datum/species/proc/restore_missed_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
+	return // FIXME:
+
 	for(var/obj/item/organ/external/stump/S in H.organs_by_name)
 		qdel(S)
 

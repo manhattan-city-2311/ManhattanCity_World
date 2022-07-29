@@ -1,7 +1,7 @@
 /obj/structure/coatrack
 	name = "coat rack"
 	desc = "Rack that holds coats."
-	icon = 'icons/obj/coatrack.dmi'
+	icon = 'icons/obj/manhattan/furniture.dmi'
 	icon_state = "coatrack0"
 	burn_state = 0 //Burnable
 	burntime = LONG_BURN

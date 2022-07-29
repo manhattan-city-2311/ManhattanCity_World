@@ -253,7 +253,10 @@
 	BITSET(hud_updateflag, HEALTH_HUD)
 
 /mob/living/carbon/human/get_deprivation()
-	return (oxy && mcv) ? (100 - round(oxy / (get_max_blood_oxygen_delta()) * 100)) : 0
+	if(oxy && mcv)
+		return 100 - round(oxy / (get_max_blood_oxygen_delta()) * 100)
+	else
+		return 0
 
 /mob/living/carbon/human/getToxLoss()
 	if(species.flags & NO_POISON)

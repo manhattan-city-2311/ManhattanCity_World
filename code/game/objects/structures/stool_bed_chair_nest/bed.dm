@@ -231,6 +231,44 @@
 		M.pixel_y = 0
 		M.old_y = 0
 
+/obj/structure/bed/wood
+	name = "double wooden bed"
+	icon_state = "bed_double_wood"
+	base_icon = "bed_double_wood"
+
+/obj/structure/bed/wood/New(var/newloc)
+	..(newloc,"wood","cotton")
+
+/obj/structure/bed/wood/post_buckle_mob(mob/living/M as mob)
+	if(M.buckled == src)
+		M.pixel_y = 13
+		M.old_y = 13
+	else
+		M.pixel_y = 0
+		M.old_y = 0
+
+/obj/structure/bed/neon
+	name = "double neon bed"
+	icon_state = "bed_double_nightlight"
+	base_icon = "bed_double_nightlight"
+	var/image/overlay
+
+/obj/structure/bed/neon/New(var/newloc)
+	..(newloc,"wood","cotton")
+
+/obj/structure/bed/neon/post_buckle_mob(mob/living/M as mob)
+	if(M.buckled == src)
+		M.pixel_y = 13
+		M.old_y = 13
+	else
+		M.pixel_y = 0
+		M.old_y = 0
+
+/obj/structure/bed/neon/update_icon()
+	overlays.Cut()
+	if(!overlay)
+		overlays += image(icon, "bed_light")
+
 /*
  * Roller beds
  */

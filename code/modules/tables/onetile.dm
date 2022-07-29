@@ -43,3 +43,14 @@
 
 /obj/structure/table/home_wooden/update_icon()
 	return
+
+/obj/structure/table/home_wooden/dice
+	name = "dice table"
+	desc = "" // TODO: 
+	icon_state = "dice_clean"
+
+
+/obj/structure/table/home_wooden/low
+	name = "low wooden table"
+	desc = "" // TODO: 
+	icon_state = "table_wood_low"
