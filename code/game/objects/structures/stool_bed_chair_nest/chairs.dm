@@ -251,7 +251,7 @@
 
 
 /obj/structure/bed/chair/sofa
-	name = "old ratty sofa"
+	name = "sofa"
 	icon = 'icons/obj/sofas.dmi'
 	icon_state = "sofamiddle"
 	anchored = 1
@@ -333,7 +333,6 @@
 
 /obj/structure/bed/chair/sofa/right
 	icon_state = "sofaend_right"
-
 
 /obj/structure/bed/chair/sofa/corner
 	icon_state = "sofacorner"

@@ -241,3 +241,7 @@
 /obj/item/weapon/reagent_containers/glass/bottle/haloperidol
 	name = "haloperidol bottle"
 	prefill = list("haloperidol" = 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/heroin
+	name = "heroin bottle"
+	prefill = list("diamorphine" = 30)

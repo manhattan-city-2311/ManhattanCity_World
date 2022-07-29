@@ -348,3 +348,27 @@
 	papers.Add(i)
 	update_icon()
 	amount++
+
+/obj/structure/bed/chair/sofa/divan/left
+	name = "sofa"
+	icon = 'icons/obj/manhattan/furniture.dmi'
+	icon_state = "sofa_left"
+
+/obj/structure/bed/chair/sofa/divan/right
+	name = "sofa"
+	icon = 'icons/obj/manhattan/furniture.dmi'
+	icon_state = "sofa_right"
+
+/obj/structure/sink/modern
+	density = 0
+	icon = 'icons/obj/manhattan/furniture.dmi'
+	icon_state = "sink_modern"
+
+/obj/structure/sink/modern/update_icon()
+	icon_state = "sink_modern[busy ? "_busy" : ""]"
+
+/obj/structure/manhole
+	name = "manhole"
+	anchored = 1
+	icon = 'icons/obj/manhattan/ladders.dmi'
+	icon_state = "manhole_closed"
