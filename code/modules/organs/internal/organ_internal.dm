@@ -139,11 +139,11 @@
 
 	var/antibiotics = LAZYACCESS0(owner.chem_effects, CE_ANTIBIOTIC)
 
-	if(. >= 2 && antibiotics < ANTIBIO_NORM) //INFECTION_LEVEL_TWO
+	if(. >= INFECTION_LEVEL_TWO && antibiotics < ANTIBIO_NORM) //INFECTION_LEVEL_TWO
 		if (prob(3))
 			take_damage(1,silent=prob(30))
 
-	if(. >= 3 && antibiotics < ANTIBIO_OD)	//INFECTION_LEVEL_THREE
+	if(. >= INFECTION_LEVEL_THREE && antibiotics < ANTIBIO_OD)	//INFECTION_LEVEL_THREE
 		if (prob(50))
 			take_damage(1,silent=prob(15))
 
@@ -166,14 +166,14 @@
 	for(var/T in SANITIZE_LIST(waste_hormones))
 		make_hormone(T, waste_hormones[T])
 
-	if(!vital && damage && owner.bloodstr.get_reagent_amount("glucose") >= GLUCOSE_LEVEL_NORMAL)
+	if(!vital && damage && owner.bloodstr.get_reagent_amount("glucose") >= GLUCOSE_LEVEL_NORMAL_LOW)
 		var/regen = min(2, damage)
 		absorb_hormone("glucose", regen)
 		damage = max(0, damage - regen)
 	owner.consume_oxygen(oxygen_consumption)
 	if(oxygen_consumption > owner.oxy)
 		ischemia = clamp(ischemia + ischemia_mod, 0, 100)
-		if(ischemia > 30)
-			damage += lerp(0.1, 0.5, (ischemia - 30) / 70)
+		if(ischemia > 50)
+			take_damage(1)
 	else if(ischemia)
 		ischemia = clamp(ischemia - ischemia_mod, 0, 100)

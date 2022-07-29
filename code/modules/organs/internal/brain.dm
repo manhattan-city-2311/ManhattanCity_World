@@ -19,7 +19,7 @@
 	var/damage_threshold_value
 	var/healed_threshold = 1
 	oxygen_consumption = 2.1
-	ischemia_mod = 0.4
+	ischemia_mod = 0.1
 
 /obj/item/organ/internal/brain/mechassist()
 	replace_self_with(/obj/item/organ/internal/mmi_holder)
@@ -175,7 +175,6 @@
 			if(owner.nervous_system_failure())
 				owner.Paralyse(3)
 			var/can_heal = damage && damage < max_damage && (damage % damage_threshold_value || owner.chem_effects[CE_BRAIN_REGEN] || (!past_damage_threshold(3) && owner.chem_effects[CE_STABLE]))
-			var/damprob
 			//Effects of bloodloss
 			switch(blood_volume)
 
@@ -185,29 +184,17 @@
 				if(BLOOD_PERFUSION_OKAY to BLOOD_PERFUSION_SAFE)
 					if(prob(1))
 						to_chat(owner, "<span class='warning'>You feel [pick("dizzy","woozy","faint")]...</span>")
-					damprob = 45
-					if(!past_damage_threshold(2) && prob(damprob))
-						take_damage(1)
 				if(BLOOD_PERFUSION_BAD to BLOOD_PERFUSION_OKAY)
 					owner.eye_blurry = max(owner.eye_blurry,6)
-					damprob = 70
-					if(!past_damage_threshold(4) && prob(damprob))
-						take_damage(1)
 					if(!owner.paralysis && prob(10))
 						owner.Paralyse(rand(1,3))
 						to_chat(owner, "<span class='warning'>You feel extremely [pick("dizzy","woozy","faint")]...</span>")
 				if(BLOOD_PERFUSION_SURVIVE to BLOOD_PERFUSION_BAD)
 					owner.eye_blurry = max(owner.eye_blurry,6)
-					damprob = 80
-					if(!past_damage_threshold(6) && prob(damprob))
-						take_damage(1)
 					if(!owner.paralysis && prob(15))
 						owner.Paralyse(3)
 						to_chat(owner, "<span class='warning'>You feel extremely [pick("dizzy","woozy","faint")]...</span>")
 				if(-(INFINITY) to BLOOD_PERFUSION_SURVIVE)
 					owner.eye_blurry = max(owner.eye_blurry, 6)
-					damprob = 90
-					if(prob(damprob))
-						take_damage(1)
 					owner.Paralyse(3)
 	..()

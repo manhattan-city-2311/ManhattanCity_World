@@ -180,13 +180,6 @@
 			heartbeat++
 
 /obj/item/organ/internal/heart/proc/handle_ischemia()
-	var/infarct_strength = 0
-	if(/datum/organ_disease/infarct in diseases)
-		var/datum/organ_disease/infarct/I = locate() in diseases
-		infarct_strength = I.strength
-
-	ischemia = min(ischemia, 100 + infarct_strength)
-
 	cardiac_output_modificators["ischemia"] = max(1 - (ischemia / 100), 0.3)
 	if(damage / max_damage > (20 / max_damage))
 		make_up_to_hormone("troponint", damage / max_damage * 2)
