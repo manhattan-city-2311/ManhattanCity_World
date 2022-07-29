@@ -11,6 +11,7 @@
 		avail_oxygen_last_tick = avail_oxygen
 		avail_oxygen = 0
 		return
+
 	//Organs and blood
 	handle_organs()
 

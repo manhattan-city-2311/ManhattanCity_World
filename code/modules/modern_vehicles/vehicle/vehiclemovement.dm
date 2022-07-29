@@ -1,7 +1,6 @@
 /obj/manhattan/vehicle/proc/update_angle_vector()
 	angle_vector.set_angle(90 - angle)
 
-/obj/manhattan/vehicle/var/c = -90
 // direction is -1 or 1
 /obj/manhattan/vehicle/proc/handle_turning(direction)
 	var/destDegree = round(angle + 90 * direction, 90)
@@ -12,7 +11,7 @@
 	else if(destDegree < 0)
 		destDegree = 360 + destDegree
 
-	dir = turn(dir, c * direction)
+	dir = turn(dir, -90 * direction)
 
 	speed.rotate(closer_angle_difference(speed.angle(), destDegree))
 	angle = destDegree
@@ -37,8 +36,6 @@
 	if(movement_destroyed)
 		to_chat(user, SPAN_NOTICE("[src] is in no state to move!"))
 		return 0
-
-	//var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
 
 	switch(direction)
 		if(EAST, NORTHEAST, SOUTHEAST)
@@ -72,10 +69,10 @@
 
 	handle_input()
 
-	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
-	var/obj/item/vehicle_part/clutch/clutch = components[VC_CLUTCH]
+	var/obj/item/vehicle_part/engine/engine   = components[VC_ENGINE]
+	var/obj/item/vehicle_part/clutch/clutch   = components[VC_CLUTCH]
 	var/obj/item/vehicle_part/gearbox/gearbox = components[VC_GEARBOX]
-	var/obj/item/vehicle_part/cardan/cardan = components[VC_CARDAN]
+	var/obj/item/vehicle_part/cardan/cardan   = components[VC_CARDAN]
 
 	if(!(engine && clutch && gearbox && cardan))
 		return
@@ -134,7 +131,7 @@
 
 	for(var/mob/living/carbon/human/H in occupants)
 		for(var/i in 1 to 5)
-			H.adjustBruteLoss(speed.modulus() * 0.83 / 5)
+			H.adjustBruteLoss(speed.modulus() * 0.415 / 5)
 	speed.x = 0
 	speed.y = 0
 	step_x = 0

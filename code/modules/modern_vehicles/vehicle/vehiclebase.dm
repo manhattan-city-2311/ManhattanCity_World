@@ -64,9 +64,9 @@
 	var/weight = 1000
 	var/skid = FALSE
 	var/serial_number
-	var/angle = 0
+	var/angle = 180
 
-	var/vector2/angle_vector = new(0, 1)
+	var/vector2/angle_vector = new(0, -1)
 	var/vector2/speed 		 = new(0, 0)
 	var/vector2/acceleration = new(0, 0)
 
