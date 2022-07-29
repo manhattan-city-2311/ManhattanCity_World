@@ -104,13 +104,10 @@
     shock_charged = FALSE
     if(ARRYTHMIA_AFIB in heart.arrythmias)
         heart.arrythmias[ARRYTHMIA_AFIB].weak(heart)
-        return
     if(ARRYTHMIA_TACHYCARDIA in heart.arrythmias)
         heart.arrythmias[ARRYTHMIA_TACHYCARDIA].weak(heart)
-        return
     if(ARRYTHMIA_EXTRASYSTOLIC in heart.arrythmias)
         heart.arrythmias[ARRYTHMIA_EXTRASYSTOLIC].weak(heart)
-        return
 
 /obj/machinery/defibrillator/proc/change_pacing_rate(mob/user)
     var/pace_rate_new = input(user, "Select a pacing rate in beats per minute", "Pacing rate") as null|num

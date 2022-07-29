@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 		console.mri = src
 
 /obj/machinery/mri/proc/handle_sound()
-	playsound(src, 'sound/effects/mri.ogg', 50, channel = MRI_SOUND_CHANNEL)
+	playsound(src, 'sound/effects/mri.ogg', 100, channel = MRI_SOUND_CHANNEL)
 	spawn(630)
 		if(!operating)
 			handle_sound()
@@ -211,7 +211,10 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	if(!ask_confirmation(user, scans[setting]))
 		return
 
-	scans[setting].perform_scan(mri, src)
+	var/mob/living/carbon/human/occupant
+	for(var/mob/living/carbon/human/newoccupant in mri.contents)
+		occupant = newoccupant
+	scans[setting].perform_scan(mri, src, occupant)
 
 
 /datum/mri_scan

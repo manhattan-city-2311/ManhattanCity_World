@@ -1085,9 +1085,19 @@
 					 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/ceftriaxone = 12,
 					 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/glucose = 4,
 					 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/insulin = 6,
+					 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/nitroglycerin = 8,
+					 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/labetolol = 5,
+					 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/methohexital,
 					 /obj/item/weapon/reagent_containers/glass/bottle/adenosine = 11,
 					 /obj/item/weapon/reagent_containers/glass/bottle/amiodarone = 9,
-					 /obj/item/weapon/reagent_containers/glass/bottle/dopamine = 8
+					 /obj/item/weapon/reagent_containers/glass/bottle/dopamine = 8,
+					 /obj/item/weapon/reagent_containers/glass/bottle/haloperidol = 3,
+					 /obj/item/weapon/reagent_containers/syringe/adrenaline = 11,
+					 /obj/item/weapon/reagent_containers/syringe/atropine = 7,
+					 /obj/item/weapon/reagent_containers/ivpack/insulin_glucagone = 3,
+					 /obj/item/weapon/reagent_containers/ivpack/nutrition = 6,
+					 /obj/item/weapon/reagent_containers/ivpack/antibiotics = 8,
+					 /obj/item/weapon/reagent_containers/ivpack/sodium_bicarbonate = 8,
 					)
 	charge_free_department = DEPT_HEALTHCARE
 	block_persistence = TRUE

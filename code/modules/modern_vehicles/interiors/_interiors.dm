@@ -8,7 +8,7 @@
     var/size_y = 0
 
     var/list/mob/living/carbon/human/occupants = null
-    var/interior_template = ""
+    var/datum/map_template/interior_template = /datum/map_template
     var/turf/middle_turf
     var/obj/effect/vehicle_entrance/entrance = null
     var/obj/structure/vehicledoor/door = null
@@ -18,16 +18,16 @@
     . = ..()
     var/datum/map_template/template
     for(var/obj/effect/interior_spawn/spawns in GLOB.vehicle_spawnpoints)
-        if(spawns.free_x == size_x && spawns.free_y == size_y)
-            var/turf/T = spawns.loc
-            middle_turf = T
-            template = SSmapping.map_templates[interior_template]
-            if(!template.load_new_z())
-                log_debug("Vehicle interior template failed to load!")
-                qdel(src)
-            break
+        var/turf/T = spawns.loc
+        middle_turf = T
+        template = new template
+        if(!template.load(T, centered = TRUE))
+            log_error("Vehicle interior template failed to load!")
+            qdel(src)
+        qdel(spawns)
+        break
     if(!template)
-        log_debug("No template for vehicle interior found.")
+        log_error("No template for vehicle interior found.")
         return
 
     id = rand(1, 999999) //Will never match
@@ -60,7 +60,10 @@
 
 
 /obj/manhattan/vehicle/large
-    var/datum/vehicle_interior/interior = new
+	var/datum/vehicle_interior/interior = new
+
+/obj/manhattan/vehicle/large/New()
+	interior.vehicle = src
 
 /obj/manhattan/vehicle/large/enter_vehicle()
     set name = "Войти в транспорт"
@@ -150,6 +153,7 @@
     breakable = FALSE
     icon = 'icons/vehicles/interior/walls.dmi'
     icon_state = "noborder"
+    layer = ABOVE_MOB_LAYER
 
 /obj/structure/vehicledoor
     name = "vehicle door"
@@ -158,6 +162,7 @@
     icon_state = "ambulancedoor"
     var/id
     var/datum/vehicle_interior/interior = null
+    layer = ABOVE_MOB_LAYER
 
 /obj/structure/vehicledoor/attack_hand(mob/user)
     . = ..()

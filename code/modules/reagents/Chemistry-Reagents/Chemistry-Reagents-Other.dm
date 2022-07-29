@@ -750,3 +750,107 @@
 				to_chat(blob_client, span("warning", "You feel the last vestiges of your consciousness being overwritten and slipping away..."))
 				C.gib()
 				new /obj/structure/blob/core/grey_goo(location, blob_client, 1, 0) //Come back to this and fix it. Mind not transferring properly.
+
+
+
+/datum/reagent/formaldehyde
+	name = "Formaldehyde"
+	id = "formaldehyde"
+	description = "Formaldehyde is used as a high-level disinfectant and sterilant. Extremely reactive and dangerous."
+	taste_description = "hell"
+	reagent_state = LIQUID
+	color = "#574f4e"
+	touch_met = 50
+	price_tag = 0.2
+
+/datum/reagent/formaldehyde/touch_obj(var/obj/O)
+	O.germ_level = O.germ_level * 0.3
+
+/datum/reagent/formaldehyde/touch_turf(var/turf/T)
+	T.germ_level = T.germ_level * 0.3
+
+/datum/reagent/formaldehyde/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	M.adjustFireLoss(0.2 * removed)
+	if(prob(5))
+		M.vomit()
+
+/datum/reagent/hydrochloric_acid
+	name = "Hydrochloric Acid"
+	id = "hydrochloric_acid"
+	description = "Hydrochloric acid, also known as muriatic acid, is an aqueous solution of hydrogen chloride."
+	taste_description = "burns"
+	reagent_state = LIQUID
+	color = "#3f6e41"
+	touch_met = 50
+	price_tag = 0.2
+
+/datum/reagent/hydrochloric_acid/touch_obj(var/obj/O)
+	O.germ_level = O.germ_level * 0.8
+	O.clean_blood()
+
+/datum/reagent/hydrochloric_acid/touch_turf(var/turf/T)
+	T.germ_level = T.germ_level * 0.8
+	if(volume >= 1)
+		if(istype(T, /turf/simulated))
+			var/turf/simulated/S = T
+			S.dirt = 0
+		T.clean_blood()
+
+/datum/reagent/hydrochloric_acid/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	M.adjustFireLoss(6 * removed)
+	if(prob(50))
+		M.vomit()
+
+/datum/reagent/hydrochloric_acid/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	if(M.r_hand)
+		M.r_hand.clean_blood()
+	if(M.l_hand)
+		M.l_hand.clean_blood()
+	if(M.wear_mask)
+		if(M.wear_mask.clean_blood())
+			M.update_inv_wear_mask(0)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(alien == IS_SLIME)
+			M.adjustToxLoss(rand(5, 10))
+		if(H.head)
+			if(H.head.clean_blood())
+				H.update_inv_head(0)
+		if(H.wear_suit)
+			if(H.wear_suit.clean_blood())
+				H.update_inv_wear_suit(0)
+		else if(H.w_uniform)
+			if(H.w_uniform.clean_blood())
+				H.update_inv_w_uniform(0)
+		if(H.shoes)
+			if(H.shoes.clean_blood())
+				H.update_inv_shoes(0)
+		else
+			H.clean_blood(1)
+			return
+	M.clean_blood()
+
+/datum/reagent/chlorhexidine
+	name = "Chlorhexidine"
+	id = "chlorhexidine"
+	description = "Sterilizes wounds in preparation for surgery and thoroughly removes blood."
+	taste_description = "bitterness"
+	reagent_state = LIQUID
+	color = "#a5dcae"
+	touch_met = 5
+
+	tax_type = PHARMA_TAX
+
+
+/datum/reagent/chlorhexidine/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	M.germ_level -= min(removed*20, M.germ_level)
+	for(var/obj/item/I in M.contents)
+		I.was_bloodied = null
+	M.was_bloodied = null
+
+/datum/reagent/chlorhexidine/touch_obj(var/obj/O)
+	O.germ_level -= min(volume*20, O.germ_level)
+	O.was_bloodied = null
+
+/datum/reagent/chlorhexidine/touch_turf(var/turf/T)
+	T.germ_level -= min(volume*20, T.germ_level)

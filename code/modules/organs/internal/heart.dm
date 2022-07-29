@@ -25,6 +25,7 @@
 	var/last_arrythmia_gain
 
 	var/cpr = 0
+	ischemia_mod = 0.6
 
 /obj/item/organ/internal/heart/rejuvenate()
 	. = ..()

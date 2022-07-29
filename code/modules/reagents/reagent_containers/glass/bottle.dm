@@ -43,7 +43,7 @@
 	desc += " It contains:"
 	if(reagents.reagent_list.len > 1)
 		for(var/datum/reagent/reagent in reagents.reagent_list)
-			desc += " [reagent.name]"
+			desc += " [reagent.name],"
 		desc += "."
 	else
 		var/datum/reagent/reagent = pick(reagents.reagent_list)
@@ -53,7 +53,7 @@
 	for(var/datum/reagent/reagent in reagents.reagent_list)
 		cost += reagent.volume * reagent.price_tag
 	desc += " It's cost label reads: [cost]."
-	
+
 
 /obj/item/weapon/reagent_containers/glass/bottle/update_icon()
 	overlays.Cut()
@@ -82,7 +82,7 @@
 	name = "glass ampoule"
 	desc = "A tiny ampoule."
 	icon_state = "ampoule"
-	volume = 10
+	volume = 20
 	w_class = ITEMSIZE_TINY
 
 /obj/item/weapon/reagent_containers/glass/bottle/trioxin
@@ -186,8 +186,8 @@
 	prefill = list("morphine" = 8)
 
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/ceftriaxone
-	name = "cetriaxone ampoule"
-	prefill = list("cetriaxone" = 8)
+	name = "cetrifiaxone ampoule"
+	prefill = list("cetrifiaxone" = 8)
 
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/glucose
 	name = "glucose ampoule"
@@ -195,7 +195,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/insulin
 	name = "insulin ampoule"
-	prefill = list("insulin" = 2)
+	prefill = list("insulin" = 16)
 
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/lidocaine
 	name = "lidocaine ampoule"
@@ -207,7 +207,19 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/amicile
 	name = "amicile ampoule"
-	prefill = list("amicile" = 8)
+	prefill = list("amicile" = 20)
+
+/obj/item/weapon/reagent_containers/glass/bottle/ampoule/methohexital
+	name = "methohexital ampoule"
+	prefill = list("methohexital" = 15)
+
+/obj/item/weapon/reagent_containers/glass/bottle/ampoule/labetolol
+	name = "labetolol ampoule"
+	prefill = list("labetolol" = 12)
+
+/obj/item/weapon/reagent_containers/glass/bottle/ampoule/nitroglycerin
+	name = "nitroglycerin ampoule"
+	prefill = list("nitroglycerin" = 8)
 
 //BOTTLES
 /obj/item/weapon/reagent_containers/glass/bottle/glucagone
@@ -225,3 +237,7 @@
 /obj/item/weapon/reagent_containers/glass/bottle/dopamine
 	name = "dopamine bottle"
 	prefill = list("dopamine" = 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/haloperidol
+	name = "haloperidol bottle"
+	prefill = list("haloperidol" = 30)

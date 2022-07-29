@@ -132,7 +132,7 @@
 		return 0
 
 	var/obj/item/weapon/reagent_containers/container = tool
-	if(!container.reagents.has_reagent("peridaxon"))
+	if(!container.reagents.has_reagent("chlorhexidine"))
 		return 0
 
 	if(!hasorgans(target))
@@ -146,8 +146,8 @@
 
 /datum/surgery_step/treat_necrosis/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts applying medication to the affected tissue in [target]'s [affected.name] with \the [tool]." , \
-	"You start applying medication to the affected tissue in [target]'s [affected.name] with \the [tool].")
+	user.visible_message("[user] starts applying disinfectant to the affected tissue in [target]'s [affected.name] with \the [tool]." , \
+	"You start applying disinfectant to the affected tissue in [target]'s [affected.name] with \the [tool].")
 	target.custom_pain("Something in your [affected.name] is causing you a lot of pain!", 50)
 	..()
 
@@ -160,12 +160,13 @@
 	var/obj/item/weapon/reagent_containers/container = tool
 
 	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_BLOOD) //technically it's contact, but the reagents are being applied to internal tissue
-	if (trans > 0)
-		affected.status &= ~ORGAN_DEAD
+	if(trans > 0 && affected.germ_level < INFECTION_LEVEL_THREE)
+		affected.germ_level = affected.germ_level * 0.5
 		affected.owner.update_icons_body()
-
-		user.visible_message(SPAN_INFO("[user] applies [trans] units of the solution to affected tissue in [target]'s [affected.name]."), \
-			SPAN_INFO("You apply [trans] units of the solution to affected tissue in [target]'s [affected.name] with \the [tool]."))
+		user.visible_message(SPAN_INFO("[user] applies [trans]ml of the solution to affected tissue in [target]'s [affected.name]."), \
+			SPAN_INFO("You apply [trans]ml of the solution to affected tissue in [target]'s [affected.name] with \the [tool]."))
+	else
+		to_chat(user, "<span class='danger'>The infection is too deep to be cleaned out!</span>")
 
 /datum/surgery_step/treat_necrosis/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -318,7 +319,7 @@
 	if(istype(booze) && booze.strength >= 40)
 		to_chat(user, "<span class='warning'>[booze] is too weak, you need something of higher proof for this...</span>")
 		return 0
-	if(!istype(booze) && !container.reagents.has_reagent(/datum/reagent/sterilizine))
+	if(!istype(booze) && !container.reagents.has_reagent("chlorhexidine"))
 		return 0
 	return 1
 

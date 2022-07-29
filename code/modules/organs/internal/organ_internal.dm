@@ -175,3 +175,5 @@
 		ischemia = clamp(ischemia + ischemia_mod, 0, 100)
 		if(ischemia > 30)
 			damage += lerp(0.1, 0.5, (ischemia - 30) / 70)
+	else if(ischemia)
+		ischemia = clamp(ischemia - ischemia_mod, 0, 100)

@@ -87,7 +87,7 @@
 	open to the public and guaranteed to have the local authorities called on. Our division is now having to hand check every suitcase \
 	for official travel. It would go so much quicker with a new doodad that gets through locked luggage."
 
-	items_wanted = list(/obj/item/weapon/surgical/scalpel/laser2 = 1)
+	items_wanted = list()
 
 	department_reward = 200
 	individual_reward = 60

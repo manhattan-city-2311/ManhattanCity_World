@@ -92,8 +92,10 @@
  */
 /obj/item/weapon/surgical/scalpel
 	name = "scalpel"
-	desc = "Cut, cut, and once more cut."
+	desc = "A special surgical tool for cutting operations. You shouldn't see this one though!"
 	icon_state = "scalpel"
+	var/list/precise_limbs = list()
+	var/speed = 5 SECONDS
 	force = 10.0
 	sharp = 1
 	edge = 1
@@ -107,43 +109,37 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	drop_sound = 'sound/items/drop/knife.ogg'
 
-	suicide_act(mob/user)
+/obj/item/weapon/surgical/scalpel/suicide_act(mob/user)
 		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 		viewers(user) << pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>")
 		return (BRUTELOSS)
 
-/*
- * Researchable Scalpels
- */
-/obj/item/weapon/surgical/scalpel/laser1
-	name = "improved laser scalpel"
-	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks basic and could be improved."
-	icon_state = "scalpel_laser1_on"
-	damtype = "fire"
-	hitsound = 'sound/weapons/saw/circsawhit.ogg'
+/obj/item/weapon/surgical/scalpel/cutting
+	name = "soft tissue scalpel"
+	desc = "A special surgical tool for cutting operations. A large curved cutting edge, which represents a more traditional blade shape. It is used for cutting soft tissue, typically with large incisions."
+	precise_limbs = list(BP_TORSO, BP_GROIN)
+	speed = 3 SECONDS
 
-/obj/item/weapon/surgical/scalpel/laser2
-	name = "advanced laser scalpel"
-	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks somewhat advanced."
-	icon_state = "scalpel_laser2_on"
-	damtype = "fire"
-	force = 12.0
-	drop_sound = 'sound/items/drop/accessory.ogg'
+/obj/item/weapon/surgical/scalpel/precise_cutting
+	name = "triangular scalpel"
+	desc = "A special surgical tool for cutting operations. A long, triangular blade with the hypotenuse as its sharpest edge. This one is universal for incisions."
+	precise_limbs = list(BP_ALL)
+	speed = 6 SECONDS
 
-/obj/item/weapon/surgical/scalpel/laser3
-	name = "superior laser scalpel"
-	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks to be the pinnacle of precision energy cutlery!"
-	icon_state = "scalpel_laser3_on"
-	damtype = "fire"
-	force = 15.0
+/obj/item/weapon/surgical/scalpel/suture
+	name = "suture scalpel"
+	desc = "A special surgical tool for cutting operations. A small, pointed, crescent-shaped blade used typically as a suture cutter. It is most sharp on the inside edge of its curve."
+	precise_limbs = list(BP_ALL)
+	speed = 2 SECONDS
 
-/obj/item/weapon/surgical/scalpel/manager
-	name = "incision management system"
-	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
-	icon_state = "scalpel_manager_on"
-	force = 7.5
+/obj/item/weapon/surgical/scalpel/precise
+	name = "precise scalpel"
+	desc = "A special surgical tool for cutting operations. Ideal for making short, precise incisions because of its small, curved cutting edge."
+	precise_limbs = list(BP_ALL)
+	speed = 10 SECONDS
+
 
 /*
  * Circular Saw

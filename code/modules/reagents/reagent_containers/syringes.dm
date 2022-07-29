@@ -12,7 +12,7 @@
 	item_state = "syringe_0"
 	icon_state = "0"
 	matter = list("glass" = 150)
-	amount_per_transfer_from_this = 5
+	amount_per_transfer_from_this = 1
 	possible_transfer_amounts = list(1,2,3,4,5,10,15,20)
 	volume = 20
 	w_class = ITEMSIZE_TINY
@@ -444,3 +444,14 @@
 /obj/item/weapon/reagent_containers/syringe/adrenaline/New()
 	..()
 	reagents.add_reagent("adrenaline",20)
+
+/obj/item/weapon/reagent_containers/syringe/atropine
+	name = "Atropine Syringe"
+	desc = "Atropine injection for emergency use. EXTREMELY large needle."
+	amount_per_transfer_from_this = 20
+	possible_transfer_amounts = list()
+	mode = SYRINGE_INJECT
+
+/obj/item/weapon/reagent_containers/syringe/atropine/New()
+	..()
+	reagents.add_reagent("atropine",20)

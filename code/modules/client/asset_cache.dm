@@ -353,5 +353,5 @@ var/decl/asset_cache/asset_cache = new()
 /datum/asset/simple/lobby
 	assets = list(
 		"FixedsysExcelsior3.01Regular.ttf" = 'html/browser/FixedsysExcelsior3.01Regular.ttf',
-		"menu_cyberui.png" = 'icons/menu_cyberui.png'
+		"menu_cyberui.png" = 'icons/menu_cyberui.png',
 	)

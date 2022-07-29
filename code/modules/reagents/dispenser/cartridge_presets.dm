@@ -100,7 +100,7 @@
 	carthatoline	spawn_reagent = "carthatoline"
 	corophizine	spawn_reagent = "corophizine"
 	amicile	spawn_reagent = "amicile"
-	cetrifiaxon	spawn_reagent = "cetrifiaxon"
+	cetrifiaxon	spawn_reagent = "cetrifiaxone"
 	nitroglycerin	spawn_reagent = "nitroglycerin"
 	atropine	spawn_reagent = "atropine"
 	adenosine	spawn_reagent = "adenosine"
