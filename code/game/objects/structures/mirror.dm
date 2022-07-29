@@ -131,7 +131,7 @@
 	if(!glass) return
 	if(shattered)	return
 	shattered = 1
-	icon_state = "mirror_broke"
+	icon_state = "mirror_wide_broke"
 	playsound(src, "shatter", 70, 1)
 	desc = "Oh no, seven years of bad luck!"
 
