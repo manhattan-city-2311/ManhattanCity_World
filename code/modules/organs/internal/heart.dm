@@ -98,7 +98,7 @@
 		pulse_modificators["!should_work"] = -initial(pulse) - 1
 		oxygen_consumption = 0.15 * owner.k
 
-	cardiac_output_modificators["damage"] = 1 - (damage / max_damage)
+	cardiac_output_modificators["damage"] = 1 - (damage / max_damage * 0.2)
 
 	handle_rythme()
 	handle_ischemia()
