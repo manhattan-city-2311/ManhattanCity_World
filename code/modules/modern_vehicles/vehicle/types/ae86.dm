@@ -59,9 +59,9 @@
 /obj/manhattan/vehicle/ae86/update_object_sprites()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
-		bounds = "64,96"
+		bounds = "64,64"
 	else
-		bounds = "96,64"
+		bounds = "64,64"
 
 /obj/item/vehicle_component/health_manager/ae86
 	integrity = 100

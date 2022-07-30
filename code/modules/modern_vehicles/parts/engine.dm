@@ -34,7 +34,7 @@
 		needs_processing = TRUE
 		playsound(vehicle, start_sound, 150, 1, 5)
 		spawn(15)
-			playsound(vehicle, 'sound/vehicles/modern/zb_fb_idle.ogg', 30, 1, 5)
+			playsound(vehicle, 'sound/vehicles/modern/zb_fb_med.ogg', 100, 1, 5)
 			rpm = RPM_IDLE
 	else
 		playsound(vehicle, failstart_sound, 150, 1, 5)
