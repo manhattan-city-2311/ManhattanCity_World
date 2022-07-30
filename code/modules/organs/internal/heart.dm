@@ -265,7 +265,7 @@
 		if(140 to 170)
 			speed = "very fast"
 		if(170 to 220)
-			speed = "extreme fast"
+			speed = "extremely fast"
 		if(220 to INFINITY)
 			speed = "thready"
 
