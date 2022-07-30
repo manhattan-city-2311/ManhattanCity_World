@@ -65,6 +65,7 @@
 	name = "Glucagone"
 	id = "glucagone"
 	price_tag = 1.5
+	metabolism = 0.8
 
 /datum/reagent/hormone/glucagone/affect_blood(mob/living/carbon/M, alien, removed)
 	M.reagents.remove_reagent("glycogen", removed * 0.2)
