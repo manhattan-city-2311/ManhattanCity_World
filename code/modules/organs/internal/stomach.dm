@@ -46,7 +46,7 @@
 		if(is_broken() && prob(1))
 			owner.custom_pain("There's a twisting pain in your abdomen!",1)
 			owner.vomit(FALSE, TRUE)
-	if(owner.reagents.get_reagent_amount("glycogen") < GLYCOGEN_LEVEL_NORMAL && owner.reagents.get_reagent_amount("glycogen") > GLUCOSE_LEVEL_NORMAL_LOW + 5)
+	if(owner.reagents.get_reagent_amount("glycogen") < GLYCOGEN_LEVEL_NORMAL && owner.reagents.get_reagent_amount("glucose") > GLUCOSE_LEVEL_NORMAL_LOW + 5)
 		owner.reagents.remove_reagent("glucose", 1)
 		owner.reagents.add_reagent("glycogen", 0.5)
 

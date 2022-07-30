@@ -6,8 +6,8 @@
 	description = "All the vitamins, minerals, and carbohydrates the body needs in pure form."
 	taste_mult = 4
 	reagent_state = SOLID
-	metabolism = REM * 4
-	ingest_met = REM * 4
+	metabolism = REM
+	ingest_met = REM
 	var/nutriment_factor = 30 // Per ml
 	calories_factor = 40 // Per ml
 	var/injectable = 0
