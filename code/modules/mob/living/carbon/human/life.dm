@@ -1045,7 +1045,7 @@
 
 		if(SHOCK_STAGE_SCREAM-5 to SHOCK_STAGE_STUN - 15)
 			message = pick(SHOCK_PAIN_MESSAGES)
-			emote_pick = pick("whimper", "cry", "scream")
+			emote_pick = pick("groan", "cry", "scream")
 
 		if(SHOCK_STAGE_STUN-15 to SHOCK_STAGE_STUN-2)
 			message = pick(SHOCK_PAIN_MESSAGES_SEVERE)
@@ -1054,7 +1054,7 @@
 				Weaken(20)
 			
 			font_size = 3
-			emote_pick = pick("whimper", "cry", "scream")
+			emote_pick = pick("groan", "cry", "scream")
 
 		if(SHOCK_STAGE_STUN - 1 to SHOCK_STAGE_STUN + 1)
 			if(prob(20))
@@ -1077,7 +1077,7 @@
 				Stun(rand(10, 15))
 	
 			font_size = 3
-			emote_pick = pick("whimper", "cry", "scream")
+			emote_pick = pick("groan", "cry", "scream")
 
 		if(SHOCK_STAGE_AGONY to INFINITY)
 			message = pick(SHOCK_PAIN_MESSAGES_SEVERE)
@@ -1098,7 +1098,7 @@
 	if(message)
 		throttle_message("shock", message, bold = TRUE, font_size = font_size, span = "danger", delay = SHOCK_MESSAGE_PERIOD)
 
-	if(emote_pick && (life_tick % SHOCK_EMOTE_PERIOD) == 0)
+	if(emote_pick && istext(emote_pick) && (life_tick % SHOCK_EMOTE_PERIOD) == 0)
 		emote(emote_pick)	
 
 

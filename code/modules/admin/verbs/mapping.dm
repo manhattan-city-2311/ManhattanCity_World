@@ -139,6 +139,7 @@ var/list/debug_verbs = list (
         ,/client/proc/kaboom
         ,/client/proc/cmd_admin_areatest
         ,/client/proc/cmd_admin_rejuvenate
+		,/client/proc/cmd_admin_cmed_dump
         ,/datum/admins/proc/show_traitor_panel
         ,/client/proc/print_jobban_old
         ,/client/proc/print_jobban_old_filter
