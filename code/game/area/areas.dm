@@ -33,7 +33,7 @@
 	var/secret_name = FALSE // This tells certain things that display areas' names that they shouldn't display this area's name.
 	var/obj/machinery/power/apc/apc = null
 	var/no_air = null
-//	var/list/lights				// list of all lights on this area
+	//var/list/lights				// list of all lights on this area
 	var/list/all_doors = null		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/firedoors_closed = 0
 	var/list/ambience = list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
@@ -44,6 +44,7 @@
 	var/uid
 	var/there_can_be_many = FALSE
 	var/lot_id
+	var/code = "" //blue, red, black
 	dont_save = TRUE
 
 /area/New()
@@ -343,6 +344,18 @@ var/list/mob/living/forced_ambiance_list = new
 			temp_airlock.prison_open()
 		for(var/obj/machinery/door/window/temp_windoor in src)
 			temp_windoor.open()
+
+/area/proc/handle_code()
+	var/list/obj/machinery/light/lights = list()
+	for(var/obj/machinery/light/temp_light in src)
+		lights += temp_light
+	switch(code)
+		if("blue")
+			for(var/obj/machinery/light/L in src)
+				L.light_color = LIGHT_COLOR_BLUE
+				spawn(10)
+					L.light_color = initial(L.light_color)
+
 
 /area/has_gravity()
 	return has_gravity

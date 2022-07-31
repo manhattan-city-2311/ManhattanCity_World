@@ -151,7 +151,7 @@
     options.Cut()
     options += "Switch mode"
     if(pads)
-        options += "Detach pads"
+        options += "Disconnect pads"
     switch(mode)
         if("Defibrillation")
             if(shock_charged)
@@ -198,7 +198,7 @@
             announce("Pacing starting at a rate of [pace_rate].")
         if("Switch mode")
             switch_mode(user)
-        if("Detach pads")
+        if("Disconnect pads")
             detach_pads(user)
 
 /obj/machinery/defibrillator/attackby(obj/item/W, mob/user)

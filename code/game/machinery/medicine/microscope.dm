@@ -18,7 +18,7 @@
 	if(istype(W, /obj/item/weapon/reagent_containers/glass/beaker/vial))
 		var/obj/item/weapon/reagent_containers/RC = W
 		if(RC.reagents.reagent_list.len > 1)
-			to_chat(user, SPAN_NOTICE("Contents contains impurities."))
+			to_chat(user, SPAN_NOTICE("Contents contain impurities."))
 			return
 
 		to_chat(user, SPAN_NOTICE("You have inserted [W] in the microscope."))

@@ -1,10 +1,11 @@
 /obj/machinery/monitor
-	name = "\improper Monitor"
+	name = "\improper heart monitor"
 	icon = 'icons/obj/medicine.dmi'
 	icon_state = "monitor"
 	anchored = 0
 	density = 0
 	var/mob/living/carbon/human/attached
+	var/alarm = FALSE
 
 /obj/machinery/monitor/MouseDrop(mob/living/carbon/human/over_object, src_location, over_location)
 	if(!CanMouseDrop(over_object))
@@ -29,6 +30,14 @@
 	attached = null
 	. = ..()
 
+/obj/machinery/monitor/attack_hand(mob/user)
+	. = ..()
+	if(alarm)
+		visible_message("\The [usr] switches off the [src]'s alarm.")
+		alarm = FALSE
+		var/area/A = get_area(src)
+		A.code = ""
+
 /obj/machinery/monitor/update_icon()
 	overlays.Cut()
 	if(!attached)
@@ -44,10 +53,12 @@
 	var/datum/arrythmia/owa = H.get_ow_arrythmia()
 	if(owa)
 		icon_state = "monitor-[owa.id]"
+		set_alarm("CODE BLUE")
 	else
 		switch(H.pulse)
 			if(-INFINITY to 1)
 				icon_state = "monitor-asystole"
+				set_alarm("CODE BLUE")
 			if(1 to 40)
 				icon_state = "monitor-normal0"
 			if(40 to 90)
@@ -61,10 +72,16 @@
 
 	if(attached.mpressure < BLOOD_PRESSURE_L2BAD || attached.mpressure > BLOOD_PRESSURE_H2BAD)
 		overlays += image(icon, "monitor-r")
+		if(attached.mpressure < BLOOD_PRESSURE_L2BAD)
+			set_alarm("HYPOTENSIVE EMERGENCY")
+		else
+			set_alarm("HYPERTENSIVE EMERGENCY")
 	if(attached.get_blood_saturation() < 0.80)
 		overlays += image(icon, "monitor-c")
+		set_alarm("RESPIRATORY EMERGENCY")
 	if(attached.get_blood_perfusion() < 0.7)
 		overlays += image(icon, "monitor-y")
+		set_alarm("CIRCULATORY EMERGENCY")
 
 /obj/machinery/monitor/process()
 	if(!attached)
@@ -75,6 +92,9 @@
 		return PROCESS_KILL
 
 	update_icon()
+	if(alarm)
+		var/area/A = get_area(src)
+		A.handle_code()
 
 /obj/machinery/monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(!attached)
@@ -134,3 +154,14 @@
 	ui_interact(user)
 /obj/machinery/monitor/examine(mob/user)
 	ui_interact(user)
+
+/obj/machinery/monitor/proc/set_alarm(var/emergency)
+	if(alarm)
+		return
+	alarm = TRUE
+
+	var/area/A = get_area(src)
+	var/message = "ALARM: "
+	message += emergency
+	message += " IN [A]!"
+	send_pager_message(message, PAGER_FREQUENCY_MEDICAL)

@@ -150,6 +150,27 @@
 
 /area/planets/Manhattan/indoor/north/police_dept/underground
 
+/area/planets/Manhattan/indoor/north/hospital
+	name = "Central Manhattan Hospital"
+
+/area/planets/Manhattan/indoor/north/hospital/icu
+	name = "Intensive Care Unit"
+/area/planets/Manhattan/indoor/north/hospital/icu/ward/w1
+	name = "ICU Ward 1"
+/area/planets/Manhattan/indoor/north/hospital/icu/ward/w2
+	name = "ICU Ward 2"
+/area/planets/Manhattan/indoor/north/hospital/icu/ward/w3
+	name = "ICU Ward 3"
+/area/planets/Manhattan/indoor/north/hospital/icu/ward/w4
+	name = "ICU Ward 4"
+/area/planets/Manhattan/indoor/north/hospital/icu/ward/w5
+	name = "ICU Ward 5"
+/area/planets/Manhattan/indoor/north/hospital/icu/ward/w6
+	name = "ICU Ward 6"
+
+/area/planets/Manhattan/indoor/north/hospital/reanimation
+	name = "Reanimation Unit"
+
 /*
  		--------S O U T H---------
 */

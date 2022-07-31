@@ -8,7 +8,7 @@
     var/size_y = 0
 
     var/list/mob/living/carbon/human/occupants = null
-    var/datum/map_template/interior_template = /datum/map_template
+    var/interior_template = /datum/map_template
     var/turf/middle_turf
     var/obj/effect/vehicle_entrance/entrance = null
     var/obj/structure/vehicledoor/door = null
