@@ -545,6 +545,46 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		alert("Admin revive disabled")
 	feedback_add_details("admin_verb","REJU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/cmd_admin_cmed_dump(mob/living/carbon/human/M as mob in mob_list)
+	set category = "Special Verbs"
+	set name = "CuMed Dump"
+	if(!holder)
+		to_chat(src, "Only administrators may use this command.")
+		return
+	if(!mob)
+		return
+	if(!istype(M))
+		return
+
+	var/list/info = list("[M]:")
+
+	info += "MCV: [M.mcv]"
+	info += "GVR: [M.gvr]"
+	info += "O2 : [M.oxy]"
+	info += "CO2: [M.co2]"
+	info += "BP:  [M.spressure]/[M.dpressure] [M.mpressure]"
+	if(CE_PRESSURE in M.chem_effects)
+		info += "BP mod: [M.chem_effects[CE_PRESSURE]]"
+
+	var/obj/item/organ/internal/heart/H = M.internal_organs_by_name[O_HEART]
+	if(H)
+		info += "[H.pulse] BPM"
+		info += "Pulse modificators:"
+		for(var/N in H.pulse_modificators)
+			info += "\t[N] = [H.pulse_modificators[N]]"
+		info += "CO modificators:"
+		for(var/N in H.cardiac_output_modificators)
+			info += "\t[N] = [H.cardiac_output_modificators[N]]"
+		info += "Rythme: [H.get_rythme_fluffy()]"
+	else
+		info += "No heart"
+
+	info = jointext(info, "<br/>")
+
+	mob << browse("<HTML><meta charset=\"UTF-8\"><BODY>[info]</BODY></HTML>", "window=[M] dump")
+	onclose(mob, "[M] dump")
+	feedback_add_details("admin_verb", "CMED") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /client/proc/cmd_admin_create_centcom_report()
 	set category = "Special Verbs"
 	set name = "Create Command Report"
