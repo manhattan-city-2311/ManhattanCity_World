@@ -8,6 +8,8 @@ GLOBAL_LIST_EMPTY(pagers)
 /obj/item/pager
 	name = "pager"
 	desc = "A special device used for communication in emergencies."
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "pager"
 	var/frequency = PAGER_FREQUENCY_DEFAULT
 	var/turned_on = FALSE
 
