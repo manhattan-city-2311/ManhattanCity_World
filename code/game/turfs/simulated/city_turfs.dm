@@ -87,4 +87,24 @@
 	icon_state = "road_stripe"
 	initial_flooring = /decl/flooring/road/stripe
 
+/turf/simulated/floor/roof
+	name = "asphalt roof"
+	desc = "It's a roof"
+	icon = 'icons/turf/manhattan/roof_asphalt.dmi'
+	icon_state = "roof-0"
+	outdoors = TRUE
 
+/turf/simulated/floor/roof/metal
+	name = "metal roof"
+	icon = 'icons/turf/manhattan/roof_metal.dmi'
+	icon_state = "roof-0"
+
+/turf/simulated/floor/roof/sheet
+	name = "concrete roof"
+	icon = 'icons/turf/manhattan/roof_sheet.dmi'
+	icon_state = "roof-0"
+
+/turf/simulated/floor/roof/wooden
+	name = "wooden roof"
+	icon = 'icons/turf/manhattan/roof_wood.dmi'
+	icon_state = "roof-0"

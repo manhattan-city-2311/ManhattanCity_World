@@ -22,6 +22,18 @@
 	applies_material_colour = 0
 	color = COLOR_WHITE
 
+/obj/structure/bed/chair/general_alt1
+	icon = 'icons/obj/manhattan/chairs.dmi'
+	icon_state = "plastic_chair"
+	applies_material_colour = 0
+	color = null
+
+/obj/structure/bed/chair/general_alt2
+	icon = 'icons/obj/manhattan/chairs.dmi'
+	icon_state = "metal_chair_folding"
+	applies_material_colour = 0
+	color = null
+
 /obj/structure/bed/chair/proc/update_layer()
 	if(src.dir == NORTH)
 		src.layer = FLY_LAYER
@@ -194,6 +206,18 @@
 
 /obj/structure/bed/chair/office/dark
 	icon_state = "officechair_dark"
+
+/obj/structure/bed/chair/office/blue_modern
+	icon = 'icons/obj/manhattan/chairs.dmi'
+	icon_state = "office_chair_blue"
+	applies_material_colour = 0
+	color = null
+
+/obj/structure/bed/chair/office/green_modern
+	icon = 'icons/obj/manhattan/chairs.dmi'
+	icon_state = "office_chair_green"
+	applies_material_colour = 0
+	color = null
 
 // Chair types
 /obj/structure/bed/chair/wood
