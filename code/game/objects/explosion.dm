@@ -37,7 +37,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 				var/turf/M_turf = get_turf(M)
 				var/dist = get_dist(M_turf, epicenter)
 				// If inside the blast radius + world.view - 2
-				if(dist <= round(max_range + world.view - 2, 1))
+				if(dist <= round(max_range + VIEW_SIZE_MEAN - 2, 1))
 					M.playsound_local(epicenter, get_sfx("explosion"), 100, 1, frequency, falloff = 5) // get_sfx() is so that everyone gets the same sound
 				else if(dist <= far_dist)
 					var/far_volume = Clamp(far_dist, 30, 50) // Volume is based on explosion size and dist

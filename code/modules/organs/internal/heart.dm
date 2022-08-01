@@ -132,8 +132,10 @@
 /obj/item/organ/internal/heart/proc/make_modificators()
 	if(owner.get_blood_perfusion() < 0.95 && (owner.mcv + owner.mcv_add) < NORMAL_MCV * owner.k && owner.get_cardiac_output())
 		pulse_modificators["hypoperfusion"] = clamp((NORMAL_MCV * owner.k - (owner.mcv + owner.mcv_add)) / 30, 0, 115)
-	if(owner.oxy_last_tick_demand > owner.avail_oxygen_last_tick)
-		pulse_modificators["hyposaturation"] = (owner.oxy_last_tick_demand - owner.avail_oxygen_last_tick) / 2
+	pulse_modificators["hyposaturation"] = owner.get_deprivation()
+	if(owner.get_deprivation() < 1 && ((owner.mcv + owner.mcv_add) > NORMAL_MCV * owner.k))
+		pulse_modificators["hypermcv"] = ((owner.mcv + owner.mcv_add) - NORMAL_MCV * owner.k) / 30
+
 	pulse_modificators["shock"] = Clamp(owner.shock_stage * 0.55, 0, 110)
 
 /obj/item/organ/internal/heart/proc/handle_rythme()

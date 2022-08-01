@@ -1364,9 +1364,8 @@ var/mob/dview/dview_mob = new
 	tX = splittext(tX[1], ":")
 	tX = tX[1]
 
-	var/view_split = splittext(world.view, "x")
-	tX = max(1, min(world.maxx, origin.x + (text2num(tX) - (text2num(view_split[1]) + 1))))
-	tY = max(1, min(world.maxy, origin.y + (text2num(tY) - (text2num(view_split[2]) + 1))))
+	tX = max(1, min(world.maxx, origin.x + (text2num(tX) - (VIEW_SIZE_X + 1))))
+	tY = max(1, min(world.maxy, origin.y + (text2num(tY) - (VIEW_SIZE_Y + 1))))
 	return locate(tX, tY, tZ)
 
 // Displays something as commonly used (non-submultiples) SI units.

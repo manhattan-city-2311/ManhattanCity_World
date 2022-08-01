@@ -240,6 +240,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		. += "<b>Тело:</b> "
 		. += "<a href='?src=\ref[src];random=1'>&reg; Random</A><br>"
 	. += "<br>"
+/*
 	. += "<b>Вид: </b><br>"
 
 	if(!pref.existing_character)
@@ -247,6 +248,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else
 		. += "[pref.weight]lbs ([get_weight(pref.calories,mob_species)])"
 	. += "<br>"
+*/
 	. += "<b>Группа крови: </b><br>"
 	if(!pref.existing_character)
 		. += "<a href='?src=\ref[src];blood_type=1'>[pref.b_type]</a><br>"

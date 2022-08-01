@@ -80,7 +80,8 @@
 /obj/structure/window/handle_vehicle_collision(var/obj/manhattan/vehicle/vehicle)
 	..()
 	take_damage(65)
-	vehicle.comp_prof.take_component_damage(25,"brute")
+	if(istype(vehicle))
+		vehicle.comp_prof.take_component_damage(25,"brute")
 
 /obj/structure/window/proc/apply_silicate(var/amount)
 	if(health < maxhealth) // Mend the damage

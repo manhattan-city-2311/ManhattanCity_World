@@ -57,7 +57,7 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 
 			if(istype(A, /atom/movable))
 				var/atom/movable/M = A
-				M.bound_overlay?.update()
+				M.update_above()
 			STAT_LOG_ENTRY(stats, A.type)
 		if(mc_check)
 			if(MC_TICK_CHECK)

@@ -34,7 +34,7 @@ var/global/datum/global_init/init = new ()
 	mob = /mob/new_player
 	turf = /turf/space
 	area = /area/space
-	view = "19x15"
+	view = VIEW_SIZE
 	cache_lifespan = 7
 	movement_mode = PIXEL_MOVEMENT_MODE
 

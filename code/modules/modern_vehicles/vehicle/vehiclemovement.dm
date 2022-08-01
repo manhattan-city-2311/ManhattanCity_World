@@ -4,19 +4,11 @@
 // direction is -1 or 1
 /obj/manhattan/vehicle/proc/handle_turning(direction)
 	var/destDegree = round(angle + 90 * direction, 90)
-	if(destDegree > 360)
-		destDegree -= 360
-	else if(destDegree < -360)
-		destDegree += 360
-	else if(destDegree < 0)
-		destDegree = 360 + destDegree
-
 	dir = turn(dir, -90 * direction)
-
-	speed.rotate(closer_angle_difference(speed.angle(), destDegree))
 	angle = destDegree
 
 	update_angle_vector()
+	speed = angle_vector * speed.modulus()
 	update_object_sprites()
 
 /obj/manhattan/vehicle/var/next_steering_input = 0
@@ -102,20 +94,16 @@
 	speed += acceleration / weight * delta
 
 	if(is_brake_pressed)
-		var/x_sign = SIGN(speed.x)
-		speed.x -= x_sign * (get_braking_force() / weight)
-		if(SIGN(speed.x) != x_sign)
-			speed.x = 0
-
-		var/y_sign = SIGN(speed.y)
-		speed.y -= y_sign * (get_braking_force() / weight)
-		if(SIGN(speed.y) != y_sign)
-			speed.y = 0
+		var/force = get_braking_force() / weight
+		speed.x = SIGN(speed.x) * max(abs(speed.x) - force, 0)
+		speed.y = SIGN(speed.y) * max(abs(speed.y) - force, 0)
+		update_occupants_eye_offsets()
 		
-	if(abs(speed.angle() - angle_vector.angle()) > 1)
+	// unlikely due to simplified turning mechanic, but still can serve some bugs.
+	if(abs(speed.angle() - angle_vector.angle()) > 1) 
 		speed.rotate(closer_angle_difference(speed.angle(), angle_vector.angle()))
 
-/obj/manhattan/vehicle/Move(var/newloc,var/newdir)
+/obj/manhattan/vehicle/Move(newloc, newdir)
 	if(anchored)
 		anchored = 0
 		. = ..()
@@ -131,15 +119,22 @@
 
 	for(var/mob/living/carbon/human/H in occupants)
 		for(var/i in 1 to 5)
-			H.adjustBruteLoss(speed.modulus() * 0.2075 / 5)
+			H.adjustBruteLoss(speed.modulus() * 0.0083)
 	speed.x = 0
 	speed.y = 0
 	step_x = 0
 	step_y = 0
 
+	update_occupants_eye_offsets()
+
+	if(is_clutch_transfering())
+		var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
+		engine?.stop()
+
 /obj/manhattan/vehicle/Bump(atom/obstacle)
 	..()
-	. = collide_with_obstacle(obstacle)
+	if(obstacle != src) // FIXME: 
+		. = collide_with_obstacle(obstacle)
 
 /obj/manhattan/vehicle/var/last_movement
 /obj/manhattan/vehicle/proc/move_helper(x_step, y_step)
@@ -151,13 +146,7 @@
 	last_movement = world.time
 
 	var/newLoc = locate(x + x_step, y + y_step, z)
-	if(Move(newLoc, get_dir(loc, newLoc), x_step ? 0 : step_x, y_step ? 0 : step_y))
-		return
-	speed.x = 0
-	speed.y = 0
-	if(is_clutch_transfering())
-		var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
-		engine?.stop()
+	Move(newLoc, get_dir(loc, newLoc), x_step ? 0 : step_x, y_step ? 0 : step_y)
 
 /obj/manhattan/vehicle/proc/process_movement(delta)
 	if(speed.modulus() < (delta / 32))
@@ -181,5 +170,7 @@
 		step_y -= SIGN(temp) * 32
 	else
 		step_y += dy
+
+	update_occupants_eye_offsets()
 
 	move_helper(x_step, y_step)

@@ -27,6 +27,8 @@
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
 #define reverseList(L) reverseRange(L.Copy())
 
+#define LAZYFIRST(L) (islist(L) && L:len && L[1])
+
 // binary search sorted insert
 // IN: Object to be inserted
 // LIST: List to insert object into

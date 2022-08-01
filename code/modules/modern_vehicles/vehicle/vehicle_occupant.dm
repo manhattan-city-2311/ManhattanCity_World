@@ -20,6 +20,10 @@
 	occupants -= user
 	contents -= user
 	user.forceMove(loc_moveto)
+	
+	if(user.client)
+		animate(user.client, pixel_x = 0, pixel_y = 0, 10)
+
 	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
 	update_object_sprites()
 
@@ -66,6 +70,17 @@
 
 /obj/manhattan/vehicle/proc/get_occupant_amount()
 	return (occupants.len - 2)
+
+/obj/manhattan/vehicle/proc/update_occupants_eye_offsets()
+	var/amount_x = round(SIGN(speed.x) * min(abs(speed.x * 3), 32 * (VIEW_SIZE_X)))
+	var/amount_y = round(SIGN(speed.y) * min(abs(speed.y * 3), 32 * (VIEW_SIZE_Y)))
+
+	for(var/mob/occupant in occupants)
+		if(!ismob(occupant))
+			continue
+		if(!occupant.client)
+			continue
+		animate(occupant.client, pixel_x = amount_x, pixel_y = amount_y, 2)
 
 //Returns null to allow the enter, a string to disallow.
 /obj/manhattan/vehicle/proc/check_enter_invalid()

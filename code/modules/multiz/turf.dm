@@ -8,7 +8,7 @@
 			return !density
 
 /turf/simulated/open/CanZPass(atom, direction)
-	return 1
+	return TRUE
 
 /turf/space/CanZPass(atom, direction)
 	return 1

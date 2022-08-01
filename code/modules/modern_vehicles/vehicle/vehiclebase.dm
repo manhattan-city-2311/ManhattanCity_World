@@ -8,7 +8,7 @@
 
 	appearance_flags = DEFAULT_APPEARANCE_UNBOUND
 
-	step_size = 64
+	step_size = 128 // allows speed over 400 km/h
 
 	var/active = 1
 	var/guns_disabled = 0
@@ -62,7 +62,6 @@
 	)
 
 	var/weight = 1000
-	var/skid = FALSE
 	var/serial_number
 	var/angle = 180
 
@@ -76,17 +75,14 @@
 	var/aerodynamics_coefficent = 0.32
 	var/traction_coefficent = 9.6
 
-	var/handling_quality = 1
-
 /mob/living/carbon/human/Stat()
 	. = ..()
 	if(istype(loc, /obj/manhattan/vehicle))
 		if(statpanel("Status"))
 			var/obj/manhattan/vehicle/V = loc
-			stat("Скорость:", "[TO_KPH(V.speed.modulus())] км/ч")
-			stat("Тахометр:", "[V.components[VC_ENGINE]?.rpm] об/м")
+			stat("Скорость:", "[round(TO_KPH(V.speed.modulus()))] км/ч")
+			stat("Тахометр:", "[round(V.components[VC_ENGINE]?.rpm)] об/м")
 			stat("Передача:", V.components[VC_GEARBOX]?.selected_gear)
-
 
 /obj/manhattan/vehicle/proc/get_wheel_diameter()
 	return 0.34

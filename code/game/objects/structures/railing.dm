@@ -67,7 +67,8 @@
 /obj/structure/railing/handle_vehicle_collision(obj/manhattan/vehicle/vehicle)
 	..()
 	take_damage(75)
-	vehicle.comp_prof.take_component_damage(15,"brute")
+	if(istype(vehicle))
+		vehicle.comp_prof.take_component_damage(15,"brute")
 
 /obj/structure/railing/proc/NeighborsCheck(var/UpdateNeighbors = 1)
 	check = 0
