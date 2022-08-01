@@ -87,12 +87,12 @@
 
 /obj/machinery/monitor/process()
 	if(!attached)
-		playsound(src, '', channel = PULSEBEEP_SOUND_CHANNEL)
+		playsound(src, null, channel = PULSEBEEP_SOUND_CHANNEL)
 		return PROCESS_KILL
 	if(!Adjacent(attached))
 		attached = null
 		update_icon()
-		playsound(src, '', channel = PULSEBEEP_SOUND_CHANNEL)
+		playsound(src, null, channel = PULSEBEEP_SOUND_CHANNEL)
 		return PROCESS_KILL
 
 	update_icon()
