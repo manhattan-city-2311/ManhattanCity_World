@@ -126,12 +126,12 @@
 
 /obj/manhattan/vehicle/proc/collide_with_obstacle(atom/obstacle)
 	if(!obstacle.handle_vehicle_collision(obstacle))
-		visible_message(SPAN_DANGER("[src] collides with [obstacle]!"))
+		visible_message(SPAN_DANGER("[icon2html(src, viewers(src))]\the [src] collides with [obstacle]!"))
 	comp_prof.take_component_damage(speed.modulus() * 0.83, "brute")
 
 	for(var/mob/living/carbon/human/H in occupants)
 		for(var/i in 1 to 5)
-			H.adjustBruteLoss(speed.modulus() * 0.415 / 5)
+			H.adjustBruteLoss(speed.modulus() * 0.2075 / 5)
 	speed.x = 0
 	speed.y = 0
 	step_x = 0

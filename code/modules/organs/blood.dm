@@ -350,6 +350,11 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 /mob/living/carbon/human/proc/get_max_blood_oxygen_delta()
 	return mcv * 0.2 // 100 ml of blood can consume ~20 ml oxygen
 
+/mob/living/carbon/human/get_deprivation()
+	if(oxy && mcv)
+		return 100 - round(oxy / (OXYGEN_LEVEL_NORMAL * k) * 100)
+	return 0
+
 // in minute
 /mob/living/carbon/human/proc/get_max_blood_co2_delta()
 	return mcv ? ((80 * NORMAL_MCV) / mcv) : 0
