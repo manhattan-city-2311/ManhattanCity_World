@@ -1,5 +1,3 @@
-#define MRI_SOUND_CHANNEL 630
-
 GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
     /obj/item/stack/material/iron,
     /obj/item/stack/material/lead,

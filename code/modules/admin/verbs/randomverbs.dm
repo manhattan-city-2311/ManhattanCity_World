@@ -570,6 +570,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(H)
 		info += "[H.pulse] BPM"
 		info += "Pulse modificators:"
+		H.make_modificators()
 		for(var/N in H.pulse_modificators)
 			info += "\t[N] = [H.pulse_modificators[N]]"
 		info += "CO modificators:"

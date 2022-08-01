@@ -6,6 +6,7 @@
 	density = 0
 	var/mob/living/carbon/human/attached
 	var/alarm = FALSE
+	var/modpulse = 0 //1-6
 
 /obj/machinery/monitor/MouseDrop(mob/living/carbon/human/over_object, src_location, over_location)
 	if(!CanMouseDrop(over_object))
@@ -14,6 +15,7 @@
 	if(attached)
 		visible_message("\The [attached] is taken off \the [src]")
 		attached = null
+		playsound(src, null, channel = PULSEBEEP_SOUND_CHANNEL)
 	else if(over_object)
 		if(!ishuman(over_object))
 			return
@@ -85,16 +87,20 @@
 
 /obj/machinery/monitor/process()
 	if(!attached)
+		playsound(src, '', channel = PULSEBEEP_SOUND_CHANNEL)
 		return PROCESS_KILL
 	if(!Adjacent(attached))
 		attached = null
 		update_icon()
+		playsound(src, '', channel = PULSEBEEP_SOUND_CHANNEL)
 		return PROCESS_KILL
 
 	update_icon()
 	if(alarm)
 		var/area/A = get_area(src)
 		A.handle_code()
+	var/obj/item/organ/internal/heart/H = attached?.internal_organs_by_name[O_HEART]
+	handle_pulse(H.pulse)
 
 /obj/machinery/monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(!attached)
@@ -165,3 +171,38 @@
 	message += emergency
 	message += " IN [A]!"
 	send_pager_message(message, PAGER_FREQUENCY_MEDICAL)
+
+/obj/machinery/monitor/proc/handle_pulse(var/newpulse)
+	var/newmodpulse
+	switch(newpulse)
+		if(20 to 60)
+			newmodpulse = 1
+		if(61 to 120)
+			newmodpulse = 2
+		if(121 to 140)
+			newmodpulse = 3
+		if(141 to 160)
+			newmodpulse = 4
+		if(161 to 200)
+			newmodpulse = 5
+		if(201 to INFINITY)
+			newmodpulse = 6
+	if(newmodpulse == modpulse)
+		return
+	else
+		var/pulsesound
+		switch(modpulse)
+			if(1)
+				pulsesound = 'sound/manhattan/monitor/20bpm.mp3'
+			if(2)
+				pulsesound = 'sound/manhattan/monitor/60bpm.mp3'
+			if(3)
+				pulsesound = 'sound/manhattan/monitor/120bpm.mp3'
+			if(4)
+				pulsesound = 'sound/manhattan/monitor/140bpm.mp3'
+			if(5)
+				pulsesound = 'sound/manhattan/monitor/160bpm.mp3'
+			if(6)
+				pulsesound = 'sound/manhattan/monitor/200bpm.mp3'
+		modpulse = newmodpulse
+		playsound(src, sound(pulsesound, 1, 0, PULSEBEEP_SOUND_CHANNEL), 50, 0, channel = PULSEBEEP_SOUND_CHANNEL)
