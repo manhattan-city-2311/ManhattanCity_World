@@ -13,6 +13,8 @@
 
 	var/edits_left = 1
 
+	slot_flags = SLOT_ID
+
 /obj/item/weapon/passport/examine(mob/user)
 	..()
 	if(in_range(user, src) || istype(user, /mob/observer/dead))

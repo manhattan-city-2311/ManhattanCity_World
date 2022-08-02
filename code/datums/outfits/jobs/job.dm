@@ -10,14 +10,3 @@
 	pda_type = /obj/item/device/pda
 
 	flags = OUTFIT_HAS_BACKPACK
-
-/decl/hierarchy/outfit/job/equip_id(mob/living/carbon/human/H)
-	var/obj/item/weapon/card/id/C = ..()
-	if(H.mind)
-		var/datum/mind/M = H.mind
-		if(M.initial_account)
-			var/datum/money_account/A = M.initial_account
-			C.associated_account_number = A.account_number
-			C.associated_pin_number = A.remote_access_pin
-			C.associated_email_login = M.initial_email_login
-	return C

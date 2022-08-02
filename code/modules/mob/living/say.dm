@@ -265,7 +265,7 @@ proc/get_radio_key_from_channel(var/channel)
 	var/sound_vol = handle_v[2]
 
 	//Default range and italics, may be overridden past here
-	var/message_range = world.view
+	var/message_range = VIEW_SIZE_MEAN
 	var/italics = 0
 
 	//Speaking into radios

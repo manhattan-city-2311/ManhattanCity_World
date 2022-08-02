@@ -97,10 +97,6 @@ var/list/outfits_decls_by_type_
 
 	rank = rank || id_pda_assignment
 	assignment = id_pda_assignment || assignment || rank
-	var/obj/item/weapon/card/id/W = equip_id(H, rank, assignment)
-	if(W)
-		rank = W.rank
-		assignment = W.assignment
 	equip_communicator(H,rank)
 
 	for(var/path in backpack_contents)
@@ -109,8 +105,6 @@ var/list/outfits_decls_by_type_
 			H.equip_to_slot_or_del(new path(H), slot_in_backpack)
 
 	post_equip(H)
-	if(W) // We set ID info last to ensure the ID photo is as correct as possible.
-		H.set_id_info(W)
 	return 1
 
 /decl/hierarchy/outfit/proc/equip_base(mob/living/carbon/human/H)
@@ -139,8 +133,6 @@ var/list/outfits_decls_by_type_
 		H.equip_to_slot_or_del(new r_ear(H),slot_r_ear)
 	if(glasses)
 		H.equip_to_slot_or_del(new glasses(H),slot_glasses)
-	if(id)
-		H.equip_to_slot_or_del(new id(H),slot_wear_id)
 	if(l_pocket)
 		H.equip_to_slot_or_del(new l_pocket(H),slot_l_store)
 	if(r_pocket)
@@ -155,19 +147,6 @@ var/list/outfits_decls_by_type_
 	if (!H)
 		if(H.species)
 			H.species.equip_survival_gear(H, flags&OUTFIT_EXTENDED_SURVIVAL, flags&OUTFIT_COMPREHENSIVE_SURVIVAL)
-
-/decl/hierarchy/outfit/proc/equip_id(mob/living/carbon/human/H, rank, assignment)
-	if(!id_slot || !id_type)
-		return
-	var/obj/item/weapon/card/id/W = new id_type(H)
-	if(id_desc)
-		W.desc = id_desc
-	if(rank)
-		W.rank = rank
-	if(assignment)
-		W.assignment = assignment
-	if(H.equip_to_slot_or_del(W, id_slot))
-		return W
 
 /decl/hierarchy/outfit/proc/equip_communicator(mob/living/carbon/human/H, rank)
 //	if(!pda_slot || !pda_type)

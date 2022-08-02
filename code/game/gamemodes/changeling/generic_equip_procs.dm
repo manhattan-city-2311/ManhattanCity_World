@@ -212,15 +212,6 @@
 			success = 1
 			sleep(1 SECOND)
 
-		t = stuff_to_equip["wear_id"]
-		if(!M.wear_id && t)
-			var/I = new t
-			M.equip_to_slot_or_del(I, slot_wear_id)
-			grown_items_list.Add("an ID card")
-			playsound(src, 'sound/effects/splat.ogg', 30, 1)
-			success = 1
-			sleep(1 SECOND)
-
 		var/feedback = english_list(grown_items_list, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
 
 		to_chat(M, "<span class='notice'>We have grown [feedback].</span>")
