@@ -63,6 +63,22 @@
 	. += owner.mcv > 10000
 	. += (owner.mcv < 1000) * 2
 	. += max(0, round((pulse - 180) / 50))
+	var/glevel = owner.bloodstr.get_reagent_amount("glucose")
+	switch(glevel)
+		if(-INFINITY to GLUCOSE_LEVEL_LCRITICAL)
+			. += 4
+		if(GLUCOSE_LEVEL_LCRITICAL to GLUCOSE_LEVEL_L2BAD)
+			. += 3
+		if(GLUCOSE_LEVEL_H2BAD to GLUCOSE_LEVEL_HCRITICAL)
+			. += 3
+		if(GLUCOSE_LEVEL_HCRITICAL to GLUCOSE_LEVEL_H2CRITICAL)
+			. += 4
+	var/plevel = owner.bloodstr.get_reagent_amount("potassium_hormone")
+	switch(plevel)
+		if(POTASSIUM_LEVEL_HBAD to POTASSIUM_LEVEL_HCRITICAL)
+			. += 1
+		if(POTASSIUM_LEVEL_HCRITICAL to INFINITY)
+			. += rand(1, ARRYTHMIA_SEVERITY_OVERWRITING)
 	. = max(0, .)
 
 /obj/item/organ/internal/heart/proc/make_arrythmia(T, allocated = null)
