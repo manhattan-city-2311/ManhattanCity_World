@@ -15,7 +15,7 @@
 	if(attached)
 		visible_message("\The [attached] is taken off \the [src]")
 		attached = null
-		playsound(src, null, channel = PULSEBEEP_SOUND_CHANNEL)
+		world << sound(null, 1, 0, PULSEBEEP_SOUND_CHANNEL)
 	else if(over_object)
 		if(!ishuman(over_object))
 			return
@@ -88,11 +88,12 @@
 /obj/machinery/monitor/process()
 	if(!attached)
 		playsound(src, null, channel = PULSEBEEP_SOUND_CHANNEL)
+		world << sound(null, 1, 0, PULSEBEEP_SOUND_CHANNEL)
 		return PROCESS_KILL
 	if(!Adjacent(attached))
 		attached = null
 		update_icon()
-		playsound(src, null, channel = PULSEBEEP_SOUND_CHANNEL)
+		world << sound(null, 1, 0, PULSEBEEP_SOUND_CHANNEL)
 		return PROCESS_KILL
 
 	update_icon()
@@ -205,4 +206,5 @@
 			if(6)
 				pulsesound = 'sound/manhattan/monitor/200bpm.mp3'
 		modpulse = newmodpulse
-		playsound(src, sound(pulsesound, 1, 0, PULSEBEEP_SOUND_CHANNEL), 50, 0, channel = PULSEBEEP_SOUND_CHANNEL)
+		for(var/mob/living/carbon/human/H in range(5))
+			H << sound(pulsesound, 1, 0, PULSEBEEP_SOUND_CHANNEL)
