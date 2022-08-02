@@ -30,11 +30,11 @@ var/global/list/MOVE_KEY_MAPPINGS = list(
 
 	// Record that we are now holding the key!
 	move_keys_held |= (movekey & 0x0FF)
-	mod_keys_held |= (movekey & 0xF00)
+	mod_keys_held  |= (movekey & 0xF00)
 
 	// If we were NOT holding at the start of this move cycle and pressed it, remember that.
 	var/movement = MOVEMENT_KEYS_TO_DIR(movekey)
-	if(movement && !(next_move_dir_sub & movement) && !(mod_keys_held & CTRL_KEY)) // TODO-LESHANA - Possibly not holding Alt either
+	if(movement && !(next_move_dir_sub & movement) && !((!mob.mod_keys_override) && mod_keys_held & CTRL_KEY)) // TODO-LESHANA - Possibly not holding Alt either
 		DEBUG_INPUT("Saving [dirs2text(movement)] into next_move_dir_ADD")
 		next_move_dir_add |= movement
 

@@ -97,8 +97,6 @@
 	blend_mode = BLEND_MULTIPLY
 	if (icon_state == null)
 		// We're using a color matrix, so just darken the colors across the board.
-		// Bay stores lights as inverted so the lighting PM can invert it for darksight, but
-		//   we don't have a plane master, so invert it again.
 		var/list/c_list = color
 		c_list[CL_MATRIX_RR] *= SHADOWER_DARKENING_FACTOR
 		c_list[CL_MATRIX_RG] *= SHADOWER_DARKENING_FACTOR

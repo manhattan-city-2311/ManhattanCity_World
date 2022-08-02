@@ -3,14 +3,19 @@
 
 // THE TRADITIONAL STYLE FROM /TG (modified)
 
+/atom/movable/var/mod_keys_override = FALSE
 /atom/movable/keyLoop(client/user)
-	// Bail out if the user is holding the "face direction" key (Maybe?)
-	// TODO - I think this breaks non-hotkeys WASD movement, so maybe adopt the /tg solution)
-	if(user.mod_keys_held & CTRL_KEY)
-		return
+	var/movement_dir = MOVEMENT_KEYS_TO_DIR(user.move_keys_held)
+
+	if((!mod_keys_override) && ismob(src))
+		var/mob/M = src
+//		if(user.mod_keys_held & CTRL_KEY)
+//			return M.set_face_dir(user.client_dir(movement_dir))
+		if(user.mod_keys_held & ALT_KEY)
+			return M.facedir(user.client_dir(movement_dir))
 
 	var/must_call_move = FALSE
-	var/movement_dir = MOVEMENT_KEYS_TO_DIR(user.move_keys_held)
+
 	if(user.next_move_dir_add)
 		must_call_move = TRUE // So that next_move_dir_add gets cleared if its time.
 		movement_dir |= user.next_move_dir_add

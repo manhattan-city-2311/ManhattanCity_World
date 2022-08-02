@@ -73,7 +73,7 @@ proc/makejson()
 		if(findtext(A,path,1,0))
 			lineloc = lines.Find(A,1,0)
 			lines[lineloc] = xpath
-			world << "FOUND"*/
+			to_world("FOUND")*/
 	fdel(dmepath)
 	var/file = file(dmepath)
 	file << text

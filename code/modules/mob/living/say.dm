@@ -308,24 +308,12 @@ proc/get_radio_key_from_channel(var/channel)
 
 	//Atmosphere calculations (speaker's side only, for now)
 	var/turf/T = get_turf(src)
-	if(T)
-		//Air is too thin to carry sound at all, contact speech only
-		var/datum/gas_mixture/environment = T.return_air()
-		var/pressure = (environment)? environment.return_pressure() : 0
-		if(pressure < SOUND_MINIMUM_PRESSURE)
-			message_range = 1
-
-		//Air is nearing minimum levels, make text italics as a hint, and muffle sound
-		if (pressure < ONE_ATMOSPHERE*0.4)
-			italics = 1
-			sound_vol *= 0.5
-
+	if(!T)
+		return 1 // If we're in nullspace, then forget it.
 		//Obtain the mobs and objects in the message range
-		var/list/results = get_mobs_and_objs_in_view_fast(T, world.view, remote_ghosts = client ? TRUE : FALSE)
-		listening = results["mobs"]
-		listening_obj = results["objs"]
-	else
-		return 1 //If we're in nullspace, then forget it.
+	var/list/results = get_mobs_and_objs_in_view_fast(T, world.view, remote_ghosts = client ? TRUE : FALSE)
+	listening = results["mobs"]
+	listening_obj = results["objs"]
 
 	//Remember the speech images so we can remove them later and they can get GC'd
 	var/list/images_to_clients = list()
@@ -341,7 +329,6 @@ proc/get_radio_key_from_channel(var/channel)
 	//Main 'say' and 'whisper' message delivery
 	for(var/mob/M in listening)
 		spawn(0) //Using spawns to queue all the messages for AFTER this proc is done, and stop runtimes
-
 			if(M && src) //If we still exist, when the spawn processes
 				var/dst = get_dist(get_turf(M),get_turf(src))
 
@@ -386,7 +373,7 @@ proc/get_radio_key_from_channel(var/channel)
 	animate_speechbubble(speech_bubble, speech_bubble_recipients, 30)
 
 	if(whispering)
-		log_whisper(message,src)
+		log_whisper(message, src)
 	else
 		log_say(message, src)
 	return 1

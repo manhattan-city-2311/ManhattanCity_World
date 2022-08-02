@@ -27,10 +27,10 @@
 		return
 
 	#if defined(TOPIC_DEBUGGING)
-	world << "[src]'s Topic: [href] destined for [hsrc]."
+	to_world("[src]'s Topic: [href] destined for [hsrc].")
 
 	if(href_list["nano_err"]) //nano throwing errors
-		world << "## NanoUI, Subject [src]: " + html_decode(href_list["nano_err"]) //NANO DEBUG HOOK
+		to_world("## NanoUI, Subject [src]: " + html_decode(href_list["nano_err")]) //NANO DEBUG HOOK
 
 	#endif
 

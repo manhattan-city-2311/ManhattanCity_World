@@ -10,20 +10,19 @@ var/global/floorIsLava = 0
 
 	for(var/client/C in admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
-			C << msg
+			to_chat(C, msg)
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
 	var/rendered = "<span class=\"log_message\"><span class=\"prefix\">ATTACK:</span> <span class=\"message\">[text]</span></span>"
 	for(var/client/C in admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
 			if(C.is_preference_enabled(/datum/client_preference/mod/show_attack_logs))
-				var/msg = rendered
-				C << msg
+				to_chat(C, rendered)
 
 proc/admin_notice(var/message, var/rights)
 	for(var/mob/M in mob_list)
 		if(check_rights(rights, 0, M))
-			M << message
+			to_chat(M, message)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 
@@ -581,8 +580,8 @@ proc/admin_notice(var/message, var/rights)
 		else
 			dat+="I'm sorry to break your immersion. This shit's bugged. Report this bug to Agouri, polyxenitopalidou@gmail.com"
 
-	//world << "Channelname: [src.admincaster_feed_channel.channel_name] [src.admincaster_feed_channel.author]"
-	//world << "Msg: [src.admincaster_feed_message.author] [src.admincaster_feed_message.body]"
+	//to_world("Channelname: [src.admincaster_feed_channel.channel_name] [src.admincaster_feed_channel.author]")
+	//to_world("Msg: [src.admincaster_feed_message.author] [src.admincaster_feed_message.body]")
 	usr << browse(dat, "window=admincaster_main;size=400x600")
 	onclose(usr, "admincaster_main")
 
@@ -665,7 +664,7 @@ proc/admin_notice(var/message, var/rights)
 	if(confirm == "Cancel")
 		return
 	if(confirm == "Yes")
-		world << "<span class='danger'>Restarting world!</span> <span class='notice'>Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!</span>"
+		to_world("<span class='danger'>Restarting world!</span> <span class='notice'>Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!</span>")
 		log_admin("[key_name(usr)] initiated a reboot.")
 
 		feedback_set_details("end_error","admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]")
@@ -689,7 +688,7 @@ proc/admin_notice(var/message, var/rights)
 		if(!check_rights(R_SERVER,0))
 			message = sanitize(message, 500, extra = 0)
 		message = replacetext_char(message, "\n", "<br>") // required since we're putting it in a <p> tag
-		world << "<span class=notice><b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>"
+		to_world("<span class=notice><b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -808,9 +807,9 @@ proc/admin_notice(var/message, var/rights)
 
 	config.ooc_allowed = !(config.ooc_allowed)
 	if (config.ooc_allowed)
-		world << "<B>The OOC channel has been globally enabled!</B>"
+		to_world("<B>The OOC channel has been globally enabled!</B>")
 	else
-		world << "<B>The OOC channel has been globally disabled!</B>"
+		to_world("<B>The OOC channel has been globally disabled!</B>")
 	log_and_message_admins("toggled OOC.")
 	feedback_add_details("admin_verb","TOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -824,9 +823,9 @@ proc/admin_notice(var/message, var/rights)
 
 	config.looc_allowed = !(config.looc_allowed)
 	if (config.looc_allowed)
-		world << "<B>The LOOC channel has been globally enabled!</B>"
+		to_world("<B>The LOOC channel has been globally enabled!</B>")
 	else
-		world << "<B>The LOOC channel has been globally disabled!</B>"
+		to_world("<B>The LOOC channel has been globally disabled!</B>")
 	log_and_message_admins("toggled LOOC.")
 	feedback_add_details("admin_verb","TLOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -841,9 +840,9 @@ proc/admin_notice(var/message, var/rights)
 
 	config.dsay_allowed = !(config.dsay_allowed)
 	if (config.dsay_allowed)
-		world << "<B>Deadchat has been globally enabled!</B>"
+		to_world("<B>Deadchat has been globally enabled!</B>")
 	else
-		world << "<B>Deadchat has been globally disabled!</B>"
+		to_world("<B>Deadchat has been globally disabled!</B>")
 	log_admin("[key_name(usr)] toggled deadchat.")
 	message_admins("[key_name_admin(usr)] toggled deadchat.", 1)
 	feedback_add_details("admin_verb","TDSAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc
@@ -907,9 +906,9 @@ proc/admin_notice(var/message, var/rights)
 	set name="Toggle Entering"
 	config.enter_allowed = !(config.enter_allowed)
 	if (!(config.enter_allowed))
-		world << "<B>New players may no longer enter the game.</B>"
+		to_world("<B>New players may no longer enter the game.</B>")
 	else
-		world << "<B>New players may now enter the game.</B>"
+		to_world("<B>New players may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled new player game entering.")
 	message_admins(SPAN_INFO("[key_name_admin(usr)] toggled new player game entering."), 1)
 	world.update_status()
@@ -921,9 +920,9 @@ proc/admin_notice(var/message, var/rights)
 	set name="Toggle AI"
 	config.allow_ai = !( config.allow_ai )
 	if (!( config.allow_ai ))
-		world << "<B>The AI job is no longer chooseable.</B>"
+		to_world("<B>The AI job is no longer chooseable.</B>")
 	else
-		world << "<B>The AI job is chooseable now.</B>"
+		to_world("<B>The AI job is chooseable now.</B>")
 	log_admin("[key_name(usr)] toggled AI allowed.")
 	world.update_status()
 	feedback_add_details("admin_verb","TAI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -934,9 +933,9 @@ proc/admin_notice(var/message, var/rights)
 	set name="Toggle Respawn"
 	config.abandon_allowed = !(config.abandon_allowed)
 	if(config.abandon_allowed)
-		world << "<B>You may now respawn.</B>"
+		to_world("<B>You may now respawn.</B>")
 	else
-		world << "<B>You may no longer respawn :(</B>"
+		to_world("<B>You may no longer respawn :(</B>")
 	message_admins(SPAN_INFO("[key_name_admin(usr)] toggled respawn to [config.abandon_allowed ? "On" : "Off"]."), 1)
 	log_admin("[key_name(usr)] toggled respawn to [config.abandon_allowed ? "On" : "Off"].")
 	world.update_status()
@@ -973,10 +972,10 @@ proc/admin_notice(var/message, var/rights)
 		return //alert("Round end delayed", null, null, null, null, null)
 	round_progressing = !round_progressing
 	if (!round_progressing)
-		world << "<b>The game start has been delayed.</b>"
+		to_world("<b>The game start has been delayed.</b>")
 		log_admin("[key_name(usr)] delayed the game.")
 	else
-		world << "<b>The game will start soon.</b>"
+		to_world("<b>The game will start soon.</b>")
 		log_admin("[key_name(usr)] removed the delay.")
 	feedback_add_details("admin_verb","DELAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -1011,7 +1010,7 @@ proc/admin_notice(var/message, var/rights)
 	if(!usr.client.holder)	return
 	if( alert("Reboot server?",,"Yes","No") == "No")
 		return
-	world << "<font color='red'><b>Rebooting world!</b></font> <font color='blue'>Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!</font>"
+	to_world("<font color='red'><b>Rebooting world!</b></font> <font color='blue'>Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!</font>")
 	log_admin("[key_name(usr)] initiated an immediate reboot.")
 
 	feedback_set_details("end_error","immediate admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]")
@@ -1258,9 +1257,9 @@ proc/admin_notice(var/message, var/rights)
 	set name="Toggle tinted welding helmets."
 	config.welder_vision = !( config.welder_vision )
 	if (config.welder_vision)
-		world << "<B>Reduced welder vision has been enabled!</B>"
+		to_world("<B>Reduced welder vision has been enabled!</B>")
 	else
-		world << "<B>Reduced welder vision has been disabled!</B>"
+		to_world("<B>Reduced welder vision has been disabled!</B>")
 	log_admin("[key_name(usr)] toggled welder vision.")
 	message_admins("[key_name_admin(usr)] toggled welder vision.", 1)
 	feedback_add_details("admin_verb","TTWH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -1271,9 +1270,9 @@ proc/admin_notice(var/message, var/rights)
 	set name="Toggle guests"
 	config.guests_allowed = !(config.guests_allowed)
 	if (!(config.guests_allowed))
-		world << "<B>Guests may no longer enter the game.</B>"
+		to_world("<B>Guests may no longer enter the game.</B>")
 	else
-		world << "<B>Guests may now enter the game.</B>"
+		to_world("<B>Guests may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled guests game entering [config.guests_allowed?"":"dis"]allowed.")
 	message_admins(SPAN_INFO("[key_name_admin(usr)] toggled guests game entering [config.guests_allowed?"":"dis"]allowed."), 1)
 	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

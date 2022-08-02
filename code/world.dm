@@ -411,13 +411,13 @@ var/world_topic_spam_protect_time = world.timeofday
 		C.received_irc_pm = world.time
 		C.irc_admin = input["sender"]
 
-		C << 'sound/effects/adminhelp.ogg'
-		C << message
+		to_target(C, 'sound/effects/adminhelp.ogg')
+		to_chat(C, message)
 
 
 		for(var/client/A in admins)
 			if(A != C)
-				A << amessage
+				to_chat(A, amessage)
 
 		return "Message Successful"
 

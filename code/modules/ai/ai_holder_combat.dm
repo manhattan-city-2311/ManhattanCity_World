@@ -131,20 +131,20 @@
 // Used to make sure projectiles will probably hit the target and not the wall or a friend.
 /datum/ai_holder/proc/test_projectile_safety(atom/movable/AM)
 	var/mob/living/L = check_trajectory(AM, holder) // This isn't always reliable but its better than the previous method.
-//	world << "Checked trajectory, would hit [L]."
+//	to_world("Checked trajectory, would hit [L].")
 
 	if(istype(L)) // Did we hit a mob?
-//		world << "Hit [L]."
+//		to_world("Hit [L].")
 		if(holder.IIsAlly(L))
-//			world << "Would hit ally, canceling."
+//			to_world("Would hit ally, canceling.")
 			return FALSE // We would hit a friend!
-//		world << "Won't threaten ally, firing."
+//		to_world("Won't threaten ally, firing.")
 		return TRUE // Otherwise we don't care, even if its not the intended target.
 	else
 		if(!isliving(AM)) // If the original target was an object, then let it happen if it doesn't threaten an ally.
-//			world << "Targeting object, ignoring and firing."
+//			to_world("Targeting object, ignoring and firing.")
 			return TRUE
-//	world << "Not sure."
+//	to_world("Not sure.")
 
 	return !conserve_ammo // If we have infinite ammo than shooting the wall isn't so bad, but otherwise lets not.
 

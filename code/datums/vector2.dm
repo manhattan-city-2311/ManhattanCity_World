@@ -92,6 +92,8 @@
 
 	vec.set_angle(degrees)
 
+	return vec
+
 var/global/vector2/zero_vector = vector2(0, 0)
 
 #define VECTOR_DEBUG(vec) to_world(#vec + " = \[[vec.x], [vec.y]\]")

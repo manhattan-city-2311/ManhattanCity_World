@@ -92,7 +92,7 @@
 	if(!plant_controller)
 		sleep(250) // ugly hack, should mean roundstart plants are fine. TODO initialize perhaps?
 	if(!plant_controller)
-		world << "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>"
+		to_world("<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
 		qdel(src)
 		return
 

@@ -36,9 +36,6 @@ macro "borghotkeymode"
 		name = "Northwest"
 		command = ".northwest"
 	elem 
-		name = "ALT+West"
-		command = "westfaceperm"
-	elem 
 		name = "West"
 		command = "KeyDown West"
 	elem 
@@ -257,24 +254,6 @@ macro "macro"
 		name = "Tab"
 		command = ".winset \"mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
 	elem 
-		name = "Shift"
-		command = "KeyDown Shift"
-	elem 
-		name = "Shift+UP"
-		command = "KeyUp Shift"
-	elem 
-		name = "Ctrl"
-		command = "KeyDown Ctrl"
-	elem 
-		name = "Ctrl+UP"
-		command = "KeyUp Ctrl"
-	elem 
-		name = "Alt"
-		command = "KeyDown Alt"
-	elem 
-		name = "Alt+UP"
-		command = "KeyUp Alt"
-	elem 
 		name = "ALT+Return"
 		command = "Toggle-Fullscreen"
 	elem 
@@ -290,23 +269,11 @@ macro "macro"
 		name = "Northwest"
 		command = ".northwest"
 	elem 
-		name = "ALT+West"
-		command = "westfaceperm"
-	elem 
-		name = "CTRL+West"
-		command = "westface"
-	elem 
 		name = "West"
 		command = "KeyDown West"
 	elem 
 		name = "West+UP"
 		command = "KeyUp West"
-	elem 
-		name = "ALT+North"
-		command = "northfaceperm"
-	elem 
-		name = "CTRL+North"
-		command = "northface"
 	elem 
 		name = "North"
 		command = "KeyDown North"
@@ -314,23 +281,15 @@ macro "macro"
 		name = "North+UP"
 		command = "KeyUp North"
 	elem 
-		name = "ALT+East"
-		command = "eastfaceperm"
-	elem 
-		name = "CTRL+East"
-		command = "eastface"
-	elem 
 		name = "East"
 		command = "KeyDown East"
 	elem 
+		name = "ALT+East"
+	elem 
+		name = "CTRL+East"
+	elem 
 		name = "East+UP"
 		command = "KeyUp East"
-	elem 
-		name = "ALT+South"
-		command = "southfaceperm"
-	elem 
-		name = "CTRL+South"
-		command = "southface"
 	elem 
 		name = "South"
 		command = "KeyDown South"
@@ -463,29 +422,29 @@ macro "macro"
 	elem 
 		name = "F12"
 		command = "F12"
+	elem 
+		name = "ALT"
+		command = "KeyDown Alt"
+	elem 
+		name = "CTRL"
+		command = "KeyDown Ctrl"
+	elem 
+		name = "SHIFT"
+		command = "KeyDown Shift"
+	elem 
+		name = "ALT+UP"
+		command = "KeyUp Alt"
+	elem 
+		name = "CTRL+UP"
+		command = "KeyUp Ctrl"
+	elem 
+		name = "SHIFT+UP"
+		command = "KeyUp Shift"
 
 macro "hotkeymode"
 	elem 
 		name = "Tab"
 		command = ".winset \"mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true\""
-	elem 
-		name = "Shift"
-		command = "KeyDown Shift"
-	elem 
-		name = "Shift+UP"
-		command = "KeyUp Shift"
-	elem 
-		name = "Ctrl"
-		command = "KeyDown Ctrl"
-	elem 
-		name = "Ctrl+UP"
-		command = "KeyUp Ctrl"
-	elem 
-		name = "Alt"
-		command = "KeyDown Alt"
-	elem 
-		name = "Alt+UP"
-		command = "KeyUp Alt"
 	elem 
 		name = "ALT+Return"
 		command = "Toggle-Fullscreen"
@@ -502,23 +461,11 @@ macro "hotkeymode"
 		name = "Northwest"
 		command = ".northwest"
 	elem 
-		name = "ALT+West"
-		command = "westfaceperm"
-	elem 
-		name = "CTRL+West"
-		command = "westface"
-	elem 
 		name = "West"
 		command = "KeyDown West"
 	elem 
 		name = "West+UP"
 		command = "KeyUp West"
-	elem 
-		name = "ALT+North"
-		command = "northfaceperm"
-	elem 
-		name = "CTRL+North"
-		command = "northface"
 	elem 
 		name = "North"
 		command = "KeyDown North"
@@ -526,23 +473,11 @@ macro "hotkeymode"
 		name = "North+UP"
 		command = "KeyUp North"
 	elem 
-		name = "ALT+East"
-		command = "eastfaceperm"
-	elem 
-		name = "CTRL+East"
-		command = "eastface"
-	elem 
 		name = "East"
 		command = "KeyDown East"
 	elem 
 		name = "East+UP"
 		command = "KeyUp East"
-	elem 
-		name = "ALT+South"
-		command = "southfaceperm"
-	elem 
-		name = "CTRL+South"
-		command = "southface"
 	elem 
 		name = "South"
 		command = "KeyDown South"
@@ -741,6 +676,24 @@ macro "hotkeymode"
 	elem 
 		name = "F12"
 		command = "F12"
+	elem 
+		name = "ALT"
+		command = "KeyDown Alt"
+	elem 
+		name = "CTRL"
+		command = "KeyDown Ctrl"
+	elem 
+		name = "SHIFT"
+		command = "KeyDown Shift"
+	elem 
+		name = "ALT+UP"
+		command = "KeyUp Alt"
+	elem 
+		name = "CTRL+UP"
+		command = "KeyUp Ctrl"
+	elem 
+		name = "SHIFT+UP"
+		command = "KeyUp Shift"
 
 macro "borgmacro"
 	elem 
@@ -779,12 +732,6 @@ macro "borgmacro"
 	elem 
 		name = "Northwest"
 		command = ".northwest"
-	elem 
-		name = "ALT+West"
-		command = "westfaceperm"
-	elem 
-		name = "CTRL+West"
-		command = "westface"
 	elem 
 		name = "West"
 		command = "KeyDown West"
@@ -1347,7 +1294,6 @@ window "mapwindow"
 		size = 892x566
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1355,8 +1301,6 @@ window "mapwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 906x580
-		inner-size = 892x566
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -1375,7 +1319,6 @@ window "mapwindow"
 		size = 892x566
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		is-visible = false
 		is-disabled = true
 		saved-params = ""

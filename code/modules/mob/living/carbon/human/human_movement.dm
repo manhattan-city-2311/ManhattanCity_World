@@ -237,7 +237,7 @@
 
 	// Wind makes it easier or harder to move, depending on if you're with or against the wind.
 	if(T.outdoors)
-		var/datum/planet/P = SSplanets.z_to_planet[z]
+		var/datum/planet/P = LAZYACCESS(SSplanets.z_to_planet, z)
 		if(P)
 			var/datum/weather_holder/WH = P.weather_holder
 			if(WH && WH.wind_speed) // Is there any wind?

@@ -59,7 +59,7 @@
 	if(!vehicle.is_acceleration_pressed)
 		. *= -0.1
 
-	if(!vehicle.is_clutch_transfering())
+	if(!vehicle.is_transfering())
 		receive_torque(.)
 		return 0
 

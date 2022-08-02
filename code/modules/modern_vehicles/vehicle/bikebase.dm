@@ -11,7 +11,6 @@
 		VC_FRONT_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_BACK_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_ENGINE = /obj/item/vehicle_part/engine,
-		VC_CLUTCH = /obj/item/vehicle_part/clutch,
 		VC_GEARBOX = /obj/item/vehicle_part/gearbox,
 		VC_CARDAN = /obj/item/vehicle_part/cardan
 	)
@@ -30,7 +29,7 @@
 	var/image/img
 
 /obj/manhattan/vehicle/motorcycle/get_braking_force()
-	return 100
+	return 1800
 
 /obj/manhattan/vehicle/motorcycle/update_object_sprites()
 	vis_contents.Cut()

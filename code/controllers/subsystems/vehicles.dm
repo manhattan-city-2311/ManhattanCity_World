@@ -3,14 +3,14 @@ SUBSYSTEM_DEF(vehicles)
 	flags = SS_NO_INIT
 	wait = 1 // deciseconds
 	var/list/queue = list()
-	var/n = 5
 
 /datum/controller/subsystem/vehicles/fire(resumed = FALSE)
-	for(var/obj/manhattan/vehicle/vehicle in queue)
-		if(QDELETED(vehicle))
+	for(var/obj/manhattan/vehicle/vehicle as anything in queue)
+		if(QDELING(vehicle))
 			queue -= vehicle
 			continue
-		for(var/i = 0, i < n, ++i)
-			vehicle.process_vehicle(wait / 10.0 / n)
-			vehicle.process_movement(wait / 10.0 / n)
+		var/iterations = vehicle.get_calculation_iterations()
+		for(var/i = 0, i < iterations, ++i)
+			vehicle.process_vehicle(wait * 0.1 / iterations)
+			vehicle.process_movement(wait * 0.1 / iterations)
 

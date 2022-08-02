@@ -56,7 +56,6 @@
 		VC_LEFT_FRONT_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_LEFT_BACK_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_ENGINE = /obj/item/vehicle_part/engine,
-		VC_CLUTCH = /obj/item/vehicle_part/clutch,
 		VC_GEARBOX = /obj/item/vehicle_part/gearbox,
 		VC_CARDAN = /obj/item/vehicle_part/cardan
 	)
@@ -70,19 +69,21 @@
 	var/vector2/acceleration = new(0, 0)
 
 	var/is_acceleration_pressed = FALSE
-	var/is_clutch_pressed		= FALSE
 	var/is_brake_pressed		= FALSE
 	var/aerodynamics_coefficent = 0.32
 	var/traction_coefficent = 9.6
 
 /mob/living/carbon/human/Stat()
 	. = ..()
-	if(istype(loc, /obj/manhattan/vehicle))
+	if(isvehicle(loc))
 		if(statpanel("Status"))
 			var/obj/manhattan/vehicle/V = loc
 			stat("Скорость:", "[round(TO_KPH(V.speed.modulus()))] км/ч")
 			stat("Тахометр:", "[round(V.components[VC_ENGINE]?.rpm)] об/м")
 			stat("Передача:", V.components[VC_GEARBOX]?.selected_gear)
+
+/obj/manhattan/vehicle/proc/get_calculation_iterations()
+	return max(1, speed.modulus() * 0.12)
 
 /obj/manhattan/vehicle/proc/get_wheel_diameter()
 	return 0.34
@@ -91,12 +92,11 @@
 	return 25
 
 /obj/manhattan/vehicle/proc/get_braking_force()
-	return 500
+	return 2500
 
-/obj/manhattan/vehicle/proc/is_clutch_transfering()
-	var/obj/item/vehicle_part/clutch/clutch = components[VC_CLUTCH]
+/obj/manhattan/vehicle/proc/is_transfering()
 	var/obj/item/vehicle_part/gearbox/gearbox = components[VC_GEARBOX]
-	return gearbox.get_ratio() && clutch?.is_transfering()
+	return gearbox.get_ratio()
 
 /obj/manhattan/vehicle/proc/get_components(type)
 	. = list()

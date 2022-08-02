@@ -187,6 +187,21 @@
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
 	return
 
+/mob/living/key_down(key, client/user)
+	. = ..()
+	if(key != SHIFT_KEY)
+		return
+
+	m_intent = M_RUN
+	hud_used.move_intent.icon_state = "running"
+
+/mob/living/key_up(key, client/user)
+	. = ..()
+	if(key != SHIFT_KEY)
+		return
+
+	m_intent = M_WALK
+	hud_used.move_intent.icon_state = "walking"
 
 /client/Move(n, direct)
 	if(!mob)

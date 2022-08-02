@@ -2238,7 +2238,6 @@
 #include "code\modules\modern_vehicles\interiors\ambulance.dm"
 #include "code\modules\modern_vehicles\parts\_part.dm"
 #include "code\modules\modern_vehicles\parts\cardan.dm"
-#include "code\modules\modern_vehicles\parts\clutch.dm"
 #include "code\modules\modern_vehicles\parts\engine.dm"
 #include "code\modules\modern_vehicles\parts\gearbox.dm"
 #include "code\modules\modern_vehicles\parts\wheels.dm"

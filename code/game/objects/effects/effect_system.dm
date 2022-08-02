@@ -241,7 +241,7 @@ steam.start() -- spawns the effect
 			B.damage = (B.damage/2)
 			projectiles += B
 			destroyed_event.register(B, src, /obj/effect/effect/smoke/bad/proc/on_projectile_delete)
-		world << "Damage is: [B.damage]"
+		to_world("Damage is: [B.damage]")
 	return 1
 
 /obj/effect/effect/smoke/bad/proc/on_projectile_delete(obj/item/projectile/beam/proj)

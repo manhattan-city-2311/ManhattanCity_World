@@ -126,9 +126,9 @@
 		target_z = y_arr[cur_y]
 /*
 		//debug
-		world << "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]"
-		world << "Target Z = [target_z]"
-		world << "Next X = [next_x]"
+		to_world("Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
+		to_world("Target Z = [target_z]")
+		to_world("Next X = [next_x]")
 		//debug
 */
 		if(target_z)
@@ -151,9 +151,9 @@
 		target_z = y_arr[cur_y]
 /*
 		//debug
-		world << "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]"
-		world << "Target Z = [target_z]"
-		world << "Next X = [next_x]"
+		to_world("Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
+		to_world("Target Z = [target_z]")
+		to_world("Next X = [next_x]")
 		//debug
 */
 		if(target_z)
@@ -175,9 +175,9 @@
 		target_z = y_arr[next_y]
 /*
 		//debug
-		world << "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]"
-		world << "Next Y = [next_y]"
-		world << "Target Z = [target_z]"
+		to_world("Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
+		to_world("Next Y = [next_y]")
+		to_world("Target Z = [target_z]")
 		//debug
 */
 		if(target_z)
@@ -200,9 +200,9 @@
 		target_z = y_arr[next_y]
 /*
 		//debug
-		world << "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]"
-		world << "Next Y = [next_y]"
-		world << "Target Z = [target_z]"
+		to_world("Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
+		to_world("Next Y = [next_y]")
+		to_world("Target Z = [target_z]")
 		//debug
 */
 		if(target_z)

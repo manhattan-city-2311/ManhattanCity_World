@@ -1,9 +1,10 @@
 /obj/manhattan/vehicle/proc/update_angle_vector()
+	angle = round(angle, 90)
 	angle_vector.set_angle(90 - angle)
 
 // direction is -1 or 1
 /obj/manhattan/vehicle/proc/handle_turning(direction)
-	var/destDegree = round(angle + 90 * direction, 90)
+	var/destDegree = angle + 90 * direction
 	dir = turn(dir, -90 * direction)
 	angle = destDegree
 
@@ -29,18 +30,31 @@
 		to_chat(user, SPAN_NOTICE("[src] is in no state to move!"))
 		return 0
 
-	switch(direction)
-		if(EAST, NORTHEAST, SOUTHEAST)
-			handle_turning(1)
-			next_steering_input = world.time + 5
-		if(WEST, NORTHWEST, SOUTHWEST)
-			handle_turning(-1)
-			next_steering_input = world.time + 5
+	if(!(user.client.mod_keys_held & ALT_KEY))
+		switch(direction)
+			if(EAST, NORTHEAST, SOUTHEAST)
+				handle_turning(1)
+				next_steering_input = world.time + 2
+			if(WEST, NORTHWEST, SOUTHWEST)
+				handle_turning(-1)
+				next_steering_input = world.time + 2
+	else
+		switch(direction)
+			if(EAST, NORTHEAST, SOUTHEAST)
+				direction = 1
+			if(WEST, NORTHWEST, SOUTHWEST)
+				direction = -1
+			else
+				return
+
+		var/vector2/temp = vector2_from_angle(round(90 - (angle + 90 * direction), 90))
+
+		step_x += temp.x
+		step_y += temp.y
 	return 1
 
 /obj/manhattan/vehicle/proc/handle_input()
 	var/mob/user = listHead(get_occupants_in_position("driver"))
-	is_clutch_pressed = FALSE
 	is_acceleration_pressed = FALSE
 	is_brake_pressed = FALSE
 	if(!user || !user.client)
@@ -52,8 +66,6 @@
 	else if(move_keys_held & SOUTH)
 		is_brake_pressed = TRUE
 
-	is_clutch_pressed = user.client.mod_keys_held & ALT_KEY
-
 // processes not only movement, but its will be in this file.
 /obj/manhattan/vehicle/proc/process_vehicle(delta = 2)
 	if(!components?.len)
@@ -62,16 +74,15 @@
 	handle_input()
 
 	var/obj/item/vehicle_part/engine/engine   = components[VC_ENGINE]
-	var/obj/item/vehicle_part/clutch/clutch   = components[VC_CLUTCH]
 	var/obj/item/vehicle_part/gearbox/gearbox = components[VC_GEARBOX]
 	var/obj/item/vehicle_part/cardan/cardan   = components[VC_CARDAN]
 
-	if(!(engine && clutch && gearbox && cardan))
+	if(!(engine && gearbox && cardan))
 		return
 
 	var/F = 0
 	var/torque = engine.handle_torque(delta)
-	if(is_clutch_transfering())
+	if(is_transfering())
 		var/wheels_rpm = speed.modulus() / get_wheel_diameter() * 60 / M_2PI
 		if((engine.rpm / gearbox.get_ratio()) >= wheels_rpm)
 			F += torque * gearbox.get_efficiency() * gearbox.get_ratio() / get_wheel_diameter() / delta
@@ -86,7 +97,6 @@
 		else
 			engine.rpm += rpm_add
 
-
 	acceleration = angle_vector * F
 
 	acceleration -= speed * (speed.modulus() * aerodynamics_coefficent + traction_coefficent)
@@ -98,9 +108,9 @@
 		speed.x = SIGN(speed.x) * max(abs(speed.x) - force, 0)
 		speed.y = SIGN(speed.y) * max(abs(speed.y) - force, 0)
 		update_occupants_eye_offsets()
-		
+
 	// unlikely due to simplified turning mechanic, but still can serve some bugs.
-	if(abs(speed.angle() - angle_vector.angle()) > 1) 
+	if(abs(speed.angle() - angle_vector.angle()) > 1)
 		speed.rotate(closer_angle_difference(speed.angle(), angle_vector.angle()))
 
 /obj/manhattan/vehicle/Move(newloc, newdir)
@@ -127,13 +137,13 @@
 
 	update_occupants_eye_offsets()
 
-	if(is_clutch_transfering())
+	if(is_transfering())
 		var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
 		engine?.stop()
 
 /obj/manhattan/vehicle/Bump(atom/obstacle)
 	..()
-	if(obstacle != src) // FIXME: 
+	if(obstacle != src) // FIXME:
 		. = collide_with_obstacle(obstacle)
 
 /obj/manhattan/vehicle/var/last_movement

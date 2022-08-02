@@ -125,6 +125,8 @@
 
 #define FONT_GIANT(X) "<font size='5'>[X]</font>"
 
+#define isvehicle(X) istype(X, /obj/manhattan/vehicle)
+
 // G is type.
 #define ishormone(G, T) (G == /datum/reagent/hormone/##T)
 

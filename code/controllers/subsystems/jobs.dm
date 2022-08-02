@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(jobs)
 	//var/list/all_jobs = typesof(/datum/job)
 	var/list/all_jobs = list(/datum/job/assistant) | using_map.allowed_jobs
 	if(!all_jobs.len)
-		world << "<span class='warning'>Error setting up jobs, no job datums found!</span>"
+		to_world("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 		return 0
 	for(var/J in all_jobs)
 		var/datum/job/job = new J()

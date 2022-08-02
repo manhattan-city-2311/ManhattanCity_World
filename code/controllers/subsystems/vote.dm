@@ -88,7 +88,7 @@ SUBSYSTEM_DEF(vote)
 					else
 						factor = 1.4
 				choices["Initiate Crew Transfer"] = round(choices["Initiate Crew Transfer"] * factor)
-				world << "<font color='purple'>Crew Transfer Factor: [factor]</font>"
+				to_world("<font color='purple'>Crew Transfer Factor: [factor]</font>")
 				greatest_votes = max(choices["Initiate Crew Transfer"], choices["Continue The Round"])
 
 	. = list() // Get all options with that many votes and return them in a list
@@ -150,10 +150,10 @@ SUBSYSTEM_DEF(vote)
 	if(mode == VOTE_GAMEMODE) //fire this even if the vote fails.
 		if(!round_progressing)
 			round_progressing = 1
-			world << "<font color='red'><b>The round will start soon.</b></font>"
+			to_world("<font color='red'><b>The round will start soon.</b></font>")
 
 	if(restart)
-		world << "World restarting due to vote..."
+		to_world("World restarting due to vote...")
 		feedback_set_details("end_error", "restart vote")
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
@@ -236,13 +236,13 @@ SUBSYSTEM_DEF(vote)
 
 		log_vote(text)
 
-		world << "<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config.vote_period / 10] seconds to vote.</font>"
+		to_world("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config.vote_period / 10] seconds to vote.</font>")
 		if(vote_type == VOTE_CREW_TRANSFER || vote_type == VOTE_GAMEMODE || vote_type == VOTE_CUSTOM)
 			world << sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3)
 
 		if(mode == VOTE_GAMEMODE && round_progressing)
 			round_progressing = 0
-			world << "<font color='red'><b>Round start has been delayed.</b></font>"
+			to_world("<font color='red'><b>Round start has been delayed.</b></font>")
 
 		time_remaining = round(config.vote_period / 10)
 		return 1
