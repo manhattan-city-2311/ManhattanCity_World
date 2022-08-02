@@ -50,7 +50,7 @@
 		owner.reagents.remove_reagent("glucose", 1)
 		owner.reagents.add_reagent("glycogen", 0.5)
 	if(owner.reagents.get_reagent_amount("glucose") < absolutely_normal_glucose_level)
-		owner.reagents.add_reagent("glucagone", 1)
+		owner.reagents.add_reagent("glucagone", 3)
 
 /obj/item/organ/internal/stomach/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
