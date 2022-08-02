@@ -207,7 +207,8 @@
 	if(pa.Find("middle"))
 		switch(master.cl.buildmode)
 			if(2)
-				objsay=!objsay
+				objsay = !objsay
+				to_chat(usr, "Now you are not reseiving middle-click (selecting type) messages.")
 
 
 	if(pa.Find("left"))
