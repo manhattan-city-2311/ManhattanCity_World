@@ -22,18 +22,6 @@
 	applies_material_colour = 0
 	color = COLOR_WHITE
 
-/obj/structure/bed/chair/general_alt1
-	icon = 'icons/obj/manhattan/chairs.dmi'
-	icon_state = "plastic_chair"
-	applies_material_colour = 0
-	color = null
-
-/obj/structure/bed/chair/general_alt2
-	icon = 'icons/obj/manhattan/chairs.dmi'
-	icon_state = "metal_chair_folding"
-	applies_material_colour = 0
-	color = null
-
 /obj/structure/bed/chair/proc/update_layer()
 	if(src.dir == NORTH)
 		src.layer = FLY_LAYER
@@ -113,6 +101,20 @@
 	applies_material_colour = 1
 	base_icon = "comfychair"
 	armrest_icon = TRUE
+
+/obj/structure/bed/chair/general_alt1
+	icon = 'icons/obj/manhattan/chairs.dmi'
+	icon_state = "plastic_chair"
+	base_icon = "plastic_chair"
+	applies_material_colour = 0
+	color = null
+
+/obj/structure/bed/chair/general_alt2
+	icon = 'icons/obj/manhattan/chairs.dmi'
+	icon_state = "metal_chair_folding"
+	base_icon = "metal_chair_folding"
+	applies_material_colour = 0
+	color = null
 
 /obj/structure/bed/chair/comfy/brown/New(var/newloc,var/newmaterial)
 	..(newloc,"steel","leather")
