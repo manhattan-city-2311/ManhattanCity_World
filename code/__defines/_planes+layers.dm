@@ -102,7 +102,7 @@ What is the naming convention for planes or layers?
 	//#define TURF_LAYER		2 //For easy recordkeeping; this is a byond define
 
 	//#define OBJ_LAYER			3 //For easy recordkeeping; this is a byond define
-
+	#define ABOVE_OBJ_LAYER 4.1
 	//#define MOB_LAYER			4 //For easy recordkeeping; this is a byond define
 
 	//#define FLY_LAYER			5 //For easy recordkeeping; this is a byond define
