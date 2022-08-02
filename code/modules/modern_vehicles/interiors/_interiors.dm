@@ -19,7 +19,7 @@
     sleep(1)
     var/datum/map_template/ambulance/template //hardcode for now, i'm tired
     for(var/obj/effect/interior_spawn/spawns in GLOB.vehicle_spawnpoints)
-        var/turf/T = spawns.loc
+        var/turf/T = get_turf(spawns)
         middle_turf = T
         template = new interior_template
         if(!template.load(T, centered = TRUE))
