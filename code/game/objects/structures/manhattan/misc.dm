@@ -224,6 +224,39 @@
 	icon_state = "cryo"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
+/obj/structure/sign/neon/big/cola
+	name = "advertising signboard"
+	desc = "A sign that saying something about another soda brand."
+	icon_state = "randomshit3"
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
+/obj/structure/sign/neon/big/street
+	name = "street name"
+	desc = "A sign that saying what street is that."
+	icon_state = "randomshit2"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/big/name
+	name = "big city sign"
+	desc = "A sign with some unknown language."
+	icon_state = "randomshit1"
+	light_color = LIGHT_COLOR_HOTPINK
+
+/obj/structure/sign/neon/big/manhattan
+	name = "big city sign"
+	desc = "A sign with Manhattan advertising."
+	icon_state = "randomshit4"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/big/manhattan2
+	name = "neon city map"
+	desc = "Holographic Manhattan map."
+	icon_state = "randomshit5"
+	density = 1
+	bounds = "64,32"
+	pixel_x = 12
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
 /obj/structure/sign/neon/big/menu
 	name = "neon menu screen"
 	desc = "A sign with some options to choose."
@@ -248,6 +281,66 @@
 	desc = "A sign for the city local casino."
 	icon_state = "casino"
 	light_color = LIGHT_COLOR_NEONYELLOW
+
+/obj/structure/sign/manhattan/hotel_number
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door1"
+
+/obj/structure/sign/manhattan/hotel_number/second
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door2"
+
+/obj/structure/sign/manhattan/hotel_number/third
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door3"
+
+
+/obj/structure/sign/manhattan/hotel_number/four
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door4"
+
+
+/obj/structure/sign/manhattan/hotel_number/five
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door5"
+
+
+/obj/structure/sign/manhattan/hotel_number/six
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door6"
+
+
+/obj/structure/sign/manhattan/hotel_number/seven
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door7"
+
+
+/obj/structure/sign/manhattan/hotel_number/eight
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door8"
+
+
+/obj/structure/sign/manhattan/hotel_number/nine
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door9"
 
 /obj/structure/manhattan/rails
 	name = "rails"
