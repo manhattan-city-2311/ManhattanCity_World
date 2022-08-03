@@ -34,13 +34,14 @@
 		needs_processing = TRUE
 		playsound(vehicle, start_sound, 150, 1, 5)
 		spawn(15)
-			playsound(vehicle, 'sound/vehicles/modern/zb_fb_med.ogg', 100, 1, 5)
+			playsound(vehicle, 'sound/vehicles/modern/zb_fb_med.ogg', 7)
 			rpm = RPM_IDLE
 	else
 		playsound(vehicle, failstart_sound, 150, 1, 5)
 
 /obj/item/vehicle_part/engine/proc/stop()
 	needs_processing = FALSE
+	vehicle.active = FALSE
 	playsound(vehicle, stop_sound, 150, 1, 5)
 	rpm = 0
 
@@ -70,12 +71,16 @@
 	handle_sound()
 
 /obj/item/vehicle_part/engine/proc/handle_sound()
+	if(!needs_processing)
+		return
 	switch(rpm)
 		if(1 to RPM_IDLE + 500)
-			playsound(vehicle, 'sound/vehicles/modern/zb_fb_idle.ogg', 100, 1, 5)
+			playsound(vehicle, 'sound/vehicles/modern/zb_fb_idle.ogg', 100)
+			spawn(5)
+			handle_sound()
 		if(RPM_IDLE + 500 to RPM_SLOW)
-			playsound(vehicle, 'sound/vehicles/modern/zb_fb_slow.ogg', 100, 1, 5)
+			playsound(vehicle, 'sound/vehicles/modern/zb_fb_slow.ogg', 100)
 		if(RPM_SLOW to RPM_FAST)
-			playsound(vehicle, 'sound/vehicles/modern/zb_fb_med.ogg', 100, 1, 5)
+			playsound(vehicle, 'sound/vehicles/modern/zb_fb_med.ogg', 100)
 		if(RPM_FAST to INFINITY)
-			playsound(vehicle, 'sound/vehicles/modern/zb_fb_fast.ogg', 100, 1, 5)
+			playsound(vehicle, 'sound/vehicles/modern/zb_fb_fast.ogg', 100)
