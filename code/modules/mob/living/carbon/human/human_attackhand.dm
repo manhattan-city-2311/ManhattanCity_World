@@ -76,6 +76,7 @@
 				return
 
 			apply_damage(damage, HALLOSS, affecting, armor_block, armor_soak)
+			on_attack()
 			if(damage >= 9)
 				visible_message(SPAN_DANGER("<B>[H] has weakened [src]!</B>"))
 				apply_effect(4, WEAKEN, armor_block)
@@ -493,3 +494,6 @@
 			user.visible_message("\The [user] stops applying pressure to [src]'s [organ.name]!", "You stop applying pressure to [src]'s [organ.name]!")
 
 	return 1
+
+/mob/living/carbon/human/proc/on_attack(mob/living/user)
+	return //for npc
