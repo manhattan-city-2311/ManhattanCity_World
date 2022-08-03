@@ -6,7 +6,7 @@
 	density = 0
 	var/mob/living/carbon/human/attached
 	var/alarm = FALSE
-	var/modpulse = 0 //1-6
+	var/modpulse = 2 //1-6
 
 /obj/machinery/monitor/MouseDrop(mob/living/carbon/human/over_object, src_location, over_location)
 	if(!CanMouseDrop(over_object))
@@ -24,6 +24,7 @@
 		visible_message("\The [usr] connects \the [over_object] up to \the [src].")
 		attached = over_object
 		START_PROCESSING(SSobj, src)
+		handle_pulse()
 
 	update_icon()
 
@@ -97,11 +98,11 @@
 		return PROCESS_KILL
 
 	update_icon()
+	var/obj/item/organ/internal/heart/H = attached?.internal_organs_by_name[O_HEART]
+	handle_pulse(H.pulse)
 	if(alarm)
 		var/area/A = get_area(src)
 		A.handle_code()
-	var/obj/item/organ/internal/heart/H = attached?.internal_organs_by_name[O_HEART]
-	handle_pulse(H.pulse)
 
 /obj/machinery/monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(!attached)
