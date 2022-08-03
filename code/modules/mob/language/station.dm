@@ -153,10 +153,9 @@
 	space_chance = 10
 
 /datum/language/machine/can_speak_special(var/mob/speaker)
-	var/obj/item/organ/internal/voicebox/V = locate() in speaker
+	//var/obj/item/organ/internal/voicebox/V = locate() in speaker
 
-	if(V.robotic >= 1)
-		return 1
+	return FALSE
 
 /datum/language/machine/get_random_name()
 	if(prob(70))

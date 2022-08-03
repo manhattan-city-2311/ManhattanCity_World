@@ -797,10 +797,6 @@ SUBSYSTEM_DEF(jobs)
 
 	if(!H.mind || !H.mind.prefs) return
 
-	pass.name = "[H.real_name]'s passport"
-	pass.citizenship = H.mind.prefs.home_system
-	pass.owner = H.real_name
-
 	H.update_passport(pass)
 	H.equip_to_slot(pass, slot_wear_id)
 

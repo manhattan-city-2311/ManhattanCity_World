@@ -1,11 +1,8 @@
-/datum/category_item/player_setup_item/general/background
+/datum/category_item/player_setup_item/background
 	name = "Предыстория персонажа"
 	sort_order = 3
 
-/datum/category_item/player_setup_item/general/background/load_character(var/savefile/S)
-	S["med_record"]				>> pref.med_record
-	S["sec_record"]				>> pref.sec_record
-	S["gen_record"]				>> pref.gen_record
+/datum/category_item/player_setup_item/background/load_character(savefile/S)
 	S["home_system"]				>> pref.home_system
 	S["citizenship"]				>> pref.citizenship
 	S["religion"]					>> pref.religion
@@ -13,13 +10,10 @@
 	S["social_class"]				>> pref.social_class
 	S["crime_record"]				>> pref.crime_record
 	S["health_record"]				>> pref.health_record
-	S["job_record"]				>> pref.job_record
+	S["job_record"]					>> pref.job_record
 	S["criminal_status"]			>> pref.criminal_status
 
-/datum/category_item/player_setup_item/general/background/save_character(var/savefile/S)
-	S["med_record"]				<< pref.med_record
-	S["sec_record"]				<< pref.sec_record
-	S["gen_record"]				<< pref.gen_record
+/datum/category_item/player_setup_item/background/save_character(savefile/S)
 	S["home_system"]				<< pref.home_system
 	S["citizenship"]				<< pref.citizenship
 	S["religion"]					<< pref.religion
@@ -27,13 +21,10 @@
 	S["social_class"]				<< pref.social_class
 	S["crime_record"]				<< pref.crime_record
 	S["health_record"]				<< pref.health_record
-	S["job_record"]				<< pref.job_record
+	S["job_record"]					<< pref.job_record
 	S["criminal_status"]			<< pref.criminal_status
 
-/datum/category_item/player_setup_item/general/background/delete_character(var/savefile/S)
-	pref.med_record = null
-	pref.sec_record = null
-	pref.gen_record = null
+/datum/category_item/player_setup_item/background/delete_character(savefile/S)
 	pref.home_system = null
 	pref.citizenship = null
 	pref.faction = null
@@ -48,15 +39,13 @@
 	pref.religion = null
 	pref.criminal_status = "None"
 
-/datum/category_item/player_setup_item/general/background/sanitize_character()
+/datum/category_item/player_setup_item/background/sanitize_character()
 	if(!pref.home_system) pref.home_system = "Vetra"
 	if(!pref.citizenship) pref.citizenship = "Blue Colony"
 	pref.home_system = sanitize_inlist(pref.home_system, home_system_choices, initial(pref.home_system))
 	pref.citizenship = sanitize_inlist(pref.citizenship, citizenship_choices, initial(pref.citizenship))
 //	if(!pref.faction)     pref.faction =     "None"
 	if(!pref.religion)    pref.religion =    "None"
-	if(!pref.crime_record) pref.crime_record = list()
-	if(!pref.health_record) pref.health_record = list()
 	if(!pref.job_record) pref.job_record = list()
 
 	if(!pref.criminal_status) pref.criminal_status = "None"
@@ -76,16 +65,13 @@
 
 
 // Moved from /datum/preferences/proc/copy_to()
-/datum/category_item/player_setup_item/general/background/copy_to_mob(var/mob/living/carbon/human/character)
-	character.med_record		= pref.med_record
-	character.sec_record		= pref.sec_record
-	character.gen_record		= pref.gen_record
+/datum/category_item/player_setup_item/background/copy_to_mob(mob/living/carbon/human/character)
 	character.home_system		= pref.home_system
 	character.citizenship		= pref.citizenship
 	character.personal_faction	= pref.faction
 	character.religion			= pref.religion
 
-/datum/category_item/player_setup_item/general/background/content(var/mob/user)
+/datum/category_item/player_setup_item/background/content(mob/user)
 	. += "<h1>Предыстория персонажа:</h1><hr>"
 	if(!pref.existing_character)
 		. += "Город Джеминус планеты Поллюкс, распологающийся в Синей колонии, в звёздной системе Ветра. Вы можете выбрать другую предысторию. Социальный класс и система не могут быть изменены после их изменения.</br><br>"
@@ -105,37 +91,10 @@
 		. += "<b>Система рождения:</b> [pref.home_system]<br/>"
 
 	. += "Континентальное жительство: <a href='?src=\ref[src];citizenship=1'>[pref.citizenship]</a><br/>"
-//	. += "Faction: <a href='?src=\ref[src];faction=1'>[pref.faction]</a><br/>" // meh do we even use this?
 	. += "Религия: <a href='?src=\ref[src];religion=1'>[pref.religion]</a><br/>"
 
-	. += "<br/><b>Публичные записи</b>:<br/>"
-	if(jobban_isbanned(user, "Records"))
-		. += "<span class='danger'>Вам забанена функция изменения предыстории.</span><br>"
-	else
-		. += "Больничные записи:<br>"
-		. += "<a href='?src=\ref[src];set_medical_records=1'>[TextPreview(pref.med_record,40)]</a><br><br>"
-		. += "Записи трудоустройства:<br>"
-		. += "<a href='?src=\ref[src];set_general_records=1'>[TextPreview(pref.gen_record,40)]</a><br><br>"
-		. += "Приводы:<br>"
-		if(!pref.existing_character)
-			. += "<a href='?src=\ref[src];set_security_records=1'>[pref.sec_record ? "[TextPreview(pref.sec_record,40)]" : "Добавить полицейские записи"]</a><br>"
-		else
-			. += "<i>[pref.sec_record ? "[pref.sec_record]" : "Полицейские записи не найдены."]</i><br>"
-
-
-		var/crime_data
-		var/record_count = 0
-		for(var/datum/record/C in pref.crime_record)
-			crime_data += "<BR>\n<b>[C.name]</b>: [C.details] - [C.author] <i>([C.date_added])</i>"
-			record_count++
-
-		. += "Полицейские приводы:<br>"
-		. += "<a href='?src=\ref[src];edit_criminal_record=1'>Редактировать криминальные записи[record_count ? " ([record_count])" : ""]</a><br>"
-		. += "\n<b>Криминальный статус:</b> [pref.criminal_status]<br>"
-
-/datum/category_item/player_setup_item/general/background/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/background/OnTopic(href, list/href_list, mob/user)
 	var/suitable_classes = get_available_classes(user.client)
-
 	if(href_list["choice"])
 		switch(href_list["choice"])
 			if("remove_criminal_record")
@@ -249,7 +208,7 @@
 
 	return ..()
 
-/datum/category_item/player_setup_item/general/background/proc/EditCriminalRecord(mob/user)
+/datum/category_item/player_setup_item/background/proc/EditCriminalRecord(mob/user)
 	var/HTML = "<meta charset='UTF-8'><body>"
 	HTML += "<center>"
 	HTML += "<b>Edit Criminal Record</b> <hr />"

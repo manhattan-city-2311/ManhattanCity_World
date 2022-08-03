@@ -233,8 +233,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	var/mob_species = all_species[pref.species]
 	. += "<h1>Физическое состояние:</h1><hr>"
-	if(!pref.existing_character)
-		. += "Установите внешний вид вашего персонажа. Как только это будет сделано, вы не сможете отменить это. Вы можете изменить внешний вид своего персонажа в игре..<br><br>"
 	. += "<table><tr style='vertical-align:top'><td>"
 	if(!pref.existing_character)
 		. += "<b>Тело:</b> "

@@ -81,7 +81,6 @@
 
 /datum/mind/New(var/key)
 	src.key = key
-
 	..()
 
 /datum/mind/proc/transfer_to(mob/living/new_character)
