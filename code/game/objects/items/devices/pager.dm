@@ -46,4 +46,4 @@ GLOBAL_LIST_EMPTY(pagers)
 	frequency = clamp(newfrequency, 100, initial(frequency))
 
 /obj/item/pager/medical
-	frequency = PAGER_FREQUENCY_DEFAULT
+	frequency = PAGER_FREQUENCY_MEDICAL

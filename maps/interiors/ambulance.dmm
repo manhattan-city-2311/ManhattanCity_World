@@ -3,12 +3,12 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monotile_dark,
 /area/planets/Manhattan/indoor)
 "c" = (
 /obj/structure/table/standard,
 /obj/machinery/defibrillator,
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monotile_dark,
 /area/planets/Manhattan/indoor)
 "e" = (
 /obj/structure/railing{
@@ -21,7 +21,7 @@
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/morphine,
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/morphine,
 /obj/item/weapon/reagent_containers/glass/bottle/ampoule/amicile,
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monotile_dark,
 /area/planets/Manhattan/indoor)
 "f" = (
 /obj/structure/vehiclewall{
@@ -52,7 +52,7 @@
 "p" = (
 /obj/machinery/monitor,
 /obj/structure/table/standard,
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monotile_dark,
 /area/planets/Manhattan/indoor)
 "s" = (
 /obj/structure/vehiclewall{
@@ -83,7 +83,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monotile_dark,
 /area/planets/Manhattan/indoor)
 "C" = (
 /obj/structure/vehiclewall{
@@ -92,11 +92,11 @@
 /turf/simulated/open,
 /area/planets/Manhattan/indoor)
 "F" = (
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monotile_dark,
 /area/planets/Manhattan/indoor)
 "G" = (
 /obj/structure/bed,
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monotile_dark,
 /area/planets/Manhattan/indoor)
 "J" = (
 /obj/structure/vehiclewall{
@@ -106,7 +106,7 @@
 /area/planets/Manhattan/indoor)
 "K" = (
 /obj/effect/vehicle_entrance,
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monotile_dark,
 /area/planets/Manhattan/indoor)
 "P" = (
 /obj/structure/table/standard,
@@ -114,7 +114,7 @@
 /obj/item/intubation_tube,
 /obj/item/weapon/reagent_containers/syringe,
 /obj/item/weapon/reagent_containers/syringe,
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monotile_dark,
 /area/planets/Manhattan/indoor)
 "S" = (
 /obj/structure/vehiclewall{
@@ -126,7 +126,7 @@
 /turf/simulated/open,
 /area/planets/Manhattan/indoor)
 "U" = (
-/obj/structure/vehiclewall,
+/obj/structure/vehiclewall/ambulance,
 /turf/simulated/open,
 /area/planets/Manhattan/indoor)
 "V" = (
@@ -137,7 +137,7 @@
 /area/planets/Manhattan/indoor)
 "W" = (
 /obj/structure/table/standard,
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monotile_dark,
 /area/planets/Manhattan/indoor)
 
 (1,1,1) = {"

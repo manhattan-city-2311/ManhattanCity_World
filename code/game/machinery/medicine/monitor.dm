@@ -169,6 +169,7 @@
 	alarm = TRUE
 
 	var/area/A = get_area(src)
+	A.code = "blue"
 	var/message = "ALARM: "
 	message += emergency
 	message += " IN [A]!"
