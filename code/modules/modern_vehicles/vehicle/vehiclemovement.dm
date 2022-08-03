@@ -137,10 +137,6 @@
 
 	update_occupants_eye_offsets()
 
-	if(is_transfering())
-		var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
-		engine?.stop()
-
 /obj/manhattan/vehicle/Bump(atom/obstacle)
 	..()
 	if(obstacle != src) // FIXME:
