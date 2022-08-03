@@ -320,9 +320,9 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 				infection = "Acute Infection++:"
 			if (INFECTION_LEVEL_THREE -49 to INFINITY)
 				infection = "Necrosis Detected:"
-				dat += "<tr>"
-				dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech][i_dead]</td><td></td>"
-				dat += "</tr>"
+		dat += "<tr>"
+		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech][i_dead]</td><td></td>"
+		dat += "</tr>"
 	dat += "</table>"
 	return dat
 
