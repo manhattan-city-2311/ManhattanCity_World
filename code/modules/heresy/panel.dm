@@ -1,5 +1,5 @@
-/mob/living/carbon/human/proc/show_erp_panel()
-    var/list/dat = list()
-    var/datum/browser/popup = new(user, "erp_panel", "ЕРП панель")
+/mob/living/carbon/human/proc/show_erp_panel(mob/user)
+	var/list/dat = list()
+	var/datum/browser/popup = new var/datum/browser(user, "erp_panel", "ЕРП панель")
 	popup.set_content(jointext(dat, null))
 	popup.open()

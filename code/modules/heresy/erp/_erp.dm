@@ -71,7 +71,7 @@ the computation, and the solution,
 	if(erp_datum)
 		return
 
-	var/datum/erp_session/erp_session/session = new
+	var/datum/erp_session/session = new
 	join_erp_session(session)
 
 	return session
