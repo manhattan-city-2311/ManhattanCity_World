@@ -2,7 +2,7 @@
 /obj/vehicles/track_bound
 	name = "track bound vehicle"
 	desc = "A vehicle that relies on prebuilt emplacements to move."
-	icon = 'code/modules/modern_vehicle/vehicles/track_vehicle.dmi'
+	icon = 'code/modules/modern_vehicle/vehicle/track_vehicle.dmi'
 	icon_state = "train"
 
 	var/track_obj_type = /obj/structure/track
@@ -15,7 +15,7 @@
 /obj/structure/track
 	name = "track"
 	desc = "a track for a vehicle to run across."
-	icon = 'code/modules/modern_vehicle/vehicles/track.dmi'
+	icon = 'code/modules/modern_vehicle/vehicle/track.dmi'
 	icon_state = "track"
 	anchored = 1
 	density = 0
