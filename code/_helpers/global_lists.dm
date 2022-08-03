@@ -113,7 +113,6 @@ var/global/list/string_slot_flags = list(
 //////////////////////////
 /////Initial Building/////
 //////////////////////////
-
 /proc/makeDatumRefLists()
 	var/list/paths
 
@@ -121,6 +120,7 @@ var/global/list/string_slot_flags = list(
 	paths = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
 	for(var/path in paths)
 		var/datum/sprite_accessory/hair/H = new path()
+		ADD_SORTED(hair_styles_list, H.name, /proc/cmp_text_asc)
 		hair_styles_list[H.name] = H
 		switch(H.gender)
 			if(MALE)	hair_styles_male_list += H.name
