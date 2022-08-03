@@ -8,8 +8,8 @@ SUBSYSTEM_DEF(mapping)
 	var/dmm_suite/maploader = null
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
-	if(subsystem_initialized)
-		return
+	//if(subsystem_initialized) //This is not necessary
+	//	return
 	maploader = new()
 	load_map_templates()
 
