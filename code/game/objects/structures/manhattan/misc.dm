@@ -248,6 +248,15 @@
 	icon_state = "randomshit4"
 	light_color = COLOR_YELLOW
 
+/obj/structure/sign/neon/big/manhattan2
+	name = "neon city map"
+	desc = "Holographic Manhattan map."
+	icon_state = "randomshit5"
+	density = 1
+	bounds = "64,32"
+	pixel_x = 12
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
 /obj/structure/sign/neon/big/menu
 	name = "neon menu screen"
 	desc = "A sign with some options to choose."
