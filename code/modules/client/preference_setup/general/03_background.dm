@@ -9,7 +9,7 @@
 	S["economic_status"]			>> pref.economic_status
 	S["social_class"]				>> pref.social_class
 	S["crime_record"]				>> pref.crime_record
-	S["health_record"]				>> pref.health_record
+	S[	"health_record"]				>> pref.health_record
 	S["job_record"]					>> pref.job_record
 	S["criminal_status"]			>> pref.criminal_status
 

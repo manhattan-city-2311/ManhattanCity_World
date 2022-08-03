@@ -5,6 +5,18 @@
 	icon_state = "passport"
 	w_class = ITEMSIZE_SMALL
 
+	var/list/allowed_items = list(
+		"ПОЛНОЕ ИМЯ"
+		, "ДАТА РОЖДЕНИЯ"
+		, "СЕМЕЙНОЕ ПОЛОЖЕНИЕ"
+		, "ГРАЖДАНСТВО"
+		, "РЕГИСТРАЦИЯ"
+	)
+	var/icon/front
+	var/icon/side
+
+	var/uid
+
 	var/forged = FALSE
 	var/list/records // references boy
 	slot_flags = SLOT_ID
@@ -19,15 +31,38 @@
 /obj/item/weapon/passport/proc/show_passport(mob/user)
 	if(!records)
 		to_chat(user, SPAN_NOTICE("[src] is blank!"))
-	var/html = get_records_html(records)
-	show_browser(user, "<HTML><meta charset=\"UTF-8\"><BODY>[html]</BODY></HTML>", "window=[user] passport")
+		return
+
+	if(front && side)
+		send_rsc(user, front, "front.png")
+		send_rsc(user, side, "side.png")
+	var/html = "<table><tr>"
+
+	html += "<td>[get_records_html(records, allowed_items)]<br><br><b>ID</b>: [uid]</td>"
+
+	html += "<td align=center valign=top><br>"
+	html += "<img src=front.png height=128 width=128 border=5>"
+	html += "<img src=side.png height=128 width=128 border=5>"
+	html += "</td>"
+
+	html += "</tr></table>"
+
+	html = "<HTML><meta charset=\"UTF-8\"><BODY>[html]</BODY></HTML>"
+	var/datum/browser/popup = new(user, "passport", "Passport", 600, 250)
+	popup.set_content(html)
+	popup.open()
 
 /mob/proc/update_passport(obj/item/weapon/passport/pass)
 	if(!mind)
 		return
+
+	var/icon/charicon = cached_character_icon(src)
+	pass.front   = icon(charicon, dir = SOUTH)
+	pass.side    = icon(charicon, dir = WEST)
 	pass.records = mind.prefs.records
-	pass.name = "[real_name]'s passport"
-	pass.forged = FALSE
+	pass.name    = "[real_name]'s passport"
+	pass.forged  = FALSE
+	pass.uid	 = "[md5(dna.uni_identity)]"
 
 /obj/item/weapon/passport/attack_self(mob/user)
 	// TODO: editing

@@ -35,7 +35,7 @@ GLOBAL_VAR_CONST(PREF_DARK, "Dark")
 var/list/records_blank = list(
 	"@1" = "ОБЩИЕ ДАННЫЕ"
 	, "ПОЛНОЕ ИМЯ" = null
-	, "ДАТА РОЖДЕНИЯ" = "01/01/2311" // This has custom behaviour
+	, "ДАТА РОЖДЕНИЯ" = "1/1/2311" // This has custom behaviour
 	, "ВЕС (В КГ)" = null
 	, "РОСТ (В СМ)" = null
 	, "ЦВЕТ ВОЛОС" = null
@@ -284,9 +284,11 @@ var/list/preferences_datums = list()
 				return FALSE
 	return TRUE
 
-/proc/get_records_html(list/records)
+/proc/get_records_html(list/records, list/allowed)
 	. = list()
 	for(var/ID in records)
+		if(allowed && !(ID in allowed))
+			continue
 		if(!records[ID])
 			. += "<b>[ID]</b>: <i>НЕ ЗАПОЛНЕНО</i>"
 			continue

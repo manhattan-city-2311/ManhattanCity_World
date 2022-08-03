@@ -96,10 +96,10 @@
 
 			var/list/dates = FindDate(nr)
 
-			pref.birth_day = dates[1]
-			pref.birth_month = dates[2]
-			pref.birth_year = dates[3]
-			pref.age = global.game_year - pref.birth_year
+			pref.birth_day   = text2num(dates[1])
+			pref.birth_month = text2num(dates[2])
+			pref.birth_year  = text2num(dates[3])
+			pref.age 		 = global.game_year - pref.birth_year
 
 		pref.records[ID] = nr
 
