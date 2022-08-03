@@ -6,6 +6,9 @@
 	density = 1
 	layer = ABOVE_MOB_LAYER
 
+	var/headlights_overlay = "" //don't set this if vehicle has no headlights icon state
+	var/headlights = FALSE //on-off
+
 	appearance_flags = DEFAULT_APPEARANCE_UNBOUND
 
 	step_size = 128 // allows speed over 400 km/h
@@ -185,6 +188,8 @@
 /obj/manhattan/vehicle/proc/update_object_sprites() //This is modified on a vehicle-by-vehicle basis to render mobsprites etc, a basic render of playerheads in the top right is used if no overidden.
 	underlays.Cut()
 	overlays.Cut()
+	if(headlights)
+		overlays += image(icon, headlights_overlay)
 
 /obj/manhattan/vehicle/fall()
 	if(can_traverse_zs && active)
