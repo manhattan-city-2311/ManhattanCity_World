@@ -16,17 +16,34 @@
 	..() //Todo make metal/stone chairs display as thrones
 	spawn(3)	//sorry. i don't think there's a better way to do this.
 		update_layer()
-	return
 
 /obj/structure/bed/chair/general
 	applies_material_colour = 0
 	color = COLOR_WHITE
 
+/* До лучших времён   - Danilcus
+/obj/structure/bed/chair/proc/update_mob()
+	if(has_buckled_mobs())
+		for(var/A in buckled_mobs)
+			var/mob/living/L = A
+			L.set_dir(dir)
+			if(dir == 4)
+				L.pixel_x = 5
+				L.pixel_y = 1
+			if(dir == 8)
+				L.pixel_x = -5
+				L.pixel_y = 1
+			if(dir == 1)
+				L.pixel_y = 5
+*/
+
 /obj/structure/bed/chair/proc/update_layer()
 	if(src.dir == NORTH)
 		src.layer = FLY_LAYER
+		src.plane = -24
 	else
 		src.layer = OBJ_LAYER
+		src.plane = -35
 
 /obj/structure/bed/chair/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
@@ -54,6 +71,13 @@
 /obj/structure/bed/chair/post_buckle_mob()
 	update_icon()
 
+/obj/structure/bed/chair/unbuckle_mob()
+	var/mob/living/M = ..()
+	if(M)
+		M.pixel_x = 0
+		M.pixel_y = 0
+	return M
+
 
 /obj/structure/bed/chair/set_dir()
 	..()
@@ -77,6 +101,8 @@
 		if(istype(src,/obj/structure/bed/chair/skameika))
 			return
 		if(istype(src,/obj/structure/bed/chair/skameika_steel))
+			return
+		if(istype(src,/obj/structure/bed/chair/couch_metal))
 			return
 		if(!usr || !isturf(usr.loc))
 			return
@@ -309,7 +335,7 @@
 	icon_state = "sofamiddle"
 	anchored = 1
 	buckle_lying = 0
-	buckle_dir = SOUTH
+	buckle_dir = 0
 	plane = UNDER_MOB_PLANE
 	applies_material_colour = 1
 	var/sofa_material = "carpet"
@@ -319,16 +345,6 @@
 
 /obj/structure/bed/chair/sofa/New()
 	..()
-	if(dir == 1)
-		buckle_dir = NORTH
-		plane = -15
-	if(dir == 2)
-		buckle_dir = SOUTH
-	if(dir == 4)
-		buckle_dir = EAST
-	if(dir == 8)
-		buckle_dir = WEST
-
 	update_icon()
 
 /obj/structure/bed/chair/sofa/update_icon()
