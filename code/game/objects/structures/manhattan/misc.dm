@@ -175,6 +175,12 @@
 	icon_state = "randomshit4"
 	light_color = COLOR_YELLOW
 
+/obj/structure/sign/neon/big/bar2
+	name = "big bar sign"
+	desc = "A sign for a bar."
+	icon_state = "bar_holo"
+	light_color = LIGHT_COLOR_NEONGREEN
+
 /obj/structure/sign/neon/big/manhattan2
 	name = "neon city map"
 	desc = "Holographic Manhattan map."
