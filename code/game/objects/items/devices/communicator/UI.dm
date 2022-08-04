@@ -108,6 +108,7 @@
 	data["imContacts"] = im_contacts_ui
 	data["imList"] = im_list_ui
 	data["time"] = stationtime2text()
+	data["date"] = stationdate2text()
 	data["ring"] = ringer
 	data["homeScreen"] = modules_ui
 	data["note"] = note					// current notes
@@ -130,7 +131,7 @@
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
 		data["currentTab"] = 1 // Reset the current tab, because we're going to home page
-		ui = new(user, src, ui_key, "communicator_header.tmpl", "Communicator", 475, 700, state = key_state)
+		ui = new(user, src, ui_key, "communicator_header.tmpl", "Communicator", 675, 800, state = key_state)
 		// add templates for screens in common with communicator.
 		//ui.add_template("atmosphericScan", "atmospheric_scan.tmpl")
 		//ui.add_template("crewManifest", "crew_manifest.tmpl")
@@ -250,7 +251,7 @@
 		selected_tab = href_list["switch_tab"]
 
 	if(href_list["edit"])
-		var/n = input(usr, "Please enter message", name, notehtml)
+		var/n = input(usr, "Please enter message", name, notehtml) as text|null
 		n = sanitizeSafe(n, extra = 0)
 		if(n)
 			note = html_decode(n)

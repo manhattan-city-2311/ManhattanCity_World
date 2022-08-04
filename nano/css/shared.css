@@ -1,13 +1,18 @@
+@font-face
+{
+	font-family: "Fixedsys";
+	src: url("FixedsysExcelsior3.01Regular.ttf");
+}
 body {
 	padding: 0;
 	margin: 0;
-	font-size: 12px;
+	font-size: 16px;
 	color: #ffffff;
 	line-height: 170%;
-	font-family: Verdana, Geneva, sans-serif;
+	/*font-family: Verdana, Geneva, sans-serif;*/
+	font-family: "Fixedsys";
 	background: #272727;
 }
-
 #uiNoScript {
 	position: fixed;
 	top: 50%;
@@ -18,7 +23,7 @@ body {
 	background: #ffffff;
 	border: 2px solid #ff0000;
 	color: #000000;
-	font-size: 10px;
+	font-size: 12px;
 	font-weight: bold;
 	z-index: 9999;
 	padding: 0px 10px;
@@ -37,9 +42,9 @@ hr {
 	text-align: center;
 	color: #ffffff;
 	text-decoration: none;
-	background: #7e3f8a;
+	background: #40628a;
 	border: 1px solid #161616;
-	padding: 0px 4px 4px 4px;
+	padding: 0px 6px 8px 6px;
 	margin: 0 2px 2px 0;
 	cursor: default;
 	white-space: nowrap;
@@ -52,7 +57,7 @@ hr {
 	height: 31px;
 	text-align: center;
 	text-decoration: none;
-	background: #7e3f8a;
+	background: #40628a;
 	border: 1px solid #161616;
 	margin: 0 2px 2px 0;
 	cursor: default;
@@ -203,13 +208,13 @@ h4 {
 }
 
 .caption {
-	font-size: 10px;
+	font-size: 12px;
 	font-weight: bold;
 	padding: 5px;
 }
 
 .footer {
-	font-size: 10px;
+	font-size: 12px;
 }
 
 .multiLine {
@@ -218,7 +223,7 @@ h4 {
 
 .noticePlaceholder {
 	position: relative;
-	font-size: 12px;
+	font-size: 14px;
 	font-style: italic;
 	font-weight: bold;
 	padding: 3px 4px 3px 4px;
@@ -229,7 +234,7 @@ h4 {
 	position: relative;
 	background: url(uiNoticeBackground.jpg) 50% 50%;
 	color: #000000;
-	font-size: 12px;
+	font-size: 14px;
 	font-style: italic;
 	font-weight: bold;
 	padding: 3px 4px 3px 4px;
@@ -346,7 +351,15 @@ div.notice {
 	margin: 3px 0;
 	overflow: hidden;
 }
-
+.statusDisplayComm.phone
+{
+	line-height: 15px;
+}
+.statusDisplayComm.phone .average
+{
+	color: #ffffff;
+	font-weight: lighter;
+}
 .statusLabel {
 	width: 138px;
 	float: left;
@@ -526,7 +539,7 @@ div.notice {
 .wholeScreen {
 	position: absolute;
 	color: #517087;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
 	text-align: center;
 }
@@ -683,17 +696,80 @@ th.Silicon {
 }
 
 /*Communicator Homescreen*/
-div.homeContainer {
+div.homeContainer
+{
 	width: 100%;
 	text-align: center;
 	margin: auto;
 	padding-top: 5px;
 }
 
-div.homeScreen {
+div.homeScreen
+{
 	padding: 0 20px 0 20px;
+	width: 80%;
+	position: absolute;
+	bottom: 10%;
+	left: 6vmin;
 }
+.AdditionalAPPsFooter
+{
+	width: 80%;
+	padding-top: 5px;
+	padding-bottom: 2px;
+	border-top: dotted #ffffff 1px;
+	position: absolute;
+	bottom: 5%;
+	left: 10%;
+}
+.flexBoxCentralizator
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.phoneLogos
+{
+	height: 50%;
+	width: 80%;
+	margin-top: 5%;
+/*	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);*/
+	z-index: 1;
 
+}
+.phoneLogos .phoneclock
+{
+	font-size: 120px;
+	text-align: center;
+	font-family: "Fixedsys";
+}
+.phoneLogos .phonedate
+{
+	margin-top: 30px;
+	font-size: 30px;
+	text-align: center;
+	font-family: "Fixedsys";
+}
+.phoneLogos .wallpaper
+{
+/*	position: absolute;
+	top: 1vmin;
+	left: 1vmin;*/
+	width: 600px;
+	height: 400px;
+	background: url('blade.png') no-repeat;
+	background-position: 50% 0%;
+	z-index: -1;
+	margin-left: -10px;
+	padding-left: 10px;
+}
+.phoneLogos .wallpaper:before
+{
+	content: "";
+}
 .link64 {
 	float: left;
 	min-width: 15px;
@@ -727,7 +803,7 @@ div.homeScreen {
 }
 
 .link64:hover {
-	font-size: 13px;
+	font-size: 15px;
 }
 
 /*Communicator Dialing*/
@@ -741,7 +817,7 @@ div.homeScreen {
 	float: left;
 	width: 47px;
 	height: 47px;
-	font-size: 32px;
+	font-size: 36px;
 	text-align: center;
 	color: #ffffff;
 	text-decoration: none;
@@ -771,7 +847,7 @@ div.homeScreen {
 
 .dialPadButtons:hover {
 	background: rgba(80, 122, 172, 0.5);
-	font-size: 13px;
+	font-size: 15px;
 	
 }
 

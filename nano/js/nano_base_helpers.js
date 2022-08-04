@@ -4,6 +4,7 @@ NanoBaseHelpers = function ()
 	var _baseHelpers = {
             // change ui styling to "syndicate mode"
 			syndicateMode: function() {
+				$('body').css("background-color","#8f1414");
 				$('body').css("background-image","url('uiBackground-Syndicate.png')");
 
 				$('#uiTitleFluff').css("background-image","url('uiTitleFluff-Syndicate.png')");
@@ -17,6 +18,14 @@ NanoBaseHelpers = function ()
 			businessManager: function() {
 				$('body').css("background-image","url('uiBackground-techsoft.png')");
 
+				$('#ntoogle').css("background-repeat", "no-repeat");
+				return '';
+			},
+			TELEPHONE: function() {
+				$('body').css("background-color","#040603");
+				$('body').css("background-image","url('blade.png')");
+				$('body').css("background-size", "200vmin 150vmin");
+				$('#uiTitleWrapper').css("display", "none")
 				$('#ntoogle').css("background-repeat", "no-repeat");
 				return '';
 			},

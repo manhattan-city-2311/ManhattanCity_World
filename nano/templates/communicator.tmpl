@@ -2,15 +2,29 @@
 Title: Communicator UI
 Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
  -->
-
+{{:helper.TELEPHONE()}}
 {{if data.currentTab == 1}}
-
+	<style>
+		.moreAPPs
+		{
+			float: center;
+		}
+	</style>
+	<div class="flexBoxCentralizator">
+		<div class = "phoneLogos">
+			<div class="phoneclock">{{:data.time}}</div><br>
+			<div class='phonedate'>{{:data.date}}</div>
+		</div>
+	</div>
 	<div class='homeContainer'>
 		<div class='homeScreen'>
 			{{for data.homeScreen}}
 				{{:helper.link(value.module, value.icon, {'switch_tab' : value.number}, null, 'link64')}}
 			{{/for}}
-			{{:helper.link('NT Apps', 'external64', {'apps' : 1}, null, 'link64')}}
+		</div>
+		<div class='AdditionalAPPsFooter'>
+			<!-- {{:helper.link('NT Apps', 'external64', {'apps' : 1}, null, 'link64')}} -->
+			{{:helper.link('___', null, {'apps' : 1}, null, 'moreAPPs')}}
 		</div>
 	</div>
 
@@ -219,98 +233,10 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 <!-- Seventh Tab, Weather -->
 
 {{else data.currentTab == 7}}
-	<h3>Weather</h3>
-	<HR>
-
-	<h4>Current Conditions:</h4>
-<div class="item">
-    {{if data.aircontents.reading == 1}}
-		<div class="itemLabel">
-			Pressure:
-		</div>
-		<div class = "itemContent">
-			{{:helper.string('<span class="{0}">{1} kPa</span>', data.aircontents.pressure < 80 || data.aircontents.pressure > 120 ? 'bad' : data.aircontents.pressure < 95 || data.aircontents.pressure > 110 ? 'average' : 'good' , data.aircontents.pressure)}}
-		</div>
-		<div class="itemLabel">
-			Temperature:
-		</div>
-		<div class = "itemContent">
-			{{:helper.string('<span class="{0}">{1} &deg;C</span>', data.aircontents.temp < 5 || data.aircontents.temp > 35 ? 'bad' : data.aircontents.temp < 15 || data.aircontents.temp > 25 ? 'average' : 'good' , data.aircontents.temp)}}
-		</div>
-		<br>
-		<div class="itemLabel">
-			Oxygen:
-		</div>
-		<div class = "itemContent">
-			{{:helper.string('<span class="{0}">{1}%</span>', data.aircontents.oxygen < 17 ? 'bad' : data.aircontents.oxygen < 19 ? 'average' : 'good' , data.aircontents.oxygen)}}
-		</div>
-		<div class="itemLabel">
-			Nitrogen:
-		</div>
-		<div class = "itemContent">
-			{{:helper.string('<span class="{0}">{1}%</span>', data.aircontents.nitrogen > 82 ? 'bad' : data.aircontents.nitrogen > 80 ? 'average' : 'good' , data.aircontents.nitrogen)}}
-		</div>
-		{{if data.aircontents.carbon_dioxide > 0}}
-		<div class="itemLabel">
-			Carbon Dioxide:
-		</div>
-		<div class = "itemContent">
-			{{:helper.string('<span class="{0}">{1}%</span>', data.aircontents.carbon_dioxide > 5 ? 'bad' : 'good' , data.aircontents.carbon_dioxide)}}
-		</div>
-		{{/if}}
-		{{if data.aircontents.phoron > 0}}
-		<div class="itemLabel">
-			Phoron:
-		</div>
-		<div class = "itemContent">
-			{{:helper.string('<span class="{0}">{1}%</span>', data.aircontents.phoron  > 0 ? 'bad' : 'good' , data.aircontents.phoron)}}
-		</div>
-		{{/if}}
-		{{if data.aircontents.other > 0}}
-			<div class="itemLabel">
-				Unknown:
-			</div>
-			<div class = "itemContent">
-				<span class="bad">{{:data.aircontents.other}}%</span>
-			</div>
-		{{/if}}
-	{{else}}
-		<div class="itemContent" style="width: 100%;">
-			<span class="average"><b>Unable to get air reading</b></span>
-		</div>
-	{{/if}}
-</div>
-	<HR>
-	<h4>Weather Reports:</h4>
-	{{for data.weather}}
-		<div class="item">
-			<div class="itemLabel">
-				{{:value.Planet}}:
-			</div>
-			<div class="itemContent">
-				Time: {{:value.Time}}<BR>
-				Weather: {{:value.Weather}}, {{:helper.fixed(value.Temperature)}}&deg;C<BR>
-				High: {{:helper.fixed(value.High)}}&deg;C	| 	Low: {{:helper.fixed(value.Low)}}&deg;C<BR>
-				Wind Direction: {{:value.WindDir}}<BR>
-				Wind Speed: {{:value.WindSpeed}}<BR>
-				Forecast: {{:value.Forecast}}
-			</div>
-		</div>
-	{{empty}}
-		<div class="item">
-			<div class="itemLabel">
-				Error
-			</div>
-			<div class="itemContent">
-				No weather reports available. Please try again later.
-			</div>
-		</div>
-	{{/for}}
 
 <!-- Eighth Tab, Crew Manifest -->
-
+<!-- TODO: REPLACE with social network for advertising. -->
 {{else data.currentTab == 8}}
-
 
 <h3>Citizen's Manifest</h3>
 
