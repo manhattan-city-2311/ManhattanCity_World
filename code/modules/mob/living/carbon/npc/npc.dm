@@ -1,6 +1,6 @@
-#define NPC_MODE_SLEEP	  0
-#define NPC_MODE_IDLE	   1
-#define NPC_MODE_PATROL	 2
+#define NPC_MODE_SLEEP	  1
+#define NPC_MODE_IDLE	   2
+#define NPC_MODE_PATROL	 3
 #define NPC_MODE_ATTACK	 4
 #define NPC_MODE_ROUTE	  5
 #define NPC_MODE_SEEKHELP   6
@@ -48,9 +48,8 @@
 			handle_route()
 			domove()
 		if(NPC_MODE_PATROL)
+			handle_patrol()
 			domove()
-			if(prob(1))
-				switch_mode()
 		if(NPC_MODE_ATTACK)
 			handle_combat()
 			domove()
@@ -82,7 +81,7 @@
 	else
 		mode = NPC_MODE_IDLE
 		handleIdle()
-	
+
 
 /mob/living/carbon/human/npc/proc/switch_intent()
 	switch(mode)
@@ -95,10 +94,9 @@
 
 /mob/living/carbon/human/npc/proc/handle_patrol()
 	if(patrol_path && patrol_path.len)
-		for(var/i = 1 to patrol_speed)
-			sleep(20 / (patrol_speed + 1))
 		if(max_frustration && frustration > max_frustration * patrol_speed)
 			handleFrustrated(0)
+		makeStep(patrol_path)
 	else
 		startPatrol()
 
@@ -115,9 +113,7 @@
 			handleAdjacentTarget()
 		else
 			handleRangedTarget()
-		for(var/i = 1 to target_speed)
-			sleep(20 / (target_speed + 1))
-			stepToTarget()
+		stepToTarget()
 		if(max_frustration && frustration > max_frustration * target_speed)
 			handleFrustrated(1)
 	else
@@ -173,7 +169,7 @@
 
 /mob/living/carbon/human/npc/proc/getPatrolTurf()
 	var/minDist = INFINITY
-	var/obj/machinery/navbeacon/targ = locate() in get_turf(src)
+	var/obj/effect/npc/patrol/targ = locate() in get_turf(src)
 
 	if(!targ)
 		for(var/obj/effect/npc/patrol/N in GLOB.npcmarkers)
@@ -209,9 +205,7 @@
 	var/turf/T = path[1]
 	if(get_turf(src) == T)
 		path -= T
-		return makeStep(path)
-
-	return step_towards(src, T)
+	move_dir = get_dir(src, T)
 
 /mob/living/carbon/human/npc/proc/resetTarget()
 	target = null
