@@ -1,5 +1,5 @@
 body {
-    background: #272727 url(uiBackground.png) 50% 0 repeat-x;
+    background: #272727 url(_inf.uiBackground-template.png) 50% 0 repeat-x;
 }
 
 #uiWrapper {
@@ -36,7 +36,7 @@ body {
     right: 12px;
     width: 42px;
     height: 24px;
-    background: url(uiTitleFluff.png) 50% 50% no-repeat;
+    /*background: url(uiTitleFluff.png) 50% 50% no-repeat;*/
 }
 
 #uiStatusIcon {

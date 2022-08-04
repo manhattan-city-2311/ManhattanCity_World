@@ -52,16 +52,15 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 	var/obj/item/modular_computer/communicator_internal/computer	//the integrated modular computer.
 
 	var/list/modules = list(
-							list("module" = "Phone", "icon" = "phone64", "number" = PHONTAB),
-							list("module" = "Contacts", "icon" = "person64", "number" = CONTTAB),
-							list("module" = "Messaging", "icon" = "comment64", "number" = MESSTAB),
-							list("module" = "Note", "icon" = "note64", "number" = NOTETAB),
-							list("module" = "Weather", "icon" = "sun64", "number" = WTHRTAB),
-							list("module" = "Crew Manifest", "icon" = "note64", "number" = MANITAB), // Need a different icon,
-							list("module" = "Settings", "icon" = "gear64", "number" = SETTTAB),
-							list("module" = "Emergency Hotline", "icon" = "service64", "number" = HOTLINETAB)
-
-							)	//list("module" = "Name of Module", "icon" = "icon name64", "number" = "what tab is the module")
+			list("module" = "Phone", "icon" = "phone64", "number" = PHONTAB),
+			list("module" = "Contacts", "icon" = "person64", "number" = CONTTAB),
+			list("module" = "Messaging", "icon" = "comment64", "number" = MESSTAB),
+			list("module" = "Note", "icon" = "note64", "number" = NOTETAB),
+			list("module" = "Weather", "icon" = "sun64", "number" = WTHRTAB),
+			list("module" = "Crew Manifest", "icon" = "note64", "number" = MANITAB), // Need a different icon,
+			list("module" = "Settings", "icon" = "gear64", "number" = SETTTAB),
+			list("module" = "Emergency Hotline", "icon" = "service64", "number" = HOTLINETAB)
+		)	//list("module" = "Name of Module", "icon" = "icon name64", "number" = "what tab is the module")
 
 	var/selected_tab = HOMETAB
 	var/owner = ""
