@@ -28,8 +28,15 @@
 	light_type = /obj/item/weapon/light/bulb/street2
 	anchored = 1
 	density = 1
-	offset_of_light_forward = 2
+	offset_of_light_forward = 3
 	offset_of_light_sides = 0
 
 /obj/machinery/light/normal_lamp2/update_icon()
 	return FALSE
+
+/obj/item/weapon/light/bulb/street2
+	color = LIGHT_COLOR_NEONBLUE
+	brightness_color = LIGHT_COLOR_NEONBLUE
+	light_color = LIGHT_COLOR_NEONBLUE
+	brightness_range = 8
+	brightness_power = 6.5

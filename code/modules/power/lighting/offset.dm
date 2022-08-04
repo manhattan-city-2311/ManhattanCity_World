@@ -15,7 +15,7 @@
 	update()
 
 /obj/machinery/light/update()
-	if(!LocationOfLightSource && (offset_of_light_forward || offset_of_light_sides))
+	if(!LocationOfLightSource && (offset_of_light_forward != 0 || offset_of_light_sides != 0))
 		LocationOfLightSource = new(src, offset_of_light_forward, offset_of_light_sides)
 	. = ..()
 
@@ -36,14 +36,15 @@
 		//CALLBACK(src, .proc/update_follow)
 		//register(var/atom/movable/mover, var/datum/listener, var/proc_call)
 
-/atom/movable/light_spot/Destroy()
-	GLOB.moved_event.unregister(owner, src, .proc/update_follow)
-	GLOB.dir_set_event.unregister(owner, src, .proc/update_follow)
-	. = ..()
+// /atom/movable/light_spot/Destroy()
+// 	GLOB.moved_event.unregister(owner, src, .proc/update_follow)
+// 	GLOB.dir_set_event.unregister(owner, src, .proc/update_follow)
+// 	. = ..()
 
-/atom/movable/light_spot/proc/update_follow(event_type) //update_follow([0,1,null]) 0 - Move 1 - Dir null - begining follow type
+/atom/movable/light_spot/proc/update_location_RAW()
 	var/_x = 1
 	var/_y = 1
+	dir = owner.dir
 	if(dir == NORTH)
 		_x = owner.x + offsetSides
 		_y = owner.y + offsetForward
@@ -57,7 +58,20 @@
 		_x = owner.x - offsetForward
 		_y = owner.y + offsetSides
 	Move(locate(_x, _y, z))
-	if(event_type == null || event_type == 0)
-		GLOB.moved_event.register(owner, src, CALLBACK(src, .proc/update_follow, 0))
-	if(event_type == null || event_type == 1)
-		GLOB.dir_set_event.register(owner, src, CALLBACK(src, .proc/update_follow, 1))
+/atom/movable/light_spot/proc/update_follow(event_type) //update_follow([0,1,null]) 0 - Move 1 - Dir null - begining follow type
+	// to_world(event_type)
+	update_location_RAW()
+	// if(event_type == null || event_type == 0)
+	// 	GLOB.moved_event.register(owner, src, CALLBACK(src, .proc/update_follow, 0))
+	// if(event_type == null || event_type == 1)
+	// 	GLOB.dir_set_event.register(owner, src, CALLBACK(src, .proc/update_follow, 1))
+
+/obj/machinery/light/Move()
+	. = ..()
+	if(LocationOfLightSource)
+		LocationOfLightSource.update_follow()
+
+/obj/machinery/light/set_dir(new_dir)
+	. = ..()
+	if(LocationOfLightSource)
+		LocationOfLightSource.update_follow()

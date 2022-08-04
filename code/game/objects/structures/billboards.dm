@@ -6,7 +6,7 @@
 	icon = 'icons/obj/billboards.dmi'
 	icon_state = "billboard"
 	light_range = 4
-	light_power = 2
+	light_power = 4
 	light_color = "#ebf7fe"  //white blue
 	density = 1
 	anchored = 1

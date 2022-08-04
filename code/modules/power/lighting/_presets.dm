@@ -129,21 +129,6 @@
 /obj/machinery/light/flamp/shadeless // for mapping
 	lamp_shade = 0
 
-/obj/item/weapon/light/bulb/street
-	color = LIGHT_COLOR_INCANDESCENT_BULB
-	brightness_color = LIGHT_COLOR_INCANDESCENT_BULB
-	light_color = LIGHT_COLOR_INCANDESCENT_BULB
-	brightness_range = 8
-	brightness_power = 6
-
-/obj/item/weapon/light/bulb/street2
-	color = LIGHT_COLOR_NEONBLUE
-	brightness_color = LIGHT_COLOR_NEONBLUE
-	light_color = LIGHT_COLOR_NEONBLUE
-	brightness_range = 10
-	brightness_power = 6.5
-
-
 /obj/machinery/light/normal_lamp
 	desc = "A floor lamp."
 	icon = 'icons/obj/big_floodlight.dmi'
@@ -159,6 +144,13 @@
 	light_type = /obj/item/weapon/light/bulb/street
 	anchored = 1
 	density = 1
+
+/obj/item/weapon/light/bulb/street
+	color = LIGHT_COLOR_INCANDESCENT_BULB
+	brightness_color = LIGHT_COLOR_INCANDESCENT_BULB
+	light_color = LIGHT_COLOR_INCANDESCENT_BULB
+	brightness_range = 8
+	brightness_power = 6
 
 /obj/machinery/light/small/emergency
 	light_type = /obj/item/weapon/light/bulb/red
