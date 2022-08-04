@@ -104,6 +104,8 @@
 
 #define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"
 
+#define SPAN_PLEASURE(X) "<span class='pleasure'>[X]</span>"
+
 #define SPAN_INFO(X) "<span class='info'>[X]</span>"
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
 

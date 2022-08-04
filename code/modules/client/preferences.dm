@@ -1,3 +1,6 @@
+#define RECORD_BIRTHDAY "ДАТА РОЖДЕНИЯ"
+#define RECORD_HEIGHT "РОСТ (В СМ)"
+
 GLOBAL_VAR_CONST(PREF_YES, "Yes")
 GLOBAL_VAR_CONST(PREF_NO, "No")
 GLOBAL_VAR_CONST(PREF_ALL_SPEECH, "All Speech")
@@ -35,9 +38,9 @@ GLOBAL_VAR_CONST(PREF_DARK, "Dark")
 var/list/records_blank = list(
 	"@1" = "ОБЩИЕ ДАННЫЕ"
 	, "ПОЛНОЕ ИМЯ" = null
-	, "ДАТА РОЖДЕНИЯ" = "1/1/2311" // This has custom behaviour
+	, RECORD_BIRTHDAY = "1/1/2311" // This has custom behaviour
 	, "ВЕС (В КГ)" = null
-	, "РОСТ (В СМ)" = null
+	, RECORD_HEIGHT = null
 	, "ЦВЕТ ВОЛОС" = null
 	, "ЦВЕТ ГЛАЗ" = null
 	, "ЭТНИЧНОСТЬ" = list(list("Меонец", "Марсианин (Тунеллер)", "Марсианин (Мансинец)", "Венерианец", "Селениан (Низший)", "Селениан (Высший)", "Землянин", "Фобас", "Цереровец", "Плутонец", "Цетит", "Спейсер (Центральный)", "Спейсер (Фронтир)", "Теранец", "Магнитовец", "Гайец (ЦПСС)", "Гайец (ГГК)"), "Меонец")
@@ -215,6 +218,8 @@ var/list/preferences_datums = list()
 	var/gen_record = ""
 
 	var/list/records
+
+	var/height = 180
 
 	var/list/datum/record/police/crime_record = list()
 	var/list/datum/record/hospital/health_record = list()

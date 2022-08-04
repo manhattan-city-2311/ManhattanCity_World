@@ -30,11 +30,6 @@
 	icon_state = "banner-purple"
 	desc = "A purple colored banner."
 
-/obj/item/weapon/banner/nt
-	name = "NanoTrasen banner"
-	icon_state = "banner-nt"
-	desc = "A banner with NanoTrasen's logo on it."
-
 /obj/item/weapon/banner/solgov
 	name = "SolGov banner"
 	icon_state = "banner-solgov"

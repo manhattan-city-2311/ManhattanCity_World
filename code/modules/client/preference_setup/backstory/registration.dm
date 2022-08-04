@@ -1,7 +1,6 @@
 /datum/category_item/player_setup_item/registration
 	name = "Регистрационные данные"
 	sort_order = 1
-	var/static/regex/regex = regex(@"^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$")
 
 /datum/category_item/player_setup_item/registration/load_character(savefile/S)
 	S["records"] 				>> pref.records
@@ -9,6 +8,7 @@
 	S["birth_day"]				>> pref.birth_day
 	S["birth_month"]			>> pref.birth_month
 	S["birth_year"]				>> pref.birth_year
+	S["height"]					>> pref.height
 
 /datum/category_item/player_setup_item/registration/save_character(savefile/S)
 	S["records"] 				<< pref.records
@@ -16,6 +16,7 @@
 	S["birth_day"]				<< pref.birth_day
 	S["birth_month"]			<< pref.birth_month
 	S["birth_year"]				<< pref.birth_year
+	S["height"]					<< pref.height
 
 /datum/category_item/player_setup_item/registration/delete_character(savefile/S)
 	pref.records = global.records_blank
@@ -25,11 +26,12 @@
 		pref.records = global.records_blank
 
 /datum/category_item/player_setup_item/registration/copy_to_mob(mob/living/carbon/human/character)
-	character.records = pref.records
-	character.age = pref.age
-	character.birth_year = pref.birth_year
+	character.records 	  = pref.records
+	character.age 		  = pref.age
+	character.birth_year  = pref.birth_year
 	character.birth_month = pref.birth_month
-	character.birth_day = pref.birth_day
+	character.birth_day   = pref.birth_day
+	character.height 	  = pref.height
 
 /datum/category_item/player_setup_item/registration/content(mob/user)
 	. += "<br/><b>Публичные записи</b>:<br/>"
@@ -88,7 +90,8 @@
 		if(!nr)
 			return TOPIC_NOACTION
 
-		if(ID == "ДАТА РОЖДЕНИЯ")
+		if(ID == RECORD_BIRTHDAY)
+			var/global/regex/regex = regex(@"^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$")
 			if(!regex.Find(nr))
 				return TOPIC_NOACTION
 
@@ -100,6 +103,8 @@
 			pref.birth_month = text2num(dates[2])
 			pref.birth_year  = text2num(dates[3])
 			pref.age 		 = global.game_year - pref.birth_year
+		else if(ID == RECORD_HEIGHT)
+			pref.height = text2num(nr)
 
 		pref.records[ID] = nr
 

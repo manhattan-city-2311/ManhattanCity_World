@@ -81,6 +81,7 @@
 	var/sec_record = ""
 	var/gen_record = ""
 	var/records = list()
+	var/height = 180 
 	var/exploit_record = ""
 	var/exploit_addons = list()		//Assorted things that show up at the end of the exploit_record list
 	var/blinded = null
