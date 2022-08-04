@@ -10,21 +10,8 @@
 
 /obj/structure/bed/chair/skameika/New(var/newloc,var/newmaterial)
 	..(newloc,"wood")
-
-/obj/structure/bed/chair/skameika/New()
-	..()
-	if(dir == 1)
-		buckle_dir = NORTH
-		plane = -35
-	if(dir == 2)
-		buckle_dir = SOUTH
-		plane = -35
-	if(dir == 4)
-		buckle_dir = EAST
-		plane = -35
-	if(dir == 8)
-		buckle_dir = WEST
-		plane = -35
+	spawn(3)	//sorry. i don't think there's a better way to do this.
+	update_layer()
 
 /obj/structure/bed/chair/skameika/right
 	icon_state = "bench_wood_right"
@@ -34,31 +21,8 @@
 	icon_state = "bench_wood_left"
 	base_icon = "bench_wood_left"
 
-/obj/structure/bed/chair/skameika/post_buckle_mob(mob/living/M)
-	update_mob()
-	return ..()
-
-/obj/structure/bed/chair/skameika/proc/update_mob()
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/L = A
-			L.set_dir(dir)
-			if(WEST && dir == 1)
-				L.pixel_x = -3
-				L.pixel_y = -5
-			if(EAST && dir == 1)
-				L.pixel_x = 3
-				L.pixel_y = -5
-
-/obj/structure/bed/chair/skameika/unbuckle_mob()
-	var/mob/living/M = ..()
-	if(M)
-		M.pixel_x = 0
-		M.pixel_y = 0
-	return M
-
 /obj/structure/bed/chair/skameika_steel
-	name = "bench"
+	name = "steel bench"
 	icon = 'icons/obj/manhattan/furniture.dmi'
 	icon_state = "bench_center"
 	anchored = 1
@@ -67,23 +31,10 @@
 	base_icon = "bench_center"
 	applies_material_colour = 1
 
-/obj/structure/bed/chair/skameika_steel/New()
-	..()
-	if(dir == 1)
-		buckle_dir = NORTH
-		plane = -35
-	if(dir == 2)
-		buckle_dir = SOUTH
-		plane = -35
-	if(dir == 4)
-		buckle_dir = EAST
-		plane = -35
-	if(dir == 8)
-		buckle_dir = WEST
-		plane = -35
-
 /obj/structure/bed/chair/skameika_steel/New(var/newloc,var/newmaterial)
 	..(newloc,"steel","steel")
+	spawn(3)	//sorry. i don't think there's a better way to do this.
+	update_layer()
 
 /obj/structure/bed/chair/skameika_steel/right
 	icon_state = "bench_right"
@@ -92,30 +43,6 @@
 /obj/structure/bed/chair/skameika_steel/left
 	icon_state = "bench_left"
 	base_icon = "bench_left"
-
-
-/obj/structure/bed/chair/skameika_steel/post_buckle_mob(mob/living/M)
-	update_mob()
-	return ..()
-
-/obj/structure/bed/chair/skameika_steel/proc/update_mob()
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/L = A
-			L.set_dir(dir)
-			if(WEST && dir == 1)
-				L.pixel_x = -3
-				L.pixel_y = -5
-			if(EAST && dir == 1)
-				L.pixel_x = 3
-				L.pixel_y = -5
-
-/obj/structure/bed/chair/skameika_steel/unbuckle_mob()
-	var/mob/living/M = ..()
-	if(M)
-		M.pixel_x = 0
-		M.pixel_y = 0
-	return M
 
 /obj/structure/bed/chair/couch_metal
 	name = "metal bench"
