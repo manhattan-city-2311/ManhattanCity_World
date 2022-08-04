@@ -154,7 +154,7 @@
 					Tupper = get_step(get_turf(src), NORTHWEST)
 				if(icondebugenabled)
 					to_world("B[!Tbottom.contains_dense_objects()] U[Tupper.contains_dense_objects()]")
-				if(!Tbottom.contains_dense_objects() && Tupper.contains_dense_objects())
+				if(!istype(Tbottom, /turf/simulated/wall) && istype(Tupper, /turf/simulated/wall)) // if(!Tbottom.contains_dense_objects() && Tupper.contains_dense_objects())
 					pixel_y = 18
 					//  |  |
 					// >\__/<
@@ -172,9 +172,9 @@
 				if(icondebugenabled)
 					to_world("L[!Tleft.contains_dense_objects()] R[Tright.contains_dense_objects()]")
 					to_world("L[Tleft.contains_dense_objects()] R[!Tright.contains_dense_objects()]")
-				if(!Tleft.contains_dense_objects() && Tright.contains_dense_objects())
+				if(!istype(Tleft, /turf/simulated/wall) && istype(Tright, /turf/simulated/wall)) // if(!Tleft.contains_dense_objects() && Tright.contains_dense_objects())
 					pixel_x = 10
-				else if(Tleft.contains_dense_objects() && !Tright.contains_dense_objects())
+				else if(istype(Tleft, /turf/simulated/wall) && !istype(Tright, /turf/simulated/wall)) // if(Tleft.contains_dense_objects() && !Tright.contains_dense_objects())
 					pixel_x = -10
 					//  |  |
 					//  \__/
