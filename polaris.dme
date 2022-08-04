@@ -2628,6 +2628,7 @@
 #include "code\modules\reagents\Chemistry-Reagents\Chemistry-Reagents-Drugs.dm"
 #include "code\modules\reagents\Chemistry-Reagents\Chemistry-Reagents-Food-Drinks.dm"
 #include "code\modules\reagents\Chemistry-Reagents\Chemistry-Reagents-Hormones.dm"
+#include "code\modules\reagents\Chemistry-Reagents\Chemistry-Reagents-Manhattan-Drinks.dm"
 #include "code\modules\reagents\Chemistry-Reagents\Chemistry-Reagents-Medicine.dm"
 #include "code\modules\reagents\Chemistry-Reagents\Chemistry-Reagents-Modifiers.dm"
 #include "code\modules\reagents\Chemistry-Reagents\Chemistry-Reagents-Other.dm"

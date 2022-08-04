@@ -76,6 +76,7 @@
 	cream		spawn_reagent = "cream"
 	mint		spawn_reagent = "mint"
 	berry		spawn_reagent = "berryjuice"
+	chicory		spawn_reagent = "chicory"
 
 	espresso	spawn_reagent = "espresso"
 

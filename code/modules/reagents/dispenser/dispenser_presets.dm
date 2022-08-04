@@ -45,7 +45,7 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/acetral,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/aspirin,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/carthatoline,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/corophizine	
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/corophizine
 		)
 
 /obj/machinery/chemical_dispenser/bar_soft
@@ -94,6 +94,7 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/sodawater,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/tonic,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/beer,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/bitters,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/kahlua,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/whiskey,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/wine,
@@ -132,6 +133,7 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/lemon,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/lime,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/berry,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/chicory,
 
 
 		)

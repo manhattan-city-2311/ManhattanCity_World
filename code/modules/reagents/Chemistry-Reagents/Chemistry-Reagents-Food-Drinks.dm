@@ -875,6 +875,16 @@
 		M.apply_effect(3, STUTTER)
 	M.make_jittery(5)
 
+/datum/reagent/drink/coffee/chicory
+	name = "Chicory"
+	id = "chicory"
+	description = "Chicory is a brewed drink prepared from roasted roots of the chicory plant."
+	taste_description = "fine coffee"
+	calories_factor = 4
+	cup_name = "cup of chicory"
+
+	glass_name = "cup of chicory"
+	price_tag = 1.2
 
 /datum/reagent/drink/coffee/decafcoffee
 	name = "Decaffeinated Coffee"
@@ -3199,6 +3209,12 @@
 	nutriment_factor = 1
 	color = "#482000"
 	price_tag = 0.2
+/datum/reagent/nutriment/coffee/chicory
+	name = "Chicory Powder"
+	id = "chicorypowder"
+	description = "A bitter powder made by grinding chicory roots."
+	nutriment_factor = 3
+	price_tag = 1.2
 /datum/reagent/nutriment/tea
 	name = "Tea Powder"
 	id = "teapowder"
