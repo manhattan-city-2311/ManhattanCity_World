@@ -7,8 +7,6 @@
 
 /datum/erp_action/doggystyle/anal/process()
 	..()
-	if(giver.client.ckey == "doctoralex")
-		to_chat(giver, "Соболезную... Пошёл нахуй.")
 	switch(roughness)
 		if(1)
 			visible_message("[giver] трахает [recipient]")
