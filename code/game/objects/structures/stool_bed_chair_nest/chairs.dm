@@ -116,6 +116,33 @@
 	applies_material_colour = 0
 	color = null
 
+/obj/structure/bed/chair/bath
+	name = "Bath"
+	icon = 'icons/obj/manhattan/bath_large.dmi'
+	icon_state = "bath"
+	base_icon = "bath"
+	buckle_dir = SOUTH
+	buckle_lying = 0
+	applies_material_colour = 0
+	color = null
+	armrest_icon = TRUE
+
+/obj/structure/bed/chair/bath/attack_hand(mob/user as mob)
+	if(icon_state == "bath")
+		icon_state = "bath_active"
+	else
+		icon_state = "bath"
+
+/obj/structure/bed/chair/bath/post_buckle_mob(mob/living/M as mob)
+	if(M.buckled == src)
+		M.pixel_y = -10
+		M.old_y = -10
+		buckle_dir = EAST
+		buckle_lying = 1
+	else
+		M.pixel_y = 0
+		M.old_y = 0
+
 /obj/structure/bed/chair/comfy/brown/New(var/newloc,var/newmaterial)
 	..(newloc,"steel","leather")
 

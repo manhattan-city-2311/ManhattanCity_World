@@ -140,6 +140,22 @@
 	if(!shattered)
 		overlays += image(icon, "mirror_wide_overlay")
 
+/obj/structure/mirror/wide/alt
+	icon_state = "mirror_wide_alt"
+
+/obj/structure/mirror/wide/alt/shatter()
+	if(!glass) return
+	if(shattered)	return
+	shattered = 1
+	icon_state = "mirror_wide_alt_broke"
+	playsound(src, "shatter", 70, 1)
+	desc = "Oh no, seven years of bad luck!"
+
+/obj/structure/mirror/wide/alt/update_icon()
+	overlays.Cut()
+	if(!shattered)
+		overlays += image(icon, "mirror_wide_alt_overlay")
+
 // The following mirror is ~special~.
 /obj/structure/mirror/raider
 	name = "cracked mirror"
