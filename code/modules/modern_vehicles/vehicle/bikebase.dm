@@ -11,7 +11,6 @@
 		VC_FRONT_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_BACK_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_ENGINE = /obj/item/vehicle_part/engine,
-		VC_CLUTCH = /obj/item/vehicle_part/clutch,
 		VC_GEARBOX = /obj/item/vehicle_part/gearbox,
 		VC_CARDAN = /obj/item/vehicle_part/cardan
 	)
@@ -30,7 +29,7 @@
 	var/image/img
 
 /obj/manhattan/vehicle/motorcycle/get_braking_force()
-	return 100
+	return 1800
 
 /obj/manhattan/vehicle/motorcycle/update_object_sprites()
 	vis_contents.Cut()
@@ -44,18 +43,16 @@
 	if(!occupants)
 		return
 
-	var/mob/living/carbon/human/driver = null
-	for(var/possible_driver in occupants)
-		if(ishuman(possible_driver))
-			driver = possible_driver
-			break
-	if(!driver)
-		return
+	var/mob/living/carbon/human/driver = LAZYFIRST(get_occupants_in_position("driver"))
+	//var/mob/living/carbon/human/gunner = LAZYFIRST(get_occupants_in_position("gunner"))
 
-	driver.pixel_x = rider_xs[dir2text(dir & ALL_CARDINALS)]
-	driver.pixel_y = rider_ys[dir2text(dir & ALL_CARDINALS)]
-	vis_contents += driver
-	overlays += img	
+	var/x = rider_xs[dir2text(dir & ALL_CARDINALS)]
+	var/y = rider_ys[dir2text(dir & ALL_CARDINALS)]
+	if(driver)
+		driver.pixel_x = x
+		driver.pixel_y = y
+		vis_contents += driver
+	overlays += img
 
 /obj/manhattan/vehicle/motorcycle/exit_vehicle(mob/user)
 	. = ..()

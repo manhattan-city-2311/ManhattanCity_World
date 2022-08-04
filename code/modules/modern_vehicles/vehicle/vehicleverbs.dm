@@ -41,9 +41,15 @@
 		to_chat(user,"<span class = 'notice'>You must be the driver of [src] to toggle the headlights.</span>")
 		return
 
-	if(light_power)
+	if(!headlights_overlay)
+		to_chat(user,"<span class = 'notice'>This vehicle has no headlights.</span>")
+		return
+
+	if(!headlights)
+		headlights = TRUE
 		set_light(6, 4)
 	else
+		headlights = FALSE
 		set_light(0, 0)
 
 /obj/manhattan/vehicle/verb/keys()

@@ -5,13 +5,14 @@
 	var/list/doors = list()                             // Doors inside the lift structure.
 	var/list/queued_floors = list()                     // Where are we moving to next?
 	var/list/floors = list()                            // All floors in this system.
-	var/move_delay = 30                                 // Time between floor changes.
-	var/floor_wait_delay = 85                           // Time to wait at floor stops.
+	var/move_delay = 3 SECONDS                          // Time between floor changes.
+	var/floor_wait_delay = 9 SECONDS                    // Time to wait at floor stops.
 	var/obj/structure/lift/panel/control_panel_interior // Lift control panel.
 	var/doors_closing = 0								// Whether doors are in the process of closing
 
 	var/tmp/moving_upwards
-	var/tmp/busy
+	var/busy_state                                      // Used for controller processing.
+	var/next_process
 
 /datum/turbolift/proc/emergency_stop()
 	queued_floors.Cut()
@@ -26,19 +27,40 @@
 
 /datum/turbolift/proc/open_doors(var/datum/turbolift_floor/use_floor = current_floor)
 	for(var/obj/machinery/door/airlock/door in (use_floor ? (doors + use_floor.doors) : doors))
-		//door.command("open")
-		spawn(0)
-			door.open()
-	return
+		door.open()
 
 /datum/turbolift/proc/close_doors(var/datum/turbolift_floor/use_floor = current_floor)
 	for(var/obj/machinery/door/airlock/door in (use_floor ? (doors + use_floor.doors) : doors))
-		//door.command("close")
-		spawn(0)
-			door.close()
-	return
+		door.close()
+
+#define LIFT_MOVING    1
+#define LIFT_WAITING_A 2
+#define LIFT_WAITING_B 3
+
+/datum/turbolift/process()
+	if(world.time < next_process)
+		return
+	switch(busy_state)
+		if(LIFT_MOVING)
+			if(!do_move())
+				queued_floors.Cut()
+				return PROCESS_KILL
+			else if(!next_process)
+				next_process = world.time + move_delay
+		if(LIFT_WAITING_A)
+			var/area/turbolift/origin = locate(current_floor.area_ref)
+			control_panel_interior.visible_message("<b>The elevator</b> announces, \"[origin.lift_announce_str]\"")
+			next_process = world.time + floor_wait_delay
+			busy_state = LIFT_WAITING_B
+		if(LIFT_WAITING_B)
+			if(queued_floors.len)
+				busy_state = LIFT_MOVING
+			else
+				busy_state = null
+				return PROCESS_KILL
 
 /datum/turbolift/proc/do_move()
+	next_process = null
 
 	var/current_floor_index = floors.Find(current_floor)
 
@@ -74,10 +96,8 @@
 		target_floor.arrived(src)
 		target_floor = null
 
-		sleep(15)
-		control_panel_interior.visible_message("<b>The elevator</b> announces, \"[origin.lift_announce_str]\"")
-		sleep(floor_wait_delay)
-
+		next_process = world.time + 2 SECONDS
+		busy_state = LIFT_WAITING_A
 		return 1
 
 	// Work out where we're headed.
@@ -97,7 +117,7 @@
 			if(istype(AM, /mob/living))
 				var/mob/living/M = AM
 				M.gib()
-			else if(AM.simulated && !(istype(AM, /mob/observer)))
+			else if(AM.simulated)
 				qdel(AM)
 
 	origin.move_contents_to(destination)
@@ -108,15 +128,20 @@
 	current_floor = next_floor
 	control_panel_interior.visible_message("The elevator [moving_upwards ? "rises" : "descends"] smoothly.")
 
-	return (next_floor.delay_time || move_delay || 30)
+	return 1
 
 /datum/turbolift/proc/queue_move_to(var/datum/turbolift_floor/floor)
 	if(!floor || !(floor in floors) || (floor in queued_floors))
 		return // STOP PRESSING THE BUTTON.
 	floor.pending_move(src)
 	queued_floors |= floor
-	turbolift_controller.lift_is_moving(src)
+	busy_state = LIFT_MOVING
+	START_PROCESSING(SSprocessing, src)
 
 // TODO: dummy machine ('lift mechanism') in powered area for functionality/blackout checks.
 /datum/turbolift/proc/is_functional()
 	return 1
+
+#undef LIFT_MOVING
+#undef LIFT_WAITING_A
+#undef LIFT_WAITING_B

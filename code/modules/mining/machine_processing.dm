@@ -19,7 +19,7 @@
 		if (machine)
 			machine.console = src
 		else
-			world << "<span class='danger'>Warning: Ore processing machine console at [src.x], [src.y], [src.z] could not find its machine!</span>"
+			to_world("<span class='danger'>Warning: Ore processing machine console at [src.x], [src.y], [src.z] could not find its machine!</span>")
 			qdel(src)
 
 /obj/machinery/mineral/processing_unit_console/attack_hand(mob/user)

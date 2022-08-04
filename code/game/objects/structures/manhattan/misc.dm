@@ -10,21 +10,8 @@
 
 /obj/structure/bed/chair/skameika/New(var/newloc,var/newmaterial)
 	..(newloc,"wood")
-
-/obj/structure/bed/chair/skameika/New()
-	..()
-	if(dir == 1)
-		buckle_dir = NORTH
-		plane = -35
-	if(dir == 2)
-		buckle_dir = SOUTH
-		plane = -35
-	if(dir == 4)
-		buckle_dir = EAST
-		plane = -35
-	if(dir == 8)
-		buckle_dir = WEST
-		plane = -35
+	spawn(3)	//sorry. i don't think there's a better way to do this.
+	update_layer()
 
 /obj/structure/bed/chair/skameika/right
 	icon_state = "bench_wood_right"
@@ -34,31 +21,8 @@
 	icon_state = "bench_wood_left"
 	base_icon = "bench_wood_left"
 
-/obj/structure/bed/chair/skameika/post_buckle_mob(mob/living/M)
-	update_mob()
-	return ..()
-
-/obj/structure/bed/chair/skameika/proc/update_mob()
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/L = A
-			L.set_dir(dir)
-			if(WEST && dir == 1)
-				L.pixel_x = -3
-				L.pixel_y = -5
-			if(EAST && dir == 1)
-				L.pixel_x = 3
-				L.pixel_y = -5
-
-/obj/structure/bed/chair/skameika/unbuckle_mob()
-	var/mob/living/M = ..()
-	if(M)
-		M.pixel_x = 0
-		M.pixel_y = 0
-	return M
-
 /obj/structure/bed/chair/skameika_steel
-	name = "bench"
+	name = "steel bench"
 	icon = 'icons/obj/manhattan/furniture.dmi'
 	icon_state = "bench_center"
 	anchored = 1
@@ -67,23 +31,10 @@
 	base_icon = "bench_center"
 	applies_material_colour = 1
 
-/obj/structure/bed/chair/skameika_steel/New()
-	..()
-	if(dir == 1)
-		buckle_dir = NORTH
-		plane = -35
-	if(dir == 2)
-		buckle_dir = SOUTH
-		plane = -35
-	if(dir == 4)
-		buckle_dir = EAST
-		plane = -35
-	if(dir == 8)
-		buckle_dir = WEST
-		plane = -35
-
 /obj/structure/bed/chair/skameika_steel/New(var/newloc,var/newmaterial)
 	..(newloc,"steel","steel")
+	spawn(3)	//sorry. i don't think there's a better way to do this.
+	update_layer()
 
 /obj/structure/bed/chair/skameika_steel/right
 	icon_state = "bench_right"
@@ -92,30 +43,6 @@
 /obj/structure/bed/chair/skameika_steel/left
 	icon_state = "bench_left"
 	base_icon = "bench_left"
-
-
-/obj/structure/bed/chair/skameika_steel/post_buckle_mob(mob/living/M)
-	update_mob()
-	return ..()
-
-/obj/structure/bed/chair/skameika_steel/proc/update_mob()
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/L = A
-			L.set_dir(dir)
-			if(WEST && dir == 1)
-				L.pixel_x = -3
-				L.pixel_y = -5
-			if(EAST && dir == 1)
-				L.pixel_x = 3
-				L.pixel_y = -5
-
-/obj/structure/bed/chair/skameika_steel/unbuckle_mob()
-	var/mob/living/M = ..()
-	if(M)
-		M.pixel_x = 0
-		M.pixel_y = 0
-	return M
 
 /obj/structure/bed/chair/couch_metal
 	name = "metal bench"
@@ -224,6 +151,39 @@
 	icon_state = "cryo"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
+/obj/structure/sign/neon/big/cola
+	name = "advertising signboard"
+	desc = "A sign that saying something about another soda brand."
+	icon_state = "randomshit3"
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
+/obj/structure/sign/neon/big/street
+	name = "street name"
+	desc = "A sign that saying what street is that."
+	icon_state = "randomshit2"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/big/name
+	name = "big city sign"
+	desc = "A sign with some unknown language."
+	icon_state = "randomshit1"
+	light_color = LIGHT_COLOR_HOTPINK
+
+/obj/structure/sign/neon/big/manhattan
+	name = "big city sign"
+	desc = "A sign with Manhattan advertising."
+	icon_state = "randomshit4"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/big/manhattan2
+	name = "neon city map"
+	desc = "Holographic Manhattan map."
+	icon_state = "randomshit5"
+	density = 1
+	bounds = "64,32"
+	pixel_x = 12
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
 /obj/structure/sign/neon/big/menu
 	name = "neon menu screen"
 	desc = "A sign with some options to choose."
@@ -248,6 +208,66 @@
 	desc = "A sign for the city local casino."
 	icon_state = "casino"
 	light_color = LIGHT_COLOR_NEONYELLOW
+
+/obj/structure/sign/manhattan/hotel_number
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door1"
+
+/obj/structure/sign/manhattan/hotel_number/second
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door2"
+
+/obj/structure/sign/manhattan/hotel_number/third
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door3"
+
+
+/obj/structure/sign/manhattan/hotel_number/four
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door4"
+
+
+/obj/structure/sign/manhattan/hotel_number/five
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door5"
+
+
+/obj/structure/sign/manhattan/hotel_number/six
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door6"
+
+
+/obj/structure/sign/manhattan/hotel_number/seven
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door7"
+
+
+/obj/structure/sign/manhattan/hotel_number/eight
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door8"
+
+
+/obj/structure/sign/manhattan/hotel_number/nine
+	name = "number"
+	desc = "Room number"
+	icon = 'icons/obj/manhattan/mnhtn_paintings.dmi'
+	icon_state = "door9"
 
 /obj/structure/manhattan/rails
 	name = "rails"

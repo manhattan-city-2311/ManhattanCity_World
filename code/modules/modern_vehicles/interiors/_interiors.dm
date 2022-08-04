@@ -8,7 +8,7 @@
     var/size_y = 0
 
     var/list/mob/living/carbon/human/occupants = null
-    var/interior_template = /datum/map_template
+    var/interior_template = /datum/map_template/ambulance
     var/turf/middle_turf
     var/obj/effect/vehicle_entrance/entrance = null
     var/obj/structure/vehicledoor/door = null
@@ -19,7 +19,7 @@
     sleep(1)
     var/datum/map_template/ambulance/template //hardcode for now, i'm tired
     for(var/obj/effect/interior_spawn/spawns in GLOB.vehicle_spawnpoints)
-        var/turf/T = spawns.loc
+        var/turf/T = get_turf(spawns)
         middle_turf = T
         template = new interior_template
         if(!template.load(T, centered = TRUE))

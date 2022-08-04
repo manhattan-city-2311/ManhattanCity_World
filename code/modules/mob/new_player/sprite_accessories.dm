@@ -236,10 +236,10 @@
 		hair_type = HAIR_SHORT
 		icon_state = "hair_bedheadv3"
 
-	bedheadlong
-		name = "Bedhead Long"
-		hair_type = HAIR_LONG
-		icon_state = "hair_long_bedhead"
+	// bedheadlong
+	// 	name = "Bedhead Long"
+	// 	hair_type = HAIR_LONG
+	// 	icon_state = "hair_long_bedhead"
 
 	beehive
 		name = "Beehive"
@@ -745,10 +745,10 @@
 		hair_type = HAIR_LONG
 		icon_state = "hair_jade"
 
-	country
-		name = "Country"
-		hair_type = HAIR_LONG
-		icon_state = "hair_country"
+	// country
+	// 	name = "Country"
+	// 	hair_type = HAIR_LONG
+	// 	icon_state = "hair_country"
 
 	rosa
 		name = "Rosa"
@@ -833,11 +833,11 @@
 		icon_state = "hair_antenna"
 
 	sidetail
-		name = "Side Pony"
+		name = "Pony Side"
 		icon_state = "hair_sidetail"
 
 	sidetail2
-		name = "Side Pony 2"
+		name = "Pony Side 2"
 		icon_state = "hair_sidetail2"
 
 	front_braid
@@ -952,9 +952,9 @@
 		name = "Nepeta"
 		icon_state = "hair_nepeta"
 
-	rose
-		name = "Rose"
-		icon_state = "hair_rose"
+	// rose
+	// 	name = "Rose"
+	// 	icon_state = "hair_rose"
 
 	roxy
 		name = "Roxy"
@@ -1083,7 +1083,109 @@
 	shortflip
 		name = "Short flip"
 		icon_state = "hair_shortflip"
-
+/* [MANHATTAN] */
+	katara
+		name = "Long Hair (Katara)"
+		icon_state = "hair_katara"
+		hair_type = HAIR_LONG
+	wong
+		name = "Wong"
+		icon_state = "hair_wong"
+	angel
+		name = "Angel"
+		icon_state = "hair_angel"
+	Harley
+		name = "Harley"
+		icon_state = "hair_harley"
+		hair_type = HAIR_LONG
+	Hipstery
+		name = "Hipstery"
+		icon_state = "hair_hipstery"
+	shortcover
+		name = "Cover Short"
+		icon_state = "hair_shortcover"
+	longcover
+		name = "Cover Long"
+		icon_state = "hair_longcover"
+	waterfall
+		name = "Short Cover Waterfall"
+		icon_state = "hair_waterfall"
+	hayasaka_small
+		name = "Ponytail Hayasaka Lesser"
+		icon_state = "hair_long_braided"
+	ponytail_hayasaka
+		name = "Ponytail Hayasaka"
+		icon_state = "hair_ponytail_hayasaka"
+	longemo_alt
+		name = "Long Emo Alt"
+		icon_state = "hair_longemo_alt"
+	long_tail
+		name = "Long Tail"
+		icon_state = "hair_longtail"
+	zone
+		name = "Zone"
+		icon_state = "hair_zone"
+	longbangs
+		name = "Bangs Long"
+		icon_state = "hair_lbangs"
+	toph
+		name = "Toph"
+		icon_state = "hair_toph"
+	shinobu
+		name = "shinobu"
+		icon_state = "hair_shinobu"
+	sidetail3
+		name = "Pony Side 3"
+		icon_state = "hair_sidetail3"
+	kirrina
+		name = "Long Side Part (Selaki)"
+		icon_state = "hair_longsidepartstraight"
+	bedhead_fringe
+		name = "Long Fringe Bedhead"
+		icon_state = "hair_bluntbangs"
+	bob_combed
+		name = "Bob Combed"
+		icon_state = "hair_combedbob"
+	messybedhead
+		name = "Bedhead Messy"
+		icon_state = "hair_slightlymessy"
+	baum
+		name = "Short Hair (Baum)"
+		icon_state = "hair_baum"
+	pony80s
+		name = "Ponytail 80's"
+		icon_state = "hair_80s_ponytail"
+	pony80s_alt
+		name = "Ponytail 80's Alt"
+		icon_state = "hair_80s_ponytail_alt"
+	odano
+		name = "Odando"
+		icon_state = "hair_bun_odango"
+	twincurl
+		name = "Twin Curls"
+		icon_state = "hair_twincurls2"
+	amicia
+		name = "Amicia"
+		icon_state = "hair_amicia"
+	widelonghair
+		name = "Long Hair Wide"
+		icon_state = "hair_longwide"
+	widow
+		name = "Ponytail Widowmaker"
+		icon_state = "hair_widowmaker"
+	widowshort
+		name = "Ponytail Widowmaker Short"
+		icon_state = "hair_widowmaker_short"
+	widow_alt
+		name = "Ponytail Widowmaker Alt"
+		icon_state = "hair_widowmaker_alt"
+	undercut_messy
+		name = "Undercut Messy Right"
+		icon_state = "hair_messy_rightcut_s"
+	travolta
+		name = "Ponytail Travolta"
+		icon_state = "hair_travolta_tied_s"
+/* [/MANHATTAN] */
 /*
 ///////////////////////////////////
 /  =---------------------------=  /

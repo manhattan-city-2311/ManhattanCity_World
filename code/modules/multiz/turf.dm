@@ -8,7 +8,7 @@
 			return !density
 
 /turf/simulated/open/CanZPass(atom, direction)
-	return 1
+	return TRUE
 
 /turf/space/CanZPass(atom, direction)
 	return 1
@@ -21,7 +21,7 @@
 	name = "open space"
 	icon = 'icons/turf/space.dmi'
 	icon_state = "open"
-	desc = "\..."
+	desc = ""
 	density = 0
 //	plane = OPENSPACE_PLANE
 	pathweight = 100000 //Seriously, don't try and path over this one numbnuts

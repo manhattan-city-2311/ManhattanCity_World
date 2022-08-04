@@ -218,7 +218,7 @@
 				var/area/new_area = get_area(check)
 				if(!(istype(new_area, whitelist)))
 					valid = FALSE // Probably overlapping something important.
-				//	world << "Invalid due to overlapping with area [new_area.type], when wanting area [whitelist]."
+				//	to_world("Invalid due to overlapping with area [new_area.type], when wanting area [whitelist].")
 					break
 //				CHECK_TICK
 

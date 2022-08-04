@@ -187,7 +187,7 @@
 	current_program = powerdown_program
 	linkedholodeck = locate(projection_area)
 	if(!linkedholodeck)
-		world << "<span class='danger'>Holodeck computer at [x],[y],[z] failed to locate projection area.</span>"
+		to_world("<span class='danger'>Holodeck computer at [x],[y],[z] failed to locate projection area.</span>")
 
 //This could all be done better, but it works for now.
 /obj/machinery/computer/HolodeckControl/Destroy()

@@ -92,10 +92,11 @@
 
 	switch(m_intent)
 		if(M_RUN)
-			if(get_blood_saturation() < 0.9)
+			if(get_blood_saturation() < 0.8)
 				to_chat(src, SPAN_WARNING("You feel exhausted."))
 				m_intent = M_WALK
 				hud_used.move_intent.icon_state = "walking"
+				update_glide(WALK_DELAY + movement_delay())
 			oxy_use = RUN_OXYGEN_CONSUMING
 		if(M_WALK)
 			oxy_use = WALK_OXYGEN_CONSUMING

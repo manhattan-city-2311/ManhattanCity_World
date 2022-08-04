@@ -33,7 +33,6 @@
 		VC_FRONT_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_BACK_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_ENGINE = /obj/item/vehicle_part/engine/xi7,
-		VC_CLUTCH = /obj/item/vehicle_part/clutch,
 		VC_GEARBOX = /obj/item/vehicle_part/gearbox/xi7,
 		VC_CARDAN = /obj/item/vehicle_part/cardan
 	)
@@ -44,7 +43,7 @@
 		"north" = 8,
 		"south" = 8
 	)
-	
+
 	rider_ys = list(
 		"east" = 5,
 		"west" = 5,
@@ -53,4 +52,4 @@
 	)
 
 /obj/manhattan/vehicle/motorcycle/zakatneba/get_braking_force()
-	return 800
+	return 2000

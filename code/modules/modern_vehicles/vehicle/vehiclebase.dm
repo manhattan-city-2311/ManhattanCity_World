@@ -6,9 +6,12 @@
 	density = 1
 	layer = ABOVE_MOB_LAYER
 
+	var/headlights_overlay = "" //don't set this if vehicle has no headlights icon state
+	var/headlights = FALSE //on-off
+
 	appearance_flags = DEFAULT_APPEARANCE_UNBOUND
 
-	step_size = 64
+	step_size = 128 // allows speed over 400 km/h
 
 	var/active = 1
 	var/guns_disabled = 0
@@ -56,13 +59,11 @@
 		VC_LEFT_FRONT_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_LEFT_BACK_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_ENGINE = /obj/item/vehicle_part/engine,
-		VC_CLUTCH = /obj/item/vehicle_part/clutch,
 		VC_GEARBOX = /obj/item/vehicle_part/gearbox,
 		VC_CARDAN = /obj/item/vehicle_part/cardan
 	)
 
 	var/weight = 1000
-	var/skid = FALSE
 	var/serial_number
 	var/angle = 180
 
@@ -71,22 +72,21 @@
 	var/vector2/acceleration = new(0, 0)
 
 	var/is_acceleration_pressed = FALSE
-	var/is_clutch_pressed		= FALSE
 	var/is_brake_pressed		= FALSE
 	var/aerodynamics_coefficent = 0.32
 	var/traction_coefficent = 9.6
 
-	var/handling_quality = 1
-
 /mob/living/carbon/human/Stat()
 	. = ..()
-	if(istype(loc, /obj/manhattan/vehicle))
+	if(isvehicle(loc))
 		if(statpanel("Status"))
 			var/obj/manhattan/vehicle/V = loc
-			stat("Скорость:", "[TO_KPH(V.speed.modulus())] км/ч")
-			stat("Тахометр:", "[V.components[VC_ENGINE]?.rpm] об/м")
+			stat("Скорость:", "[round(TO_KPH(V.speed.modulus()))] км/ч")
+			stat("Тахометр:", "[round(V.components[VC_ENGINE]?.rpm)] об/м")
 			stat("Передача:", V.components[VC_GEARBOX]?.selected_gear)
 
+/obj/manhattan/vehicle/proc/get_calculation_iterations()
+	return max(1, speed.modulus() * 0.12)
 
 /obj/manhattan/vehicle/proc/get_wheel_diameter()
 	return 0.34
@@ -95,12 +95,11 @@
 	return 25
 
 /obj/manhattan/vehicle/proc/get_braking_force()
-	return 500
+	return 2500
 
-/obj/manhattan/vehicle/proc/is_clutch_transfering()
-	var/obj/item/vehicle_part/clutch/clutch = components[VC_CLUTCH]
+/obj/manhattan/vehicle/proc/is_transfering()
 	var/obj/item/vehicle_part/gearbox/gearbox = components[VC_GEARBOX]
-	return gearbox.get_ratio() && clutch?.is_transfering()
+	return gearbox.get_ratio()
 
 /obj/manhattan/vehicle/proc/get_components(type)
 	. = list()
@@ -189,6 +188,8 @@
 /obj/manhattan/vehicle/proc/update_object_sprites() //This is modified on a vehicle-by-vehicle basis to render mobsprites etc, a basic render of playerheads in the top right is used if no overidden.
 	underlays.Cut()
 	overlays.Cut()
+	if(headlights)
+		overlays += image(icon, headlights_overlay)
 
 /obj/manhattan/vehicle/fall()
 	if(can_traverse_zs && active)

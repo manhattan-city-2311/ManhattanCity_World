@@ -6,7 +6,7 @@
 	ys = list(0, 60,   100,  115,  125,  140,  130,  105)
 	max_rpm = 7150
 
-	mass = 120
+	mass = 80
 
 /obj/item/vehicle_part/gearbox/ae86
 	name = "ae86's brand gearbox"
@@ -25,7 +25,7 @@
 
 /obj/manhattan/vehicle/ae86
 	name = "Ae86"
-	desc = "A vehicle." // TODO: Fill. 
+	desc = "A vehicle." // TODO: Fill.
 
 	icon = 'icons/vehicles/ae86.dmi'
 	icon_state = "ae86"
@@ -45,7 +45,6 @@
 		VC_LEFT_FRONT_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_LEFT_BACK_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_ENGINE = /obj/item/vehicle_part/engine/ae86,
-		VC_CLUTCH = /obj/item/vehicle_part/clutch,
 		VC_GEARBOX = /obj/item/vehicle_part/gearbox/ae86,
 		VC_CARDAN = /obj/item/vehicle_part/cardan
 	)
@@ -54,14 +53,14 @@
 	traction_coefficent = 19.8
 
 /obj/manhattan/vehicle/ae86/get_braking_force()
-	return 400
+	return 1770
 
 /obj/manhattan/vehicle/ae86/update_object_sprites()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
-		bounds = "64,64"
+		bounds = "32,64"
 	else
-		bounds = "64,64"
+		bounds = "80,32"
 
 /obj/item/vehicle_component/health_manager/ae86
 	integrity = 100

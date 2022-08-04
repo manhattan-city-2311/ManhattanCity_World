@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(jobs)
 	//var/list/all_jobs = typesof(/datum/job)
 	var/list/all_jobs = list(/datum/job/assistant) | using_map.allowed_jobs
 	if(!all_jobs.len)
-		world << "<span class='warning'>Error setting up jobs, no job datums found!</span>"
+		to_world("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 		return 0
 	for(var/J in all_jobs)
 		var/datum/job/job = new J()
@@ -642,17 +642,11 @@ SUBSYSTEM_DEF(jobs)
 			G.add_fingerprint(H)
 			G.prescription = 1
 
-	spawnId(H, rank, alt_title)
-
-
 	BITSET(H.hud_updateflag, ID_HUD)
 	BITSET(H.hud_updateflag, IMPLOYAL_HUD)
 	BITSET(H.hud_updateflag, SPECIALROLE_HUD)
 
 	return H
-
-
-
 
 
 /datum/controller/subsystem/jobs/proc/spawnId(var/mob/living/carbon/human/H, rank, title)
@@ -808,7 +802,7 @@ SUBSYSTEM_DEF(jobs)
 	pass.owner = H.real_name
 
 	H.update_passport(pass)
-	H.equip_to_slot_or_del(pass, slot_in_backpack)
+	H.equip_to_slot(pass, slot_wear_id)
 
 /datum/controller/subsystem/jobs/proc/equip_permits(var/mob/living/carbon/human/H)
 	if(!H.mind || !H.mind.prefs) return

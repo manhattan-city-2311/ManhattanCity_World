@@ -1,5 +1,4 @@
-/mob/living/carbon/human/npc
-    var/list/get_away_phrases = list(
+var/list/npc_get_away_phrases = list(
         "Убирайся отсюда!",
         "Отстань!",
         "Заебали, у меня нет времени!",

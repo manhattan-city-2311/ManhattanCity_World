@@ -358,7 +358,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			if(isAI(src))
 				var/mob/living/silicon/ai/A = src
 				oldname = null//don't bother with the records update crap
-				//world << "<b>[newname] is the AI!</b>"
+				//to_world("<b>[newname] is the AI!</b>")
 				//world << sound('sound/AI/newAI.ogg')
 				// Set eyeobj name
 				A.SetName(newname)
@@ -846,12 +846,11 @@ Turf and target are seperate in case you want to teleport some distance from a t
 						O.loc = X
 
 					//Move the mobs unless it's an AI eye or other eye type.
-					//for(var/mob/M in T)
-						//if(istype(M, /mob/observer/eye)) continue // If we need to check for more mobs, I'll add a variable
-						//M.loc = X
-						//if(istype(M, /mob/living))
-							//var/mob/living/LM = M
-							//LM.check_shadow() // Need to check their Z-shadow, which is normally done in forceMove().
+					for(var/mob/M in T)
+						if(istype(M, /mob/observer/eye)) 
+							continue // If we need to check for more mobs, I'll add a variable
+						M.loc = X
+						M.update_above()
 
 					if(shuttlework)
 						var/turf/simulated/shuttle/SS = T
@@ -1364,9 +1363,8 @@ var/mob/dview/dview_mob = new
 	tX = splittext(tX[1], ":")
 	tX = tX[1]
 
-	var/view_split = splittext(world.view, "x")
-	tX = max(1, min(world.maxx, origin.x + (text2num(tX) - (text2num(view_split[1]) + 1))))
-	tY = max(1, min(world.maxy, origin.y + (text2num(tY) - (text2num(view_split[2]) + 1))))
+	tX = max(1, min(world.maxx, origin.x + (text2num(tX) - (VIEW_SIZE_X + 1))))
+	tY = max(1, min(world.maxy, origin.y + (text2num(tY) - (VIEW_SIZE_Y + 1))))
 	return locate(tX, tY, tZ)
 
 // Displays something as commonly used (non-submultiples) SI units.

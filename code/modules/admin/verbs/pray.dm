@@ -22,8 +22,8 @@
 	for(var/client/C in admins)
 		if(R_ADMIN & C.holder.rights)
 			if(C.is_preference_enabled(/datum/client_preference/admin/show_chat_prayers))
-				C << msg
-				C << 'sound/effects/ding.ogg'
+				to_chat(C, msg)
+				to_target(C, 'sound/effects/ding.ogg')
 	to_chat(usr, "Your prayers have been received by the gods.")
 
 	feedback_add_details("admin_verb","PR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

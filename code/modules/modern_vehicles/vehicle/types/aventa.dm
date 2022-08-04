@@ -47,7 +47,6 @@
 		VC_LEFT_FRONT_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_LEFT_BACK_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_ENGINE = /obj/item/vehicle_part/engine/aventa,
-		VC_CLUTCH = /obj/item/vehicle_part/clutch,
 		VC_GEARBOX = /obj/item/vehicle_part/gearbox/aventa,
 		VC_CARDAN = /obj/item/vehicle_part/cardan
 	)
@@ -56,7 +55,7 @@
 	traction_coefficent = 13.8
 
 /obj/manhattan/vehicle/aventa/get_braking_force()
-	return 1000
+	return 5000
 
 /obj/manhattan/vehicle/aventa/update_object_sprites()
 	. = ..()

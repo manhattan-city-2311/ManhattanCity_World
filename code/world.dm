@@ -34,7 +34,7 @@ var/global/datum/global_init/init = new ()
 	mob = /mob/new_player
 	turf = /turf/space
 	area = /area/space
-	view = "19x15"
+	view = VIEW_SIZE
 	cache_lifespan = 7
 	movement_mode = PIXEL_MOVEMENT_MODE
 
@@ -411,13 +411,13 @@ var/world_topic_spam_protect_time = world.timeofday
 		C.received_irc_pm = world.time
 		C.irc_admin = input["sender"]
 
-		C << 'sound/effects/adminhelp.ogg'
-		C << message
+		to_target(C, 'sound/effects/adminhelp.ogg')
+		to_chat(C, message)
 
 
 		for(var/client/A in admins)
 			if(A != C)
-				A << amessage
+				to_chat(A, amessage)
 
 		return "Message Successful"
 

@@ -6,6 +6,8 @@
 	icon_state = "ambulance"
 	anchored = 1
 
+	headlights_overlay = "headlights"
+
 	bound_height = 96
 	bound_width = 64
 

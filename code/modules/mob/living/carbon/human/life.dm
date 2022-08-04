@@ -241,34 +241,20 @@
 
 /mob/living/carbon/human/proc/handle_glucose_level()
 	var/level = bloodstr.get_reagent_amount("glucose")
-	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
 
 	switch(level)
 		if(-INFINITY to GLUCOSE_LEVEL_LCRITICAL)
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.1)
-			if(prob(8) && H.get_arrythmia_score() < ARRYTHMIA_SEVERITY_OVERWRITING)
-				H?.make_common_arrythmia(rand(2, ARRYTHMIA_SEVERITY_OVERWRITING - 1))
-			bloodstr.add_reagent("glucagone", 0.5)
 		if(GLUCOSE_LEVEL_LCRITICAL to GLUCOSE_LEVEL_L2BAD)
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.45)
-			if(prob(2) && H.get_arrythmia_score() < (ARRYTHMIA_SEVERITY_OVERWRITING-1))
-				H?.make_common_arrythmia(rand(1, ARRYTHMIA_SEVERITY_OVERWRITING - 2))
-			bloodstr.add_reagent("glucagone", 0.1)
 		if(GLUCOSE_LEVEL_LBAD to GLUCOSE_LEVEL_NORMAL_LOW)
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.7)
-
-		if(GLUCOSE_LEVEL_NORMAL to GLUCOSE_LEVEL_HBAD)
-			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.95)
 		if(GLUCOSE_LEVEL_HBAD to GLUCOSE_LEVEL_H2BAD)
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.55)
 		if(GLUCOSE_LEVEL_H2BAD to GLUCOSE_LEVEL_HCRITICAL)
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.40)
-			if(prob(2) && H.get_arrythmia_score() < (ARRYTHMIA_SEVERITY_OVERWRITING-1))
-				H?.make_common_arrythmia(rand(1, ARRYTHMIA_SEVERITY_OVERWRITING - 2))
 		if(GLUCOSE_LEVEL_HCRITICAL to GLUCOSE_LEVEL_H2CRITICAL)
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.10)
-			if(prob(8) && H.get_arrythmia_score() < ARRYTHMIA_SEVERITY_OVERWRITING)
-				H?.make_common_arrythmia(rand(2, ARRYTHMIA_SEVERITY_OVERWRITING - 1))
 
 /*
 /mob/living/carbon/human/proc/adjust_body_temperature(current, loc_temp, boost)
@@ -334,18 +320,18 @@
 		if(nutrition >= 2) //If we are very, very cold we'll use up quite a bit of nutriment to heat us up.
 			nutrition -= 2
 		var/recovery_amt = max((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), BODYTEMP_AUTORECOVERY_MINIMUM)
-		//world << "Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]"
+		//to_world("Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 //				log_debug("Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 		bodytemperature += recovery_amt
 	else if(species.cold_level_1 <= bodytemperature && bodytemperature <= species.heat_level_1)
 		var/recovery_amt = body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR
-		//world << "Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]"
+		//to_world("Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 //				log_debug("Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 		bodytemperature += recovery_amt
 	else if(bodytemperature > species.heat_level_1) //360.15 is 310.15 + 50, the temperature where you start to feel effects.
 		//We totally need a sweat system cause it totally makes sense...~
 		var/recovery_amt = min((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), -BODYTEMP_AUTORECOVERY_MINIMUM)	//We're dealing with negative numbers
-		//world << "Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]"
+		//to_world("Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 //				log_debug("Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 		bodytemperature += recovery_amt
 

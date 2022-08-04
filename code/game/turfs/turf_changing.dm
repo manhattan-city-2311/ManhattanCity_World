@@ -41,7 +41,7 @@
 	var/old_dangerous_objects = dangerous_objects
 	var/old_ao_neighbors = ao_neighbors
 
-	//world << "Replacing [src.type] with [N]"
+	//to_world("Replacing [src.type] with [N]")
 
 	if(ispath(N, /turf/simulated/floor))
 		var/turf/simulated/W = new N( locate(src.x, src.y, src.z) )

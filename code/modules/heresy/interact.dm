@@ -13,7 +13,7 @@
 	else
 		p_interaction = erp_datum ? "Присоединится к сессии" : "Начать сессию"
 
-	var/interaction = input(usr, "Выберите взаимодействие", "Взаимодействие") as anything|null in p_interaction
+	var/interaction = input(usr, "Выберите взаимодействие", "Взаимодействие") as null|anything in p_interaction
 
 	if(!interaction)
 		return

@@ -112,7 +112,6 @@
 	data["homeScreen"] = modules_ui
 	data["note"] = note					// current notes
 	data["weather"] = weather
-	data["aircontents"] = src.analyze_air()
 	data["flashlight"] = fon
 	data["manifest"] = PDA_Manifest
 

@@ -125,6 +125,8 @@
 
 #define FONT_GIANT(X) "<font size='5'>[X]</font>"
 
+#define isvehicle(X) istype(X, /obj/manhattan/vehicle)
+
 // G is type.
 #define ishormone(G, T) (G == /datum/reagent/hormone/##T)
 
@@ -142,3 +144,8 @@ proc/n_repeat(var/string, var/amount)
 			newstring = newstring + string
 
 		return newstring
+
+#define VIEW_SIZE_X 19
+#define VIEW_SIZE_Y 15
+#define VIEW_SIZE_MEAN 17
+#define VIEW_SIZE "19x15"
