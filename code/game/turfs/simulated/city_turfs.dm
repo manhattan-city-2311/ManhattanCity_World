@@ -4,7 +4,6 @@
 	icon = 'icons/turf/pavement.dmi'
 	icon_state = "pavement"
 	initial_flooring = /decl/flooring/pavement
-	outdoors = TRUE
 
 /turf/simulated/floor/pavement/empty
 	icon_state = "pave_empty"
@@ -36,19 +35,15 @@
 	icon_state = "brick_paving"
 	initial_flooring = /decl/flooring/pavement/brick_paving
 
-
-
-
 /turf/simulated/floor/road
 	name = "Road"
 	desc = "It's a road"
 	icon = 'icons/turf/roads.dmi'
 	icon_state = "road"
 	initial_flooring = /decl/flooring/road
-	outdoors = TRUE
 
+// MARKED FOR REMOVAL
 /turf/simulated/floor/road/noweather
-	outdoors = FALSE
 
 /turf/simulated/floor/road/empty
 	icon_state = "road_empty"
@@ -62,14 +57,15 @@
 	icon_state = "road_marking"
 	initial_flooring = /decl/flooring/road/markings
 
+
+// MARKED FOR REMOVAL
 /turf/simulated/floor/road/markings/noweather
-	outdoors = FALSE
+
 
 /turf/simulated/floor/road/garage
 	name = "garage floor"
 	icon_state = "garage"
 	initial_flooring = /decl/flooring/road/garage
-	outdoors = FALSE
 
 /turf/simulated/floor/road/arrow
 	icon_state = "road_arrow"
@@ -92,7 +88,6 @@
 	desc = "It's a roof"
 	icon = 'icons/turf/manhattan/roof_asphalt.dmi'
 	icon_state = "roof-0"
-	outdoors = TRUE
 
 /turf/simulated/floor/roof/metal
 	name = "metal roof"

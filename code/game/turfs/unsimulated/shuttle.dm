@@ -3,8 +3,6 @@
 	icon = 'icons/turf/shuttle_white.dmi'
 	thermal_conductivity = 0.05
 	heat_capacity = 0
-	outdoors = 0
-
 /turf/unsimulated/shuttle/wall
 	name = "wall"
 	icon_state = "light"
