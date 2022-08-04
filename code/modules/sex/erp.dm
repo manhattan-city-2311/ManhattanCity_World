@@ -2,7 +2,7 @@
 	var/pleasure = 0
 	var/last_orgasm = 0
 	var/datum/erp_position/erp_position
-	var/mob/living/carbon/human/erp_participant
+	var/mob/living/carbon/human/erp_participient
 	var/list/datum/bodypart/sbps
 
 /mob/living/carbon/human/initialize()
@@ -19,22 +19,20 @@
 	return erp_position?.id
 
 /mob/living/carbon/human/proc/initialize_erp(mob/living/carbon/human/H, force = FALSE)
-	if(erp_position && !force)
-		return
 	if(resting)
 		erp_position = new /datum/erp_position/lying
 	else if(buckled)
 		erp_position = new /datum/erp_position/sitting
 	else
 		erp_position = new /datum/erp_position/standing
-	erp_participant = H
+	erp_participient = H
 
 /mob/living/carbon/human/proc/get_available_actions()
 	initialize_erp_actions()
 	. = list()
 	for(var/ID in global.erp_actions_cache)
 		var/datum/erp_action/A = global.erp_actions_cache[ID]
-		if(A.is_available(src, erp_participant))
+		if(A.is_available(src, erp_participient))
 			. += ID
 
 /mob/living/carbon/human/proc/can_leave_erp()
@@ -46,8 +44,8 @@
 		return
 
 	erp_position = null
-	erp_participant?.quit_erp()
-	erp_participant = null
+	erp_participient?.quit_erp()
+	erp_participient = null
 
 /mob/living/carbon/human/proc/get_pleasure_message()
 	if(gender == FEMALE)

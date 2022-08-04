@@ -8,8 +8,10 @@
 /datum/bodypart/proc/is_covered()
 	if(!covered_by)
 		return FALSE
-	for(var/obj/item/clothing/C in owner.get_equipped_items())
-		if(C.body_parts_covered & covered_by)
+	if(owner.get_covered_body_parts() & covered_by)
+		return TRUE
+	for(var/obj/item/underwear/U in owner.worn_underwear)
+		if(U.required_free_body_parts & covered_by)
 			return TRUE
 	return FALSE
 

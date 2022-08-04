@@ -3,17 +3,17 @@
 	var/id
 
 /datum/erp_position/standing
-	name = "стоите"
+	name = "Стоя"
 	id = POS_STANDING
 
 /datum/erp_position/sitting
-	name = "сидите"
+	name = "Сидя"
 	id = POS_SITTING
 
 /datum/erp_position/lying
-	name = "лежите"
+	name = "Лёжа"
 	id = POS_LYING
 
 /datum/erp_position/kneeling
-	name = "на коленях"
+	name = "На коленях"
 	id = POS_KNEELING

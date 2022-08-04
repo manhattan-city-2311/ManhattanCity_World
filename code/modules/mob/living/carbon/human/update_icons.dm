@@ -387,16 +387,16 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 	remove_layer(UNDERWEAR_LAYER)
 
-	if(species.appearance_flags & HAS_UNDERWEAR)
-		overlays_standing[UNDERWEAR_LAYER] = list()
-		for(var/category in all_underwear)
-			if(hide_underwear[category])
-				continue
-			var/datum/category_item/underwear/UWI = all_underwear[category]
-			var/image/wear = UWI.generate_image(all_underwear_metadata[category], layer = BODY_LAYER+UNDERWEAR_LAYER)
-			overlays_standing[UNDERWEAR_LAYER] += wear
+	overlays_standing[UNDERWEAR_LAYER] = list()
+	for(var/entry in worn_underwear)
+		var/obj/item/underwear/UW = entry
 
-		apply_layer(UNDERWEAR_LAYER)
+		var/image/I = image(icon = UW.icon, icon_state = UW.icon_state, layer = BODY_LAYER + UNDERWEAR_LAYER)
+		I.appearance_flags = RESET_COLOR
+		I.color = UW.color
+
+		overlays_standing[UNDERWEAR_LAYER] += I
+	apply_layer(UNDERWEAR_LAYER)
 
 //HAIR OVERLAY
 /mob/living/carbon/human/proc/update_hair()

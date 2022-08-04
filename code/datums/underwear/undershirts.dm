@@ -1,7 +1,12 @@
+/datum/category_item/underwear/undershirt
+	underwear_name = "undershirt"
+	underwear_type = /obj/item/underwear/undershirt
+
 /datum/category_item/underwear/undershirt/none
 	is_default = TRUE
 	name = "None"
 	always_last = TRUE
+	underwear_type = null
 
 /datum/category_item/underwear/undershirt/shirt
 	name = "Shirt"
@@ -37,16 +42,19 @@
 /datum/category_item/underwear/undershirt/tank_top
 	name = "Tank top"
 	icon_state = "tanktop"
+	underwear_name = "tank top"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/tank_top_alt
 	name = "Tank top, alt"
 	icon_state = "tanktop_alt"
+	underwear_name = "tank top"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/tank_top_alt_fem
 	name = "Tank top, alt, feminine"
 	icon_state = "tanktop_alt_fem"
+	underwear_name = "tank top"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/tank_top_alt_fem_vneck
@@ -57,22 +65,27 @@
 /datum/category_item/underwear/undershirt/tank_top_fire
 	name = "Tank top, fire"
 	icon_state = "tank_fire_s"
+	underwear_name = "tank top"
 
 /datum/category_item/underwear/undershirt/tank_top_fire_fem
 	name = "Tank top, fire, feminine"
 	icon_state = "tank_fire_fem_s"
+	underwear_name = "tank top"
 
 /datum/category_item/underwear/undershirt/tank_top_rainbow
 	name = "Tank top, rainbow"
 	icon_state = "tank_rainbow_s"
+	underwear_name = "tank top"
 
 /datum/category_item/underwear/undershirt/tank_top_stripes
 	name = "Tank top, striped"
 	icon_state = "tank_stripes_s"
+	underwear_name = "tank top"
 
 /datum/category_item/underwear/undershirt/tank_top_sun
 	name = "Tank top, sun"
 	icon_state = "tank_sun_s"
+	underwear_name = "tank top"
 
 /datum/category_item/underwear/undershirt/shirt_heart
 	name = "Shirt, heart"
@@ -153,10 +166,12 @@
 /datum/category_item/underwear/undershirt/longjon
 	name = "Long John Shirt"
 	icon_state = "ljont"
+	underwear_name = "long johns"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/longstripe_black
 	name = "Longsleeve Striped Shirt, Black"
+	underwear_name = "long johns"
 	icon_state = "longstripe"
 
 /datum/category_item/underwear/undershirt/longstripe_blue

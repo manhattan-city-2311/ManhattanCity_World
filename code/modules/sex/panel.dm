@@ -1,7 +1,6 @@
 /mob/living/carbon/human/var/erp_panel_selected_category = ERP_ACTION_CATEGORY_ROMANCE
 /mob/living/carbon/human/proc/show_erp_panel()
-	var/list/dat = list()
-	dat += "<table><tr>"
+	var/dat = "<table><tr>"
 	var/global/list/categories = list(
 		ERP_ACTION_CATEGORY_ROMANCE,
 		ERP_ACTION_CATEGORY_FOREPLAY,
@@ -10,12 +9,13 @@
 	)
 	for(var/id in categories)
 		if(id == erp_panel_selected_category)
-			dat += "<td><b>[id]</b></td>" // no nanoui ;c
+			dat += "<td><b>[id]</b></td>"
 		else
 			dat += "<td><a href='?src=\ref[src];erp_category=[id]'>[id]</a></td>"
 	dat += "</tr></table><br/>"
-	dat += "Ваша позиция: <b>[get_position_id()]</b><br/>"
-	dat += "Позиция партнёра: <b>[get_position_id()]</b><br/>"
+	dat += "Ваша позиция: <b>[erp_position?.name]</b><br/>"
+	if(erp_participient && erp_participient != src)
+		dat += "Позиция партнёра: <b>[erp_participient.erp_position?.name]</b><br/>"
 	dat += get_pleasure_message()
 	dat += "<hr><br/>"
 
@@ -40,6 +40,6 @@
 		erp_panel_selected_category = href_list["erp_category"]
 	else if(href_list["action"])
 		var/datum/erp_action/A = global.erp_actions_cache[href_list["action"]]
-		visible_message(SPAN_PLEASURE(A.get_action_text(src, erp_participant)))
+		visible_message(SPAN_PLEASURE(A.get_action_text(src, erp_participient)))
 
 	show_erp_panel()

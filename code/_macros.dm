@@ -44,6 +44,8 @@
 
 #define isslime(A) istype(A, /mob/living/simple_mob/slime)
 
+#define isunderwear(A) istype(A, /obj/item/underwear)
+
 #define isbot(A) istype(A, /mob/living/bot)
 
 #define isxeno(A) istype(A, /mob/living/simple_mob/animal/space/alien)
@@ -91,6 +93,8 @@
 #define SEND_SOUND(target, sound) DIRECT_OUTPUT(target, sound)
 
 #define CanInteract(user, state) (CanUseTopic(user, state) == STATUS_INTERACTIVE)
+
+#define CanInteractWith(user, target, state) (target.CanUseTopic(user, state) == STATUS_INTERACTIVE)
 
 #define QDEL_NULL_LIST(x) if(x) { for(var/y in x) { qdel(y) } ; x = null }
 
