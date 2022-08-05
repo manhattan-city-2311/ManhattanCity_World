@@ -64,7 +64,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 #define SKIN_LAYER				2		//Skin things added by a call on species
 #define FACE_STYLE_LAYER			3		//Mob's lipstyles, or any type of face decor.
 #define BLOOD_LAYER				4		//Bloodied hands/feet/anything else
-#define DAMAGE_LAYER			5		//Injury overlay sprites like open wounds
+#define BODY_DAMAGE_LAYER			5		//Injury overlay sprites like open wounds
 #define SURGERY_LAYER			6		//Overlays for open surgical sites
 #define UNDERWEAR_LAYER  		7		//Underwear/bras/etc
 #define SHOES_LAYER_ALT			8		//Shoe-slot item (when set to be under uniform via verb)
@@ -164,7 +164,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(QDESTROYING(src))
 		return
 
-	remove_layer(DAMAGE_LAYER)
+	remove_layer(BODY_DAMAGE_LAYER)
 
 	// first check whether something actually changed about damage appearance
 	var/damage_appearance = ""
@@ -174,16 +174,17 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			continue
 		damage_appearance += O.damage_state
 
-	if(damage_appearance == previous_damage_appearance)
+	if(damage_appearance == previous_damage_appearance && overlays_standing[BODY_DAMAGE_LAYER])
 		// nothing to do here
 		return
 
 	previous_damage_appearance = damage_appearance
 
-	var/image/standing_image = image(icon = species.damage_overlays, icon_state = "00", layer = BODY_LAYER+DAMAGE_LAYER)
+	var/image/standing_image = image(icon = species.damage_overlays, icon_state = "00", layer = BODY_LAYER+BODY_DAMAGE_LAYER)
 
 	// blend the individual damage states with our icons
-	for(var/obj/item/organ/external/O in organs_by_name)
+	for(var/ID in organs_by_name)
+		var/obj/item/organ/external/O = organs_by_name[ID]
 		if(isnull(O) || O.is_stump())
 			continue
 
@@ -199,17 +200,17 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		else
 			DI = damage_icon_parts[cache_index]
 
-		standing_image.overlays += DI
+		standing_image.add_overlay(DI)
 
-	overlays_standing[DAMAGE_LAYER]	= standing_image
+	overlays_standing[BODY_DAMAGE_LAYER]	= standing_image
 	update_bandages()
-	apply_layer(DAMAGE_LAYER)
+	apply_layer(BODY_DAMAGE_LAYER)
 
 /mob/living/carbon/human/proc/update_bandages()
 	var/bandage_icon = species.bandages_icon
 	if(!bandage_icon)		//checks if race is bandage compatible
 		return
-	var/image/standing_image = overlays_standing[DAMAGE_LAYER]
+	var/image/standing_image = overlays_standing[BODY_DAMAGE_LAYER]
 	if(standing_image)
 		for(var/obj/item/organ/external/O in organs_by_name)
 			if(O.is_stump())
@@ -217,7 +218,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			var/bandage_level = O.bandage_level()
 			if(bandage_level)
 				standing_image.overlays += image(bandage_icon, "[O.icon_name][bandage_level]")
-		overlays_standing[DAMAGE_LAYER]	= standing_image
+		overlays_standing[BODY_DAMAGE_LAYER]	= standing_image
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/update_icons_body()
@@ -1059,7 +1060,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 //Human Overlays Indexes/////////
 #undef MUTATIONS_LAYER
 #undef SKIN_LAYER
-#undef DAMAGE_LAYER
+#undef BODY_DAMAGE_LAYER
 #undef SURGERY_LAYER
 #undef UNDERWEAR_LAYER
 #undef SHOES_LAYER_ALT
