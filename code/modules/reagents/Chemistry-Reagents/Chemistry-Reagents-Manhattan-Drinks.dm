@@ -10,7 +10,7 @@
 	color = "#c28800"
 	strength = 50
 	nutriment_factor = 2
-	glass_icon_state = "manlydorfglass"
+	glass_icon_state = "oaf"
 
 	glass_name = "Oily Oaf Brew"
 	glass_desc = "The Oily Oaf. A classic. While one of the lighter drinks available, the rich, buttery aftertaste coupled with the low price tag means the Oaf is here to stay."
@@ -30,7 +30,7 @@
 	color = "#c28800"
 	strength = 40
 	nutriment_factor = 2
-	glass_icon_state = "manlydorfglass"
+	glass_icon_state = "slammer"
 
 	glass_name = "Glyphid Slammer"
 	glass_desc = "An adventurous mix of a cheap, powerful ale with an equally cheap, powerful energy drink. The result is almost, but not quite, entirely undrinkable. But it sure does put a spring in your step."
@@ -57,7 +57,7 @@
 	color = "#c28800"
 	strength = 100
 	nutriment_factor = 1
-	glass_icon_state = "manlydorfglass"
+	glass_icon_state = "leaf"
 
 	glass_name = "Leaf Lover's Special"
 	glass_desc = "The Leaf Lover is on this chart entirely to please Management. It'll kill your buzz faster than a pay cut, and leave you with the same empty feeling in your gut. Still, it can be handy on Inspection Day - just don't let anyone know you had one."
@@ -83,7 +83,7 @@
 	color = "#c28800"
 	strength = 45
 	nutriment_factor = 2
-	glass_icon_state = "manlydorfglass"
+	glass_icon_state = "arkenstout"
 
 	glass_name = "Arkenstout"
 	glass_desc = "An ancient recipe going back millenia, tasting of honor, gold, and glory days of yore. Served best chilled to near absolute zero."
@@ -112,7 +112,7 @@
 	color = "#2e2000"
 	strength = 10
 	nutriment_factor = 1
-	glass_icon_state = "manlydorfglass"
+	glass_icon_state = "blackout"
 
 	glass_name = "Blackout Stout"
 	glass_desc = "Renowned through space and time, a tankard of Blackout is enough to knock out almost anyone. A true test for the true drunkard."
@@ -139,7 +139,7 @@
 	color = "#d9239c"
 	strength = 50
 	nutriment_factor = 2
-	glass_icon_state = "manlydorfglass"
+	glass_icon_state = "blonde"
 
 	glass_name = "Blackreach Blonde"
 	glass_desc = "The party-goer's choice. Charming, fizzy, and fruity, the Blackreach Blonde is known to put a smile on anyone's face."
@@ -150,7 +150,7 @@
 		return
 	..()
 	if(prob(dose * 0.5))
-		M.emote(pick("spin", "flip", "spin"))
+		M.emote(pick("spin", "flip", "floorspin"))
 	if(prob(dose * 0.5))
 		to_chat(M, "<span class='danger'>You feel an uncontrollable urge to dance!</span>")
 
@@ -169,7 +169,7 @@
 	color = "#c28800"
 	strength = 40
 	nutriment_factor = 1
-	glass_icon_state = "manlydorfglass"
+	glass_icon_state = "flintlock"
 
 	glass_name = "Flintlocke's Delight"
 	glass_desc = "How does it work? Eldritch magic? Genetic tampering? Nobody knows! Suffice to say, Flintlocke's Delight is a favorite of demolitionists everywhere. Also, it tastes great - if you got a love for gunpowder, anyway."
