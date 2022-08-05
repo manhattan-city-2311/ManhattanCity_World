@@ -531,6 +531,7 @@
 	volume = 330
 	smash_duration = 1
 	flags = 0 //starts closed
+	amount_per_transfer_from_this = 33
 	rag_underlay = "rag_small"
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer

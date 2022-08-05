@@ -14,9 +14,11 @@
 #define LIQUID 2
 #define GAS 3
 
-#define REAGENTS_OVERDOSE 130
+#define REAGENTS_OVERDOSE 800
 
 #define CHEM_SYNTH_ENERGY 500 // How much energy does it take to synthesize 1 unit of chemical, in Joules.
+
+#define CE_REGENERATION  "regeneration" //Affects natural body generation
 
 // Some on_mob_life() procs check for alien races.
 #define IS_DIONA   1
