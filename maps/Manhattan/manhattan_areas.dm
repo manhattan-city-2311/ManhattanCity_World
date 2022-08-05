@@ -43,6 +43,7 @@
 	dynamic_lighting = 1
 	sound_env = CITY
 	flags = null
+	outdoors = TRUE
 	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
 
 /area/planets/Manhattan/indoor
