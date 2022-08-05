@@ -738,7 +738,6 @@ div.homeScreen
 	left: 50%;
 	transform: translate(-50%, -50%);*/
 	z-index: 1;
-
 }
 .phoneLogos .phoneclock
 {
@@ -770,6 +769,17 @@ div.homeScreen
 {
 	content: "";
 }
+.wallpaperPreview
+{
+	background-size: cover;
+	width: 400px;
+	height: 360px;
+	background-position: 50% 0%;
+	border: 3px solid #66ffff;
+	border-radius: 20px 0;
+	box-shadow: inset 0 0 20px 1px #00ffff;
+}
+
 .link64 {
 	float: left;
 	min-width: 15px;

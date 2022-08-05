@@ -115,6 +115,12 @@
 	data["weather"] = weather
 	data["flashlight"] = fon
 	data["manifest"] = PDA_Manifest
+	data["selected_wallpaper"] = selected_wallpaper
+	data["wallpaper_color"] = wallpaper_color
+	// var/list/wresult[0]
+	// for(var/i in wallpapers)
+	// 	wresult += list(list("file" = i, "name" = wallpapers[i]))
+	data["wallpapers"] = wallpapers
 
 	if(cartridge) // If there's a cartridge, we need to grab the information from it
 		data["cart_devices"] = cartridge.get_device_status()
@@ -149,6 +155,16 @@
 /obj/item/device/communicator/Topic(href, href_list)
 	if(..())
 		return 1
+	to_world("A")
+	if(href_list["wallpaper_select"])
+		var/index = text2num(href_list["wallpaper_select"])
+		to_world(href_list["wallpaper_select"])
+		if(isnum(index) && index < length(wallpapers))
+			index += 1
+			var/list/w = wallpapers[index]
+			selected_wallpaper = w["file"]
+			wallpaper_color = w["color"]
+
 	if(href_list["rename"])
 		var/new_name = sanitizeSafe(input(usr,"Please enter your name.","Communicator",usr.name) )
 		if(new_name)

@@ -3,8 +3,17 @@ Title: Communicator UI
 Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
  -->
 {{:helper.TELEPHONE()}}
+<style type="text/css">
+	{{if data.selected_wallpaper}}
+	body
+	{
+		background-image: url('{{:data.selected_wallpaper}}') !important;
+		background-color: {{:data.wallpaper_color}} !important;
+	}
+	{{/if}}
+</style>
 {{if data.currentTab == 1}}
-	<style>
+	<style type="text/css">
 		.moreAPPs
 		{
 			float: center;
@@ -339,7 +348,24 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 			<div style="float: left; width: 180px;">{{:helper.link(data.flashlight==1 ? 'Disable Flashlight' : 'Enable Flashlight', 'lightbulb', {'Light' : 1}, null,'fixedLeftWide')}}</div>
 		</div>
 	</div>
-
+	<h3>Wallpapers</h3>
+	<hr>
+	{{for data.wallpapers}}
+	<div class="item">
+		<div class="itemLabel">
+			{{:value.name}}
+			{{:helper.link(
+				"",
+				data.selected_wallpaper == value.file ? "check" :'radio-off',
+				{'wallpaper_select' : index},
+				data.selected_wallpaper == value.file ? 'selected' : null)
+			}}
+		</div>
+		<div class = "itemContent">
+			<div class="wallpaperPreview" style="background-image: url('{{:value.file}}');"></div>
+		</div>
+	</div>
+	{{/for}}
 
 <!-- Tenth Tab, External Device -->
 

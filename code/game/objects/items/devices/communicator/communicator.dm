@@ -76,6 +76,12 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 	var/datum/exonet_protocol/exonet = null
 	var/list/communicating = list()
 	var/update_ticks = 0
+	var/selected_wallpaper = "blade.png"
+	var/wallpaper_color = "#040603"
+	var/static/list/wallpapers = list(
+		list("file" = "blade.png", "name" = "Desert City", "color" = "#040603"),
+		list("file" = "shade.png", "name" = "Shade", "color" = "#000000")
+	) //filename:CustomName_for_UI
 
 // Proc: New()
 // Parameters: None
