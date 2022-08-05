@@ -18,7 +18,6 @@
 /datum/bodypart/face
 	id = SBP_FACE
 	covered_by = HEAD
-
 /datum/bodypart/oral
 	id = SBP_ORAL
 	covered_by = HEAD
@@ -27,6 +26,7 @@
 	id = SBP_PENIS
 	gender = SBP_APPEAR_ON_MALE
 	covered_by = LOWER_TORSO
+	var/length = 16
 
 /datum/bodypart/nipples
 	id = SBP_NIPPLES
@@ -36,6 +36,7 @@
 	id = SBP_BREASTS
 	gender = SBP_APPEAR_ON_FEMALE
 	covered_by = UPPER_TORSO
+	var/size = BREASTS_C_CUP
 
 /datum/bodypart/anal
 	id = SBP_ANAL

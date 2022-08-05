@@ -1,5 +1,6 @@
 #define RECORD_BIRTHDAY "ДАТА РОЖДЕНИЯ"
 #define RECORD_HEIGHT "РОСТ (В СМ)"
+#define RECORD_WEIGHT "ВЕС (В КГ)"
 
 GLOBAL_VAR_CONST(PREF_YES, "Yes")
 GLOBAL_VAR_CONST(PREF_NO, "No")
@@ -39,7 +40,7 @@ var/list/records_blank = list(
 	"@1" = "ОБЩИЕ ДАННЫЕ"
 	, "ПОЛНОЕ ИМЯ" = null
 	, RECORD_BIRTHDAY = "1/1/2311" // This has custom behaviour
-	, "ВЕС (В КГ)" = null
+	, RECORD_WEIGHT = null
 	, RECORD_HEIGHT = null
 	, "ЦВЕТ ВОЛОС" = null
 	, "ЦВЕТ ГЛАЗ" = null
