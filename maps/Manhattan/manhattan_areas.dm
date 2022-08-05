@@ -182,7 +182,7 @@
 	dynamic_lighting = 1
 	sound_env = CITY
 	flags = null
-	ambience = list('sound/manhattan/south1.mp3')
+	ambience = list('sound/manhattan/south1.ogg')
 
 /area/planets/Manhattan/south/indoor
 	name = "\improper New-Manhattan South District Interior"
@@ -197,6 +197,7 @@
 	icon_state = "south_m_build"
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
+	ambience = list('sound/manhattan/south_indoors1.ogg', 'sound/manhattan/south_indoors2.ogg', 'sound/manhattan/south_indoors3.ogg', 'sound/manhattan/south_indoors4.ogg', 'sound/manhattan/south_indoors5.ogg', 'sound/manhattan/south_indoors6.ogg', 'sound/manhattan/south_indoors7.ogg', 'sound/manhattan/south_indoors8.ogg', )
 
 /area/planets/Manhattan/south/building/f1
 	icon_state = "south_m_build_flat"

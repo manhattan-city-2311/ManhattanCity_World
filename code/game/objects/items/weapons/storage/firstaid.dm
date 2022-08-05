@@ -194,22 +194,47 @@
 /obj/item/weapon/storage/pill_bottle/penicillin
 	name = "bottle of Penicillin pills"
 	desc = "A theta-lactam antibiotic. Effective against many diseases likely to be encountered in Pollux."
-	starts_with = list(/obj/item/weapon/reagent_containers/pill/penicillin = 7)
+	starts_with = list(/obj/item/weapon/reagent_containers/pill/penicillin = 14)
 
 /obj/item/weapon/storage/pill_bottle/tramadol
 	name = "bottle of Tramadol pills"
 	desc = "Contains pills used to relieve pain."
-	starts_with = list(/obj/item/weapon/reagent_containers/pill/tramadol = 7)
+	starts_with = list(/obj/item/weapon/reagent_containers/pill/tramadol = 14)
 
 /obj/item/weapon/storage/pill_bottle/carbon
 	name = "bottle of Carbon pills"
 	desc = "Contains pills used to neutralise chemicals in the stomach."
-	starts_with = list(/obj/item/weapon/reagent_containers/pill/carbon = 7)
+	starts_with = list(/obj/item/weapon/reagent_containers/pill/carbon = 14)
 
 /obj/item/weapon/storage/pill_bottle/iron
 	name = "bottle of Iron pills"
 	desc = "Contains pills used to aid in blood regeneration."
-	starts_with = list(/obj/item/weapon/reagent_containers/pill/iron = 7)
+	starts_with = list(/obj/item/weapon/reagent_containers/pill/iron = 14)
+
+/obj/item/weapon/storage/pill_bottle/paracetamol
+	name = "bottle of Paracetamol pills"
+	desc = "Contains pills used to relieve pain."
+	starts_with = list(/obj/item/weapon/reagent_containers/pill/paracetamol = 14)
+
+/obj/item/weapon/storage/pill_bottle/oxycodone
+	name = "bottle of Oxycodone pills"
+	desc = "Contains pills used to relieve pain."
+	starts_with = list(/obj/item/weapon/reagent_containers/pill/oxycodone = 14)
+
+/obj/item/weapon/storage/pill_bottle/amiodarone
+	name = "bottle of Amiodarone pills"
+	desc = "Contains pills."
+	starts_with = list(/obj/item/weapon/reagent_containers/pill/amiodarone = 14)
+
+/obj/item/weapon/storage/pill_bottle/haloperidol
+	name = "bottle of Haloperidol pills"
+	desc = "Contains pills."
+	starts_with = list(/obj/item/weapon/reagent_containers/pill/haloperidol = 14)
+
+/obj/item/weapon/storage/pill_bottle/amicile
+	name = "bottle of Amicile pills"
+	desc = "Contains pills."
+	starts_with = list(/obj/item/weapon/reagent_containers/pill/amicile = 14)
 
 /obj/item/weapon/storage/backpack/dufflebag/med/emt
 	name = "emergency medical operations kit"
