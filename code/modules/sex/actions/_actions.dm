@@ -27,6 +27,10 @@ var/global/list/datum/erp_action/erp_actions_cache
 	var/sbp
 	var/needs_access
 
+	var/active_id
+
+	var/hidden = FALSE
+
 /datum/erp_action/proc/get_poses(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
 	. = list(user1.get_position_id())
 	if(user2)
@@ -40,13 +44,15 @@ var/global/list/datum/erp_action/erp_actions_cache
 		return source[1]
 	return source[2]
 
-/datum/erp_action/proc/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
+/datum/erp_action/proc/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2, number)
 	return
 
-/datum/erp_action/proc/pronounce_helper(mob/user, f1 = "он", f2 = "она")
+/datum/erp_action/proc/pronounce_helper(mob/user, f1 = "его", f2 = "её")
 	return user.gender == MALE ? f1 : f2
 
 /datum/erp_action/proc/is_available(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
+	if(hidden)
+		return
 	if(allowed_poses)
 		var/allowed = FALSE
 		var/list/poses = get_poses(user1, user2)
@@ -72,7 +78,15 @@ var/global/list/datum/erp_action/erp_actions_cache
 	. = replacetext_char(., "@1", "[icon2html(user1, viewers(user1))][user1]")
 	. = replacetext_char(., "@2", "[icon2html(user2, viewers(user1))][user2]")
 
-/mob/living/carbon/human/var/currently_erp_acting = FALSE
+/mob/living/carbon/human
+	var/currently_erp_acting = FALSE
+	var/list/current_erp_actions = list()
+
+/datum/erp_action/proc/get_stage(mob/living/carbon/human/user)
+	return user.current_erp_actions[src]
+
+/datum/erp_action/proc/advance_stage(mob/living/carbon/human/user)
+	++user.current_erp_actions[src]
 
 /datum/erp_action/proc/act(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
 	if(!self_action)
@@ -85,10 +99,26 @@ var/global/list/datum/erp_action/erp_actions_cache
 			return FALSE
 		user1.currently_erp_acting = FALSE
 
+	if(active_id)
+		var/found
+		for(var/datum/erp_action/A in user1.current_erp_actions)
+			if(A.active_id == active_id)
+				found = A
+				break
+		if(!found)
+			for(var/datum/erp_action/A in user1.current_erp_actions)
+				if(A.sbp == sbp)
+					return
+			for(var/datum/erp_action/A in user2.current_erp_actions)
+				if(needs_access & A.sbp)
+					return
+			user1.current_erp_actions -= found
+			user1.current_erp_actions[src] = 0
+
 	var/message = get_action_text(user1, user2)
 	if(message)
 		user1.visible_message(SPAN_PLEASURE(message))
-	
+
 	user1.pleasure += base_pleasure[1]
 	user2.pleasure += base_pleasure[2]
 
