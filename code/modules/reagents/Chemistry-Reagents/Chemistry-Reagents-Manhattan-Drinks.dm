@@ -156,7 +156,7 @@
 	..()
 	if(prob(dose * 0.20))
 		M.emote(pick("spin", "flip", "floorspin"))
-	if(prob(dose * 0.20))
+	if(prob(dose * 0.10))
 		to_chat(M, "<span class='danger'>You feel an uncontrollable urge to dance!</span>")
 
 /datum/chemical_reaction/drinks/blonde
