@@ -163,6 +163,12 @@
 	icon_state = "randomshit2"
 	light_color = COLOR_YELLOW
 
+/obj/structure/sign/neon/big/oil
+	name = "Oil Station"
+	desc = "A sign that saying what this place for."
+	icon_state = "oil_station"
+	light_color = COLOR_YELLOW
+
 /obj/structure/sign/neon/big/name
 	name = "big city sign"
 	desc = "A sign with some unknown language."
@@ -174,6 +180,44 @@
 	desc = "A sign with Manhattan advertising."
 	icon_state = "randomshit4"
 	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/big/manhattan3
+	name = "big city sign"
+	desc = "A sign with Manhattan advertising."
+	icon_state = "manhattan"
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
+/obj/structure/sign/neon/big/manhattan4
+	name = "city sign"
+	desc = "A sign with Manhattan advertising."
+	icon_state = "randomshit7"
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
+/obj/structure/sign/neon/mars
+	name = "Mars sign"
+	desc = "The sign made by south Manhattan bandits."
+	icon_state = "mars"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/figures
+	name = "figure"
+	desc = "Geometric figure sign"
+
+/obj/structure/sign/neon/figures/square
+	icon_state = "square"
+	light_color = LIGHT_COLOR_HOTPINK
+
+/obj/structure/sign/neon/figures/triangle
+	icon_state = "triangle"
+	light_color = LIGHT_COLOR_NEONGREEN
+
+/obj/structure/sign/neon/figures/crest
+	icon_state = "x"
+	light_color = LIGHT_COLOR_NEONGREEN
+
+/obj/structure/sign/neon/figures/circle
+	icon_state = "circle"
+	light_color = LIGHT_COLOR_HOTPINK
 
 /obj/structure/sign/neon/big/bar2
 	name = "big bar sign"
