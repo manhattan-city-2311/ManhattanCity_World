@@ -38,6 +38,7 @@
 	plane_masters[VIS_OBJS]		= new /obj/screen/plane_master/main{plane = OBJ_PLANE}
 	plane_masters[VIS_MOBS]		= new /obj/screen/plane_master/main{plane = MOB_PLANE}
 
+	plane_masters[VIS_LIGHTING_OBJS] = new /obj/screen/plane_master/main{plane = LIGHTING_OBJS_PLANE; filters = LIGHTING_BLOOM}
 	..()
 
 /datum/plane_holder/Destroy()
@@ -136,7 +137,7 @@ as far as i can tell, this is unused.
 			alpha = 0
 			mouse_opacity = 0
 
-/obj/screen/plane_master/proc/set_ambient_occlusion(var/enabled = FALSE)
+/obj/screen/plane_master/proc/set_ambient_occlusion(enabled = FALSE)
 	filters -= AMBIENT_OCCLUSION
 	if(enabled)
 		filters += AMBIENT_OCCLUSION

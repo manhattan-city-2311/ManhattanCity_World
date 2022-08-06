@@ -94,5 +94,6 @@
 #define LIGHT_COLOR_INCANDESCENT_BULB "#FFDDBB"
 #define LIGHT_COLOR_INCANDESCENT_FLASHLIGHT "#FFCC66"
 
-//
 #define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-3, size=4, color="#04080FAA")
+
+#define LIGHTING_BLOOM filter(type="bloom", size = 6, threshold = "#CCCCCC", offset = 8, alpha = 80)

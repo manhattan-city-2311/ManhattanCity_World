@@ -83,6 +83,7 @@ What is the naming convention for planes or layers?
 
 // Mob planes
 	#define ABOVE_MOB_PLANE			-15
+	#define LIGHTING_OBJS_PLANE		-14
 	#define MOB_PLANE				-25
 	#define UNDER_MOB_PLANE			-35
 	#define BELOW_MOB_LAYER			3.9 // Should be converted to plane swaps

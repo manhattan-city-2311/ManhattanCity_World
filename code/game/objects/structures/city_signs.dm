@@ -5,7 +5,7 @@
 /obj/structure/sign/neon
 	desc = "A glowing sign."
 	icon = 'icons/obj/signs.dmi'
-	plane = ABOVE_PLANE
+	plane = LIGHTING_OBJS_PLANE
 	light_range = 3
 	light_power = 6.5
 
@@ -210,8 +210,6 @@
 	icon_state = "casino"
 	light_color = LIGHT_COLOR_NEONYELLOW
 
-	plane = 25
-
 /obj/structure/sign/neon/big/aeoiu
 	name = "large blue sign"
 	desc = "A neon blue sign in cryptic letters."
@@ -289,7 +287,6 @@
 /obj/structure/sign/double/city/
 	desc = "A sign."
 	pixel_y = 25
-	plane = -25
 	icon = 'icons/obj/signs.dmi'
 
 /obj/structure/sign/double/city/gamecenter/
