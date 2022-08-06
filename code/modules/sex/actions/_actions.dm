@@ -75,7 +75,7 @@ var/global/list/datum/erp_action/erp_actions_cache
 /mob/living/carbon/human/var/currently_erp_acting = FALSE
 
 /datum/erp_action/proc/act(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
-	if(self_action)
+	if(!self_action)
 		if(user1.currently_erp_acting)
 			return
 

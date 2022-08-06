@@ -71,9 +71,6 @@
 		var/mob/living/carbon/human/H = M
 		if(!H.erp_position)
 			return
-		if(H.resting)
-			H.erp_position = new /datum/erp_position/standing
-		else
-			H.erp_position = new /datum/erp_position/sitting
+		H.erp_position = new /datum/erp_position/standing
 		H.show_erp_panel()
 		H.erp_participient?.show_erp_panel()

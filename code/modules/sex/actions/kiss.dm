@@ -90,3 +90,19 @@
 	)
 
 	return height_picker(user1, user2, height_dependent_messages)
+
+/datum/erp_action/neck_bite
+	name = "Укус в шею"
+	category = ERP_ACTION_CATEGORY_FOREPLAY
+	action_type = ERP_ACTION_ROUGH
+	sbp = SBP_ORAL
+	base_pleasure = list(0, 0.8)
+
+/datum/erp_action/neck_bite/get_messages(user1, user2)
+	var/list/height_dependent_messages = list(
+		list("@1 тянется, привстает на цыпочки, пытается дотянутся до шеи @2, но утыкается только в ключицы, оставляя на тех несколько поцелуев, после чего недовольно отстраняется."),
+		list("@1 сокращает небольшое расстояние между собой и @2, и утыкается носом в сгиб [pronounce_helper(user2, "его", "её")] шеи, спустя пару секунд нежно прикусывает кожу, вызывая слабый румянец."),
+		list("@1 наклоняется, тянется к @2, утыкается носом в сгиб [pronounce_helper(user2, "его", "её")] шеи, вдыхает запах. Через пару секунд влажные губы смыкаются на нежном кусочке кожи на шее @2, а потом и некоторое присутствие зубов, посылающее по спине мурашки.")
+	)
+
+	return height_picker(user1, user2, height_dependent_messages)

@@ -6,6 +6,8 @@
 		list(POS_SITTING, POS_STANDING),
 		list(POS_STANDING, POS_SITTING)
 	)
+	sbp = SBP_FACE
+	needs_access = SBP_FACE
 	base_pleasure = list(1, 1)
 
 /datum/erp_action/passionate_look/get_messages(user1, user2)

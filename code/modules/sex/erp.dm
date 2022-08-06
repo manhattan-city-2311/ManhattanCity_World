@@ -75,7 +75,9 @@
 			height_msg = "очень высокого"
 
 	var/body_build_msg
-	switch(weight / ((height / 100.0) ** 2))
+	switch(weight / (((height / 100.0) ** 2) || -1))
+		if(-INFINITY to 0)
+			body_build_msg = "стройного"
 		if(0 to 16)
 			body_build_msg = "скелетного"
 		if(16 to 18.5)
@@ -94,7 +96,7 @@
 	if(gender == FEMALE)
 		. = "Это "
 		. += age > 35 ? "женщина" : "девушка"
-		. += ", не старше [round(age, 5)], она [height_msg] роста, [body_build_msg] телосложения. "
+		. += ", не старше [round(age, 5)], [height_msg] роста, [body_build_msg] телосложения. "
 		if(SBP_BREASTS in sbps)
 			. += "У неё "
 			var/datum/bodypart/breasts/B = sbps[SBP_BREASTS]
@@ -124,7 +126,7 @@
 	else
 		. = "Это "
 		. += age > 35 ? "мужчина" : "парень"
-		. += ", не старше [round(age, 5)] лет, он [height_msg] роста, [body_build_msg] телосложения. "
+		. += ", не старше [round(age, 5)] лет, [height_msg] роста, [body_build_msg] телосложения. "
 		var/datum/bodypart/penis/P = sbps[SBP_PENIS]
 		if(!P.is_covered())
 			. += "Его член "
