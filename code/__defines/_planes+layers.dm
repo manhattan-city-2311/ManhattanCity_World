@@ -64,6 +64,7 @@ What is the naming convention for planes or layers?
 #define DECAL_PLANE				-44 // Permanent decals
 #define DIRTY_PLANE				-43 // Nonpermanent decals
 #define BLOOD_PLANE				-42 // Blood is really dirty, but we can do special stuff if we separate it
+#define NEON_DECALS_PLANE -41
 // Obj planes
 #define OBJ_PLANE				-35
 	#define STAIRS_LAYER			2.5 // Layer for stairs
@@ -83,6 +84,7 @@ What is the naming convention for planes or layers?
 
 // Mob planes
 	#define ABOVE_MOB_PLANE			-15
+	#define LIGHTING_OBJS_PLANE		-14
 	#define MOB_PLANE				-25
 	#define UNDER_MOB_PLANE			-35
 	#define BELOW_MOB_LAYER			3.9 // Should be converted to plane swaps

@@ -55,6 +55,8 @@ var/list/flooring_types
 	var/floor_color
 	var/applies_material_color = FALSE
 
+	var/pathweight = 10
+
 /decl/flooring/grass
 	name = "grass"
 	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
@@ -522,6 +524,7 @@ var/list/flooring_types
 		'sound/effects/footstep/pavement2.ogg',
 		'sound/effects/footstep/pavement3.ogg',
 		'sound/effects/footstep/pavement4.ogg'))
+	pathweight = 3
 
 /decl/flooring/pavementt
 	name = "pavement"
@@ -533,6 +536,7 @@ var/list/flooring_types
 		'sound/effects/footstep/pavement2.ogg',
 		'sound/effects/footstep/pavement3.ogg',
 		'sound/effects/footstep/pavement4.ogg'))
+	pathweight = 3
 
 /decl/flooring/pavement/corner
 	icon_base = "pave_corner"
@@ -566,6 +570,7 @@ var/list/flooring_types
 		'sound/effects/footstep/pavement2.ogg',
 		'sound/effects/footstep/pavement3.ogg',
 		'sound/effects/footstep/pavement4.ogg'))
+	pathweight = 5
 
 /decl/flooring/road/empty
 	icon_base = "road_empty"
@@ -575,6 +580,7 @@ var/list/flooring_types
 
 /decl/flooring/road/markings
 	icon_base = "road_marking"
+	pathweight = 4
 
 /decl/flooring/road/garage
 	icon_base = "garage"
@@ -590,6 +596,7 @@ var/list/flooring_types
 
 /decl/flooring/road/stripe
 	icon_base = "road_stripe"
+	pathweight = 4
 
 
 /decl/flooring/bluegeo

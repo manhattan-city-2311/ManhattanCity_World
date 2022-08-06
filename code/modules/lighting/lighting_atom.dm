@@ -9,19 +9,19 @@
 // Nonsensical value for l_color default, so we can detect if it gets set to null.
 #define NONSENSICAL_VALUE -99999
 /atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE)
-	. = 0 //make it less costly if nothing's changed
+	. = FALSE //make it less costly if nothing's changed
 
 	if(l_power != null && l_power != light_power)
 		light_power = l_power
-		. = 1
+		. = TRUE
 	if(l_range != null && l_range != light_range)
 		light_range = l_range
-		. = 1
+		. = TRUE
 	if(l_color != NONSENSICAL_VALUE && l_color != light_color)
 		light_color = l_color
-		. = 1
-
-	if(.) update_light()
+		. = TRUE
+	if(.)
+		update_light()
 
 #undef NONSENSICAL_VALUE
 

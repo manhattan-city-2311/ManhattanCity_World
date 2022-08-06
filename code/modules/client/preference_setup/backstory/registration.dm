@@ -9,6 +9,7 @@
 	S["birth_month"]			>> pref.birth_month
 	S["birth_year"]				>> pref.birth_year
 	S["height"]					>> pref.height
+	S["weight"]					>> pref.weight
 
 /datum/category_item/player_setup_item/registration/save_character(savefile/S)
 	S["records"] 				<< pref.records
@@ -17,6 +18,7 @@
 	S["birth_month"]			<< pref.birth_month
 	S["birth_year"]				<< pref.birth_year
 	S["height"]					<< pref.height
+	S["weight"]					<< pref.weight
 
 /datum/category_item/player_setup_item/registration/delete_character(savefile/S)
 	pref.records = global.records_blank
@@ -104,7 +106,11 @@
 			pref.birth_year  = text2num(dates[3])
 			pref.age 		 = global.game_year - pref.birth_year
 		else if(ID == RECORD_HEIGHT)
-			pref.height = text2num(nr)
+			pref.height = clamp(text2num(nr), 150, 200)
+			nr = "[pref.height]"
+		else if(ID == RECORD_WEIGHT)
+			pref.weight = clamp(text2num(nr), 40, 120)
+			nr = "[pref.weight]"
 
 		pref.records[ID] = nr
 

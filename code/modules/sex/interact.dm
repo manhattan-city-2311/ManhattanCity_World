@@ -5,5 +5,7 @@
 	var/mob/living/carbon/human/user = usr
 
 	user.initialize_erp(src)
+	initialize_erp(user)
+
 	show_erp_panel()
 	user.show_erp_panel()

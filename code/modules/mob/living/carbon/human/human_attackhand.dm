@@ -76,7 +76,7 @@
 				return
 
 			apply_damage(damage, HALLOSS, affecting, armor_block, armor_soak)
-			on_attack()
+			on_attack(H)
 			if(damage >= 9)
 				visible_message(SPAN_DANGER("<B>[H] has weakened [src]!</B>"))
 				apply_effect(4, WEAKEN, armor_block)

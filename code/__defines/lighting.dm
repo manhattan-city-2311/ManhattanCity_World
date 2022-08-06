@@ -79,6 +79,7 @@
 #define LIGHT_COLOR_NEONLIGHTBLUE "#83EEFF"
 #define LIGHT_COLOR_NEONBLUE   "#4D4DFF"
 #define LIGHT_COLOR_NEONDARKBLUE "#000370"
+#define LIGHT_COLOR_NEONORANGE "#FF5733"
 
 //These ones aren't a direct colour like the ones above, because nothing would fit
 #define LIGHT_COLOR_FIRE       "#FAA019" //Warm orange color, leaning strongly towards yellow. rgb(250, 160, 25)
@@ -94,5 +95,7 @@
 #define LIGHT_COLOR_INCANDESCENT_BULB "#FFDDBB"
 #define LIGHT_COLOR_INCANDESCENT_FLASHLIGHT "#FFCC66"
 
-//
 #define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-3, size=4, color="#04080FAA")
+
+#define LIGHTING_BLOOM filter(type="bloom", size = 6, threshold = "#DDDDDD", offset = 8, alpha = 80)
+#define NEON_DECALS_BLOOM filter(type="bloom", size = 6, threshold = "#000000", offset = 8, alpha = 80)

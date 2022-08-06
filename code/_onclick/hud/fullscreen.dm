@@ -114,6 +114,7 @@
 	icon = 'icons/mob/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "druggy"
+	should_be_scaled = FALSE
 
 /obj/screen/fullscreen/noise
 	icon = 'icons/effects/static.dmi'

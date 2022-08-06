@@ -25,7 +25,7 @@
 			if(T && T.z == turf_source.z)
 				M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, is_global, channel, pressure_affected, S)
 
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, channel = 0, pressure_affected = TRUE, sound/S, preference)
+/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, channel = 0, pressure_affected = FALSE, sound/S, preference)
 	if(!client || ear_deaf > 0)
 		return
 	if(preference && !client.is_preference_enabled(preference))
@@ -52,32 +52,13 @@
 
 		S.volume -= max(distance - 8, 0) * 2 //multiplicative falloff to add on top of natural audio falloff.
 
-		//Atmosphere affects sound
-		var/pressure_factor = 1
-		if(pressure_affected)
-			var/datum/gas_mixture/hearer_env = T.return_air()
-			var/datum/gas_mixture/source_env = turf_source.return_air()
-
-			if(hearer_env && source_env)
-				var/pressure = min(hearer_env.return_pressure(), source_env.return_pressure())
-				if(pressure < ONE_ATMOSPHERE)
-					pressure_factor = max((pressure - SOUND_MINIMUM_PRESSURE)/(ONE_ATMOSPHERE - SOUND_MINIMUM_PRESSURE), 0)
-			else //space
-				pressure_factor = 0
-
-			if(distance <= 1)
-				pressure_factor = max(pressure_factor, 0.15) //touching the source of the sound
-
-			S.volume *= pressure_factor
-			//End Atmosphere affecting sound
-
 		//Don't bother with doing anything below.
 		if(S.volume <= 0)
 			return //No sound
 
 		//Apply a sound environment.
 		if(!is_global)
-			S.environment = get_sound_env(pressure_factor)
+			S.environment = get_sound_env(1)
 
 		var/dx = turf_source.x - T.x // Hearing from the right/left
 		S.x = dx
