@@ -16,10 +16,6 @@ datum/preferences/proc/set_biological_gender(var/gender)
 //	S["name_is_always_random"]	>> pref.be_random_name
 	S["gender"]				>> pref.biological_gender
 	S["id_gender"]				>> pref.identifying_gender
-	S["age"]					>> pref.age
-	S["birth_day"]				>> pref.birth_day
-	S["birth_month"]			>> pref.birth_month
-	S["birth_year"]			>> pref.birth_year
 	S["spawnpoint"]			>> pref.spawnpoint
 	S["OOC_Notes"]				>> pref.metadata
 	S["email"]				>> pref.email
@@ -36,10 +32,6 @@ datum/preferences/proc/set_biological_gender(var/gender)
 //	S["name_is_always_random"]	<< pref.be_random_name
 	S["gender"]				<< pref.biological_gender
 	S["id_gender"]				<< pref.identifying_gender
-	S["age"]					<< pref.age
-	S["birth_day"]				<< pref.birth_day
-	S["birth_month"]			<< pref.birth_month
-	S["birth_year"]			<< pref.birth_year
 	S["spawnpoint"]			<< pref.spawnpoint
 	S["OOC_Notes"]				<< pref.metadata
 	S["email"]				<< pref.email
@@ -125,17 +117,12 @@ datum/preferences/proc/set_biological_gender(var/gender)
 
 	character.gender = pref.biological_gender
 	character.identifying_gender = pref.identifying_gender
-	character.age = pref.age
-	character.birth_year = pref.birth_year
-	character.birth_month = pref.birth_month
 
 F
 
 /datum/category_item/player_setup_item/general/basic/content()
 	. = list()
 	. += "<h1>Основное:</h1><hr>"
-	if(!pref.existing_character)
-		. += "Установите здесь общие сведения о вашем персонаже. После того, как ваше имя, возраст и пол установлены, <b>вы не можете изменить их снова.</b> Ваш псевдоним и языки можно изменить, однако вы автоматически состаритесь.<br><br>"
 	. += "<b>Имя:</b><br>"
 	if(!pref.existing_character)
 		. += "<a href='?src=\ref[src];rename=1'><b>[pref.real_name]</b></a><br>"
@@ -149,28 +136,8 @@ F
 	else
 		. += "[gender2text(pref.biological_gender)]<br>"
 
-	. += "<b>Возраст:</b><br>"
-	. += "<a href='?src=\ref[src];age=1'>[pref.age] ([age2agedescription(pref.age)])</a><br><br>"
-
-	. += "<b>Почтовый адрес:</b><br>"
-
-	if(!pref.existing_character)
-		. += "Почта: <a href='?src=\ref[src];email_domain=1'>[pref.email]</a><br><br>"
-	else
-		. += "Логин: [pref.email]<br>Пароль: [SSemails.get_persistent_email_password(pref.email)] <br><br>"
-
 	if(pref.existing_character)
 		. += "<b>Уникальное ИД:</b> [pref.unique_id]<br>"
-
-
-	. += "<b>Дата рождения:</b><br>"
-
-	if(!pref.existing_character)
-		. += "<a href='?src=\ref[src];birth_day=1'>[pref.birth_day]</a>/"
-		. += "<a href='?src=\ref[src];birth_month=1'>[pref.birth_month]</a>/"
-		. += "[pref.birth_year]<br><br>"
-	else
-		. += "[pref.birth_day]/[pref.birth_month]/[pref.birth_year]<br><br>"
 
 	. += "<b>Точка захода</b>:<br> <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
 	. += "<b>Тихое прибытие</b>:<br> <a href='?src=\ref[src];silent_join=1'>[(pref.silent_join) ? "Yes" : "No"]</a><br>"
@@ -233,81 +200,6 @@ F
 		if(new_gender && CanUseTopic(user))
 			pref.identifying_gender = new_gender
 		return TOPIC_REFRESH
-
-	else if(href_list["age"])
-		var/min_age = get_min_age()
-		var/max_age = get_max_age()
-		var/new_age = input(user, "Выберите возраст вашего персонажа:\n([min_age]-[max_age])", "Character Preference", pref.age) as num|null
-		if(new_age && CanUseTopic(user))
-			pref.age = max(min(round(text2num(new_age)), max_age), min_age)
-			adjust_year()
-			return TOPIC_REFRESH
-
-
-	else if(href_list["email_domain"])
-		var/list/domains = using_map.usable_email_tlds
-		var/prefix = input(user, "Выберите имя пользователя почты вашего персонажа.", "Email Username")  as text|null
-		if(!prefix)
-			return
-
-		var/domain = input(user, "Выберите домен вашей почты?", "Email Provider") as null|anything in domains
-		if(!domain)
-			return
-
-		var/full_email = "[prefix]@[domain]"
-
-		if(full_email && SSemails.check_persistent_email(full_email))
-			alert(user, "Эта почта уже существует.")
-			return
-
-		if(full_email && !SSemails.check_persistent_email(pref.email))
-			SSemails.new_persistent_email(full_email)
-
-
-		fcopy("data/persistent/emails/[pref.email].sav","data/persistent/emails/[full_email].sav")
-		fdel("data/persistent/emails/[pref.email].sav")
-		SSemails.change_persistent_email_address(pref.email, full_email)
-
-		pref.email = "[prefix]@[domain]"
-
-
-		return TOPIC_REFRESH
-
-
-	else if(href_list["birth_day"])
-		var/min_day = 1
-		var/max_day
-
-		if(pref.birth_month in THIRTY_ONE_DAY_MONTHS) //Please don't look, I have shame.
-			max_day = 31
-
-		if(pref.birth_month in THIRTY_DAY_MONTHS)
-			max_day = 30
-
-		if(pref.birth_month in TWENTY_EIGHT_DAY_MONTHS)
-			max_day = 28
-
-		var/new_day = input(user, "Выберите день рождения вашего персонажа:\n([min_day]-[max_day])", "Character Preference", pref.birth_day) as num|null
-		if(new_day && CanUseTopic(user))
-			pref.birth_day = max(min(round(text2num(new_day)), max_day), min_day)
-			adjust_year()
-			return TOPIC_REFRESH
-
-	else if(href_list["birth_month"])
-		var/month_min = 1
-		var/month_max = 12
-
-		var/new_month = input(user, "Выберите месяц рождения вашего персонажа:\n([month_min]-[month_max])", "Character Preference", pref.birth_month) as num|null
-		if(new_month && CanUseTopic(user))
-			pref.birth_month = max(min(round(text2num(new_month)), month_max), month_min)
-			if(pref.birth_month in THIRTY_DAY_MONTHS)
-				if(pref.birth_day > 30)
-					pref.birth_day = 30
-			if(pref.birth_month in TWENTY_EIGHT_DAY_MONTHS)
-				if(pref.birth_day > 28)
-					pref.birth_day = 28
-			adjust_year()
-			return TOPIC_REFRESH
 
 	else if(href_list["spawnpoint"])
 		var/list/spawnkeys = list()

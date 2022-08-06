@@ -3,8 +3,6 @@
 	set name = "Who"
 	set category = "OOC"
 
-	var/msg = "<b>Current Players:</b>\n"
-
 	var/list/Lines = list()
 
 	if(holder && (R_ADMIN & holder.rights || R_MOD & holder.rights))
@@ -50,15 +48,22 @@
 
 			entry += " (<A HREF='?_src_=holder;adminmoreinfo=\ref[C.mob]'>?</A>)"
 			Lines += entry
+/*
 	else
 		for(var/client/C in GLOB.clients)
 			if(C.holder && C.holder.fakekey)
 				Lines += C.holder.fakekey
 			else
 				Lines += C.key
+*/
 
-	for(var/line in sortList(Lines))
-		msg += "[line]\n"
+	var/msg
+
+	if(Lines.len)
+		msg = "<b>Current Players:</b>\n"
+
+		for(var/line in sortList(Lines))
+			msg += "[line]\n"
 
 	msg += "<b>Total Players: [length(Lines)]</b>"
 

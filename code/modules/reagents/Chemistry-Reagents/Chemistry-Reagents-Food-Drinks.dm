@@ -314,7 +314,7 @@
 	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
 	if(prob(1))
 		M.emote("shiver")
-	holder.remove_reagent("capsaicin", 5)
+	holder.remove_reagent("capsaicin", 30)
 
 /datum/reagent/frostoil/cryotoxin //A longer lasting version of frost oil.
 	name = "Cryotoxin"
@@ -438,7 +438,7 @@
 		M.apply_effect(4, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	holder.remove_reagent("frostoil", 5)
+	holder.remove_reagent("frostoil", 30)
 
 /* Drinks */
 
@@ -461,7 +461,7 @@
 	tax_type = DRINKS_TAX
 
 /datum/reagent/drink/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.adjustToxLoss(removed) // Probably not a good idea; not very deadly though
+	M.add_chemical_effect(CE_REGENERATION, 1)
 	return
 
 /datum/reagent/drink/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -588,7 +588,7 @@
 	..()
 	if(alien == IS_DIONA)
 		return
-	M.adjustToxLoss(-0.5 * removed)
+	M.add_chemical_effect(CE_REGENERATION, 1)
 
 /datum/reagent/drink/juice/orange
 	name = "Orange juice"
@@ -604,7 +604,7 @@
 	..()
 	if(alien == IS_DIONA)
 		return
-	M.adjustOxyLoss(-2 * removed)
+	M.add_chemical_effect(CE_REGENERATION, 1)
 
 /datum/reagent/toxin/poisonberryjuice // It has more in common with toxins than drinks... but it's a juice
 	name = "Poison Berry Juice"
@@ -746,7 +746,7 @@
 	..()
 	if(alien == IS_DIONA)
 		return
-	M.adjustToxLoss(-0.5 * removed)
+	M.add_chemical_effect(CE_REGENERATION, 1)
 
 /datum/reagent/drink/tea/icetea
 	name = "Iced Tea"
@@ -840,7 +840,7 @@
 	adj_drowsy = -3
 	adj_sleepy = -2
 	adj_temp = 25
-	overdose = 45
+	overdose = 180
 	calories_factor = 1
 	cup_icon_state = "cup_coffee"
 	cup_name = "cup of coffee"
@@ -854,27 +854,24 @@
 	if(alien == IS_DIONA)
 		return
 	..()
-	if(alien == IS_TAJARA)
-		M.adjustToxLoss(0.5 * removed)
-		M.make_jittery(4) //extra sensitive to caffine
 	if(adj_temp > 0)
-		holder.remove_reagent("frostoil", 10 * removed)
-
-/datum/reagent/nutriment/coffee/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	..()
-	if(alien == IS_TAJARA)
-		M.adjustToxLoss(2 * removed)
-		M.make_jittery(4)
-		return
+		holder.remove_reagent("frostoil", 60 * removed)
 
 /datum/reagent/drink/coffee/overdose(var/mob/living/carbon/M, var/alien)
 	if(alien == IS_DIONA)
 		return
-	if(alien == IS_TAJARA)
-		M.adjustToxLoss(4 * REM)
-		M.apply_effect(3, STUTTER)
 	M.make_jittery(5)
 
+/datum/reagent/drink/coffee/chicory
+	name = "Chicory"
+	id = "chicory"
+	description = "Chicory is a brewed drink prepared from roasted roots of the chicory plant."
+	taste_description = "fine coffee"
+	calories_factor = 4
+	cup_name = "cup of chicory"
+
+	glass_name = "cup of chicory"
+	price_tag = 1.2
 
 /datum/reagent/drink/coffee/decafcoffee
 	name = "Decaffeinated Coffee"
@@ -1193,8 +1190,7 @@
 /datum/reagent/drink/soda/nuka_cola/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 //	M.add_chemical_effect(CE_SPEEDBOOST, 1)
-	var/adjust_tox = rand(-4, 2)
-	M.adjustToxLoss(adjust_tox * removed)
+	M.add_chemical_effect(CE_REGENERATION, 1)
 	M.make_jittery(20)
 	M.druggy = max(M.druggy, 30)
 	M.dizziness += 5
@@ -1354,9 +1350,7 @@
 	..()
 	if(alien == IS_DIONA)
 		return
-	M.adjustOxyLoss(-4 * removed)
-	M.heal_organ_damage(2 * removed, 2 * removed)
-	M.adjustToxLoss(-2 * removed)
+	M.add_chemical_effect(CE_REGENERATION, 3)
 	if(M.dizziness)
 		M.dizziness = max(0, M.dizziness - 15)
 	if(M.confused)
@@ -1573,7 +1567,7 @@
 
 //Base type for alchoholic drinks containing coffee
 /datum/reagent/ethanol/coffee
-	overdose = 45
+	overdose = 180
 
 /datum/reagent/ethanol/coffee/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -1584,23 +1578,11 @@
 	M.sleeping = max(0, M.sleeping - 2)
 	if(M.bodytemperature > 310)
 		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
-	if(alien == IS_TAJARA)
-		M.adjustToxLoss(0.5 * removed)
-		M.make_jittery(4) //extra sensitive to caffine
 
-/datum/reagent/ethanol/coffee/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien == IS_TAJARA)
-		M.adjustToxLoss(2 * removed)
-		M.make_jittery(4)
-		return
-	..()
 
 /datum/reagent/ethanol/coffee/overdose(var/mob/living/carbon/M, var/alien)
 	if(alien == IS_DIONA)
 		return
-	if(alien == IS_TAJARA)
-		M.adjustToxLoss(4 * REM)
-		M.apply_effect(3, STUTTER)
 	M.make_jittery(5)
 
 /datum/reagent/ethanol/coffee/kahlua
@@ -2819,7 +2801,7 @@
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_VOX)
-		M.adjustToxLoss(-0.5 * removed)
+		M.add_chemical_effect(CE_REGENERATION, 1)
 		return
 	M.adjustToxLoss(3 * removed)
 
@@ -3199,6 +3181,12 @@
 	nutriment_factor = 1
 	color = "#482000"
 	price_tag = 0.2
+/datum/reagent/nutriment/coffee/chicory
+	name = "Chicory Powder"
+	id = "chicorypowder"
+	description = "A bitter powder made by grinding chicory roots."
+	nutriment_factor = 3
+	price_tag = 1.2
 /datum/reagent/nutriment/tea
 	name = "Tea Powder"
 	id = "teapowder"

@@ -34,7 +34,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["eyes_green"]			>> pref.g_eyes
 	S["eyes_blue"]			>> pref.b_eyes
 	S["b_type"]			>> pref.b_type
-	S["weight"]			>> pref.weight
 	S["calories"]			>> pref.calories
 	S["hydration"]			>> pref.hydration
 	S["nutrition"]			>> pref.nutrition
@@ -70,7 +69,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["eyes_green"]			<< pref.g_eyes
 	S["eyes_blue"]			<< pref.b_eyes
 	S["b_type"]			<< pref.b_type
-	S["weight"]			<< pref.weight
 	S["calories"]			<< pref.calories
 	S["hydration"]			<< pref.hydration
 	S["nutrition"]			<< pref.nutrition
@@ -233,8 +231,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	var/mob_species = all_species[pref.species]
 	. += "<h1>Физическое состояние:</h1><hr>"
-	if(!pref.existing_character)
-		. += "Установите внешний вид вашего персонажа. Как только это будет сделано, вы не сможете отменить это. Вы можете изменить внешний вид своего персонажа в игре..<br><br>"
 	. += "<table><tr style='vertical-align:top'><td>"
 	if(!pref.existing_character)
 		. += "<b>Тело:</b> "

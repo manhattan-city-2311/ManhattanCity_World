@@ -50,14 +50,6 @@
 			id_with_download += text2num(N)
 
 /obj/machinery/r_n_d/server/process()
-	var/datum/gas_mixture/environment = loc.return_air()
-	switch(environment.temperature)
-		if(0 to T0C)
-			health = min(100, health + 1)
-		if(T0C to (T20C + 20))
-			health = between(0, health, 100)
-		if((T20C + 20) to (T0C + 70))
-			health = max(0, health - 1)
 	if(health <= 0)
 		griefProtection() //I dont like putting this in process() but it's the best I can do without re-writing a chunk of rd servers.
 		files.known_designs = list()
@@ -68,7 +60,6 @@
 	if(delay)
 		delay--
 	else
-		produce_heat()
 		delay = initial(delay)
 
 /obj/machinery/r_n_d/server/emp_act(severity)
@@ -87,29 +78,6 @@
 		for(var/datum/design/D in files.known_designs)
 			C.files.AddDesign2Known(D)
 		C.files.RefreshResearch()
-
-/obj/machinery/r_n_d/server/proc/produce_heat()
-	if(!produces_heat)
-		return
-
-	if(!use_power)
-		return
-
-	if(!(stat & (NOPOWER|BROKEN))) //Blatently stolen from telecoms
-		var/turf/simulated/L = loc
-		if(istype(L))
-			var/datum/gas_mixture/env = L.return_air()
-
-			var/transfer_moles = 0.25 * env.total_moles
-
-			var/datum/gas_mixture/removed = env.remove(transfer_moles)
-
-			if(removed)
-				var/heat_produced = idle_power_usage	//obviously can't produce more heat than the machine draws from it's power source
-
-				removed.add_thermal_energy(heat_produced)
-
-			env.merge(removed)
 
 /obj/machinery/r_n_d/server/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))

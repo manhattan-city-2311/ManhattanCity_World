@@ -4,9 +4,14 @@
 	sort_order = 1
 	category_item_type = /datum/category_item/player_setup_item/general
 
+/datum/category_group/player_setup_category/registration
+	name = "Регистрационные данные"
+	sort_order = 2
+	category_item_type = /datum/category_item/player_setup_item/registration
+
 /datum/category_group/player_setup_category/skill_preferences
 	name = "Умения"
-	sort_order = 2
+	sort_order = 3
 	category_item_type = /datum/category_item/player_setup_item/skills
 
 /*

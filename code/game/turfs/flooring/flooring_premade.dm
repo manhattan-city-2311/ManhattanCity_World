@@ -130,7 +130,7 @@
 	initial_flooring = /decl/flooring/tiling/new_tile/techmaint
 
 /turf/simulated/floor/tiled/techmaint/outdoors
-	outdoors = 1
+
 
 /turf/simulated/floor/tiled/monofloor
 	name = "floor"

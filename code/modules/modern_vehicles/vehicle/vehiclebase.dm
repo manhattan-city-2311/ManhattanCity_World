@@ -10,8 +10,7 @@
 	var/headlights = FALSE //on-off
 
 	appearance_flags = DEFAULT_APPEARANCE_UNBOUND
-
-	step_size = 128 // allows speed over 400 km/h
+	step_size = 128
 
 	var/active = 1
 	var/guns_disabled = 0

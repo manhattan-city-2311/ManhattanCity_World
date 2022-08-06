@@ -172,6 +172,6 @@
 	for(var/mob/M in player_list) // Don't need to care about clientless mobs.
 		if(M.z in our_planet.expected_z_levels)
 			var/turf/T = get_turf(M)
-			if(!T.outdoors)
+			if(!get_area(T).outdoors)
 				continue
 			to_chat(M, message)

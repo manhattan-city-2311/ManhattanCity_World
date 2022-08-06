@@ -17,7 +17,6 @@ var/list/mining_overlay_cache = list()
 	density = 1
 	blocks_air = 1
 //	temperature = T0C
-	outdoors = 1
 
 	var/ore/mineral
 	var/sand_dug

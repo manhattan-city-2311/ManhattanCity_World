@@ -213,8 +213,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/enable_debug_verbs,
 	/client/proc/callproc,
 	/client/proc/callproc_datum,
-	/client/proc/SDQL_query,
-	/client/proc/SDQL2_query,
+//	/client/proc/SDQL_query,
+//	/client/proc/SDQL2_query,
 	/client/proc/Jump,
 	/client/proc/jumptomob,
 	/client/proc/jumptocoord,
@@ -1133,7 +1133,7 @@ var/list/admin_verbs_event_manager = list(
 		if("Change")
 			var/file = input(usr) as icon|null
 
-			if(!file) 
+			if(!file)
 				return
 
 			change_lobbyscreen(file)

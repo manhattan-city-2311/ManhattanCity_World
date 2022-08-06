@@ -33,6 +33,7 @@
 	set invisibility = 0
 	set background = BACKGROUND_ENABLED
 	handle_medicine()
+	handle_erp()
 
 	if (transforming)
 		return

@@ -293,7 +293,7 @@ var/datum/planet/pollux/planet_pollux = null
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
-			if(!T.outdoors)
+			if(!get_area(T).outdoors)
 				continue // They're indoors, so no need to rain on them.
 
 /*			// If they have an open umbrella, it'll guard from rain
@@ -346,7 +346,7 @@ var/datum/planet/pollux/planet_pollux = null
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
-			if(!T.outdoors)
+			if(!get_area(T).outdoors)
 				continue // They're indoors, so no need to rain on them.
 
 			// Lazy wind code
@@ -452,7 +452,7 @@ var/datum/planet/pollux/planet_pollux = null
 	for(var/mob/living/carbon/human/H in living_mob_list)
 		if(H.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(H)
-			if(!T.outdoors)
+			if(!get_area(T).outdoors)
 				continue // They're indoors, so no need to pelt them with ice.
 /*
 			// If they have an open umbrella, it'll guard from rain
@@ -511,7 +511,7 @@ var/datum/planet/pollux/planet_pollux = null
 		var/mob/living/L = thing
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
-			if(!T.outdoors)
+			if(!get_area(T).outdoors)
 				continue // They're indoors, so no need to burn them with ash.
 			if(prob(1))
 				L.fire_act(3)
@@ -542,7 +542,7 @@ var/datum/planet/pollux/planet_pollux = null
 		var/mob/living/L = thing
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
-			if(!T.outdoors)
+			if(!get_area(T).outdoors)
 				continue // They're indoors, so no need to burn them with ash.
 
 			L.inflict_heat_damage(rand(1, 3))
@@ -585,7 +585,7 @@ var/datum/planet/pollux/planet_pollux = null
 		if(L.z in holder.our_planet.expected_z_levels)
 			irradiate_nearby_turf(L)
 			var/turf/T = get_turf(L)
-			if(!T.outdoors)
+			if(!get_area(T).outdoors)
 				continue // They're indoors, so no need to irradiate them with fallout.
 
 			L.rad_act(rand(direct_rad_low, direct_rad_high))
@@ -599,7 +599,7 @@ var/datum/planet/pollux/planet_pollux = null
 	var/turf/T = pick(turfs) // We get one try per tick.
 	if(!istype(T))
 		return
-	if(T.outdoors)
+	if(get_area(T).outdoors)
 		SSradiation.radiate(T, rand(fallout_rad_low, fallout_rad_high))
 
 /datum/weather/pollux/acid_rain
@@ -626,7 +626,7 @@ var/datum/planet/pollux/planet_pollux = null
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
-			if(!T.outdoors)
+			if(!get_area(T).outdoors)
 				continue // They're indoors, so no need to rain on them.
 
 /*			// If they have an open umbrella, it'll guard from rain
@@ -705,7 +705,7 @@ var/datum/planet/pollux/planet_pollux = null
 			if(prob(50))
 				var/list/turfs_around = list()
 				for(var/turf/T in orange(7, L))
-					if(T.outdoors)
+					if(get_area(T).outdoors)
 						turfs_around += T
 					else
 						continue
@@ -754,7 +754,7 @@ var/datum/planet/pollux/planet_pollux = null
 			if(prob(65))
 				var/list/turfs_around = list()
 				for(var/turf/T in orange(3, L))//They are spawning closer
-					if(T.outdoors)
+					if(get_area(T).outdoors)
 						turfs_around += T
 					else
 						continue

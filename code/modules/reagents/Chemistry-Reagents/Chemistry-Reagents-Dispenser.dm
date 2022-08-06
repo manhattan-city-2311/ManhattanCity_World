@@ -65,7 +65,8 @@
 	reagent_state = LIQUID
 	color = "#404030"
 
-	ingest_met = REM
+	metabolism = REM * 5
+	ingest_met = REM * 5
 
 	var/nutriment_factor = 0
 	var/strength = 10 // This is, essentially, units between stages - the lower, the stronger. Less fine tuning, more clarity.
@@ -90,15 +91,7 @@
 
 /datum/reagent/ethanol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed) //This used to do just toxin. That's boring. Let's make this FUN.
 	if(issmall(M)) removed *= 2
-	var/strength_mod = 3 //Alcohol is 3x stronger when injected into the veins.
-	if(alien == IS_SKRELL)
-		strength_mod *= 5
-	if(alien == IS_TAJARA)
-		strength_mod *= 1.25
-	if(alien == IS_UNATHI)
-		strength_mod *= 0.75
-	if(alien == IS_DIONA)
-		strength_mod = 0
+	var/strength_mod = 0.3 //Alcohol is 3x stronger when injected into the veins.
 
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 
@@ -134,15 +127,7 @@
 	M.adjust_nutrition(nutriment_factor * removed)
 	M.adjust_hydration(hydration_factor * removed)
 	M.adjust_calories(calories_factor * removed)
-	var/strength_mod = 1
-	if(alien == IS_SKRELL)
-		strength_mod *= 5
-	if(alien == IS_TAJARA)
-		strength_mod *= 1.25
-	if(alien == IS_UNATHI)
-		strength_mod *= 0.75
-	if(alien == IS_DIONA)
-		strength_mod = 0
+	var/strength_mod = 0.1
 
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 

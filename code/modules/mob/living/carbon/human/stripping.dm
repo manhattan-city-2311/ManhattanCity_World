@@ -4,16 +4,13 @@
 		return
 
 	if(user.incapacitated()  || !user.Adjacent(src))
-		user << browse(null, text("window=mob[src.name]"))
-		return
+		show_browser(user, null, "window=mob[src.name]")
+		return TRUE
 
 	if(isLivingSSD(src))
 		if(user.client && !user.client.can_harm_ssds() && !isAntag(user))
 			to_chat(user, "<span class='warning'>AdminHelp (F1) to get permission before stripping players who are suffering from Space Sleep Disorder / disconnected from the game. Read the server rules for more details.</span>")
 			return
-
-
-	var/obj/item/target_slot = get_equipped_item(text2num(slot_to_strip))
 
 	switch(slot_to_strip)
 		// Handle things that are part of this interface but not removing/replacing a given item.
@@ -61,9 +58,18 @@
 			suit.accessories -= A
 			update_inv_w_uniform()
 			return
+		else
+			var/obj/item/located_item = locate(slot_to_strip) in src
+			if(isunderwear(located_item))
+				var/obj/item/underwear/UW = located_item
+				if(UW.DelayedRemoveUnderwear(user, src))
+					user.put_in_active_hand(UW)
+				return
+
+	var/obj/item/target_slot = get_equipped_item(text2num(slot_to_strip))
 
 	// Are we placing or stripping?
-	var/stripping
+	var/stripping = FALSE
 	var/obj/item/held = user.get_active_hand()
 	if(!istype(held) || is_robot_module(held))
 		if(!istype(target_slot))  // They aren't holding anything valid and there's nothing to remove, why are we even here?
@@ -71,7 +77,7 @@
 		if(!target_slot.canremove)
 			to_chat(user, "<span class='warning'>You cannot remove \the [src]'s [target_slot.name].</span>")
 			return
-		stripping = 1
+		stripping = TRUE
 
 	if(stripping)
 		visible_message("<span class='danger'>\The [user] is trying to remove \the [src]'s [target_slot.name]!</span>")
