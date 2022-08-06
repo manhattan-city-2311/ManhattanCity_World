@@ -6,9 +6,9 @@
 	name = "Oily Oaf Brew"
 	id = "oaf"
 	description = "Alcohol in more alcohol."
-	taste_description = "rich, buttery aftertaste"
+	taste_description = "rich, buttery beer"
 	color = "#c28800"
-	strength = 50
+	strength = 40
 	nutriment_factor = 2
 	glass_icon_state = "oaf"
 
@@ -39,8 +39,8 @@
 	if(alien == IS_DIONA)
 		return
 	..()
-	M.drowsyness = max(0, M.drowsyness - 8)
-	M.sleeping = max(0, M.sleeping - 8)
+	M.drowsyness = max(0, M.drowsyness - 5)
+	M.sleeping = max(0, M.sleeping - 5)
 
 /datum/chemical_reaction/drinks/slammer
 	name = "Glyphid Slammer"
@@ -54,19 +54,21 @@
 	id = "leaf"
 	description = "Alcohol in more alcohol."
 	taste_description = "fresh mint"
-	color = "#c28800"
-	strength = 100
+	color = "#dbc286"
+	strength = 500 //чел ты не пивас
 	nutriment_factor = 1
 	glass_icon_state = "leaf"
 
 	glass_name = "Leaf Lover's Special"
 	glass_desc = "The Leaf Lover is on this chart entirely to please Management. It'll kill your buzz faster than a pay cut, and leave you with the same empty feeling in your gut. Still, it can be handy on Inspection Day - just don't let anyone know you had one."
 
-/datum/reagent/ethanol/slammer/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/ethanol/leaf/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
 	..()
-	M.dizziness = max(0, M.dizziness - 10)
+	M.dizziness = max(0, M.dizziness - 3)
+	M.drowsyness = max(0, M.drowsyness - 3)
+	M.slurring = max(0, M.slurring - 3)
 
 /datum/chemical_reaction/drinks/leaf
 	name = "Leaf Lover's Special"
@@ -81,7 +83,7 @@
 	description = "Alcohol in more alcohol."
 	taste_description = "chilly chill"
 	color = "#c28800"
-	strength = 45
+	strength = 35
 	nutriment_factor = 2
 	glass_icon_state = "arkenstout"
 
@@ -92,10 +94,10 @@
 	if(alien == IS_DIONA)
 		return
 	..()
-	M.bodytemperature = max(M.bodytemperature - 15 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
+	M.bodytemperature = max(M.bodytemperature - 2 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
 	if(prob(3))
 		M.emote("shiver")
-	holder.remove_reagent("capsaicin", 30)
+	holder.remove_reagent("capsaicin", 5)
 
 /datum/chemical_reaction/drinks/arkenstout
 	name = "Arkenstout"
@@ -121,8 +123,9 @@
 	if(alien == IS_DIONA)
 		return
 	..()
-	M.drowsyness = max(0, M.drowsyness + 5)
-	M.sleeping = max(0, M.sleeping + 5)
+	if(100 < dose && (prob(dose * 0.33)))
+		M.drowsyness = max(0, M.drowsyness + 1)
+		M.slurring = max(0, M.slurring + 0.5)
 
 /datum/chemical_reaction/drinks/blackout
 	name = "Blackout Stout"
@@ -137,7 +140,7 @@
 	description = "Alcohol in more alcohol."
 	taste_description = "sweet berries"
 	color = "#d9239c"
-	strength = 50
+	strength = 35
 	nutriment_factor = 2
 	glass_icon_state = "blonde"
 
@@ -149,9 +152,9 @@
 	if(alien == IS_DIONA)
 		return
 	..()
-	if(prob(dose * 0.5))
+	if(prob(dose * 0.20))
 		M.emote(pick("spin", "flip", "floorspin"))
-	if(prob(dose * 0.5))
+	if(prob(dose * 0.20))
 		to_chat(M, "<span class='danger'>You feel an uncontrollable urge to dance!</span>")
 
 /datum/chemical_reaction/drinks/blonde
@@ -167,7 +170,7 @@
 	description = "Alcohol in more alcohol."
 	taste_description = "salty gunpowder"
 	color = "#c28800"
-	strength = 40
+	strength = 30
 	nutriment_factor = 1
 	glass_icon_state = "flintlock"
 
@@ -179,10 +182,10 @@
 	if(alien == IS_DIONA)
 		return
 	..()
-	if(prob(dose * 0.33))
+	if(prob(dose * 0.20))
 //		explosion(M.loc, 0, 0, 0, 1, 0) //Мемная хуйня которая громочет на всю карту
-		playsound(M.loc, pick('sound/effects/explosion1.ogg', 'sound/effects/explosion2.ogg', 'sound/effects/explosion3.ogg', 'sound/effects/explosion4.ogg', 'sound/effects/explosion5.ogg', 'sound/effects/explosion6.ogg'), 50, 1)
-		var/target = get_ranged_target_turf(M.loc, pick(1, 2, 4, 8), pick(1, 2))
+		playsound(M.loc, pick('sound/effects/explosion1.ogg', 'sound/effects/explosion2.ogg', 'sound/effects/explosion3.ogg', 'sound/effects/explosion4.ogg', 'sound/effects/explosion5.ogg', 'sound/effects/explosion6.ogg'), 80, 1)
+		var/target = get_ranged_target_turf(M.loc, pick(1, 2, 4, 8), rand(1, 4))
 		M.throw_at(target, 3, 4)
 
 /datum/chemical_reaction/drinks/flintlock
@@ -224,7 +227,7 @@
 		if(!H.can_feel_pain())
 			return
 
-	if(dose < 30 && (dose == metabolism || prob(15)))
+	if(30 < dose  && (dose == metabolism || prob(15)))
 		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
 	if(prob(15))
 		to_chat(M, "<span class='danger'>Fuck Arasaka!</span>")

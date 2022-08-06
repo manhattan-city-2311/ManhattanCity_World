@@ -88,7 +88,7 @@
 	if(touch_met && (active_metab.metabolism_class == CHEM_TOUCH))
 		removed = touch_met
 	removed = min(removed, volume)
-	max_dose = max(volume, max_dose)
+	max_dose = 6000
 	dose = min(dose + removed, max_dose)
 	if(removed >= (metabolism * 0.8) || removed >= 0.8) // If there's too little chemical, don't affect the mob, just remove it
 		switch(active_metab.metabolism_class)
@@ -101,7 +101,7 @@
 	if(overdose && (volume > overdose) && (active_metab.metabolism_class != CHEM_TOUCH))
 		overdose(M, alien, removed)
 	remove_self(removed)
-	
+
 	M.chem_traces |= id
 
 /datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)

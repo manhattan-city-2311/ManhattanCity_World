@@ -14,7 +14,7 @@
 #define LIQUID 2
 #define GAS 3
 
-#define REAGENTS_OVERDOSE 800
+#define REAGENTS_OVERDOSE 5000
 
 #define CHEM_SYNTH_ENERGY 500 // How much energy does it take to synthesize 1 unit of chemical, in Joules.
 
