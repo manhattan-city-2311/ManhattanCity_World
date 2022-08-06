@@ -309,12 +309,6 @@ var/list/flooring_types
 /decl/flooring/tiling/new_tile/monofloor
 	icon_base = "monofloor"
 
-/decl/flooring/tiling/new_tile/monotile
-	icon_base = "monotile"
-
-/decl/flooring/tiling/new_tile/monotile_dark
-	icon_base = "monotile_dark"
-
 /decl/flooring/tiling/new_tile/steel_grid
 	icon_base = "steel_grid"
 
@@ -400,6 +394,22 @@ var/list/flooring_types
 	has_damage_range = null
 	flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/dark
+
+/decl/flooring/tiling/monotile_dark
+	name = "floor"
+	desc = "How ominous."
+	icon_base = "monotile_dark"
+	has_damage_range = null
+	flags = TURF_REMOVE_CROWBAR
+	build_type = /obj/item/stack/tile/floor/dark_monotile
+
+/decl/flooring/tiling/monotile
+	name = "floor"
+	desc = "How ominous."
+	icon_base = "monotile"
+	has_damage_range = null
+	flags = TURF_REMOVE_CROWBAR
+	build_type = /obj/item/stack/tile/floor/monotile
 
 /decl/flooring/tiling/hydro
 	name = "floor"

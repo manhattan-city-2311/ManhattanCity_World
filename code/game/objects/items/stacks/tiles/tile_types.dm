@@ -286,6 +286,20 @@
 	matter = list("plasteel" = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
+/obj/item/stack/tile/floor/dark_monotile
+	name = "dark monotile floor tile"
+	singular_name = "dark monotile floor tile"
+	icon_state = "tile_steel"
+	matter = list("plasteel" = SHEET_MATERIAL_AMOUNT / 4)
+	no_variants = FALSE
+
+/obj/item/stack/tile/floor/monotile
+	name = "monotile floor tile"
+	singular_name = "monotile floor tile"
+	icon_state = "tile_steel"
+	matter = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 4)
+	no_variants = FALSE
+
 /obj/item/stack/tile/floor/freezer
 	name = "freezer floor tile"
 	singular_name = "freezer floor tile"
