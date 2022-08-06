@@ -16,6 +16,8 @@
 	var/list/patrol_path = list()
 	var/list/target_path = list()
 	var/turf/obstacle = null
+	var/turf/last_turf = null
+	var/turf_procs = 0
 
 	var/target_patience = 5
 	var/frustration = 0
@@ -66,8 +68,9 @@
 	else
 		spawn(reaction_time)
 			mode = NPC_MODE_ATTACK
-			handle_combat()
+			anxiety = ANXIETY_LEVEL_DANGER
 			attack_target = user
+			handle_combat()
 			say(pick(npc_attack_phrases))
 
 /mob/living/carbon/human/npc/proc/switch_mode()
@@ -173,6 +176,8 @@
 
 	if(!targ)
 		for(var/obj/effect/npc/patrol/N in GLOB.npcmarkers)
+			if(prob(10))
+				return
 			if(get_dist(src, N) < minDist)
 				minDist = get_dist(src, N)
 				targ = N

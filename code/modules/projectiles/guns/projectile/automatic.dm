@@ -64,7 +64,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m545
 	allowed_magazines = list(/obj/item/ammo_magazine/m545)
-	projectile_type = /obj/item/projectile/bullet/rifle/a545
+	projectile_type = /obj/item/projectile/bullet/fmj/s5p45x39
 
 //	one_handed_penalty = 30
 
@@ -121,7 +121,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762)
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	projectile_type = /obj/item/projectile/bullet/fmj/s7p62x51
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
@@ -193,7 +193,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m545saw
 	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
-	projectile_type = /obj/item/projectile/bullet/rifle/a545
+	projectile_type = /obj/item/projectile/bullet/fmj/s5p56x45
 	automatic = 1
 //	one_handed_penalty = 90
 
@@ -265,7 +265,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m12gdrum
 	allowed_magazines = list(/obj/item/ammo_magazine/m12gdrum)
-	projectile_type = /obj/item/projectile/bullet/shotgun
+	projectile_type = /obj/item/projectile/bullet/gauge
 
 //	one_handed_penalty = 60
 
@@ -362,7 +362,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	projectile_type = /obj/item/projectile/bullet/fmj/s7p62x51
 
 //	one_handed_penalty = 45
 
