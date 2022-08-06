@@ -123,9 +123,11 @@
 	if(alien == IS_DIONA)
 		return
 	..()
-	if(100 < dose && (prob(dose * 0.33)))
+	if(80 < dose && (prob(25)))
 		M.drowsyness = max(0, M.drowsyness + 1)
-		M.slurring = max(0, M.slurring + 0.5)
+		M.slurring = max(0, M.slurring + 1)
+	if(160 < dose && (prob(25)))
+		M.sleeping = max(0, M.sleeping + 1)
 
 /datum/chemical_reaction/drinks/blackout
 	name = "Blackout Stout"
