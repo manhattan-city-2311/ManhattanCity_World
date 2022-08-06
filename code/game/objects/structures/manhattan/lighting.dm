@@ -5,6 +5,7 @@
 	plane = NEON_DECALS_PLANE
 	light_power = 8
 	light_range = 1.5
+	anchored = TRUE
 
 #define NEON_SPLINE(id, col) /obj/structure/neon_spline/##id {color = col ; light_color = col }
 

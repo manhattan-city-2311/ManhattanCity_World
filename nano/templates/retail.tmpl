@@ -1,0 +1,13 @@
+<h2>Retail:</h2>
+<div class='item'>
+	{{for data.products}}
+	<div class='item'>
+			<div style='float'>
+				{{:helper.link('Buy (' + value.price + ')', 'buy', { "buy" : value.key }, (data.avail >= value.price) ? null : 'disabled' )}}
+			</div>
+		<div class='itemContent'>
+		{{:value.name}}
+		</div>
+	</div>
+	{{/for}}
+</div>

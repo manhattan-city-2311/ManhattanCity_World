@@ -38,12 +38,15 @@
 			)
 	//TODO: Make weight system for this
 	var/list/theme = pick(smalltalk_dialogues, deeptalk_dialogues, argument_dialogues, romance_dialogues)
-	var/final_speech_chance = clamp(pick(possible_speech_themes) + social_score + get_sexuality() + get_physical_attractiveness(), 0, 90)
+	var/final_speech_chance = clamp(theme[pick(possible_speech_themes)] + social_score + get_sexuality() + get_physical_attractiveness(), 0, 90)
 	if(!prob(final_speech_chance))
 		return
 	active_dialogue = theme
 
 /mob/living/carbon/human/npc/proc/process_speech()
+	if(!LAZYLEN(active_dialogue))
+		return
+	
 	var/speechtext = active_dialogue[1 + (speech_i++) % active_dialogue.len]
 	set_typing_indicator(FALSE)
 	say(speechtext)
