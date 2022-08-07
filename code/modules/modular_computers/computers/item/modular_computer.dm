@@ -1,6 +1,8 @@
 // This is the base type that does all the hardware stuff.
 // Other types expand it - tablets use a direct subtypes, and
 // consoles and laptops use "procssor" item that is held inside machinery piece
+#define ICON_STATE_MENU "menu"
+#define ICON_STATE_DEFAULT_KEYBOARD "generic_key"
 /obj/item/modular_computer
 	name = "Modular Microcomputer"
 	desc = "A small portable microcomputer"
@@ -23,6 +25,7 @@
 	icon_state = "laptop-open"
 	var/icon_state_unpowered = null							// Icon state when the computer is turned off
 	var/icon_state_menu = "menu"							// Icon state overlay when the computer is turned on, but no program is loaded that would override the screen.
+	var/current_keyboad_state = ICON_STATE_DEFAULT_KEYBOARD
 	var/max_hardware_size = 0								// Maximal hardware size. Currently, tablets have 1, laptops 2 and consoles 3. Limits what hardware types can be installed.
 	var/steel_sheet_cost = 5								// Amount of steel sheets refunded when disassembling an empty frame of this computer.
 
@@ -71,7 +74,7 @@
 
 /obj/item/modular_computer/emag_act(remaining_charges, mob/user)
 	if(computer_emagged)
-		to_chat(user, "\The [src] was already emagged.")
+		to_chat(user, "\The [src] is already overriden.")
 		return 0
 	else
 		computer_emagged = 1
@@ -97,9 +100,13 @@
 	if(!enabled)
 		return
 	if(active_program)
-		overlays.Add(active_program.program_icon_state ? active_program.program_icon_state : icon_state_menu)
+		icon_state_menu = active_program.program_icon_state
+		current_keyboad_state = active_program.program_key_state
 	else
-		overlays.Add(icon_state_menu)
+		icon_state_menu = ICON_STATE_MENU
+		current_keyboad_state = ICON_STATE_DEFAULT_KEYBOARD
+	overlays.Add(icon_state_menu)
+	overlays.Add(current_keyboad_state)
 
 // Used by child types if they have other power source than battery
 /obj/item/modular_computer/proc/check_power_override()
@@ -136,13 +143,14 @@
 		var/list/program = list()
 		program["name"] = P.filename
 		program["desc"] = P.filedesc
+		program["icon"] = P.program_menu_icon
 		programs.Add(list(program))
 
 	data["programs"] = programs
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "laptop_mainscreen.tmpl", "NTOS Main Menu", 400, 500)
-		ui.auto_update_layout = 1
+	if(!ui)
+		ui = new(user, src, ui_key, "laptop_mainscreen.tmpl", "Main Menu", 400, 500)
+		ui.set_auto_update_layout(1)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
@@ -249,23 +257,23 @@
 /obj/item/modular_computer/Topic(href, href_list)
 	if(..())
 		return 1
-	if( href_list["PC_exit"] )
+	if(href_list["PC_exit"])
 		kill_program()
-		return
-	if( href_list["PC_enable_component"] )
+		return 1
+	if(href_list["PC_enable_component"])
 		var/obj/item/weapon/computer_hardware/H = find_hardware_by_name(href_list["PC_enable_component"])
 		if(H && istype(H) && !H.enabled)
 			H.enabled = 1
-		return
-	if( href_list["PC_disable_component"] )
+		return 1
+	if(href_list["PC_disable_component"])
 		var/obj/item/weapon/computer_hardware/H = find_hardware_by_name(href_list["PC_disable_component"])
 		if(H && istype(H) && H.enabled)
 			H.enabled = 0
-		return
-	if( href_list["PC_shutdown"] )
+		return 1
+	if(href_list["PC_shutdown"])
 		shutdown_computer()
 		return
-	if( href_list["PC_runprogram"] )
+	if(href_list["PC_runprogram"])
 		var/prog = href_list["PC_runprogram"]
 		var/datum/computer_file/program/P = null
 		var/mob/user = usr
@@ -281,13 +289,14 @@
 			return
 
 		if(P.requires_ntnet && !get_ntnet_status(P.requires_ntnet_feature)) // The program requires NTNet connection, but we are not connected to NTNet.
-			to_chat(user, "<span class='danger'>\The [src]'s screen shows \"NETWORK ERROR - Unable to connect to NTNet. Please retry. If problem persists contact your system administrator.\" warning.</span>")
+			to_chat(user, "<span class='danger'>\The [src]'s screen shows \"NETWORK ERROR - Unable to connect to NTNet. Please retry. If problem persists contact your system administrator.\".</span>")
 			return
 		if(P.run_program(user))
 			active_program = P
 			update_icon()
+			return 1
+		to_chat(user, "<span class='danger'>\The [src]'s screen shows \"UNKNOWN ERROR - Contact system administrator for help\".</span>")
 		return
-
 // Used in following function to reduce copypaste
 /obj/item/modular_computer/proc/power_failure()
 	if(enabled) // Shut down the computer

@@ -38,7 +38,7 @@
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "ntnet_monitor.tmpl", "NTNet Diagnostics and Monitoring Tool", 575, 700, state = state)
-		ui.auto_update_layout = 1
+		ui.set_auto_update_layout(1)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)

@@ -59,7 +59,6 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 	<div class="item">
 		<div class="dialPad">
 			<div style="clear: both; padding-top: 1px;">
-				{{:helper.link('0', null, {'add_hex' : '0'}, null, 'dialPadKeys')}}
 				{{:helper.link('1', null, {'add_hex' : '1'}, null, 'dialPadKeys')}}
 				{{:helper.link('2', null, {'add_hex' : '2'}, null, 'dialPadKeys')}}
 				{{:helper.link('3', null, {'add_hex' : '3'}, null, 'dialPadKeys')}}
@@ -68,22 +67,27 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 				{{:helper.link('4', null, {'add_hex' : '4'}, null, 'dialPadKeys')}}
 				{{:helper.link('5', null, {'add_hex' : '5'}, null, 'dialPadKeys')}}
 				{{:helper.link('6', null, {'add_hex' : '6'}, null, 'dialPadKeys')}}
-				{{:helper.link('7', null, {'add_hex' : '7'}, null, 'dialPadKeys')}}
 			</div>
 			<div style="clear: both; padding-top: 1px;">
+				{{:helper.link('7', null, {'add_hex' : '7'}, null, 'dialPadKeys')}}
 				{{:helper.link('8', null, {'add_hex' : '8'}, null, 'dialPadKeys')}}
 				{{:helper.link('9', null, {'add_hex' : '9'}, null, 'dialPadKeys')}}
-				{{:helper.link('A', null, {'add_hex' : 'a'}, null, 'dialPadKeys')}}
-				{{:helper.link('B', null, {'add_hex' : 'b'}, null, 'dialPadKeys')}}
 			</div>
 			<div style="clear: both; padding-top: 1px;">
+				<!-- {{:helper.link('A', null, {'add_hex' : 'a'}, null, 'dialPadKeys')}} -->
+				<div class="dialPadKeys">_</div>
+				{{:helper.link('0', null, {'add_hex' : '0'}, null, 'dialPadKeys')}}
+				<div class="dialPadKeys">_</div>
+				<!-- {{:helper.link('B', null, {'add_hex' : 'b'}, null, 'dialPadKeys')}} -->
+			</div>
+			<!-- <div style="clear: both; padding-top: 1px;">
 				{{:helper.link('C', null, {'add_hex' : 'c'}, null, 'dialPadKeys')}}
 				{{:helper.link('D', null, {'add_hex' : 'd'}, null, 'dialPadKeys')}}
 				{{:helper.link('E', null, {'add_hex' : 'e'}, null, 'dialPadKeys')}}
 				{{:helper.link('F', null, {'add_hex' : 'f'}, null, 'dialPadKeys')}}
-			</div>
+			</div> -->
 			<div style="clear: both; padding-top: 1px;">
-				{{:helper.link('Dial', 'phone64', {'dial' : data.targetAddress}, null, 'dialPadButtons')}}
+				{{:helper.link('Call', 'phone64', {'dial' : data.targetAddress}, null, 'dialPadButtons')}}
 				{{:helper.link('Message', 'comment64', {'message' : data.targetAddress, 'switch_tab' : 4}, null, 'dialPadButtons')}}
 				{{:helper.link('Hang Up', 'close64', {'hang_up' : '1'}, null, 'dialPadButtons')}}
 			</div>

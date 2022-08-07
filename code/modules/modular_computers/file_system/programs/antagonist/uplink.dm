@@ -2,6 +2,7 @@
 	filename = "taxquickly"
 	filedesc = "TaxQuickly 1.45b"
 	program_icon_state = "uplink"
+	program_key_state = "syndie_key"
 	extended_desc = "An online tax filing software. It is a few years out of date."
 	size = 0 // it is cloud based
 	requires_ntnet = 0
@@ -33,7 +34,7 @@
 				prog.authenticated = 1
 				return
 		else
-			to_chat(user, "<span class='warning'>[computer] displays an \"ID not found\" error.</span>")
+			to_chat(user, "<span class='warning'>[computer] displays an \"Invalid drivers\" error.</span>")
 
 	prog.authenticated = 0
 	computer.kill_program()

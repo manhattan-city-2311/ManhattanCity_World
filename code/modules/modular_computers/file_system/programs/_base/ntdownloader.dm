@@ -1,8 +1,10 @@
 /datum/computer_file/program/ntnetdownload
-	filename = "ntndownloader"
-	filedesc = "NTNet Software Download Tool"
+	filename = "downloader"
+	filedesc = "Software Download Tool"
 	program_icon_state = "generic"
-	extended_desc = "This program allows downloads of software from official NT repositories"
+	program_key_state = "generic_key"
+	program_menu_icon = "arrowthickstop-1-s"
+	extended_desc = "This program allows downloads of software from official repositories"
 	unsendable = 1
 	undeletable = 1
 	size = 4
@@ -53,7 +55,8 @@
 		generate_network_log("Began downloading file [PRG.filename].[PRG.filetype] from unspecified server.")
 		hacked_download = 0
 
-	downloaded_file = PRG.clone()
+	// downloaded_file = PRG.clone()
+	downloaded_file = PRG
 
 /datum/computer_file/program/ntnetdownload/proc/abort_file_download()
 	if(!downloaded_file)
@@ -64,15 +67,19 @@
 	ui_header = "downloader_finished.gif"
 
 /datum/computer_file/program/ntnetdownload/proc/complete_file_download()
-	if(!downloaded_file)
-		return
-	generate_network_log("Completed download of file [hacked_download ? "**ENCRYPTED**" : downloaded_file.filename].[downloaded_file.filetype].")
-	if(!computer || !computer.hard_drive || !computer.hard_drive.store_file(downloaded_file))
-		// The download failed
-		downloaderror = "I/O ERROR - Unable to save file. Check whether you have enough free space on your hard drive and whether your hard drive is properly connected. If the issue persists contact your system administrator for assistance."
+	if(downloaded_file)
+		generate_network_log("Completed download of file [hacked_download ? "**ENCRYPTED**" : downloaded_file.filename].[downloaded_file.filetype].")
+		if(computer || computer.hard_drive || computer.hard_drive.try_store_file(downloaded_file))
+			downloaded_file = downloaded_file.clone()
+			computer.hard_drive.store_file(downloaded_file)
+		else
+			downloaderror = "I/O ERROR - Unable to save file. Check whether you have enough free space on your hard drive and whether your hard drive is properly connected. If the issue persists contact your system administrator for assistance."
+	// else
+	// 	ui_header = "downloader_failed.gif"
 	downloaded_file = null
 	download_completion = 0
 	ui_header = "downloader_finished.gif"
+
 
 /datum/computer_file/program/ntnetdownload/process_tick()
 	if(!downloaded_file)
@@ -105,7 +112,10 @@
 			downloaded_file = null
 			downloaderror = ""
 		return 1
-	return 0
+	if(href_list["PRG_canceldownload"])
+		downloaded_file = null
+		complete_file_download()
+		return 1
 
 /datum/nano_module/computer_ntnetdownload
 	name = "Network Downloader"
@@ -166,7 +176,7 @@
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "ntnet_downloader.tmpl", "NTNet Download Program", 575, 700, state = state)
-		ui.auto_update_layout = 1
+		ui.set_auto_update_layout(1)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)

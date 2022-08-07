@@ -3,6 +3,8 @@
 	filedesc = "ID card modification program"
 	nanomodule_path = /datum/nano_module/card_mod
 	program_icon_state = "id"
+	program_key_state = "id_key"
+	program_menu_icon = "key"
 	extended_desc = "Program for programming employee ID cards to access parts of the city."
 	required_access = access_change_ids
 	requires_ntnet = 0
@@ -85,7 +87,7 @@
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "identification_computer.tmpl", name, 600, 700, state = state)
-		ui.auto_update_layout = 1
+		ui.set_auto_update_layout(1)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)

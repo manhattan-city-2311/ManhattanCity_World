@@ -3,6 +3,8 @@
 	filedesc = "Email Client"
 	extended_desc = "This program may be used to log in into your email account."
 	program_icon_state = "generic"
+	program_key_state = "generic_key"
+	program_menu_icon = "mail-closed"
 	size = 7
 	requires_ntnet = 1
 	available_on_ntnet = 1
@@ -220,7 +222,7 @@
 	if (!ui)
 		ui = new(user, src, ui_key, "email_client.tmpl", "Email Client", 600, 450, state = state)
 		if(program.update_layout())
-			ui.auto_update_layout = 1
+			ui.set_auto_update_layout(1)
 		ui.set_auto_update(1)
 		ui.set_initial_data(data)
 		ui.open()

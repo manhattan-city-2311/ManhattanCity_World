@@ -1,6 +1,7 @@
 /datum/computer_file/program/govportal
 	filename = "govportal"
 	filedesc = "GovPortal"
+	program_menu_icon = "contact"
 	extended_desc = "The control panel to the entire colony. Use with care. Restricted access."
 	requires_ntnet = 1
 	size = 4
@@ -190,7 +191,7 @@
 	if (!ui)
 		ui = new(user, src, ui_key, "govportal.tmpl", "GovPortal", 1000, 1000, state = state)
 		if(program.update_layout())
-			ui.auto_update_layout = 1
+			ui.set_auto_update_layout(1)
 		ui.set_auto_update(1)
 		ui.set_initial_data(data)
 		ui.open()

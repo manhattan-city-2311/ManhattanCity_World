@@ -11,16 +11,18 @@ var/warrant_uid = 0
 /datum/computer_file/program/digitalwarrant
 	filename = "digitalwarrant"
 	filedesc = "Warrant Assistant"
-	extended_desc = "Official NTsec program for creation and handling of warrants."
+	extended_desc = "Program for creation and handling of warrants."
+	program_icon_state = "warrant"
+	program_key_state = "security_key"
+	program_menu_icon = "star"
 	size = 8
 	requires_ntnet = 1
 	available_on_ntnet = 1
 	required_access = access_warrant
 	usage_flags = PROGRAM_ALL
-	nanomodule_path = /datum/nano_module/program/digitalwarrant/
-	program_icon_state = "warrant"
+	nanomodule_path = /datum/nano_module/program/digitalwarrant
 
-/datum/nano_module/program/digitalwarrant/
+/datum/nano_module/program/digitalwarrant
 	name = "Warrant Assistant"
 	var/datum/data/record/warrant/activewarrant
 
@@ -49,7 +51,7 @@ var/warrant_uid = 0
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "digitalwarrant.tmpl", name, 500, 350, state = state)
-		ui.auto_update_layout = 1
+		ui.set_auto_update_layout(1)
 		ui.set_initial_data(data)
 		ui.open()
 

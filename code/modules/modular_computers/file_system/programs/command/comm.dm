@@ -7,8 +7,8 @@
 	filename = "comm"
 	filedesc = "Command and Communications Program"
 	program_icon_state = "comm"
-//	program_key_state = "med_key"
-//	program_menu_icon = "flag"
+	program_key_state = "med_key"
+	program_menu_icon = "flag"
 	nanomodule_path = /datum/nano_module/program/comm
 	extended_desc = "Used to command and control. Can relay long-range communications. This program can not be run on tablet computers."
 	required_access = access_heads
@@ -95,7 +95,7 @@
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "mod_communication.tmpl", name, 550, 420, state = state)
-		ui.auto_update_layout = 1
+		ui.set_auto_update_layout(1)
 		ui.set_initial_data(data)
 		ui.open()
 

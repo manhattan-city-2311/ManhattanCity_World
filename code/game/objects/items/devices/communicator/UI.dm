@@ -155,10 +155,8 @@
 /obj/item/device/communicator/Topic(href, href_list)
 	if(..())
 		return 1
-	to_world("A")
 	if(href_list["wallpaper_select"])
 		var/index = text2num(href_list["wallpaper_select"])
-		to_world(href_list["wallpaper_select"])
 		if(isnum(index) && index < length(wallpapers))
 			index += 1
 			var/list/w = wallpapers[index]

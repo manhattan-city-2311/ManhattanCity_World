@@ -2,8 +2,8 @@
 	filename = "nt_accrypt"
 	filedesc = "NTNet Access Decrypter"
 	program_icon_state = "hostile"
-//	program_key_state = "security_key"
-//	program_menu_icon = "unlocked"
+	program_key_state = "syndie_key"
+	program_menu_icon = "unlocked"
 	extended_desc = "This highly advanced script can very slowly decrypt operational codes used in almost any network. These codes can be downloaded to an ID card to expand the available access. The system administrator will probably notice this."
 	size = 34
 	requires_ntnet = 1
@@ -123,7 +123,7 @@
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "access_decrypter.tmpl", "NTNet Access Decrypter", 550, 400, state = state)
-		ui.auto_update_layout = 1
+		ui.set_auto_update_layout(1)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)

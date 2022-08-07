@@ -3,6 +3,7 @@
 	filedesc = "NanoWord"
 	extended_desc = "This program allows the editing and preview of text documents."
 	program_icon_state = "word"
+	program_key_state = "atmos_key"
 	size = 4
 	requires_ntnet = 0
 	available_on_ntnet = 1
@@ -271,7 +272,7 @@
 	if (!ui)
 		ui = new(user, src, ui_key, "word_processor.tmpl", "Word Processor", 575, 700, state = state)
 		if(program.update_layout())
-			ui.auto_update_layout = 1
+			ui.set_auto_update_layout(1)
 		ui.set_auto_update(1)
 		ui.set_initial_data(data)
 		ui.open()

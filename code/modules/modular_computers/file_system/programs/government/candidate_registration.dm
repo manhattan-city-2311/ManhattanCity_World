@@ -97,7 +97,7 @@
 	if (!ui)
 		ui = new(user, src, ui_key, "candidate_registration.tmpl", "Presidential Candidate Registration", 690, 680, state = state)
 		if(program.update_layout())
-			ui.auto_update_layout = 1
+			ui.set_auto_update_layout(1)
 		ui.set_auto_update(1)
 		ui.set_initial_data(data)
 		ui.open()

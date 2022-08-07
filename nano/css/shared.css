@@ -822,18 +822,21 @@ div.homeScreen
 	text-align: center;
 	margin: auto;
 }
-
-.dialPadKeys {
-	float: left;
-	width: 47px;
-	height: 47px;
-	font-size: 36px;
-	text-align: center;
-	color: #ffffff;
+.dialPadKeys, .dialPadButtons
+{
+	box-shadow: inset 0 0 5px 1px #aaffff;
+	background: rgba(64, 98, 138, 0.3);
+	border: 2px inset rgba(100, 100, 100, 0.5);
 	text-decoration: none;
-	background: rgba(64, 98, 138, 0.15);
-	border: 1px inset rgba(100, 100, 100, 0.25);
+	text-align: center;
+	width: 63.2px;
+	height: 63.2px;
+	color: #ffffff;
 	cursor: default;
+	float: left;
+}
+.dialPadKeys {
+	font-size: 36px;
 	line-height: 47px;
 }
 
@@ -842,16 +845,7 @@ div.homeScreen
 }
 
 .dialPadButtons {
-	float: left;
-	width: 63.2px;
-	height: 63.2px;
-	text-align: center;
-	color: #ffffff;
-	text-decoration: none;
-	background: rgba(64, 98, 138, 0.15);
-	border: 1px inset rgba(100, 100, 100, 0.25);
 	padding: 0 0 4px 0;
-	cursor: default;
 	margin-bottom: 25px;
 }
 
@@ -862,32 +856,34 @@ div.homeScreen
 }
 
 .dialPadAddress {
+
 	float: left;
 	width: 192px;
 	height: 18px;
-	background: rgba(64, 98, 138, 0.15);
+	background: rgba(64, 98, 138, 0.4);
 	color: #ffffff;
-	border-left: 1px inset #7e3f8a;
-	border-top: 1px inset #7e3f8a;
-	border-bottom: 1px inset #7e3f8a;
+	border-left: 2px inset rgba(100, 100, 100, 0.5);
+	border-top: 2px inset rgba(100, 100, 100, 0.5);
+	border-bottom: 2px inset rgba(100, 100, 100, 0.5);
 
 }
 
 .dialPadAddress:hover{
-	background: rgba(80, 122, 172, 0.5);
+	background: rgba(64, 98, 138, 0.6);;
 }
 
 .dialPadClear {
+
 	float: left;
 	width: 19%;
 	height: 18px;
-	background: rgba(64, 98, 138, 0.15);
+	background: rgba(64, 98, 138, 0.4);
 	color: #ffffff;
-	border-right: 1px inset #7e3f8a;
-	border-top: 1px inset #7e3f8a;
-	border-bottom: 1px inset #7e3f8a;
+	border-right: 1px inset rgba(100, 100, 100, 0.5);
+	border-top: 1px inset rgba(100, 100, 100, 0.5);
+	border-bottom: 1px inset rgba(100, 100, 100, 0.5);
 }
 
 .dialPadClear:hover{
-	background: rgba(80, 122, 172, 0.5);
+	background: rgba(64, 98, 138, 0.6);
 }

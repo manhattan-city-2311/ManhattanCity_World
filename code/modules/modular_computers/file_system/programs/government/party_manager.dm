@@ -1,6 +1,7 @@
 /datum/computer_file/program/party_manager
 	filename = "prtymangr"
 	filedesc = "Official Party Management"
+	program_menu_icon = "lightbulb"
 	extended_desc = "This program allows you to create an official party and also manage and view existing parties."
 	requires_ntnet = 1
 	available_on_ntnet = 0
@@ -87,7 +88,7 @@
 	if (!ui)
 		ui = new(user, src, ui_key, "political_party.tmpl", "Official Party Management", 690, 680, state = state)
 		if(program.update_layout())
-			ui.auto_update_layout = 1
+			ui.set_auto_update_layout(1)
 		ui.set_auto_update(1)
 		ui.set_initial_data(data)
 		ui.open()
