@@ -65,8 +65,8 @@
 	reagent_state = LIQUID
 	color = "#404030"
 
-	metabolism = 6
-	ingest_met = 6
+	metabolism = 3.5
+	ingest_met = 3.5
 
 	var/nutriment_factor = 0
 	var/strength = 10 // This is, essentially, units between stages - the lower, the stronger. Less fine tuning, more clarity.
