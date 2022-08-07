@@ -9,6 +9,7 @@
 	sbp = SBP_FACE
 	needs_access = SBP_FACE
 	base_pleasure = list(1, 1)
+	action_type = ERP_ACTION_PASSIONATE
 
 /datum/erp_action/passionate_look/get_messages(user1, user2)
 	var/list/poses = get_poses(user1, user2)

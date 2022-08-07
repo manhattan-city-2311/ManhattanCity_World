@@ -44,3 +44,56 @@
 		"@1 проводит рукой по волосам @2.",
 		"@1 плавно сжимает волосы на голове @2."
 	)
+
+/datum/erp_action/ass_stroke
+	name = "Игра с задницей"
+	category = ERP_ACTION_CATEGORY_FOREPLAY
+
+/datum/erp_action/ass_stroke/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
+	if(user2.get_covered_body_parts() & LOWER_TORSO)
+		return list(
+			"@1 звонко шлёпает @2 по попе!",
+			"@1 сжимает ягодицу @2 сквозь ткань одежды.",
+			"@1 проводит рукой по попке @2."
+		)
+	else
+		return list(
+			"@1 сжимает задницу @2 ладонями, ощупывая мягкую кожу.",
+			"@1 впивается пальцами в кожу ягодиц @2.",
+			"@1 похлопывает по голой попе @2."
+		)
+
+/datum/erp_action/nipples_stroke
+	name = "Игра с сосками"
+	category = ERP_ACTION_CATEGORY_FOREPLAY
+
+/datum/erp_action/nipples_stroke/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
+	if(user2.get_covered_body_parts() & UPPER_TORSO)
+		return list(
+			"@1 прикасается к груди @2, в районе сосков и чуть нажимает.",
+			"@1 проводит пальцами по скрытым одеждой соскам @2."
+		)
+	else
+		return list(
+			"@1 сжимает соски @2, и держит их между своих пальцев.",
+			"@1 пощипывает [prob(50) ? "левый" : "правый"] сосок @2.",
+			"@1 сжимает и крутит между пальцев соски @2, чуть оттягивая их.",
+		)
+
+/datum/erp_action/breasts_stroke
+	name = "Игра с грудью"
+	category = ERP_ACTION_CATEGORY_FOREPLAY
+
+/datum/erp_action/nipples_stroke/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
+	if(user2.get_covered_body_parts() & UPPER_TORSO)
+		return list(
+			"@1 сжимает мягкие полушария через препятствие в виде ткани.",
+			"@1 мягко массирует грудь @2 через одежду.",
+			"@1 плотно сжимает грудь @2 через ткань."
+		)
+	else
+		return list(
+			"@1 разводит нежные полушария @2 в стороны а потом снова сводит вместе.",
+			"@1 массирует чувствительную грудь @2.",
+			"@1 надавливает на грудь @2, поминая её словно кот.",
+		)

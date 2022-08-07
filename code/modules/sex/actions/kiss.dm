@@ -81,6 +81,7 @@
 /datum/erp_action/kiss/passionate
 	name = "Страстный поцелуй в губы"
 	category = ERP_ACTION_CATEGORY_FOREPLAY
+	action_type = ERP_ACTION_PASSIONATE
 
 /datum/erp_action/kiss/passionate/get_messages(user1, user2)
 	var/list/height_dependent_messages = list(
