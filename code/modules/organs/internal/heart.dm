@@ -35,7 +35,7 @@
 
 /obj/item/organ/internal/heart/New()
 	..()
-	if(owner?.client?.prefs)
+	if(owner?.client?.prefs.heart_data)
 		damage = owner.client.prefs.heart_data["damage"] || 0
 		pulse = owner.client.prefs.heart_data["pulse"] || initial(pulse)
 		cardiac_output = owner.client.prefs.heart_data["cardiac_output"] || 1
