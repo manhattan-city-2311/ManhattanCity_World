@@ -50,7 +50,7 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	max_shells = 7 //match the ammo box capacity, also it can hold a round in the chamber anyways, for a total of 8.
 	ammo_type = /obj/item/ammo_casing/a12g
-	load_method = SINGLE_CASING|SPEEDLOADER]
+	load_method = SINGLE_CASING|SPEEDLOADER
 	price_tag = 95000
 
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel
