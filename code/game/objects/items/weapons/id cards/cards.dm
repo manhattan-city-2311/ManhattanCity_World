@@ -22,6 +22,14 @@
 
 	var/list/files = list(  )
 
+/obj/item/weapon/card/debit
+	name = "debit card"
+	desc = "Common card for accessing banking account"
+	icon_state  = "dept_cargo"
+
+/obj/item/weapon/card/debit/examine(mob/user, distance)
+	. = ..()
+	to_chat(user, "It's associated with [associated_account_number] account. There is '[associated_pin_number % 100]' printed at back side.")
 /obj/item/weapon/card/data
 	name = "data disk"
 	desc = "A disk of data."

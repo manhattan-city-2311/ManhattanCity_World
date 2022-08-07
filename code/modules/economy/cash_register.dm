@@ -4,7 +4,7 @@
 
 /obj/machinery/cash_register
 	name = "cash register"
-	desc = "Swipe your ID card to make purchases electronically."
+	desc = "Swipe a card to make purchases electronically."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "register_idle"
 	flags = NOBLUDGEON

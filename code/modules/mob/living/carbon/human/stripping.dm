@@ -59,7 +59,7 @@
 			update_inv_w_uniform()
 			return
 		else
-			var/obj/item/located_item = locate(slot_to_strip) in src
+			var/obj/item/located_item = locate(slot_to_strip) in contents
 			if(isunderwear(located_item))
 				var/obj/item/underwear/UW = located_item
 				if(UW.DelayedRemoveUnderwear(user, src))

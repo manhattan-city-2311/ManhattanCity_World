@@ -9,10 +9,6 @@
 		)
 	)
 
-	nanoui_interactive_dist = 3
-	nanoui_update_dist = 3
-	nanoui_disabled_dist = 3
-
 /mob/living/carbon/human/npc/interactable/retail/testing
 	products = list(
 		list(
@@ -26,6 +22,21 @@
 /mob/living/carbon/human/proc/get_available_money()
 	for(var/obj/item/weapon/spacecash/C in contents)
 		. += C.worth
+
+/mob/living/carbon/human/proc/take_cash(amount, dloc = loc)
+	if(get_available_money() < amount)
+		return
+
+	for(var/obj/item/weapon/spacecash/S in contents)
+		. += S.worth
+		qdel(S)
+		if(. >= amount)
+			break
+
+	spawn_money(amount, dloc, src)
+
+/mob/living/carbon/human/npc/interactable/retail/proc/give_item(mob/living/carbon/human/H, item)
+	return H.put_in_hands(item)
 
 /mob/living/carbon/human/npc/interactable/retail/ui_interact(mob/user, ui_key, datum/nanoui/ui, force_open, datum/nanoui/master_ui, datum/topic_state/state)
 	var/list/data = list()
@@ -57,18 +68,9 @@
 			if(H.get_available_money() < price)
 				to_chat(usr, "Not enough cash!")
 				return
-			var/received = 0
-			for(var/obj/item/weapon/spacecash/S in H.contents)
-				received += S.worth
-				qdel(S)
-				if(received >= price)
-					break
 
-			spawn(3)
+			var/nL = get_step(loc, dir)
+
+			if(H.take_cash(price, nL))
 				var/ptype = L["type"]
-				H.put_in_hands(new ptype(get_step(loc, dir)))
-
-				var/change = received - price
-				if(change)
-					spawn(5)
-						spawn_money(change, get_step(loc, dir), H)
+				give_item(H, new ptype(nL))
