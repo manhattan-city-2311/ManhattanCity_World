@@ -150,13 +150,13 @@
 				if(18 to INFINITY)
 					. += "огромной"
 			. += " длины, средний в обхвате."
-				
+
 
 /mob/living/carbon/human/proc/get_self_pleasure_message()
 	if(gender == FEMALE)
 		switch(pleasure)
 			if(-INFINITY to FEMALE_NO_AROUSAL)
-				return "Внизу сухо. Если сейчас в вас попытаются войти - вам будет больно. Очень."
+				return "Внизу сухо. Если сейчас в вас попытаются войти - вам будет больно, очень."
 			if(FEMALE_NO_AROUSAL to FEMALE_MEDIUM_AROUSAL)
 				return "Ваши соски твердеют, вы намокаете внизу. Если постараетесь, то сможете быстро успокоиться."
 			if(FEMALE_MEDIUM_AROUSAL to INFINITY)
