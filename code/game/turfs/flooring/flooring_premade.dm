@@ -148,13 +148,13 @@
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "monotile"
-	initial_flooring = /decl/flooring/tiling/new_tile/monotile
+	initial_flooring = /decl/flooring/tiling/monotile
 
 /turf/simulated/floor/tiled/monotile_dark
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "monotile_dark"
-	initial_flooring = /decl/flooring/tiling/new_tile/monotile_dark
+	initial_flooring = /decl/flooring/tiling/monotile_dark
 
 /turf/simulated/floor/tiled/steel_grid
 	name = "floor"

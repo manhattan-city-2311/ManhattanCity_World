@@ -182,6 +182,7 @@
 	dynamic_lighting = 1
 	sound_env = CITY
 	flags = null
+	outdoors = 1
 	ambience = list('sound/manhattan/south1.ogg')
 
 /area/planets/Manhattan/south/indoor
@@ -189,6 +190,7 @@
 	icon_state = "south_m1_indoor"
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
+	outdoors = 0
 
 //BUILDINGS - FLATS
 
@@ -197,6 +199,7 @@
 	icon_state = "south_m_build"
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
+	outdoors = 0
 	ambience = list('sound/manhattan/south_indoors1.ogg', 'sound/manhattan/south_indoors2.ogg', 'sound/manhattan/south_indoors3.ogg', 'sound/manhattan/south_indoors4.ogg', 'sound/manhattan/south_indoors5.ogg', 'sound/manhattan/south_indoors6.ogg', 'sound/manhattan/south_indoors7.ogg', 'sound/manhattan/south_indoors8.ogg', )
 
 /area/planets/Manhattan/south/building/f1
@@ -281,6 +284,7 @@
 	icon_state = "south_m_factory"
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
+	outdoors = 1
 
 /area/planets/Manhattan/south/factory/roof
 	name = "\improper Factory Roof"
@@ -288,6 +292,7 @@
 /area/planets/Manhattan/south/factory/maintenance
 	name = "\improper Factory Maintenance"
 	icon_state = "south_m_factory_m"
+	outdoors = 0
 
 /area/planets/Manhattan/south/factory/maintenance/janitor
 	name = "\improper Janitorial Closet"
@@ -295,6 +300,7 @@
 /area/planets/Manhattan/south/factory/office
 	name = "\improper Factory Office Hallway"
 	icon_state = "south_m_factory_o"
+	outdoors = 0
 
 /area/planets/Manhattan/south/factory/office/a
 	name = "\improper Factory Office A"
@@ -335,6 +341,7 @@
 /area/planets/Manhattan/south/factory/pmc
 	name = "\improper PMC Wing"
 	icon_state = "south_m_factory_s"
+	outdoors = 0
 
 /area/planets/Manhattan/south/factory/pmc/armory
 	name = "\improper PMC Armory"
@@ -365,6 +372,7 @@
 
 /area/planets/Manhattan/south/factory/hallway
 	name = "\improper Factory Hallway"
+	outdoors = 0
 
 /area/planets/Manhattan/south/factory/hallway/second_floor
 	name = "\improper Factory 2th Floor Hallway"
@@ -375,6 +383,7 @@
 /area/planets/Manhattan/south/factory/cargo
 	name = "\improper Factory Cargo Wing"
 	icon_state = "south_m_factory_c"
+	outdoors = 0
 
 /area/planets/Manhattan/south/factory/cargo/storage
 	name = "\improper Cargo Storage"
@@ -400,6 +409,7 @@
 /area/planets/Manhattan/south/factory/engineering
 	name = "\improper Engineering"
 	icon_state = "south_m_factory_e"
+	outdoors = 0
 
 /area/planets/Manhattan/south/factory/engineering/lobby
 	name = "\improper Engineering Lobby"
@@ -430,6 +440,9 @@
 
 /area/planets/Manhattan/south/factory/engineering/storage/b
 	name = "\improper Engineering Second Storage"
+
+/area/planets/Manhattan/south/factory/engineering/reactor
+	name = "\improper Engineering Reactor"
 
 // Elevator areas.
 /area/turbolift/manhattan_house11
