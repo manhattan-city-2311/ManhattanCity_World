@@ -3,7 +3,7 @@
 //Bottles now weaken and break when smashed on people's heads. - Giacom
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle
-	amount_per_transfer_from_this = 10
+	amount_per_transfer_from_this = 40
 	volume = 800
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
 	force = 6
@@ -531,7 +531,7 @@
 	volume = 330
 	smash_duration = 1
 	flags = 0 //starts closed
-	amount_per_transfer_from_this = 33
+	amount_per_transfer_from_this = 30
 	rag_underlay = "rag_small"
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer

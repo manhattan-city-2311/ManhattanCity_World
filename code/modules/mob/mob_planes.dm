@@ -39,6 +39,7 @@
 	plane_masters[VIS_MOBS]		= new /obj/screen/plane_master/main{plane = MOB_PLANE}
 
 	plane_masters[VIS_LIGHTING_OBJS] = new /obj/screen/plane_master/main{plane = LIGHTING_OBJS_PLANE; filters = LIGHTING_BLOOM}
+	plane_masters[VIS_LIGHTING_OBJS2] = new /obj/screen/plane_master/main{plane = NEON_DECALS_PLANE; filters = NEON_DECALS_BLOOM}
 	..()
 
 /datum/plane_holder/Destroy()

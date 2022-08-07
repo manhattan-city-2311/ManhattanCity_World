@@ -76,14 +76,14 @@
 
 /obj/structure/reagent_dispensers/vat/water/New()
 	..()
-	reagents.add_reagent("water", 10000)
+	reagents.add_reagent("water", 100000)
 
 /obj/structure/reagent_dispensers/vat/fuel
 	name = "fuel cistern"
 
 /obj/structure/reagent_dispensers/vat/fuel/New()
 	..()
-	reagents.add_reagent("fuel", 80000)
+	reagents.add_reagent("fuel", 800000)
 
 
 //Dispensers
@@ -96,7 +96,7 @@
 
 /obj/structure/reagent_dispensers/watertank/New()
 	..()
-	reagents.add_reagent("water", 20000)
+	reagents.add_reagent("water", 200000)
 
 /obj/structure/reagent_dispensers/watertank/high
 	name = "high-capacity water tank"
@@ -105,7 +105,7 @@
 
 /obj/structure/reagent_dispensers/watertank/high/New()
 	..()
-	reagents.add_reagent("water", 40000)
+	reagents.add_reagent("water", 400000)
 
 /obj/structure/reagent_dispensers/cleanertank
 	name = "high-capacity cleaner tank"
@@ -127,7 +127,7 @@
 
 /obj/structure/reagent_dispensers/fueltank/New()
 	..()
-	reagents.add_reagent("fuel",1000)
+	reagents.add_reagent("fuel",10000)
 
 /obj/structure/reagent_dispensers/fueltank/examine(mob/user)
 	if(!..(user, 2))
@@ -244,7 +244,7 @@
 
 /obj/structure/reagent_dispensers/peppertank/New()
 	..()
-	reagents.add_reagent("condensedcapsaicin",8000)
+	reagents.add_reagent("condensedcapsaicin",50000)
 
 
 /obj/structure/reagent_dispensers/water_cooler
@@ -267,7 +267,7 @@
 /obj/structure/reagent_dispensers/water_cooler/New()
 	..()
 	if(bottle)
-		reagents.add_reagent("water",6000)
+		reagents.add_reagent("water",30000)
 	update_icon()
 
 /obj/structure/reagent_dispensers/water_cooler/examine(mob/user)
@@ -392,7 +392,7 @@
 
 /obj/structure/reagent_dispensers/barrel/wine/New()
 	..()
-	reagents.add_reagent("wine",8000)
+	reagents.add_reagent("wine",50000)
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
@@ -403,7 +403,7 @@
 
 /obj/structure/reagent_dispensers/beerkeg/New()
 	..()
-	reagents.add_reagent("beer",8000)
+	reagents.add_reagent("beer",50000)
 
 /obj/structure/reagent_dispensers/beerkeg/fakenuke
 	name = "nuclear beer keg"
@@ -422,7 +422,7 @@
 
 /obj/structure/reagent_dispensers/virusfood/New()
 	..()
-	reagents.add_reagent("virusfood", 8000)
+	reagents.add_reagent("virusfood", 50000)
 
 /obj/structure/reagent_dispensers/acid
 	name = "Sulphuric Acid Dispenser"
@@ -435,4 +435,4 @@
 
 /obj/structure/reagent_dispensers/acid/New()
 	..()
-	reagents.add_reagent("sacid", 8000)
+	reagents.add_reagent("sacid", 50000)

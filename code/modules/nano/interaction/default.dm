@@ -62,16 +62,21 @@
 /atom/proc/contents_nano_distance(var/src_object, var/mob/living/user)
 	return user.shared_living_nano_distance(src_object)
 
-/mob/living/proc/shared_living_nano_distance(var/atom/movable/src_object)
-	if (!(src_object in view(4, src))) 	// If the src object is not in visable, disable updates
+/atom/movable
+	var/nanoui_interactive_dist = 1
+	var/nanoui_update_dist = 2
+	var/nanoui_disabled_dist = 4
+
+/mob/living/proc/shared_living_nano_distance(atom/movable/src_object)
+	if (!(src_object in view(src_object.nanoui_disabled_dist, src))) 	// If the src object is not in visable, disable updates
 		return STATUS_CLOSE
 
 	var/dist = get_dist(src_object, src)
-	if (dist <= 1)
+	if (dist <= src_object.nanoui_interactive_dist)
 		return STATUS_INTERACTIVE	// interactive (green visibility)
-	else if (dist <= 2)
+	else if (dist <= src_object.nanoui_update_dist)
 		return STATUS_UPDATE 		// update only (orange visibility)
-	else if (dist <= 4)
+	else if (dist <= src_object.nanoui_disabled_dist)
 		return STATUS_DISABLED 		// no updates, completely disabled (red visibility)
 	return STATUS_CLOSE
 

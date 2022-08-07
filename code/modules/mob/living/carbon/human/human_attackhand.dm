@@ -172,6 +172,8 @@
 					L.handle_breath(1 + acls_quality * 0.25)
 					if(prob(20))
 						to_chat(src, SPAN_NOTICE("You feel a breath of fresh air enter your lungs. It feels so good."))
+			else if(!(M == src && apply_pressure(M, M.zone_sel.selecting)))
+				help_shake_act(M)
 		if(I_GRAB)
 			if(M == src)
 				return 0

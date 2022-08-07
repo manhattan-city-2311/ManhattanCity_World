@@ -1,6 +1,6 @@
-#define ERP_ACTION_NORMAL 0
-#define ERP_ACTION_GENTLE 1
-#define ERP_ACTION_ROUGH  2
+#define ERP_ACTION_NORMAL 1
+#define ERP_ACTION_GENTLE 2
+#define ERP_ACTION_ROUGH  4
 
 #define ERP_ACTION_CATEGORY_ROMANCE  	"Романтика" 
 #define ERP_ACTION_CATEGORY_FOREPLAY 	"Прелюдия" 
