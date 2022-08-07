@@ -261,10 +261,12 @@
 /obj/machinery/door/unpowered/manhattan/wood/east
 	dir = EAST
 	pixel_x = -16
+	pixel_y = -5
 
 /obj/machinery/door/unpowered/manhattan/wood/west
 	dir = WEST
 	pixel_x = -16
+	pixel_y = -5
 
 /obj/machinery/door/unpowered/manhattan/steel
 	icon = 'icons/obj/manhattan/metal_door.dmi'
