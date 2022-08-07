@@ -235,7 +235,7 @@
 		return
 	if(world.time < (last_action + UPGRADE_COOLDOWN))
 		return
-	if(!assailant.canmove || assailant.lying)
+	if(!assailant.canmove)
 		qdel(src)
 		return
 

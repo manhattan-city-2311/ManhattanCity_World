@@ -29,8 +29,8 @@
 			number of cases, the Gateway they have established may not be immediately obvious. \
 			Do not panic if you cannot locate the return Gateway. Begin colonisation of the destination. \
 			<br><br><b>A New World</b><br>\
-			As a participant in the Gateway Project, you will be on the frontiers of space. \
-			Though complete safety is assured, participants are advised to prepare for inhospitable \
+			As a participient in the Gateway Project, you will be on the frontiers of space. \
+			Though complete safety is assured, participients are advised to prepare for inhospitable \
 			environs."
 
 //we don't want the silly text overlay!

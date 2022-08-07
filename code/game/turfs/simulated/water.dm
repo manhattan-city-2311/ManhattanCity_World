@@ -1,4 +1,3 @@
-// This doesn't inherit from /outdoors/ so that the pool can use it as well.
 /turf/simulated/floor/water
 	name = "shallow water"
 	desc = "A body of water.  It seems shallow enough to walk through, if needed."
@@ -8,7 +7,6 @@
 	var/under_state = "rock"
 	edge_blending_priority = -1
 	movement_cost = 4
-	outdoors = TRUE
 	var/depth = 1 // Higher numbers indicates deeper water.
 	initial_flooring = /decl/flooring/water
 
@@ -80,12 +78,10 @@ W
 	name = "pool"
 	desc = "Don't worry, it's not closed."
 	under_state = "pool"
-	outdoors = FALSE
 
 /turf/simulated/floor/water/deep/pool
 	name = "deep pool"
 	desc = "Don't worry, it's not closed."
-	outdoors = FALSE
 
 /turf/simulated/floor/water/sewer
 	name = "sewage water"

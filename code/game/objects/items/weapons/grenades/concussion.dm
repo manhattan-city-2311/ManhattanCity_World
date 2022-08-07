@@ -15,9 +15,6 @@
 
 /obj/proc/concussion_blast(atom/target, var/radius = 5)
 	var/turf/T = get_turf(target)
-	if(is_below_sound_pressure(T))
-		visible_message("<span class='notice'>Whump.</span>")
-		return
 	playsound(src, 'sound/effects/bang.ogg', 75, 1, -3)
 	if(istype(T))
 		for(var/mob/living/L in orange(T, radius))

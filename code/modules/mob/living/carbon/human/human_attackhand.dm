@@ -76,7 +76,7 @@
 				return
 
 			apply_damage(damage, HALLOSS, affecting, armor_block, armor_soak)
-			on_attack()
+			on_attack(H)
 			if(damage >= 9)
 				visible_message(SPAN_DANGER("<B>[H] has weakened [src]!</B>"))
 				apply_effect(4, WEAKEN, armor_block)
@@ -172,6 +172,8 @@
 					L.handle_breath(1 + acls_quality * 0.25)
 					if(prob(20))
 						to_chat(src, SPAN_NOTICE("You feel a breath of fresh air enter your lungs. It feels so good."))
+			else if(!(M == src && apply_pressure(M, M.zone_sel.selecting)))
+				help_shake_act(M)
 		if(I_GRAB)
 			if(M == src)
 				return 0

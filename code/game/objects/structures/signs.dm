@@ -3,7 +3,7 @@
 	anchored = 1
 	opacity = 0
 	density = 0
-	plane = -45
+	plane = ABOVE_MOB_PLANE
 	layer = ABOVE_JUNK_LAYER
 	w_class = ITEMSIZE_NORMAL
 

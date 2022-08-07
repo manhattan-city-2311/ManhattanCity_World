@@ -140,10 +140,6 @@
 	name = "banner (white)"
 	path = /obj/item/weapon/banner/white
 
-/datum/category_item/crafting/sewing_machine/misc/banner/nt
-	name = "banner (nanotrasen)"
-	path = /obj/item/weapon/banner/nt
-
 /datum/category_item/crafting/sewing_machine/misc/banner/solgov
 	name = "banner (solgov)"
 	path = /obj/item/weapon/banner/solgov

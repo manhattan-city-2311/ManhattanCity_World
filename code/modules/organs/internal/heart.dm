@@ -35,13 +35,12 @@
 
 /obj/item/organ/internal/heart/New()
 	..()
-	if(!owner.client)
-		return
-	damage = owner.client.prefs.heart_data?["damage"] || 0
-	pulse = owner.client.prefs.heart_data?["pulse"] || initial(pulse)
-	cardiac_output = owner.client.prefs.heart_data?["cardiac_output"] || 1
-	ischemia = owner.client.prefs.heart_data?["ischemia"] || 0
-	germ_level = owner.client.prefs.heart_data?["germ_level"] || 0
+	if(owner?.client?.prefs.heart_data)
+		damage = owner.client.prefs.heart_data["damage"] || 0
+		pulse = owner.client.prefs.heart_data["pulse"] || initial(pulse)
+		cardiac_output = owner.client.prefs.heart_data["cardiac_output"] || 1
+		ischemia = owner.client.prefs.heart_data["ischemia"] || 0
+		germ_level = owner.client.prefs.heart_data["germ_level"] || 0
 
 
 /obj/item/organ/internal/heart/influence_hormone(T, amount)
@@ -136,7 +135,8 @@
 	if(owner.get_deprivation() < 1 && ((owner.mcv + owner.mcv_add) > NORMAL_MCV * owner.k))
 		pulse_modificators["hypermcv"] = ((owner.mcv + owner.mcv_add) - NORMAL_MCV * owner.k) / 30
 
-	pulse_modificators["shock"] = Clamp(owner.shock_stage * 0.55, 0, 110)
+	if(owner.shock_stage > 20)
+		pulse_modificators["shock"] = Clamp(owner.shock_stage * 0.55, 0, 110)
 
 /obj/item/organ/internal/heart/proc/handle_rythme()
 	for(var/T in arrythmias)

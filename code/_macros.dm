@@ -44,6 +44,8 @@
 
 #define isslime(A) istype(A, /mob/living/simple_mob/slime)
 
+#define isunderwear(A) istype(A, /obj/item/underwear)
+
 #define isbot(A) istype(A, /mob/living/bot)
 
 #define isxeno(A) istype(A, /mob/living/simple_mob/animal/space/alien)
@@ -92,6 +94,8 @@
 
 #define CanInteract(user, state) (CanUseTopic(user, state) == STATUS_INTERACTIVE)
 
+#define CanInteractWith(user, target, state) (target.CanUseTopic(user, state) == STATUS_INTERACTIVE)
+
 #define QDEL_NULL_LIST(x) if(x) { for(var/y in x) { qdel(y) } ; x = null }
 
 #define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
@@ -103,6 +107,8 @@
 #define any2ref(x) "\ref[x]"
 
 #define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"
+
+#define SPAN_PLEASURE(X) "<span class='pleasure'>[X]</span>"
 
 #define SPAN_INFO(X) "<span class='info'>[X]</span>"
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"

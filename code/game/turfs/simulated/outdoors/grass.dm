@@ -61,8 +61,9 @@ var/list/grass_types = list(
 	grass_chance = 0
 	tree_chance = 0
 
+// MARKED FOR REMOVAL
 /turf/simulated/floor/outdoors/grass/nogrowth/noweather
-	outdoors = FALSE
+
 
 /turf/simulated/floor/outdoors/grass/sif/forest
 	name = "thick growth"

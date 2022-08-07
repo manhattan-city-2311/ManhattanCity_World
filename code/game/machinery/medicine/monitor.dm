@@ -209,4 +209,4 @@
 				pulsesound = 'sound/manhattan/monitor/200bpm.mp3'
 		modpulse = newmodpulse
 		for(var/mob/living/carbon/human/H in range(5))
-			H << sound(pulsesound, 1, 0, PULSEBEEP_SOUND_CHANNEL)
+			sound_to(H, sound(pulsesound, 1, 0, PULSEBEEP_SOUND_CHANNEL))

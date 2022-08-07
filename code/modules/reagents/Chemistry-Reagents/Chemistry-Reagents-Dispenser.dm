@@ -65,7 +65,8 @@
 	reagent_state = LIQUID
 	color = "#404030"
 
-	ingest_met = REM
+	metabolism = 3.5
+	ingest_met = 3.5
 
 	var/nutriment_factor = 0
 	var/strength = 10 // This is, essentially, units between stages - the lower, the stronger. Less fine tuning, more clarity.
@@ -91,30 +92,22 @@
 /datum/reagent/ethanol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed) //This used to do just toxin. That's boring. Let's make this FUN.
 	if(issmall(M)) removed *= 2
 	var/strength_mod = 3 //Alcohol is 3x stronger when injected into the veins.
-	if(alien == IS_SKRELL)
-		strength_mod *= 5
-	if(alien == IS_TAJARA)
-		strength_mod *= 1.25
-	if(alien == IS_UNATHI)
-		strength_mod *= 0.75
-	if(alien == IS_DIONA)
-		strength_mod = 0
 
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 
-	if(dose * strength_mod >= strength) // Early warning
+	if(dose * strength_mod >= strength * 20) // Early warning
 		M.make_dizzy(18) // It is decreased at the speed of 3 per tick
-	if(dose * strength_mod >= strength * 2) // Slurring
+	if(dose * strength_mod >= strength * 35) // Slurring
 		M.slurring = max(M.slurring, 90)
-	if(dose * strength_mod >= strength * 3) // Confusion - walking in random directions
+	if(dose * strength_mod >= strength * 50) // Confusion - walking in random directions
 		M.Confuse(60)
-	if(dose * strength_mod >= strength * 4) // Blurry vision
+	if(dose * strength_mod >= strength * 60) // Blurry vision
 		M.eye_blurry = max(M.eye_blurry, 30)
-	if(dose * strength_mod >= strength * 5) // Drowsyness - periodically falling asleep
+	if(dose * strength_mod >= strength * 70) // Drowsyness - periodically falling asleep
 		M.drowsyness = max(M.drowsyness, 60)
-	if(dose * strength_mod >= strength * 6) // Toxic dose
+	if(dose * strength_mod >= strength * 80) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*3)
-	if(dose * strength_mod >= strength * 7) // Pass out
+	if(dose * strength_mod >= strength * 90) // Pass out
 		M.paralysis = max(M.paralysis, 60)
 		M.sleeping  = max(M.sleeping, 90)
 
@@ -135,30 +128,22 @@
 	M.adjust_hydration(hydration_factor * removed)
 	M.adjust_calories(calories_factor * removed)
 	var/strength_mod = 1
-	if(alien == IS_SKRELL)
-		strength_mod *= 5
-	if(alien == IS_TAJARA)
-		strength_mod *= 1.25
-	if(alien == IS_UNATHI)
-		strength_mod *= 0.75
-	if(alien == IS_DIONA)
-		strength_mod = 0
 
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 
-	if(dose * strength_mod >= strength) // Early warning
+	if(dose * strength_mod >= strength * 20) // Early warning
 		M.make_dizzy(6) // It is decreased at the speed of 3 per tick
-	if(dose * strength_mod >= strength * 2) // Slurring
+	if(dose * strength_mod >= strength * 35) // Slurring
 		M.slurring = max(M.slurring, 30)
-	if(dose * strength_mod >= strength * 3) // Confusion - walking in random directions
+	if(dose * strength_mod >= strength * 50) // Confusion - walking in random directions
 		M.Confuse(20)
-	if(dose * strength_mod >= strength * 4) // Blurry vision
+	if(dose * strength_mod >= strength * 60) // Blurry vision
 		M.eye_blurry = max(M.eye_blurry, 10)
-	if(dose * strength_mod >= strength * 5) // Drowsyness - periodically falling asleep
+	if(dose * strength_mod >= strength * 70) // Drowsyness - periodically falling asleep
 		M.drowsyness = max(M.drowsyness, 20)
-	if(dose * strength_mod >= strength * 6) // Toxic dose
+	if(dose * strength_mod >= strength * 80) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity)
-	if(dose * strength_mod >= strength * 7) // Pass out
+	if(dose * strength_mod >= strength * 90) // Pass out
 		M.paralysis = max(M.paralysis, 20)
 		M.sleeping  = max(M.sleeping, 30)
 

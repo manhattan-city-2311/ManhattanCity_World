@@ -590,6 +590,19 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/spline/fancy/purple/three_quarters
 	icon_state = "spline_fancy_full"
 
+/obj/effect/floor_decal/spline/fancy/green
+	name = "spline - fancy"
+	color = "#3BD965"
+
+/obj/effect/floor_decal/spline/fancy/green/corner
+	icon_state = "spline_fancy_corner"
+
+/obj/effect/floor_decal/spline/fancy/green/cee
+	icon_state = "spline_fancy_cee"
+
+/obj/effect/floor_decal/spline/fancy/green/three_quarters
+	icon_state = "spline_fancy_full"
+
 /obj/effect/floor_decal/industrial/warning
 	name = "hazard stripes"
 	icon_state = "warning"

@@ -48,9 +48,7 @@
 
 	var/weight = 59 //defined by calories. see life.dm
 
-	var/list/all_underwear = list()
-	var/list/all_underwear_metadata = list()
-	var/list/hide_underwear = list()
+	var/list/worn_underwear = list()
 	var/backbag = 2		//Which backpack type the player has chosen. Nothing, Satchel or Backpack.
 	var/pdachoice = 1	//Which PDA type the player has chosen. Default, Slim, Old, or Rugged.
 

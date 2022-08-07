@@ -1,8 +1,8 @@
 /mob/living/carbon/New()
 	//setup reagent holders
-	bloodstr = new/datum/reagents/metabolism/bloodstream(500, src)
-	ingested = new/datum/reagents/metabolism/ingested(500, src)
-	touching = new/datum/reagents/metabolism/touch(500, src)
+	bloodstr = new/datum/reagents/metabolism/bloodstream(6000, src)
+	ingested = new/datum/reagents/metabolism/ingested(6000, src)
+	touching = new/datum/reagents/metabolism/touch(6000, src)
 	reagents = bloodstr
 	if (!default_language && species_language)
 		default_language = all_languages[species_language]
