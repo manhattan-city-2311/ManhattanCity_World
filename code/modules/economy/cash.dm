@@ -105,16 +105,19 @@
 	if(!worth)
 		user.drop_from_inventory(src)
 		var/cashtype = text2path("/obj/item/weapon/spacecash/c[amount]")
-		var/obj/cash = new cashtype (user.loc)
-		user.put_in_hands(cash)
+		. = new cashtype (user.loc)
 	else
 		var/obj/item/weapon/spacecash/bundle/bundle = new (user.loc)
 		bundle.worth = amount
 		bundle.update_icon()
-		user.put_in_hands(bundle)
+		. = bundle
 
 	if(!worth)
 		qdel(src)
+
+	user.put_in_hands(.)
+
+
 
 /obj/item/weapon/spacecash/bundle/c1
 	name = "1 credit chip"
@@ -181,7 +184,7 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 		var/obj/item/weapon/spacecash/bundle/bundle = new (spawnloc)
 		bundle.worth = sum
 		bundle.update_icon()
-		if (ishuman(human_user) && !human_user.get_active_hand())
+		if (ishuman(human_user))
 			human_user.put_in_hands(bundle)
 	return
 
