@@ -26,4 +26,3 @@ var/list/unisex_outfits = list(
 
 	var/decl/hierarchy/outfit/O = pick(outfits)
 	O.equip_base(src)
-

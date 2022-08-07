@@ -104,7 +104,12 @@
 		S.cd = "/character[default_slot]"
 
 	player_setup.load_character(S)
+	load_organs(S)
 	return 1
+
+/datum/preferences/proc/load_organs(savefile/S)
+	all_organ_damage = S["all_organ_damage"]
+	all_organ_ischemia = S["all_organ_ischemia"]
 
 /datum/preferences/proc/save_character()
 	if(!path)				return 0
@@ -120,7 +125,12 @@
 	S.cd = "/character[default_slot]"
 
 	player_setup.save_character(S)
+	save_organs(S)
 	return 1
+
+/datum/preferences/proc/save_organs(savefile/S)
+	S["all_organ_damage"] = all_organ_damage
+	S["all_organ_ischemia"] = all_organ_ischemia
 
 /datum/preferences/proc/delete_character()
 	if(!path)				return 0
