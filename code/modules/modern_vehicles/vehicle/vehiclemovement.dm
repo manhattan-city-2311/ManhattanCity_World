@@ -139,6 +139,8 @@
 
 /obj/manhattan/vehicle/Bump(atom/obstacle)
 	..()
+	if(istype(obstacle, /obj/structure/stairs))
+		return
 	if(obstacle != src) // FIXME:
 		. = collide_with_obstacle(obstacle)
 
