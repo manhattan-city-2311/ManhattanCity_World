@@ -38,6 +38,7 @@
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	price_tag = 22260
 
 //	one_handed_penalty = 15
 
@@ -65,6 +66,7 @@
 	magazine_type = /obj/item/ammo_magazine/m545
 	allowed_magazines = list(/obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/fmj/s5p45x39
+	price_tag = 21200
 
 //	one_handed_penalty = 30
 
@@ -97,6 +99,7 @@
 	magazine_type = /obj/item/ammo_magazine/m9mmt/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mmt)
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	price_tag = 21200
 
 /obj/item/weapon/gun/projectile/automatic/wt550/update_icon()
 	..()
@@ -136,6 +139,7 @@
 
 	var/use_launcher = 0
 	var/obj/item/weapon/gun/launcher/grenade/underslung/launcher
+	price_tag = 40550
 
 /obj/item/weapon/gun/projectile/automatic/z8/New()
 	..()
@@ -205,6 +209,7 @@
 		list(mode_name="short bursts",	burst=5, move_delay=6, burst_accuracy = list(0,-1,-1,-2,-2), dispersion = list(0.6, 1.0, 1.0, 1.0, 1.2), automatic = 0),
 		list(mode_name="automatic",       burst=1, fire_delay=-1,    move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
+	price_tag = 73000
 
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/special_check(mob/user)
@@ -273,6 +278,7 @@
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null, automatic = 0),
 		list(mode_name="automatic",       burst=1, fire_delay=-1,    move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
+	price_tag = 110000
 
 /obj/item/weapon/gun/projectile/automatic/as24/update_icon()
 	..()
@@ -297,6 +303,7 @@
 		list(mode_name="semiauto", burst=1, fire_delay=0),
 		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
+	price_tag = 33920
 
 /obj/item/weapon/gun/projectile/automatic/mini_uzi/update_icon()
 	..()
@@ -323,6 +330,7 @@
 		list(mode_name="semiauto", burst=1, fire_delay=0),
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-15,-15), dispersion=list(0.0, 0.6, 1.0))
 		)
+	price_tag = 31800
 
 /obj/item/weapon/gun/projectile/automatic/p90/update_icon()
 	icon_state = "p90smg-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "empty"]"

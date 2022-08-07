@@ -16,6 +16,7 @@
 	handle_casings = HOLD_CASINGS
 	var/recentpump = 0 // to prevent spammage
 	var/action_sound = 'sound/weapons/shotgunpump.ogg'
+	price_tag = 80000
 
 /obj/item/weapon/gun/projectile/shotgun/pump/consume_next_projectile()
 	if(chambered)
@@ -49,7 +50,8 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	max_shells = 7 //match the ammo box capacity, also it can hold a round in the chamber anyways, for a total of 8.
 	ammo_type = /obj/item/ammo_casing/a12g
-	load_method = SINGLE_CASING|SPEEDLOADER
+	load_method = SINGLE_CASING|SPEEDLOADER]
+	price_tag = 95000
 
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel
 	name = "double-barreled shotgun"
@@ -74,6 +76,7 @@
 		list(mode_name="fire one barrel at a time", burst=1),
 		list(mode_name="fire both barrels at once", burst=2),
 		)
+	price_tag = 45000
 
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel/pellet
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
