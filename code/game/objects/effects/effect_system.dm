@@ -102,7 +102,7 @@ steam.start() -- spawns the effect
 
 /obj/effect/effect/sparks/initialize()
 	. = ..()
-	sleep(7)
+	sleep(12)
 	qdel(src)
 
 /datum/effect/effect/system/spark_spread
