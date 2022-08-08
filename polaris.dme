@@ -358,7 +358,6 @@
 #include "code\datums\outfits\_defines.dm"
 #include "code\datums\outfits\horror_killers.dm"
 #include "code\datums\outfits\misc.dm"
-#include "code\datums\outfits\npc.dm"
 #include "code\datums\outfits\outfit.dm"
 #include "code\datums\outfits\pirates.dm"
 #include "code\datums\outfits\spec_op.dm"
