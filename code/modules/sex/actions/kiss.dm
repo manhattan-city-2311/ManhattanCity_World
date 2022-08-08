@@ -4,7 +4,6 @@
 	needs_access = SBP_FACE
 
 /datum/erp_action/kiss_cheek/get_messages()
-	return list("@1 движется к @2 и оставляет на [pronounce_helper(user2, "его", "её")] щеке влажный поцелуй.")
 
 /datum/erp_action/kiss_cheek/gentle
 	name = "Нежный поцелуй в щеку"
