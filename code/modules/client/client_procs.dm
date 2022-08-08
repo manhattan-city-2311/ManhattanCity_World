@@ -222,13 +222,13 @@
 
 	//VOREStation Code
 
-	var/alert = FALSE //VOREStation Edit start.
+	//var/alert = FALSE //VOREStation Edit start.
 	if(isnum(player_age) && player_age == 0)
 		message_admins("PARANOIA: [key_name(src)] has connected here for the first time.")
-		alert = TRUE
+	//	alert = TRUE
 	if(isnum(player_byond_age) && player_byond_age <= 2)
 		message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([player_byond_age] days).")
-		alert = TRUE
+	//	alert = TRUE
 	// if(alert)
 	// 	for(var/client/X in admins)
 	// 		if(X.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
