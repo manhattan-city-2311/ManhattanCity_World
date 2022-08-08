@@ -25,15 +25,11 @@
         if(!template.load(T, centered = TRUE))
             log_error("Vehicle interior template failed to load!")
             qdel(src)
+        GLOB.vehicle_spawnpoints -= spawns
         qdel(spawns)
         break
-    if(!template)
-        log_error("No template for vehicle interior found.")
-        return
 
     id = rand(1, 999999) //Will never match
-    if(!vehicle)
-        return
     for(var/obj/effect/vehicle_entrance/E in range(5, middle_turf))
         entrance = E
         entrance.id = id
@@ -93,7 +89,7 @@
             visible_message("<span class = 'notice'>[user] enters the interior of [src].</span>")
             to_chat(user,"<span class = 'info'>You are now in the interior of [src].</span>")
             playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
-            user.forceMove(interior.entrance.loc)
+            user.forceMove(get_turf(interior.entrance))
             occupants += user
             occupants[user] = "passenger"
             contents += user
