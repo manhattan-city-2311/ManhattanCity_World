@@ -54,7 +54,7 @@
     var/free_x = 0
     var/free_y = 0
 
-/obj/effect/interior_spawn/New()
+/obj/effect/interior_spawn/initialize()
     . = ..()
     GLOB.vehicle_spawnpoints += src
 
@@ -66,7 +66,7 @@
 	var/size_y = 0
 	var/datum/map_template/interior_template = /datum/map_template
 
-/obj/manhattan/vehicle/large/New()
+/obj/manhattan/vehicle/large/initialize()
 	interior = new
 	interior.vehicle = src
 	interior.interior_template = interior_template

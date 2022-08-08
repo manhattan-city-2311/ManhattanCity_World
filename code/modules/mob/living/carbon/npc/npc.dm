@@ -15,6 +15,8 @@
 	var/list/ignore_list = list()
 	var/list/patrol_path = list()
 	var/list/target_path = list()
+	var/obj/effect/npc/patrol/cur_patrol_marker = null
+	var/obj/effect/npc/patrol/used_patrol_marker = null
 	var/turf/obstacle = null
 	var/turf/last_turf = null
 	var/turf_procs = 0
@@ -30,13 +32,44 @@
 
 	var/move_dir
 
-	var/flee_damage = 75
+	var/flee_pain = 75
 
 /mob/living/carbon/human/npc/New()
 	..()
 	switch_intent()
 	switch_mode()
 	START_PROCESSING(SSnpc, src)
+
+	gender = pick(MALE,FEMALE)
+
+	age = rand(18,90)
+
+	s_tone = random_skin_tone()
+	h_style = random_hair_style(gender, "Human")
+	f_style = random_facial_hair_style(gender, "Human")
+
+	if(gender == MALE)
+		name = "[pick(first_names_male)] [pick(last_names)]"
+		real_name = name
+	else
+		name = "[pick(first_names_female)] [pick(last_names)]"
+		real_name = name
+
+	var/hair_color = random_hair_color(src)
+	r_hair = hair_color[1]
+	g_hair = hair_color[2]
+	b_hair = hair_color[3]
+
+	r_facial = r_hair
+	g_facial = g_hair
+	b_facial = b_hair
+
+	var/eye_color = random_eye_color()
+	r_eyes = eye_color[1]
+	g_eyes = eye_color[2]
+	b_eyes = eye_color[3]
+
+	random_outfit()
 
 /mob/living/carbon/human/npc/death()
 	..()
@@ -57,6 +90,12 @@
 			domove()
 		if(NPC_MODE_IDLE)
 			handleIdle()
+			return
+
+/mob/living/carbon/human/npc/Life()
+	..()
+	if(stat == UNCONSCIOUS)
+		mode = NPC_MODE_SLEEP
 
 /mob/living/carbon/human/npc/proc/domove()
 	var/newloc = get_step(src.loc, move_dir)
@@ -70,13 +109,14 @@
 			mode = NPC_MODE_ATTACK
 			anxiety = ANXIETY_LEVEL_DANGER
 			attack_target = user
+			switch_intent()
 			handle_combat()
 			say(pick(npc_attack_phrases))
 
 /mob/living/carbon/human/npc/proc/switch_mode()
 	resetTarget()
 	lookForTargets()
-	if(bruteloss > flee_damage)
+	if(shock_stage > flee_pain)
 		mode = NPC_MODE_SEEKHELP
 	if(!target)
 		mode = NPC_MODE_PATROL
@@ -171,16 +211,20 @@
 	return
 
 /mob/living/carbon/human/npc/proc/getPatrolTurf()
-	var/minDist = INFINITY
-	var/obj/effect/npc/patrol/targ = locate() in get_turf(src)
+	var/maxDist = 50
+	var/mob/living/carbon/human/targ
+
+	var/obj/effect/npc/patrol/N = pick(GLOB.npcmarkers)
+	if(get_dist(src, N) < maxDist && N != used_patrol_marker && N.in_nuse == FALSE)
+		maxDist = get_dist(src, N)
+		targ = N
+		used_patrol_marker.in_nuse = FALSE
+		used_patrol_marker = N
+		cur_patrol_marker = N
+		cur_patrol_marker.in_nuse = TRUE
 
 	if(!targ)
-		for(var/obj/effect/npc/patrol/N in GLOB.npcmarkers)
-			if(prob(10))
-				return
-			if(get_dist(src, N) < minDist)
-				minDist = get_dist(src, N)
-				targ = N
+		targ = locate() in get_turf(src)
 
 	if(targ)
 		return get_turf(targ)

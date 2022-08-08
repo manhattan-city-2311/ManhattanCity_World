@@ -9,6 +9,7 @@
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
+	price_tag = 8480
 
 /obj/item/weapon/gun/projectile/colt/update_icon()
 	if(ammo_magazine)
@@ -85,6 +86,7 @@
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
+	price_tag = 8480
 
 /obj/item/weapon/gun/projectile/sec/update_icon()
 	..()
@@ -118,6 +120,7 @@
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
+	price_tag = 8480
 
 /obj/item/weapon/gun/projectile/police/update_icon()
 	..()
@@ -277,6 +280,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mm/large
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm)
+	price_tag = 7950
 
 /obj/item/weapon/gun/projectile/beretta/update_icon()
 	..()
@@ -355,6 +359,7 @@
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
 	projectile_type = /obj/item/projectile/bullet/pistol
+	price_tag = 5300
 
 /obj/item/weapon/gun/projectile/luger/update_icon()
 	..()
@@ -376,6 +381,7 @@
 	fire_sound = 'sound/weapons/gunshot3.ogg'
 	magazine_type = /obj/item/ammo_magazine/m9mm
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm) // Can accept illegal large capacity magazines, or compact magazines.
+	price_tag = 10600
 
 /obj/item/weapon/gun/projectile/p92x/update_icon()
 	..()

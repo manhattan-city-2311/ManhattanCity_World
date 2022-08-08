@@ -214,7 +214,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/callproc,
 	/client/proc/callproc_datum,
 	// /client/proc/SDQL_query,
-	/client/proc/SDQL2_query,
+	///client/proc/SDQL2_query,
 	/client/proc/Jump,
 	/client/proc/jumptomob,
 	/client/proc/jumptocoord,

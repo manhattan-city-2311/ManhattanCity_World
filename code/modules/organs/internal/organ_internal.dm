@@ -22,6 +22,8 @@
 /obj/item/organ/internal/New()
 	..()
 	oxygen_consumption = oxygen_consumption * owner.k
+	damage = owner?.client?.prefs.all_organ_damage[name]
+	ischemia = owner?.client?.prefs.all_organ_ischemia[name]
 
 /obj/item/organ/internal/get_view_variables_options()
 	return ..() + {"

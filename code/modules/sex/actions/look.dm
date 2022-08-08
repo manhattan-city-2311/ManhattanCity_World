@@ -9,13 +9,14 @@
 	sbp = SBP_FACE
 	needs_access = SBP_FACE
 	base_pleasure = list(1, 1)
+	action_type = ERP_ACTION_PASSIONATE
 
 /datum/erp_action/passionate_look/get_messages(user1, user2)
 	var/list/poses = get_poses(user1, user2)
 
 	if(poses ~= list(POS_SITTING, POS_SITTING))
 		return list(
-			"@1 оборачивается к @2, чуть наклоняется, и вот между ними уже почти не остаётся расстояния. Воздух тяжелеет."
+			"@1 оборачивается к @2, чуть наклоняется, и вот между ними уже почти не остаётся расстояния. Воздух тяжелеет..."
 		)
 	if(poses ~= list(POS_SITTING, POS_STANDING))
 		return list(

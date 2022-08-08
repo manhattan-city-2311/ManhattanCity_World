@@ -12,6 +12,8 @@
 //		if(user.mod_keys_held & CTRL_KEY)
 //			return M.set_face_dir(user.client_dir(movement_dir))
 		if(user.mod_keys_held & ALT_KEY)
+			user.next_move_dir_add = 0
+			user.next_move_dir_sub = 0
 			return M.facedir(user.client_dir(movement_dir))
 
 	var/must_call_move = FALSE

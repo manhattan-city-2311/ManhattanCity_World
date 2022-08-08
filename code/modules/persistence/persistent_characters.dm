@@ -1,26 +1,9 @@
 /mob/living/carbon/human/proc/save_organs_to_prefs()
-	var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
-	client.prefs.heart_data["damage"] = heart.damage
-	client.prefs.heart_data["pulse"] = heart.pulse
-	client.prefs.heart_data["cardiac_output"] = heart.cardiac_output
-	client.prefs.heart_data["ischemia"] = heart.ischemia
-	client.prefs.heart_data["germ_level"] = heart.germ_level
+	for(var/obj/item/organ/O in organs_by_name)
+		mind.prefs.all_organ_damage[O.name] = O.damage
 
-	var/obj/item/organ/internal/liver/liver = internal_organs_by_name[O_LIVER]
-	client.prefs.liver_data["damage"] = liver.damage
-
-	var/obj/item/organ/internal/lungs/lungs = internal_organs_by_name[O_LUNGS]
-	client.prefs.lungs_data["damage"] = lungs.damage
-
-	var/obj/item/organ/internal/stomach/stomach = internal_organs_by_name[O_STOMACH]
-	client.prefs.stomach_data["damage"] = stomach.damage
-
-	var/obj/item/organ/internal/kidneys/kidneys = internal_organs_by_name[O_KIDNEYS]
-	client.prefs.kidneys_data["damage"] = kidneys.damage
-
-	var/obj/item/organ/internal/brain/brain = internal_organs_by_name[O_BRAIN]
-	client.prefs.brain_data["damage"] = brain.damage
-
+	for(var/obj/item/organ/internal/I in internal_organs_by_name)
+		mind.prefs.all_organ_ischemia[I.name] = I.ischemia
 
 // Moved from /datum/preferences/proc/save_to_preferences()
 /mob/living/carbon/human/proc/save_mob_to_prefs()

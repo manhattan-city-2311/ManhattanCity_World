@@ -26,8 +26,11 @@
 /obj/item/ammo_casing/a357
 	desc = "A .357 bullet casing."
 	caliber = ".357"
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
-
+	projectile_type = /obj/item/projectile/bullet/fmj/p357
+/obj/item/ammo_casing/a357/ap
+	projectile_type = /obj/item/projectile/bullet/ap/p357
+/obj/item/ammo_casing/a357/hp
+	projectile_type = /obj/item/projectile/bullet/hp/p357
 /*
  * .38
  */

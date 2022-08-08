@@ -273,12 +273,9 @@ var/list/preferences_datums = list()
 	var/turf/location
 
 	var/blood_level
-	var/list/heart_data
-	var/list/liver_data
-	var/list/lungs_data
-	var/list/stomach_data
-	var/list/kidneys_data
-	var/list/brain_data
+
+	var/list/all_organ_damage = list()
+	var/list/all_organ_ischemia = list()
 
 /datum/preferences/proc/is_records_filled()
 	for(var/ID in records)

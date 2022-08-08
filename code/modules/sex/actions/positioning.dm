@@ -22,7 +22,7 @@
 	. = ..()
 	if(!.)
 		return
-	
+
 	if(user1.get_position_id() == POS_LYING && !user1.buckled)
 		user1.resting = FALSE
 	user1.erp_position = new /datum/erp_position/standing
@@ -43,7 +43,7 @@
 	. = ..()
 	if(!.)
 		return
-	
+
 	user1.resting = TRUE
 	user1.erp_position = new /datum/erp_position/lying
 
@@ -69,13 +69,13 @@
 	. = ..()
 	if(!.)
 		return
-	
+
 	user1.resting = TRUE
 	user1.erp_position = new /datum/erp_position/lying
 
 /datum/erp_action/lie_front/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
 	return list(
-		"@1 медленно и аккуратно чуть проползает вперёд, укладываясь на живот.",
+		"@1 медленно и аккуратно чуть проползает вперёд, и укладывается на живот.",
 		"@1 хлопается лицом вперёд, улеглись на живот."
 	)
 
@@ -104,7 +104,7 @@
 
 /datum/erp_action/kneel/fall
 	name = "Рухнуть на колени"
-	
+
 /datum/erp_action/kneel/fall/get_messages(user1, user2)
 	return list(
 		"@1 позабыв осторожность обрушивается на пол, оказываясь [pronounce_helper(user2, "стоящим", "стоящей")] на коленях перед @2.",
