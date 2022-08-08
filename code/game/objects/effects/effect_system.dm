@@ -102,7 +102,8 @@ steam.start() -- spawns the effect
 
 /obj/effect/effect/sparks/initialize()
 	. = ..()
-	//schedule_task_in(5 SECONDS, /proc/qdel, list(src))
+	sleep(7)
+	qdel(src)
 
 /datum/effect/effect/system/spark_spread
 	var/total_sparks = 0 // To stop it being spammed and lagging!
