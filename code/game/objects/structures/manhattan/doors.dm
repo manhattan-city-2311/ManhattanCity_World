@@ -260,12 +260,12 @@
 
 /obj/machinery/door/unpowered/manhattan/wood/east
 	dir = EAST
-	pixel_x = -16
+	pixel_x = -26
 	pixel_y = -5
 
 /obj/machinery/door/unpowered/manhattan/wood/west
 	dir = WEST
-	pixel_x = -16
+	pixel_x = -6
 	pixel_y = -5
 
 /obj/machinery/door/unpowered/manhattan/steel
@@ -292,8 +292,10 @@
 
 /obj/machinery/door/unpowered/manhattan/steel/east
 	dir = EAST
-	pixel_x = -16
+	pixel_x = -26
+	pixel_y = -5
 
 /obj/machinery/door/unpowered/manhattan/steel/west
 	dir = WEST
-	pixel_x = -16
+	pixel_x = -6
+	pixel_y = -5
