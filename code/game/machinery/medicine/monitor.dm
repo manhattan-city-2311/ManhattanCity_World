@@ -34,12 +34,12 @@
 	. = ..()
 
 /obj/machinery/monitor/attack_hand(mob/user)
-	. = ..()
 	if(alarm)
 		visible_message("\The [usr] switches off the [src]'s alarm.")
 		alarm = FALSE
 		var/area/A = get_area(src)
 		A.code = ""
+	..()
 
 /obj/machinery/monitor/update_icon()
 	overlays.Cut()
@@ -178,6 +178,8 @@
 /obj/machinery/monitor/proc/handle_pulse(var/newpulse)
 	var/newmodpulse
 	switch(newpulse)
+		if(-1 to 1)
+			newmodpulse = 0
 		if(20 to 60)
 			newmodpulse = 1
 		if(61 to 120)
@@ -193,8 +195,11 @@
 	if(newmodpulse == modpulse)
 		return
 	else
+		modpulse = newmodpulse
 		var/pulsesound
 		switch(modpulse)
+			if(0)
+				pulsesound = null
 			if(1)
 				pulsesound = 'sound/manhattan/monitor/20bpm.mp3'
 			if(2)
@@ -207,6 +212,5 @@
 				pulsesound = 'sound/manhattan/monitor/160bpm.mp3'
 			if(6)
 				pulsesound = 'sound/manhattan/monitor/200bpm.mp3'
-		modpulse = newmodpulse
 		for(var/mob/living/carbon/human/H in range(5))
 			sound_to(H, sound(pulsesound, 1, 0, PULSEBEEP_SOUND_CHANNEL))

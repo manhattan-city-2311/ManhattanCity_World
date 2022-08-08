@@ -63,6 +63,7 @@
 	var/datum/map_template/interior_template = /datum/map_template
 
 /obj/manhattan/vehicle/large/initialize()
+	..()
 	interior = new
 	interior.vehicle = src
 	interior.interior_template = interior_template
@@ -157,6 +158,7 @@
 	icon_state = "noborder"
 	layer = ABOVE_MOB_LAYER
 	density = 1
+	anchored = 1
 
 /obj/structure/vehicledoor
 	name = "vehicle door"
@@ -167,6 +169,7 @@
 	var/datum/vehicle_interior/interior = null
 	layer = ABOVE_MOB_LAYER
 	density = 1
+	anchored 1
 
 /obj/structure/vehicledoor/attack_hand(mob/user)
     . = ..()

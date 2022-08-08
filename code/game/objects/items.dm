@@ -102,6 +102,11 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 		else
 			embed_chance = max(5, round(force/(w_class*3)))
 
+/obj/item/initialize()
+	if(mapload && persistent_online)
+		return INITIALIZE_HINT_QDEL
+	..()
+
 /obj/item/Destroy()
 	if(ismob(loc))
 		var/mob/m = loc

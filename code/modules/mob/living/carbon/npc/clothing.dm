@@ -14,7 +14,7 @@ var/list/unisex_outfits = list(
 
 /mob/living/carbon/human/npc/proc/random_outfit()
 	if(outfit)
-		outfit.equip_base(src)
+		outfit.equip(src)
 		return
 
 	var/list/outfits = list()
@@ -25,4 +25,4 @@ var/list/unisex_outfits = list(
 		outfits += female_outfits.Copy()
 
 	var/decl/hierarchy/outfit/O = pick(outfits)
-	O.equip_base(src)
+	O.equip(src)

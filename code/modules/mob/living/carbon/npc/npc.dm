@@ -218,7 +218,8 @@
 	if(get_dist(src, N) < maxDist && N != used_patrol_marker && N.in_nuse == FALSE)
 		maxDist = get_dist(src, N)
 		targ = N
-		used_patrol_marker.in_nuse = FALSE
+		if(used_patrol_marker)
+			used_patrol_marker.in_nuse = FALSE
 		used_patrol_marker = N
 		cur_patrol_marker = N
 		cur_patrol_marker.in_nuse = TRUE
