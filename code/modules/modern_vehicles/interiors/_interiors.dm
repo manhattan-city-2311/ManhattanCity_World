@@ -169,7 +169,7 @@
 	var/datum/vehicle_interior/interior = null
 	layer = ABOVE_MOB_LAYER
 	density = 1
-	anchored 1
+	anchored = 1
 
 /obj/structure/vehicledoor/attack_hand(mob/user)
     . = ..()
