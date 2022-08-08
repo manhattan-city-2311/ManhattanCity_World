@@ -229,10 +229,10 @@
 	if(isnum(player_byond_age) && player_byond_age <= 2)
 		message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([player_byond_age] days).")
 		alert = TRUE
-	if(alert)
-		for(var/client/X in admins)
-			if(X.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
-				X << 'sound/voice/bcriminal.ogg'
+	// if(alert)
+	// 	for(var/client/X in admins)
+	// 		if(X.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
+	// 			X << 'sound/voice/bcriminal.ogg'
 
 
 	send_resources()
