@@ -14,7 +14,7 @@
     var/obj/structure/vehicledoor/door = null
     var/obj/manhattan/vehicle/large/vehicle = null
 
-/datum/vehicle_interior/initialize()
+/datum/vehicle_interior/New()
     . = ..()
     sleep(1)
     var/datum/map_template/ambulance/template //hardcode for now, i'm tired

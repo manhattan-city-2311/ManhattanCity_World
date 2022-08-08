@@ -9,7 +9,7 @@
 /obj/effect/npc/patrol
 	name = "npc patrol marker"
 	icon_state = "patrol"
-	var/in_use = FALSE
+	var/in_nuse = FALSE
 
 /obj/effect/npc/danger
 	name = "npc danger marker"

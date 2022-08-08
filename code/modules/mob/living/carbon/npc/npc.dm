@@ -94,7 +94,7 @@
 
 /mob/living/carbon/human/npc/Life()
 	..()
-	if(status == UNCONSCIOUS)
+	if(stat == UNCONSCIOUS)
 		mode = NPC_MODE_SLEEP
 
 /mob/living/carbon/human/npc/proc/domove()
@@ -215,13 +215,13 @@
 	var/mob/living/carbon/human/targ
 
 	var/obj/effect/npc/patrol/N = pick(GLOB.npcmarkers)
-	if(get_dist(src, N) < maxDist && N != used_patrol_marker && N.in_use == FALSE)
+	if(get_dist(src, N) < maxDist && N != used_patrol_marker && N.in_nuse == FALSE)
 		maxDist = get_dist(src, N)
 		targ = N
-		used_patrol_marker.in_use = FALSE
+		used_patrol_marker.in_nuse = FALSE
 		used_patrol_marker = N
 		cur_patrol_marker = N
-		cur_patrol_marker.in_use = TRUE
+		cur_patrol_marker.in_nuse = TRUE
 
 	if(!targ)
 		targ = locate() in get_turf(src)
