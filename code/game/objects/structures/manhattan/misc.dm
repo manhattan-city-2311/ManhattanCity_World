@@ -341,6 +341,15 @@
 	bound_height = 64
 	bound_width = 64
 
+/obj/structure/manhattan/workbench
+	name = "workbench"
+	icon = 'icons/obj/manhattan/workbenches.dmi'
+	desc = "A big working bench."
+	icon_state = "tinkerbench"
+	density = 1
+	anchored = TRUE
+	bound_width = 64
+
 /obj/structure/manhattan/writers
 	name = "typewriter"
 	desc = "Old typewriter."
