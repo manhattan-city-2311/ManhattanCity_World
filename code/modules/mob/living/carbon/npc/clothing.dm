@@ -1,5 +1,5 @@
-var/list/male_outfits
-var/list/female_outfits
+var/list/male_outfits = list(/decl/hierarchy/outfit/job/assistant)
+var/list/female_outfits = list(/decl/hierarchy/outfit/job/assistant)
 var/list/unisex_outfits = list(
 	/decl/hierarchy/outfit/job/assistant,
 	/decl/hierarchy/outfit/job/assistant/visitor,

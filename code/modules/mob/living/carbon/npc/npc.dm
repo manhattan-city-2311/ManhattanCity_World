@@ -81,14 +81,21 @@
 	switch(mode)
 		if(NPC_MODE_ROUTE)
 			handle_route()
+			domove()
 		if(NPC_MODE_PATROL)
 			handle_patrol()
+			domove()
 		if(NPC_MODE_ATTACK)
 			handle_combat()
+			domove()
 		if(NPC_MODE_IDLE)
 			handleIdle()
 			return
-	domove()
+
+/mob/living/carbon/human/npc/Life()
+	..()
+	if(status == UNCONSCIOUS)
+		mode = NPC_MODE_SLEEP
 
 /mob/living/carbon/human/npc/proc/domove()
 	var/newloc = get_step(src.loc, move_dir)
@@ -102,6 +109,7 @@
 			mode = NPC_MODE_ATTACK
 			anxiety = ANXIETY_LEVEL_DANGER
 			attack_target = user
+			switch_intent()
 			handle_combat()
 			say(pick(npc_attack_phrases))
 
@@ -206,13 +214,15 @@
 	var/maxDist = 50
 	var/mob/living/carbon/human/targ
 
-	for(var/obj/effect/npc/patrol/N in GLOB.npcmarkers)
-		if(get_dist(src, N) < maxDist && N != used_patrol_marker)
-			maxDist = get_dist(src, N)
-			targ = N
-			used_patrol_marker = N
-			cur_patrol_marker = N
-			break
+	var/obj/effect/npc/patrol/N = pick(GLOB.npcmarkers)
+	if(get_dist(src, N) < maxDist && N != used_patrol_marker && N.in_use == FALSE)
+		maxDist = get_dist(src, N)
+		targ = N
+		used_patrol_marker.in_use = FALSE
+		used_patrol_marker = N
+		cur_patrol_marker = N
+		cur_patrol_marker.in_use = TRUE
+
 	if(!targ)
 		targ = locate() in get_turf(src)
 
