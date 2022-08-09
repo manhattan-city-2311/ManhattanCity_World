@@ -14,6 +14,7 @@
 		spellremove(src)
 	ghostize()
 	QDEL_NULL(plane_holder)
+	SSpersistence.forget_value(src, /datum/persistent/mob)
 	..()
 	return QDEL_HINT_HARDDEL_NOW
 
@@ -48,6 +49,7 @@
 		living_mob_list += src
 	set_focus(src) // Key Handling
 	update_transform() // Some mobs may start bigger or smaller than normal.
+	SSpersistence.track_value(src, /datum/persistent/mob)
 	..()
 
 /mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)

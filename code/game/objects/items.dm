@@ -107,6 +107,7 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 /obj/item/initialize(mapload)
 	if(mapload && persistent_online)
 		return INITIALIZE_HINT_QDEL
+	SSpersistence.track_value(src, /datum/persistent/item)
 	..()
 
 /obj/item/Destroy()
@@ -116,6 +117,7 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 		m.update_inv_r_hand()
 		m.update_inv_l_hand()
 		src.loc = null
+	SSpersistence.forget_value(src, /datum/persistent/item)
 	return ..()
 
 /obj/item/proc/update_twohanding()

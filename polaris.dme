@@ -2453,6 +2453,7 @@
 #include "code\modules\persistence\persistence_datum_filth_trash.dm"
 #include "code\modules\persistence\persistence_datum_graffiti.dm"
 #include "code\modules\persistence\persistence_datum_item.dm"
+#include "code\modules\persistence\persistence_datum_mob.dm"
 #include "code\modules\persistence\persistence_datum_paper.dm"
 #include "code\modules\persistence\persistence_datum_paper_poster.dm"
 #include "code\modules\persistence\persistence_datum_paper_sticky.dm"
