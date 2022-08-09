@@ -32,6 +32,8 @@
 	mind.prefs.nickname = nickname
 	mind.prefs.religion = religion //Maybe make features where people can change religion.
 
+	last_key = key
+
 	//BODY
 	//List of basic things we want saved.
 	mind.prefs.biological_gender = gender

@@ -21,7 +21,6 @@
 	burn_state = 0 //Burnable
 	burntime = SHORT_BURN
 	drop_sound = 'sound/items/drop/paper.ogg'
-	var/age = 0
 	var/info		//What's actually written on the paper.
 	var/info_links	//A different version of the paper which includes html links at fields and EOF
 	var/stamps		//The (text for the) stamps on the paper.

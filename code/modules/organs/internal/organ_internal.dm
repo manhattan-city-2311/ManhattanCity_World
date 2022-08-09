@@ -19,7 +19,7 @@
 	..()
 	ischemia = 0
 
-/obj/item/organ/internal/New()
+/obj/item/organ/internal/initialize()
 	..()
 	oxygen_consumption = oxygen_consumption * owner.k
 	if(owner.client.prefs.all_organ_damage && owner.client.prefs.all_organ_ischemia)

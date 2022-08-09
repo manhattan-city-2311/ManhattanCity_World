@@ -22,6 +22,8 @@
 
 	var/unique_id						//used for keeping track of characters.
 	var/npc = FALSE
+	var/last_key
+	unique_save_vars = list("last_ckey", "ckey")
 
 /mob/living/carbon/human/proc/calc_k()
 	var/isMale = gender == MALE

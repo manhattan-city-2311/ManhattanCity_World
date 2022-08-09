@@ -11,7 +11,7 @@
 	var/registered_user = null
 	var/authorising_user
 	var/meals_remaining = 3
-	var/age = "\[UNSET\]"
+	age = "\[UNSET\]"
 	var/blood_type = "\[UNSET\]"
 	var/dna_hash = "\[UNSET\]"
 	var/fingerprint_hash = "\[UNSET\]"

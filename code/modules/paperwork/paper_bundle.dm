@@ -16,7 +16,6 @@
 	var/page = 1    // current page
 	var/list/pages = list()  // Ordered list of pages as they are to be displayed. Can be different order than src.contents.
 	drop_sound = 'sound/items/drop/paper.ogg'
-	var/age = 0
 
 /obj/item/weapon/paper_bundle/on_persistence_load()
 	//regenerates pages

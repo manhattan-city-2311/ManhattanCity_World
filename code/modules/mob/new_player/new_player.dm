@@ -97,6 +97,8 @@
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
+		if(attempt_late_mob_move(client))
+			return 1
 
 		AttemptLateSpawn("Civilian")
 		return 1
@@ -189,6 +191,20 @@
 		if(biz && biz.suspended) return 0
 
 	return 1
+
+/mob/new_player/proc/attempt_late_mob_move(var/client/C)
+	var/mob/living/carbon/human/M = null
+	for(var/mob/living/carbon/human/H in mob_list)
+		if(H.last_key == C.key)
+			M = H
+			break
+	if(!M)
+		return FALSE
+	if(M.stat == DEAD)
+		return FALSE
+	set_viewsize()
+	M.key = C.key
+	return TRUE
 
 /mob/new_player/proc/AttemptLateSpawn(rank, var/turf/spawning_at, antag_type)
 	if (src != usr)

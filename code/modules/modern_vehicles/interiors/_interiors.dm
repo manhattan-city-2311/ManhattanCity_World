@@ -90,7 +90,7 @@
             visible_message("<span class = 'notice'>[user] enters the interior of [src].</span>")
             to_chat(user,"<span class = 'info'>You are now in the interior of [src].</span>")
             playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
-            user.forceMove(get_turf(interior.entrance))
+            user.loc = get_turf(interior.entrance)
             occupants += user
             occupants[user] = "passenger"
             contents += user
