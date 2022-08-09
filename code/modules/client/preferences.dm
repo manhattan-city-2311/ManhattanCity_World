@@ -1,3 +1,7 @@
+#define RECORD_BIRTHDAY "ДАТА РОЖДЕНИЯ"
+#define RECORD_HEIGHT "РОСТ (В СМ)"
+#define RECORD_WEIGHT "ВЕС (В КГ)"
+
 GLOBAL_VAR_CONST(PREF_YES, "Yes")
 GLOBAL_VAR_CONST(PREF_NO, "No")
 GLOBAL_VAR_CONST(PREF_ALL_SPEECH, "All Speech")
@@ -27,6 +31,45 @@ GLOBAL_VAR_CONST(PREF_WHITE, "White")
 GLOBAL_VAR_CONST(PREF_DARK, "Dark")
 
 #define SAVE_RESET -1
+
+// Check if starts with '@'.
+/proc/is_record_title(record)
+	return copytext(record, 1, 2) == "@"
+
+var/list/records_blank = list(
+	"@1" = "ОБЩИЕ ДАННЫЕ"
+	, "ПОЛНОЕ ИМЯ" = null
+	, RECORD_BIRTHDAY = "1/1/2311" // This has custom behaviour
+	, RECORD_WEIGHT = null
+	, RECORD_HEIGHT = null
+	, "ЦВЕТ ВОЛОС" = null
+	, "ЦВЕТ ГЛАЗ" = null
+	, "ЭТНИЧНОСТЬ" = list(list("Меонец", "Марсианин (Тунеллер)", "Марсианин (Мансинец)", "Венерианец", "Селениан (Низший)", "Селениан (Высший)", "Землянин", "Фобас", "Цереровец", "Плутонец", "Цетит", "Спейсер (Центральный)", "Спейсер (Фронтир)", "Теранец", "Магнитовец", "Гайец (ЦПСС)", "Гайец (ГГК)"), "Меонец")
+	, "ВЛАДЕЕТ ЯЗЫКАМИ" = list(null)
+	, "СЕМЕЙНОЕ ПОЛОЖЕНИЕ" = list(list("Женат", "Не женат", "Замужем", "Не замужем"), null)
+	, "РОДСТВЕННИКИ" = list()
+	, "ОБРАЗОВАНИЕ" = null
+	, "КВАЛИФИКАЦИЯ" = list(null)
+	, "ЛИЦЕНЗИИ" = list(null)
+
+	, "@2" = "МЕДИЦИНСКАЯ СПРАВКА"
+	, "ПРОТЕЗЫ, ИМПЛАНТЫ" = list()
+	, "ПОСМЕРТНЫЕ ИНСТРУКЦИИ" = list(list("Кремация", "Сохранение в морге", "Традиционное погребение", "Передача родственникам"), null)
+	, "ДОНОР ОРГАНОВ" = list(list("Да", "Нет"), "Да")
+	, "АЛЛЕРГИИ" = list()
+	, "ЗАКЛЮЧЕНИЕ ПСИХИАТРА" = null
+
+	, "@3" = "ПОГРАНИЧНЫЙ КОНТРОЛЬ"
+	, "МЕСТО РОЖДЕНИЯ" = null
+	, "МЕСТО ПРОЖИВАНИЯ" = null
+	, "ГРАЖДАНСТВО" = null
+
+	, "@4" = "ОТЧЕТ БЕЗОПАСНОСТИ"
+	, "РЕГИСТРАЦИЯ" = list(list("Южный район", "Северный район"), null)
+	, "КРИМИНАЛЬНЫЙ СТАТУС" = list()
+
+	, "ПОСЛЕДНЕЕ ИЗМЕНЕНИЕ" = null
+)
 
 var/list/preferences_datums = list()
 
@@ -175,6 +218,10 @@ var/list/preferences_datums = list()
 	var/sec_record = ""
 	var/gen_record = ""
 
+	var/list/records
+
+	var/height = 180
+
 	var/list/datum/record/police/crime_record = list()
 	var/list/datum/record/hospital/health_record = list()
 	var/list/datum/record/employment/job_record = list()
@@ -226,21 +273,58 @@ var/list/preferences_datums = list()
 	var/turf/location
 
 	var/blood_level
-	var/list/heart_data
-	var/list/liver_data
-	var/list/lungs_data
-	var/list/stomach_data
-	var/list/kidneys_data
-	var/list/brain_data
 
+	var/list/all_organ_damage = list()
+	var/list/all_organ_ischemia = list()
 
+/datum/preferences/proc/is_records_filled()
+	for(var/ID in records)
+		if(!records[ID])
+			return FALSE
+		if(islist(records[ID]))
+			var/list/L = records[ID]
+			if(L.len && isnull(L[1]))
+				return FALSE
+	return TRUE
 
+/proc/get_records_html(list/records, list/allowed)
+	. = list()
+	for(var/ID in records)
+		if(allowed && !(ID in allowed))
+			continue
+		if(!records[ID])
+			. += "<b>[ID]</b>: <i>НЕ ЗАПОЛНЕНО</i>"
+			continue
+		else if(islist(records[ID]))
+			. += "<b>[ID]</b>:"
+			var/list/L = records[ID]
+			if(L.len && isnull(L[1])) // list(null) -> not filled
+				. += "\t<i>НЕ ЗАПОЛНЕНО</i>"
+
+			else if(!L.len) // empty list
+				. += "\tN/A"
+
+			else if(L.len == 2 && islist(L[1]))
+				var/list/RV = .
+				RV[RV.len] += "\t[L[2] || "<i>НЕ ЗАПОЛНЕНО</i>"]"
+
+			else
+				for(var/E in L)
+					. += "\t[E]"
+			continue
+
+		if(is_record_title(ID))
+			. += "<br/><b>\[[records[ID]]\]</b><br/>" // newline [bold] newline
+		else
+			. += "<b>[ID]</b>: [records[ID]]"
+	return jointext(., "<br/>")
 
 /datum/preferences/New(client/C)
 	player_setup = new(src)
 	set_biological_gender(pick(MALE, FEMALE))
 	real_name = random_name(identifying_gender,species)
 	b_type = RANDOM_BLOOD_TYPE
+	records := global.records_blank
 
 	gear = list()
 	gear_list = list()
@@ -253,8 +337,6 @@ var/list/preferences_datums = list()
 			load_path(C.ckey)
 			if(load_preferences())
 				if(load_character())
-
-
 					return
 
 /datum/preferences/proc/ZeroSkills(var/forced = 0)

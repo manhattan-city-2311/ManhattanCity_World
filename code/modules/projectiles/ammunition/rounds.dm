@@ -26,8 +26,11 @@
 /obj/item/ammo_casing/a357
 	desc = "A .357 bullet casing."
 	caliber = ".357"
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
-
+	projectile_type = /obj/item/projectile/bullet/fmj/p357
+/obj/item/ammo_casing/a357/ap
+	projectile_type = /obj/item/projectile/bullet/ap/p357
+/obj/item/ammo_casing/a357/hp
+	projectile_type = /obj/item/projectile/bullet/hp/p357
 /*
  * .38
  */
@@ -137,13 +140,13 @@
 /obj/item/ammo_casing/a45
 	desc = "A .45 bullet casing."
 	caliber = ".45"
-	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	projectile_type = /obj/item/projectile/bullet/fmj/p45
 
 /obj/item/ammo_casing/a45ap
 	desc = "A .45 Armor-Piercing bullet casing."
 	caliber = ".45"
 	icon_state = "r-casing"
-	projectile_type = /obj/item/projectile/bullet/pistol/medium/ap
+	projectile_type = /obj/item/projectile/bullet/ap/p45
 
 /obj/item/ammo_casing/a45p
 	desc = "A .45 practice bullet casing."
@@ -172,7 +175,7 @@
 
 /obj/item/ammo_casing/a45/hp
 	desc = "A .45 hollow-point bullet casing."
-	projectile_type = /obj/item/projectile/bullet/pistol/medium/hollow
+	projectile_type = /obj/item/projectile/bullet/hp/p45
 
 
 /*
@@ -260,37 +263,58 @@
 //	projectile_type = /obj/item/projectile/bullet/shotgun/ion
 	matter = list(DEFAULT_WALL_MATERIAL = 360, "uranium" = 240)
 
+
+/obj/item/ammo_casing/g12x70/slug
+	name = "12x70 slug shell"
+	icon_state = "slshell"
+	projectile_type = /obj/item/projectile/bullet/gauge/g12x70
+
+/obj/item/ammo_casing/g12x70/pellet
+	name = "12x70 buckshot shell"
+	icon_state = "gshell"
+	projectile_type = /obj/item/projectile/bullet/pellet/g12x70
+
+/obj/item/ammo_casing/g20x73/slug
+	name = "20x73 slug shell"
+	icon_state = "slshell"
+	projectile_type = /obj/item/projectile/bullet/gauge/g20x73
+
+/obj/item/ammo_casing/g20x73/pellet
+	name = "20x73 buckshot shell"
+	icon_state = "gshell"
+	projectile_type = /obj/item/projectile/bullet/pellet/g20x73
+
 /*
  * 7.62mm
  */
 
 /obj/item/ammo_casing/a762
-	desc = "A 7.62mm bullet casing."
+	desc = "A 7.62x51mm bullet casing."
 	caliber = "7.62mm"
 	icon_state = "rifle-casing"
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	projectile_type = /obj/item/projectile/bullet/fmj/s7p62x51
 
 /obj/item/ammo_casing/a762/ap
-	desc = "A 7.62mm armor-piercing bullet casing."
-	projectile_type = /obj/item/projectile/bullet/rifle/a762/ap
+	desc = "A 7.62x51mm armor-piercing bullet casing."
+	projectile_type = /obj/item/projectile/bullet/ap/s7p62x51
 
 /obj/item/ammo_casing/a762p
-	desc = "A 7.62mm practice bullet casing."
+	desc = "A 7.62x51mm practice bullet casing."
 	caliber = "7.62mm"
 	icon_state = "rifle-casing" // Need to make an icon for these
 	projectile_type = /obj/item/projectile/bullet/rifle/practice
 
 /obj/item/ammo_casing/a762/blank
-	desc = "A blank 7.62mm bullet casing."
+	desc = "A blank 7.62x51mm bullet casing."
 	projectile_type = /obj/item/projectile/bullet/blank
 	matter = list(DEFAULT_WALL_MATERIAL = 90)
 
 /obj/item/ammo_casing/a762/hp
-	desc = "A 7.62mm hollow-point bullet casing."
-	projectile_type = /obj/item/projectile/bullet/rifle/a762/hollow
+	desc = "A 7.62x51mm hollow-point bullet casing."
+	projectile_type = /obj/item/projectile/bullet/hp/s7p62x51
 
 /obj/item/ammo_casing/a762/hunter
-	desc = "A 7.62mm hunting bullet casing."
+	desc = "A 7.62x51mm hunting bullet casing."
 	projectile_type = /obj/item/projectile/bullet/rifle/a762/hunter
 
 /*
@@ -312,11 +336,11 @@
 	desc = "A 5.45mm bullet casing."
 	caliber = "5.45mm"
 	icon_state = "rifle-casing"
-	projectile_type = /obj/item/projectile/bullet/rifle/a545
+	projectile_type = /obj/item/projectile/bullet/fmj/s5p45x39
 
 /obj/item/ammo_casing/a545/ap
 	desc = "A 5.45mm armor-piercing bullet casing."
-	projectile_type = /obj/item/projectile/bullet/rifle/a545/ap
+	projectile_type = /obj/item/projectile/bullet/ap/s5p45x39
 
 /obj/item/ammo_casing/a545p
 	desc = "A 5.45mm practice bullet casing."
@@ -331,7 +355,7 @@
 
 /obj/item/ammo_casing/a545/hp
 	desc = "A 5.45mm hollow-point bullet casing."
-	projectile_type = /obj/item/projectile/bullet/rifle/a545/hollow
+	projectile_type = /obj/item/projectile/bullet/hp/s5p45x39
 
 /obj/item/ammo_casing/a545/hunter
 	desc = "A 5.45mm hunting bullet casing."

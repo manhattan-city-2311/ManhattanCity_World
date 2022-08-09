@@ -41,9 +41,6 @@
 	else
 		. += "- [pref.species] не может выбирать дополнительные языки.<br>"
 
-	. += "<b>Префиксы языков:</b><br>"
-	. += " [jointext(pref.language_prefixes, " ")] <a href='?src=\ref[src];change_prefix=1'>Изменить</a> <a href='?src=\ref[src];reset_prefix=1'>Reset</a><br>"
-
 /datum/category_item/player_setup_item/general/language/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["remove_language"])
 		var/index = text2num(href_list["remove_language"])

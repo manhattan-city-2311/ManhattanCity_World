@@ -25,15 +25,11 @@
         if(!template.load(T, centered = TRUE))
             log_error("Vehicle interior template failed to load!")
             qdel(src)
+        GLOB.vehicle_spawnpoints -= spawns
         qdel(spawns)
         break
-    if(!template)
-        log_error("No template for vehicle interior found.")
-        return
 
     id = rand(1, 999999) //Will never match
-    if(!vehicle)
-        return
     for(var/obj/effect/vehicle_entrance/E in range(5, middle_turf))
         entrance = E
         entrance.id = id
@@ -54,7 +50,7 @@
     var/free_x = 0
     var/free_y = 0
 
-/obj/effect/interior_spawn/New()
+/obj/effect/interior_spawn/initialize()
     . = ..()
     GLOB.vehicle_spawnpoints += src
 
@@ -66,7 +62,8 @@
 	var/size_y = 0
 	var/datum/map_template/interior_template = /datum/map_template
 
-/obj/manhattan/vehicle/large/New()
+/obj/manhattan/vehicle/large/initialize()
+	..()
 	interior = new
 	interior.vehicle = src
 	interior.interior_template = interior_template
@@ -93,7 +90,7 @@
             visible_message("<span class = 'notice'>[user] enters the interior of [src].</span>")
             to_chat(user,"<span class = 'info'>You are now in the interior of [src].</span>")
             playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
-            user.forceMove(interior.entrance.loc)
+            user.forceMove(get_turf(interior.entrance))
             occupants += user
             occupants[user] = "passenger"
             contents += user
@@ -161,6 +158,7 @@
 	icon_state = "noborder"
 	layer = ABOVE_MOB_LAYER
 	density = 1
+	anchored = 1
 
 /obj/structure/vehicledoor
 	name = "vehicle door"
@@ -171,6 +169,7 @@
 	var/datum/vehicle_interior/interior = null
 	layer = ABOVE_MOB_LAYER
 	density = 1
+	anchored = 1
 
 /obj/structure/vehicledoor/attack_hand(mob/user)
     . = ..()

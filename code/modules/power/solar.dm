@@ -453,11 +453,11 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 /obj/machinery/power/solar_control/Topic(href, href_list)
 	if(..())
-		usr << browse(null, "window=solcon")
+		to_target(usr, browse(null, "window=solcon"))
 		usr.unset_machine()
 		return 0
 	if(href_list["close"] )
-		usr << browse(null, "window=solcon")
+		to_target(usr, browse(null, "window=solcon"))
 		usr.unset_machine()
 		return 0
 

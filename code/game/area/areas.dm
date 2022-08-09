@@ -46,6 +46,7 @@
 	var/lot_id
 	var/code = "" //blue, red, black
 	dont_save = TRUE
+	var/outdoors = FALSE
 
 /area/New()
 	icon_state = ""

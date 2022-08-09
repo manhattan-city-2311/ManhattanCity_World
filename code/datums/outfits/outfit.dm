@@ -78,7 +78,6 @@ var/list/outfits_decls_by_type_
 
 /decl/hierarchy/outfit/proc/post_equip(mob/living/carbon/human/H)
 	for(var/obj/item/O in H.GetAllContents())
-		O.dont_save = TRUE
 
 		if(istype(O, /obj/item/weapon/card/department))
 			var/obj/item/weapon/card/department/D = O

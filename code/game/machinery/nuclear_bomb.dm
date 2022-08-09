@@ -351,7 +351,7 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 			if((M.client && M.machine == src))
 				attack_hand(M)
 	else
-		usr << browse(null, "window=nuclearbomb")
+		to_target(usr, browse(null, "window=nuclearbomb"))
 		return
 	return
 

@@ -88,8 +88,8 @@
 					if ((istype(src.active1, /datum/data/record) && data_core.general.Find(src.active1)))
 						var/icon/front = active1.fields["photo_front"]
 						var/icon/side = active1.fields["photo_side"]
-						usr << browse_rsc(front, "front.png")
-						usr << browse_rsc(side, "side.png")
+						to_target(usr, browse_rsc(front, "front.png"))
+						to_target(usr, browse_rsc(side, "side.png"))
 
 						dat += "<table><tr><td>Name: [active1.fields["name"]] \
 								ID: [active1.fields["id"]]<BR>\n	\

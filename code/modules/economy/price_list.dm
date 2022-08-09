@@ -259,26 +259,21 @@
 	return SSpersistent_options.get_persistent_option_value(GAMBLING_TAX)
 
 
-
-//Cardiostabilizers
-/datum/reagent/metaprolol 		price_tag = 1
-/datum/reagent/acetral			price_tag = 4.5
-
 //Antibiotics
-/datum/reagent/amicile			price_tag = 2
-/datum/reagent/cetrifiaxon		price_tag = 5
+/datum/reagent/amicile			price_tag = 20
+/datum/reagent/cetrifiaxon		price_tag = 50
 
 //Antiarrythmics
-/datum/reagent/amiodarone		price_tag = 0.75
-/datum/reagent/nitroglycerin	price_tag = 0.5
-/datum/reagent/atropine			price_tag = 3
-/datum/reagent/adenosine		price_tag = 4.5
-/datum/reagent/lidocaine		price_tag = 1.25
+/datum/reagent/amiodarone		price_tag = 15
+/datum/reagent/nitroglycerin	price_tag = 15
+/datum/reagent/atropine			price_tag = 55
+/datum/reagent/adenosine		price_tag = 60
+/datum/reagent/lidocaine		price_tag = 40
 
-/datum/reagent/esmolol          price_tag = 4.5
+/datum/reagent/esmolol          price_tag = 20
 
 //Analgesics
-/datum/reagent/aspirin			price_tag = 0.5
-/datum/reagent/paracetamol		price_tag = 0.75
-/datum/reagent/tramadol			price_tag = 2.5
-/datum/reagent/oxycodone		price_tag = 6
+/datum/reagent/aspirin			price_tag = 5
+/datum/reagent/paracetamol		price_tag = 10
+/datum/reagent/tramadol			price_tag = 50
+/datum/reagent/oxycodone		price_tag = 60

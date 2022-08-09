@@ -81,7 +81,6 @@
 
 /datum/mind/New(var/key)
 	src.key = key
-
 	..()
 
 /datum/mind/proc/transfer_to(mob/living/new_character)
@@ -159,7 +158,7 @@
 		out += "None."
 	out += "<br><a href='?src=\ref[src];obj_add=1'>\[add\]</a><br><br>"
 	out += "<b>Ambitions:</b> [ambitions ? ambitions : "None"] <a href='?src=\ref[src];amb_edit=\ref[src]'>\[edit\]</a></br>"
-	usr << browse(out, "window=edit_memory[src]")
+	to_target(usr, browse(out, "window=edit_memory[src]"))
 
 /datum/mind/Topic(href, href_list)
 	if(!check_rights(R_ADMIN))	return

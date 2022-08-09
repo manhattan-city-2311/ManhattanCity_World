@@ -82,7 +82,7 @@
 /obj/item/device/assembly/timer/Topic(href, href_list, state = deep_inventory_state)
 	if(..()) return 1
 	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
-		usr << browse(null, "window=timer")
+		to_target(usr, browse(null, "window=timer"))
 		onclose(usr, "timer")
 		return
 
@@ -96,7 +96,7 @@
 		time = min(max(round(time), 0), 600)
 
 	if(href_list["close"])
-		usr << browse(null, "window=timer")
+		to_target(usr, browse(null, "window=timer"))
 		return
 
 	if(usr)

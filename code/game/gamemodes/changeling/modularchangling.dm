@@ -291,7 +291,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	</body></html>
 	"}
 
-	usr << browse(dat, "window=powers;size=900x480")
+	to_target(usr, browse(dat, "window=powers;size=900x480"))
 
 
 /datum/changeling/Topic(href, href_list)

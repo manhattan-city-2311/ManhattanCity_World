@@ -20,6 +20,7 @@
 	scoped_accuracy = 75
 //	one_handed_penalty = 90
 	var/bolt_open = 0
+	price_tag = 136000
 
 /obj/item/weapon/gun/projectile/heavysniper/update_icon()
 	if(bolt_open)

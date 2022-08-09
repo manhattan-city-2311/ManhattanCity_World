@@ -275,12 +275,6 @@
 	desc = "Barber"
 	region = ACCESS_REGION_ALL
 
-/var/const/access_surgery = 45
-/datum/access/surgery
-	id = access_surgery
-	desc = "Surgery"
-	region = ACCESS_REGION_MEDBAY
-
 /var/const/access_network = 46
 /datum/access/network
 	id = access_network
@@ -417,7 +411,101 @@
 	desc = "Legal"
 	region = ACCESS_REGION_GENERAL
 
+var/const/access_er = 68
+/datum/access/medical_er
+	id = access_er
+	desc = "Emergency Room"
+	region = ACCESS_REGION_MEDBAY
 
+var/const/access_reanimation = 69
+/datum/access/medical_reanimation
+	id = access_reanimation
+	desc = "Reanimation"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_chemstorage = 70
+/datum/access/medical_chemstorage
+	id = access_chemstorage
+	desc = "Medicine Storage"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_wards = 71
+/datum/access/medical_wards
+	id = access_wards
+	desc = "Patient Wards"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_psych = 72
+/datum/access/medical_psych
+	id = access_psych
+	desc = "Psychiatrist"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_reception = 73
+/datum/access/medical_reception
+	id = access_reception
+	desc = "Hospital Reception"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_laboratory = 74
+/datum/access/medical_laboratory
+	id = access_reception
+	desc = "Hospital Laboratory"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_surgery = 75
+/datum/access/medical_surgery
+	id = access_surgery
+	desc = "Operating Rooms"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_exam = 76
+/datum/access/medical_exam
+	id = access_exam
+	desc = "Examination Rooms"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_estorage = 77
+/datum/access/medical_equipstorage
+	id = access_estorage
+	desc = "Hospital Equipment Storage"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_therapy = 78
+/datum/access/medical_therapy
+	id = access_therapy
+	desc = "Hospital Therapy Wing"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_procroom = 79
+/datum/access/medical_procroom
+	id = access_procroom
+	desc = "Procedural Room"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_personnelwing = 80
+/datum/access/medical_personnelwing
+	id = access_personnelwing
+	desc = "Hospital Personnel Wing"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_officewing = 81
+/datum/access/medical_officewing
+	id = access_officewing
+	desc = "Hospital Office Wing"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_cmooffice = 82
+/datum/access/medical_cmooffice
+	id = access_cmooffice
+	desc = "Hospital Director Office"
+	region = ACCESS_REGION_MEDBAY
+
+var/const/access_boardofdirectors = 83
+/datum/access/medical_boardofdirectors
+	id = access_boardofdirectors
+	desc = "Board of Directors"
+	region = ACCESS_REGION_MEDBAY
 
 /******************
 * Central Command *

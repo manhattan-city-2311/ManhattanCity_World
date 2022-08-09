@@ -1,3 +1,5 @@
+var/global/list/possible_cash_values = list(500, 100, 50, 20, 10, 2, 1)
+
 /obj/item/weapon/spacecash
 	name = "0 credit chip"
 	desc = "It's worth 0 credits."
@@ -16,7 +18,6 @@
 	access = access_crate_cash
 	var/worth = 0
 	drop_sound = 'sound/items/drop/paper.ogg'
-	var/list/possible_values = list(100,50,20,10,5,2,1)
 
 	unique_save_vars = list("worth")
 
@@ -63,7 +64,7 @@
 	var/list/ovr = list()
 	var/sum = src.worth
 	var/num = 0
-	for(var/i in possible_values)
+	for(var/i in global.possible_cash_values)
 		while(sum >= i && num < 50)
 			sum -= i
 			num++
@@ -74,7 +75,7 @@
 			banknote.transform = M
 			ovr += banknote
 	if(num == 0) // Less than one credit, let's just make it look like 1 for ease
-		var/image/banknote = image(icon, "[possible_values[possible_values.len]]")
+		var/image/banknote = image(icon, "[global.possible_cash_values[global.possible_cash_values.len]]")
 		var/matrix/M = matrix()
 		M.Translate(rand(-6, 6), rand(-4, 8))
 		M.Turn(pick(-45, -27.5, 0, 0, 0, 0, 0, 0, 0, 27.5, 45))
@@ -105,16 +106,19 @@
 	if(!worth)
 		user.drop_from_inventory(src)
 		var/cashtype = text2path("/obj/item/weapon/spacecash/c[amount]")
-		var/obj/cash = new cashtype (user.loc)
-		user.put_in_hands(cash)
+		. = new cashtype (user.loc)
 	else
 		var/obj/item/weapon/spacecash/bundle/bundle = new (user.loc)
 		bundle.worth = amount
 		bundle.update_icon()
-		user.put_in_hands(bundle)
+		. = bundle
 
 	if(!worth)
 		qdel(src)
+
+	user.put_in_hands(.)
+
+
 
 /obj/item/weapon/spacecash/bundle/c1
 	name = "1 credit chip"
@@ -127,12 +131,6 @@
 	icon_state = "2"
 	desc = "It's worth 2 credits."
 	worth = 2
-
-/obj/item/weapon/spacecash/bundle/c5
-	name = "5 credit chip"
-	icon_state = "5"
-	desc = "It's worth 5 credits."
-	worth = 5
 
 /obj/item/weapon/spacecash/bundle/c10
 	name = "10 credit chip"
@@ -158,32 +156,30 @@
 	desc = "It's worth 100 credits."
 	worth = 100
 
-/obj/item/weapon/spacecash/bundle/coins_only
-	name = "coins"
-	icon_state = "2"
-	desc = "A bundle of coins."
-	worth = 3
-	possible_values = list(2,1)
+/obj/item/weapon/spacecash/bundle/c500
+	name = "500 credit chip"
+	icon_state = "500"
+	desc = "It's worth 500 credits."
+	worth = 500
 
-/obj/item/weapon/spacecash/bundle/coins_only/update_icon()
-	. = ..()
-	var/coint_coint = worth/2
-	throwforce = min(10,coint_coint/5) //A stack of 50+ coins will do 10 brute damage. For referece, a toolbox does 10 when thrown and a simple punch does 5.
-	force = throwforce / 2
-
-proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
-	if(sum in list(100,50,20,10,5,2,1))
+proc/spawn_money(sum, spawnloc, mob/living/carbon/human/human_user as mob)
+	if(sum in global.possible_cash_values)
 		var/cash_type = text2path("/obj/item/weapon/spacecash/bundle/c[sum]")
-		var/obj/cash = new cash_type (usr.loc)
+		var/obj/cash = new cash_type (spawnloc || get_turf(usr))
+
 		if(ishuman(human_user) && !human_user.get_active_hand())
 			human_user.put_in_hands(cash)
+
+		. = cash
 	else
 		var/obj/item/weapon/spacecash/bundle/bundle = new (spawnloc)
 		bundle.worth = sum
 		bundle.update_icon()
-		if (ishuman(human_user) && !human_user.get_active_hand())
+
+		if (ishuman(human_user))
 			human_user.put_in_hands(bundle)
-	return
+
+		. = bundle
 
 /obj/item/weapon/spacecash/ewallet
 	name = "Charge card"

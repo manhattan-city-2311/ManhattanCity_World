@@ -17,9 +17,6 @@
 
 /obj/item/organ/internal/lungs/New()
 	..()
-	if(!owner.client)
-		return
-	damage = owner.client.prefs.lungs_data?["damage"] || 0
 
 /obj/item/organ/internal/lungs/robotize()
 	. = ..()

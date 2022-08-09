@@ -52,7 +52,7 @@ datum/book_manager/proc/freeid()
 		else
 			var/DBQuery/query = dbcon.NewQuery("DELETE FROM library WHERE id=[isbn]")
 			if(!query.Execute())
-				usr << query.ErrorMsg()
+				to_target(usr, query.ErrorMsg())
 			dbcon.Disconnect()
 	else
 		book_mgr.remove(isbn)

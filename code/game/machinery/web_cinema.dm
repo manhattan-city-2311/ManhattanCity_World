@@ -25,5 +25,5 @@
 
 		"}
 
-	usr << browse(dat, "window=stream_cinema;size=600x640")
+	to_target(usr, browse(dat, "window=stream_cinema;size=600x640"))
 	onclose(usr, "stream_cinema")

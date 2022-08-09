@@ -42,4 +42,5 @@ Retired Admin	+ADMIN +STEALTH
 Host			+EVERYTHING
 
 Developer		+DEBUG +VAREDIT +SERVER +SPAWN +REJUV +POSSESS +BUILDMODE
+Head Developer		+EVERYTHING
 Dev Mod			+@ +MOD

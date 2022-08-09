@@ -109,6 +109,8 @@
 
 		total_pain += dam
 
+	total_pain -= LAZYACCESS0(chem_effects, CE_PAINKILLER)
+
 	if(damaged_organ)
 		if(maxdam > 10 && paralysis)
 			paralysis = max(0, paralysis - round(maxdam/10))
@@ -145,6 +147,3 @@
 			if(61 to INFINITY)
 				custom_pain("Your body aches all over, it's driving you mad.", getToxLoss())
 		total_pain += getToxLoss()
-
-	total_pain -= LAZYACCESS0(chem_effects, CE_PAINKILLER)
-	

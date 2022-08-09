@@ -100,7 +100,7 @@
 /obj/item/weapon/reagent_containers/pill/paracetamol
 	name = "Paracetamol pill"
 	desc = "Paracetamol! A painkiller for the ages. Chewables! Contains 15 ml of Paracetamol."
-	icon_state = "pill8"
+	icon_state = "pill2"
 
 /obj/item/weapon/reagent_containers/pill/paracetamol/New()
 	..()
@@ -110,11 +110,51 @@
 /obj/item/weapon/reagent_containers/pill/tramadol
 	name = "Tramadol pill"
 	desc = "A simple painkiller. Contains 15 ml of Tramadol."
-	icon_state = "pill8"
+	icon_state = "pill10"
 
 /obj/item/weapon/reagent_containers/pill/tramadol/New()
 	..()
 	reagents.add_reagent("tramadol", 15)
+
+
+/obj/item/weapon/reagent_containers/pill/oxycodone
+	name = "Oxycodone pill"
+	desc = "A strong painkiller. Contains 15 ml of Oxycodone."
+	icon_state = "pill8"
+
+/obj/item/weapon/reagent_containers/pill/oxycodone/New()
+	..()
+	reagents.add_reagent("oxycodone", 15)
+
+
+/obj/item/weapon/reagent_containers/pill/amiodarone
+	name = "Amiodarone pill"
+	desc = "A simple antiarrhythmic drug. Contains 15 ml of Amiodarone."
+	icon_state = "pill5"
+
+/obj/item/weapon/reagent_containers/pill/Amiodarone/New()
+	..()
+	reagents.add_reagent("amiodarone", 15)
+
+
+/obj/item/weapon/reagent_containers/pill/haloperidol
+	name = "Haloperidol pill"
+	desc = "An antipsychotic drug. Contains 15 ml of Haloperidol."
+	icon_state = "pill13"
+
+/obj/item/weapon/reagent_containers/pill/haloperidol/New()
+	..()
+	reagents.add_reagent("haloperidol", 15)
+
+
+/obj/item/weapon/reagent_containers/pill/amicile
+	name = "Amicile pill"
+	desc = "A semi-synthetic antibiotic. Contains 15 ml of Amicile."
+	icon_state = "pill6"
+
+/obj/item/weapon/reagent_containers/pill/amicile/New()
+	..()
+	reagents.add_reagent("amicile", 15)
 
 
 /obj/item/weapon/reagent_containers/pill/methylphenidate

@@ -29,9 +29,9 @@
 	..()
 	absolutely_normal_glucose_level = rand(GLUCOSE_LEVEL_NORMAL_LOW + 5, GLUCOSE_LEVEL_HBAD - 5)
 	if(reagents)
-		reagents.maximum_volume = 1200
+		reagents.maximum_volume = 3500
 	else
-		create_reagents(1200)
+		create_reagents(3500)
 
 /obj/item/organ/internal/stomach/proc/handle_organ_proc_special()
 	generate_hormone("insulin", 0.1, 15)

@@ -10,7 +10,8 @@
 	light_color = "#ebf7fe"  //white blue
 	density = 1
 	anchored = 1
-	plane = ABOVE_PLANE
+	// plane = ABOVE_PLANE
+	plane = LIGHTING_OBJS_PLANE
 	layer = ABOVE_MOB_LAYER
 	pixel_y = 10
 	var/ads = list(			"ssl",

@@ -325,7 +325,7 @@
 
 	dellog += "</ol>"
 
-	usr << browse(dellog.Join(), "window=dellog")
+	to_target(usr, browse(dellog.Join(), "window=dellog"))
 
 /client/proc/cmd_display_init_log()
 	set category = "Debug"
@@ -589,17 +589,17 @@
 
 	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
 		if("Players")
-			usr << jointext(player_list,",")
+			to_target(usr, jointext(player_list,","))
 		if("Admins")
-			usr << jointext(admins,",")
+			to_target(usr, jointext(admins,","))
 		if("Mobs")
-			usr << jointext(mob_list,",")
+			to_target(usr, jointext(mob_list,","))
 		if("Living Mobs")
-			usr << jointext(living_mob_list,",")
+			to_target(usr, jointext(living_mob_list,","))
 		if("Dead Mobs")
-			usr << jointext(dead_mob_list,",")
+			to_target(usr, jointext(dead_mob_list,","))
 		if("Clients")
-			usr << jointext(GLOB.clients,",")
+			to_target(usr, jointext(GLOB.clients,","))
 
 /client/proc/cmd_debug_using_map()
 	set category = "Debug"

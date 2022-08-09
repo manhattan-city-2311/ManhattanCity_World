@@ -1,18 +1,24 @@
-//passports are merely fluff, for now...
-
 /obj/item/weapon/passport
 	name = "passport"
-	desc = "This is an electronic passport that allows you to travel between colonies."
+	desc = "This is an electronic passport that contains all open information about owner."
 	icon = 'icons/obj/passport.dmi'
 	icon_state = "passport"
 	w_class = ITEMSIZE_SMALL
 
+	var/list/allowed_items = list(
+		"ПОЛНОЕ ИМЯ"
+		, "ДАТА РОЖДЕНИЯ"
+		, "СЕМЕЙНОЕ ПОЛОЖЕНИЕ"
+		, "ГРАЖДАНСТВО"
+		, "РЕГИСТРАЦИЯ"
+	)
+	var/icon/front
+	var/icon/side
+
+	var/uid
+
 	var/forged = FALSE
-	var/citizenship = "Vetra"	// other options
-	var/owner = "the owner"
-
-	var/edits_left = 1
-
+	var/list/records // references boy
 	slot_flags = SLOT_ID
 
 /obj/item/weapon/passport/examine(mob/user)
@@ -20,50 +26,51 @@
 	if(in_range(user, src) || istype(user, /mob/observer/dead))
 		show_passport(usr)
 	else
-		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
-	return
-
+		to_chat(user, SPAN_NOTICE("You have to go closer if you want to read it."))
 
 /obj/item/weapon/passport/proc/show_passport(mob/user)
-	to_chat(user, "This is [name] that shows that [owner] was born in [citizenship].")
-	if(forged)
-		to_chat(user, "The holographic seal appears strangely duller than usual.")
-
-/mob/proc/update_passport(var/obj/item/weapon/passport/pass)
-	if(pass.citizenship == "Unset") pass.citizenship = "Vetra" //Defaults unset birth systems to a vetra passport. Otherwise, it will say "X was born in Unset".
-
-	if(pass.citizenship == "Andromeda") pass.icon_state = "androgov_passport"  //Matches icon to location
-	else if(pass.citizenship == "Vetra") pass.icon_state = "polgov_passport"
-	else if(pass.citizenship == "Sol") pass.icon_state = "solgov_passport"
-	else if(pass.citizenship == "Cobrastan") pass.icon_state = "cobrastan_passport" //a cheeky little easter egg for fans of Papers, Please
-	else icon_state = "passport"
-
-/obj/item/weapon/passport/attack_self(mob/user as mob)
-
-	if(forged && edits_left)
-		src.owner = sanitize(copytext(input(usr, "Enter your desired name (You can only change this once!)", "Owner Name", null)  as text,1,30))
-		src.citizenship = sanitize(copytext(input(usr, "Enter your desired birthplace (You can only change this once!)", "Birthplace", null)  as text,1,30))
-		src.name = "[owner]'s passport"
-		if(src.citizenship == "Cobrastan")
-			src.desc = "This is an electronic passport that allows you to travel between colonies. The serial number is 1234-OKOK."
-		user.update_passport(src)
-		edits_left = 0
-	else
-		user.visible_message("\The [user] flashes their passport. It shows that [owner] was born in [citizenship].",\
-			"You flash your passport. It shows that [owner] was born in [citizenship].")
-
-		src.add_fingerprint(user)
+	if(!records)
+		to_chat(user, SPAN_NOTICE("[src] is blank!"))
 		return
 
-//Antag options - Forgery
-/obj/item/weapon/passport/emag_act(var/remaining_charges, var/mob/user)
-	if(!forged)
-		user.visible_message("<span class='warning'>\The [user] does something to \the [src], causing the passport to flash!</span>",\
-			"<span class='warning'>You unlock the passport's editing subroutine.</span>")
-		forged = 1
+	if(front && side)
+		send_rsc(user, front, "front.png")
+		send_rsc(user, side, "side.png")
+	var/html = "<table><tr>"
 
-	if(forged)
-		to_chat(user, "<span class='warning'>You have already emagged \the [src]!")
+	html += "<td>[get_records_html(records, allowed_items)]<br><br><b>ID</b>: [uid]</td>"
+
+	html += "<td align=center valign=top><br>"
+	html += "<img src=front.png height=128 width=128 border=5>"
+	html += "<img src=side.png height=128 width=128 border=5>"
+	html += "</td>"
+
+	html += "</tr></table>"
+
+	html = "<HTML><meta charset=\"UTF-8\"><BODY>[html]</BODY></HTML>"
+	var/datum/browser/popup = new(user, "passport", "Passport", 600, 250)
+	popup.set_content(html)
+	popup.open()
+
+/mob/proc/update_passport(obj/item/weapon/passport/pass)
+	if(!mind)
+		return
+
+	var/icon/charicon = cached_character_icon(src)
+	pass.front   = icon(charicon, dir = SOUTH)
+	pass.side    = icon(charicon, dir = WEST)
+	pass.records = mind.prefs.records
+	pass.name    = "[real_name]'s passport"
+	pass.forged  = FALSE
+	pass.uid	 = "[md5(dna.uni_identity)]"
+
+/obj/item/weapon/passport/attack_self(mob/user)
+	// TODO: editing
+	src.add_fingerprint(user)
+
+//Antag options - Forgery
+/obj/item/weapon/passport/emag_act(remaining_charges, mob/user)
+	return ..()
 
 /******************************************************************
   Temporary passports in case it gets lost, destroyed, or stolen.
@@ -72,44 +79,17 @@
 	name = "blank temporary passport"
 	desc = "This is an electronic temporary passport issued to those who have lost theirs. It only allows you to travel within your birth colony."
 	icon_state = "temporary"
-	var/registered_user = null
 
-/obj/item/weapon/passport/temporary/attack_self(mob/user as mob)
-	if(!registered_user)
+/obj/item/weapon/passport/temporary/attack_self(mob/user)
+	if(!records.len)
 		user.visible_message("\The [user] places their fingerprint on \the [src.name]'s scanner.",\
-			"<span class='notice'>The microscanner scans your identity and automatically updates \the [src.name]'s details.</span>")
-		src.registered_user = user
-		src.owner = user.real_name
-		src.name = "[owner]'s temporary passport"
-		src.citizenship = user.mind.prefs.home_system
-		if(src.citizenship == "Unset") src.citizenship = "Vetra"
+			SPAN_NOTICE("The microscanner scans your identity and automatically updates \the [src.name]'s details."))
+		user.update_passport(src)
+	src.add_fingerprint(user)
 
-	else if(forged && edits_left)
-		src.owner = sanitize(copytext(input(usr, "Enter your desired name (You can only change this once!)", "Owner Name", null)  as text,1,30))
-		src.citizenship = sanitize(copytext(input(usr, "Enter your desired birthplace (You can only change this once!)", "Birthplace", null)  as text,1,30))
-		src.name = "[owner]'s temporary passport"
-		edits_left = 0
-
-	else
-		user.visible_message("\The [user] flashes their temporary passport. It shows that [owner] was born in [citizenship].",\
-			"You flash your temporary passport. It shows that [owner] was born in [citizenship].")
-
-		src.add_fingerprint(user)
-		return
-
-
-/obj/item/weapon/passport/temporary/emag_act(var/remaining_charges, var/mob/user)
-	if(!registered_user)
-		to_chat(user, "<span class = 'notice'>Emagging \the [src.name] would be useless before activating it!</span>")
-		return
-
-	if(!forged)
-		user.visible_message("<span class='warning'>\The [user] does something to \the [src], causing the passport to flash!</span>",\
-			"<span class='warning'>You unlock the temporary passport's editing subroutine.</span>")
-		forged = 1
-
-	if(forged)
-		to_chat(user, "<span class='warning'>You have already emagged \the [src]!")
+/obj/item/weapon/passport/temporary/emag_act(remaining_charges, mob/user)
+	// TODO:
+	return ..()
 
 /***************************************************************************************************************************
   Diplomat's passport for events and what-not. May be useful if our lawmakers rule that diplomats have diplomatic immunity.
@@ -118,25 +98,7 @@
 	name = "blank diplomatic passport"
 	desc = "This is an electronic passport that allows you to travel between colonies. This one has a diplomatic seal."
 	icon_state = "diplomat"
-	var/source_colony = null
 
-/obj/item/weapon/passport/temporary/diplomat/attack_self(mob/user as mob)
-	if(!registered_user)
-		user.visible_message("\The [user] places their fingerprint on \the [src.name]'s scanner.",\
-			"<span class='notice'>The microscanner scans your identity and automatically updates \the [src.name]'s details.</span>")
-		src.registered_user = user
-		src.owner = user.real_name
-		src.name = "[owner]'s temporary passport"
-		src.citizenship = user.mind.prefs.home_system
-		if(src.citizenship == "Unset") src.citizenship = "Vetra"
-		src.source_colony = sanitize(copytext(input(usr, "Enter the colony you represent.", "Representative Colony", null)  as text,1,30))
-	else
-		user.visible_message("\The [user] flashes their diplomatic passport. It shows that [owner] was born in [citizenship]. They are a diplomat for [source_colony]",\
-			"You flash your diplomatic passport. It shows that [owner] was born in [citizenship]. [owner] is a diplomat for [source_colony].")
-
-		src.add_fingerprint(user)
-		return
-
-/obj/item/weapon/passport/temporary/diplomat/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/weapon/passport/temporary/diplomat/emag_act(remaining_charges, mob/user)
 	to_chat(user, "<span class='warning'>The [src] has heavily encrypted subroutines, preventing you from emagging it!")
 	return

@@ -34,7 +34,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["eyes_green"]			>> pref.g_eyes
 	S["eyes_blue"]			>> pref.b_eyes
 	S["b_type"]			>> pref.b_type
-	S["weight"]			>> pref.weight
 	S["calories"]			>> pref.calories
 	S["hydration"]			>> pref.hydration
 	S["nutrition"]			>> pref.nutrition
@@ -70,7 +69,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["eyes_green"]			<< pref.g_eyes
 	S["eyes_blue"]			<< pref.b_eyes
 	S["b_type"]			<< pref.b_type
-	S["weight"]			<< pref.weight
 	S["calories"]			<< pref.calories
 	S["hydration"]			<< pref.hydration
 	S["nutrition"]			<< pref.nutrition
@@ -233,8 +231,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	var/mob_species = all_species[pref.species]
 	. += "<h1>Физическое состояние:</h1><hr>"
-	if(!pref.existing_character)
-		. += "Установите внешний вид вашего персонажа. Как только это будет сделано, вы не сможете отменить это. Вы можете изменить внешний вид своего персонажа в игре..<br><br>"
 	. += "<table><tr style='vertical-align:top'><td>"
 	if(!pref.existing_character)
 		. += "<b>Тело:</b> "
@@ -909,7 +905,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	dat += "<td width = 400>[current_species.blurb]</td>"
 	dat += "<td width = 200 align='center'>"
 	if("preview" in icon_states(current_species.icobase))
-		usr << browse_rsc(icon(current_species.icobase,"preview"), "species_preview_[current_species.name].png")
+		to_target(usr, browse_rsc(icon(current_species.icobase,"preview"), "species_preview_[current_species.name].png"))
 		dat += "<img src='species_preview_[current_species.name].png' width='64px' height='64px'><br/><br/>"
 	dat += "<b>Language:</b> [current_species.species_language]<br/>"
 	dat += "<small>"

@@ -2466,6 +2466,13 @@
 	required_reagents = list("water" = 5, "coffeepowder" = 1)
 	result_amount = 5
 
+/datum/chemical_reaction/drinks/coffee/chicory
+	name = "Chicory"
+	id = "chicory"
+	result = "chicory"
+	required_reagents = list("water" = 5, "chicoryepowder" = 1)
+	result_amount = 5
+
 /datum/chemical_reaction/drinks/tea
 	name = "Black tea"
 	id = "tea"

@@ -139,6 +139,8 @@
 
 /obj/manhattan/vehicle/Bump(atom/obstacle)
 	..()
+	if(istype(obstacle, /obj/structure/stairs))
+		return
 	if(obstacle != src) // FIXME:
 		. = collide_with_obstacle(obstacle)
 
@@ -155,25 +157,25 @@
 	Move(newLoc, get_dir(loc, newLoc), x_step ? 0 : step_x, y_step ? 0 : step_y)
 
 /obj/manhattan/vehicle/proc/process_movement(delta)
-	if(speed.modulus() < (delta / 32))
+	if(speed.modulus() < (delta / WORLD_ICON_SIZE))
 		return
 
 	var/x_step = 0
 	var/y_step = 0
-	var/dx = speed.x * 32 * delta
-	var/dy = speed.y * 32 * delta
+	var/dx = speed.x * WORLD_ICON_SIZE * delta
+	var/dy = speed.y * WORLD_ICON_SIZE * delta
 
-	if(abs(step_x + dx) >= 32)
+	if(abs(step_x + dx) >= WORLD_ICON_SIZE)
 		var/temp = step_x + dx
 		x_step += SIGN(temp)
-		step_x -= SIGN(temp) * 32
+		step_x -= SIGN(temp) * WORLD_ICON_SIZE
 	else
 		step_x += dx
 
-	if(abs(step_y + dy) >= 32)
+	if(abs(step_y + dy) >= WORLD_ICON_SIZE)
 		var/temp = step_y + dy
 		y_step += SIGN(temp)
-		step_y -= SIGN(temp) * 32
+		step_y -= SIGN(temp) * WORLD_ICON_SIZE
 	else
 		step_y += dy
 

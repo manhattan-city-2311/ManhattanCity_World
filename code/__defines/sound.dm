@@ -16,7 +16,6 @@
 
 #define CHANNEL_HIGHEST_AVAILABLE 1013
 
-#define SOUND_MINIMUM_PRESSURE 10
 #define FALLOFF_SOUNDS 0.5
 
 //Sound environment defines. Reverb preset for sounds played in an area, see sound datum reference for more.

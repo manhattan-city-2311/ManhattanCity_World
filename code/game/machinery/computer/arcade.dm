@@ -473,7 +473,7 @@
 		return
 	if(href_list["close"])
 		usr.unset_machine()
-		usr << browse(null, "window=arcade")
+		to_target(usr, browse(null, "window=arcade"))
 
 	if(busy)
 		return

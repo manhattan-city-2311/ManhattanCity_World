@@ -39,4 +39,3 @@
 	. = ..()
 
 /turf/simulated/floor/outdoors/dirt/indoors
-	outdoors = 0

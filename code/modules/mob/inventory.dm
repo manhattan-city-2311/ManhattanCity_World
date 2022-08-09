@@ -272,3 +272,26 @@ var/list/slot_equipment_priority = list( \
 	for(var/entry in get_equipped_items())
 		drop_from_inventory(entry)
 		qdel(entry)
+
+
+// Returns all currently covered body parts
+/mob/proc/get_covered_body_parts()
+	. = 0
+	for(var/entry in get_equipped_items())
+		var/obj/item/I = entry
+		. |= I.body_parts_covered
+
+// Returns the first item which covers any given body part
+/mob/proc/get_covering_equipped_item(var/body_parts)
+	for(var/entry in get_equipped_items())
+		var/obj/item/I = entry
+		if(I.body_parts_covered & body_parts)
+			return I
+
+// Returns all items which covers any given body part
+/mob/proc/get_covering_equipped_items(var/body_parts)
+	. = list()
+	for(var/entry in get_equipped_items())
+		var/obj/item/I = entry
+		if(I.body_parts_covered & body_parts)
+			. += I

@@ -112,8 +112,8 @@ proc/dmp2swapmap(filename)
 				return
 			var/mtxt=copytext(txt,j+1,k)
 			if(findText(mtxt,"\"\n")!=1 || !findText(mtxt,"\n\"",length(mtxt)-1))
-				world << findText(mtxt,"\"\n")
-				world << findText(mtxt,"\n\"",length(mtxt)-1)
+				to_world(findText(mtxt,"\"\n"))
+				to_world(findText(mtxt,"\n\"",length(mtxt)-1))
 				to_world("Corrupt map file [filename]: No quotes in braces following [copytext(txt,1,i+1)]")
 				return
 			mtxt=copytext(mtxt,2,length(mtxt))

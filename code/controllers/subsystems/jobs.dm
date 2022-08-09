@@ -468,6 +468,11 @@ SUBSYSTEM_DEF(jobs)
 		job.equip_backpack(H)
 		job.apply_fingerprints(H)
 
+		var/obj/item/weapon/card/debit/C = new(get_turf(H))
+		C.associated_account_number = H.mind.initial_bank_details["id"]
+		C.associated_pin_number = H.mind.initial_bank_details["pin"]
+		H.equip_to_slot_if_possible(C, slot_in_backpack)
+
 		equip_passport(H)
 		equip_permits(H)
 		if(job.title != "Cyborg" && job.title != "AI")
@@ -796,10 +801,6 @@ SUBSYSTEM_DEF(jobs)
 	var/obj/item/weapon/passport/pass = new/obj/item/weapon/passport(get_turf(H))
 
 	if(!H.mind || !H.mind.prefs) return
-
-	pass.name = "[H.real_name]'s passport"
-	pass.citizenship = H.mind.prefs.home_system
-	pass.owner = H.real_name
 
 	H.update_passport(pass)
 	H.equip_to_slot(pass, slot_wear_id)

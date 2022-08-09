@@ -114,7 +114,7 @@
 	if ( (get_dist(src, usr) > 1 ))
 		if (!istype(usr, /mob/living/silicon))
 			usr.unset_machine()
-			usr << browse(null, "window=air_alarm")
+			to_target(usr, browse(null, "window=air_alarm"))
 			return
 
 	if(href_list["gentoggle"])

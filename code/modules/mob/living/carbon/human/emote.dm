@@ -577,13 +577,13 @@
 			if (!src.restrained())
 				message = "raises a hand."
 			m_type = 1
-			
+
 		if("crack")
 			if(!restrained())
 				message = "cracks [T.his] knuckles."
 				playsound(src, 'sound/voice/knuckles.ogg', 50, 1)
 				m_type = 1
-				
+
 		if("shake")
 			message = "shakes [T.his] head."
 			m_type = 1
@@ -813,7 +813,7 @@
 						playsound(src, pick(species.male_agony_sound), 50, 1)
 				else
 					message = "makes a very loud noise."
-					m_type = 2	
+					m_type = 2
 
 		if("snap", "snaps")
 			m_type = 2

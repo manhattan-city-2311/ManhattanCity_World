@@ -18,7 +18,7 @@
 	desc = "A lighting fixture."
 	anchored = 1
 	layer = OBJ_LAYER
-	plane = ABOVE_MOB_PLANE
+	plane = LIGHTING_OBJS_PLANE
 	use_power = 2
 	idle_power_usage = 2
 	active_power_usage = 20

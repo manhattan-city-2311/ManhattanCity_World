@@ -24,19 +24,19 @@
 	oxygen		= MOLES_O2POLLUX
 	nitrogen	= MOLES_N2POLLUX
 	temperature	= TEMPERATURE_POLLUX
-	outdoors = TRUE
+//	outdoors = TRUE
 
 /turf/simulated/floor/tiled/steel/pollux/planetuse
 	oxygen		= MOLES_O2POLLUX
 	nitrogen	= MOLES_N2POLLUX
 	temperature	= TEMPERATURE_POLLUX
-	outdoors = TRUE
+//	outdoors = TRUE
 
 /turf/simulated/floor/plating/pollux/planetuse
 	oxygen		= MOLES_O2POLLUX
 	nitrogen	= MOLES_N2POLLUX
 	temperature	= TEMPERATURE_POLLUX
-	outdoors = TRUE
+//	outdoors = TRUE
 
 /turf/simulated/floor/outdoors/snow/pollux/planetuse
 	oxygen		= MOLES_O2POLLUX
@@ -72,7 +72,7 @@
 	oxygen		= MOLES_O2POLLUX
 	nitrogen	= MOLES_N2POLLUX
 	temperature	= TEMPERATURE_POLLUX
-	outdoors = TRUE
+//	outdoors = TRUE
 /turf/simulated/mineral/floor/ignore_mapgen/pollux
 	oxygen		= MOLES_O2POLLUX
 	nitrogen	= MOLES_N2POLLUX

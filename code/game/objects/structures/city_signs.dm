@@ -5,7 +5,7 @@
 /obj/structure/sign/neon
 	desc = "A glowing sign."
 	icon = 'icons/obj/signs.dmi'
-	plane = ABOVE_PLANE
+	plane = LIGHTING_OBJS_PLANE
 	light_range = 3
 	light_power = 6.5
 	alpha = 150
@@ -201,10 +201,33 @@
 	light_color = COLOR_YELLOW
 
 /obj/structure/sign/neon/carpark
-	name = "meetingroom"
+	name = "carpark"
 	desc = "A sign for the car park."
 	icon_state = "carpark"
 	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/trafficsign
+	name = "stop traffic sign"
+	desc = "A sign to regulate road traffic."
+	icon = 'icons/obj/road_signs.dmi'
+	icon_state = "stop"
+	light_color = LIGHT_COLOR_NEONBLUE
+
+/obj/structure/sign/neon/trafficsign/emergency_stop
+	name = "emergency stop traffic sign"
+	icon_state = "emergency_stop"
+
+/obj/structure/sign/neon/trafficsign/pedestrian_crossing
+	name = "pedestrian crossing traffic sign"
+	icon_state = "pedestrian_crossing"
+
+/obj/structure/sign/neon/trafficsign/circle_move
+	name = "roundabout traffic sign"
+	icon_state = "pedestrian_crossing"
+
+/obj/structure/sign/neon/trafficsign/main_road
+	name = "main road traffic sign"
+	icon_state = "main_road"
 
 /*|	                                             */
 /*| Big Neon Signs
@@ -220,8 +243,6 @@
 	desc = "A neon yellow airbus sign that says CASINO in big letters."
 	icon_state = "casino"
 	light_color = LIGHT_COLOR_NEONYELLOW
-
-	plane = 25
 
 /obj/structure/sign/neon/big/aeoiu
 	name = "large blue sign"
@@ -306,7 +327,6 @@
 	name = "sign"
 	desc = "A sign."
 	pixel_y = 25
-	plane = -25
 	icon = 'icons/obj/signs.dmi'
 
 /obj/structure/sign/double/city/gamecenter/

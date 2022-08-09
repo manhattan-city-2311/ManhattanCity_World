@@ -54,6 +54,6 @@
 
 		var/file_name = "map_capture_x[tx]_y[ty]_z[tz]_r[range].png"
 		to_chat(usr, "Saved capture in cache as [file_name].")
-		usr << browse_rsc(cap, file_name)
+		to_target(usr, browse_rsc(cap, file_name))
 	else
 		to_chat(usr, "Target coordinates are incorrect.")

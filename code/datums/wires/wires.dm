@@ -168,7 +168,7 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 			Interact(usr)
 
 	if(href_list["close"])
-		usr << browse(null, "window=wires")
+		to_target(usr, browse(null, "window=wires"))
 		usr.unset_machine(holder)
 
 //

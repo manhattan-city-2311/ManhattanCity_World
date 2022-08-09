@@ -4,16 +4,12 @@ var/list/turf_edge_cache = list()
 	// If greater than 0, this turf will apply edge overlays on top of other turfs cardinally adjacent to it, if those adjacent turfs are of a different icon_state,
 	// and if those adjacent turfs have a lower edge_blending_priority.
 	var/edge_blending_priority = 0
-	// Outdoors var determines if the game should consider the turf to be 'outdoors', which controls certain things such as weather effects.
-	var/outdoors = FALSE
-
 /turf/simulated/floor/outdoors
 	name = "generic ground"
 	desc = "Rather boring."
 	icon = 'icons/turf/outdoors.dmi'
 	icon_state = null
 	edge_blending_priority = 1
-	outdoors = TRUE					// This variable is used for weather effects.
 	// When a turf gets demoted or promoted, this list gets adjusted.  The top-most layer is the layer on the bottom of the list, due to how pop() works.
 	var/list/turf_layers = list(/turf/simulated/floor/outdoors/rocks)
 	var/can_build_onto = 0
@@ -22,34 +18,15 @@ var/list/turf_edge_cache = list()
 	update_icon()
 	. = ..()
 
-/turf/simulated/floor/New()
-	if(outdoors)
+/turf/simulated/floor/initialize()
+	if(get_area(src).outdoors)
 		SSplanets.addTurf(src)
-		spawn()
-			if(isopenspace(above))
-				SSplanets.addTurf(above)
 	..()
 
 /turf/simulated/floor/Destroy()
-	if(outdoors)
+	if(get_area(src).outdoors)
 		SSplanets.removeTurf(src)
 	return ..()
-
-/turf/simulated/proc/make_outdoors()
-	outdoors = TRUE
-	SSplanets.addTurf(src)
-
-/turf/simulated/proc/make_indoors()
-	outdoors = FALSE
-	SSplanets.removeTurf(src)
-
-/turf/simulated/post_change()
-	..()
-	// If it was outdoors and still is, it will not get added twice when the planet controller gets around to putting it in.
-	if(outdoors)
-		make_outdoors()
-	else
-		make_indoors()
 
 /turf/simulated/proc/update_icon_edge()
 	if(edge_blending_priority && !forbid_turf_edge())
@@ -106,8 +83,8 @@ var/list/turf_edge_cache = list()
 	edge_blending_priority = 1
 	can_build_onto = 1
 
+// MARKED FOR REMOVAL
 /turf/simulated/floor/outdoors/rocks/caves
-	outdoors = FALSE
 
 // This proc adds a 'layer' on top of the turf.
 /turf/simulated/floor/outdoors/proc/promote(var/new_turf_type)

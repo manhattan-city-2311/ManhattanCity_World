@@ -9,6 +9,8 @@
 	var/data = list("type" = "[type]")
 	return data
 
+var/persistent_online = FALSE
+
 /*
 * This is given the byond list from above, to bring this atom to the state
 * described in the list.
@@ -205,12 +207,6 @@
 /mob
 	dont_save = TRUE
 
-/obj/item/weapon/card/id
-	dont_save = TRUE
-
-/obj/item/weapon/card/id/gold/captain/spare
-	dont_save = TRUE
-
 /atom/movable/lighting_overlay
 	dont_save = TRUE
 
@@ -225,6 +221,3 @@
 
 /obj/screen
 	dont_save = TRUE 	// what?
-
-/obj/item/weapon/passport
-	dont_save = TRUE

@@ -125,13 +125,17 @@
 	if ((proj_sharp || proj_edge) && prob(getarmor(def_zone, P.check_armour)))
 		proj_sharp = 0
 		proj_edge = 0
-
+	var/pdamage = P.damage
+	if(istype(P, /obj/item/projectile/bullet/ap) && soaked > 10)
+		pdamage *= 1.5
+	else if(istype(P, /obj/item/projectile/bullet/hp) && soaked < 20)
+		pdamage *= 1.5
 	//Stun Beams
 	if(P.taser_effect)
 		stun_effect_act(0, P.agony, def_zone, P)
 		to_chat(src, "<font color='red'>You have been hit by [P]!</font>")
 		if(!P.nodamage)
-			apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
+			apply_damage(pdamage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
 		qdel(P)
 		return
 

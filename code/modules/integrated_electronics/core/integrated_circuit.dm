@@ -317,7 +317,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	if(href_list["return"])
 		if(A)
 			update_to_assembly = 1
-			usr << browse(null, "window=circuit-\ref[src];border=1;can_resize=1;can_close=1;can_minimize=1")
+			to_target(usr, browse(null, "window=circuit-\ref[src];border=1;can_resize=1;can_close=1;can_minimize=1"))
 		else
 			to_chat(usr, "<span class='warning'>This circuit is not in an assembly!</span>")
 

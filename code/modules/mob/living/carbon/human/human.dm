@@ -57,10 +57,6 @@
 
 	..()
 
-	hide_underwear.Cut()
-	for(var/category in global_underwear.categories_by_name)
-		hide_underwear[category] = FALSE
-
 	if(dna)
 		dna.ready_dna(src)
 		dna.real_name = real_name
@@ -73,6 +69,7 @@
 
 /mob/living/carbon/human/Destroy()
 	human_mob_list -= src
+	worn_underwear = null
 	for(var/organ in organs_by_name)
 		qdel(organ)
 
@@ -225,6 +222,10 @@
 		dat += "<BR><A href='?src=\ref[src];item=sensors'>Set sensors</A>"
 	if(handcuffed)
 		dat += "<BR><A href='?src=\ref[src];item=[slot_handcuffed]'>Handcuffed</A>"
+
+	for(var/entry in worn_underwear)
+		var/obj/item/underwear/UW = entry
+		dat += "<BR><a href='?src=\ref[src];item=\ref[UW]'>Remove \the [UW]</a>"
 	if(legcuffed)
 		dat += "<BR><A href='?src=\ref[src];item=[slot_legcuffed]'>Legcuffed</A>"
 
@@ -375,7 +376,8 @@
 		src << browse(null, t1)
 
 	if(href_list["item"])
-		handle_strip(href_list["item"],usr)
+		if(!handle_strip(href_list["item"],usr,locate(href_list["holder"])))
+			show_inv(usr)
 
 	if (href_list["criminal"])
 		if(hasHUD(usr,"security"))
@@ -434,9 +436,9 @@
 								var/list/criminal_record = R.fields["crim_record"]
 								if(!isemptylist(criminal_record))
 									for(var/datum/record/C in criminal_record)
-										usr << text("<b>[C.name]</b>: [C.details] - [C.author] <i>([C.date_added])</i>")
+										to_target(usr, text("<b>[C.name]</b>: [C.details] - [C.author] <i>([C.date_added])</i>"))
 								else
-									usr << text("<BR>No records found.")
+									to_target(usr, text("<BR>No records found."))
 
 								to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
 								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=`'>\[View Comment Log\]</a>")
@@ -463,7 +465,7 @@
 								read = 1
 								var/counter = 1
 								while(R.fields[text("com_[]", counter)])
-									usr << text("[]", R.fields[text("com_[]", counter)])
+									to_target(usr, text("[]", R.fields[text("com_[]", counter)]))
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
@@ -580,7 +582,7 @@
 								read = 1
 								var/counter = 1
 								while(R.fields[text("com_[]", counter)])
-									usr << text("[]", R.fields[text("com_[]", counter)])
+									to_target(usr, text("[]", R.fields[text("com_[]", counter)]))
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
@@ -1440,23 +1442,6 @@
 				return 0
 		return 1
 	return 0
-
-/mob/living/carbon/human/verb/toggle_underwear()
-	set name = "Toggle Underwear"
-	set desc = "Shows/hides selected parts of your underwear."
-	set category = "Object"
-
-	if(stat) return
-	var/datum/category_group/underwear/UWC = input(usr, "Choose underwear:", "Show/hide underwear") as null|anything in global_underwear.categories
-	if(!UWC) return
-	var/datum/category_item/underwear/UWI = all_underwear[UWC.name]
-	if(!UWI || UWI.name == "None")
-		to_chat(src, "<span class='notice'>You do not have [UWC.gender==PLURAL ? "[UWC.display_name]" : "\a [UWC.display_name]"].</span>")
-		return
-	hide_underwear[UWC.name] = !hide_underwear[UWC.name]
-	update_underwear(1)
-	to_chat(src, "<span class='notice'>You [hide_underwear[UWC.name] ? "take off" : "put on"] your [UWC.display_name].</span>")
-	return
 
 /mob/living/carbon/human/verb/pull_punches()
 	set name = "Pull Punches"

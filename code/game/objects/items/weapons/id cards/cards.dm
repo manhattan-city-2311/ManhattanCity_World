@@ -22,6 +22,18 @@
 
 	var/list/files = list(  )
 
+/obj/item/weapon/card/proc/get_account()
+	return global.get_account(associated_account_number)
+
+/obj/item/weapon/card/debit
+	name = "debit card"
+	desc = "Common card for accessing banking account"
+	icon_state = "dept_cargo"
+
+/obj/item/weapon/card/debit/examine(mob/user, distance)
+	. = ..()
+	var/n = associated_pin_number % 100
+	to_chat(user, "It's associated with [associated_account_number] account. There is '[n < 10 ? "0" : ""][n]' printed at back side.")
 /obj/item/weapon/card/data
 	name = "data disk"
 	desc = "A disk of data."

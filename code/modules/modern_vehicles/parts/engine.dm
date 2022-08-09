@@ -46,10 +46,9 @@
 	rpm = 0
 
 /obj/item/vehicle_part/engine/proc/handle_torque(delta = 2)
-	if(rpm < RPM_IDLE - 100)
-		//stop()
-		rpm = RPM_IDLE
-		return
+	if(rpm < (RPM_IDLE - 200))
+		rpm = 0
+		return 0
 
 	if(rpm > max_rpm)
 		rpm = max_rpm
@@ -57,7 +56,7 @@
 
 	. = interpolate_list(rpm, xs, ys) * delta
 
-	if(!vehicle.is_acceleration_pressed)
+	if(!vehicle.is_acceleration_pressed && rpm > RPM_IDLE)
 		. *= -0.1
 
 	if(!vehicle.is_transfering())

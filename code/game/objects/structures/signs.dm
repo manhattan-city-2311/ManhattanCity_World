@@ -3,7 +3,7 @@
 	anchored = 1
 	opacity = 0
 	density = 0
-	plane = -45
+	plane = ABOVE_MOB_PLANE
 	layer = ABOVE_JUNK_LAYER
 	w_class = ITEMSIZE_NORMAL
 
@@ -205,6 +205,11 @@
 	name = "\improper NO SMOKING"
 	icon_state = "nosmoking2"
 
+/obj/structure/sign/warning/smoking
+	name = "\improper SMOKING"
+	icon_state = "smoking"
+	desc = "You can smoke here!"
+
 /obj/structure/sign/warning/pods
 	name = "\improper ESCAPE PODS"
 	icon_state = "pods"
@@ -213,9 +218,19 @@
 	name = "\improper RADIOACTIVE AREA"
 	icon_state = "radiation"
 
+/obj/structure/sign/warning/radioactive_alt
+	name = "\improper RADIOACTIVE AREA"
+	icon_state = "radiation_alt"
+	desc = "Here's a small sign which warns that there may be radiation in the room."
+
 /obj/structure/sign/warning/secure_area
 	name = "\improper SECURE AREA"
 	icon_state = "securearea2"
+
+/obj/structure/sign/warning/secure_area_alt
+	name = "\improper SECURE AREA"
+	icon_state = "secure"
+	desc = "A small sign which warns that this area is secured."
 
 /obj/structure/sign/warning/secure_area/armory
 	name = "\improper ARMORY"

@@ -78,7 +78,7 @@
 		var/pic_data
 
 		if(MESSAGE.img)
-			usr << browse_rsc(MESSAGE.img, "tmp_photo[current_page].png")
+			to_target(usr, browse_rsc(MESSAGE.img, "tmp_photo[current_page].png"))
 			pic_data+="<img src='tmp_photo[current_page].png' width = '180'><BR>"
 
 		if(MESSAGE.persistent_img)
@@ -88,7 +88,7 @@
 			var/img_data
 			S >> img_data
 
-			usr << browse_rsc(img_data, "tmp_photo[current_page].png")
+			to_target(usr, browse_rsc(img_data, "tmp_photo[current_page].png"))
 			pic_data+="<img src='tmp_photo[current_page].png' width = '180'><BR>"
 
 		if(MESSAGE.persistent_img || MESSAGE.img)

@@ -12,23 +12,13 @@
 	light_color = LIGHT_COLOR_LAVA
 	movement_cost = 2
 
+// MARKED FOR REMOVAL
 /turf/simulated/floor/lava/outdoors
-	outdoors = TRUE
 
 // For maximum pedantry.
 /turf/simulated/floor/lava/initialize()
-	if(!outdoors)
-		name = "magma"
 	update_icon()
 	return ..()
-
-/turf/simulated/floor/lava/make_outdoors()
-	..()
-	name = "lava"
-
-/turf/simulated/floor/lava/make_indoors()
-	..()
-	name = "magma"
 
 /turf/simulated/floor/lava/update_icon()
 	cut_overlays()

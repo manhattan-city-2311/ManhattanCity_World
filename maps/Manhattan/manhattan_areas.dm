@@ -43,6 +43,7 @@
 	dynamic_lighting = 1
 	sound_env = CITY
 	flags = null
+	outdoors = TRUE
 	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
 
 /area/planets/Manhattan/indoor
@@ -51,6 +52,9 @@
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
 	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/upper
+	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/outdoor/upper1
 	name = "\improper New-Manhattan second level outdoors"
@@ -68,10 +72,16 @@
 /area/planets/Manhattan/indoor/north/bar/other1
 	icon_state = "north_m1"
 
+/area/planets/Manhattan/indoor/north/bar/other1/upper
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
 /area/planets/Manhattan/indoor/north/bar/other2
+	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/bar/other3
+	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/bar/bathroom
@@ -81,9 +91,11 @@
 	icon_state = "north_m2"
 
 /area/planets/Manhattan/indoor/north/bar/pub2
+	base_turf = /turf/simulated/open
 	icon_state = "north_m2"
 
 /area/planets/Manhattan/indoor/north/bar/vip_zone
+	base_turf = /turf/simulated/open
 	icon_state = "north_m4"
 
 /area/planets/Manhattan/indoor/north/gas
@@ -106,6 +118,10 @@
 /area/planets/Manhattan/indoor/north/gas/bathroom
 	icon_state = "north_m3"
 
+/area/planets/Manhattan/indoor/north/house_standart1/upper
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
 /area/planets/Manhattan/indoor/north/house_standart1/room1
 	icon_state = "north_m1"
 
@@ -119,21 +135,26 @@
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/house_standart1/room5
+	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/house_standart1/room6
+	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/house_standart1/room7
+	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/house_standart1/room8
+	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/house_standart1/balcony
 	icon_state = "north_m3"
 	sound_env = CITY
 	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/indoor/north/house_standart1/balcony/one
 
@@ -147,6 +168,7 @@
 	ambience = list('sound/ambience/MAIN0C.SAP.ogg', 'sound/ambience/MAIN05.SAP.ogg')
 
 /area/planets/Manhattan/indoor/north/police_dept/upper
+	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/indoor/north/police_dept/underground
 
@@ -181,13 +203,27 @@
 	dynamic_lighting = 1
 	sound_env = CITY
 	flags = null
-	ambience = list('sound/manhattan/south1.mp3')
+	outdoors = 1
+	ambience = list('sound/manhattan/south1.ogg')
 
 /area/planets/Manhattan/south/indoor
 	name = "\improper New-Manhattan South District Interior"
 	icon_state = "south_m1_indoor"
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
+	outdoors = 0
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/south/indoor/upper
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/south/outdoor/upper1
+	name = "\improper New-Manhattan South District second level outdoors"
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/south/outdoor/upper2
+	name = "\improper New-Manhattan South District third level outdoors"
+	base_turf = /turf/simulated/open
 
 //BUILDINGS - FLATS
 
@@ -196,9 +232,12 @@
 	icon_state = "south_m_build"
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
+	outdoors = 0
+	ambience = list('sound/manhattan/south_indoors1.ogg', 'sound/manhattan/south_indoors2.ogg', 'sound/manhattan/south_indoors3.ogg', 'sound/manhattan/south_indoors4.ogg', 'sound/manhattan/south_indoors5.ogg', 'sound/manhattan/south_indoors6.ogg', 'sound/manhattan/south_indoors7.ogg', 'sound/manhattan/south_indoors8.ogg', )
 
 /area/planets/Manhattan/south/building/f1
 	icon_state = "south_m_build_flat"
+	base_turf = /turf/simulated/open
 /area/planets/Manhattan/south/building/f1/n1
 	name = "\improper Flat 1"
 /area/planets/Manhattan/south/building/f1/n2
@@ -214,6 +253,7 @@
 
 /area/planets/Manhattan/south/building/f2
 	icon_state = "south_m_build_flat"
+	base_turf = /turf/simulated/open
 /area/planets/Manhattan/south/building/f2/n1
 	name = "\improper Flat 1"
 /area/planets/Manhattan/south/building/f2/n2
@@ -229,6 +269,7 @@
 
 /area/planets/Manhattan/south/building/f3
 	icon_state = "south_m_build_flat"
+	base_turf = /turf/simulated/open
 /area/planets/Manhattan/south/building/f3/n1
 	name = "\improper Flat 1"
 /area/planets/Manhattan/south/building/f3/n2
@@ -244,6 +285,7 @@
 
 /area/planets/Manhattan/south/building/f4
 	icon_state = "south_m_build_flat"
+	base_turf = /turf/simulated/open
 /area/planets/Manhattan/south/building/f4/n1
 	name = "\improper Flat 1"
 /area/planets/Manhattan/south/building/f4/n2
@@ -259,6 +301,7 @@
 
 /area/planets/Manhattan/south/building/f5
 	icon_state = "south_m_build_flat"
+	base_turf = /turf/simulated/open
 /area/planets/Manhattan/south/building/f5/n1
 	name = "\improper Flat 1"
 /area/planets/Manhattan/south/building/f5/n2
@@ -279,13 +322,20 @@
 	icon_state = "south_m_factory"
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
+	outdoors = 1
+
+/area/planets/Manhattan/south/factory/upper
+	outdoors = 0
+	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/south/factory/roof
 	name = "\improper Factory Roof"
+	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/south/factory/maintenance
 	name = "\improper Factory Maintenance"
 	icon_state = "south_m_factory_m"
+	outdoors = 0
 
 /area/planets/Manhattan/south/factory/maintenance/janitor
 	name = "\improper Janitorial Closet"
@@ -293,6 +343,7 @@
 /area/planets/Manhattan/south/factory/office
 	name = "\improper Factory Office Hallway"
 	icon_state = "south_m_factory_o"
+	outdoors = 0
 
 /area/planets/Manhattan/south/factory/office/a
 	name = "\improper Factory Office A"
@@ -316,12 +367,14 @@
 	name = "\improper General Director Backroom"
 
 /area/planets/Manhattan/south/factory/office/ce
+	base_turf = /turf/simulated/open
 	name = "\improper Chief Engineer Office"
 
 /area/planets/Manhattan/south/factory/office/ce/room
 	name = "\improper Chief Engineer Backroom"
 
 /area/planets/Manhattan/south/factory/office/qm
+	base_turf = /turf/simulated/open
 	name = "\improper Quartermaster Office"
 
 /area/planets/Manhattan/south/factory/office/qm/room
@@ -333,11 +386,17 @@
 /area/planets/Manhattan/south/factory/pmc
 	name = "\improper PMC Wing"
 	icon_state = "south_m_factory_s"
+	outdoors = 0
+
+/area/planets/Manhattan/south/factory/pmc/upper
+	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/south/factory/pmc/armory
+	base_turf = /turf/simulated/open
 	name = "\improper PMC Armory"
 
 /area/planets/Manhattan/south/factory/pmc/brig
+	base_turf = /turf/simulated/open
 	name = "\improper PMC Brig"
 
 /area/planets/Manhattan/south/factory/pmc/forensics
@@ -356,6 +415,7 @@
 	name = "\improper PMC Checkpoint A"
 
 /area/planets/Manhattan/south/factory/pmc/checkpoint/b
+	base_turf = /turf/simulated/open
 	name = "\improper PMC Checkpoint B"
 
 /area/planets/Manhattan/south/factory/pmc/checkpoint/c
@@ -363,9 +423,11 @@
 
 /area/planets/Manhattan/south/factory/hallway
 	name = "\improper Factory Hallway"
+	outdoors = 0
 
 /area/planets/Manhattan/south/factory/hallway/second_floor
 	name = "\improper Factory 2th Floor Hallway"
+	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/south/factory/hallway/mess
 	name = "\improper Factory Mess Hall"
@@ -373,6 +435,10 @@
 /area/planets/Manhattan/south/factory/cargo
 	name = "\improper Factory Cargo Wing"
 	icon_state = "south_m_factory_c"
+	outdoors = 0
+
+/area/planets/Manhattan/south/factory/cargo/upper
+	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/south/factory/cargo/storage
 	name = "\improper Cargo Storage"
@@ -384,12 +450,15 @@
 	name = "\improper Cargo Thirt Storage"
 
 /area/planets/Manhattan/south/factory/cargo/breakroom
+	base_turf = /turf/simulated/open
 	name = "\improper Cargo Break Room"
 
 /area/planets/Manhattan/south/factory/cargo/meeting
+	base_turf = /turf/simulated/open
 	name = "\improper Cargo Meeting Room"
 
 /area/planets/Manhattan/south/factory/cargo/equipment
+	base_turf = /turf/simulated/open
 	name = "\improper Cargo Equipment"
 
 /area/planets/Manhattan/south/factory/cargo/mining
@@ -398,17 +467,20 @@
 /area/planets/Manhattan/south/factory/engineering
 	name = "\improper Engineering"
 	icon_state = "south_m_factory_e"
+	outdoors = 0
 
 /area/planets/Manhattan/south/factory/engineering/lobby
 	name = "\improper Engineering Lobby"
 
 /area/planets/Manhattan/south/factory/engineering/construction
+	base_turf = /turf/simulated/open
 	name = "\improper Engineering Construction Site"
 
 /area/planets/Manhattan/south/factory/engineering/exosuit
 	name = "\improper Engineering Exosuit Fabrication"
 
 /area/planets/Manhattan/south/factory/engineering/breakroom
+	base_turf = /turf/simulated/open
 	name = "\improper Engineering Break Room"
 
 /area/planets/Manhattan/south/factory/engineering/breakroom/b
@@ -420,6 +492,9 @@
 /area/planets/Manhattan/south/factory/engineering/hangar
 	name = "\improper Delivery Hangar"
 
+/area/planets/Manhattan/south/factory/engineering/hangar/upper
+	base_turf = /turf/simulated/open
+
 /area/planets/Manhattan/south/factory/engineering/meeting
 	name = "\improper Engineering Meeting Room"
 
@@ -428,6 +503,9 @@
 
 /area/planets/Manhattan/south/factory/engineering/storage/b
 	name = "\improper Engineering Second Storage"
+
+/area/planets/Manhattan/south/factory/engineering/reactor
+	name = "\improper Engineering Reactor"
 
 // Elevator areas.
 /area/turbolift/manhattan_house11

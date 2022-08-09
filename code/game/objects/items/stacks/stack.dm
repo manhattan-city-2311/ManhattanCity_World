@@ -55,7 +55,7 @@
 	if(uses_charge)
 		return 1
 	if (src && usr && usr.machine == src)
-		usr << browse(null, "window=stack")
+		to_target(usr, browse(null, "window=stack"))
 	if(reagents)
 		reagents.reagent_list.Cut()
 	return ..()
