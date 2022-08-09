@@ -8,7 +8,6 @@
 	plane = LIGHTING_OBJS_PLANE
 	light_range = 3
 	light_power = 6.5
-	alpha = 150
 
 /obj/structure/sign/neon/item
 	name = "item store"
