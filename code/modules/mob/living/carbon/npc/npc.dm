@@ -69,7 +69,7 @@
 	g_eyes = eye_color[2]
 	b_eyes = eye_color[3]
 
-	handle_glide()
+	update_glide()
 
 	random_outfit()
 
@@ -98,7 +98,7 @@
 	..()
 	if(stat == UNCONSCIOUS)
 		mode = NPC_MODE_SLEEP
-	handle_glide()
+	update_glide()
 
 /mob/living/carbon/human/npc/proc/domove()
 	var/newloc = get_step(src.loc, move_dir)
