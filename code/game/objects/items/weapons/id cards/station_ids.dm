@@ -12,7 +12,6 @@
 	var/registered_name = "Unknown" // The name registered_name on the card
 	slot_flags = SLOT_ID | SLOT_EARS
 
-	age = "\[UNSET\]"
 	var/blood_type = "\[UNSET\]"
 	var/dna_hash = "\[UNSET\]"
 	var/fingerprint_hash = "\[UNSET\]"

@@ -6,7 +6,7 @@
 	var/name
 	var/filename
 	var/tokens_per_line
-	var/entries_expire_at
+	var/entries_expire_at = 5 //default
 	var/entries_decay_at
 	var/entry_decay_weight = 0.5
 	var/file_entry_split_character = "\t"

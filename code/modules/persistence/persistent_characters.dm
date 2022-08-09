@@ -1,4 +1,5 @@
 /mob/living/carbon/human/proc/save_organs_to_prefs()
+	return //TODO: Fix this
 	for(var/obj/item/organ/O in organs_by_name)
 		mind.prefs.all_organ_damage[O.name] = O.damage
 
