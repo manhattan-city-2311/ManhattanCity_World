@@ -169,7 +169,7 @@
 		make_hormone(T, waste_hormones[T])
 
 	if(!vital && damage && owner.bloodstr.get_reagent_amount("glucose") >= GLUCOSE_LEVEL_NORMAL_LOW)
-		var/regen = min(2, damage)
+		var/regen = min(0.02, damage)
 		absorb_hormone("glucose", regen)
 		damage = max(0, damage - regen)
 	owner.consume_oxygen(oxygen_consumption)
