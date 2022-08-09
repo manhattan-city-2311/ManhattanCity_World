@@ -5,7 +5,7 @@
 /datum/persistent
 	var/name
 	var/filename
-	var/tokens_per_line
+	var/tokens_per_line = 5 //default
 	var/entries_expire_at = 5 //default
 	var/entries_decay_at
 	var/entry_decay_weight = 0.5
