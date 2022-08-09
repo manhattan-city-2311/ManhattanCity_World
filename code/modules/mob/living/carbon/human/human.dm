@@ -69,7 +69,7 @@
 	spawn()
 		setup_cm()
 
-	for(var/obj/organ/O in get_turf(src))
+	for(var/obj/item/organ/O in get_turf(src))
 		qdel(O)
 
 /mob/living/carbon/human/Destroy()
