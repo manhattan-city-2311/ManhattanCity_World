@@ -58,7 +58,7 @@
 		return
 
 	selection.show(usr)
-	usr << selection.desc
+	to_target(usr, selection.desc)
 
 /obj/item/device/camera/siliconcam/proc/deletepicture(obj/item/device/camera/siliconcam/cam)
 	var/selection = selectpicture(cam)

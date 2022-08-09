@@ -19,9 +19,9 @@ var/list/unisex_outfits = list(
 
 	var/list/outfits = list()
 	outfits += unisex_outfits.Copy()
-	if(gender == MALE)
+	if(gender == MALE && male_outfits)
 		outfits += male_outfits.Copy()
-	else
+	else if(female_outfits)
 		outfits += female_outfits.Copy()
 
 	var/decl/hierarchy/outfit/O = pick(outfits)

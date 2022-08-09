@@ -121,38 +121,13 @@
 		user << browse(null,"window=eftpos")
 
 /obj/item/device/eftpos/attackby(obj/item/O as obj, user as mob)
-
-	var/obj/item/weapon/card/id/I = O.GetID()
-
-	if(I)
+	var/obj/item/weapon/card/debit/I = O
+	
+	if(istype(I))
 		if(linked_account)
 			scan_card(I, O)
 		else
-			to_chat(usr, "[icon2html(src, usr)]<span class='warning'>Unable to connect to linked account.</span>")
-	else if (istype(O, /obj/item/weapon/spacecash/ewallet))
-		var/obj/item/weapon/spacecash/ewallet/E = O
-		if (linked_account)
-			if(!linked_account.suspended)
-				if(transaction_locked && !transaction_paid)
-					if(transaction_amount <= E.worth)
-						playsound(src, 'sound/machines/chime.ogg', 50, 1)
-						src.visible_message("[icon2html(src, viewers(src))] \The [src] chimes.")
-						transaction_paid = 1
-
-						//transfer the money
-						E.worth -= transaction_amount
-						linked_account.money += transaction_amount
-
-						//create entry in the EFTPOS linked account transaction log
-						// Create log entry in owner's account
-						linked_account.add_transaction_log(E.owner_name, (transaction_purpose ? transaction_purpose : "None supplied."), transaction_amount, machine_id)
-					else
-						to_chat(usr, "[icon2html(src, usr)]<span class='warning'>\The [O] doesn't have that much money!</span>")
-			else
-				to_chat(usr, "[icon2html(src, usr)]<span class='warning'>Connected account has been suspended.</span>")
-		else
-			to_chat(usr, "[icon2html(src, usr)]<span class='warning'>EFTPOS is not connected to an account.</span>")
-
+			to_chat(usr, SPAN_WARNING("[icon2html(src, usr)]Unable to connect to linked account."))
 	else
 		..()
 
@@ -231,9 +206,9 @@
 
 	src.attack_self(usr)
 
-/obj/item/device/eftpos/proc/scan_card(var/obj/item/weapon/card/I, var/obj/item/ID_container)
-	if (istype(I, /obj/item/weapon/card/id))
-		var/obj/item/weapon/card/id/C = I
+/obj/item/device/eftpos/proc/scan_card(obj/item/weapon/card/I, obj/item/ID_container)
+	if (istype(I, /obj/item/weapon/card/debit))
+		var/obj/item/weapon/card/debit/C = I
 		if(I==ID_container || ID_container == null)
 			usr.visible_message("<span class='info'>\The [usr] swipes a card through \the [src].</span>")
 		else
@@ -242,7 +217,7 @@
 			if(linked_account)
 				if(!linked_account.suspended)
 					var/attempt_pin = ""
-					var/datum/money_account/D = get_account(C.associated_account_number)
+					var/datum/money_account/D = C.get_account()
 					if(D.security_level)
 						attempt_pin = input("Enter pin code", "EFTPOS transaction") as num
 						D = null

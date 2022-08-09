@@ -43,10 +43,10 @@
 	if(usr.stat)
 		return
 	if(src.occupant)
-		usr << SPAN_WARNING("The autodoc is already occupied!")
+		to_chat(usr, SPAN_WARNING("The autodoc is already occupied!"))
 		return
 	if(usr.abiotic())
-		usr << SPAN_WARNING("The subject cannot have abiotic items on.")
+		to_chat(usr, SPAN_WARNING("The subject cannot have abiotic items on."))
 		return
 	set_occupant(usr)
 	src.add_fingerprint(usr)

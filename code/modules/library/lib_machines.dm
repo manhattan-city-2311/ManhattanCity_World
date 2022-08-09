@@ -68,7 +68,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 
 /obj/machinery/librarypubliccomp/Topic(href, href_list)
 	if(..())
-		usr << browse(null, "window=publiclibrary")
+		to_target(usr, browse(null, "window=publiclibrary"))
 		onclose(usr, "publiclibrary")
 		return
 
@@ -249,7 +249,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 
 /obj/machinery/librarycomp/Topic(href, href_list)
 	if(..())
-		usr << browse(null, "window=library")
+		to_target(usr, browse(null, "window=library"))
 		onclose(usr, "library")
 		return
 
@@ -346,7 +346,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 							var/sqlcategory = sanitizeSQL(upload_category)
 							var/DBQuery/query = dbcon_old.NewQuery("INSERT INTO library (author, title, content, category) VALUES ('[sqlauthor]', '[sqltitle]', '[sqlcontent]', '[sqlcategory]')")
 							if(!query.Execute())
-								usr << query.ErrorMsg()
+								to_target(usr, query.ErrorMsg())
 							else
 								log_game("[usr.name]/[usr.key] has uploaded the book titled [scanner.cache.name], [length(scanner.cache.dat)] signs")
 								alert("Upload Complete.")
@@ -423,7 +423,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 
 /obj/machinery/libraryscanner/Topic(href, href_list)
 	if(..())
-		usr << browse(null, "window=scanner")
+		to_target(usr, browse(null, "window=scanner"))
 		onclose(usr, "scanner")
 		return
 

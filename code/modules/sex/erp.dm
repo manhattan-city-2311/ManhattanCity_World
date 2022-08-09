@@ -36,7 +36,7 @@
 	for(var/ID in global.erp_actions_cache)
 		var/datum/erp_action/A = global.erp_actions_cache[ID]
 		if(!A.self_action)
-			if(A.is_available(src, erp_participient))
+			if(A.name && A.is_available(src, erp_participient))
 				. += ID
 
 /mob/living/carbon/human/proc/get_available_self_actions()
@@ -45,7 +45,7 @@
 	for(var/ID in global.erp_actions_cache)
 		var/datum/erp_action/A = global.erp_actions_cache[ID]
 		if(A.self_action)
-			if(A.is_available(src, erp_participient))
+			if(A.name && A.is_available(src, erp_participient))
 				. += ID
 
 /mob/living/carbon/human/proc/can_leave_erp()
@@ -56,9 +56,12 @@
 	if(can_leave_erp() && !force)
 		return
 
+	if(erp_participient)
+		erp_participient.erp_participient = null
+		erp_participient.quit_erp()
+		erp_participient = null
+
 	erp_position = null
-	erp_participient?.quit_erp()
-	erp_participient = null
 
 /mob/living/carbon/human/proc/get_erp_description()
 	var/height_msg

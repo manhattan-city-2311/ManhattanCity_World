@@ -92,7 +92,7 @@
 /atom/movable/openspace/multiplier/proc/copy_lighting(atom/movable/lighting_overlay/LO)
 	appearance = LO
 	layer = MIMICED_LIGHTING_LAYER
-	plane = PLANE_LIGHTING + 0.01
+	//plane = PLANE_LIGHTING + 0.01
 	invisibility = 0
 	blend_mode = BLEND_MULTIPLY
 	if (icon_state == null)

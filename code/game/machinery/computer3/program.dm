@@ -50,7 +50,7 @@ Programs are a file that can be executed
 		update_icon()
 		computer.update_icon()
 		if(usr)
-			usr << browse(null, "window=\ref[computer]")
+			to_target(usr, browse(null, "window=\ref[computer]"))
 			computer.attack_hand(usr)
 
 	..()
@@ -253,7 +253,7 @@ Programs are a file that can be executed
 	//
 	if("quit" in href_list)
 		computer.program = null
-		usr << browse(null,"window=\ref[computer]") // ntos will need to resize the window
+		to_target(usr, browse(null,"window=\ref[computer]") // ntos will need to resize the window)
 		computer.update_icon()
 		computer.updateDialog()
 		return 1

@@ -87,7 +87,7 @@
 				I.BeginInjecting()
 
 	if( href_list["close"] )
-		usr << browse(null, "window=fuel_control")
+		to_target(usr, browse(null, "window=fuel_control"))
 		usr.unset_machine()
 
 	updateDialog()

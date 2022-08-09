@@ -122,7 +122,7 @@
 /obj/machinery/shield_capacitor/Topic(href, href_list[])
 	..()
 	if( href_list["close"] )
-		usr << browse(null, "window=shield_capacitor")
+		to_target(usr, browse(null, "window=shield_capacitor"))
 		usr.unset_machine()
 		return
 	if( href_list["toggle"] )

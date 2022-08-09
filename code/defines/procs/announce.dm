@@ -104,7 +104,7 @@ datum/announcement/proc/Sound(var/message_sound)
 
 datum/announcement/priority/Sound(var/message_sound)
 	if(message_sound)
-		world << message_sound
+		sound_to(world, message_sound)
 
 datum/announcement/priority/command/Sound(var/message_sound)
 	PlaySound(message_sound)

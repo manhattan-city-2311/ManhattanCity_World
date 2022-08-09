@@ -208,7 +208,7 @@
 /obj/machinery/shield_gen/Topic(href, href_list[])
 	..()
 	if( href_list["close"] )
-		usr << browse(null, "window=shield_generator")
+		to_target(usr, browse(null, "window=shield_generator"))
 		usr.unset_machine()
 		return
 	else if( href_list["toggle"] )

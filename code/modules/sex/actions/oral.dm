@@ -22,6 +22,7 @@
 			else
 				return "@1 сползает пониже, утыкается лицом в член @2. Недолго раздумывая берет его в губы и начинает посасывать."
 		if(1)
+			advance_stage(user1)
 			if(poses ~= list(POS_KNEELING, POS_STANDING))
 				return "@1 усердно посасывает ствол и головку, чуть помогая себе руками у основания, по подбородку @1 текут слюни."
 			else if(poses ~= list(POS_KNEELING, POS_SITTING))

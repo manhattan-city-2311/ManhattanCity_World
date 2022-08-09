@@ -45,7 +45,7 @@
 			for(var/datum/feed_message/FM in channel.messages)
 				index++
 				if(FM.img)
-					usr << browse_rsc(FM.img, "pda_news_tmp_photo_[feeds["channel"]]_[index].png")
+					to_target(usr, browse_rsc(FM.img, "pda_news_tmp_photo_[feeds["channel"]]_[index].png"))
 					// News stories are HTML-stripped but require newline replacement to be properly displayed in NanoUI
 					var/body = replacetext_char(FM.body, "\n", "<br>")
 					messages[++messages.len] = list(

@@ -134,7 +134,7 @@
 /obj/item/weapon/flamethrower/Topic(href,href_list[])
 	if(href_list["close"])
 		usr.unset_machine()
-		usr << browse(null, "window=flamethrower")
+		to_target(usr, browse(null, "window=flamethrower"))
 		return
 	if(usr.stat || usr.restrained() || usr.lying)	return
 	usr.set_machine(src)
@@ -154,7 +154,7 @@
 		ptank = null
 		lit = 0
 		usr.unset_machine()
-		usr << browse(null, "window=flamethrower")
+		to_target(usr, browse(null, "window=flamethrower"))
 	for(var/mob/M in viewers(1, loc))
 		if((M.client && M.machine == src))
 			attack_self(M)

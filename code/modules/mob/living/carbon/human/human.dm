@@ -436,9 +436,9 @@
 								var/list/criminal_record = R.fields["crim_record"]
 								if(!isemptylist(criminal_record))
 									for(var/datum/record/C in criminal_record)
-										usr << text("<b>[C.name]</b>: [C.details] - [C.author] <i>([C.date_added])</i>")
+										to_target(usr, text("<b>[C.name]</b>: [C.details] - [C.author] <i>([C.date_added])</i>"))
 								else
-									usr << text("<BR>No records found.")
+									to_target(usr, text("<BR>No records found."))
 
 								to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
 								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=`'>\[View Comment Log\]</a>")
@@ -465,7 +465,7 @@
 								read = 1
 								var/counter = 1
 								while(R.fields[text("com_[]", counter)])
-									usr << text("[]", R.fields[text("com_[]", counter)])
+									to_target(usr, text("[]", R.fields[text("com_[]", counter)]))
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
@@ -582,7 +582,7 @@
 								read = 1
 								var/counter = 1
 								while(R.fields[text("com_[]", counter)])
-									usr << text("[]", R.fields[text("com_[]", counter)])
+									to_target(usr, text("[]", R.fields[text("com_[]", counter)]))
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")

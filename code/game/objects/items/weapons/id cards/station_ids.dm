@@ -37,7 +37,7 @@
 	set src in oview(1)
 	if(in_range(usr, src))
 		show(usr)
-		usr << desc
+		to_target(usr, desc)
 	else
 		to_chat(usr, "<span class='warning'>It is too far away.</span>")
 
@@ -118,7 +118,7 @@
 	set category = "Object"
 	set src in usr
 
-	usr << text("\icon[] []: The current assignment on the card is [].", src, src.name, src.assignment)
+	to_target(usr, text("\icon[] []: The current assignment on the card is [].", src, src.name, src.assignment))
 	to_chat(usr, "The blood type on the card is [blood_type].")
 	to_chat(usr, "The DNA hash on the card is [dna_hash].")
 	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")

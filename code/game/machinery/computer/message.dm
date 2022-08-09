@@ -476,7 +476,7 @@
 				if(auth)
 					src.screen = 4
 
-			//usr << href_list["select"]
+			//to_target(usr, href_list["select"])
 
 		if(href_list["spam"])
 			if(src.linkedServer == null || (src.linkedServer.stat & (NOPOWER|BROKEN)))

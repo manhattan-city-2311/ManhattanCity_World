@@ -3,7 +3,8 @@
 	sbp = SBP_ORAL
 	needs_access = SBP_FACE
 
-/datum/erp_action/kiss_cheek/get_messages()
+/datum/erp_action/kiss_cheek/get_messages(user1, user2)
+	return list("@1 движется к @2 и оставляет на [pronounce_helper(user2, "его", "её")] щеке влажный поцелуй.")
 
 /datum/erp_action/kiss_cheek/gentle
 	name = "Нежный поцелуй в щеку"

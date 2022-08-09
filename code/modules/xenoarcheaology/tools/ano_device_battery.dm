@@ -175,7 +175,7 @@
 		inserted_battery = null
 		UpdateSprite()
 	if(href_list["close"])
-		usr << browse(null, "window=anodevice")
+		to_target(usr, browse(null, "window=anodevice"))
 	else if(ismob(src.loc))
 		var/mob/M = src.loc
 		src.interact(M)

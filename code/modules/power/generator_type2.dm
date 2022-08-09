@@ -131,7 +131,7 @@
 	..()
 
 	if( href_list["close"] )
-		usr << browse(null, "window=teg")
+		to_target(usr, browse(null, "window=teg"))
 		usr.unset_machine()
 		return 0
 

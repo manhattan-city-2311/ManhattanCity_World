@@ -85,7 +85,7 @@
 				else
 					text += "<a href='?src=\ref[t];SDQL_select=\ref[t]'>\ref[t]</a>: [t]<br>"
 
-			usr << browse(text, "window=SDQL-result")
+			to_target(usr, browse(text, "window=SDQL-result"))
 
 		if("update")
 			if("set" in query_tree)

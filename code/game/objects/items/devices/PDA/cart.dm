@@ -537,7 +537,7 @@ var/list/civilian_cartridges = list(
 
 	if (!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
 		usr.unset_machine()
-		usr << browse(null, "window=pda")
+		to_target(usr, browse(null, "window=pda"))
 		return
 
 

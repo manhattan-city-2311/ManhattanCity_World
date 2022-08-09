@@ -66,7 +66,7 @@
 		return
 
 	if( href_list["close"] )
-		usr << browse(null, "window=crewcomp")
+		to_target(usr, browse(null, "window=crewcomp"))
 		usr.unset_machine()
 		return
 
