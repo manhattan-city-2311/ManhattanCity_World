@@ -74,7 +74,7 @@
 		if (usr.stat || usr.restrained() || (!ishuman(usr) && !istype(usr,/mob/living/silicon)))
 			return
 		if (href_list["close"])
-			usr << browse(null, "window=airlock")
+			to_target(usr, browse(null, "window=airlock"))
 			return
 
 		if (href_list["login"])

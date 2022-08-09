@@ -38,7 +38,7 @@
 	if(..())
 		return
 	if(unwrenched || !usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
-		usr << browse(null, "window=pipedispenser")
+		to_target(usr, browse(null, "window=pipedispenser"))
 		usr.unset_machine(src)
 		return
 	usr.set_machine(src)
@@ -87,7 +87,7 @@
 				src.stat |= MAINT
 				src.unwrenched = 1
 				if (usr.machine==src)
-					usr << browse(null, "window=pipedispenser")
+					to_target(usr, browse(null, "window=pipedispenser"))
 		else /*if (unwrenched==1)*/
 			playsound(src, W.usesound, 50, 1)
 			to_chat(user, "<span class='notice'>You begin to fasten \the [src] to the floor...</span>")
@@ -169,7 +169,7 @@ Nah
 	src.add_fingerprint(usr)
 	if(href_list["dmake"])
 		if(unwrenched || !usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
-			usr << browse(null, "window=pipedispenser")
+			to_target(usr, browse(null, "window=pipedispenser"))
 			return
 		if(!wait)
 			var/p_type = text2num(href_list["dmake"])

@@ -87,8 +87,12 @@
 /obj/structure/sign/neon/exit
 	name = "exit"
 	icon_state = "exit"
+	light_color = "#00ff00"
+	light_power = 6.5
+	light_range = 3
+/*
 	light_color = LIGHT_COLOR_RED
-
+*/
 /obj/structure/sign/neon/close
 	name = "close"
 	icon_state = "close"
@@ -129,8 +133,12 @@
 	name = "bathroom sign"
 	desc = "A sign that indicates a unisex bathroom is here."
 	icon_state = "bathroom_unisex"
+/*
 	light_color = LIGHT_COLOR_NEONBLUE
-
+*/
+	light_color = "#4d4dff"
+	light_power = 30
+	light_range = 2.5
 /obj/structure/sign/neon/cryo
 	name = "cryo area sign"
 	desc = "A sign that indicates a cryogenic storage area is nearby."
@@ -152,6 +160,8 @@
 	desc = "A neon yellow airbus sign that indicates this is an airbus area."
 	icon_state = "bus"
 	light_color = COLOR_YELLOW
+	light_range = 5
+	light_power = 15
 
 /obj/structure/sign/neon/cubed
 	name = "cubed"
@@ -245,18 +255,23 @@
 	name = "luckystar sign"
 	desc = "A luckystar sign in cryptic letters."
 	icon_state = "luckystar"
+/*
 	light_color = LIGHT_COLOR_NEONRED
 	light_power = 8
+	light_range = 3
+*/
+	light_color = "#ff2119"
+	light_power = 20
 	light_range = 3
 
 /obj/structure/sign/neon/big/ianhi
 	name = "cryptic wall sign"
 	desc = "A luckystar sign in cryptic letters that is pinned to a wall."
 	icon_state = "ianhi"
-	light_color = LIGHT_COLOR_PURPLE
-	light_power = 11
-	light_range = 2
-
+	light_color = "#aa22ff" //LIGHT_COLOR_PURPLE
+	light_power = 10
+	light_range = 3
+// light_color = "#aa22ff"
 
 /obj/structure/sign/neon/big/inn
 	name = "inn sign"
@@ -308,6 +323,7 @@
    ----------------------------------------------*/
 
 /obj/structure/sign/double/city/
+	name = "sign"
 	desc = "A sign."
 	pixel_y = 25
 	icon = 'icons/obj/signs.dmi'

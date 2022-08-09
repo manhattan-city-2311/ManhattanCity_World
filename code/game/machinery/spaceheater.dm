@@ -153,7 +153,7 @@
 
 		updateDialog()
 	else
-		usr << browse(null, "window=spaceheater")
+		to_target(usr, browse(null, "window=spaceheater"))
 		usr.unset_machine()
 	return
 

@@ -305,7 +305,7 @@
 		return
 
 	if(href_list["close"])
-		usr << browse(null, "window=turbine")
+		to_target(usr, browse(null, "window=turbine"))
 		usr.unset_machine(src)
 		return
 	else if(href_list["str"])

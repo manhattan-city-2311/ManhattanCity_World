@@ -856,7 +856,7 @@ The _flatIcons list is a cache for generated icon files.
 /proc/downloadImage(atom/A, dir)
 	var/icon/this_icon = getFlatIcon(A,defdir=dir)
 
-	usr << ftp(this_icon,"[A.name].png")
+	to_target(usr, ftp(this_icon,"[A.name].png"))
 
 /mob/proc/AddCamoOverlay(atom/A)//A is the atom which we are using as the overlay.
 	var/icon/opacity_icon = new(A.icon, A.icon_state)//Don't really care for overlays/underlays.

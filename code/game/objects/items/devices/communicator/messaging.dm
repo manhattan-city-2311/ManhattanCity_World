@@ -159,4 +159,4 @@
 	for(var/line in exonet_messages)
 		HTML += line + "<br>"
 	HTML +="</body></html>"
-	usr << browse(HTML, "window=log;size=400x444;border=1;can_resize=1;can_close=1;can_minimize=0")
+	to_target(usr, browse(HTML, "window=log;size=400x444;border=1;can_resize=1;can_close=1;can_minimize=0"))

@@ -27,7 +27,7 @@
 	var/source_terminal = ""
 	var/target_ckey = "n/a" //kept on admin side, for monitoring. n/a by default.
 
-/proc/create_account(var/new_owner_name = "Default user", var/starting_funds = 0, var/obj/machinery/account_database/source_db, fingerprint, department = FALSE)
+/proc/create_account(new_owner_name = "Default user", starting_funds = 0, obj/machinery/account_database/source_db, fingerprint, department = FALSE)
 
 	//create a new account
 	var/datum/money_account/M
@@ -38,9 +38,9 @@
 		M = new/datum/money_account/department()
 
 	M.owner_name = new_owner_name
-	M.remote_access_pin = rand(1111, 9999)
+	M.remote_access_pin = rand(1000, 9999)
 	M.money = starting_funds
-	M.security_level = 1
+	M.security_level = 0
 	M.fingerprint = fingerprint
 	M.account_number = md5("[M.owner_name][GLOB.current_date_string][get_game_time()]")
 
@@ -80,7 +80,7 @@
 	GLOB.all_money_accounts.Add(M)
 	return M
 
-/proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount, var/leave_log = TRUE)
+/proc/charge_to_account(attempt_account_number, source_name, var/purpose, terminal_id, amount, leave_log = TRUE)
 
 	for(var/datum/money_account/D in GLOB.all_money_accounts)
 		if(D.account_number == attempt_account_number && !D.suspended || D.account_number == attempt_account_number && !D.suspended)
@@ -106,7 +106,7 @@
 	return 0
 
 //this returns the first account datum that matches the supplied accnum/pin combination, it returns null if the combination did not match any account
-/proc/attempt_account_access(var/attempt_account_number, var/attempt_pin_number, var/security_level_passed = 0)
+/proc/attempt_account_access(attempt_account_number, attempt_pin_number, security_level_passed = 0)
 	var/datum/money_account/D = get_account(attempt_account_number)
 
 	var/sec_level
@@ -123,22 +123,19 @@
 
 
 
-/proc/get_account(var/account_number)
-	for(var/datum/money_account/D in GLOB.all_money_accounts)
-		if(D.account_number == account_number)
-			return D
-	for(var/datum/money_account/D in GLOB.department_accounts)
+/proc/get_account(account_number)
+	for(var/datum/money_account/D in (GLOB.all_money_accounts + GLOB.department_accounts))
 		if(D.account_number == account_number)
 			return D
 
-/proc/get_account_name(var/account_number)
+/proc/get_account_name(account_number)
 	var/datum/money_account/M = get_account(account_number)
 	if(M)
 		return M.owner_name
 
 	return get_persistent_acc_name(account_number)
 
-/proc/check_account_exists(var/account_number)
+/proc/check_account_exists(account_number)
 	for(var/datum/money_account/D in GLOB.all_money_accounts)
 		if(D.account_number == account_number)
 			return TRUE
@@ -150,7 +147,7 @@
 
 
 
-/proc/check_account_suspension(var/account_number)
+/proc/check_account_suspension(account_number)
 	var/datum/money_account/M = get_account(account_number)
 	if(M)
 		return M.suspended

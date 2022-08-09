@@ -300,7 +300,7 @@
 
 		if(href_list["close"])
 			usr.unset_machine()
-			usr << browse(null, "window=disposal")
+			to_target(usr, browse(null, "window=disposal"))
 			return
 
 		if(href_list["pump"])
@@ -318,7 +318,7 @@
 			if(href_list["eject"])
 				eject()
 	else
-		usr << browse(null, "window=disposal")
+		to_target(usr, browse(null, "window=disposal"))
 		usr.unset_machine()
 		return
 	return

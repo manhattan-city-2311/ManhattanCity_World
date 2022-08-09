@@ -78,7 +78,7 @@
 					if(M.client)
 						attack_self(M)
 	else
-		usr << browse(null, "window=radio")
+		to_target(usr, browse(null, "window=radio"))
 		return
 	return
 

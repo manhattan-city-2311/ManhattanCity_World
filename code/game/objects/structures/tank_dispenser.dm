@@ -115,6 +115,6 @@
 		add_fingerprint(usr)
 		updateUsrDialog()
 	else
-		usr << browse(null, "window=dispenser")
+		to_target(usr, browse(null, "window=dispenser"))
 		return
 	return

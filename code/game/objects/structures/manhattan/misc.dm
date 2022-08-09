@@ -131,14 +131,18 @@
 	name = "transit station sign"
 	desc = "A sign for the city transit station."
 	icon_state = "train"
-	light_color = LIGHT_COLOR_PINK
+	light_color = "#ff00ff"
 
 /obj/structure/sign/neon/big/direction1
 	name = "direction sign"
 	desc = "A sign for the navigation inside of the city."
 	icon_state = "directions"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
-
+/*
+	light_color = "#00ffff"
+	light_power = 8
+	light_range = 6
+*/
 /obj/structure/sign/neon/big/direction2
 	name = "direction sign"
 	desc = "A sign for the navigation inside of the city."
@@ -156,6 +160,8 @@
 	desc = "A sign that saying something about another soda brand."
 	icon_state = "randomshit3"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
+	light_power = 10
+	light_range = 5
 
 /obj/structure/sign/neon/big/street
 	name = "street name"
@@ -250,8 +256,10 @@
 	name = "neon gym sign"
 	desc = "A neon flickering sign for the local gym."
 	icon_state = "gym_neon"
-	light_color = "#F070FF"
-	alpha = 170
+	// light_color = "#F070FF"
+	light_color = "#ff67cb"
+	light_power = 8
+	light_range = 6
 
 /obj/structure/sign/neon/big/casino
 	name = "neon casino sign"

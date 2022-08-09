@@ -135,6 +135,6 @@
 		// Close the book, if our holder is actually a book.
 		if(istype(holder, /obj/item/weapon/book/codex))
 			holder.icon_state = initial(holder.icon_state)
-		usr << browse(null, "window=the_empress_protects")
+		to_target(usr, browse(null, "window=the_empress_protects"))
 		return
 	display(usr)

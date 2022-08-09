@@ -295,11 +295,11 @@
 	//Ignore input if we are broken or guy is not touching us, AI can control from a ways away
 	if(stat & (BROKEN|NOPOWER) || (get_dist(src, usr) > 1 && !istype(usr, /mob/living/silicon/ai)))
 		usr.unset_machine()
-		usr << browse(null, "window=AMcontrol")
+		to_target(usr, browse(null, "window=AMcontrol"))
 		return
 
 	if(href_list["close"])
-		usr << browse(null, "window=AMcontrol")
+		to_target(usr, browse(null, "window=AMcontrol"))
 		usr.unset_machine()
 		return
 

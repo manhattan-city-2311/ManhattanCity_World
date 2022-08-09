@@ -131,8 +131,8 @@
 					if(istype(active1, /datum/data/record) && data_core.general.Find(active1))
 						var/icon/front = active1.fields["photo_front"]
 						var/icon/side = active1.fields["photo_side"]
-						usr << browse_rsc(front, "front.png")
-						usr << browse_rsc(side, "side.png")
+						to_target(usr, browse_rsc(front, "front.png"))
+						to_target(usr, browse_rsc(side, "side.png"))
 						dat += text("<table><tr><td>	\
 							Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
 							ID: <A href='?src=\ref[src];choice=Edit Field;field=id'>[active1.fields["id"]]</A><BR>\n	\

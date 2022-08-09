@@ -48,6 +48,13 @@
 	if(Adjacent(usr))
 		open_computer()
 
+/obj/item/device/laptop/verb/rotatelaptop()
+	set name = "Rotate laptop"
+	set category = "Object"
+	set src in view(1)
+
+	src.set_dir(turn(src.dir, -90))
+
 // The actual laptop
 /obj/machinery/modular_computer/laptop
 	name = "laptop computer"
@@ -67,6 +74,13 @@
 	qdel(tesla_link)
 	qdel(cpu.network_card)
 	qdel(cpu.hard_drive)
+
+/obj/machinery/modular_computer/laptop/verb/rotatelaptop()
+	set name = "Rotate laptop"
+	set category = "Object"
+	set src in view(1)
+
+	src.set_dir(turn(src.dir, -90))
 
 // Close the computer. collapsing it into movable item that can't be used.
 /obj/machinery/modular_computer/laptop/verb/close_computer()

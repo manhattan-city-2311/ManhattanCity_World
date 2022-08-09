@@ -1,6 +1,5 @@
 /datum/erp_action/cum
 	category = ERP_ACTION_CATEGORY_SEX
-	hidden = TRUE
 	sbp = SBP_PENIS
 	var/req
 

@@ -1,11 +1,15 @@
 /mob/living/carbon/human/var/erp_panel_selected_category = ERP_ACTION_CATEGORY_ROMANCE
 /mob/living/carbon/human/proc/show_erp_panel()
+	if(erp_participient && get_dist(get_turf(src), get_turf(erp_participient)) > 1)
+		quit_erp()
+		return
+
 	var/dat = "<table><tr>"
 	var/global/list/categories = list(
 		ERP_ACTION_CATEGORY_ROMANCE,
 		ERP_ACTION_CATEGORY_FOREPLAY,
 		ERP_ACTION_CATEGORY_SEX,
-		ERP_ACTION_CATEGORY_RAPE,
+//		ERP_ACTION_CATEGORY_RAPE,
 		ERP_ACTION_CATEGORY_POSITIONING
 	)
 	for(var/id in categories)
@@ -42,6 +46,10 @@
 /mob/living/carbon/human/Topic(href, href_list)
 	. = ..()
 	if(.)
+		return
+	
+	if(get_dist(get_turf(src), get_turf(erp_participient)) > 1)
+		quit_erp()
 		return
 
 	if(href_list["erp_category"])

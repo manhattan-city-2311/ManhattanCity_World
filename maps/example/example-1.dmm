@@ -40,6 +40,7 @@
 "N" = (/obj/effect/floor_decal/corner/white/diagonal,/mob/living/carbon/human/npc/interactable/retail/testing,/turf/simulated/floor/tiled/dark,/area/aisat)
 "O" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/spacecash/bundle/c100,/obj/item/weapon/spacecash/bundle/c100,/turf/simulated/floor/tiled/dark,/area/aisat)
 "P" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/surgical/scalpel,/obj/item/weapon/surgical/retractor,/obj/item/weapon/surgical/hemostat,/obj/item/weapon/surgical/circular_saw,/obj/item/weapon/surgical/cautery,/obj/item/weapon/surgical/bonesetter,/obj/item/weapon/surgical/bonegel,/obj/item/weapon/surgical/bone_clamp,/obj/item/weapon/surgical/suture,/obj/item/weapon/surgical/surgicaldrill,/turf/simulated/floor/tiled/dark,/area/aisat)
+"Q" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/atm,/turf/simulated/floor/tiled/dark,/area/aisat)
 "R" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/turf/simulated/floor/tiled/dark,/area/aisat)
 "S" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/machinery/monitor,/turf/simulated/floor/tiled/dark,/area/aisat)
 "T" = (/obj/structure/bed/roller/adv,/turf/simulated/floor/tiled/dark,/area/aisat)
@@ -60,7 +61,7 @@ bnEnnnnnnchklmhnhhooohnnnnnnnHnb
 bnEnnnnnnhhqrshthhooohnnnnnnnHnb
 bnEnnnnnnhhhhhhnhhooohnnnnnnnHnb
 bnEnnnnnnhhhNhhnhhhhhhnnnnnnnHnb
-bnEnnnnnnhhORRhvhhhhhhnnnnnnnHnb
+bnEnnnnnnhhORRQvhhhhhhnnnnnnnHnb
 bnEnnnnnnwnnnnxjznnnnpnnnnnnnHnb
 bnEnnnnnnhhhhhBCDhhhhhnnnnnnnHnb
 bnEnnnnnnhhFFFhnhhPRShnnnnnnnHnb

@@ -26,7 +26,7 @@
 		var/icon/I = new/icon(value)
 		var/rnd = rand(1,10000)
 		var/rname = "tmp\ref[I][rnd].png"
-		usr << browse_rsc(I, rname)
+		to_target(usr, browse_rsc(I, rname))
 		item = "[VV_HTML_ENCODE(name)] = (<span class='value'>[value]</span>) <img class=icon src=\"[rname]\">"
 		#else
 		item = "[VV_HTML_ENCODE(name)] = /icon (<span class='value'>[value]</span>)"

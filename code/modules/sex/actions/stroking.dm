@@ -1,6 +1,7 @@
 /datum/erp_action/back_stroke
 	name = "Поглаживание по спине"
 	category = ERP_ACTION_CATEGORY_FOREPLAY
+	sbp = SBP_HANDS
 
 /datum/erp_action/back_stroke/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
 	if(user2.get_covered_body_parts() & UPPER_TORSO)
@@ -19,6 +20,7 @@
 /datum/erp_action/hips_stroke
 	name = "Поглаживания по бёдрам"
 	category = ERP_ACTION_CATEGORY_FOREPLAY
+	sbp = SBP_HANDS
 
 /datum/erp_action/hips_stroke/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
 	if(user2.get_covered_body_parts() & LOWER_TORSO)
@@ -37,6 +39,7 @@
 /datum/erp_action/hair_stroke
 	name = "Игра с волосами"
 	category = ERP_ACTION_CATEGORY_FOREPLAY
+	sbp = SBP_HANDS
 
 /datum/erp_action/hair_stroke/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
 	return list(
@@ -48,6 +51,8 @@
 /datum/erp_action/ass_stroke
 	name = "Игра с задницей"
 	category = ERP_ACTION_CATEGORY_FOREPLAY
+	sbp = SBP_HANDS
+	//needs_access = SBP_ASS
 
 /datum/erp_action/ass_stroke/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
 	if(user2.get_covered_body_parts() & LOWER_TORSO)
@@ -66,6 +71,8 @@
 /datum/erp_action/nipples_stroke
 	name = "Игра с сосками"
 	category = ERP_ACTION_CATEGORY_FOREPLAY
+	sbp = SBP_HANDS
+	needs_access = SBP_NIPPLES
 
 /datum/erp_action/nipples_stroke/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
 	if(user2.get_covered_body_parts() & UPPER_TORSO)
@@ -83,6 +90,8 @@
 /datum/erp_action/breasts_stroke
 	name = "Игра с грудью"
 	category = ERP_ACTION_CATEGORY_FOREPLAY
+	sbp = SBP_HANDS
+	needs_access = SBP_BREASTS
 
 /datum/erp_action/nipples_stroke/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
 	if(user2.get_covered_body_parts() & UPPER_TORSO)

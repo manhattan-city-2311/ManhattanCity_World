@@ -129,7 +129,7 @@
 /obj/item/device/assembly/prox_sensor/Topic(href, href_list, state = deep_inventory_state)
 	if(..()) return 1
 	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
-		usr << browse(null, "window=prox")
+		to_target(usr, browse(null, "window=prox"))
 		onclose(usr, "prox")
 		return
 
@@ -151,7 +151,7 @@
 		range = min(max(range, 1), 5)
 
 	if(href_list["close"])
-		usr << browse(null, "window=prox")
+		to_target(usr, browse(null, "window=prox"))
 		return
 
 	if(usr)

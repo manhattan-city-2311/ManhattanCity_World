@@ -247,7 +247,7 @@
 			src.visible_message(message)
 
 	if(href_list["close"])
-		usr << browse(null, "window=artharvester")
+		to_target(usr, browse(null, "window=artharvester"))
 		usr.unset_machine(src)
 
 	updateDialog()

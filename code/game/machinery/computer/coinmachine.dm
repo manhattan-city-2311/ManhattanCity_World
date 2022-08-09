@@ -50,6 +50,7 @@
 	update_icon()
 	updateUsrDialog()
 
+/*
 /obj/machinery/computer/coin_machine/process()
 
 	if (inoperable()) return
@@ -73,6 +74,7 @@
 			vend.throw_at(target, 16, 3, src)
 			visible_message("<span class='warning'>\The [src] launches \the [vend] at [target]!</span>")
 			updateUsrDialog()
+*/
 
 /obj/machinery/computer/coin_machine/ui_interact(mob/living/user)
 	. = ..()
@@ -95,6 +97,7 @@
 	popup.set_title_image(user.browse_rsc_icon(icon, icon_state))
 	popup.open()
 
+/*
 /obj/machinery/computer/coin_machine/Topic(href, href_list)
 	. = ..() //Sanity checks.
 	if(.)
@@ -131,3 +134,4 @@
 						visible_message("<span class='game say'><span class='name'>\The [src]</span> beeps, \"Dispensing Death...\"</span>")
 						death_dispense = 1
 			updateUsrDialog()
+*/

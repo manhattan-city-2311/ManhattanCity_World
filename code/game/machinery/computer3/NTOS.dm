@@ -176,7 +176,7 @@
 
 	dat += "</div></body></html>"
 
-	usr << browse(dat, "window=\ref[computer];size=670x510")
+	to_target(usr, browse(dat, "window=\ref[computer];size=670x510"))
 	onclose(usr, "\ref[computer]")
 
  	// STATUS BAR

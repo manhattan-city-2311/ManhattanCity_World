@@ -11,7 +11,7 @@ var/global/list/datum/erp_action/erp_actions_cache
 		global.erp_actions_cache["[A.type]"] = A
 
 /datum/erp_action
-	var/name = "FIXME ACTION"
+	var/name
 	var/action_type = ERP_ACTION_NORMAL
 
 	var/category = ERP_ACTION_CATEGORY_ROMANCE
@@ -51,7 +51,7 @@ var/global/list/datum/erp_action/erp_actions_cache
 	return user.gender == MALE ? f1 : f2
 
 /datum/erp_action/proc/is_available(mob/living/carbon/human/user1, mob/living/carbon/human/user2)
-	if(hidden)
+	if(!name)
 		return
 	if(allowed_poses)
 		var/allowed = FALSE
@@ -112,8 +112,8 @@ var/global/list/datum/erp_action/erp_actions_cache
 			for(var/datum/erp_action/A in user2.current_erp_actions)
 				if(needs_access & A.sbp)
 					return
-			user1.current_erp_actions -= found
-			user1.current_erp_actions[src] = 0
+		user1.current_erp_actions -= found
+		user1.current_erp_actions[src] = 0
 
 	var/message = get_action_text(user1, user2)
 	if(message)

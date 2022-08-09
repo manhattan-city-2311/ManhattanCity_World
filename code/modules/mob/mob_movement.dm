@@ -322,6 +322,8 @@
 
 		if(mob.pulling)
 			mob.pulling.glide_size = mob.glide_size
+			for(var/atom/movable/AM in mob.pulling.buckled_mobs)
+				AM.glide_size = mob.glide_size
 
 		if(istype(mob.buckled, /obj/vehicle))
 			//manually set move_delay for vehicles so we don't inherit any mob movement penalties

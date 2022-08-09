@@ -87,7 +87,7 @@ move an amendment</a> to the drawing.</p>
 		else
 			return
 	text += "</BODY></HTML>"
-	usr << browse(text, "window=blueprints")
+	to_target(usr, browse(text, "window=blueprints"))
 	onclose(usr, "blueprints")
 
 

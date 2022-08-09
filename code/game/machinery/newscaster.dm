@@ -275,8 +275,8 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		node = get_exonet_node()
 
 	if(!node || !node.on || !node.allow_external_newscasters)
-		user << "<span class='danger'>Error: Cannot connect to external content.  Please try again in a few minutes.  If this error persists, please \
-		contact the system administrator.</span>"
+		to_chat(user, "<span class='danger'>Error: Cannot connect to external content.  Please try again in a few minutes.  If this error persists, please \
+		contact the system administrator.</span>")
 		return 0
 
 	if(!user.IsAdvancedToolUser())
@@ -418,7 +418,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 							var/pic_data
 
 							if(MESSAGE.img)
-								usr << browse_rsc(MESSAGE.img, "tmp_photo[i].png")
+								to_target(usr, browse_rsc(MESSAGE.img, "tmp_photo[i].png"))
 								pic_data+="<img src='tmp_photo[i].png' width = '180'><BR>"
 
 							if(MESSAGE.persistent_img)
@@ -427,7 +427,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 								var/img_data
 								S >> img_data
 
-								usr << browse_rsc(img_data, "tmp_photo[i].png")
+								to_target(usr, browse_rsc(img_data, "tmp_photo[i].png"))
 								pic_data+="<img src='tmp_photo[i].png' width = '180'><BR>"
 
 							if(MESSAGE.persistent_img || MESSAGE.img)
@@ -542,7 +542,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				dat+="<B>Description</B>: [news_network.wanted_issue.body]<BR>"
 				dat+="<B>Photo:</B>: "
 				if(news_network.wanted_issue.img)
-					usr << browse_rsc(news_network.wanted_issue.img, "tmp_photow.png")
+					to_target(usr, browse_rsc(news_network.wanted_issue.img, "tmp_photow.png"))
 					dat+="<BR><img src='tmp_photow.png' width = '180'>"
 				else
 					dat+="None"

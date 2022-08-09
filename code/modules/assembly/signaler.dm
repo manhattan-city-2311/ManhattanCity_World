@@ -74,7 +74,7 @@ Code:
 
 
 	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
-		usr << browse(null, "window=radio")
+		to_target(usr, browse(null, "window=radio"))
 		onclose(usr, "radio")
 		return
 

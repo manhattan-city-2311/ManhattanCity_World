@@ -9,6 +9,16 @@
 		)
 	)
 
+	var/transaction_owner // For transcations log
+
+	var/datum/department/department
+
+/mob/living/carbon/human/npc/interactable/retail/initialize()
+	. = ..()
+
+	if(department)
+		department = dept_by_name(department)
+
 /mob/living/carbon/human/npc/interactable/retail/testing
 	products = list(
 		list(
@@ -24,7 +34,8 @@
 		. += C.worth
 
 /mob/living/carbon/human/proc/take_cash(amount, dloc = loc)
-	if(get_available_money() < amount)
+	var/avail = get_available_money()
+	if(avail < amount)
 		return
 
 	for(var/obj/item/weapon/spacecash/S in contents)
@@ -33,7 +44,8 @@
 		if(. >= amount)
 			break
 
-	spawn_money(amount, dloc, src)
+	if((. - amount) > 0)
+		spawn_money(. - amount, dloc, src)
 
 /mob/living/carbon/human/npc/interactable/retail/proc/give_item(mob/living/carbon/human/H, item)
 	return H.put_in_hands(item)
@@ -44,7 +56,14 @@
 	var/mob/living/carbon/human/H = user
 
 	data["products"] = products
-	data["avail"] = H.get_available_money()
+
+	var/avail = H.get_available_money()
+
+	var/obj/item/weapon/card/debit/C = H.get_active_hand()
+	if(istype(C))
+		avail += C.get_account().money
+
+	data["avail"] = avail
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -65,12 +84,36 @@
 			if(L["key"] != key)
 				continue
 			var/price = L["price"]
-			if(H.get_available_money() < price)
+
+			var/avail = H.get_available_money()
+			var/obj/item/weapon/card/debit/C = H.get_active_hand()
+			if(istype(C))
+				avail += C.get_account().money
+			else
+				C = null
+
+			if(avail < price)
 				to_chat(usr, "Not enough cash!")
 				return
 
 			var/nL = get_step(loc, dir)
 
-			if(H.take_cash(price, nL))
-				var/ptype = L["type"]
-				give_item(H, new ptype(nL))
+			var/from_card = min(price, C?.get_account().money)
+			var/from_cash = price - from_card
+
+			if(from_card > 0)
+				if(C.get_account().suspended)
+					to_chat(usr, "Your account was suspended")
+					return
+
+				C.get_account().add_transaction_log(transaction_owner, L["name"], -price, "Retail terminal")
+				C.get_account().money -= from_card
+			if(from_cash > 0)
+				H.take_cash(from_cash, nL)
+
+			var/ptype = L["type"]
+			give_item(H, new ptype(nL))
+
+			if(department)
+				var/datum/money_account/department/D = department.bank_account
+				D.add_transaction_log(D.owner_name, L["name"], "([price])", "Retailer in [get_area(src)]")

@@ -283,11 +283,11 @@
 
 	to_chat(usr, "From objects:")
 	for(var/datum/t in from_objs)
-		usr << t
+		to_target(usr, t)
 
 	to_chat(usr, "Objects:")
 	for(var/datum/t in objs)
-		usr << t
+		to_target(usr, t)
 */
 	switch(lowertext(query_list[1]))
 		if("delete")
@@ -324,7 +324,7 @@
 					text += "<a href='?src=\ref[t];SDQL_select=\ref[t]'>\ref[t]</a>: [t]<br>"
 
 				//text += "[t]<br>"
-			usr << browse(text, "window=sdql_result")
+			to_target(usr, browse(text, "window=sdql_result"))
 
 
 /client/Topic(href,href_list[],hsrc)

@@ -115,7 +115,7 @@
 		if(4) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
 		if(5) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/messenger(H), slot_back)
 
-/datum/job/proc/setup_account(var/mob/living/carbon/human/H)
+/datum/job/proc/setup_account(mob/living/carbon/human/H)
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 	// To prevent abuse, no one recieves wages at roundstart and must play for at least an hour.
@@ -136,19 +136,9 @@
 
 	if(check_persistent_account(H.mind.prefs.bank_account))
 		money_amount = get_persistent_acc_balance(H.mind.prefs.bank_account)	// so people can actually recieve money they made offline.
-	var/income = 0
-	if(!H.mind.prefs.played)
-		switch(H.mind.prefs.social_class)
-			if(CLASS_UPPER)
-				income = 10000
 
-			if(CLASS_MIDDLE)
-				income = 4000
-
-			if(CLASS_WORKING)
-				income = 200
-
-		M.money += income
+	if(!already_joined)
+		H.equip_to_slot_if_possible(spawn_money(1100, get_turf(H), H), slot_in_backpack)
 
 	if(H.mind)
 		var/remembered_info = ""
@@ -161,10 +151,6 @@
 		H.mind.initial_bank_details = list("id" = M.account_number, "pin" = M.remote_access_pin)
 
 	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
-
-	if(!already_joined && income)
-		to_chat(H, "<span class='notice'>You recieved <b>[income] credits</b> in inheritance. <b>Spend it wisely, you only get this once.</b></span>")
-
 
 // overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()
 /datum/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title, var/additional_skips)
