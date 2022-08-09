@@ -2457,6 +2457,7 @@
 #include "code\modules\persistence\persistence_datum_paper.dm"
 #include "code\modules\persistence\persistence_datum_paper_poster.dm"
 #include "code\modules\persistence\persistence_datum_paper_sticky.dm"
+#include "code\modules\persistence\persistence_datum_vehicle.dm"
 #include "code\modules\persistence\persistent_banks.dm"
 #include "code\modules\persistence\persistent_business.dm"
 #include "code\modules\persistence\persistent_characters.dm"

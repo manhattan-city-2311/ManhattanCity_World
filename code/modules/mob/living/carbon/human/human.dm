@@ -23,7 +23,7 @@
 	var/unique_id						//used for keeping track of characters.
 	var/npc = FALSE
 	var/last_key
-	unique_save_vars = list("last_ckey", "ckey")
+	unique_save_vars = list("last_ckey", "ckey", "contents", "internal_organs", "internal_organs_by_name", "organs_by_name", "bruteloss", "fireloss")
 
 /mob/living/carbon/human/proc/calc_k()
 	var/isMale = gender == MALE
@@ -68,6 +68,9 @@
 
 	spawn()
 		setup_cm()
+
+	for(var/obj/organ/O in get_turf(src))
+		qdel(O)
 
 /mob/living/carbon/human/Destroy()
 	human_mob_list -= src

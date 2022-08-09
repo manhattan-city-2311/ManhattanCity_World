@@ -6,6 +6,7 @@
 	var/owner_uid = null
 
 	unique_save_vars = list("registered_name", "owner_uid")
+	dont_save = FALSE
 
 /obj/structure/closet/secure_closet/personal/patient
 	name = "patient's closet"

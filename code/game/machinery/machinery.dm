@@ -126,6 +126,8 @@ Class Procs:
 		circuit = new circuit(src)
 
 /obj/machinery/initialize()
+	for(var/obj/item/I in get_turf(src))
+		qdel(I)
 	. = ..()
 	START_MACHINE_PROCESSING(src)
 

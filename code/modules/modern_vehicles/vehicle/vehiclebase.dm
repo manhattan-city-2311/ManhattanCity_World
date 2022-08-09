@@ -75,6 +75,9 @@
 	var/aerodynamics_coefficent = 0.32
 	var/traction_coefficent = 9.6
 
+	unique_save_vars = list("components", "contents")
+	dont_save = FALSE
+
 /mob/living/carbon/human/Stat()
 	. = ..()
 	if(isvehicle(loc))
@@ -115,7 +118,11 @@
 /obj/manhattan/vehicle/proc/get_wheels()
 	return get_components(/obj/item/vehicle_part/wheel)
 
-/obj/manhattan/vehicle/initialize()
+/obj/manhattan/vehicle/initialize(mapload)
+	if(mapload && persistent_online)
+		return INITIALIZE_HINT_QDEL
+	SSpersistence.track_value(src, /datum/persistent/vehicle)
+
 	comp_prof = new comp_prof(src)
 	if(light_range != 0)
 		verbs += /obj/manhattan/vehicle/verb/toggle_headlights
@@ -161,6 +168,7 @@
 /obj/manhattan/vehicle/Destroy()
 	kick_occupants()
 	SSvehicles.queue -= src
+	SSpersistence.forget_value(src, /datum/persistent/vehicle)
 	. = ..()
 
 /obj/manhattan/vehicle/proc/on_death()
