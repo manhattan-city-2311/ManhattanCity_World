@@ -7,13 +7,11 @@
 /atom/movable/keyLoop(client/user)
 	var/movement_dir = MOVEMENT_KEYS_TO_DIR(user.move_keys_held)
 
-	if((!mod_keys_override) && ismob(src))
+	if(user.mod_keys_held & ALT_KEY && ismob(src))
+		user.next_move_dir_add = 0
+		user.next_move_dir_sub = 0
 		var/mob/M = src
-//		if(user.mod_keys_held & CTRL_KEY)
-//			return M.set_face_dir(user.client_dir(movement_dir))
-		if(user.mod_keys_held & ALT_KEY)
-			user.next_move_dir_add = 0
-			user.next_move_dir_sub = 0
+		if(!mod_keys_override)
 			return M.facedir(user.client_dir(movement_dir))
 
 	var/must_call_move = FALSE
@@ -49,4 +47,4 @@
 
 	// Move, but only if we actually are planing to move, or we need to clear the next move vars
 	if(movement_dir || must_call_move)
-		user.Move(get_step(src, movement_dir), movement_dir) 
+		user.Move(get_step(src, movement_dir), movement_dir)

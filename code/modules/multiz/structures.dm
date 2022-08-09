@@ -169,7 +169,7 @@
 	return (T == loc)
 
 /obj/structure/stairs/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
-	if(get_dir(loc, target) == dir && upperStep(mover.loc))
+	if(get_dir(loc, target) == dir) //  && upperStep(mover.loc)
 		return FALSE
 	return ..()
 

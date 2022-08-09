@@ -275,7 +275,6 @@ var/list/preferences_datums = list()
 	var/blood_level
 
 	var/list/all_organ_damage = list()
-	var/list/all_organ_ischemia = list()
 
 /datum/preferences/proc/is_records_filled()
 	for(var/ID in records)
@@ -416,13 +415,12 @@ var/list/preferences_datums = list()
 	var/dat = "<html><body><center>"
 
 	if(path)
-		dat += "Slot - "
 		dat += "<a href='?src=\ref[src];load=1'>Загрузить слот</a> - "
 		dat += "<a href='?src=\ref[src];save=1'>Сохранить слот</a> - "
-		dat += "<a href='?src=\ref[src];reload=1'>Перегрузить слот</a> - "
-		dat += "<a href='?src=\ref[src];resetslot=1'>Сбросить слот</a> - "
+//		dat += "<a href='?src=\ref[src];reload=1'>Перезагрузить слот</a> - "
+		if(!existing_character)
+			dat += "<a href='?src=\ref[src];resetslot=1'>Сбросить слот</a> - "
 		dat += "<a href='?src=\ref[src];deleteslot=1'>Удалить слот</a>"
-
 	else
 		dat += "Please create an account to save your preferences."
 
@@ -456,13 +454,22 @@ var/list/preferences_datums = list()
 		return 1
 
 	if(href_list["save"])
+		if(!is_records_filled())
+			spawn()
+				alert(usr, "Стоп - стоп - стоп, ну и куда мы собрались без регистрационных данных? Прежде чем зайти в игру, твой персонаж обязан обладать документацией, беги заполнять \[РЕГИСТРАЦИОННЫЕ ДАННЫЕ\]. ;)")
+			return
+		if(!existing_character)
+			if(alert(usr, "Если вы сейчас сохраните персонажа, то вы НЕ СМОЖЕТЕ ИЗМЕНИТЬ ЕГО В ДАЛЬНЕЙШЕМ. Все изменения придется устанавливать в течение игровых сессий. ВЫ ТОЧНО УВЕРЕНЫ, ЧТО ОТПРАВЛЯЕТЕ ПЕРСОНАЖА В МАНХЭТТЕН ТАКИМ, КАКИМ ОН БЫЛ ВАМИ ЗАДУМАН?", "!!! ВНИМАНИЕ !!!", "Да", "Нет, нужно отредактировать") != "Да")
+				return
 		save_preferences()
 		save_character()
 		make_existing()
+/*
 	else if(href_list["reload"])
 		load_preferences()
 		load_character()
 		sanitize_preferences()
+*/
 	else if(href_list["load"])
 		if(!IsGuestKey(usr.key))
 			open_load_dialog(usr)
@@ -472,14 +479,14 @@ var/list/preferences_datums = list()
 		sanitize_preferences()
 		close_load_dialog(usr)
 	else if(href_list["resetslot"])
+		if(existing_character)
+			return
 		if("No" == alert("This will reset the current slot. Continue?", "Reset current slot?", "No", "Yes"))
 			return 0
 		load_character(SAVE_RESET)
 		sanitize_preferences()
 	else if(href_list["deleteslot"])
-		if("No" == alert("This will delete the current slot. If you do this, you WON'T be able to play this character again. Continue?", "Delete current slot?", "No", "Yes"))
-			return 0
-		if("No" == alert("Just making sure - If there is something you need adjusted, contact an admin instead of deleting this slot. This will make a character with this name unplayable and can be treated as permadeath, the game won't allow you to play a character with the same name. Continue?", "Delete current slot?", "No", "Yes"))
+		if("Нет" == alert("Если вы удалите персонажа, то вы не сможете более на нём играть, и это необратимо. Продолжить?", "Удалить персонажа?", "Нет", "Да"))
 			return 0
 		delete_character()
 	else

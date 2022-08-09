@@ -113,6 +113,8 @@
 	if(abs(speed.angle() - angle_vector.angle()) > 1)
 		speed.rotate(closer_angle_difference(speed.angle(), angle_vector.angle()))
 
+	update_step_size()
+
 /obj/manhattan/vehicle/Move(newloc, newdir)
 	if(anchored)
 		anchored = 0
@@ -123,9 +125,9 @@
 	update_object_sprites()
 
 /obj/manhattan/vehicle/proc/collide_with_obstacle(atom/obstacle)
-	if(!obstacle.handle_vehicle_collision(obstacle))
+	if(!obstacle.handle_vehicle_collision(src))
 		visible_message(SPAN_DANGER("[icon2html(src, viewers(src))]\the [src] collides with [obstacle]!"))
-	comp_prof.take_component_damage(speed.modulus() * 0.83, "brute")
+	comp_prof.take_component_damage(speed.modulus() * 0.21, "brute")
 
 	for(var/mob/living/carbon/human/H in occupants)
 		for(var/i in 1 to 5)
@@ -138,10 +140,8 @@
 	update_occupants_eye_offsets()
 
 /obj/manhattan/vehicle/Bump(atom/obstacle)
-	..()
-	if(istype(obstacle, /obj/structure/stairs))
-		return
-	if(obstacle != src) // FIXME:
+	. = ..()
+	if(obstacle != src)
 		. = collide_with_obstacle(obstacle)
 
 /obj/manhattan/vehicle/var/last_movement
@@ -153,7 +153,18 @@
 		update_glide(world.time - last_movement)
 	last_movement = world.time
 
-	var/newLoc = locate(x + x_step, y + y_step, z)
+	var/turf/newLoc = locate(x + x_step, y + y_step, z)
+	 // FIXME: FUCK FUCK FUCK SORRY
+	if(isopenspace(newLoc) && newLoc.below)
+		for(var/obj/structure/stairs/S in newLoc.below)
+			newLoc = newLoc.below
+			break
+	else
+		for(var/obj/structure/stairs/S in newLoc)
+			newLoc = newLoc.above
+			break
+
+
 	Move(newLoc, get_dir(loc, newLoc), x_step ? 0 : step_x, y_step ? 0 : step_y)
 
 /obj/manhattan/vehicle/proc/process_movement(delta)

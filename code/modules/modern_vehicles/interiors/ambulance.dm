@@ -3,7 +3,7 @@
 	mappath = 'maps/interiors/ambulance.dmm'
 
 /obj/structure/vehiclewall/ambulance //backside
-    icon_state = "ambulancebordered"
+	icon_state = "ambulancebordered"
 
 /obj/manhattan/vehicle/large/ambulance
 	size_x = 5

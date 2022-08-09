@@ -1,25 +1,18 @@
 
 /datum/category_group/player_setup_category/general_preferences
-	name = "Основное"
+	name = @"[ОСНОВНОЕ]"
 	sort_order = 1
 	category_item_type = /datum/category_item/player_setup_item/general
 
 /datum/category_group/player_setup_category/registration
-	name = "Регистрационные данные"
+	name = @"[РЕГИСТРАЦИОННЫЕ ДАННЫЕ]"
 	sort_order = 2
 	category_item_type = /datum/category_item/player_setup_item/registration
 
 /datum/category_group/player_setup_category/skill_preferences
-	name = "Умения"
+	name = @"[УМЕНИЯ]"
 	sort_order = 3
 	category_item_type = /datum/category_item/player_setup_item/skills
-
-/*
-/datum/category_group/player_setup_category/backstory
-	name = "Бэкстори"
-	sort_order = 3
-	category_item_type = /datum/category_item/player_setup_item/backstory
-*/
 
 /*
 /datum/category_group/player_setup_category/trait_preferences
@@ -29,13 +22,13 @@
 */
 
 /datum/category_group/player_setup_category/loadout_preferences
-	name = "Предметы"
+	name = @"[ПРЕДМЕТЫ]"
 	sort_order = 7
 	category_item_type = /datum/category_item/player_setup_item/loadout
 
 
 /datum/category_group/player_setup_category/global_preferences
-	name = "Глобальные настройки"
+	name = @"[ГЛОБАЛЬНЫЕ НАСТРОЙКИ]"
 	sort_order = 8
 	category_item_type = /datum/category_item/player_setup_item/player_global
 

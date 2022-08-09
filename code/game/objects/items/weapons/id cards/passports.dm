@@ -19,7 +19,6 @@
 
 	var/forged = FALSE
 	var/list/records // references boy
-	slot_flags = SLOT_ID
 
 /obj/item/weapon/passport/examine(mob/user)
 	..()

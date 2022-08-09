@@ -30,12 +30,12 @@
 	dat += "<td>"
 	for(var/ID in get_available_actions())
 		if(global.erp_actions_cache[ID].category == erp_panel_selected_category)
-			dat += "<a href='?src=\ref[src];action=[ID]'><b>[global.erp_actions_cache[ID].name]</b></a><br>"
+			dat += "<a href='?src=\ref[src];erp_action=[ID]'><b>[global.erp_actions_cache[ID].name]</b></a><br>"
 	dat += "</td>"
 	dat += "<td>"
 	for(var/ID in get_available_self_actions())
 		if(global.erp_actions_cache[ID].category == erp_panel_selected_category)
-			dat += "<a href='?src=\ref[src];action=[ID]'><b>[global.erp_actions_cache[ID].name]</b></a><br>"
+			dat += "<a href='?src=\ref[src];erp_action=[ID]'><b>[global.erp_actions_cache[ID].name]</b></a><br>"
 	dat += "</td>"
 	dat += "</tr></table>"
 
@@ -47,15 +47,18 @@
 	. = ..()
 	if(.)
 		return
-	
+
+	if(!erp_position)
+		return
+
 	if(get_dist(get_turf(src), get_turf(erp_participient)) > 1)
 		quit_erp()
 		return
 
 	if(href_list["erp_category"])
 		erp_panel_selected_category = href_list["erp_category"]
-	else if(href_list["action"])
-		var/datum/erp_action/A = global.erp_actions_cache[href_list["action"]]
+	else if(href_list["erp_action"])
+		var/datum/erp_action/A = global.erp_actions_cache[href_list["erp_action"]]
 		A.act(src, erp_participient)
 
 	show_erp_panel()

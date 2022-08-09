@@ -85,7 +85,12 @@
 			stat("Передача:", V.components[VC_GEARBOX]?.selected_gear)
 
 /obj/manhattan/vehicle/proc/get_calculation_iterations()
-	return max(1, speed.modulus() * 0.12)
+	return round(max(1, speed.modulus() * 0.2))
+
+/obj/manhattan/vehicle/proc/update_step_size()
+	// TODO: Properly created system
+	//step_size = speed.modulus() * WORLD_ICON_SIZE / world.tick_lag
+	step_size = 96 + round(speed.modulus())
 
 /obj/manhattan/vehicle/proc/get_wheel_diameter()
 	return 0.34

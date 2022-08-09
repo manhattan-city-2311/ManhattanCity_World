@@ -800,10 +800,11 @@ SUBSYSTEM_DEF(jobs)
 /datum/controller/subsystem/jobs/proc/equip_passport(var/mob/living/carbon/human/H)
 	var/obj/item/weapon/passport/pass = new/obj/item/weapon/passport(get_turf(H))
 
-	if(!H.mind || !H.mind.prefs) return
+	if(!H.mind || !H.mind.prefs) 
+		return
 
 	H.update_passport(pass)
-	H.equip_to_slot(pass, slot_wear_id)
+	H.equip_to_slot(pass, slot_in_backpack)
 
 /datum/controller/subsystem/jobs/proc/equip_permits(var/mob/living/carbon/human/H)
 	if(!H.mind || !H.mind.prefs) return

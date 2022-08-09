@@ -36,10 +36,6 @@
 	character.height 	  = pref.height
 
 /datum/category_item/player_setup_item/registration/content(mob/user)
-	. += "<br/><b>Публичные записи</b>:<br/>"
-	if(jobban_isbanned(user, "Records"))
-		. += SPAN_DANGER("Вам заблокирована функция изменения предыстории.<br/>")
-		return
 	for(var/ID in pref.records)
 		var/R = pref.records[ID]
 		if(!R)
@@ -75,7 +71,7 @@
 			continue
 		else
 			. += "<b>[ID]</b>: <a href='?src=\ref[src];recedit=[ID]'>[R]</a><br/>"
-	. += "<br/><br/>"
+	. += "<br/>"
 	. += "<b>Почтовый адрес:</b><br/>"
 
 	if(!pref.existing_character)
@@ -118,7 +114,7 @@
 
 	if(href_list["receditl"])
 		var/ID = href_list["receditl"]
-		var/count = href_list["count"]
+		var/count = text2num(href_list["count"])
 		if(!(ID in pref.records) \
 			|| !CanUseTopic(user) \
 			|| count < 1 \
@@ -136,7 +132,7 @@
 
 	if(href_list["recerasel"])
 		var/ID = href_list["recerasel"]
-		var/count = href_list["count"]
+		var/count = text2num(href_list["count"])
 
 		if(!(ID in pref.records) \
 			|| !CanUseTopic(user) \

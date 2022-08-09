@@ -3,6 +3,12 @@
 	icon_state = "bolt"
 	plane = ABOVE_PLANE
 
+/obj/effect/projectile/Destroy()
+	. = ..()
+
+	update_above()
+	qdel(bound_overlay)
+
 /obj/effect/projectile/New(var/turf/location)
 	if(istype(location))
 		loc = location

@@ -258,7 +258,6 @@
 	joint = "jaw"
 	amputation_point = "neck"
 	gendered_icon = 1
-	cannot_gib = 1
 	encased = "skull"
 	base_miss_chance = 40
 	var/can_intake_reagents = 1

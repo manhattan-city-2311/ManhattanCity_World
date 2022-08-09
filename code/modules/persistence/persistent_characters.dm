@@ -2,8 +2,6 @@
 	for(var/obj/item/organ/O in organs_by_name)
 		mind.prefs.all_organ_damage[O.name] = O.damage
 
-	for(var/obj/item/organ/internal/I in internal_organs_by_name)
-		mind.prefs.all_organ_ischemia[I.name] = I.ischemia
 
 // Moved from /datum/preferences/proc/save_to_preferences()
 /mob/living/carbon/human/proc/save_mob_to_prefs()

@@ -2,6 +2,11 @@
 	set name = "Повысить передачу"
 	set category = "Транспорт"
 	set src in view(1)
+
+	if(!ishuman(usr) || !(usr in get_occupants_in_position("driver")))
+		to_chat(usr, SPAN_NOTICE("You must be the driver of [src] to shift the gearbox."))
+		return
+
 	var/obj/item/vehicle_part/gearbox/gearbox = components[VC_GEARBOX]
 	gearbox.upshift()
 
@@ -9,6 +14,7 @@
 	var/obj/manhattan/vehicle/V = mob?.loc
 	if(!(V && istype(V)))
 		return FALSE
+
 	V.upshift()
 	return TRUE
 
@@ -29,6 +35,11 @@
 	set name = "Понизить передачу"
 	set category = "Транспорт"
 	set src in view(1)
+
+	if(!ishuman(usr) || !(usr in get_occupants_in_position("driver")))
+		to_chat(usr, SPAN_NOTICE("You must be the driver of [src] to shift the gearbox."))
+		return
+
 	var/obj/item/vehicle_part/gearbox/gearbox = components[VC_GEARBOX]
 	gearbox.downshift()
 
@@ -36,13 +47,13 @@
 	set name = "Переключить фары"
 	set category = "Транспорт"
 	set src in view(1)
-	var/mob/living/user = usr
-	if(!istype(user) || !(user in get_occupants_in_position("driver")))
-		to_chat(user,"<span class = 'notice'>You must be the driver of [src] to toggle the headlights.</span>")
+
+	if(!ishuman(usr) || !(usr in get_occupants_in_position("driver")))
+		to_chat(usr, SPAN_NOTICE("You must be the driver of [src] to toggle the headlights."))
 		return
 
 	if(!headlights_overlay)
-		to_chat(user,"<span class = 'notice'>This vehicle has no headlights.</span>")
+		to_chat(usr, SPAN_NOTICE("This vehicle has no headlights."))
 		return
 
 	if(!headlights)
@@ -58,13 +69,13 @@
 	set src in view(1)
 	var/mob/living/user = usr
 	if(!istype(user) || !(user in get_occupants_in_position("driver")))
-		to_chat(user,"<span class = 'notice'>You must be the driver of [src] to reach for the keys.</span>")
+		to_chat(user, SPAN_NOTICE("You must be the driver of [src] to reach for the keys."))
 		return
 	if(keys_in_ignition)
-		to_chat(user,"<span class = 'notice'>You remove the keys from the ignition.</span>")
+		to_chat(user, SPAN_NOTICE("You remove the keys from the ignition."))
 		keys_in_ignition = FALSE
 	else
-		to_chat(user,"<span class = 'notice'>You insert the keys into the ignition.</span>")
+		to_chat(user, SPAN_NOTICE("You insert the keys into the ignition."))
 		keys_in_ignition = TRUE
 	playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1)
 
@@ -74,20 +85,24 @@
 	set src in view(1)
 	var/mob/living/user = usr
 	if(!istype(user) || !(user in get_occupants_in_position("driver")))
-		to_chat(user,"<span class = 'notice'>You must be the driver of [src] to reach for the ignition.</span>")
+		to_chat(user, SPAN_NOTICE("You must be the driver of [src] to reach for the ignition."))
 		return
 	if(!keys_in_ignition)
-		to_chat(user,"<span class = 'notice'>There are no keys in the ignition.</span>")
+		to_chat(user, SPAN_NOTICE("There are no keys in the ignition."))
 		return
 	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
-	if(!engine.needs_processing == TRUE)
+
+	if(!engine)
+		return
+
+	if(engine.rpm < (RPM_IDLE - 300))
 		engine.start()
-		to_chat(user,"<span class = 'notice'>You attempt to start the engine.</span>")
+		to_chat(user, SPAN_NOTICE("You attempt to start the engine."))
 	else
 		engine.stop()
-		to_chat(user,"<span class = 'notice'>You stop the engine.</span>")
+		to_chat(user, SPAN_NOTICE("You stop the engine."))
 
-/obj/manhattan/vehicle/examine(var/mob/user)
+/obj/manhattan/vehicle/examine(mob/user)
 	. = ..()
 	if(!active)
 		to_chat(user,"[src]'s engine is inactive.")
