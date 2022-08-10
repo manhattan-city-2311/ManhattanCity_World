@@ -8,7 +8,6 @@
 	var/size_y = 0
 
 	var/list/mob/living/carbon/human/occupants = null
-	var/interior_template = /datum/map_template/ambulance
 	var/turf/middle_turf
 	var/obj/effect/vehicle_entrance/entrance = null
 	var/obj/structure/vehicledoor/door = null
@@ -16,7 +15,7 @@
 
 	var/global/list/datum/map_template/templates_cache = list()
 
-/datum/vehicle_interior/New()
+/datum/vehicle_interior/New(var/interior_template = /datum/map_template, var/new_vehicle)
 	for(var/obj/effect/interior_spawn/S in GLOB.vehicle_spawnpoints)
 		middle_turf = get_turf(S)
 
@@ -42,6 +41,7 @@
 		door.id = id
 		door.interior = src
 		break
+	vehicle = new_vehicle
 	if(!vehicle)
 		return
 	GLOB.vehicle_interiors += src
@@ -65,9 +65,7 @@
 
 /obj/manhattan/vehicle/large/initialize()
 	..()
-	interior = new
-	interior.vehicle = src
-	interior.interior_template = interior_template
+	interior = new(interior_template, src)
 
 /obj/manhattan/vehicle/large/enter_vehicle()
 	set name = "Войти в транспорт"
