@@ -188,6 +188,9 @@ var/persistent_online = TRUE
 /obj
 	save_forensics = TRUE
 
+/obj/machinery
+	dont_save = TRUE
+
 /obj/vars_to_save()
  	 return list("x","y","z","density","anchored","color","dir","name","pixel_x","pixel_y","suit_fibers","tagged_price", "fingerprintslast")+unique_save_vars
 

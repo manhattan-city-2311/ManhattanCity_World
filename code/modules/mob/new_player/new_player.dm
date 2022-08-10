@@ -229,6 +229,7 @@
 	var/datum/persistent_inventory/PI = null
 	for(var/datum/persistent_inventory/P in GLOB.persistent_inventories)
 		if(P.owner_name == character.name)
+			P.load_inventory()
 			P.load_player_inventory(character)
 			PI = P
 			break
