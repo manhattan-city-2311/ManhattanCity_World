@@ -210,6 +210,15 @@
 	..()
 	reagents.add_reagent("coffee", 30)
 
+/obj/item/weapon/reagent_containers/food/drinks/chicory
+	name = "\improper Native Chicory"
+	desc = "Totally not cheap coffee with some flavor substitutes and sugar."
+	icon_state = "coffee"
+	center_of_mass = list("x"=15, "y"=10)
+/obj/item/weapon/reagent_containers/food/drinks/chicory/New()
+	..()
+	reagents.add_reagent("chicory", 30)
+
 /obj/item/weapon/reagent_containers/food/drinks/tea
 	name = "cup of Duke Purple Tea"
 	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
