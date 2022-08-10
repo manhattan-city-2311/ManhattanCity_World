@@ -46,7 +46,7 @@
 	name = "Glyphid Slammer"
 	id = "slammer"
 	result = "slammer"
-	required_reagents = list("ale" = 1, "tonic" = 2)
+	required_reagents = list("ale" = 1, "spacemountainwind" = 2)
 	result_amount = 3
 
 /datum/reagent/ethanol/leaf
