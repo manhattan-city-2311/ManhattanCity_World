@@ -7,10 +7,11 @@
 	var/dat = "<table><tr>"
 	var/global/list/categories = list(
 		ERP_ACTION_CATEGORY_ROMANCE,
-		ERP_ACTION_CATEGORY_FOREPLAY,
-		ERP_ACTION_CATEGORY_SEX,
+//		No sex allowed
+//		ERP_ACTION_CATEGORY_FOREPLAY,
+//		ERP_ACTION_CATEGORY_SEX,
 //		ERP_ACTION_CATEGORY_RAPE,
-		ERP_ACTION_CATEGORY_POSITIONING
+//		ERP_ACTION_CATEGORY_POSITIONING
 	)
 	for(var/id in categories)
 		if(id == erp_panel_selected_category)
@@ -18,6 +19,7 @@
 		else
 			dat += "<td><a href='?src=\ref[src];erp_category=[id]'>[id]</a></td>"
 	dat += "</tr></table><br/>"
+/*
 	dat += "Ваша позиция: <b>[erp_position?.name]</b><br/>"
 	if(erp_participient && erp_participient != src)
 		dat += "Позиция партнёра: <b>[erp_participient.erp_position?.name]</b><br/>"
@@ -25,6 +27,7 @@
 	if(erp_participient)
 		dat += erp_participient.get_erp_description()
 	dat += "<hr><br/>"
+*/
 
 	dat += "<table><tr>"
 	dat += "<td>"

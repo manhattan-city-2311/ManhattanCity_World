@@ -4,6 +4,7 @@
 	#include "manhattan-2.dmm"
 	#include "manhattan-3.dmm"
 	#include "manhattan-4.dmm"
+	#include "interiors.dmm"
 	#include "manhattan_defines.dm"
 	#include "manhattan_areas.dm"
 	#include "manhattan_elevator.dm"

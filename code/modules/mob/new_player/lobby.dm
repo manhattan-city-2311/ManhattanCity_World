@@ -126,7 +126,7 @@
 		<a class="menu_a" href='?src=\ref[src];lobby_setup=1'>CHARACTERS</a>
 	"}
 	if(ticker.current_state <= GAME_STATE_SETTING_UP)
-		. += {"<a id="ready" class="menu_a" href='?src=\ref[src];lobby_ready=1'>READY [ready ? " <font color='#00ff00'>☑</font>" : "<font color='#ff0000'>☒</font>"]</a>"}
+		. += {"<a id="ready" class="menu_a" href='?src=\ref[src];'>WAIT</a>"}
 	else
 		. += {"<a id = "enter" class="menu_a" href='?src=\ref[src];lobby_join=1'>ENTER MANHATTAN</a>"}
 
