@@ -311,6 +311,22 @@
 	brightness_on = 5
 	light_color = "#FFC58F"
 
+/obj/item/device/flashlight/lamp/alt
+	name = "modern lamp"
+	desc = "A modern desk lamp."
+	icon_state = "slamp"
+	brightness_on = 5
+	light_color = "#f8f1ae"
+
+/obj/item/device/flashlight/lamp/alt_2
+	name = "modern tall lamp"
+	desc = "A modern desk lamp."
+	icon_state = "floor_lamp"
+	brightness_on = 6
+	light_color = "#f8f1ae"
+	w_class = ITEMSIZE_HUGE
+	table_drag = FALSE
+
 /obj/item/device/flashlight/lamp/verb/toggle_light()
 	set name = "Toggle light"
 	set category = "Object"
