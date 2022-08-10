@@ -225,6 +225,17 @@
 	name = "\improper New-Manhattan South District third level outdoors"
 	base_turf = /turf/simulated/open
 
+/area/planets/Manhattan/south/str/chpock
+	name = "\improper  South District Chpock Street"
+/area/planets/Manhattan/south/str/helio
+	name = "\improper  South District Helio Street"
+/area/planets/Manhattan/south/str/chem
+	name = "\improper  South District Chem Street"
+/area/planets/Manhattan/south/str/dane
+	name = "\improper  South District Oui Street"
+/area/planets/Manhattan/south/str/sereo
+	name = "\improper  South District Sereo Street"
+
 //BUILDINGS - FLATS
 
 /area/planets/Manhattan/south/building
@@ -233,87 +244,310 @@
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
 	outdoors = 0
+	base_turf = /turf/simulated/floor/plating
 	ambience = list('sound/manhattan/south_indoors1.ogg', 'sound/manhattan/south_indoors2.ogg', 'sound/manhattan/south_indoors3.ogg', 'sound/manhattan/south_indoors4.ogg', 'sound/manhattan/south_indoors5.ogg', 'sound/manhattan/south_indoors6.ogg', 'sound/manhattan/south_indoors7.ogg', 'sound/manhattan/south_indoors8.ogg', )
 
 /area/planets/Manhattan/south/building/f1
 	icon_state = "south_m_build_flat"
-	base_turf = /turf/simulated/open
 /area/planets/Manhattan/south/building/f1/n1
-	name = "\improper Flat 1"
+	name = "\improper Flat 1 N101"
 /area/planets/Manhattan/south/building/f1/n2
-	name = "\improper Flat 2"
+	name = "\improper Flat 2 N102"
 /area/planets/Manhattan/south/building/f1/n3
-	name = "\improper Flat 3"
+	name = "\improper Flat 3 N103"
 /area/planets/Manhattan/south/building/f1/n4
-	name = "\improper Flat 4"
+	name = "\improper Flat 4 N104"
 /area/planets/Manhattan/south/building/f1/n5
-	name = "\improper Flat 5"
+	name = "\improper Flat 5 N105"
 /area/planets/Manhattan/south/building/f1/n6
-	name = "\improper Flat 6"
+	name = "\improper Flat 6 N106"
 
 /area/planets/Manhattan/south/building/f2
 	icon_state = "south_m_build_flat"
-	base_turf = /turf/simulated/open
 /area/planets/Manhattan/south/building/f2/n1
-	name = "\improper Flat 1"
+	name = "\improper Flat 1 N107"
 /area/planets/Manhattan/south/building/f2/n2
-	name = "\improper Flat 2"
+	name = "\improper Flat 2 N108"
 /area/planets/Manhattan/south/building/f2/n3
-	name = "\improper Flat 3"
+	name = "\improper Flat 3 N109"
 /area/planets/Manhattan/south/building/f2/n4
-	name = "\improper Flat 4"
+	name = "\improper Flat 4 N110"
 /area/planets/Manhattan/south/building/f2/n5
-	name = "\improper Flat 5"
+	name = "\improper Flat 5 N111"
 /area/planets/Manhattan/south/building/f2/n6
-	name = "\improper Flat 6"
+	name = "\improper Flat 6 N112"
 
 /area/planets/Manhattan/south/building/f3
 	icon_state = "south_m_build_flat"
-	base_turf = /turf/simulated/open
 /area/planets/Manhattan/south/building/f3/n1
-	name = "\improper Flat 1"
+	name = "\improper Flat 1 N113"
 /area/planets/Manhattan/south/building/f3/n2
-	name = "\improper Flat 2"
+	name = "\improper Flat 2 N114"
 /area/planets/Manhattan/south/building/f3/n3
-	name = "\improper Flat 3"
+	name = "\improper Flat 3 N115"
 /area/planets/Manhattan/south/building/f3/n4
-	name = "\improper Flat 4"
+	name = "\improper Flat 4 N116"
 /area/planets/Manhattan/south/building/f3/n5
-	name = "\improper Flat 5"
+	name = "\improper Flat 5 N117"
 /area/planets/Manhattan/south/building/f3/n6
-	name = "\improper Flat 6"
+	name = "\improper Flat 6 N118"
 
 /area/planets/Manhattan/south/building/f4
 	icon_state = "south_m_build_flat"
-	base_turf = /turf/simulated/open
 /area/planets/Manhattan/south/building/f4/n1
-	name = "\improper Flat 1"
+	name = "\improper Flat 1 N119"
 /area/planets/Manhattan/south/building/f4/n2
-	name = "\improper Flat 2"
+	name = "\improper Flat 2 N120"
 /area/planets/Manhattan/south/building/f4/n3
-	name = "\improper Flat 3"
+	name = "\improper Flat 3 N121"
 /area/planets/Manhattan/south/building/f4/n4
-	name = "\improper Flat 4"
+	name = "\improper Flat 4 N122"
 /area/planets/Manhattan/south/building/f4/n5
-	name = "\improper Flat 5"
+	name = "\improper Flat 5 N123"
 /area/planets/Manhattan/south/building/f4/n6
-	name = "\improper Flat 6"
+	name = "\improper Flat 6 N124"
 
 /area/planets/Manhattan/south/building/f5
 	icon_state = "south_m_build_flat"
-	base_turf = /turf/simulated/open
 /area/planets/Manhattan/south/building/f5/n1
-	name = "\improper Flat 1"
+	name = "\improper Flat 1 N125"
 /area/planets/Manhattan/south/building/f5/n2
-	name = "\improper Flat 2"
+	name = "\improper Flat 2 N126"
 /area/planets/Manhattan/south/building/f5/n3
-	name = "\improper Flat 3"
+	name = "\improper Flat 3 N127"
 /area/planets/Manhattan/south/building/f5/n4
-	name = "\improper Flat 4"
+	name = "\improper Flat 4 N128"
 /area/planets/Manhattan/south/building/f5/n5
-	name = "\improper Flat 5"
+	name = "\improper Flat 5 N129"
 /area/planets/Manhattan/south/building/f5/n6
-	name = "\improper Flat 6"
+	name = "\improper Flat 6 N130"
+/area/planets/Manhattan/south/building/f5/n7
+	name = "\improper Flat 7 N131"
+/area/planets/Manhattan/south/building/f5/n8
+	name = "\improper Flat 8 N132"
+/area/planets/Manhattan/south/building/f5/n9
+	name = "\improper Flat 9 N133"
+/area/planets/Manhattan/south/building/f5/n10
+	name = "\improper Flat 10 N134"
+/area/planets/Manhattan/south/building/f5/n11
+	name = "\improper Flat 11 N135"
+/area/planets/Manhattan/south/building/f5/n12
+	name = "\improper Flat 12 N136"
+/area/planets/Manhattan/south/building/f6
+	icon_state = "south_m_build_flat"
+/area/planets/Manhattan/south/building/f6/n1
+	name = "\improper Flat 1 N137"
+/area/planets/Manhattan/south/building/f6/n2
+	name = "\improper Flat 2 N138"
+/area/planets/Manhattan/south/building/f6/n3
+	name = "\improper Flat 3 N139"
+/area/planets/Manhattan/south/building/f6/n4
+	name = "\improper Flat 4 N140"
+/area/planets/Manhattan/south/building/f6/n5
+	name = "\improper Flat 5 N141"
+/area/planets/Manhattan/south/building/f6/n6
+	name = "\improper Flat 6 N142"
+/area/planets/Manhattan/south/building/f7
+	icon_state = "south_m_build_flat"
+/area/planets/Manhattan/south/building/f7/n1
+	name = "\improper Flat 1 N143"
+/area/planets/Manhattan/south/building/f7/n2
+	name = "\improper Flat 2 N144"
+/area/planets/Manhattan/south/building/f7/n3
+	name = "\improper Flat 3 N145"
+/area/planets/Manhattan/south/building/f7/n4
+	name = "\improper Flat 4 N146"
+/area/planets/Manhattan/south/building/f7/n5
+	name = "\improper Flat 5 N147"
+/area/planets/Manhattan/south/building/f7/n6
+	name = "\improper Flat 6 N148"
+/area/planets/Manhattan/south/building/f8
+	icon_state = "south_m_build_flat"
+/area/planets/Manhattan/south/building/f8/n1
+	name = "\improper Flat 1 N149"
+/area/planets/Manhattan/south/building/f8/n2
+	name = "\improper Flat 2 N150"
+/area/planets/Manhattan/south/building/f8/n3
+	name = "\improper Flat 3 N151"
+/area/planets/Manhattan/south/building/f8/n4
+	name = "\improper Flat 4 N152"
+/area/planets/Manhattan/south/building/f8/n5
+	name = "\improper Flat 5 N153"
+/area/planets/Manhattan/south/building/f8/n6
+	name = "\improper Flat 6 N154"
+/area/planets/Manhattan/south/building/f8/n7
+	name = "\improper Flat 7 N155"
+
+/area/planets/Manhattan/south/building/ruin
+	name = "\improper Building Ruins"
+	icon_state = "south_m_ruin"
+/area/planets/Manhattan/south/building/ruin/upper
+	name = "\improper Building Ruins"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/ruin/r1
+	name = "\improper Building Ruin"
+/area/planets/Manhattan/south/building/ruin/r2
+	name = "\improper Building Room Two"
+/area/planets/Manhattan/south/building/ruin/r3
+	name = "\improper Building Room Three"
+/area/planets/Manhattan/south/building/ruin/r4
+	name = "\improper Building Room Four"
+/area/planets/Manhattan/south/building/ruin/r5
+/area/planets/Manhattan/south/building/ruin/r6
+/area/planets/Manhattan/south/building/ruin/r7
+/area/planets/Manhattan/south/building/ruin/r8
+/area/planets/Manhattan/south/building/ruin/r9
+/area/planets/Manhattan/south/building/ruin/r10
+/area/planets/Manhattan/south/building/ruin/r11
+/area/planets/Manhattan/south/building/ruin/r12
+/area/planets/Manhattan/south/building/ruin/r13
+/area/planets/Manhattan/south/building/ruin/r14
+/area/planets/Manhattan/south/building/ruin/r15
+/area/planets/Manhattan/south/building/ruin/r16
+/area/planets/Manhattan/south/building/ruin/r17
+/area/planets/Manhattan/south/building/ruin/r18
+/area/planets/Manhattan/south/building/ruin/r19
+/area/planets/Manhattan/south/building/ruin/r20
+/area/planets/Manhattan/south/building/ruin/r21
+/area/planets/Manhattan/south/building/ruin/r22
+/area/planets/Manhattan/south/building/ruin/r23
+
+
+/area/planets/Manhattan/south/building/shophome
+	name = "\improper Shop Flats"
+/area/planets/Manhattan/south/building/shophome/h1
+	name = "\improper Flat 1 N201"
+/area/planets/Manhattan/south/building/shophome/h2
+	name = "\improper Flat 2 N202"
+
+/area/planets/Manhattan/south/building/chem_str
+	name = "\improper Chem Street"
+/area/planets/Manhattan/south/building/chem_str/tower
+	name = "\improper Chem Street Tower"
+/area/planets/Manhattan/south/building/chem_str/garage
+	name = "\improper Chem Street Garage N101"
+/area/planets/Manhattan/south/building/chem_str/garage/two
+	name = "\improper Chem Street Garage N102"
+/area/planets/Manhattan/south/building/chem_str/garage/three
+	name = "\improper Chem Street Garage N103"
+/area/planets/Manhattan/south/building/chem_str/office
+	name = "\improper Chem Street Office"
+	icon_state = "south_m_chem_office"
+/area/planets/Manhattan/south/building/chem_str/hallway
+	name = "\improper Chem Street Hallway"
+	icon_state = "south_m_chem_hall"
+/area/planets/Manhattan/south/building/chem_str/mess
+	name = "\improper Chem Street Mess Hall"
+	icon_state = "south_m_chem_mess"
+/area/planets/Manhattan/south/building/chem_str/parking
+	name = "\improper Chem Street Parking"
+/area/planets/Manhattan/south/building/chem_str/lab
+	name = "\improper Chem Street Laboratory"
+/area/planets/Manhattan/south/building/chem_str/dorms
+	name = "\improper Chem Street Dorms"
+	icon_state = "south_m_chem_dorm"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats
+	name = "\improper Chem Street Flats"
+	icon_state = "south_m_chem_flats"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f1
+	name = "\improper Chem Street Flat 1"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f2
+	name = "\improper Chem Street Flat 2"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f3
+	name = "\improper Chem Street Flat 3"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f4
+	name = "\improper Chem Street Flat 4"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f5
+	name = "\improper Chem Street Flat 5"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f6
+	name = "\improper Chem Street Flat 6"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f7
+	name = "\improper Chem Street Flat 7"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f8
+	name = "\improper Chem Street Flat 8"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f9
+	name = "\improper Chem Street Flat 9"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f10
+	name = "\improper Chem Street Flat 10"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f11
+	name = "\improper Chem Street Flat 11"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f12
+	name = "\improper Chem Street Flat 12"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f13
+	name = "\improper Chem Street Flat 13"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f14
+	name = "\improper Chem Street Flat 14"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f15
+	name = "\improper Chem Street Flat 15"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f16
+	name = "\improper Chem Street Flat 16"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f17
+	name = "\improper Chem Street Flat 17"
+/area/planets/Manhattan/south/building/chem_str/dorms/flats/f18
+	name = "\improper Chem Street Flat 18"
+
+/area/planets/Manhattan/south/building/chem_str/dorms/upper
+	name = "\improper Chem Street Dorms 2nd Floor"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/chem_str/bridge
+	name = "\improper Chem Street Bridges"
+	icon_state = "south_m_chem_bridge"
+	outdoors = 1
+/area/planets/Manhattan/south/building/chem_str/office/upper
+	name = "\improper Chem Street 2nd Floor Office"
+/area/planets/Manhattan/south/building/chem_str/under
+	name = "\improper Chem Street Underground"
+/area/planets/Manhattan/south/building/chem_str/storage
+	name = "\improper Chem Street Storage"
+/area/planets/Manhattan/south/building/chem_str/inter
+	name = "\improper Chem Street Interrogation"
+/area/planets/Manhattan/south/building/chem_str/upper
+	name = "\improper Chem Street 2nd Floor"
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/south/building/garage
+	name = "\improper GARAGE FUCK YEAH"
+	icon_state = "south_m_garage"
+/area/planets/Manhattan/south/building/garage/g1
+	name = "\improper Garage 1"
+/area/planets/Manhattan/south/building/garage/g2
+	name = "\improper Garage 2"
+/area/planets/Manhattan/south/building/garage/g3
+	name = "\improper Garage 3"
+/area/planets/Manhattan/south/building/garage/g4
+	name = "\improper Garage 4"
+/area/planets/Manhattan/south/building/garage/g5
+	name = "\improper Garage 5"
+/area/planets/Manhattan/south/building/garage/g6
+	name = "\improper Garage 6"
+/area/planets/Manhattan/south/building/garage/g7
+	name = "\improper Garage 7"
+/area/planets/Manhattan/south/building/garage/g8
+	name = "\improper Garage 8"
+/area/planets/Manhattan/south/building/garage/g8/upper
+	name = "\improper Garage 8 Upper"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/garage/g9
+	name = "\improper Garage 9"
+/area/planets/Manhattan/south/building/garage/g9/upper
+	name = "\improper Garage 9 Upper"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/garage/g10
+	name = "\improper Garage 10"
+
+/area/planets/Manhattan/south/building/tcomms_tower
+	name = "\improper telecomms Tower"
+	icon_state = "server"
+
+/area/planets/Manhattan/south/building/motel
+	name = "\improper Motel"
+	icon_state = "south_m_motel"
+/area/planets/Manhattan/south/building/motel/office
+	name = "\improper Motel Office"
+/area/planets/Manhattan/south/building/motel/rooms
+	name = "\improper Motel Rooms"
+/area/planets/Manhattan/south/building/motel/shop
+	name = "\improper Motel Shop"
 
 //FACTORY
 
@@ -506,6 +740,124 @@
 
 /area/planets/Manhattan/south/factory/engineering/reactor
 	name = "\improper Engineering Reactor"
+
+// BUIDINGS - SOCIAL
+
+/area/planets/Manhattan/south/building/social
+	name = "\improper Unoccupied building"
+	icon_state = "south_m_build"
+
+/area/planets/Manhattan/south/building/social/teotr
+	name = "\improper Bar 'TEoTR'"
+	icon_state = "south_m_teotr"
+/area/planets/Manhattan/south/building/social/teotr/office
+	name = "\improper 'TEoTR' Office"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/social/teotr/kitchen
+	name = "\improper 'TEoTR' Kitchen"
+/area/planets/Manhattan/south/building/social/teotr/breakroom
+	name = "\improper 'TEoTR' Breakroom"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/social/teotr/netsurfer
+	name = "\improper 'TEoTR' Computer Office"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/social/teotr/upper
+	name = "\improper 'TEoTR' Upper Floor"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/social/teotr/scene
+	name = "\improper 'TEoTR' Scene"
+
+/area/planets/Manhattan/south/building/social/restaurant
+	name = "\improper Restaurant '3xi'"
+	icon_state = "south_m_resta"
+/area/planets/Manhattan/south/building/social/restaurant/kitchen
+	name = "\improper Restaurant '3xi' Kitchen"
+/area/planets/Manhattan/south/building/social/restaurant/office
+	name = "\improper Restaurant '3xi' Office"
+/area/planets/Manhattan/south/building/social/restaurant/upper
+	name = "\improper Restaurant '3xi' Upper"
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/south/building/social/gas
+	name = "\improper South GAS Station"
+	icon_state = "south_m_gas"
+
+/area/planets/Manhattan/south/building/social/brothel
+	name = "\improper Brothel Lobby"
+	icon_state = "south_m_brothel"
+/area/planets/Manhattan/south/building/social/brothel/hallway
+	name = "\improper Brothel Hallway"
+/area/planets/Manhattan/south/building/social/brothel/office
+	name = "\improper Brothel Office"
+/area/planets/Manhattan/south/building/social/brothel/pub
+	name = "\improper Brothel Pub"
+/area/planets/Manhattan/south/building/social/brothel/dress
+	name = "\improper Brothel Dressing Room"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/social/brothel/hallway/upper
+	name = "\improper Brothel Lobby"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/social/brothel/roof
+	name = "\improper Brothel Roof"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/social/brothel/room
+	name = "\improper Brothel Room 1"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/social/brothel/room/r2
+	name = "\improper Brothel Room 2"
+/area/planets/Manhattan/south/building/social/brothel/room/r3
+	name = "\improper Brothel Room 3"
+/area/planets/Manhattan/south/building/social/brothel/room/r4
+	name = "\improper Brothel Room 4"
+/area/planets/Manhattan/south/building/social/brothel/room/r5
+	name = "\improper Brothel Room 5"
+/area/planets/Manhattan/south/building/social/brothel/room/r6
+	name = "\improper Brothel Room 6"
+
+/area/planets/Manhattan/south/building/social/laundry
+	name = "\improper South Laundry"
+	icon_state = "south_m_laundry"
+
+/area/planets/Manhattan/south/building/social/alleys
+	name = "\improper South Alleys"
+	icon_state = "south_m_alley"
+/area/planets/Manhattan/south/building/social/alleys/uppe2
+	name = "\improper South Alleys 2nd Floor"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/social/alleys/upper3
+	name = "\improper South Alleys 3nd Floor"
+	base_turf = /turf/simulated/open
+/area/planets/Manhattan/south/building/social/alleys/uppe2/room
+	name = "\improper South Alleys Ancient Room"
+/area/planets/Manhattan/south/building/social/alleys/uppe2/room2
+	name = "\improper South Alleys Second Ancient Room"
+
+/area/planets/Manhattan/south/building/social/metro
+	name = "\improper South Transit Station"
+	icon_state = "south_m_metro"
+/area/planets/Manhattan/south/building/social/motodealer
+	name = "\improper South Motorcycle dealership dealer"
+	icon_state = "south_m_dealer"
+/area/planets/Manhattan/south/building/social/motodealer/upper
+	name = "\improper South Motorcycle dealership dealer 2nd Floor"
+/area/planets/Manhattan/south/building/social/church
+	name = "\improper South Ancient Church"
+	icon_state = "south_m_church"
+/area/planets/Manhattan/south/building/social/church/upper
+	name = "\improper South Ancient Church 2nd Floor"
+/area/planets/Manhattan/south/building/social/library
+	name = "\improper South Library"
+	icon_state = "south_m_library"
+/area/planets/Manhattan/south/building/social/library/secondfloor
+	name = "\improper South Library 2nd Floor"
+
+/area/planets/Manhattan/south/building/social/gym
+	name = "\improper South Gym"
+	icon_state = "south_m_gym"
+/area/planets/Manhattan/south/building/social/gym/upper
+	name = "\improper South Gym 2nd Floor"
+/area/planets/Manhattan/south/building/social/gym/ring
+	name = "\improper South Gym Box Ring"
 
 // Elevator areas.
 /area/turbolift/manhattan_house11
