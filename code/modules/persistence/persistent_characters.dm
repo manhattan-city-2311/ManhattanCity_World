@@ -122,7 +122,7 @@
 	if(!PI)
 		PI = make_new_inventory(name)
 		if(PI)
-			var/full_path = "data/persistent/inventories/[PI.unique_ID].sav"
+			var/full_path = "data/persistent/inventories/[PI.unique_id].sav"
 			if(fexists(full_path))
 				PI.load_inventory()
 	PI.save_player_inventory(src)
