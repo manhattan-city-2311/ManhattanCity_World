@@ -9,7 +9,7 @@
 	var/data = list("type" = "[type]")
 	return data
 
-var/persistent_online = FALSE
+var/persistent_online = TRUE
 
 /*
 * This is given the byond list from above, to bring this atom to the state
