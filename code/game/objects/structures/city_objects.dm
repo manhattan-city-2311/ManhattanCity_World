@@ -12,7 +12,7 @@
 	luminosity = 3
 
 	icon = 'icons/obj/traffic.dmi'
-	icon_state = "streetlight-ani"
+	icon_state = "off"
 
 
 /obj/machinery/street/pedestrian
