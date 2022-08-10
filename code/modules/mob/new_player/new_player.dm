@@ -226,9 +226,9 @@
 	SSjobs.AssignRole(src, rank, 1)
 
 	var/mob/living/character = create_character(T)	//creates the human and transfers vars and mind
-	var/datum/persistent_inventory/PI = check_persistent_storage_exists(client.prefs.unique_id)
+	var/datum/persistent_inventory/PI = check_persistent_storage_exists(character.client.prefs.unique_id)
 	if(!PI)
-		PI = make_new_inventory(name, client.prefs.unique_id)
+		PI = make_new_inventory(name, character.client.prefs.unique_id)
 
 	if(!PI)
 		character = SSjobs.EquipRank(character, rank, 1)					//equips the human
