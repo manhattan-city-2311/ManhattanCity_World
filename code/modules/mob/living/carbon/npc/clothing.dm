@@ -25,4 +25,5 @@ var/list/unisex_outfits = list(
 		outfits += female_outfits.Copy()
 
 	var/decl/hierarchy/outfit/O = pick(outfits)
+	O = new O()
 	O.equip(src)
