@@ -466,7 +466,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	/*spawn(0)
 		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
 		*/
-
+	save_world()
 	Master.Shutdown()	//run SS shutdowns
 	processScheduler.stop()
 

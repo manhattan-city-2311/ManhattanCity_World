@@ -430,7 +430,6 @@
 /proc/make_new_inventory(owner_nm, var/unid)
 	var/datum/persistent_inventory/new_inv = new /datum/persistent_inventory
 
-	unid = rand(999999)
 	new_inv.owner_name = owner_nm
 	new_inv.unique_id = unid
 

@@ -114,13 +114,9 @@
 
 	mind.prefs.save_preferences()
 	mind.prefs.save_character()
-	var/datum/persistent_inventory/PI = null
-	for(var/datum/persistent_inventory/P in GLOB.persistent_inventories)
-		if(P.owner_name == name)
-			PI = P
-			break
+	var/datum/persistent_inventory/PI = check_persistent_storage_exists(client.prefs.unique_id)
 	if(!PI)
-		PI = make_new_inventory(name)
+		PI = make_new_inventory(name, client.prefs.unique_id)
 	PI.save_player_inventory(src)
 	PI.save_inventory()
 
