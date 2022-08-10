@@ -323,7 +323,7 @@ var/list/preferences_datums = list()
 	set_biological_gender(pick(MALE, FEMALE))
 	real_name = random_name(identifying_gender,species)
 	b_type = RANDOM_BLOOD_TYPE
-	records := global.records_blank
+	records = global.records_blank.Copy()
 
 	gear = list()
 	gear_list = list()
