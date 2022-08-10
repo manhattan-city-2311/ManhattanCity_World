@@ -136,7 +136,7 @@ var/global/datum/controller/gameticker/ticker
 				qdel(S)
 		to_chat(world, SPAN_INFO("<B>Enjoy the game!</B>"))
 		// sound_to(world, sound('sound/AI/welcome.ogg')) // Skie
-		sound_to(world, sound('sound/manhattan/manhattan.mp3')) // Elar
+		sound_to(world, sound('sound/manhattan/E/manhattan.mp3')) // Elar
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 
