@@ -205,6 +205,23 @@
 	icon_state = "mars"
 	light_color = COLOR_YELLOW
 
+/obj/structure/sign/neon/pizza
+	name = "Pizza sign"
+	desc = "Neon pizza on a wall."
+	icon_state = "pizza"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/pizza2
+	name = "Pizza sign"
+	desc = "Neon pizza on a wall."
+	icon_state = "pizza2"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/unicorn
+	name = "unicorn"
+	icon_state = "unicorn"
+	light_color = LIGHT_COLOR_HALOGEN
+
 /obj/structure/sign/neon/figures
 	name = "figure"
 	desc = "Geometric figure sign"
@@ -230,6 +247,32 @@
 	desc = "A sign for a bar."
 	icon_state = "bar_holo"
 	light_color = LIGHT_COLOR_NEONGREEN
+
+/obj/structure/sign/neon/big/triangle
+	name = "big neon sign"
+	desc = "Some kind of triangle, but with big eye."
+	icon = 'icons/obj/signs_verylarge.dmi'
+	icon_state = "trianglebig"
+	light_color = LIGHT_COLOR_NEONGREEN
+
+/obj/structure/sign/neon/big/wings
+	name = "big neon sign"
+	desc = "Cool neon wings."
+	icon = 'icons/obj/signs_verylarge.dmi'
+	icon_state = "wings"
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
+/obj/structure/sign/neon/big/twosides
+	name = "big neon sign"
+	desc = "Cool neon heart."
+	icon_state = "twosides"
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
+/obj/structure/sign/neon/big/japan
+	name = "big neon sign"
+	desc = "Cool neon words."
+	icon_state = "japan"
+	light_color = LIGHT_COLOR_RED
 
 /obj/structure/sign/neon/big/manhattan2
 	name = "neon city map"
@@ -459,3 +502,12 @@
 	anchored = 1
 	icon = 'icons/obj/manhattan/ladders.dmi'
 	icon_state = "manhole_closed"
+
+/obj/effect/invisiblebarrier
+	name = "barrier"
+	icon = 'icons/mob/screen1.dmi'
+	icon_state = "x2"
+	invisibility = 101 		//nope, can't see this
+	anchored = 1
+	density = 1
+	opacity = 0

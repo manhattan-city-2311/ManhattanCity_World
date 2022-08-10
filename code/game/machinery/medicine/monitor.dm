@@ -203,16 +203,16 @@
 			if(0)
 				pulsesound = null
 			if(1)
-				pulsesound = 'sound/manhattan/monitor/20bpm.mp3'
+				pulsesound = 'sound/manhattan/monitor/20bpm.ogg'
 			if(2)
-				pulsesound = 'sound/manhattan/monitor/60bpm.mp3'
+				pulsesound = 'sound/manhattan/monitor/60bpm.ogg'
 			if(3)
-				pulsesound = 'sound/manhattan/monitor/120bpm.mp3'
+				pulsesound = 'sound/manhattan/monitor/120bpm.ogg'
 			if(4)
-				pulsesound = 'sound/manhattan/monitor/140bpm.mp3'
+				pulsesound = 'sound/manhattan/monitor/140bpm.ogg'
 			if(5)
-				pulsesound = 'sound/manhattan/monitor/160bpm.mp3'
+				pulsesound = 'sound/manhattan/monitor/160bpm.ogg'
 			if(6)
-				pulsesound = 'sound/manhattan/monitor/200bpm.mp3'
+				pulsesound = 'sound/manhattan/monitor/200bpm.ogg'
 		for(var/mob/living/carbon/human/H in range(5))
 			sound_to(H, sound(pulsesound, 1, 0, PULSEBEEP_SOUND_CHANNEL))
