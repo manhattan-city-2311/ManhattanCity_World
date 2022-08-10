@@ -134,10 +134,8 @@
 /obj/item/organ/internal/heart/proc/handle_rythme()
 	for(var/T in arrythmias)
 		var/datum/arrythmia/A = arrythmias[T]
-		ischemia += A.ischemia_mod
 		cardiac_output_modificators[A.name] = A.co_mod
 		pulse_modificators[A.name] = A.get_hr_mod(src)
-	ischemia = max(0, ischemia - 0.25)
 
 
 /obj/item/organ/internal/heart/proc/post_handle_rythme()

@@ -33,8 +33,8 @@
 	messages_throttles[id] = world.time
 
 
-/mob/living/carbon/proc/custom_pain(var/message, var/power, var/force, var/obj/item/organ/external/affecting, var/nohalloss, var/flash_pain)
-	power = LAZYACCESS0(chem_effects, CE_PAINKILLER)
+/mob/living/carbon/proc/custom_pain(message, power, force, obj/item/organ/external/affecting, nohalloss, flash_pain)
+	power -= LAZYACCESS0(chem_effects, CE_PAINKILLER)
 	flash_pain -= LAZYACCESS0(chem_effects, CE_PAINKILLER)
 	if(stat || !can_feel_pain() || (power <= 0 && flash_pain <= 0))//!message
 		return 0

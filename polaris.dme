@@ -2080,6 +2080,7 @@
 #include "code\modules\mob\living\carbon\npc\patrol.dm"
 #include "code\modules\mob\living\carbon\npc\talk.dm"
 #include "code\modules\mob\living\carbon\npc\traits.dm"
+#include "code\modules\mob\living\carbon\npc\interactable\hotel.dm"
 #include "code\modules\mob\living\carbon\npc\interactable\interactable.dm"
 #include "code\modules\mob\living\carbon\npc\interactable\retail.dm"
 #include "code\modules\mob\living\carbon\npc\markers\_marker.dm"

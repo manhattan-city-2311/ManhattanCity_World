@@ -1145,6 +1145,7 @@ mob/proc/yank_out_object()
 	return
 
 /mob/MouseEntered(location, control, params)
+	return // TODO: tooltips rework
 	if(usr != src && usr.is_preference_enabled(/datum/client_preference/mob_tooltips))
 		openToolTip(user = usr, tip_src = src, params = params, title = get_nametag_name(usr), content = get_nametag_desc(usr))
 

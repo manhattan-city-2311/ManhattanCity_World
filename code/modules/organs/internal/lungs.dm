@@ -111,7 +111,7 @@
 
 // TODO: lungs listening
 /obj/item/organ/internal/lungs/listen()
-	if(is_breathing())
+	if(!is_breathing())
 		return "no respiration"
 
 	if(robotic == ORGAN_ROBOT)

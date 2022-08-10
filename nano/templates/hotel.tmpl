@@ -1,0 +1,13 @@
+<h2>Retail:</h2>
+<div class='item'>
+	{{for data.products}}
+	<div class='item'>
+			<div style='float'>
+				{{:helper.link('Rent (' + value.price + ')', 'buy', { "rent" : value.number }, (!value.selled && data.avail >= value.price) ? null : 'disabled' )}}
+			</div>
+		<div class='itemContent'>
+		#{{:value.number}}
+		</div>
+	</div>
+	{{/for}}
+</div>

@@ -1,3 +1,20 @@
+/datum/erp_action/kiss_body
+	name = "Поцелуи тела"
+	sbp = SBP_ORAL
+	needs_access = SBP_NIPPLES // a bit tricky.
+
+/datum/erp_action/kiss_body/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2, number)
+	return list(
+		"@1 нежно касается губами ключицы @2.",
+		"@1 целует ложбинку чуть ниже шеи @2.",
+		"@1 целует а затем лижет левый сосок @2.",
+		"@1 обхватывает губами правый сосок @2.",
+		"@1 оставляет на животе @2 дорожку поцелуев от груди и вниз",
+		"@1 мягко касается губами у пупка @2.",
+		"@1 влажно целует чуть выше паха @2.",
+		"@1 оставляет влажное прикосновение губ на внутренней части бедра @2."
+	)
+
 /datum/erp_action/kiss_cheek
 	name = "Поцелуй в щеку"
 	sbp = SBP_ORAL
