@@ -268,8 +268,8 @@
 		if(N)
 			contacts.Cut(N, N+1)
 	if(href_list["Rename"])
-		var/N = href_list["Rename"]
-		if(N && N < contacts.len)
+		var/N = text2num(href_list["Rename"]) + 1
+		if(N && N <= contacts.len)
 			var/NA = input(usr, "Name a contact", "Name", contacts[N]["name"]) as text|null
 			if(NA)
 				contacts[N]["name"] = NA
