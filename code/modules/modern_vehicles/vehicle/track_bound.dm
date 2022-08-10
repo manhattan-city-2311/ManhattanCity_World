@@ -8,8 +8,8 @@
 	var/track_obj_type = /obj/structure/track
 
 /obj/vehicles/track_bound/Move(var/turf/newloc,var/dir)
-	var/obj/structure/track/t = locate(track_obj_type) in newloc.contents
-	if(t && !t.damaged)
+	//var/obj/structure/track/t = locate(track_obj_type) in newloc.contents
+	//if(t && !t.damaged)
 		. = ..()
 
 /obj/structure/track

@@ -1,0 +1,35 @@
+"a" = (/turf/simulated/wall/r_wall,/area)
+"b" = (/turf/simulated/floor/tiled/white,/area)
+"c" = (/obj/structure/closet/secure_closet/freezer/fridge,/turf/simulated/floor/tiled/white,/area)
+"d" = (/obj/machinery/microwave,/turf/simulated/floor/tiled/white,/area)
+"e" = (/obj/structure/table/standard,/turf/simulated/floor/tiled/white,/area)
+"f" = (/obj/structure/curtain/black,/turf/simulated/floor/tiled/white,/area)
+"g" = (/obj/structure/bed/chair/shuttle,/turf/simulated/floor/tiled/techmaint,/area)
+"h" = (/turf/simulated/floor/tiled/techmaint,/area)
+"i" = (/obj/effect/vehicle_entrance,/turf/simulated/floor/tiled/techmaint,/area)
+"j" = (/obj/structure/vehicledoor,/turf/simulated/wall/r_wall,/area)
+"k" = (/obj/structure/bed/chair/shuttle{dir = 4},/turf/simulated/floor/tiled/techmaint,/area)
+"l" = (/obj/structure/bed/chair/shuttle{dir = 8},/turf/simulated/floor/tiled/techmaint,/area)
+"m" = (/obj/machinery/door/airlock{name = "Toilet room"},/turf/simulated/floor/tiled/white,/area)
+"n" = (/obj/machinery/light/colored/blue{dir = 1},/turf/simulated/floor/tiled/white,/area)
+"o" = (/obj/structure/bed/chair/shuttle,/obj/machinery/light/colored/purple{dir = 8},/turf/simulated/floor/tiled/techmaint,/area)
+"p" = (/obj/structure/bed/chair/shuttle,/obj/machinery/light/colored/purple{dir = 4},/turf/simulated/floor/tiled/techmaint,/area)
+
+(1,1,1) = {"
+aaaaaaa
+abbnbca
+adebbea
+aaafaaa
+agghgga
+agghgga
+agghgga
+aoghgpa
+agghgga
+ahhhhij
+akhhhla
+aaahaaa
+anahana
+abmhmba
+abahaba
+aaaaaaa
+"}
