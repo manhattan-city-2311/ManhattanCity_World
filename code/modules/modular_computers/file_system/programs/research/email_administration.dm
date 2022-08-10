@@ -3,8 +3,8 @@
 	filedesc = "Email Administration Utility"
 	extended_desc = "This program may be used to administrate NTNet's emailing service."
 	program_icon_state = "comm_monitor"
-//	program_key_state = "generic_key"
-//	program_menu_icon = "mail-open"
+	program_key_state = "generic_key"
+	program_menu_icon = "mail-open"
 	size = 12
 	requires_ntnet = 1
 	available_on_ntnet = 0
@@ -65,7 +65,7 @@
 	if (!ui)
 		ui = new(user, src, ui_key, "email_administration.tmpl", "Email Administration Utility", 600, 450, state = state)
 		if(program.update_layout())
-			ui.auto_update_layout = 1
+			ui.set_auto_update_layout(1)
 		ui.set_auto_update(1)
 		ui.set_initial_data(data)
 		ui.open()

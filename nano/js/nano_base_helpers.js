@@ -6,12 +6,8 @@ NanoBaseHelpers = function ()
 			syndicateMode: function() {
 				$('body').css("background-color","#8f1414");
 				$('body').css("background-image","url('uiBackground-Syndicate.png')");
-				$('body').css("background-position","50% 0");
-				$('body').css("background-repeat","repeat-x");
 
 				$('#uiTitleFluff').css("background-image","url('uiTitleFluff-Syndicate.png')");
-				$('#uiTitleFluff').css("background-position","50% 50%");
-				$('#uiTitleFluff').css("background-repeat", "no-repeat");
 
 				$('#ntoogle').css("background-repeat", "no-repeat");
 	
@@ -20,17 +16,17 @@ NanoBaseHelpers = function ()
 			
 			//change ui styling to business manager
 			businessManager: function() {
-				$('body').css("background-color","#272727");
 				$('body').css("background-image","url('uiBackground-techsoft.png')");
-				$('body').css("background-position","50% 50%");
-				$('body').css("background-repeat","repeat-x");
-
-				$('#uiTitleFluff').css("background-image","url('uiTitleFluff.png')");
-				$('#uiTitleFluff').css("background-position","50% 50%");
-				$('#uiTitleFluff').css("background-repeat", "no-repeat");
 
 				$('#ntoogle').css("background-repeat", "no-repeat");
-	
+				return '';
+			},
+			TELEPHONE: function() {
+				$('body').css("background-color","#040603");
+				$('body').css("background-image","url('blade.png')");
+				$('body').css("background-size", "200vmin 150vmin");
+				$('#uiTitleWrapper').css("display", "none")
+				$('#ntoogle').css("background-repeat", "no-repeat");
 				return '';
 			},
 			// Generate a Byond link

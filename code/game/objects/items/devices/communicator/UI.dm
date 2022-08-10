@@ -17,14 +17,14 @@
 	var/modules_ui[0]				//Home screen info.
 
 	//First we add other 'local' communicators.
-	for(var/obj/item/device/communicator/comm in known_devices)
-		if(comm.network_visibility && comm.exonet)
-			communicators[++communicators.len] = list("name" = sanitize(comm.name), "address" = comm.exonet.address)
+	// for(var/obj/item/device/communicator/comm in known_devices)
+	// 	if(comm.network_visibility && comm.exonet)
+	// 		communicators[++communicators.len] = list("name" = sanitize(comm.name), "address" = comm.exonet.address)
 
-	//Now for ghosts who we pretend have communicators.
-	for(var/mob/observer/dead/O in known_devices)
-		if(O.client && O.client.prefs.communicator_visibility == 1 && O.exonet)
-			communicators[++communicators.len] = list("name" = sanitize("[O.client.prefs.real_name]'s communicator"), "address" = O.exonet.address, "ref" = "\ref[O]")
+	// //Now for ghosts who we pretend have communicators.
+	// for(var/mob/observer/dead/O in known_devices)
+	// 	if(O.client && O.client.prefs.communicator_visibility == 1 && O.exonet)
+	// 		communicators[++communicators.len] = list("name" = sanitize("[O.client.prefs.real_name]'s communicator"), "address" = O.exonet.address, "ref" = "\ref[O]")
 
 	//Lists all the other communicators that we invited.
 	for(var/obj/item/device/communicator/comm in voice_invites)
@@ -108,12 +108,20 @@
 	data["imContacts"] = im_contacts_ui
 	data["imList"] = im_list_ui
 	data["time"] = stationtime2text()
+	data["date"] = stationdate2text()
 	data["ring"] = ringer
 	data["homeScreen"] = modules_ui
 	data["note"] = note					// current notes
 	data["weather"] = weather
 	data["flashlight"] = fon
 	data["manifest"] = PDA_Manifest
+	data["selected_wallpaper"] = selected_wallpaper
+	data["wallpaper_color"] = wallpaper_color
+	// var/list/wresult[0]
+	// for(var/i in wallpapers)
+	// 	wresult += list(list("file" = i, "name" = wallpapers[i]))
+	data["wallpapers"] = wallpapers
+	data["contacts"] = contacts
 
 	if(cartridge) // If there's a cartridge, we need to grab the information from it
 		data["cart_devices"] = cartridge.get_device_status()
@@ -130,7 +138,7 @@
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
 		data["currentTab"] = 1 // Reset the current tab, because we're going to home page
-		ui = new(user, src, ui_key, "communicator_header.tmpl", "Communicator", 475, 700, state = key_state)
+		ui = new(user, src, ui_key, "communicator_header.tmpl", "Communicator", 675, 800, state = key_state)
 		// add templates for screens in common with communicator.
 		//ui.add_template("atmosphericScan", "atmospheric_scan.tmpl")
 		//ui.add_template("crewManifest", "crew_manifest.tmpl")
@@ -148,6 +156,14 @@
 /obj/item/device/communicator/Topic(href, href_list)
 	if(..())
 		return 1
+	if(href_list["wallpaper_select"])
+		var/index = text2num(href_list["wallpaper_select"])
+		if(isnum(index) && index < length(wallpapers))
+			index += 1
+			var/list/w = wallpapers[index]
+			selected_wallpaper = w["file"]
+			wallpaper_color = w["color"]
+
 	if(href_list["rename"])
 		var/new_name = sanitizeSafe(input(usr,"Please enter your name.","Communicator",usr.name) )
 		if(new_name)
@@ -170,6 +186,7 @@
 	if(href_list["add_hex"])
 		var/hex = href_list["add_hex"]
 		add_to_EPv2(hex)
+		playsound(get_turf(src), 'sound/machines/button3.ogg', 10)
 
 	if(href_list["write_target_address"])
 		var/new_address = sanitizeSafe(input(usr,"Please enter the desired target EPv2 address.  Note that you must write the colons \
@@ -220,25 +237,42 @@
 			if(name_to_disconnect == comm.name)
 				close_connection(usr, comm, "[usr] hung up")
 
-	if(href_list["startvideo"])
-		var/ref_to_video = href_list["startvideo"]
-		var/obj/item/device/communicator/comm = locate(ref_to_video)
-		if(comm)
-			connect_video(usr, comm)
+	// if(href_list["startvideo"])
+	// 	var/ref_to_video = href_list["startvideo"]
+	// 	var/obj/item/device/communicator/comm = locate(ref_to_video)
+	// 	if(comm)
+	// 		connect_video(usr, comm)
 
-	if(href_list["endvideo"])
-		if(video_source)
-			end_video()
+	// if(href_list["endvideo"])
+	// 	if(video_source)
+	// 		end_video()
 
-	if(href_list["watchvideo"])
-		if(video_source)
-			watch_video(usr,video_source.loc)
+	// if(href_list["watchvideo"])
+	// 	if(video_source)
+	// 		watch_video(usr,video_source.loc)
 
 	if(href_list["copy"])
 		target_address = href_list["copy"]
 
 	if(href_list["copy_name"])
 		target_address_name = href_list["copy_name"]
+	if(href_list["AddContact"])
+		var/N = input(usr, "Prompt new number", "Contact add") as text|null
+		if(N)
+			var/NA = input(usr, "Name a contact", "Name") as text|null
+			if(!NA)
+				NA = "---"
+			contacts += list(list("number" = N, "name" = NA))
+	if(href_list["RemoveContact"])
+		var/N = text2num(href_list["RemoveContact"]) + 1
+		if(N)
+			contacts.Cut(N, N+1)
+	if(href_list["Rename"])
+		var/N = href_list["Rename"]
+		if(N && N < contacts.len)
+			var/NA = input(usr, "Name a contact", "Name", contacts[N]["name"]) as text|null
+			if(NA)
+				contacts[N]["name"] = NA
 
 	if(href_list["hang_up"])
 		for(var/mob/living/voice/V in contents)
@@ -250,7 +284,7 @@
 		selected_tab = href_list["switch_tab"]
 
 	if(href_list["edit"])
-		var/n = input(usr, "Please enter message", name, notehtml)
+		var/n = input(usr, "Please enter message", name, notehtml) as text|null
 		n = sanitizeSafe(n, extra = 0)
 		if(n)
 			note = html_decode(n)

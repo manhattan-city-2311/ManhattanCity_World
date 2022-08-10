@@ -26,8 +26,8 @@
 	filedesc = "Camera Monitoring"
 	nanomodule_path = /datum/nano_module/camera_monitor
 	program_icon_state = "cameras"
-//	program_key_state = "generic_key"
-//	program_menu_icon = "search"
+	program_key_state = "generic_key"
+	program_menu_icon = "search"
 	extended_desc = "This program allows remote access to the camera system. Most camera networks may have additional access requirements."
 	size = 12
 	available_on_ntnet = 1
@@ -70,7 +70,7 @@
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "mod_sec_camera.tmpl", "Camera Monitoring", 900, 800)
-		// ui.auto_update_layout = 1 // Disabled as with suit sensors monitor - breaks the UI map. Re-enable once it's fixed somehow.
+		// ui.set_auto_update_layout(1) // Disabled as with suit sensors monitor - breaks the UI map. Re-enable once it's fixed somehow.
 
 		ui.add_template("mapContent", "sec_camera_map_content.tmpl")
 		ui.add_template("mapHeader", "mod_sec_camera_map_header.tmpl")

@@ -3,6 +3,7 @@
 	filedesc = "Landlord Management Utility"
 	extended_desc = "This program can be used by landlords to buy and sell properties, you can also manage existing properties you own."
 	program_icon_state = "generic"
+	program_menu_icon = "home"
 	size = 5
 	requires_ntnet = 1
 	available_on_ntnet = 0
@@ -437,7 +438,7 @@
 	if (!ui)
 		ui = new(user, src, ui_key, "landlord_management.tmpl", "Landlord Management Utility", 960, 450, state = state)
 		if(program.update_layout())
-			ui.auto_update_layout = 1
+			ui.set_auto_update_layout(1)
 		ui.set_auto_update(1)
 		ui.set_initial_data(data)
 		ui.open()

@@ -2,15 +2,38 @@
 Title: Communicator UI
 Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
  -->
-
+{{:helper.TELEPHONE()}}
+<style type="text/css">
+	{{if data.selected_wallpaper}}
+	body
+	{
+		background-image: url('{{:data.selected_wallpaper}}') !important;
+		background-color: {{:data.wallpaper_color}} !important;
+	}
+	{{/if}}
+</style>
 {{if data.currentTab == 1}}
-
+	<style type="text/css">
+		.moreAPPs
+		{
+			float: center;
+		}
+	</style>
+	<div class="flexBoxCentralizator">
+		<div class = "phoneLogos">
+			<div class="phoneclock">{{:data.time}}</div><br>
+			<div class='phonedate'>{{:data.date}}</div>
+		</div>
+	</div>
 	<div class='homeContainer'>
 		<div class='homeScreen'>
 			{{for data.homeScreen}}
 				{{:helper.link(value.module, value.icon, {'switch_tab' : value.number}, null, 'link64')}}
 			{{/for}}
-			{{:helper.link('NT Apps', 'external64', {'apps' : 1}, null, 'link64')}}
+		</div>
+		<div class='AdditionalAPPsFooter'>
+			<!-- {{:helper.link('NT Apps', 'external64', {'apps' : 1}, null, 'link64')}} -->
+			{{:helper.link('___', null, {'apps' : 1}, null, 'moreAPPs')}}
 		</div>
 	</div>
 
@@ -36,7 +59,6 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 	<div class="item">
 		<div class="dialPad">
 			<div style="clear: both; padding-top: 1px;">
-				{{:helper.link('0', null, {'add_hex' : '0'}, null, 'dialPadKeys')}}
 				{{:helper.link('1', null, {'add_hex' : '1'}, null, 'dialPadKeys')}}
 				{{:helper.link('2', null, {'add_hex' : '2'}, null, 'dialPadKeys')}}
 				{{:helper.link('3', null, {'add_hex' : '3'}, null, 'dialPadKeys')}}
@@ -45,22 +67,35 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 				{{:helper.link('4', null, {'add_hex' : '4'}, null, 'dialPadKeys')}}
 				{{:helper.link('5', null, {'add_hex' : '5'}, null, 'dialPadKeys')}}
 				{{:helper.link('6', null, {'add_hex' : '6'}, null, 'dialPadKeys')}}
-				{{:helper.link('7', null, {'add_hex' : '7'}, null, 'dialPadKeys')}}
 			</div>
 			<div style="clear: both; padding-top: 1px;">
+				{{:helper.link('7', null, {'add_hex' : '7'}, null, 'dialPadKeys')}}
 				{{:helper.link('8', null, {'add_hex' : '8'}, null, 'dialPadKeys')}}
 				{{:helper.link('9', null, {'add_hex' : '9'}, null, 'dialPadKeys')}}
-				{{:helper.link('A', null, {'add_hex' : 'a'}, null, 'dialPadKeys')}}
-				{{:helper.link('B', null, {'add_hex' : 'b'}, null, 'dialPadKeys')}}
 			</div>
 			<div style="clear: both; padding-top: 1px;">
+				<div class="dialPadKeys">_</div>
+				{{:helper.link('0', null, {'add_hex' : '0'}, null, 'dialPadKeys')}}
+				<div class="dialPadKeys">_</div>
+			</div>
+			<!-- <div style="clear: both; padding-top: 1px;">
 				{{:helper.link('C', null, {'add_hex' : 'c'}, null, 'dialPadKeys')}}
+				{{:helper.link('D', null, {'add_hex' : 'd'}, null, 'dialPadKeys')}}
+				{{:helper.link('E', null, {'add_hex' : 'e'}, null, 'dialPadKeys')}}
+				{{:helper.link('F', null, {'add_hex' : 'f'}, null, 'dialPadKeys')}}
+			</div> -->
+			<div style="clear: both; padding-top: 1px;">
+				{{:helper.link('A', null, {'add_hex' : 'a'}, null, 'dialPadKeys')}}
+				{{:helper.link('B', null, {'add_hex' : 'b'}, null, 'dialPadKeys')}}
+				{{:helper.link('C', null, {'add_hex' : 'c'}, null, 'dialPadKeys')}}
+			</div>
+			<div style="clear: both; padding-top: 1px;">
 				{{:helper.link('D', null, {'add_hex' : 'd'}, null, 'dialPadKeys')}}
 				{{:helper.link('E', null, {'add_hex' : 'e'}, null, 'dialPadKeys')}}
 				{{:helper.link('F', null, {'add_hex' : 'f'}, null, 'dialPadKeys')}}
 			</div>
 			<div style="clear: both; padding-top: 1px;">
-				{{:helper.link('Dial', 'phone64', {'dial' : data.targetAddress}, null, 'dialPadButtons')}}
+				{{:helper.link('Call', 'phone64', {'dial' : data.targetAddress}, null, 'dialPadButtons')}}
 				{{:helper.link('Message', 'comment64', {'message' : data.targetAddress, 'switch_tab' : 4}, null, 'dialPadButtons')}}
 				{{:helper.link('Hang Up', 'close64', {'hang_up' : '1'}, null, 'dialPadButtons')}}
 			</div>
@@ -91,11 +126,11 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 			</div>
 			<div class="itemContent">
 				{{:helper.link('Disconnect', 'close', {'disconnect' : value.true_name}, null, 'redButton')}}
-				{{if data.video_comm == null}}
+				<!-- {{if data.video_comm == null}}
 					{{:helper.link('Start Video', 'signal-diag', {'startvideo' : value.ref})}}
 				{{else data.video_comm == value.ref}}
 					{{:helper.link('End Video', 'signal-diag', {'endvideo' : value.true_name}, null, 'redButton')}}
-				{{/if}}
+				{{/if}} -->
 			</div>
 		</div>
 	{{/for}}
@@ -130,9 +165,40 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 {{else data.currentTab == 3}}
 
 	<h3>Known Devices</h3>
+	<div class="item">
+		<div class="itemLabel">
+			Device EPv2 Address:
+		</div>
+		<div class="itemContent">
+			<div style="float: left; width: 180px;">
+				{{:data.address}}
+			</div>
+		</div>
+	</div>
 	<HR>
 
-	{{for data.knownDevices}}
+	{{for data.contacts}}
+		<div class='item'>
+			<div class="itemLabel">
+			{{:value.name}}
+			</div>
+			<div class="itemContent">
+				<div style="float: left; width: 100%;">{{:value.number}}</div>
+				{{:helper.link('Copy', 'pencil', {'copy' : value.number, 'switch_tab' : 2})}}
+				{{:helper.link('Call', 'phone', {'dial' : value.number, 'copy' : value.number, 'switch_tab' : 2})}}
+				{{:helper.link('Msg', 'mail-closed', {'copy' : value.number, 'copy_name' : value.name, 'switch_tab' : 40})}}
+				{{:helper.link('Remove', 'pencil', {'RemoveContact' : index})}}
+				{{:helper.link('Rename', 'pencil', {'Rename' : index})}}
+			</div>
+		</div>
+	{{/for}}
+		<div class='item'>
+			<div class="itemLabel">
+			{{:helper.link('ADD', 'pencil', {'AddContact' : 1})}}
+			</div>
+		</div>
+
+<!-- 	{{for data.knownDevices}}
 		<div class='item'>
 			<div class="itemLabel">
 			{{:value.name}}
@@ -145,7 +211,7 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 			</div>
 		</div>
 	{{/for}}
-
+ -->
 <!-- Fourth Tab, Messaging -->
 
 {{else data.currentTab == 4}}
@@ -215,123 +281,6 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 			{{:helper.link('Edit Notes', 'pencil', {'edit' : 'edit'}, null, 'fixedLeft')}}
 		</div>
 	</div>
-
-<!-- Seventh Tab, Weather -->
-
-{{else data.currentTab == 7}}
-	<h3>Weather</h3>
-	<HR>
-
-	<h4>Current Conditions:</h4>
-<div class="item">
-    {{if data.aircontents.reading == 1}}
-		<div class="itemLabel">
-			Pressure:
-		</div>
-		<div class = "itemContent">
-			{{:helper.string('<span class="{0}">{1} kPa</span>', data.aircontents.pressure < 80 || data.aircontents.pressure > 120 ? 'bad' : data.aircontents.pressure < 95 || data.aircontents.pressure > 110 ? 'average' : 'good' , data.aircontents.pressure)}}
-		</div>
-		<div class="itemLabel">
-			Temperature:
-		</div>
-		<div class = "itemContent">
-			{{:helper.string('<span class="{0}">{1} &deg;C</span>', data.aircontents.temp < 5 || data.aircontents.temp > 35 ? 'bad' : data.aircontents.temp < 15 || data.aircontents.temp > 25 ? 'average' : 'good' , data.aircontents.temp)}}
-		</div>
-		<br>
-		<div class="itemLabel">
-			Oxygen:
-		</div>
-		<div class = "itemContent">
-			{{:helper.string('<span class="{0}">{1}%</span>', data.aircontents.oxygen < 17 ? 'bad' : data.aircontents.oxygen < 19 ? 'average' : 'good' , data.aircontents.oxygen)}}
-		</div>
-		<div class="itemLabel">
-			Nitrogen:
-		</div>
-		<div class = "itemContent">
-			{{:helper.string('<span class="{0}">{1}%</span>', data.aircontents.nitrogen > 82 ? 'bad' : data.aircontents.nitrogen > 80 ? 'average' : 'good' , data.aircontents.nitrogen)}}
-		</div>
-		{{if data.aircontents.carbon_dioxide > 0}}
-		<div class="itemLabel">
-			Carbon Dioxide:
-		</div>
-		<div class = "itemContent">
-			{{:helper.string('<span class="{0}">{1}%</span>', data.aircontents.carbon_dioxide > 5 ? 'bad' : 'good' , data.aircontents.carbon_dioxide)}}
-		</div>
-		{{/if}}
-		{{if data.aircontents.phoron > 0}}
-		<div class="itemLabel">
-			Phoron:
-		</div>
-		<div class = "itemContent">
-			{{:helper.string('<span class="{0}">{1}%</span>', data.aircontents.phoron  > 0 ? 'bad' : 'good' , data.aircontents.phoron)}}
-		</div>
-		{{/if}}
-		{{if data.aircontents.other > 0}}
-			<div class="itemLabel">
-				Unknown:
-			</div>
-			<div class = "itemContent">
-				<span class="bad">{{:data.aircontents.other}}%</span>
-			</div>
-		{{/if}}
-	{{else}}
-		<div class="itemContent" style="width: 100%;">
-			<span class="average"><b>Unable to get air reading</b></span>
-		</div>
-	{{/if}}
-</div>
-	<HR>
-	<h4>Weather Reports:</h4>
-	{{for data.weather}}
-		<div class="item">
-			<div class="itemLabel">
-				{{:value.Planet}}:
-			</div>
-			<div class="itemContent">
-				Time: {{:value.Time}}<BR>
-				Weather: {{:value.Weather}}, {{:helper.fixed(value.Temperature)}}&deg;C<BR>
-				High: {{:helper.fixed(value.High)}}&deg;C	| 	Low: {{:helper.fixed(value.Low)}}&deg;C<BR>
-				Wind Direction: {{:value.WindDir}}<BR>
-				Wind Speed: {{:value.WindSpeed}}<BR>
-				Forecast: {{:value.Forecast}}
-			</div>
-		</div>
-	{{empty}}
-		<div class="item">
-			<div class="itemLabel">
-				Error
-			</div>
-			<div class="itemContent">
-				No weather reports available. Please try again later.
-			</div>
-		</div>
-	{{/for}}
-
-<!-- Eighth Tab, Crew Manifest -->
-
-{{else data.currentTab == 8}}
-
-
-<h3>Citizen's Manifest</h3>
-
-<HR>
-
-<div class="item">
-	<center><table class="pmon"><tbody>
-		{{for data.manifest}}
-			{{if value.elems.length}}
-				<tr><th colspan="3" class={{:value.cat}}>{{:value.cat}}</th></tr>
-				{{for value.elems :itemValue:itemIndex}}
-					<tr>
-						<td><span class="average">{{:itemValue.name}}</span></td>
-						<td><span class="average">{{:itemValue.rank}}</span></td>
-						<td><span class="average">{{:itemValue.active}}</span></td>
-					</tr>
-				{{/for}}
-			{{/if}}
-		{{/for}}
-	</tbody></table></center>
-</div>
 
 <!-- Ninth Tab, Settings -->
 
@@ -413,7 +362,24 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 			<div style="float: left; width: 180px;">{{:helper.link(data.flashlight==1 ? 'Disable Flashlight' : 'Enable Flashlight', 'lightbulb', {'Light' : 1}, null,'fixedLeftWide')}}</div>
 		</div>
 	</div>
-
+	<h3>Wallpapers</h3>
+	<hr>
+	{{for data.wallpapers}}
+	<div class="item">
+		<div class="itemLabel">
+			{{:value.name}}
+			{{:helper.link(
+				"",
+				data.selected_wallpaper == value.file ? "check" :'radio-off',
+				{'wallpaper_select' : index},
+				data.selected_wallpaper == value.file ? 'selected' : null)
+			}}
+		</div>
+		<div class = "itemContent">
+			<div class="wallpaperPreview" style="background-image: url('{{:value.file}}');"></div>
+		</div>
+	</div>
+	{{/for}}
 
 <!-- Tenth Tab, External Device -->
 
