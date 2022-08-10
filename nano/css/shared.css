@@ -858,8 +858,8 @@ div.homeScreen
 .dialPadAddress {
 
 	float: left;
-	width: 192px;
-	height: 18px;
+	width: 250px;
+	height: 25px;
 	background: rgba(64, 98, 138, 0.4);
 	color: #ffffff;
 	border-left: 2px inset rgba(100, 100, 100, 0.5);
@@ -876,7 +876,7 @@ div.homeScreen
 
 	float: left;
 	width: 19%;
-	height: 18px;
+	height: 25px;
 	background: rgba(64, 98, 138, 0.4);
 	color: #ffffff;
 	border-right: 1px inset rgba(100, 100, 100, 0.5);

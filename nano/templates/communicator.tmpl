@@ -74,11 +74,9 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 				{{:helper.link('9', null, {'add_hex' : '9'}, null, 'dialPadKeys')}}
 			</div>
 			<div style="clear: both; padding-top: 1px;">
-				<!-- {{:helper.link('A', null, {'add_hex' : 'a'}, null, 'dialPadKeys')}} -->
 				<div class="dialPadKeys">_</div>
 				{{:helper.link('0', null, {'add_hex' : '0'}, null, 'dialPadKeys')}}
 				<div class="dialPadKeys">_</div>
-				<!-- {{:helper.link('B', null, {'add_hex' : 'b'}, null, 'dialPadKeys')}} -->
 			</div>
 			<!-- <div style="clear: both; padding-top: 1px;">
 				{{:helper.link('C', null, {'add_hex' : 'c'}, null, 'dialPadKeys')}}
@@ -86,6 +84,16 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 				{{:helper.link('E', null, {'add_hex' : 'e'}, null, 'dialPadKeys')}}
 				{{:helper.link('F', null, {'add_hex' : 'f'}, null, 'dialPadKeys')}}
 			</div> -->
+			<div style="clear: both; padding-top: 1px;">
+				{{:helper.link('A', null, {'add_hex' : 'a'}, null, 'dialPadKeys')}}
+				{{:helper.link('B', null, {'add_hex' : 'b'}, null, 'dialPadKeys')}}
+				{{:helper.link('C', null, {'add_hex' : 'c'}, null, 'dialPadKeys')}}
+			</div>
+			<div style="clear: both; padding-top: 1px;">
+				{{:helper.link('D', null, {'add_hex' : 'd'}, null, 'dialPadKeys')}}
+				{{:helper.link('E', null, {'add_hex' : 'e'}, null, 'dialPadKeys')}}
+				{{:helper.link('F', null, {'add_hex' : 'f'}, null, 'dialPadKeys')}}
+			</div>
 			<div style="clear: both; padding-top: 1px;">
 				{{:helper.link('Call', 'phone64', {'dial' : data.targetAddress}, null, 'dialPadButtons')}}
 				{{:helper.link('Message', 'comment64', {'message' : data.targetAddress, 'switch_tab' : 4}, null, 'dialPadButtons')}}
@@ -118,11 +126,11 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 			</div>
 			<div class="itemContent">
 				{{:helper.link('Disconnect', 'close', {'disconnect' : value.true_name}, null, 'redButton')}}
-				{{if data.video_comm == null}}
+				<!-- {{if data.video_comm == null}}
 					{{:helper.link('Start Video', 'signal-diag', {'startvideo' : value.ref})}}
 				{{else data.video_comm == value.ref}}
 					{{:helper.link('End Video', 'signal-diag', {'endvideo' : value.true_name}, null, 'redButton')}}
-				{{/if}}
+				{{/if}} -->
 			</div>
 		</div>
 	{{/for}}
@@ -157,9 +165,40 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 {{else data.currentTab == 3}}
 
 	<h3>Known Devices</h3>
+	<div class="item">
+		<div class="itemLabel">
+			Device EPv2 Address:
+		</div>
+		<div class="itemContent">
+			<div style="float: left; width: 180px;">
+				{{:data.address}}
+			</div>
+		</div>
+	</div>
 	<HR>
 
-	{{for data.knownDevices}}
+	{{for data.contacts}}
+		<div class='item'>
+			<div class="itemLabel">
+			{{:value.name}}
+			</div>
+			<div class="itemContent">
+				<div style="float: left; width: 100%;">{{:value.number}}</div>
+				{{:helper.link('Copy', 'pencil', {'copy' : value.number, 'switch_tab' : 2})}}
+				{{:helper.link('Call', 'phone', {'dial' : value.number, 'copy' : value.number, 'switch_tab' : 2})}}
+				{{:helper.link('Msg', 'mail-closed', {'copy' : value.number, 'copy_name' : value.name, 'switch_tab' : 40})}}
+				{{:helper.link('Remove', 'pencil', {'RemoveContact' : index})}}
+				{{:helper.link('Rename', 'pencil', {'Rename' : index})}}
+			</div>
+		</div>
+	{{/for}}
+		<div class='item'>
+			<div class="itemLabel">
+			{{:helper.link('ADD', 'pencil', {'AddContact' : 1})}}
+			</div>
+		</div>
+
+<!-- 	{{for data.knownDevices}}
 		<div class='item'>
 			<div class="itemLabel">
 			{{:value.name}}
@@ -172,7 +211,7 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 			</div>
 		</div>
 	{{/for}}
-
+ -->
 <!-- Fourth Tab, Messaging -->
 
 {{else data.currentTab == 4}}
@@ -242,35 +281,6 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 			{{:helper.link('Edit Notes', 'pencil', {'edit' : 'edit'}, null, 'fixedLeft')}}
 		</div>
 	</div>
-
-<!-- Seventh Tab, Weather -->
-
-{{else data.currentTab == 7}}
-
-<!-- Eighth Tab, Crew Manifest -->
-<!-- TODO: REPLACE with social network for advertising. -->
-{{else data.currentTab == 8}}
-
-<h3>Citizen's Manifest</h3>
-
-<HR>
-
-<div class="item">
-	<center><table class="pmon"><tbody>
-		{{for data.manifest}}
-			{{if value.elems.length}}
-				<tr><th colspan="3" class={{:value.cat}}>{{:value.cat}}</th></tr>
-				{{for value.elems :itemValue:itemIndex}}
-					<tr>
-						<td><span class="average">{{:itemValue.name}}</span></td>
-						<td><span class="average">{{:itemValue.rank}}</span></td>
-						<td><span class="average">{{:itemValue.active}}</span></td>
-					</tr>
-				{{/for}}
-			{{/if}}
-		{{/for}}
-	</tbody></table></center>
-</div>
 
 <!-- Ninth Tab, Settings -->
 

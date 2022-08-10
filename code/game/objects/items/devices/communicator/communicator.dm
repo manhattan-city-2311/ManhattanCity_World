@@ -72,6 +72,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 	var/target_address_name = ""
 	var/network_visibility = 1
 	var/ringer = 1
+	var/list/contacts = list() // list("number" = 0, "name" = "A")
 	var/list/known_devices = list()
 	var/datum/exonet_protocol/exonet = null
 	var/list/communicating = list()
