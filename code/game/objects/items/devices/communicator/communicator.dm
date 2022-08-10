@@ -22,7 +22,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 	desc = "A personal device used to enable long range dialog between two people, utilizing existing telecommunications infrastructure to allow \
 	communications across different cities, planets, or even star systems."
 	icon = 'icons/obj/device.dmi'
-	icon_state = "communicator"
+	icon_state = "tier1-off"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	show_messages = 1
@@ -358,15 +358,15 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 // Description: Self explanatory
 /obj/item/device/communicator/update_icon()
 	if(video_source)
-		icon_state = "communicator-video"
+		icon_state = "tier1-call"
 		return
 
 	if(voice_mobs.len || communicating.len)
-		icon_state = "communicator-active"
+		icon_state = "tier1-on"
 		return
 
 	if(alert_called)
-		icon_state = "communicator-called"
+		icon_state = "tier1-call"
 		return
 
 	icon_state = initial(icon_state)
