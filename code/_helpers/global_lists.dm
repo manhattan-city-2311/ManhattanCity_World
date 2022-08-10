@@ -162,7 +162,7 @@ var/global/list/string_slot_flags = list(
 		joblist[J.title] = J
 
 	//Languages and species.
-	paths = typesof(/datum/language)-/datum/language
+	paths = subtypesof(/datum/language)-/datum/language
 	for(var/T in paths)
 		var/datum/language/L = new T
 		all_languages[L.name] = L
@@ -173,7 +173,7 @@ var/global/list/string_slot_flags = list(
 			language_keys[lowertext(L.key)] = L
 
 	var/rkey = 0
-	paths = typesof(/datum/species)
+	paths = subtypesof(/datum/species)
 	for(var/T in paths)
 
 		rkey++
@@ -192,7 +192,7 @@ var/global/list/string_slot_flags = list(
 			whitelisted_species += S.name
 
 	//Posters
-	paths = typesof(/datum/poster) - /datum/poster
+	paths = subtypesof(/datum/poster)
 	for(var/T in paths)
 		var/datum/poster/P = new T
 		poster_designs += P
