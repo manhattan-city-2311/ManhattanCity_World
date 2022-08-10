@@ -226,21 +226,14 @@
 	SSjobs.AssignRole(src, rank, 1)
 
 	var/mob/living/character = create_character(T)	//creates the human and transfers vars and mind
-	var/datum/persistent_inventory/PI = check_persistent_storage_exists(character.client.prefs.unique_id)
-	if(!PI)
-		PI = make_new_inventory(name, character.client.prefs.unique_id)
-
-	if(!PI)
-		character = SSjobs.EquipRank(character, rank, 1)					//equips the human
-		if(!is_prisoner)
-			// Equip our custom items only AFTER deploying to spawn points eh? Also, not as a prisoner, since they can break out.
-			equip_custom_items(character)
-	else
-		PI.load_inventory()
-		PI.load_player_inventory(character)
+	character = SSjobs.EquipRank(character, rank, 1)
 
 	UpdateFactionList(character)
 	log_game("JOINED [key_name(character)] as \"[rank]\"")
+
+	if(!is_prisoner)
+		// Equip our custom items only AFTER deploying to spawn points eh? Also, not as a prisoner, since they can break out.
+		equip_custom_items(character)
 
 	// Moving wheelchair if they have one
 	if(character.buckled && istype(character.buckled, /obj/structure/bed/chair/wheelchair))

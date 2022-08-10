@@ -295,15 +295,9 @@ var/global/datum/controller/gameticker/ticker
 				if(player.mind.assigned_role == "Mayor")
 					captainless=0
 				if(!player_is_antag(player.mind, only_offstation_roles = 1))
-					var/datum/persistent_inventory/PI = check_persistent_storage_exists(player.client.prefs.unique_id)
-					if(!PI)
-						PI = make_new_inventory(name, player.client.prefs.unique_id)
-						SSjobs.EquipRank(player, player.mind.assigned_role, 0)
-						UpdateFactionList(player)
-						equip_custom_items(player)
-					else
-						PI.load_inventory()
-						PI.load_player_inventory(player)
+					SSjobs.EquipRank(player, player.mind.assigned_role, 0)
+					UpdateFactionList(player)
+					equip_custom_items(player)
 		if(captainless)
 			for(var/mob/M in player_list)
 				if(!istype(M,/mob/new_player))
