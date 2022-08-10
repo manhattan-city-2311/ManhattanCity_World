@@ -118,37 +118,163 @@
 /area/planets/Manhattan/indoor/north/gas/bathroom
 	icon_state = "north_m3"
 
+/area/planets/Manhattan/indoor/north/cityhall
+	base_turf = /turf/simulated/floor/plating
+	icon_state = "north_m4"
+
+/area/planets/Manhattan/indoor/north/cityhall/office1
+/area/planets/Manhattan/indoor/north/cityhall/office2
+/area/planets/Manhattan/indoor/north/cityhall/archive
+/area/planets/Manhattan/indoor/north/cityhall/courtroom
+/area/planets/Manhattan/indoor/north/cityhall/courtroomwaiting
+
+/area/planets/Manhattan/indoor/north/cityhall/upper
+	base_turf = /turf/simulated/open
+	icon_state = "north_m4"
+
+/area/planets/Manhattan/indoor/north/cityhall/upper/headslounge
+/area/planets/Manhattan/indoor/north/cityhall/upper/restroom
+/area/planets/Manhattan/indoor/north/cityhall/upper/briefing
+/area/planets/Manhattan/indoor/north/cityhall/upper/mayoroffice
+/area/planets/Manhattan/indoor/north/cityhall/upper/solgov
+/area/planets/Manhattan/indoor/north/cityhall/upper/gcc
+
+/area/planets/Manhattan/indoor/north/crey
+	base_turf = /turf/simulated/floor/plating
+	icon_state = "north_m2"
+
+/area/planets/Manhattan/indoor/north/crey/office1
+/area/planets/Manhattan/indoor/north/crey/office2
+/area/planets/Manhattan/indoor/north/crey/recreationroom
+/area/planets/Manhattan/indoor/north/crey/rndmain
+/area/planets/Manhattan/indoor/north/crey/cyberspace
+/area/planets/Manhattan/indoor/north/crey/restroom
+/area/planets/Manhattan/indoor/north/crey/storage
+/area/planets/Manhattan/indoor/north/crey/secretaryoffice
+
+/area/planets/Manhattan/indoor/north/crey/under
+	base_turf = /turf/simulated/floor/plating
+	icon_state = "north_m2"
+
+/area/planets/Manhattan/indoor/north/crey/under/backrooms
+/area/planets/Manhattan/indoor/north/crey/under/backrooms/sec
+/area/planets/Manhattan/indoor/north/crey/under/backrooms/watching
+
+/area/planets/Manhattan/indoor/north/crey/under/hydro
+/area/planets/Manhattan/indoor/north/crey/under/firingrange
+/area/planets/Manhattan/indoor/north/crey/under/workshop
+/area/planets/Manhattan/indoor/north/crey/under/xenobio
+/area/planets/Manhattan/indoor/north/crey/under/bombingrange
+/area/planets/Manhattan/indoor/north/crey/under/lockerroom
+
+/area/planets/Manhattan/indoor/north/crey/upper
+	base_turf = /turf/simulated/open
+	icon_state = "north_m2"
+
+/area/planets/Manhattan/indoor/north/crey/upper/creyhead
+/area/planets/Manhattan/indoor/north/crey/upper/restroom
+/area/planets/Manhattan/indoor/north/crey/upper/security
+/area/planets/Manhattan/indoor/north/crey/upper/briefing
+/area/planets/Manhattan/indoor/north/crey/upper/armory
+
+/area/planets/Manhattan/indoor/north/house_standart1
+	base_turf = /turf/simulated/floor/plating
+
 /area/planets/Manhattan/indoor/north/house_standart1/upper
 	base_turf = /turf/simulated/open
-	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/house_standart1/room1
 	icon_state = "north_m1"
 
+/area/planets/Manhattan/indoor/north/house_standart1/room1/bathroom
+/area/planets/Manhattan/indoor/north/house_standart1/room1/hall
+/area/planets/Manhattan/indoor/north/house_standart1/room1/bedroom
+
+
 /area/planets/Manhattan/indoor/north/house_standart1/room2
 	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room2/bathroom
+/area/planets/Manhattan/indoor/north/house_standart1/room2/hall
+/area/planets/Manhattan/indoor/north/house_standart1/room2/bedroom
 
 /area/planets/Manhattan/indoor/north/house_standart1/room3
 	icon_state = "north_m1"
 
+/area/planets/Manhattan/indoor/north/house_standart1/room3/bathroom
+/area/planets/Manhattan/indoor/north/house_standart1/room3/hall
+/area/planets/Manhattan/indoor/north/house_standart1/room3/bedroom
+
 /area/planets/Manhattan/indoor/north/house_standart1/room4
 	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room4/bathroom
+/area/planets/Manhattan/indoor/north/house_standart1/room4/hall
+/area/planets/Manhattan/indoor/north/house_standart1/room4/bedroom
 
 /area/planets/Manhattan/indoor/north/house_standart1/room5
 	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
 
+/area/planets/Manhattan/indoor/north/house_standart1/room5/bathroom
+/area/planets/Manhattan/indoor/north/house_standart1/room5/hall
+/area/planets/Manhattan/indoor/north/house_standart1/room5/bedroom
+
 /area/planets/Manhattan/indoor/north/house_standart1/room6
 	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room6/bathroom
+/area/planets/Manhattan/indoor/north/house_standart1/room6/hall
+/area/planets/Manhattan/indoor/north/house_standart1/room6/bedroom
 
 /area/planets/Manhattan/indoor/north/house_standart1/room7
 	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
 
+/area/planets/Manhattan/indoor/north/house_standart1/room7/bathroom
+/area/planets/Manhattan/indoor/north/house_standart1/room7/hall
+/area/planets/Manhattan/indoor/north/house_standart1/room7/bedroom
+
 /area/planets/Manhattan/indoor/north/house_standart1/room8
 	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room8/bathroom
+/area/planets/Manhattan/indoor/north/house_standart1/room8/hall
+/area/planets/Manhattan/indoor/north/house_standart1/room8/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart1/room9
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room9/bathroom
+/area/planets/Manhattan/indoor/north/house_standart1/room9/hall
+/area/planets/Manhattan/indoor/north/house_standart1/room9/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart1/room10
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room10/bathroom
+/area/planets/Manhattan/indoor/north/house_standart1/room10/hall
+/area/planets/Manhattan/indoor/north/house_standart1/room10/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart1/room11
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room11/bathroom
+/area/planets/Manhattan/indoor/north/house_standart1/room11/hall
+/area/planets/Manhattan/indoor/north/house_standart1/room11/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart1/room12
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart1/room12/bathroom
+/area/planets/Manhattan/indoor/north/house_standart1/room12/hall
+/area/planets/Manhattan/indoor/north/house_standart1/room12/bedroom
 
 /area/planets/Manhattan/indoor/north/house_standart1/balcony
 	icon_state = "north_m3"
@@ -163,6 +289,296 @@
 /area/planets/Manhattan/indoor/north/house_standart1/balcony/three
 
 /area/planets/Manhattan/indoor/north/house_standart1/balcony/four
+
+/area/planets/Manhattan/indoor/north/house_standart2
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/house_standart2/upper
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/house_standart2/room1
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart2/room1/bathroom
+/area/planets/Manhattan/indoor/north/house_standart2/room1/hall
+/area/planets/Manhattan/indoor/north/house_standart2/room1/bedroom
+
+
+/area/planets/Manhattan/indoor/north/house_standart2/room2
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart2/room2/bathroom
+/area/planets/Manhattan/indoor/north/house_standart2/room2/hall
+/area/planets/Manhattan/indoor/north/house_standart2/room2/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart2/room3
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart2/room3/bathroom
+/area/planets/Manhattan/indoor/north/house_standart2/room3/hall
+/area/planets/Manhattan/indoor/north/house_standart2/room3/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart2/room4
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart2/room4/bathroom
+/area/planets/Manhattan/indoor/north/house_standart2/room4/hall
+/area/planets/Manhattan/indoor/north/house_standart2/room4/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart2/room5
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart2/room5/bathroom
+/area/planets/Manhattan/indoor/north/house_standart2/room5/hall
+/area/planets/Manhattan/indoor/north/house_standart2/room5/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart2/room6
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart2/room6/bathroom
+/area/planets/Manhattan/indoor/north/house_standart2/room6/hall
+/area/planets/Manhattan/indoor/north/house_standart2/room6/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart2/room7
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart2/room7/bathroom
+/area/planets/Manhattan/indoor/north/house_standart2/room7/hall
+/area/planets/Manhattan/indoor/north/house_standart2/room7/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart2/room8
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart2/room8/bathroom
+/area/planets/Manhattan/indoor/north/house_standart2/room8/hall
+/area/planets/Manhattan/indoor/north/house_standart2/room8/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart2/room9
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart2/room9/bathroom
+/area/planets/Manhattan/indoor/north/house_standart2/room9/hall
+/area/planets/Manhattan/indoor/north/house_standart2/room9/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart2/room10
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart2/room10/bathroom
+/area/planets/Manhattan/indoor/north/house_standart2/room10/hall
+/area/planets/Manhattan/indoor/north/house_standart2/room10/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart2/room11
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart2/room11/bathroom
+/area/planets/Manhattan/indoor/north/house_standart2/room11/hall
+/area/planets/Manhattan/indoor/north/house_standart2/room11/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart2/room12
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart2/room12/bathroom
+/area/planets/Manhattan/indoor/north/house_standart2/room12/hall
+/area/planets/Manhattan/indoor/north/house_standart2/room12/bedroom
+
+/area/planets/Manhattan/indoor/north/house_standart2/balcony
+	icon_state = "north_m3"
+	sound_env = CITY
+	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/house_standart2/balcony/one
+
+/area/planets/Manhattan/indoor/north/house_standart2/balcony/two
+
+/area/planets/Manhattan/indoor/north/house_standart2/balcony/three
+
+/area/planets/Manhattan/indoor/north/house_standart2/balcony/four
+
+/area/planets/Manhattan/indoor/north/house_standart2/balcony/five
+
+/area/planets/Manhattan/indoor/north/house_standart2/balcony/six
+
+/area/planets/Manhattan/indoor/north/house_standart2/balcony/seven
+
+/area/planets/Manhattan/indoor/north/house_standart2/balcony/eight
+
+/area/planets/Manhattan/indoor/north/house_standart3
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/house_standart3/upper
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/house_standart3/room1
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart3/room1/bathroom
+/area/planets/Manhattan/indoor/north/house_standart3/room1/hall
+/area/planets/Manhattan/indoor/north/house_standart3/room1/bedroom
+/area/planets/Manhattan/indoor/north/house_standart3/room1/kitchen
+/area/planets/Manhattan/indoor/north/house_standart3/room1/bedroomkid
+/area/planets/Manhattan/indoor/north/house_standart3/room1/storage
+
+/area/planets/Manhattan/indoor/north/house_standart3/room2
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/house_standart3/room2/bathroom
+/area/planets/Manhattan/indoor/north/house_standart3/room2/hall
+/area/planets/Manhattan/indoor/north/house_standart3/room2/bedroom
+/area/planets/Manhattan/indoor/north/house_standart3/room2/kitchen
+/area/planets/Manhattan/indoor/north/house_standart3/room2/bedroomkid
+/area/planets/Manhattan/indoor/north/house_standart3/room2/storage
+
+/area/planets/Manhattan/indoor/north/house_standart3/room3
+	icon_state = "north_m1"
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/house_standart3/room3/bathroom
+/area/planets/Manhattan/indoor/north/house_standart3/room3/hall
+/area/planets/Manhattan/indoor/north/house_standart3/room3/bedroom
+/area/planets/Manhattan/indoor/north/house_standart3/room3/kitchen
+/area/planets/Manhattan/indoor/north/house_standart3/room3/bedroomkid
+/area/planets/Manhattan/indoor/north/house_standart3/room3/storage
+
+/area/planets/Manhattan/indoor/north/house_standart3/room4
+	icon_state = "north_m1"
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/house_standart3/room4/bathroom
+/area/planets/Manhattan/indoor/north/house_standart3/room4/hall
+/area/planets/Manhattan/indoor/north/house_standart3/room4/bedroom
+/area/planets/Manhattan/indoor/north/house_standart3/room4/kitchen
+/area/planets/Manhattan/indoor/north/house_standart3/room4/bedroomkid
+/area/planets/Manhattan/indoor/north/house_standart3/room4/storage
+
+/area/planets/Manhattan/indoor/north/house_standart3/room5
+	icon_state = "north_m1"
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/house_standart3/room5/bathroom
+/area/planets/Manhattan/indoor/north/house_standart3/room5/hall
+/area/planets/Manhattan/indoor/north/house_standart3/room5/bedroom
+/area/planets/Manhattan/indoor/north/house_standart3/room5/kitchen
+/area/planets/Manhattan/indoor/north/house_standart3/room5/bedroomkid
+/area/planets/Manhattan/indoor/north/house_standart3/room5/storage
+
+/area/planets/Manhattan/indoor/north/house_standart3/room6
+	icon_state = "north_m1"
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/house_standart3/room6/bathroom
+/area/planets/Manhattan/indoor/north/house_standart3/room6/hall
+/area/planets/Manhattan/indoor/north/house_standart3/room6/bedroom
+/area/planets/Manhattan/indoor/north/house_standart3/room6/kitchen
+/area/planets/Manhattan/indoor/north/house_standart3/room6/bedroomkid
+/area/planets/Manhattan/indoor/north/house_standart3/room6/storage
+
+/area/planets/Manhattan/indoor/north/elite1
+	icon_state = "north_m3"
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/elite1/hall
+/area/planets/Manhattan/indoor/north/elite1/hallway1
+/area/planets/Manhattan/indoor/north/elite1/hallway2
+/area/planets/Manhattan/indoor/north/elite1/bath
+/area/planets/Manhattan/indoor/north/elite1/kitchen
+/area/planets/Manhattan/indoor/north/elite1/carpark
+/area/planets/Manhattan/indoor/north/elite1/storage
+/area/planets/Manhattan/indoor/north/elite1/maidroom
+/area/planets/Manhattan/indoor/north/elite1/hall2
+
+/area/planets/Manhattan/indoor/north/elite1/upper
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/elite1/upper/hall3
+/area/planets/Manhattan/indoor/north/elite1/upper/workroom
+/area/planets/Manhattan/indoor/north/elite1/upper/bedroom
+
+/area/planets/Manhattan/indoor/north/elite2
+	icon_state = "north_m3"
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/elite2/hallkitchen
+/area/planets/Manhattan/indoor/north/elite2/hallway
+/area/planets/Manhattan/indoor/north/elite2/bath
+/area/planets/Manhattan/indoor/north/elite2/carpark
+/area/planets/Manhattan/indoor/north/elite2/storage
+/area/planets/Manhattan/indoor/north/elite2/touchgrass
+
+/area/planets/Manhattan/indoor/north/elite2/upper
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/elite2/upper/hallway2
+/area/planets/Manhattan/indoor/north/elite2/upper/workroom
+/area/planets/Manhattan/indoor/north/elite2/upper/bedroom
+
+
+/area/planets/Manhattan/indoor/north/elite3
+	icon_state = "north_m3"
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/elite3/hallkitchen
+/area/planets/Manhattan/indoor/north/elite3/hallway
+/area/planets/Manhattan/indoor/north/elite3/bath
+/area/planets/Manhattan/indoor/north/elite3/carpark
+/area/planets/Manhattan/indoor/north/elite3/storage
+/area/planets/Manhattan/indoor/north/elite3/touchgrass
+
+/area/planets/Manhattan/indoor/north/elite2/upper
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/elite3/upper/hallway2
+/area/planets/Manhattan/indoor/north/elite3/upper/workroom
+/area/planets/Manhattan/indoor/north/elite3/upper/bedroom
+
+/area/planets/Manhattan/indoor/north/hotel
+	icon_state = "north_m1"
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/hotel/hall
+/area/planets/Manhattan/indoor/north/hotel/receprion
+/area/planets/Manhattan/indoor/north/hotel/room1
+/area/planets/Manhattan/indoor/north/hotel/room1/bath
+/area/planets/Manhattan/indoor/north/hotel/room2
+/area/planets/Manhattan/indoor/north/hotel/room2/bath
+/area/planets/Manhattan/indoor/north/hotel/room3
+/area/planets/Manhattan/indoor/north/hotel/room3/bath
+/area/planets/Manhattan/indoor/north/hotel/room4
+/area/planets/Manhattan/indoor/north/hotel/room4/bath
+/area/planets/Manhattan/indoor/north/hotel/kitchen
+/area/planets/Manhattan/indoor/north/hotel/cafe
+
+/area/planets/Manhattan/indoor/north/hotel/upper
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/hotel/upper/hall
+/area/planets/Manhattan/indoor/north/hotel/upper/washing
+/area/planets/Manhattan/indoor/north/hotel/upper/room5
+/area/planets/Manhattan/indoor/north/hotel/upper/room5/bath
+/area/planets/Manhattan/indoor/north/hotel/upper/room6
+/area/planets/Manhattan/indoor/north/hotel/upper/room6/bath
+/area/planets/Manhattan/indoor/north/hotel/upper/room7
+/area/planets/Manhattan/indoor/north/hotel/upper/room7/bath
+/area/planets/Manhattan/indoor/north/hotel/upper/room8
+/area/planets/Manhattan/indoor/north/hotel/upper/room8/bath
+/area/planets/Manhattan/indoor/north/hotel/upper/room9
+/area/planets/Manhattan/indoor/north/hotel/upper/room9/bath
+/area/planets/Manhattan/indoor/north/hotel/upper/room11
+/area/planets/Manhattan/indoor/north/hotel/upper/room11/bath
+/area/planets/Manhattan/indoor/north/hotel/upper/room12
+/area/planets/Manhattan/indoor/north/hotel/upper/room12/bath
+/area/planets/Manhattan/indoor/north/hotel/upper/room12/bedroom
+/area/planets/Manhattan/indoor/north/hotel/upper/room13
+/area/planets/Manhattan/indoor/north/hotel/upper/room13/bath
+/area/planets/Manhattan/indoor/north/hotel/upper/room13/bedroom
 
 /area/planets/Manhattan/indoor/north/police_dept
 	ambience = list('sound/ambience/MAIN0C.SAP.ogg', 'sound/ambience/MAIN05.SAP.ogg')

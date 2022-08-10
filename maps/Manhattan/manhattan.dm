@@ -6,6 +6,7 @@
 	#include "manhattan-4.dmm"
 	#include "manhattan_defines.dm"
 	#include "manhattan_areas.dm"
+	#include "manhattan_npcs.dm"
 	#include "manhattan_elevator.dm"
 
 	#define USING_MAP_DATUM /datum/map/new_manhattan

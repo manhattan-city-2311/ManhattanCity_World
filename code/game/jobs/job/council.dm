@@ -111,8 +111,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	wage = 1000
 	synth_wage = 150
 
-	access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
-	minimal_access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
+	access = list(access_heads)
+	minimal_access = list(access_heads)
 
 	minimum_character_age = 20
 

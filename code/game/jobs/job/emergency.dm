@@ -24,11 +24,11 @@
 	access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
 			            access_external_airlocks, access_atmospherics, access_emergency_storage,
 			            access_construction, access_sec_doors,
-			            access_ce, access_tcomsat)
+			            access_ce, access_tcomsat, access_heads)
 	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
 			            access_external_airlocks, access_atmospherics, access_emergency_storage,
 			            access_construction, access_sec_doors,
-			            access_ce, access_tcomsat)
+			            access_ce, access_tcomsat, access_heads)
 	alt_titles = list("Public Works Director", "Maintenance Director")
 	minimal_player_age = 7
 

@@ -16,10 +16,10 @@
 	wage = 2000
 	access = list(access_security, access_warrant, access_bodyguard, access_sec_doors, access_brig, access_armory,
 			            access_forensics_lockers,
-			            access_hos)
+			            access_hos, access_heads)
 	minimal_access = list(access_security, access_warrant, access_sec_doors, access_brig, access_armory,
 			            access_forensics_lockers,
-			            access_hos)
+			            access_hos, access_heads)
 	minimum_character_age = 30
 	minimal_player_age = 14
 	hard_whitelisted = TRUE

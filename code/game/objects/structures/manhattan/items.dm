@@ -21,3 +21,11 @@
 	icon_state = "id"
 	max_storage_space = 48
 	starts_with = list(/obj/item/weapon/card/id/science/scientist = 20)
+
+/obj/item/weapon/storage/box/ids_cityhall
+	name = "box of spare City Hall IDs"
+	desc = "Has so many IDs."
+	icon_state = "id"
+	max_storage_space = 48
+	starts_with = list(/obj/item/weapon/card/id/silver/hop = 15,
+						/obj/item/weapon/card/id/silver/secretary = 15)
