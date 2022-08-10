@@ -298,7 +298,6 @@ var/global/datum/controller/gameticker/ticker
 					var/datum/persistent_inventory/PI = check_persistent_storage_exists(player.client.prefs.unique_id)
 					if(!PI)
 						PI = make_new_inventory(name, player.client.prefs.unique_id)
-					if(!PI)
 						SSjobs.EquipRank(player, player.mind.assigned_role, 0)
 						UpdateFactionList(player)
 						equip_custom_items(player)
