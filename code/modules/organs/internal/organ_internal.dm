@@ -21,6 +21,9 @@
 
 /obj/item/organ/internal/initialize()
 	..()
+	if(!owner)
+		return
+
 	oxygen_consumption = oxygen_consumption * owner.k
 	if(owner.client?.prefs.all_organ_damage)
 		damage = owner.client.prefs.all_organ_damage[name]

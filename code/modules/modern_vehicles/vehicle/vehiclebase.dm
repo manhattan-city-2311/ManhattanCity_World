@@ -119,9 +119,10 @@
 	return get_components(/obj/item/vehicle_part/wheel)
 
 /obj/manhattan/vehicle/initialize(mapload)
+	. = ..()
 	if(mapload && persistent_online)
 		return INITIALIZE_HINT_QDEL
-	SSpersistence.track_value(src, /datum/persistent/vehicle)
+	SSpersistence.track_value(src, type)
 
 	comp_prof = new comp_prof(src)
 	if(light_range != 0)
@@ -208,7 +209,7 @@
 		return
 	. = ..()
 
-/obj/manhattan/vehicle/bullet_act(var/obj/item/projectile/P, var/def_zone)
+/obj/manhattan/vehicle/bullet_act(obj/item/projectile/P, def_zone)
 	var/pos_to_dam = should_damage_occ()
 	var/mob/mob_to_dam
 	if(movement_destroyed)

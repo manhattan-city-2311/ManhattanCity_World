@@ -1,4 +1,3 @@
-#define ALL_VEHICLE_POSITIONS list("driver","passenger","gunner")
 /datum/vehicle_interior
 	var/id
 	var/global/gid = 0
@@ -15,7 +14,7 @@
 
 	var/global/list/datum/map_template/templates_cache = list()
 
-/datum/vehicle_interior/New(var/interior_template = /datum/map_template, var/new_vehicle)
+/datum/vehicle_interior/New(interior_template = /datum/map_template, new_vehicle)
 	for(var/obj/effect/interior_spawn/S in GLOB.vehicle_spawnpoints)
 		middle_turf = get_turf(S)
 
@@ -50,12 +49,15 @@
 	var/id
 
 /obj/effect/interior_spawn
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "rift"
 	var/free_x = 0
 	var/free_y = 0
 
 /obj/effect/interior_spawn/initialize()
 	. = ..()
 	GLOB.vehicle_spawnpoints += src
+	icon_state = null
 
 /obj/manhattan/vehicle/large
 	var/datum/vehicle_interior/interior = null
@@ -67,6 +69,13 @@
 	..()
 	interior = new(interior_template, src)
 
+/obj/manhattan/vehicle/large/proc/move_to_interior(atom/movable/user)
+	visible_message(SPAN_INFO("[user] enters the interior of [src]."))
+	to_chat(user, SPAN_INFO("You are now in the interior of [src]."))
+	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
+	user.forceMove(get_turf(interior.entrance))
+	occupants[user] = "passenger"
+
 /obj/manhattan/vehicle/large/enter_vehicle()
 	set name = "Войти в транспорт"
 	set category = "Транспорт"
@@ -76,23 +85,20 @@
 	if(!istype(user) || !src.Adjacent(user) || user.incapacitated())
 		return
 	var/player_pos_choice
-	var/list/L = ALL_VEHICLE_POSITIONS
+	var/list/L = list("driver","passenger","gunner", "Cancel")
 	if(L.len == 1)
 		player_pos_choice = L[1]
 	else
-		player_pos_choice = input(user, "Enter which position?", "Vehicle Entry Position Select", "Cancel") in ALL_VEHICLE_POSITIONS + list("Cancel")
+		player_pos_choice = input(user, "Enter which position?", "Vehicle Entry Position Select", "Cancel") in L
 
 	switch(player_pos_choice)
 		if("cancel")
 			return
 		if("passenger")
-			visible_message(SPAN_INFO("[user] enters the interior of [src]."))
-			to_chat(user, SPAN_INFO("You are now in the interior of [src]."))
-			playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
-			user.forceMove(get_turf(interior.entrance))
-			occupants[user] = "passenger"
+			move_to_interior(user)
 		else
 			enter_as_position(user, player_pos_choice)
+
 /obj/manhattan/vehicle/large/enter_as_position(var/mob/user,var/position = "driver")
 	if(block_enter_exit)
 		to_chat(user, SPAN_NOTICE("The [src] is locked."))

@@ -44,7 +44,7 @@
 		return
 
 	var/mob/living/carbon/human/driver = LAZYFIRST(get_occupants_in_position("driver"))
-	//var/mob/living/carbon/human/gunner = LAZYFIRST(get_occupants_in_position("gunner"))
+	var/mob/living/carbon/human/gunner = LAZYFIRST(get_occupants_in_position("gunner"))
 
 	var/x = rider_xs[dir2text(dir & ALL_CARDINALS)]
 	var/y = rider_ys[dir2text(dir & ALL_CARDINALS)]
@@ -52,6 +52,10 @@
 		driver.pixel_x = x
 		driver.pixel_y = y
 		vis_contents += driver
+	if(gunner)
+		gunner.pixel_x = round(x * 1.2)
+		gunner.pixel_y = round(y * 1.2)
+		vis_contents += gunner
 	overlays += img
 
 /obj/manhattan/vehicle/motorcycle/exit_vehicle(mob/user)

@@ -108,9 +108,10 @@
 
 /turf/proc/update_ao()
 	var/list/cache = SSao.cache
-	CUT_AO(shadower, ao_overlays_mimic)
+	if(shadower)
+		CUT_AO(shadower, ao_overlays_mimic)
 	CUT_AO(src, ao_overlays)
-	if (z_flags & ZM_MIMIC_BELOW)
+	if (shadower && z_flags & ZM_MIMIC_BELOW)
 		REGEN_AO(shadower, ao_overlays_mimic, ao_neighbors_mimic)
 	if (AO_TURF_CHECK(src) && !(z_flags & ZM_MIMIC_NO_AO))
 		REGEN_AO(src, ao_overlays, ao_neighbors)
