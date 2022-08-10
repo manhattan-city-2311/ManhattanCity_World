@@ -60,7 +60,7 @@
 	var/antag_faction = ""
 	var/antag_vis = ""
 
-	var/decaylevel
+	var/decaylevel = 0
 
 	//Equipment slots
 	var/obj/item/wear_suit = null

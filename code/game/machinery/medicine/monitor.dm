@@ -6,7 +6,7 @@
 	density = 0
 	var/mob/living/carbon/human/attached
 	var/alarm = FALSE
-	var/modpulse = 2 //1-6
+	var/modpulse = 1 //0-6
 
 /obj/machinery/monitor/MouseDrop(mob/living/carbon/human/over_object, src_location, over_location)
 	if(!CanMouseDrop(over_object))
@@ -16,6 +16,7 @@
 		visible_message("\The [attached] is taken off \the [src]")
 		attached = null
 		world << sound(null, 1, 0, PULSEBEEP_SOUND_CHANNEL)
+		alarm = FALSE
 	else if(over_object)
 		if(!ishuman(over_object))
 			return
@@ -39,6 +40,7 @@
 		alarm = FALSE
 		var/area/A = get_area(src)
 		A.code = ""
+		A.handle_code()
 	..()
 
 /obj/machinery/monitor/update_icon()
@@ -98,7 +100,7 @@
 		return PROCESS_KILL
 
 	update_icon()
-	var/obj/item/organ/internal/heart/H = attached?.internal_organs_by_name[O_HEART]
+	var/obj/item/organ/internal/heart/H = attached.internal_organs_by_name[O_HEART]
 	handle_pulse(H.pulse)
 	if(alarm)
 		var/area/A = get_area(src)

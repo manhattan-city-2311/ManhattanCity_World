@@ -97,8 +97,6 @@
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
-		if(attempt_late_mob_move(client))
-			return 1
 
 		AttemptLateSpawn("Civilian")
 		return 1
@@ -192,20 +190,6 @@
 
 	return 1
 
-/mob/new_player/proc/attempt_late_mob_move(var/client/C)
-	var/mob/living/carbon/human/M = null
-	for(var/mob/living/carbon/human/H in mob_list)
-		if(H.last_key == C.key)
-			M = H
-			break
-	if(!M)
-		return FALSE
-	if(M.stat == DEAD)
-		return FALSE
-	set_viewsize()
-	M.key = C.key
-	return TRUE
-
 /mob/new_player/proc/AttemptLateSpawn(rank, var/turf/spawning_at, antag_type)
 	if (src != usr)
 		return 0
@@ -242,13 +226,20 @@
 	SSjobs.AssignRole(src, rank, 1)
 
 	var/mob/living/character = create_character(T)	//creates the human and transfers vars and mind
-	character = SSjobs.EquipRank(character, rank, 1)					//equips the human
+	var/datum/persistent_inventory/PI = null
+	for(var/datum/persistent_inventory/P in GLOB.persistent_inventories)
+		if(P.owner_name == character.name)
+			P.load_player_inventory(character)
+			PI = P
+			break
+
+	if(!PI)
+		character = SSjobs.EquipRank(character, rank, 1)					//equips the human
+		if(!is_prisoner)
+			// Equip our custom items only AFTER deploying to spawn points eh? Also, not as a prisoner, since they can break out.
+			equip_custom_items(character)
 	UpdateFactionList(character)
 	log_game("JOINED [key_name(character)] as \"[rank]\"")
-
-	if(!is_prisoner)
-		// Equip our custom items only AFTER deploying to spawn points eh? Also, not as a prisoner, since they can break out.
-		equip_custom_items(character)
 
 	// Moving wheelchair if they have one
 	if(character.buckled && istype(character.buckled, /obj/structure/bed/chair/wheelchair))

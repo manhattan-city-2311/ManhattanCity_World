@@ -205,7 +205,7 @@ var/persistent_online = FALSE
 // Don't save list - Better to keep a track of things here.
 
 /mob
-	dont_save = FALSE //TODO: Check everything that this can tamper with!!!
+	dont_save = TRUE
 
 /atom/movable/lighting_overlay
 	dont_save = TRUE

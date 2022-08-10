@@ -427,11 +427,12 @@
 		return new_inv
 
 
-/obj/machinery/inventory_machine/proc/make_new_inventory(owner_nm, uid)
-	var/datum/persistent_inventory/new_inv = new /datum/persistent_inventory(src)
+/proc/make_new_inventory(owner_nm, var/unid)
+	var/datum/persistent_inventory/new_inv = new /datum/persistent_inventory
 
+	unid = rand(999999)
 	new_inv.owner_name = owner_nm
-	new_inv.unique_id = uid
+	new_inv.unique_id = unid
 
 	return new_inv
 
@@ -612,7 +613,23 @@
 	var/owner_name = ""
 	var/unique_id = ""
 
-	var/list/stored_items = list()
+	var/list/stored_items = list(
+		"backpack",
+		"uniform",
+		"suit",
+		"glasses",
+		"shoes",
+		"helmet",
+		"gloves",
+		"lear",
+		"rear",
+		"lpocket",
+		"rpocket",
+		"lhand",
+		"rhand",
+		"belt",
+		"wearid",
+		)
 
 	var/max_possible_items = 60 // it won't exceed this amount
 
@@ -620,15 +637,44 @@
 	..()
 	GLOB.persistent_inventories += src
 
-/datum/persistent_inventory/proc/add_item(var/obj/item/O, mob/user)
+/datum/persistent_inventory/proc/save_player_inventory(mob/living/carbon/human/user)
+	stored_items.Cut()
+	add_item(user.wear_suit, "suit")
+	add_item(user.w_uniform, "uniform")
+	add_item(user.shoes, "shoes")
+	add_item(user.belt, "belt")
+	add_item(user.glasses, "glasses")
+	add_item(user.gloves, "gloves")
+	add_item(user.head, "head")
+	add_item(user.l_ear, "lear")
+	add_item(user.r_ear, "rear")
+	add_item(user.wear_id, "wearid")
+	add_item(user.l_store, "lpocket")
+	add_item(user.r_store, "rpocket")
+	add_item(user.s_store, "backpack")
+
+/datum/persistent_inventory/proc/load_player_inventory(mob/living/carbon/human/user)
+	user.wear_suit = stored_items["suit"]
+	user.w_uniform = stored_items["uniform"]
+	user.shoes = stored_items["shoes"]
+	user.belt = stored_items["belt"]
+	user.glasses = stored_items["glasses"]
+	user.gloves = stored_items["gloves"]
+	user.head = stored_items["head"]
+	user.l_ear = stored_items["lear"]
+	user.r_ear = stored_items["rear"]
+	user.wear_id = stored_items["wearid"]
+	user.l_store = stored_items["lpocket"]
+	user.r_store = stored_items["rpocket"]
+	user.s_store = stored_items["backpack"]
+
+/datum/persistent_inventory/proc/add_item(var/obj/item/O, var/slot_type)
 	if(disallowed_items.len && is_type_in_list(O, disallowed_items))
 		return FALSE
 
 	var/datum/map_object/MO = full_item_save(O)
 
-	stored_items += MO
-	if(user)
-		to_chat(user, "You add [O] to the storage.")
+	stored_items[slot_type] = MO
 	qdel(O)
 
 	return MO
@@ -684,6 +730,7 @@
 	fdel(full_path)
 
 	return 1
+
 
 
 

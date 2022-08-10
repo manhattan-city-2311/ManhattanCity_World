@@ -114,6 +114,18 @@
 
 	mind.prefs.save_preferences()
 	mind.prefs.save_character()
+	var/datum/persistent_inventory/PI = null
+	for(var/datum/persistent_inventory/P in GLOB.persistent_inventories)
+		if(P.owner_name == name)
+			PI = P
+			break
+	if(!PI)
+		PI = make_new_inventory(name)
+		if(PI)
+			var/full_path = "data/persistent/inventories/[PI.unique_ID].sav"
+			if(fexists(full_path))
+				PI.load_inventory()
+	PI.save_player_inventory(src)
 
 	return 1
 
