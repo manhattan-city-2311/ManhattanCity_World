@@ -7,8 +7,8 @@
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = null
 	flags = OPENCONTAINER
-	amount_per_transfer_from_this = 5
-	volume = 50
+	amount_per_transfer_from_this = 40
+	volume = 80
 	var/shaken
 	price_tag = 5
 	tax_type = DRINKS_TAX
@@ -116,9 +116,9 @@
 	w_class = ITEMSIZE_LARGE
 	force = 14
 	throwforce = 10
-	amount_per_transfer_from_this = 20
+	amount_per_transfer_from_this = 40
 	possible_transfer_amounts = null
-	volume = 150
+	volume = 160
 	flags = CONDUCT | OPENCONTAINER
 
 	var/engraving = null
@@ -300,8 +300,8 @@
 	name = "shaker"
 	desc = "A metal shaker to mix drinks in."
 	icon_state = "shaker"
-	amount_per_transfer_from_this = 10
-	volume = 120
+	amount_per_transfer_from_this = 20
+	volume = 700
 	center_of_mass = list("x"=17, "y"=10)
 	drop_sound = 'sound/items/drop/bottle.ogg'
 	matter = list(DEFAULT_WALL_MATERIAL = 1750)
@@ -314,7 +314,7 @@
 	desc = "An elegant teapot. It simply oozes class."
 	icon_state = "teapot"
 	item_state = "teapot"
-	amount_per_transfer_from_this = 10
+	amount_per_transfer_from_this = 40
 	volume = 120
 	center_of_mass = list("x"=17, "y"=7)
 	drop_sound = 'sound/items/drop/bottle.ogg'

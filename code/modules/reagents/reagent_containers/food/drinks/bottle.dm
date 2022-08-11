@@ -528,10 +528,10 @@
 
 //Small bottles
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small
-	volume = 330
+	volume = 320
 	smash_duration = 1
 	flags = 0 //starts closed
-	amount_per_transfer_from_this = 30
+	amount_per_transfer_from_this = 40
 	rag_underlay = "rag_small"
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer
@@ -542,7 +542,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer/New()
 	..()
-	reagents.add_reagent("beer", 330)
+	reagents.add_reagent("beer", 320)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale
 	name = "\improper Magm-Ale"
@@ -553,7 +553,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale/New()
 	..()
-	reagents.add_reagent("ale", 330)
+	reagents.add_reagent("ale", 320)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/sake
 	name = "Mono-No-Aware Luxury Sake"
@@ -612,7 +612,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/cider/New()
 	. = ..()
-	reagents.add_reagent("cider", 330)
+	reagents.add_reagent("cider", 320)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/goldfinger
 	name = "Goldfinger"

@@ -150,9 +150,9 @@
 	reagents.add_reagent("soysauce", 50)
 
 /obj/item/weapon/reagent_containers/food/condiment/small
-	possible_transfer_amounts = list(1,20)
-	amount_per_transfer_from_this = 1
-	volume = 20
+	possible_transfer_amounts = list(4,20)
+	amount_per_transfer_from_this = 4
+	volume = 40
 	center_of_mass = list()
 
 /obj/item/weapon/reagent_containers/food/condiment/small/on_reagent_change()
@@ -165,7 +165,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/saltshaker/New()
 	..()
-	reagents.add_reagent("sodiumchloride", 20)
+	reagents.add_reagent("sodiumchloride", 40)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/peppermill
 	name = "pepper mill"
@@ -174,7 +174,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/peppermill/New()
 	..()
-	reagents.add_reagent("blackpepper", 20)
+	reagents.add_reagent("blackpepper", 40)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/sugar
 	name = "sugar"
@@ -183,7 +183,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/sugar/New()
 	..()
-	reagents.add_reagent("sugar", 20)
+	reagents.add_reagent("sugar", 40)
 
 /obj/item/weapon/reagent_containers/food/condiment/flour
 	name = "flour sack"
@@ -196,7 +196,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/flour/New()
 	..()
-	reagents.add_reagent("flour", 30)
+	reagents.add_reagent("flour", 40)
 	src.pixel_x = rand(-10.0, 10)
 	src.pixel_y = rand(-10.0, 10)
 
@@ -206,8 +206,8 @@
 	icon_state = "packet_small"
 	w_class = ITEMSIZE_TINY
 	possible_transfer_amounts = "1;5;10"
-	amount_per_transfer_from_this = 1
-	volume = 5
+	amount_per_transfer_from_this = 2
+	volume = 10
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/salt
 	name = "salt packet"
@@ -216,31 +216,31 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/salt/New()
 	. = ..()
-	reagents.add_reagent("sodiumchloride", 5)
+	reagents.add_reagent("sodiumchloride", 10)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/pepper
 	name = "pepper packet"
-	desc = "Contains 5u of black pepper."
+	desc = "Contains 10ml of black pepper."
 	icon_state = "packet_small_black"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/pepper/New()
 	. = ..()
-	reagents.add_reagent("blackpepper", 5)
+	reagents.add_reagent("blackpepper", 10)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/sugar
 	name = "sugar packet"
-	desc = "Contains 5u of refined sugar."
+	desc = "Contains 10ml of refined sugar."
 	icon_state = "packet_small_white"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/sugar/New()
 	. = ..()
-	reagents.add_reagent("sugar", 5)
+	reagents.add_reagent("sugar", 10)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/jelly
 	name = "jelly packet"
-	desc = "Contains 10u of cherry jelly. Best used for spreading on crackers."
+	desc = "Contains 20ml of cherry jelly. Best used for spreading on crackers."
 	icon_state = "packet_medium"
-	volume = 10
+	volume = 20
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/jelly/New()
 	. = ..()
@@ -248,155 +248,157 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/honey
 	name = "honey packet"
-	desc = "Contains 10u of honey."
+	desc = "Contains 10ml of honey."
 	icon_state = "packet_medium"
-	volume = 10
+	volume = 30
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/honey/New()
 	. = ..()
-	reagents.add_reagent("honey", 10)
+	reagents.add_reagent("honey", 30)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/capsaicin
 	name = "hot sauce packet"
-	desc = "Contains 5u of hot sauce. Enjoy in moderation."
+	desc = "Contains 30ml of hot sauce. Enjoy in moderation."
 	icon_state = "packet_small_red"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/capsaicin/New()
 	. = ..()
-	reagents.add_reagent("capsaicin", 5)
+	reagents.add_reagent("capsaicin", 30)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/ketchup
 	name = "ketchup packet"
-	desc = "Contains 5u of ketchup."
+	desc = "Contains 30ml of ketchup."
 	icon_state = "packet_small_red"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/ketchup/New()
 	. = ..()
-	reagents.add_reagent("ketchup", 5)
+	reagents.add_reagent("ketchup", 30)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/mayo
 	name = "mayonnaise packet"
-	desc = "Contains 5u of mayonnaise."
+	desc = "Contains 30ml of mayonnaise."
 	icon_state = "packet_small_white"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/mayo/New()
 	. = ..()
-	reagents.add_reagent("mayo", 5)
+	reagents.add_reagent("mayo", 30)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/soy
 	name = "soy sauce packet"
-	desc = "Contains 5u of soy sauce."
+	desc = "Contains 30ml of soy sauce."
 	icon_state = "packet_small_black"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/soy/New()
 	. = ..()
-	reagents.add_reagent("soysauce", 5)
+	reagents.add_reagent("soysauce", 30)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/coffee
 	name = "coffee powder packet"
-	desc = "Contains 5u of coffee powder. Mix with 25u of water and heat."
+	desc = "Contains 20ml of coffee powder. Mix with 100ml of water and heat."
+	volume = 20
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/coffee/New()
 	. = ..()
-	reagents.add_reagent("coffeepowder", 5)
+	reagents.add_reagent("coffeepowder", 20)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/decafcoffee
 	name = "decaf coffee powder packet"
-	desc = "Contains 5u of decaffeinated coffee powder. Mix with 25u of water and heat."
+	desc = "Contains 20ml of decaffeinated coffee powder. Mix with 100ml of water and heat."
+	volume = 20
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/decafcoffee/New()
 	. = ..()
-	reagents.add_reagent("decafcoffee", 5)
+	reagents.add_reagent("decafcoffee", 20)
 
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/tea
 	name = "tea powder packet"
-	desc = "Contains 5u of black tea powder. Mix with 25u of water and heat."
+	desc = "Contains 20ml of black tea powder. Mix with 100ml of water and heat."
+	volume = 20
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/tea/New()
 	. = ..()
-	reagents.add_reagent("tea", 5)
+	reagents.add_reagent("tea", 20)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/cocoa
 	name = "cocoa powder packet"
-	desc = "Contains 5u of cocoa powder. Mix with 25u of water and heat."
+	desc = "Contains 20ml of cocoa powder. Mix with 100ml of water and heat."
+	volume = 20
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/cocoa/New()
 	. = ..()
-	reagents.add_reagent("coco", 5)
+	reagents.add_reagent("coco", 20)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/grape
 	name = "grape juice powder packet"
-	desc = "Contains 5u of powdered grape juice. Mix with 15u of water."
+	desc = "Contains 30ml of powdered grape juice. Mix with 90ml of water."
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/grape/New()
 	. = ..()
-	reagents.add_reagent("instantgrape", 5)
+	reagents.add_reagent("instantgrape", 30)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/orange
 	name = "orange juice powder packet"
-	desc = "Contains 5u of powdered orange juice. Mix with 15u of water."
+	desc = "Contains 30ml of powdered orange juice. Mix with 90ml of water."
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/orange/New()
 	. = ..()
-	reagents.add_reagent("instantorange", 5)
+	reagents.add_reagent("instantorange", 30)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/watermelon
 	name = "watermelon juice powder packet"
-	desc = "Contains 5u of powdered watermelon juice. Mix with 15u of water."
+	desc = "Contains 30ml of powdered watermelon juice. Mix with 90ml of water."
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/watermelon/New()
 	. = ..()
-	reagents.add_reagent("instantwatermelon", 5)
+	reagents.add_reagent("instantwatermelon", 30)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/apple
 	name = "apple juice powder packet"
-	desc = "Contains 5u of powdered apple juice. Mix with 15u of water."
+	desc = "Contains 30ml of powdered apple juice. Mix with 90ml of water."
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/apple/New()
 	. = ..()
-	reagents.add_reagent("instantapple", 5)
+	reagents.add_reagent("instantapple", 30)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/protein
 	name = "protein powder packet"
-	desc = "Contains 10u of powdered protein. Mix with 20u of water."
+	desc = "Contains 30u of powdered protein. Mix with 60u of water."
 	icon_state = "packet_medium"
-	volume = 10
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/protein/New()
 	. = ..()
-	reagents.add_reagent("protein", 10)
+	reagents.add_reagent("protein", 30)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon
 	name = "crayon powder packet"
 	desc = "Contains 10u of powdered crayon. Mix with 30u of water."
-	volume = 10
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/generic/New()
 	. = ..()
-	reagents.add_reagent("crayon_dust", 10)
+	reagents.add_reagent("crayon_dust", 30)
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/red/New()
 	. = ..()
-	reagents.add_reagent("crayon_dust_red", 10)
+	reagents.add_reagent("crayon_dust_red", 30)
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/orange/New()
 	. = ..()
-	reagents.add_reagent("crayon_dust_orange", 10)
+	reagents.add_reagent("crayon_dust_orange", 30)
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/yellow/New()
 	. = ..()
-	reagents.add_reagent("crayon_dust_yellow", 10)
+	reagents.add_reagent("crayon_dust_yellow", 30)
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/green/New()
 	. = ..()
-	reagents.add_reagent("crayon_dust_green", 10)
+	reagents.add_reagent("crayon_dust_green", 30)
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/blue/New()
 	. = ..()
-	reagents.add_reagent("crayon_dust_blue", 10)
+	reagents.add_reagent("crayon_dust_blue", 30)
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/purple/New()
 	. = ..()
-	reagents.add_reagent("crayon_dust_purple", 10)
+	reagents.add_reagent("crayon_dust_purple", 30)
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/grey/New()
 	. = ..()
-	reagents.add_reagent("crayon_dust_grey", 10)
+	reagents.add_reagent("crayon_dust_grey", 30)
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/brown/New()
 	. = ..()
-	reagents.add_reagent("crayon_dust_brown", 10)
+	reagents.add_reagent("crayon_dust_brown", 30)
 
 //End of MRE stuff.

@@ -22,7 +22,7 @@
 
 	center_of_mass = list("x"=16, "y"=10)
 
-	amount_per_transfer_from_this = 5
+	amount_per_transfer_from_this = 40
 	possible_transfer_amounts = list(5,10,15,30,60,90)
 	flags = OPENCONTAINER
 

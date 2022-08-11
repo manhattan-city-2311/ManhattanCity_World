@@ -2,8 +2,8 @@
 	name = "coffee cup"
 	desc = "The container of oriental luxuries."
 	icon_state = "cup_empty"
-	amount_per_transfer_from_this = 5
-	volume = 30
+	amount_per_transfer_from_this = 40
+	volume = 240
 	center_of_mass = list("x"=16, "y"=16)
 	drop_sound = 'sound/items/drop/glass.ogg'
 	matter = list("glass" = 50)

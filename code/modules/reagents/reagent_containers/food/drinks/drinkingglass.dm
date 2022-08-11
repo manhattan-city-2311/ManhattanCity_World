@@ -4,8 +4,8 @@
 	name = "glass"
 	desc = "Your standard drinking glass."
 	icon_state = "glass_empty"
-	amount_per_transfer_from_this = 5
-	volume = 30
+	amount_per_transfer_from_this = 40
+	volume = 240
 	unacidable = 1 //glass
 	center_of_mass = list("x"=16, "y"=10)
 	matter = list("glass" = 500)
@@ -56,8 +56,8 @@
 	name = "coffee cup"
 	desc = "The container of oriental luxuries."
 	icon_state = "cup_empty"
-	amount_per_transfer_from_this = 5
-	volume = 30
+	amount_per_transfer_from_this = 40
+	volume = 240
 	center_of_mass = list("x"=16, "y"=16)
 
 	on_reagent_change()
@@ -113,8 +113,8 @@
 	name = "shot glass"
 	desc = "No glasses were shot in the making of this glass."
 	icon_state = "shotglass"
-	amount_per_transfer_from_this = 10
-	volume = 10
+	amount_per_transfer_from_this = 40
+	volume = 40
 	matter = list("glass" = 175)
 
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/shotglass/on_reagent_change()
