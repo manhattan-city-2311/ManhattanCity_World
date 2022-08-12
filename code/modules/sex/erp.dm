@@ -173,15 +173,6 @@
 			if(MALE_MEDIUM_AROUSAL to INFINITY)
 				return "Вас немного ведёт. Ваше дыхание загнано, а член стоит колом."
 
-/mob/living/carbon/human/proc/handle_erp()
-	var/isMale = gender == MALE
-	var/can_orgasm = world.time > (last_orgasm + (isMale ? MALE_RECOVERY_PERIOD : FEMALE_RECOVERY_PERIOD))
-	if(!can_orgasm)
-		return
-
-	if(pleasure > (isMale ? MALE_ORGASM_CAP : FEMALE_ORGASM_CAP))
-		orgasm()
-
 /mob/living/carbon/human/proc/orgasm()
 	last_orgasm = world.time
 

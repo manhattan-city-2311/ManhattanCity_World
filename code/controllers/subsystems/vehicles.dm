@@ -1,17 +1,28 @@
 SUBSYSTEM_DEF(vehicles)
 	name = "Vehicles"
-	flags = SS_NO_INIT
+	flags = SS_NO_INIT | SS_KEEP_TIMING
 	wait = 1 // deciseconds
-	var/list/queue = list()
-
-	var/it = 0
+	var/list/vehicles = list()
+	var/list/queue
 
 /datum/controller/subsystem/vehicles/fire(resumed = FALSE)
-	for(var/obj/manhattan/vehicle/vehicle as anything in queue)
-		if(QDELING(vehicle))
-			queue -= vehicle
-			continue
-		var/iterations = vehicle.get_calculation_iterations()
-		for(var/i = 0, i < iterations, ++i)
-			vehicle.process_vehicle(wait * 0.1 / iterations)
-			vehicle.process_movement(wait * 0.1 / iterations)
+	if(!resumed)
+		queue = vehicles.Copy()
+
+	var/list/current_run = queue
+
+	var/obj/manhattan/vehicle/V
+	for(var/i = current_run.len to 1 step -1)
+		V = current_run[i]
+
+		if(!QDELETED(V))
+			var/iterations = V.get_calculation_iterations()
+			for(var/j = 0, j < iterations, ++j)
+				V.process_vehicle(wait * 0.1 / iterations)
+				V.process_movement(wait * 0.1 / iterations)
+		else
+			queue -= V
+
+		if (MC_TICK_CHECK)
+			current_run.Cut(i)
+			return

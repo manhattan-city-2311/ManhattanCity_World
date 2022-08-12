@@ -88,25 +88,26 @@
 		if(!nr)
 			return TOPIC_NOACTION
 
-		if(ID == RECORD_BIRTHDAY)
-			var/global/regex/regex = regex(@"^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$")
-			if(!regex.Find(nr))
-				return TOPIC_NOACTION
+		switch(ID)
+			if(RECORD_BIRTHDAY)
+				var/global/regex/regex = regex(@"^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$")
+				if(!regex.Find(nr))
+					return TOPIC_NOACTION
 
-			nr = ValidateDate(nr) // Before FindDate because we need validated date
+				nr = ValidateDate(nr) // Before FindDate because we need validated date
 
-			var/list/dates = FindDate(nr)
+				var/list/dates = FindDate(nr)
 
-			pref.birth_day   = text2num(dates[1])
-			pref.birth_month = text2num(dates[2])
-			pref.birth_year  = text2num(dates[3])
-			pref.age 		 = global.game_year - pref.birth_year
-		else if(ID == RECORD_HEIGHT)
-			pref.height = clamp(text2num(nr), 150, 200)
-			nr = "[pref.height]"
-		else if(ID == RECORD_WEIGHT)
-			pref.weight = clamp(text2num(nr), 40, 120)
-			nr = "[pref.weight]"
+				pref.birth_day   = text2num(dates[1])
+				pref.birth_month = text2num(dates[2])
+				pref.birth_year  = text2num(dates[3])
+				pref.age 		 = global.game_year - pref.birth_year
+			if(RECORD_HEIGHT)
+				pref.height = clamp(text2num(nr), 150, 200)
+				nr = "[pref.height]"
+			if(RECORD_WEIGHT)
+				pref.weight = clamp(text2num(nr), 40, 120)
+				nr = "[pref.weight]"
 
 		pref.records[ID] = nr
 

@@ -109,7 +109,6 @@
 		vr_link.vr_holder = null
 		vr_link = null
 		to_chat(src, "<span class='danger'>Everything abruptly stops.</span>")
-	last_key = null
 
 	return ..(gibbed,species.get_death_message(src))
 

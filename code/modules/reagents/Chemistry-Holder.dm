@@ -120,7 +120,7 @@
 
 /* Holder-to-chemical */
 
-/datum/reagents/proc/add_reagent(var/id, var/amount, var/data = null, var/safety = 0)
+/datum/reagents/proc/add_reagent(id, amount, data = null, safety = 0)
 	if(!isnum(amount) || amount <= 0)
 		return 0
 

@@ -24,14 +24,11 @@
 	var/list/will_contain
 
 	unique_save_vars = list("opened","welded", "health", "density")
-	dont_save = TRUE
 
 /obj/structure/closet/on_persistence_load()
 	update_icon()
 
 /obj/structure/closet/initialize()
-	for(var/obj/item/I in get_turf(src))
-		qdel(I)
 	. = ..()
 	if(will_contain)
 		create_objects_in_loc(src, will_contain)

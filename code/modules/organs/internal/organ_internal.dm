@@ -39,7 +39,7 @@
 /obj/item/organ/internal/proc/make_hormone(T, amount)
 	if(!owner)
 		return
-	owner.bloodstr.add_reagent(T, amount)
+	owner.bloodstr.add_reagent(T, amount, safety = TRUE)
 
 /obj/item/organ/internal/proc/make_up_to_hormone(T, amount)
 	if(!owner)
