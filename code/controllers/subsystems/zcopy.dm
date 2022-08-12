@@ -165,6 +165,7 @@ SUBSYSTEM_DEF(zcopy)
 			T.gender = initial(T.gender)
 			T.opacity = FALSE
 			T.plane = t_target
+			T.dir = T.below.dir
 		else
 			// Some openturfs have icons, so we can't overwrite their appearance.
 			if (!T.below.bound_overlay)
@@ -176,6 +177,7 @@ SUBSYSTEM_DEF(zcopy)
 			TO.opacity = FALSE
 			TO.plane = t_target
 			TO.mouse_opacity = initial(TO.mouse_opacity)
+			TO.dir = T.dir
 
 		T.queue_ao(T.ao_neighbors_mimic == null)	// If ao_neighbors hasn't been set yet, we need to do a rebuild
 		// Explicitly copy turf delegates so they show up properly on below levels.
@@ -186,6 +188,7 @@ SUBSYSTEM_DEF(zcopy)
 				T.below.z_delegate = new(T)
 			var/atom/movable/openspace/delegate_copy/DC = T.below.z_delegate
 			DC.appearance = T.below
+			DC.dir = T.below.dir
 			DC.mouse_opacity = initial(DC.mouse_opacity)
 			DC.plane = OPENTURF_MAX_PLANE
 
