@@ -571,14 +571,32 @@
 /area/planets/Manhattan/indoor/north/hotel/upper/room8/bath
 /area/planets/Manhattan/indoor/north/hotel/upper/room9
 /area/planets/Manhattan/indoor/north/hotel/upper/room9/bath
+/area/planets/Manhattan/indoor/north/hotel/upper/room9/bedroom
 /area/planets/Manhattan/indoor/north/hotel/upper/room11
 /area/planets/Manhattan/indoor/north/hotel/upper/room11/bath
+/area/planets/Manhattan/indoor/north/hotel/upper/room11/bedroom
 /area/planets/Manhattan/indoor/north/hotel/upper/room12
 /area/planets/Manhattan/indoor/north/hotel/upper/room12/bath
 /area/planets/Manhattan/indoor/north/hotel/upper/room12/bedroom
 /area/planets/Manhattan/indoor/north/hotel/upper/room13
 /area/planets/Manhattan/indoor/north/hotel/upper/room13/bath
 /area/planets/Manhattan/indoor/north/hotel/upper/room13/bedroom
+
+/area/planets/Manhattan/indoor/north/office1
+	icon_state = "north_m2"
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/office1/hall
+/area/planets/Manhattan/indoor/north/office1/restroom
+/area/planets/Manhattan/indoor/north/office1/cabinet
+
+/area/planets/Manhattan/indoor/north/office1/upper
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/office1/upper/hall
+/area/planets/Manhattan/indoor/north/office1/upper/restroom
+/area/planets/Manhattan/indoor/north/office1/upper/cabinet
+/area/planets/Manhattan/indoor/north/office1/upper/briefing
 
 /area/planets/Manhattan/indoor/north/police_dept
 	ambience = list('sound/ambience/MAIN0C.SAP.ogg', 'sound/ambience/MAIN05.SAP.ogg')
