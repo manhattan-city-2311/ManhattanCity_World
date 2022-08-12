@@ -133,12 +133,11 @@
 	if(!M)
 		M = create_account(H.real_name, money_amount, null)
 		M.load_persistent_account(H)
+		spawn()
+			H.equip_to_slot(spawn_money(1100, get_turf(H), H), slot_in_backpack)
 
 	if(check_persistent_account(H.mind.prefs.bank_account))
 		money_amount = get_persistent_acc_balance(H.mind.prefs.bank_account)	// so people can actually recieve money they made offline.
-
-	if(!already_joined)
-		H.equip_to_slot(spawn_money(1100, get_turf(H)), slot_in_backpack)
 
 	if(H.mind)
 		var/remembered_info = ""

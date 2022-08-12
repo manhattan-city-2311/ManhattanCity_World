@@ -74,8 +74,8 @@
 	return (occupants.len - 2)
 
 /obj/manhattan/vehicle/proc/update_occupants_eye_offsets()
-	var/amount_x = round(SIGN(speed.x) * min(abs(speed.x * 3), 32 * (VIEW_SIZE_X)))
-	var/amount_y = round(SIGN(speed.y) * min(abs(speed.y * 3), 32 * (VIEW_SIZE_Y)))
+	var/amount_x = round(SIGN(speed.x) * min(abs(speed.x * 3), WORLD_ICON_SIZE * VIEW_SIZE_X))
+	var/amount_y = round(SIGN(speed.y) * min(abs(speed.y * 3), WORLD_ICON_SIZE * VIEW_SIZE_Y))
 
 	for(var/mob/occupant in occupants)
 		if(!ismob(occupant))

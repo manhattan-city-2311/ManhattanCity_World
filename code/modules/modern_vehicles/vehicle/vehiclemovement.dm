@@ -13,6 +13,7 @@
 	update_object_sprites()
 
 /obj/manhattan/vehicle/var/next_steering_input = 0
+/obj/manhattan/vehicle/var/next_strafe_input = 0
 /obj/manhattan/vehicle/relaymove(mob/user, direction)
 	if(world.time < next_steering_input)
 		return 0
@@ -29,28 +30,31 @@
 	if(movement_destroyed)
 		to_chat(user, SPAN_NOTICE("[src] is in no state to move!"))
 		return 0
-
+	
 	if(!(user.client.mod_keys_held & ALT_KEY))
-		switch(direction)
-			if(EAST, NORTHEAST, SOUTHEAST)
-				handle_turning(1)
-				next_steering_input = world.time + 2
-			if(WEST, NORTHWEST, SOUTHWEST)
-				handle_turning(-1)
-				next_steering_input = world.time + 2
+		if(user.client.move_keys_held & EAST_KEY)
+			handle_turning(1)
+		else if(user.client.move_keys_held & WEST_KEY)
+			handle_turning(-1)
+		else
+			return 1
+		next_steering_input = world.time + 2
 	else
-		switch(direction)
-			if(EAST, NORTHEAST, SOUTHEAST)
-				direction = 1
-			if(WEST, NORTHWEST, SOUTHWEST)
-				direction = -1
-			else
-				return
+		if(world.time < next_strafe_input)
+			return 0
 
+		if(user.client.move_keys_held & EAST_KEY)
+			direction = 1
+		else if(user.client.move_keys_held & WEST_KEY)
+			direction = -1
+		else
+			return 1
 		var/vector2/temp = vector2_from_angle(round(90 - (angle + 90 * direction), 90))
+		temp.round_components(1)
 
-		step_x += temp.x
-		step_y += temp.y
+		move_helper2(temp.x, temp.y, update_dir = FALSE)
+
+		next_strafe_input = world.time + 5
 	return 1
 
 /obj/manhattan/vehicle/proc/handle_input()
@@ -145,10 +149,8 @@
 		. = collide_with_obstacle(obstacle)
 
 /obj/manhattan/vehicle/var/last_movement
-/obj/manhattan/vehicle/proc/move_helper(x_step, y_step)
-	if(!(x_step || y_step))
-		return
 
+/obj/manhattan/vehicle/proc/move_helper2(x_step, y_step, nstep_x = step_x, nstep_y = step_y, update_dir = TRUE)
 	if(last_movement)
 		update_glide(world.time - last_movement)
 	last_movement = world.time
@@ -163,9 +165,19 @@
 		for(var/obj/structure/stairs/S in newLoc)
 			newLoc = newLoc.above
 			break
+	
+	Move(newLoc, update_dir ? get_dir(loc, newLoc) : dir, nstep_x, nstep_y)
+
+/obj/manhattan/vehicle/proc/move_helper(x_step, y_step)
+	if(!(x_step || y_step))
+		return
 
 
-	Move(newLoc, get_dir(loc, newLoc), x_step ? 0 : step_x, y_step ? 0 : step_y)
+
+	var/nstep_x = x_step ? (SIGN(step_x) * max(abs(step_x) - WORLD_ICON_SIZE, 0)) : step_x
+	var/nstep_y = y_step ? (SIGN(step_y) * max(abs(step_y) - WORLD_ICON_SIZE, 0)) : step_y 
+
+	move_helper2(x_step, y_step, nstep_x, nstep_y)
 
 /obj/manhattan/vehicle/proc/process_movement(delta)
 	if(speed.modulus() < (delta / WORLD_ICON_SIZE))
