@@ -1,7 +1,7 @@
 macro "borghotkeymode"
 	elem 
 		name = "Tab"
-		command = ".winset \"mainwindow.macro=borgmacro hotkey_toggle.is-checked=false input.focus=true input.background-color=#D3B5B5\""
+		command = ".winset \"mainwindow.macro=borgmacro hotkey_toggle.is-checked=false input.focus=true input.background-color=#d3b5b5\""
 	elem 
 		name = "Shift"
 		command = "KeyDown Shift"
@@ -248,11 +248,17 @@ macro "borghotkeymode"
 	elem 
 		name = "F12"
 		command = "F12"
+	elem 
+		name = ","
+		command = "up"
+	elem 
+		name = "."
+		command = "down"
 
 macro "macro"
 	elem 
 		name = "Tab"
-		command = ".winset \"mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
+		command = ".winset \"mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true input.background-color=#f0f0f0\""
 	elem 
 		name = "ALT+Return"
 		command = "Toggle-Fullscreen"
@@ -384,6 +390,12 @@ macro "macro"
 		name = "CTRL+Numpad8"
 		command = "body-toggle-head"
 	elem 
+		name = "CTRL+Add"
+		command = "up"
+	elem 
+		name = "CTRL+Subtract"
+		command = "down"
+	elem
 		name = "F1"
 		command = "adminhelp"
 	elem 
@@ -444,7 +456,7 @@ macro "macro"
 macro "hotkeymode"
 	elem 
 		name = "Tab"
-		command = ".winset \"mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true\""
+		command = ".winset \"mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true input.background-color=#d3b5b5\""
 	elem 
 		name = "ALT+Return"
 		command = "Toggle-Fullscreen"
@@ -694,11 +706,17 @@ macro "hotkeymode"
 	elem 
 		name = "SHIFT+UP"
 		command = "KeyUp Shift"
+	elem 
+		name = "CTRL+Add"
+		command = "up"
+	elem 
+		name = "CTRL+Subtract"
+		command = "down"
 
 macro "borgmacro"
 	elem 
 		name = "Tab"
-		command = ".winset \"mainwindow.macro=borghotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true input.background-color=#F0F0F0\""
+		command = ".winset \"mainwindow.macro=borghotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true input.background-color=#f0f0f0\""
 	elem 
 		name = "Shift"
 		command = "KeyDown Shift"
@@ -862,6 +880,12 @@ macro "borgmacro"
 		name = "CTRL+Numpad8"
 		command = "body-toggle-head"
 	elem 
+		name = "CTRL+Add"
+		command = "move-upwards"
+	elem 
+		name = "CTRL+Subtract"
+		command = "move-down"
+	elem 
 		name = "F1"
 		command = "adminhelp"
 	elem 
@@ -920,6 +944,16 @@ menu "menu"
 	elem 
 		name = ""
 		command = ""
+		category = "&File"
+		saved-params = "is-checked"
+	elem 
+		name = "&Reconnect"
+		command = ".reconnect"
+		category = "&File"
+		saved-params = "is-checked"
+	elem 
+		name = "&Check ping"
+		command = ".ping"
 		category = "&File"
 		saved-params = "is-checked"
 	elem 
@@ -991,6 +1025,31 @@ menu "menu"
 		command = ".winset \"menu.textmode.is-checked=true?mapwindow.map.text-mode=true:mapwindow.map.text-mode=false\""
 		category = "&Icons"
 		can-check = true
+		saved-params = "is-checked"
+	elem 
+		name = "&Scaling"
+		command = ""
+		saved-params = "is-checked"
+	elem "NN"
+		name = "&Nearest Neighbor"
+		command = ".winset \"mapwindow.map.zoom-mode=distort\""
+		category = "&Scaling"
+		can-check = true
+		group = "scale"
+		saved-params = "is-checked"
+	elem "PS"
+		name = "&Point Sampling"
+		command = ".winset \"mapwindow.map.zoom-mode=normal\""
+		category = "&Scaling"
+		can-check = true
+		group = "scale"
+		saved-params = "is-checked"
+	elem "BL"
+		name = "&Bilinear"
+		command = ".winset \"mapwindow.map.zoom-mode=blur\""
+		category = "&Scaling"
+		can-check = true
+		group = "scale"
 		saved-params = "is-checked"
 	elem 
 		name = "&Help"
@@ -1246,11 +1305,8 @@ window "infowindow"
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
-		pos = 227,-30
-		size = 1677x972
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #2d1d34
+		pos = 281,0
+		size = 640x440
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Manhattan City 18+"
@@ -1259,21 +1315,29 @@ window "mainwindow"
 		menu = "menu"
 	elem "mainvsplit"
 		type = CHILD
-		pos = 0,0
-		size = 1674x959
+		pos = 3,0
+		size = 634x416
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
+	elem "tooltip"
+		type = BROWSER
+		pos = 0,-3
+		size = 1671x957
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = #562257
+		is-visible = false
+		saved-params = ""
 	elem "input"
 		type = INPUT
-		pos = 0,957
-		size = 1675x20
+		pos = 3,420
+		size = 517x20
 		anchor1 = 0,100
 		anchor2 = 100,100
-		text-color = #e2d318
-		background-color = #65467d
+		background-color = #d3b5b5
 		is-default = true
 		border = sunken
 		saved-params = "command"
@@ -1286,14 +1350,32 @@ window "mainwindow"
 		background-color = #562257
 		is-visible = false
 		saved-params = ""
+	elem "hotkey_toggle"
+		type = BUTTON
+		pos = 560,420
+		size = 80x20
+		anchor1 = 100,100
+		anchor2 = none
+		saved-params = ""
+		text = "Hotkey Toggle"
+		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
+		button-type = pushbox
+	elem "saybutton"
+		type = BUTTON
+		pos = 520,420
+		size = 40x20
+		anchor1 = 100,100
+		anchor2 = none
+		saved-params = "is-checked"
+		text = "Chat"
+		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
+		button-type = pushbox
 
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
 		pos = 281,0
-		size = 892x566
-		anchor1 = -1,-1
-		anchor2 = -1,-1
+		size = 640x480
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1304,7 +1386,7 @@ window "mapwindow"
 	elem "map"
 		type = MAP
 		pos = 0,0
-		size = 892x566
+		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
 		font-family = "Arial Rounded MT Bold,Arial Black,Arial,sans-serif"
@@ -1316,7 +1398,7 @@ window "mapwindow"
 	elem "lobbybrowser"
 		type = BROWSER
 		pos = 0,0
-		size = 892x566
+		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-visible = false
@@ -1326,10 +1408,8 @@ window "mapwindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 281,-30
+		pos = 281,0
 		size = 640x480
-		anchor1 = -1,-1
-		anchor2 = -1,-1
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1352,7 +1432,6 @@ window "outputwindow"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #221e21
 		is-default = true
 		saved-params = "max-lines"
 		style = ".system {color:#ff0000;}"
@@ -1372,99 +1451,39 @@ window "popupwindow"
 window "rpane"
 	elem "rpane"
 		type = MAIN
-		pos = 281,-30
-		size = 599x474
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = #402158
-		border = line
+		pos = 418,0
+		size = 640x480
 		saved-params = "pos;size;is-minimized;is-maximized"
-		titlebar = false
-		statusbar = false
-		can-close = false
-		can-minimize = false
-		can-resize = false
 		is-pane = true
-		transparent-color = #000000
 	elem "rpanewindow"
 		type = CHILD
-		pos = 1,0
-		size = 599x473
+		pos = 0,0
+		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #2d1d34
-		border = line
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
-	elem "github"
-		type = BUTTON
-		pos = 307,0
-		size = 56x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f2eab7
-		background-color = #65467d
-		saved-params = "is-checked"
-		text = "GitHub"
-		command = "github"
-		group = "rpanemode"
-	elem "mapb"
-		type = BUTTON
-		pos = 249,0
-		size = 56x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f2eab7
-		background-color = #00aa00
-		saved-params = "is-checked"
-		text = "Map"
-		command = "map"
-		group = "rpanemode"
 	elem "rulesb"
 		type = BUTTON
-		pos = 190,0
-		size = 57x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f2eab7
-		background-color = #00aa00
+		pos = 124,0
+		size = 60x15
 		saved-params = "is-checked"
 		text = "Rules"
 		command = "rules"
 		group = "rpanemode"
 	elem "changelog"
 		type = BUTTON
-		pos = 365,0
-		size = 64x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f2eab7
-		background-color = #65467d
+		pos = 310,0
+		size = 60x15
 		saved-params = "is-checked"
 		text = "Changelog"
 		command = "Changelog"
 		group = "rpanemode"
-	elem "forumb"
-		type = BUTTON
-		pos = 132,0
-		size = 56x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f2eab7
-		background-color = #65467d
-		saved-params = "is-checked"
-		text = "Forum"
-		command = "forum"
-		group = "rpanemode"
 	elem "wikib"
 		type = BUTTON
-		pos = 440,0
-		size = 45x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #c510b7
-		background-color = #f2eab7
+		pos = 186,0
+		size = 60x15
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
@@ -1472,11 +1491,7 @@ window "rpane"
 	elem "textb"
 		type = BUTTON
 		pos = 0,0
-		size = 37x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f2eab7
-		background-color = #795395
+		size = 60x15
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Text"
@@ -1486,7 +1501,7 @@ window "rpane"
 		button-type = pushbox
 	elem "browseb"
 		type = BUTTON
-		pos = 394,0
+		pos = 248,0
 		size = 56x16
 		anchor1 = -1,-1
 		anchor2 = -1,-1
@@ -1500,12 +1515,8 @@ window "rpane"
 		button-type = pushbox
 	elem "infob"
 		type = BUTTON
-		pos = 40,0
-		size = 33x16
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		text-color = #f2eab7
-		background-color = #65467d
+		pos = 62,0
+		size = 60x15
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Info"
@@ -1516,10 +1527,8 @@ window "rpane"
 window "browserwindow"
 	elem "browserwindow"
 		type = MAIN
-		pos = 281,-30
+		pos = 281,0
 		size = 640x480
-		anchor1 = -1,-1
-		anchor2 = -1,-1
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Browser"
 		is-pane = true
@@ -1529,7 +1538,6 @@ window "browserwindow"
 		size = 640x499
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #ffffff
 		is-default = true
 		saved-params = ""
 		on-show = ".winset\"rpane.infob.is-visible=true?rpane.infob.pos=130,0;rpane.textb.is-visible=true;rpane.browseb.is-visible=true;rpane.browseb.is-checked=true;rpane.rpanewindow.pos=0,30;rpane.rpanewindow.size=0x0;rpane.rpanewindow.left=browserwindow\""

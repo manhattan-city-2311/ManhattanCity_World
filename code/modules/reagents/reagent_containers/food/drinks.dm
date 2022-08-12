@@ -8,7 +8,7 @@
 	icon_state = null
 	flags = OPENCONTAINER
 	amount_per_transfer_from_this = 40
-	volume = 80
+	volume = 200
 	var/shaken
 	price_tag = 5
 	tax_type = DRINKS_TAX
@@ -162,7 +162,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/milk/New()
 	..()
-	reagents.add_reagent("milk", 50)
+	reagents.add_reagent("milk", 200)
 
 /obj/item/weapon/reagent_containers/food/drinks/soymilk
 	name = "soymilk carton"
@@ -174,24 +174,24 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/soymilk/New()
 	..()
-	reagents.add_reagent("soymilk", 50)
+	reagents.add_reagent("soymilk", 200)
 
 /obj/item/weapon/reagent_containers/food/drinks/smallmilk
 	name = "small milk carton"
 	desc = "It's milk. White and nutritious goodness!"
-	volume = 30
+	volume = 100
 	icon_state = "mini-milk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
 
 /obj/item/weapon/reagent_containers/food/drinks/smallmilk/New()
 	..()
-	reagents.add_reagent("milk", 30)
+	reagents.add_reagent("milk", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/smallchocmilk
 	name = "small chocolate milk carton"
 	desc = "It's milk! This one is in delicious chocolate flavour."
-	volume = 30
+	volume = 100
 	icon_state = "mini-milk_choco"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
@@ -199,7 +199,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/smallchocmilk/New()
 	..()
-	reagents.add_reagent("chocolate_milk", 30)
+	reagents.add_reagent("chocolate_milk", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/coffee
 	name = "\improper Robust Coffee"
@@ -208,7 +208,7 @@
 	center_of_mass = list("x"=15, "y"=10)
 /obj/item/weapon/reagent_containers/food/drinks/coffee/New()
 	..()
-	reagents.add_reagent("coffee", 30)
+	reagents.add_reagent("coffee", 200)
 
 /obj/item/weapon/reagent_containers/food/drinks/chicory
 	name = "\improper Native Chicory"
@@ -217,7 +217,7 @@
 	center_of_mass = list("x"=15, "y"=10)
 /obj/item/weapon/reagent_containers/food/drinks/chicory/New()
 	..()
-	reagents.add_reagent("chicory", 30)
+	reagents.add_reagent("chicory", 200)
 
 /obj/item/weapon/reagent_containers/food/drinks/tea
 	name = "cup of Duke Purple Tea"
@@ -228,7 +228,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/tea/New()
 	..()
-	reagents.add_reagent("tea", 30)
+	reagents.add_reagent("tea", 200)
 
 /obj/item/weapon/reagent_containers/food/drinks/ice
 	name = "cup of ice"
@@ -238,7 +238,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/ice/New()
 	..()
-	reagents.add_reagent("ice", 30)
+	reagents.add_reagent("ice", 200)
 
 /obj/item/weapon/reagent_containers/food/drinks/h_chocolate
 	name = "cup of Dutch hot coco"
@@ -249,23 +249,23 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/h_chocolate/New()
 	..()
-	reagents.add_reagent("hot_coco", 30)
+	reagents.add_reagent("hot_coco", 200)
 
 /obj/item/weapon/reagent_containers/food/drinks/dry_ramen
 	name = "Cup Ramen"
-	desc = "Just add 10ml water, self heats! A taste that reminds you of your school years."
+	desc = "Just add 70ml water, self heats! A taste that reminds you of your school years."
 	icon_state = "ramen"
 	center_of_mass = list("x"=16, "y"=11)
 /obj/item/weapon/reagent_containers/food/drinks/dry_ramen/New()
 	..()
-	reagents.add_reagent("dry_ramen", 30)
+	reagents.add_reagent("dry_ramen", 200)
 
 /obj/item/weapon/reagent_containers/food/drinks/sillycup
 	name = "paper cup"
 	desc = "A paper water cup."
 	icon_state = "water_cup_e"
 	possible_transfer_amounts = null
-	volume = 10
+	volume = 160
 	center_of_mass = list("x"=16, "y"=12)
 	drop_sound = 'sound/items/drop/box.ogg'
 
@@ -315,7 +315,7 @@
 	icon_state = "teapot"
 	item_state = "teapot"
 	amount_per_transfer_from_this = 40
-	volume = 120
+	volume = 800
 	center_of_mass = list("x"=17, "y"=7)
 	drop_sound = 'sound/items/drop/bottle.ogg'
 
@@ -326,7 +326,6 @@
 	name = "\improper Mayor's flask"
 	desc = "A metal flask belonging to the Mayor"
 	icon_state = "flask"
-	volume = 60
 	center_of_mass = list("x"=17, "y"=7)
 	drop_sound = 'sound/items/drop/bottle.ogg'
 	matter = list(DEFAULT_WALL_MATERIAL = 2750)
@@ -348,21 +347,18 @@
 	name = "\improper Detective's flask"
 	desc = "A metal flask with a leather band and golden badge belonging to the detective."
 	icon_state = "detflask"
-	volume = 60
 	center_of_mass = list("x"=17, "y"=8)
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/barflask
 	name = "flask"
 	desc = "For those who can't be bothered to hang out at the bar to drink."
 	icon_state = "barflask"
-	volume = 60
 	center_of_mass = list("x"=17, "y"=7)
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/vacuumflask
 	name = "vacuum flask"
 	desc = "Keeping your drinks at the perfect temperature since 1892."
 	icon_state = "vacuumflask"
-	volume = 60
 	center_of_mass = list("x"=15, "y"=4)
 	matter = list(DEFAULT_WALL_MATERIAL = 2750)
 
@@ -370,7 +366,6 @@
 	name = "cup"
 	desc = "A cup with the British flag emblazoned on it."
 	icon_state = "britcup"
-	volume = 30
 	center_of_mass = list("x"=15, "y"=13)
 	drop_sound = 'sound/items/drop/bottle.ogg'
 
