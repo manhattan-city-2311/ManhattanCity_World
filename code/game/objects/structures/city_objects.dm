@@ -8,9 +8,9 @@
 /obj/machinery/street/traffic
 	name = "traffic light"
 	anchored = 1
-	density = 1
+	density = 0
 	luminosity = 3
-
+	plane = LIGHTING_OBJS_PLANE
 	icon = 'icons/obj/traffic.dmi'
 	icon_state = "off"
 
