@@ -213,8 +213,12 @@
 	light_color = LIGHT_COLOR_NEONBLUE
 
 /obj/structure/sign/neon/trafficsign/emergency_stop
-	name = "emergency stop traffic sign"
+	name = "secondary road traffic sign"
 	icon_state = "emergency_stop"
+
+/obj/structure/sign/neon/trafficsign/stop
+	name = "stop traffic sign"
+	icon_state = "stop"
 
 /obj/structure/sign/neon/trafficsign/pedestrian_crossing
 	name = "pedestrian crossing traffic sign"
@@ -222,7 +226,7 @@
 
 /obj/structure/sign/neon/trafficsign/circle_move
 	name = "roundabout traffic sign"
-	icon_state = "pedestrian_crossing"
+	icon_state = "circle_move"
 
 /obj/structure/sign/neon/trafficsign/main_road
 	name = "main road traffic sign"
