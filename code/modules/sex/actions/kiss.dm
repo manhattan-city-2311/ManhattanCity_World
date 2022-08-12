@@ -2,6 +2,7 @@
 	name = "Поцелуи тела"
 	sbp = SBP_ORAL
 	needs_access = SBP_NIPPLES // a bit tricky.
+	category = ERP_ACTION_CATEGORY_FOREPLAY
 
 /datum/erp_action/kiss_body/get_messages(mob/living/carbon/human/user1, mob/living/carbon/human/user2, number)
 	return list(

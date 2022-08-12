@@ -62,6 +62,8 @@
 		erp_panel_selected_category = href_list["erp_category"]
 	else if(href_list["erp_action"])
 		var/datum/erp_action/A = global.erp_actions_cache[href_list["erp_action"]]
-		A.act(src, erp_participient)
+		A?.act(src, erp_participient)
+	else
+		return
 
 	show_erp_panel()

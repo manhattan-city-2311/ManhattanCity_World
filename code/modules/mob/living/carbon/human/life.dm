@@ -32,8 +32,6 @@
 /mob/living/carbon/human/Life()
 	set invisibility = 0
 	set background = BACKGROUND_ENABLED
-	handle_medicine()
-	handle_erp()
 
 	if (transforming)
 		return
@@ -47,7 +45,7 @@
 
 	//TODO: seperate this out
 	// update the current life tick, can be used to e.g. only do something every 4 ticks
-	life_tick++
+	++life_tick
 
 	// This is not an ideal place for this but it will do for now.
 	if(wearing_rig && wearing_rig.offline)

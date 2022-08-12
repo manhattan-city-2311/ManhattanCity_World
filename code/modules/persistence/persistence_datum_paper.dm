@@ -32,8 +32,9 @@
 	return paper
 
 /datum/persistent/paper/GetEntryAge(var/atom/entry)
-	var/obj/item/weapon/paper/paper = entry
-	return paper.age
+	// FIXME: I'm fuck
+	//var/obj/item/weapon/paper/paper = entry
+	//return paper.age
 
 /datum/persistent/paper/CompileEntry(var/atom/entry, var/write_file)
 	. = ..()

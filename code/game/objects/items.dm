@@ -94,8 +94,6 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 	var/worn_layer				//Default on-mob layer
 	var/nodrop = 0 //Eclipse add - similar to canremove, but for dropping
 
-	var/age = 0
-
 /obj/item/New()
 	..()
 	if(embed_chance < 0)
@@ -104,12 +102,6 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 		else
 			embed_chance = max(5, round(force/(w_class*3)))
 
-/obj/item/initialize(mapload)
-	if(mapload && persistent_online)
-		return INITIALIZE_HINT_QDEL
-	SSpersistence.track_value(src, /datum/persistent/item)
-	..()
-
 /obj/item/Destroy()
 	if(ismob(loc))
 		var/mob/m = loc
@@ -117,7 +109,6 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 		m.update_inv_r_hand()
 		m.update_inv_l_hand()
 		src.loc = null
-	SSpersistence.forget_value(src, /datum/persistent/item)
 	return ..()
 
 /obj/item/proc/update_twohanding()

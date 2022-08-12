@@ -23,7 +23,7 @@
 
 	var/state = HYPERLOOP_STATE_OUT
 
-/obj/manhattan/vehicle/get_calculation_iterations()
+/obj/manhattan/vehicle/large/hyperloop/get_calculation_iterations()
 	return 1
 
 /obj/manhattan/vehicle/large/hyperloop/attack_hand(mob/user)
