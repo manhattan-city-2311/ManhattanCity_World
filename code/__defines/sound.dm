@@ -55,3 +55,6 @@
 #define SMALL_SOFTFLOOR ROOM
 #define ASTEROID CAVE
 #define SPACE UNDERWATER
+
+#define VOL_EFFECTS_MASTER (1<<2) // anything that doesn't go into sub categories (this acts as a master channel for all subs of this type).
+#define VOL_EFFECTS_INSTRUMENT (VOL_EFFECTS_MASTER | 1<<5) // music instruments! actually this could be merged into spam category.
