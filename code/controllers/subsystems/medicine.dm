@@ -25,6 +25,7 @@ SUBSYSTEM_DEF(medicine)
 
 		if(!QDELETED(H))
 			H.handle_medicine()
+			H.update_cm()
 		else
 			current_run -= H
 

@@ -3,7 +3,6 @@
 		handle_decay()
 		handle_organs()
 		stabilize_body_temperature()
-		update_cm()
 		handle_glucose_level()
 		consume_oxygen(REST_OXYGEN_CONSUMING * k) // muscles resting
 		oxy_last_tick_demand = oxy_demand
@@ -28,8 +27,6 @@
 	handle_nourishment()
 
 	handle_weight()
-
-	update_cm()
 
 	handle_glucose_level()
 

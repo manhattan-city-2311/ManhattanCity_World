@@ -7,20 +7,18 @@
 
 /datum/reagent/hormone/overdose(mob/M, alien)
 	return
-
 /datum/reagent/hormone/adrenaline
 	name = "Adrenaline"
-	id = "adrenaline"
+	id = RI_ADRENALINE
 	description = "Adrenaline is a hormone used as emergency drug to quickly increase BP by increasing HR and CO."
 	overdose = 10
 
 /datum/reagent/hormone/adrenaline/affect_blood(mob/living/carbon/human/M, alien, removed)
 	M.add_chemical_effect(CE_PULSE, min(2 * volume, 40))
-	M.reagents.remove_reagent("glucagone", removed * 0.8)
 
 /datum/reagent/hormone/noradrenaline
 	name = "Noradrenaline"
-	id = "noradrenaline"
+	id = RI_NORADRENALINE
 	description = "Noradrenaline is a hormone used as emergency drug in shock states to increase BP by vasoconstricting."
 	overdose = 10
 
@@ -29,7 +27,7 @@
 
 /datum/reagent/hormone/dopamine
 	name = "Dopamine"
-	id = "dopamine"
+	id = RI_DOPAMINE
 	description = "Dopamine is a hormone used to treat hypotension by vasoconstricting. Can cause arrythmia."
 
 /datum/reagent/hormone/dopamine/affect_blood(mob/living/carbon/human/M, alien, removed)

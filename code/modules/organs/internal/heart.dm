@@ -8,7 +8,7 @@
 	parent_organ = BP_TORSO
 	dead_icon = "heart-off"
 	var/pulse = 60
-	var/cardiac_output = 1
+	var/cardiac_output = 1.2
 	var/list/pulse_modificators = list()
 	var/list/cardiac_output_modificators = list() // *
 	var/list/datum/arrythmia/arrythmias = list()
@@ -152,7 +152,7 @@
 
 	var/period = world.time - last_arrythmia_gain
 
-	if(prob(1) && period > 1.5 MINUTES && !get_ow_arrythmia())
+	if(FALSE && prob(1) && period > 1.5 MINUTES && !get_ow_arrythmia())
 		var/arrythmic = get_arrythmic()
 
 		if(arrythmic >= 1 && (get_arrythmia_score() < arrythmic))

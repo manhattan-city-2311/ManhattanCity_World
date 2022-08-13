@@ -23,24 +23,32 @@
 
 	//saves all characters
 
-	for (var/mob/living/carbon/human/H in mob_list) //only humans, we don't really save AIs or robots.
-		/*if(H.mind && H.mind.initial_account)
-			// collects all the money on your person and puts it in your bank account for you. You're welcome.
-			var/money_on_person = 0
-			for(var/obj/item/weapon/spacecash/C in H.get_contents())
-				money_on_person += C.worth
-				qdel(C)
+	for(var/mob/living/carbon/human/H in mob_list)
+		var/uid = md5(H.real_name)
+		var/datum/persistent_inventory/PI = check_persistent_storage_exists(uid)
 
-			H.mind.initial_account.money += money_on_person*/
+		if(!PI)
+			PI = new(uid)
+		else
+			PI.stored_items.Cut()
+		// TODO: Add underwear saving
+		for(var/slot = SLOT_TOTAL to 1 step -1)
+			var/I = H.get_equipped_item(slot)
+			if(I)
+				PI.add_item(slot, I)
 
 		handle_jail(H)	// make sure the pesky criminals get what's coming to them.
 		H.save_mob_to_prefs()
 
-	for(var/datum/persistent_inventory/PI in GLOB.persistent_inventories)
-		PI.save_inventory()
+	for(var/datum/persistent_inventory/PI in global.persistent_inventories)
+		PI.save()
 
 	if(config.lot_saving)
-		to_chat(world, "<h3>Saving all lots... Note: This might lag the world for a short while.</h3>")
+		to_world("<h3>Saving all lots... Note: This might lag the world for a short while.</h3>")
 		SSlots.save_all_lots()
 
 	return 1
+
+/hook/roundend/proc/world_save()
+	to_world("Saving world...")
+	save_world()

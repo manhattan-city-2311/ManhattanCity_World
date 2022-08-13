@@ -80,8 +80,8 @@
 #define send_link(target, url)                to_target(target, link(url))
 #define send_output(target, msg, control)     to_target(target, output(msg, control))
 #define to_file(handle, value)                to_target(handle, value)
-#define to_save(handle, value)                to_target(handle, value) //semantics
-#define from_save(handle, target_var)         from_target(handle, target_var)//#define to_chat(target, message) target << message
+#define to_save(savefile, var)				  to_target(savefile[#var], var)
+#define from_save(savefile, var)			  from_target(savefile[#var], var)
 // TODO - Baystation has this log to crazy places. For now lets just world.log, but maybe look into it later.
 #define log_world(message) world.log << message
 #define from_file(file_entry, target_var) file_entry >> target_var
@@ -134,7 +134,7 @@
 #define isvehicle(X) istype(X, /obj/manhattan/vehicle)
 
 // G is type.
-#define ishormone(G, T) (G == /datum/reagent/hormone/##T)
+#define ishormone(G, T) (G == #T)
 
 #define LAZYACCESS0(L, I) (L ? (isnum(I) ? (I > 0 && I <= L.len ? L[I] : 0) : L[I]) : 0)
 

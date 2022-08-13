@@ -6,6 +6,8 @@
 	density = 1
 	layer = ABOVE_MOB_LAYER
 
+	w_class = ITEM_SIZE_VEHICLE
+
 	var/headlights_overlay = "" //don't set this if vehicle has no headlights icon state
 	var/headlights = FALSE //on-off
 
@@ -90,7 +92,7 @@
 /obj/manhattan/vehicle/proc/update_step_size()
 	// TODO: Properly created system
 	//step_size = speed.modulus() * WORLD_ICON_SIZE / world.tick_lag
-	step_size = 96 + round(speed.modulus())
+	step_size = round(96 + round(speed.modulus()) * 1.5)
 
 /obj/manhattan/vehicle/proc/get_wheel_diameter()
 	return 0.34

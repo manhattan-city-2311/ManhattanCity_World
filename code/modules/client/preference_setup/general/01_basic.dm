@@ -57,7 +57,6 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	pref.metadata = null
 	pref.existing_character = null
 	pref.played = null
-	delete_persistent_inventory(pref.unique_id)
 	pref.unique_id = null
 	if(fdel("data/persistent/emails/[pref.email].sav"))
 		pref.email = null

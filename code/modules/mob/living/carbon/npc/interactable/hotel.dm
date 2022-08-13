@@ -64,10 +64,8 @@
 		for(var/list/L in products)
 			if(L["number"] != number)
 				continue
-			to_world("before selled")
 			if(L["selled"])
 				return 
-			to_world("after selled")
 			var/price = L["price"]
 
 			var/avail = H.get_available_money()

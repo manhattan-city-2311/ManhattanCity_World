@@ -347,10 +347,6 @@ var/global/datum/controller/gameticker/ticker
 				if(blackbox)
 					blackbox.save_all_data_to_sql()
 
-				if(config.canonicity)
-					if(save_world())
-						to_chat(world, "<H3>The world has been saved!</H3>")
-
 				var/wait_for_tickets
 				var/delay_notified = 0
 				do
