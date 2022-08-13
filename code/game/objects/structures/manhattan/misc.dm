@@ -120,7 +120,7 @@
 	name = "transit station sign"
 	desc = "A sign for the city transit station."
 	icon_state = "transit"
-	light_color = COLOR_YELLOW
+	light_color = COLOR_ORANGE
 
 /obj/structure/sign/neon/big/transit/south
 	name = "south transit station sign"
