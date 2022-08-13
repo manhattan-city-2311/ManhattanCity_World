@@ -213,9 +213,6 @@ var/persistent_online = FALSE
 /atom/movable/lighting_overlay
 	dont_save = TRUE
 
-/obj/item/device/communicator
-	dont_save = TRUE
-
 /obj/singularity		// lmao just in case
 	dont_save = TRUE
 

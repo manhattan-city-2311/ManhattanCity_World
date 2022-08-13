@@ -186,19 +186,13 @@
 /datum/reagents/proc/has_reagent(var/id, var/amount = 0)
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
-			if(current.volume >= amount)
-				return 1
-			else
-				return 0
+			return current.volume >= amount
 	return 0
 
 /datum/reagents/proc/has_any_reagent(var/list/check_reagents)
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id in check_reagents)
-			if(current.volume >= check_reagents[current.id])
-				return 1
-			else
-				return 0
+			return current.volume >= check_reagents[current.id]
 	return 0
 
 /datum/reagents/proc/has_all_reagents(var/list/check_reagents)
@@ -207,7 +201,7 @@
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id in check_reagents)
 			if(current.volume >= check_reagents[current.id])
-				missing--
+				--missing
 	return !missing
 
 /datum/reagents/proc/clear_reagents()

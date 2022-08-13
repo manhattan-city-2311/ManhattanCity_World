@@ -24,13 +24,14 @@
 	var/npc = FALSE
 
 /mob/living/carbon/human/proc/calc_k()
+	return
+
 	var/isMale = gender == MALE
 	k = (weight * 160) / (isMale ? 14240 : 10000)
 
 /mob/living/carbon/human/proc/setup_cm()
-	calc_k()
-	gvr = 218.50746
-	mcv = NORMAL_MCV * k
+	gvr = 218.50746268
+	mcv = NORMAL_MCV
 	oxy = get_max_blood_oxygen_delta()
 	co2 = 0
 

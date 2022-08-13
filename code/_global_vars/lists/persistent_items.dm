@@ -1,2 +1,1 @@
 GLOBAL_LIST_EMPTY(inventory_boxes)
-GLOBAL_LIST_EMPTY(persistent_inventories)

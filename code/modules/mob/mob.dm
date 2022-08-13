@@ -192,14 +192,14 @@
 /mob/proc/reset_view(atom/A)
 	if (client)
 		if (istype(A, /atom/movable))
-			client.perspective = EYE_PERSPECTIVE
+			client.perspective = EYE_PERSPECTIVE | EDGE_PERSPECTIVE
 			client.eye = A
 		else
 			if (isturf(loc))
 				client.eye = client.mob
-				client.perspective = MOB_PERSPECTIVE
+				client.perspective = MOB_PERSPECTIVE | EDGE_PERSPECTIVE
 			else
-				client.perspective = EYE_PERSPECTIVE
+				client.perspective = EYE_PERSPECTIVE | EDGE_PERSPECTIVE
 				client.eye = loc
 	return
 

@@ -123,7 +123,7 @@
 /obj/item/weapon/paper/sticky/proc/track_value()
 	SSpersistence.track_value(src, /datum/persistent/paper/sticky)
 
-var/global/list/disallowed_sticky_items = list(/obj/item/weapon/storage, /obj/machinery/inventory_machine, /obj/machinery/door)
+var/global/list/disallowed_sticky_items = list(/obj/item/weapon/storage, /obj/machinery/door)
 
 /obj/item/weapon/paper/sticky/afterattack(var/A, var/mob/user, var/flag, var/params)
 

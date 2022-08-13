@@ -194,7 +194,10 @@
 
 /obj/machinery/vending/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
-	var/obj/item/weapon/card/id/I = W.GetID()
+	var/obj/item/weapon/card/debit/I = W
+
+	if(!istype(I))
+		I = null
 
 
 
@@ -357,7 +360,7 @@
  * Takes payment for whatever is the currently_vending item. Returns 1 if
  * successful, 0 if failed
  */
-/obj/machinery/vending/proc/pay_with_card(var/obj/item/weapon/card/id/I, var/obj/item/ID_container)
+/obj/machinery/vending/proc/pay_with_card(var/obj/item/weapon/card/I, var/obj/item/ID_container)
 
 	if(I==ID_container || ID_container == null)
 		visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")

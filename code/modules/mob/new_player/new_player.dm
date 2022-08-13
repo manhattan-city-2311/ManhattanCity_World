@@ -190,7 +190,7 @@
 
 	return 1
 
-/mob/new_player/proc/AttemptLateSpawn(rank, var/turf/spawning_at, antag_type)
+/mob/new_player/proc/AttemptLateSpawn(rank, turf/spawning_at, antag_type)
 	if (src != usr)
 		return 0
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)

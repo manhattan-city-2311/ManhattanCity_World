@@ -211,6 +211,7 @@
 	icon = 'icons/obj/road_signs.dmi'
 	icon_state = "stop"
 	light_color = LIGHT_COLOR_NEONBLUE
+	density = TRUE
 
 /obj/structure/sign/neon/trafficsign/emergency_stop
 	name = "secondary road traffic sign"

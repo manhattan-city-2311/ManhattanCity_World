@@ -412,9 +412,6 @@
 	return
 
 /obj/item/toy/waterflower/afterattack(atom/A as mob|obj, mob/user as mob)
-	if (istype(A, /obj/machinery/inventory_machine ))
-		return
-
 	if(!reagents)
 		return
 
