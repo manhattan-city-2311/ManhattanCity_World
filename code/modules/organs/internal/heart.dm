@@ -150,7 +150,7 @@
 			A.strengthen(src)
 			break
 
-	var/period = world.time - last_arrythmia_gain
+	//var/period = world.time - last_arrythmia_gain
 
 	if(FALSE && prob(1) && period > 1.5 MINUTES && !get_ow_arrythmia())
 		var/arrythmic = get_arrythmic()
