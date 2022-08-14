@@ -150,16 +150,17 @@
 			A.strengthen(src)
 			break
 
-	//var/period = world.time - last_arrythmia_gain
+/*
+	var/period = world.time - last_arrythmia_gain
 
-	if(FALSE && prob(1) && period > 1.5 MINUTES && !get_ow_arrythmia())
+	if(prob(1) && period > 1.5 MINUTES && !get_ow_arrythmia())
 		var/arrythmic = get_arrythmic()
 
 		if(arrythmic >= 1 && (get_arrythmia_score() < arrythmic))
 			make_common_arrythmia(arrythmic)
 		if(get_arrythmia_score() >= (ARRYTHMIA_SEVERITY_OVERWRITING - 1) || get_arrythmic() >= (ARRYTHMIA_SEVERITY_OVERWRITING - 1))
 			make_specific_arrythmia(ARRYTHMIA_SEVERITY_OVERWRITING)
-
+*/
 
 /obj/item/organ/internal/heart/proc/handle_heartbeat()
 	// This is very weird..
