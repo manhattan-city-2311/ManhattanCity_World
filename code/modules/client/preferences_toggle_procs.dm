@@ -192,16 +192,28 @@
 
 	feedback_add_details("admin_verb","TFiringMode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/verb/toggle_mob_tooltips()
-	set name = "Toggle Mob Tooltips"
-	set category = "Preferences"
-	set desc = "Toggles displaying name/species over mobs when moused over."
+// /client/verb/toggle_mob_tooltips()
+// 	set name = "Toggle Mob Tooltips"
+// 	set category = "Preferences"
+// 	set desc = "Toggles displaying name/species over mobs when moused over."
 
-	var/pref_path = /datum/client_preference/mob_tooltips
-	toggle_preference(pref_path)
+// 	var/pref_path = /datum/client_preference/mob_tooltips
+// 	toggle_preference(pref_path)
+// 	prefs.save_preferences()
+
+// 	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/mob_tooltips)) ? "see" : "not see"] mob tooltips.")
+
+// 	feedback_add_details("admin_verb","TMobTooltips") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/verb/toggle_tooltip()
+	set name = "Toggle Tooltip"
+	set category = "Preferences"
+	set desc = "Toggles displaying name at the top of window when moused over."
+
+	toggle_preference(/datum/client_preference/tooltip)
 	prefs.save_preferences()
 
-	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/mob_tooltips)) ? "see" : "not see"] mob tooltips.")
+	to_chat(src, "Now you [(is_preference_enabled(/datum/client_preference/tooltip)) ? "will" : "won't"] see tooltip.")
 
 	feedback_add_details("admin_verb","TMobTooltips") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

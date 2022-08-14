@@ -210,7 +210,7 @@
 	desc = "A sign to regulate road traffic."
 	icon = 'icons/obj/road_signs.dmi'
 	icon_state = "stop"
-	light_color = LIGHT_COLOR_NEONBLUE
+	light_color = LIGHT_COLOR_NEONLIGHTBLUE
 
 /obj/structure/sign/neon/trafficsign/emergency_stop
 	name = "secondary road traffic sign"
@@ -254,6 +254,9 @@
 	light_color = LIGHT_COLOR_NEONDARKBLUE
 	light_power = 20
 	light_range = 2
+	alpha = 155
+	pixel_x = 8
+	pixel_y = 10
 
 /obj/structure/sign/neon/big/luckystar
 	name = "luckystar sign"

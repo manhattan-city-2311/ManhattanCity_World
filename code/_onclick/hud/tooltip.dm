@@ -28,26 +28,15 @@
 	state = new_state
 	set_invisibility(state ? initial(invisibility) : INVISIBILITY_MAXIMUM)
 
-// /client/New(TopicData)
-// 	. = ..()
-// 	tooltip = new()
-// 	if(mob)
-// 		var/value = mob.get_client_preference(/datum/client_preference/tooltip)
-// 		if(value)
-// 			tooltip.set_state(TRUE) //value
-// 		else
-// 			tooltip.set_state(FALSE) //value
-
-/mob/Login()
+/client/New(TopicData)
 	. = ..()
-	if(client)
-		if(!client.tooltip)
-			client.tooltip = new
-		var/value = get_client_preference(/datum/client_preference/tooltip)
-		if(value == GLOB.PREF_SHOW)
-			client.tooltip.set_state(TRUE) //value
-		else
-			client.tooltip.set_state(FALSE) //value
+	tooltip = new()
+	// var/value = is_preference_enabled(/datum/client_preference/tooltip)
+	// if(value)
+	// 	tooltip.set_state(TRUE) //value
+	// else
+	// 	tooltip.set_state(FALSE) //value
+	tooltip.set_state(is_preference_enabled(/datum/client_preference/tooltip))
 
 /client/MouseEntered(atom/hoverOn, location, control, params)
 	. = ..()

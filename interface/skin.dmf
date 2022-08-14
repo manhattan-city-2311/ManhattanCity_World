@@ -1364,7 +1364,7 @@ window "outputwindow"
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
-		size = 640x480
+		size = 640x460
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-visible = false
@@ -1373,7 +1373,7 @@ window "outputwindow"
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
-		size = 640x440
+		size = 640x460
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-default = true
