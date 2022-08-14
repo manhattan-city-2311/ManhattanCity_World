@@ -41,7 +41,7 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/initialize(var/materialtype, var/rmaterialtype, var/girdertype)
+/turf/simulated/wall/initialize(materialtype, rmaterialtype, girdertype)
 	. = ..()
 	icon_state = "blank"
 	if(!materialtype)
@@ -54,18 +54,18 @@
 		reinf_material = get_material_by_name(rmaterialtype)
 	update_material()
 
-	processing_turfs |= src
+	//processing_turfs |= src
 
 /turf/simulated/wall/Destroy()
-	processing_turfs -= src
+	//processing_turfs -= src
 	dismantle_wall(null,null,1)
 	..()
 
-/turf/simulated/wall/process()
+/*/turf/simulated/wall/process()
 	// Calling parent will kill processing
 	if(!radiate())
 		return PROCESS_KILL
-
+*/
 /turf/simulated/wall/proc/get_material()
 	return material
 
