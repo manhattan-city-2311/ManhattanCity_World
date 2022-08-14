@@ -162,6 +162,9 @@
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 	light_power = 10
 	light_range = 5
+	pixel_x = 8
+	pixel_y = 10
+	alpha = 150
 
 /obj/structure/sign/neon/big/street
 	name = "street name"

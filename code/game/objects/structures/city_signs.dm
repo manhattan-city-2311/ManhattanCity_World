@@ -271,6 +271,9 @@
 	light_color = "#ff2119"
 	light_power = 20
 	light_range = 3
+	pixel_x = -8
+	pixel_y = 14
+	alpha = 200
 
 /obj/structure/sign/neon/big/ianhi
 	name = "cryptic wall sign"
@@ -279,6 +282,9 @@
 	light_color = "#aa22ff" //LIGHT_COLOR_PURPLE
 	light_power = 10
 	light_range = 3
+	pixel_x = -8
+	pixel_y = 14
+	alpha = 200
 // light_color = "#aa22ff"
 
 /obj/structure/sign/neon/big/inn
