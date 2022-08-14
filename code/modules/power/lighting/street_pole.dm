@@ -24,7 +24,7 @@
 	brightness_power = 6
 	pixel_x = -32
 	layer = ABOVE_MOB_LAYER
-	light_color = LIGHT_COLOR_GREEN
+	light_color = LIGHT_COLOR_BLUE
 	light_type = /obj/item/weapon/light/bulb/street2
 	anchored = 1
 	density = 1
