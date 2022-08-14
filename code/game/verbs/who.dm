@@ -48,8 +48,10 @@
 
 			entry += " (<A HREF='?_src_=holder;adminmoreinfo=\ref[C.mob]'>?</A>)"
 			Lines += entry
-/*
 	else
+		to_chat(src, "Вы не имеете доступа к команде <b>Who</b>")
+		return
+/*
 		for(var/client/C in GLOB.clients)
 			if(C.holder && C.holder.fakekey)
 				Lines += C.holder.fakekey

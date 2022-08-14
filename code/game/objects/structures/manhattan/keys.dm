@@ -72,6 +72,7 @@
 	icon_state = "keys"
 	w_class = 1
 	var/key_data = ""
+	unique_save_vars = list("key_data")
 
 /obj/item/weapon/door/key/New()
 	..()
