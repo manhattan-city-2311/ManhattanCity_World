@@ -46,6 +46,8 @@
 	S.cd = "/"
 
 	S["version"] >> savefile_version
+	from_save(S, bank_account)
+	from_save(S, bank_pin)
 	//Conversion
 	if(!savefile_version || !isnum(savefile_version) || savefile_version < SAVEFILE_VERSION_MIN || savefile_version > SAVEFILE_VERSION_MAX)
 		if(!savefile_update())  //handles updates
@@ -71,6 +73,8 @@
 	S.cd = "/"
 
 	S["version"] << savefile_version
+	to_save(S, bank_account)
+	to_save(S, bank_pin)
 	player_setup.save_preferences(S)
 	return 1
 

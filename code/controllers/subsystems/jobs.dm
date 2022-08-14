@@ -419,6 +419,7 @@ SUBSYSTEM_DEF(jobs)
 			H.buckled.forceMove(get_turf(H))
 			H.buckled.set_dir(H.dir)
 
+	job.setup_account(H)
 
 	var/uid = md5(H.real_name)
 	var/datum/persistent_inventory/PI = check_persistent_storage_exists(uid)
@@ -474,7 +475,6 @@ SUBSYSTEM_DEF(jobs)
 					else
 						spawn_in_storage += thing
 		//Equip job items.
-		job.setup_account(H)
 		job.equip(H, H.mind ? H.mind.role_alt_title : "")
 		job.equip_backpack(H)
 		job.apply_fingerprints(H)

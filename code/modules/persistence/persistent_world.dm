@@ -43,10 +43,14 @@
 	for(var/datum/persistent_inventory/PI in global.persistent_inventories)
 		PI.save()
 
+	for(var/datum/money_account/MA in global.persistent_money_accounts)
+		MA.save()
+
 	if(config.lot_saving)
 		to_world("<h3>Saving all lots... Note: This might lag the world for a short while.</h3>")
 		SSlots.save_all_lots()
 
+	to_world("<h2>World saved.</h2>")
 	return 1
 
 /hook/roundend/proc/world_save()

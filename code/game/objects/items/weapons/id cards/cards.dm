@@ -17,8 +17,10 @@
 	icon = 'icons/obj/card.dmi'
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
-	var/associated_account_number = 0
+	var/associated_account_number
 	var/associated_pin_number = 0
+
+	unique_save_vars = list("associated_account_number", "associated_pin_number")
 
 	var/list/files = list(  )
 
