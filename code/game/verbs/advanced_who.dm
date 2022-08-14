@@ -52,6 +52,9 @@
 
 			Lines += entry
 	else
+		to_chat(src, "Вы не имеете доступа к команде <b>Who</b>")
+		return
+/*
 		for(var/client/C in GLOB.clients)
 			if(C.holder && C.holder.fakekey)
 				var/entry = "\t[C.key]"
@@ -74,6 +77,7 @@
 				else
 					entry += " - <font color='green'>Playing</font>"
 				Lines += entry
+*/
 
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"

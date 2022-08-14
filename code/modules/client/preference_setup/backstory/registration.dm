@@ -84,7 +84,11 @@
 		var/ID = href_list["recedit"]
 		if(!(ID in pref.records) || jobban_isbanned(user, "Records") || !CanUseTopic(user))
 			return TOPIC_NOACTION
-		var/nr = sanitize(input(user, "[ID]", "Записи", pref.records[ID]) as null|message, 500, extra = 0)
+
+		var/nr
+
+		nr = sanitize(input(user, "[ID]", "Записи", pref.records[ID]) as null|message, 500, extra = 0)
+
 		if(!nr)
 			return TOPIC_NOACTION
 

@@ -138,9 +138,6 @@ F
 	if(pref.existing_character)
 		. += "<b>Уникальное ИД:</b> [pref.unique_id]<br>"
 
-	. += "<b>Точка захода</b>:<br> <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
-	. += "<b>Тихое прибытие</b>:<br> <a href='?src=\ref[src];silent_join=1'>[(pref.silent_join) ? "Yes" : "No"]</a><br>"
-
 	if(config.allow_Metadata)
 		. += "<b>OOC Заметки:</b><br> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
 	. = jointext(.,null)
