@@ -130,6 +130,10 @@
 	else
 		. += {"<a id = "enter" class="menu_a" href='?src=\ref[src];lobby_join=1'>ENTER MANHATTAN</a>"}
 
+	if(client.holder)
+		if(client.holder.rights & R_ADMIN)
+			. += {"<a class="menu_a" href='?src=\ref[src];observe=1'>OBSERVE</a>"}
+
 	. += "</div>"
 
 	. += {"

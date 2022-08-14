@@ -279,21 +279,19 @@
 		I.color = stripe_color
 		add_overlay(I)
 
-/turf/simulated/wall/concrete/initialize(var/newloc)
-	..( material, reinf_material, girder_material)
+/turf/simulated/wall/concrete/initialize()
+	..("concrete", reinf_material, girder_material)
 
 /turf/simulated/wall/concrete/reinforced
 	name = "reinforced concrete wall"
 	icon_state = "r_concrete"
-	girder_material = "steel"
 	material = "concrete"
-	reinf_material = "concrete"
 
 /turf/simulated/wall/concrete/fckng_invincible
 	icon_state = "r_invincible"
 	block_tele = TRUE
 
-/turf/simulated/wall/concrete/fckng_invincible/initialize(var/newloc)
+/turf/simulated/wall/concrete/fckng_invincible/initialize()
 	..("concrete")
 
 /turf/simulated/wall/concrete/fckng_invincible/attackby()

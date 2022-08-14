@@ -100,6 +100,15 @@
 
 		AttemptLateSpawn("Civilian")
 		return 1
+	
+	if(href_list["observe"])
+		if(!client.holder || !(client.holder.rights & R_ADMIN))
+			message_admins("ERROR: [client.ckey] called \"observe\" without admin rights")
+			return
+		var/mob/ghost = ghostize(FALSE)
+		for(var/obj/effect/landmark/C as anything in landmarks_list)
+			if(C.name == "JoinLate")
+				ghost.forceMove(get_turf(C))
 
 	if(href_list["lobby_ready"])
 		ready = !ready
