@@ -78,17 +78,45 @@
 /obj/machinery/door/unpowered/manhattan/inoperable(var/additional_flags = 0)
 	return (stat & (BROKEN|additional_flags))
 
-/obj/machinery/door/unpowered/manhattan/close(var/forced = 0)
-	if(!can_close(forced))
-		return
-	playsound(src.loc, material.dooropen_noise, 100, 1)
-	..()
-
 /obj/machinery/door/unpowered/manhattan/open(var/forced = 0)
 	if(!can_open(forced))
 		return
 	playsound(src.loc, material.dooropen_noise, 100, 1)
-	..()
+
+	operating = 1
+	do_animate("opening")
+
+	icon_state = "door0"
+	set_opacity(0)
+	density = 0
+
+	layer = open_layer
+	explosion_resistance = 0
+	update_icon()
+	set_opacity(0)
+	operating = 0
+
+	if(autoclose)
+		close_door_at = next_close_time()
+
+/obj/machinery/door/unpowered/manhattan/close(var/forced = 0)
+	if(!can_close(forced))
+		return
+	playsound(src.loc, material.dooropen_noise, 100, 1)
+
+	operating = TRUE
+
+	close_door_at = 0
+	do_animate("closing")
+
+	density = TRUE
+	explosion_resistance = initial(explosion_resistance)
+	layer = closed_layer
+
+	update_icon()
+	if(visible && !glass)
+		set_opacity(TRUE)	//caaaaarn!
+	operating = FALSE
 
 /obj/machinery/door/unpowered/manhattan/set_broken()
 	..()

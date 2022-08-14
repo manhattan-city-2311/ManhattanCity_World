@@ -491,21 +491,20 @@
 
 	do_animate("opening")
 	icon_state = "door0"
-	set_opacity(0)
-	sleep(3)
-	src.density = 0
+	set_opacity(FALSE)
+	spawn(3)
+		density = FALSE
 
-	sleep(7)
-	src.layer = open_layer
-	explosion_resistance = 0
-	update_icon()
-	set_opacity(0)
-	operating = 0
+		spawn(7)
+			layer = open_layer
+			explosion_resistance = 0
+			update_icon()
+			set_opacity(FALSE)
+			operating = FALSE
 
-	if(autoclose)
-		close_door_at = next_close_time()
+			if(autoclose)
+				close_door_at = next_close_time()
 
-	return 1
 
 /obj/machinery/door/proc/next_close_time()
 	return world.time + (normalspeed ? 150 : 5)
@@ -513,20 +512,20 @@
 /obj/machinery/door/proc/close(var/forced = 0)
 	if(!can_close(forced))
 		return
-	operating = 1
+	operating = TRUE
 
 	close_door_at = 0
 	do_animate("closing")
-	sleep(3)
-	src.density = 1
-	explosion_resistance = initial(explosion_resistance)
-	src.layer = closed_layer
+	spawn(3)
+		density = TRUE
+		explosion_resistance = initial(explosion_resistance)
+		layer = closed_layer
 
-	sleep(7)
-	update_icon()
-	if(visible && !glass)
-		set_opacity(1)	//caaaaarn!
-	operating = 0
+		spawn(7)
+			update_icon()
+			if(visible && !glass)
+				set_opacity(TRUE)	//caaaaarn!
+			operating = FALSE
 
 /obj/machinery/door/proc/requiresID()
 	return 1
