@@ -107,7 +107,6 @@
 	mind.prefs.existing_character = 1
 	mind.prefs.played = 1
 	//might need code for saving tattoos. Hm.
-	save_character_money()
 
 	mind.prefs.save_preferences()
 	mind.prefs.save_character()

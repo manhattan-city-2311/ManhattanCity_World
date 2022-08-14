@@ -189,7 +189,7 @@
 		if(!prefix)
 			return
 
-		var/domain = input(user, "Выберите домен вашей почты?", "Email Provider") as null|anything in domains
+		var/domain = input(user, "Выберите домен вашей почты.", "Домен почты.") as null|anything in domains
 		if(!domain)
 			return
 

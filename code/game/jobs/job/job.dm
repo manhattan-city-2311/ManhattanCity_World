@@ -116,38 +116,30 @@
 		if(5) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/messenger(H), slot_back)
 
 /datum/job/proc/setup_account(mob/living/carbon/human/H)
-	if(!account_allowed || (H.mind && H.mind.initial_account))
+	if(!account_allowed || (H.mind?.initial_account))
 		return
-	// To prevent abuse, no one recieves wages at roundstart and must play for at least an hour.
-	// We'll see how this goes.
-	var/money_amount = H.mind.prefs.money_balance
 	var/datum/money_account/M
 
-	for(var/datum/money_account/A in GLOB.all_money_accounts)
-		if(A.account_number == H.mind.prefs.bank_account)
-			M = A
-			break
-
 	if(!M)
-		M = create_account(H.real_name, money_amount, null)
-		M.load_persistent_account(H)
+		M = load_persistent_account(H.mind.prefs.bank_account)
+	if(!M) // There is no saved persistent account.
+		M = create_account(H.real_name)
+		H.mind.prefs.bank_account = M.account_number
+		H.mind.prefs.bank_pin = M.remote_access_pin
+		H.mind.prefs.save_preferences()
+		M.make_persistent()
 		spawn()
 			H.equip_to_slot(spawn_money(1100, get_turf(H), H), slot_in_backpack)
-
-	if(check_persistent_account(H.mind.prefs.bank_account))
-		money_amount = get_persistent_acc_balance(H.mind.prefs.bank_account)	// so people can actually recieve money they made offline.
 
 	if(H.mind)
 		var/remembered_info = ""
 		remembered_info += "<b>Your account ID is:</b> #[M.account_number]<br>"
 		remembered_info += "<b>Your account pin is:</b> [M.remote_access_pin]<br>"
-		remembered_info += "<b>Your account funds are:</b> [cash2text( M.money, FALSE, TRUE, TRUE )]<br>"
+		remembered_info += "<b>Your account funds are:</b> [cash2text(M.money, FALSE, TRUE, TRUE)]<br>"
 		H.mind.store_memory(remembered_info)
 
 		H.mind.initial_account = M
 		H.mind.initial_bank_details = list("id" = M.account_number, "pin" = M.remote_access_pin)
-
-	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
 
 // overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()
 /datum/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title, var/additional_skips)

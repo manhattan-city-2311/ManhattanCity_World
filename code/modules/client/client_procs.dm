@@ -645,6 +645,8 @@ client/verb/character_setup()
 	set name = "Toggle Fullscreen"
 	set category = "OOC"
 
+	return
+
 	fullscreen = !fullscreen
 
 	if (fullscreen)

@@ -133,7 +133,6 @@
 
 #define isvehicle(X) istype(X, /obj/manhattan/vehicle)
 
-// G is type.
 #define ishormone(G, T) (G == #T)
 
 #define LAZYACCESS0(L, I) (L ? (isnum(I) ? (I > 0 && I <= L.len ? L[I] : 0) : L[I]) : 0)
