@@ -286,3 +286,10 @@
 /obj/item/weapon/door/key/northelite/house3
 	name = "House key #13"
 	key_data = "elite3"
+
+
+// ЁБАНЫЙ РООООООООТ ЭТОГО КАЗИНОООООООООООО
+
+/obj/item/weapon/door/key/casino/
+	name = "Casino storage key"
+	key_data = "casino"

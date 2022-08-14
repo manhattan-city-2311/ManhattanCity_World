@@ -202,6 +202,12 @@
 	icon_state = "randomshit7"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
+/obj/structure/sign/neon/big/manhattan5
+	name = "big city sign"
+	desc = "A sign with Manhattan advertising."
+	icon_state = "randomshit6"
+	light_color = LIGHT_COLOR_NEONGREEN
+
 /obj/structure/sign/neon/mars
 	name = "Mars sign"
 	desc = "The sign made by south Manhattan bandits."
