@@ -53,6 +53,10 @@ GLOBAL_LIST_INIT(recomended_holoplants_colors,list(HOLOPLANT_REC_COLORS))
 					add2 = emagged_states
 				add2[state_splittext[2]] = i
 
+/obj/machinery/holoplant/power_change()
+	. = ..()
+	set_enabled(!(stat & (BROKEN|NOPOWER)))
+
 /obj/machinery/holoplant/update_icon()
 	if(!islist(possible_states))
 		parse_icon()
@@ -65,11 +69,9 @@ GLOBAL_LIST_INIT(recomended_holoplants_colors,list(HOLOPLANT_REC_COLORS))
 	if(enabled)
 		overlays += plant
 		use_power = 2
-		brightness_on = 2
 	else
 		use_power = 0
-		brightness_on = 0
-	set_light(brightness_on, 10, plant_color)
+	set_light(enabled ? brightness_on : 0, 10, plant_color)
 /obj/machinery/holoplant/proc/get_states_list()
 	return (emagged ? emagged_states : possible_states)
 /obj/machinery/holoplant/proc/change_plant(var/state, list/states)
@@ -121,11 +123,15 @@ GLOBAL_LIST_INIT(recomended_holoplants_colors,list(HOLOPLANT_REC_COLORS))
 		playsound(src, 'sound/machines/button1.ogg', 70)
 		return TRUE
 	if(ismultitool(I))
-		enabled = !enabled
+		set_enabled(!enabled)
 		to_chat(usr, SPAN_NOTICE("You switch [enabled ? "on" : "off"] the [src]"))
-		update_icon()
 		return TRUE
 	return ..()
+
+/obj/machinery/holoplant/proc/set_enabled(value)
+	if(enabled != value)
+		enabled = value
+		update_icon()
 
 /obj/machinery/holoplant/proc/rollback()
 	emagged = FALSE
