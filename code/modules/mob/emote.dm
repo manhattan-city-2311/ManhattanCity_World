@@ -21,12 +21,15 @@
 		return
 
 
-	if (message)
+	if(message)
+		var/lastchar = copytext_char(message, -1)
+		if(lastchar != "." && lastchar != "!" && lastchar != "?")
+			message = message + "."
 		message = encode_html_emphasis(message)
-		if(findtext(message, "^") > 0)
+		if(findtext(message, "^") > 0) // not findtext_char because we don't need exact position, we just need fact that ^ exist
 			message = replacetext_char(message, "^", "<b>[src]</b>")
 		else
-			message = "<b>[src]</b> [input]"
+			message = "<b>[src]</b> [message]"
 
  // Hearing gasp and such every five seconds is not good emotes were not global for a reason.
  // Maybe some people are okay with that.

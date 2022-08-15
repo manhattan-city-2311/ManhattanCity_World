@@ -214,6 +214,9 @@ proc/get_radio_key_from_channel(var/channel)
 
 	//Clean up any remaining junk on the left like spaces.
 	message = trim_left(message)
+	var/lastchar = copytext_char(message, -1)
+	if(lastchar != "." && lastchar != "!" && lastchar != "?")
+		message = message + "."
 
 	//Autohiss handles auto-rolling tajaran R's and unathi S's/Z's
 	message = handle_autohiss(message, speaking)
