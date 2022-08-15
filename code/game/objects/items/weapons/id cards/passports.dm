@@ -18,7 +18,7 @@
 	var/uid
 
 	var/forged = FALSE
-	var/list/records // references boy
+	var/list/records // references son
 
 /obj/item/weapon/passport/examine(mob/user)
 	..()
