@@ -329,6 +329,8 @@
 	name = "city hall sign"
 	desc = "A sign for the city hall."
 	icon_state = "city_hall"
+	density = 1
+	bound_width = 64
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 

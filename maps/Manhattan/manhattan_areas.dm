@@ -146,8 +146,10 @@
 /area/planets/Manhattan/indoor/north/crey/office1
 /area/planets/Manhattan/indoor/north/crey/office2
 /area/planets/Manhattan/indoor/north/crey/recreationroom
-/area/planets/Manhattan/indoor/north/crey/rndmain
-/area/planets/Manhattan/indoor/north/crey/cyberspace
+/area/planets/Manhattan/indoor/north/crey/office3
+/area/planets/Manhattan/indoor/north/crey/office4
+/area/planets/Manhattan/indoor/north/crey/office5
+/area/planets/Manhattan/indoor/north/crey/office6
 /area/planets/Manhattan/indoor/north/crey/restroom
 /area/planets/Manhattan/indoor/north/crey/storage
 /area/planets/Manhattan/indoor/north/crey/secretaryoffice
@@ -166,6 +168,9 @@
 /area/planets/Manhattan/indoor/north/crey/under/xenobio
 /area/planets/Manhattan/indoor/north/crey/under/bombingrange
 /area/planets/Manhattan/indoor/north/crey/under/lockerroom
+
+/area/planets/Manhattan/indoor/north/crey/under/rndmain
+/area/planets/Manhattan/indoor/north/crey/under/cyberspace
 
 /area/planets/Manhattan/indoor/north/crey/upper
 	base_turf = /turf/simulated/open
