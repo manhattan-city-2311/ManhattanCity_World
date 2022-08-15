@@ -396,7 +396,12 @@ SUBSYSTEM_DEF(jobs)
 	var/datum/job/job = GetJob(rank)
 	var/list/spawn_in_storage = list()
 
-	if(!joined_late || job.no_shuttle)
+	var/px = H.client.prefs.persistence_x
+	var/py = H.client.prefs.persistence_y
+	var/pz = H.client.prefs.persistence_z
+	if(px || py || pz)
+		H.forceMove(locate(px, py, pz))
+	else if(!joined_late || job.no_shuttle)
 		var/obj/S = null
 		for(var/obj/effect/landmark/start/sloc in landmarks_list)
 			if(sloc.name != rank)

@@ -277,6 +277,10 @@ var/list/preferences_datums = list()
 
 	var/list/all_organ_damage = list()
 
+	var/persistence_x
+	var/persistence_y
+	var/persistence_z
+
 /datum/preferences/proc/is_records_filled()
 	for(var/ID in records)
 		if(!records[ID])
