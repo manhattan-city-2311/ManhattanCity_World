@@ -502,3 +502,6 @@ ALLOW_LOBBY_ANTAGONISTS
 
 # Allows people to sell things via exports in the factory
 #ALLOW_EXPORTS
+
+# Allow people to observe
+#OBSERVERS_ALLOWED 1

@@ -100,15 +100,50 @@
 
 		AttemptLateSpawn("Civilian")
 		return 1
-	
+
 	if(href_list["observe"])
-		if(!client.holder || !(client.holder.rights & R_ADMIN))
-			message_admins("ERROR: [client.ckey] called \"observe\" without admin rights")
+		if(!check_rights(R_ADMIN|R_DEBUG, 0, src) && !config.observers_allowed)
+			to_chat(src, SPAN_WARNING("Вы не можете наблюдать за раундом."))
 			return
-		var/mob/ghost = ghostize(FALSE)
-		for(var/obj/effect/landmark/C as anything in landmarks_list)
-			if(C.name == "JoinLate")
-				ghost.forceMove(get_turf(C))
+
+		if(alert(src,"Вы уверены, что хотите наблюдать?", "Observe", "Да", "Нет") == "Да")
+			if(!client || !check_rights(R_ADMIN|R_DEBUG, 0, src) && !config.observers_allowed)
+				to_chat(src, SPAN_WARNING("Вы не можете наблюдать за раундом."))
+				return 1
+
+			var/mob/observer/dead/observer = new()
+
+			spawning = 1
+			sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))// MAD JAMS cant last forever yo
+
+
+			observer.started_as_observer = 1
+			var/obj/effect/landmark/O = locate("landmark*Observer-Start")
+			if(istype(O))
+				to_chat(src, "<span class='notice'>Телепортация.</span>")
+				observer.dropInto(O)
+			else
+				to_chat(src, SPAN_WARNING("Не удалость обнаружить точку появления наблюдателей, телепортация на точку появления персонажей."))
+				O = locate("landmark*JoinLate")
+				if(!istype(O))
+					to_chat(src, SPAN_DANGER("Упс? Кто-то не раставил лендмарки на карту?"))
+					O = locate(1, 1, 1)
+				observer.dropInto(O)
+			observer.timeofdeath = world.time
+			if(isnull(client.holder))
+				announce_ghost_joinleave(src)
+			// var/mob/living/carbon/human/dummy/mannequin = new()
+			// client.prefs.dress_preview_mob(mannequin)
+			// observer.set_appearance(mannequin)
+			// qdel(mannequin)
+			observer.real_name = client.prefs.real_name
+			observer.name = observer.real_name
+			if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
+				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
+			observer.key = key
+			qdel(src)
+		return 1
+
 
 	if(href_list["lobby_ready"])
 		ready = !ready

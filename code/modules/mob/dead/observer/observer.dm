@@ -778,7 +778,7 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 	var/finalized = "No"
 
 	while(finalized == "No" && src.client)
-		choice = input(usr,"What would you like to use for your ghost sprite?") as null|anything in possible_ghost_sprites
+		choice = input(usr,"What would you like to use for your ghost sprite?", (icon_state in possible_ghost_sprites ? icon_state : null)) as null|anything in possible_ghost_sprites
 		if(!choice)
 			return
 

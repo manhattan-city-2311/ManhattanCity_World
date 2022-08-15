@@ -43,11 +43,11 @@
 					width: auto;
 					min-width: 100vmin;
 					min-height: 50vmin;
-					padding-left: 10vmin;
-					padding-top: 60vmin;
+					margin-left: 10vmin;
+					margin-top: 50.75vmin	;
 					box-sizing: border-box;
 					top: 50%;
-					left:50%;
+					left: 50%;
 					transform: translate(-50%, -50%);
 					z-index: 3;
 				}
@@ -86,13 +86,24 @@
 					font-size: 2.5vmin;
 					margin: 0;
 				}
+				.admin
+				{
+					color: #ffaaaa;
+					text-shadow: 0 0 10px #ff0000;
+					width: 15vmin;
+				}
+				.admin:hover
+				{
+					text-shadow: none;
+				}
+
 				.container_nav .data_output
 				{
 					top: 30%;
 				}
 				#time
 				{
-					top: 124.5%;
+					top: 135.7%;
 					left: 83.7%;
 					transform: scale(0.8,1);
 					transform-origin: left;
@@ -111,9 +122,7 @@
 
 	. += {"<img src="titlescreen.gif" class="lobby_image background" alt="">"}
 	. += "<img src='menu_cyberui.png' class='lobby_image lobby_decor' alt=''>"
-	. += {"
-		<div class="container_nav">
-	"}
+	. += "<div class='container_nav' style='margin-top: 2vmin; margin-left: 0vmin;'>"
 	. += {"<span class = "data_output" id = "time">[stationdate2text()]</span>
 	<span class = "data_output" id = "charactername">"}
 	if(client?.prefs?.real_name)
@@ -130,12 +139,14 @@
 	else
 		. += {"<a id = "enter" class="menu_a" href='?src=\ref[src];lobby_join=1'>ENTER MANHATTAN</a>"}
 
-	if(client.holder)
-		if(client.holder.rights & R_ADMIN)
-			. += {"<a class="menu_a" href='?src=\ref[src];observe=1'>OBSERVE</a>"}
-
 	. += "</div>"
-
+	if(config.observers_allowed || (client.holder && client.holder.rights & R_ADMIN))
+		. += {"
+		<div class='container_nav' style='margin-top: 63vmin;'>
+			<a class='menu_a admin' href='?src=\ref[src];observe=1'>
+				OBSERVE
+			</a>
+		</div>"}
 	. += {"
 	<script language="JavaScript">
 		var ready = [ready];
