@@ -201,7 +201,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 // Description: Simple check to see if the exonet node is active.
 /obj/item/device/communicator/proc/get_connection_to_tcomms()
 	if(node && node.on && node.allow_external_communicators)
-		return can_telecomm(src,node)
+		return can_telecomm(src,node, TRUE)
 	return 0
 
 // Proc: process()
