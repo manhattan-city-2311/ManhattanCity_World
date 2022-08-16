@@ -250,16 +250,17 @@
 // Parameters: 4 (msg - the message, type - number to determine if message is visible or audible, alt - unknown, alt_type - unknown)
 // Description: Relays the message to all linked communicators.
 /obj/item/device/communicator/show_message(msg, type, alt, alt_type)
-	var/rendered = "\icon[src] <span class='message'>[msg]</span>"
+	var/rendered = "<b>(PHONE)</b> <span class='message'>[msg]</span>"//"\icon[src] <span class='message'>[msg]</span>"
 	for(var/obj/item/device/communicator/comm in communicating)
 		var/turf/T = get_turf(comm)
 		if(!T) return
-		var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0)
-		var/list/mobs_to_relay = in_range["mobs"]
+		audible_message(rendered, hearing_distance = VIEW_RADIUS)
+		// var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0)
+		// var/list/mobs_to_relay = in_range["mobs"]
 
-		for(var/mob/mob in mobs_to_relay)
-			mob.show_message(rendered)
-	..()
+		// for(var/mob/mob in mobs_to_relay)
+		// 	mob.show_message(rendered)
+	. = ..()
 
 // Verb: join_as_voice()
 // Parameters: None

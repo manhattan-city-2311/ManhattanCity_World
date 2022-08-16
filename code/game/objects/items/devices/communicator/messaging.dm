@@ -73,8 +73,7 @@
 
 	if(ringer)
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
-		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("\icon[src] *beep*"))
+		audible_message(text("\icon[src] *beep*"), hearing_distance = 2)
 
 	alert_called = 1
 	update_icon()

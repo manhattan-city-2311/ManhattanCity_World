@@ -126,7 +126,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 	if(!user || !istype(user, /mob/living))
 		return
 	if(!exonet)
-		exonet = new(src)
+		exonet = new/datum/exonet_protocol/phone(src)
 	if(!exonet.address)
 		exonet.make_address("communicator-[user.client]-[user.name]")
 	if(!node)

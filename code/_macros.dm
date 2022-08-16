@@ -153,4 +153,5 @@ proc/n_repeat(var/string, var/amount)
 #define VIEW_SIZE_X 19
 #define VIEW_SIZE_Y 15
 #define VIEW_SIZE_MEAN 17
+#define VIEW_RADIUS 7
 #define VIEW_SIZE "19x15"
