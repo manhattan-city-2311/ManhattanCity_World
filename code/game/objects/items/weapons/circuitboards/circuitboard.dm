@@ -28,8 +28,17 @@
 
 /obj/item/weapon/circuitboard/examine(mob/user)
 	..()
+	if(!user.skill_check(SKILL_CONSTRUCTION, SKILL_AMATEUR) && !isobserver(user))
+		to_chat(user, "You aren't sure what you can build with this.")
+		return
 	if(board_type)
 		to_chat(user, "It is compatible with a <b>\"[board_type.name]\"</b> frame.")
+	if (user.skill_check(SKILL_CONSTRUCTION, SKILL_TRAINED) || isobserver(user))
+		if (req_components.len)
+			to_chat(user, SPAN_NOTICE("It requires the following parts to function:"))
+			for (var/V in req_components)
+				var/obj/item/I = V
+				to_chat(user, SPAN_NOTICE("&nbsp;&nbsp;[req_components[V]] [initial(I.name)]"))
 
 //Called when the circuitboard is used to contruct a new machine.
 /obj/item/weapon/circuitboard/proc/construct(var/obj/machinery/M)
