@@ -47,8 +47,6 @@
 	var/l_hacking = 0
 	var/open = 0
 
-	unique_save_vars = list("code", "door_color", "stripe_color", "locked", "open", "panel_open", "l_hacking", "l_set", "l_code", "l_setshort", "keypad", "req_access", "req_one_access")
-
 	// turf animation
 	var/atom/movable/overlay/c_animation = null
 
@@ -57,6 +55,9 @@
 /obj/machinery/door/on_persistence_load()
 	update_connections(1)
 	update_icon()
+
+/obj/machinery/door/vars_to_save()
+	return ..() + list("code", "stripe_color", "locked", "open", "panel_open", "l_hacking", "l_set", "l_code", "l_setshort", "keypad", "req_access", "req_one_access")
 
 
 /obj/machinery/door/verb/knock(mob/user)

@@ -1,4 +1,3 @@
-
 /proc/save_world()
 	//saves all political data - TODO: Move this into law subsystem
 	SSpersistent_options.save_all_options()
@@ -46,13 +45,13 @@
 	for(var/datum/money_account/MA in global.persistent_money_accounts)
 		MA.save()
 
-	if(config.lot_saving)
-		to_world("<h3>Saving all lots... Note: This might lag the world for a short while.</h3>")
-		SSlots.save_all_lots()
+	to_world("<h1>Map saving...</h1>")
+	sleep(10)
+	SSpersistent_world.save_map()
 
 	to_world("<h2>World saved.</h2>")
 	return 1
 
 /hook/roundend/proc/world_save()
-	to_world("Saving world...")
+	to_world("<h1>Saving world...</h1>")
 	save_world()

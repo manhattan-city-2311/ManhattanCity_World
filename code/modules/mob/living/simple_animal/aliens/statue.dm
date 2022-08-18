@@ -70,7 +70,7 @@
 	resistance = 20
 
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
-	sight = SEE_SELF|SEE_MOBS|SEE_OBJS|SEE_TURFS
+	sight = DEFAULT_SIGHT|SEE_MOBS|SEE_OBJS|SEE_TURFS
 	var/last_hit = 0
 	var/cannot_be_seen = 1
 	var/mob/living/creator = null

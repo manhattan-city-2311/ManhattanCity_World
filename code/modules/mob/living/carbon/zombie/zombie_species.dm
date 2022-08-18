@@ -36,7 +36,7 @@
 	taste_sensitivity = TASTE_DULL
 	flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | UNDEAD | NO_HALLUCINATION
 	appearance_flags = HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS
-	vision_flags = SEE_SELF|SEE_MOBS
+	vision_flags = DEFAULT_SIGHT|SEE_MOBS
 	spawn_flags = SPECIES_IS_RESTRICTED
 	show_ssd = null
 	virus_immune = 1

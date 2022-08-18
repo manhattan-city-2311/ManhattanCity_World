@@ -33,6 +33,8 @@
 #define SEE_INVISIBLE_MINIMUM 5
 #define INVISIBILITY_MAXIMUM 100
 
+#define DEFAULT_SIGHT (SEE_SELF|SEE_BLACKNESS)
+
 // For the client FPS pref and anywhere else
 #define MAX_CLIENT_FPS	200
 

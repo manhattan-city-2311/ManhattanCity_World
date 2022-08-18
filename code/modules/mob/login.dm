@@ -40,7 +40,7 @@
 		client.fps = 0 // Results in using the server FPS
 
 	next_move = 1
-	sight |= SEE_SELF
+	sight |= DEFAULT_SIGHT
 	..()
 
 	if(loc && !isturf(loc))

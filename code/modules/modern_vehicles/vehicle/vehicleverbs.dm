@@ -67,16 +67,29 @@
 	set name = "Вставить/достать ключ"
 	set category = "Транспорт"
 	set src in view(1)
-	var/mob/living/user = usr
+	var/mob/living/carbon/human/user = usr
 	if(!istype(user) || !(user in get_occupants_in_position("driver")))
 		to_chat(user, SPAN_NOTICE("You must be the driver of [src] to reach for the keys."))
 		return
-	if(keys_in_ignition)
-		to_chat(user, SPAN_NOTICE("You remove the keys from the ignition."))
-		keys_in_ignition = FALSE
+	if(inserted_key)
+		if(user.put_in_hands(inserted_key))
+			to_chat(user, SPAN_NOTICE("You remove the keys from the ignition."))
+			inserted_key = null
+		else
+			inserted_key.forceMove(src)
+			return
 	else
+		var/obj/item/weapon/key/car/key = user.get_active_hand()
+		if(!istype(key))
+			return
+		if(key.key_data != serial_number)
+			to_chat(user, SPAN_WARNING("The key doesn't fit!"))
+			return
+
 		to_chat(user, SPAN_NOTICE("You insert the keys into the ignition."))
-		keys_in_ignition = TRUE
+		user.drop_from_inventory(key)
+		inserted_key = key
+		key.forceMove(src)
 	playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1)
 
 /obj/manhattan/vehicle/verb/engine()
@@ -87,7 +100,7 @@
 	if(!istype(user) || !(user in get_occupants_in_position("driver")))
 		to_chat(user, SPAN_NOTICE("You must be the driver of [src] to reach for the ignition."))
 		return
-	if(!keys_in_ignition)
+	if(!inserted_key)
 		to_chat(user, SPAN_NOTICE("There are no keys in the ignition."))
 		return
 	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]

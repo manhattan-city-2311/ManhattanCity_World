@@ -1,40 +1,41 @@
 //microscope code itself
-/obj/machinery/microscope
-	name = "microscope"
-	desc = "A highly advanced microscope capable of zooming up to 3000x."
+/obj/machinery/medicine_microscope
+	name = "medical microscope"
+	desc = "A highly advanced microscope capable of zooming up to 3000x with predefined programs."
 	icon = 'icons/obj/forensics.dmi'
-	icon_state = "microscope"
+	icon_state = "microscopeold"
 	anchored = 1
 	density = 1
 
 	var/obj/item/weapon/reagent_containers/glass/beaker/vial/vial
 	var/report_num = 0
 
-/obj/machinery/microscope/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/medicine_microscope/attackby(obj/item/weapon/W, mob/user)
 	if(vial)
-		to_chat(user, SPAN_WARNING("Microscope is already loaded with blood."))
+		to_chat(user, SPAN_WARNING("[src] is already loaded with blood."))
 		return
 
-	if(istype(W, /obj/item/weapon/reagent_containers/glass/beaker/vial))
-		var/obj/item/weapon/reagent_containers/RC = W
-		if(RC.reagents.reagent_list.len > 1)
-			to_chat(user, SPAN_NOTICE("Contents contain impurities."))
-			return
+	if(!istype(W, /obj/item/weapon/reagent_containers/glass/beaker/vial))
+		return
+	var/obj/item/weapon/reagent_containers/RC = W
+	if(RC.reagents.reagent_list.len > 1)
+		to_chat(user, SPAN_NOTICE("[W] contain impurities."))
+		return
 
-		to_chat(user, SPAN_NOTICE("You have inserted [W] in the microscope."))
-		user.unEquip(W)
-		W.forceMove(src)
-		vial = W
-		update_icon()
+	to_chat(user, SPAN_NOTICE("You have inserted [W] in \the [src]."))
+	user.unEquip(W)
+	W.forceMove(src)
+	vial = W
+	update_icon()
 
-/obj/machinery/microscope/proc/check_analysis(var/datum/analysis/analysis, volume_test = TRUE)
+/obj/machinery/medicine_microscope/proc/check_analysis(datum/analysis/analysis, volume_test = TRUE)
 	if(!vial)
 		return FALSE
 	if(volume_test && vial.reagents.total_volume < analysis.required_amount)
 		return FALSE
 	return TRUE
 
-/obj/machinery/microscope/attack_hand(mob/user)
+/obj/machinery/medicine_microscope/attack_hand(mob/user)
 	if(!vial)
 		to_chat(user, SPAN_NOTICE("Please insert vial to analyze contents."))
 		return
@@ -66,11 +67,13 @@
 	if(!check_analysis(analysis, volume_test = FALSE))
 		return
 	visible_message("<span class='notice'>\The [src] beeps and begins to analyze the sample.</span>")
+	icon_state = "microscopeslideold"
 	sleep(analysis.time)
+	icon_state = "microscopeold"
 	new /obj/item/weapon/paper(loc, analysis.analyze(vial.reagents.get_master_reagent()), dest_analysis)
 	visible_message("<span class='notice'>\The [src] rattles and prints out a report.</span>")
 
-/obj/machinery/microscope/proc/remove_vial(var/mob/living/remover)
+/obj/machinery/medicine_microscope/proc/remove_vial(var/mob/living/remover)
 	if(!istype(remover) || remover.incapacitated() || !Adjacent(remover))
 		return
 	if(!vial)
@@ -82,16 +85,16 @@
 	vial = null
 	update_icon()
 
-/obj/machinery/microscope/AltClick()
+/obj/machinery/medicine_microscope/AltClick()
 	remove_vial(usr)
 
-/obj/machinery/microscope/MouseDrop(var/atom/other)
+/obj/machinery/medicine_microscope/MouseDrop(var/atom/other)
 	if(usr == other)
 		remove_vial(usr)
 	else
 		return ..()
 
-/obj/machinery/microscope/update_icon()
+/obj/machinery/medicine_microscope/update_icon()
 	icon_state = "microscope"
 	if(vial)
 		icon_state += "slide"

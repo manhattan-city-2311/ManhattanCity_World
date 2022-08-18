@@ -4,17 +4,17 @@
 	var/generic_filth = FALSE
 	var/age = 0
 	var/list/random_icon_states = list()
+	dont_save = FALSE
+
+/obj/effect/decal/cleanable/on_persistence_load()
+	. = ..()
+	alpha = rand(180, 220)
 
 /obj/effect/decal/cleanable/initialize(var/ml, var/_age)
 	if(!isnull(_age))
 		age = _age
-	if(random_icon_states && length(src.random_icon_states) > 0)
-		src.icon_state = pick(src.random_icon_states)
-	SSpersistence.track_value(src, /datum/persistent/filth)
-	. = ..()
-
-/obj/effect/decal/cleanable/Destroy()
-	SSpersistence.forget_value(src, /datum/persistent/filth)
+	if(LAZYLEN(random_icon_states))
+		icon_state = pick(random_icon_states)
 	. = ..()
 
 /obj/effect/decal/cleanable/clean_blood(var/ignore = 0)

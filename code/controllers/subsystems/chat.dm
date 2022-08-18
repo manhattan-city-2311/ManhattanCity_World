@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(chat)
 			return
 
 /datum/controller/subsystem/chat/proc/queue(target, message, handle_whitespace = TRUE, trailing_newline = TRUE)
-	if(!target || !message)
+	if(!target || !message || (message == ""))
 		return
 
 	if(!istext(message))
