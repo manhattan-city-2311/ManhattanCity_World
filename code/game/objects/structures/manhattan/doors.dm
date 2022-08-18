@@ -229,7 +229,6 @@
 	return
 
 /obj/machinery/door/unpowered/manhattan/attack_hand(mob/user as mob)
-//	var/mob/living/L = user
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(lock && lock.isLocked())
 		to_chat(user, "\The [src] is locked!")
@@ -239,9 +238,8 @@
 			else
 				playsound(src.loc, 'sound/effects/doors/doorknock.wav', 70, 1)
 			user.visible_message("<span class='danger'>\The [user] knocks at \the [src].</span>")
-/*	if(user.a_intent == I_HURT && L.skill_check(SKILL_COMBAT, SKILL_PROFESSIONAL))
+	if(user.a_intent == I_HURT && user.skill_check(SKILL_CLOSE_COMBAT, SKILL_TRAINED))
 		playsound(src.loc, 'sound/effects/doors/smod_freeman.ogg', 70, 1)
-		open()*/
 	if(operable())
 		if(src.density)
 			open()

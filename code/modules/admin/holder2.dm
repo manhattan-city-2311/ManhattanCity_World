@@ -85,7 +85,7 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		else
 			if(show_msg)
 				to_chat(C, "<span class='warning'>Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")].</span>")
-			return FALSE
+			return TRUE
 	else
 		return TRUE
 
