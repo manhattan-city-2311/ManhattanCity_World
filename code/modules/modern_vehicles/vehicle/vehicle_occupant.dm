@@ -101,8 +101,8 @@
 	return 0
 
 /obj/manhattan/vehicle/proc/enter_as_position(var/mob/user,var/position = "passenger")
-	if(block_enter_exit)
-		to_chat(user,"<span class = 'notice'>The [src] is locked.</span>")
+	if(doors_locked())
+		to_chat(user,"<span class = 'notice'>\The [src] is locked.</span>")
 		return 0
 	if(check_position_blocked(position))
 		to_chat(user,"<span class = 'notice'>No [position] spaces in [src]</span>")

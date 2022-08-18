@@ -1,7 +1,7 @@
 /datum/persistent/paper
 	name = "paper"
 	tokens_per_line = 7
-	entries_expire_at = 50
+	entries_expire_at = INFINITY
 	has_admin_data = TRUE
 	var/paper_type = /obj/item/weapon/paper
 	var/requires_noticeboard = TRUE
@@ -28,7 +28,7 @@
 	paper.last_modified_ckey = tokens["author"]
 	if(requires_noticeboard)
 		board.add_paper(paper)
-	SSpersistence.track_value(paper, type)
+	paper.persistence_track()
 	return paper
 
 /datum/persistent/paper/GetEntryAge(var/atom/entry)

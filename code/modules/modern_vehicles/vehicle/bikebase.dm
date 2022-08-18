@@ -28,6 +28,8 @@
 
 	var/image/img
 
+	block_enter_exit = FALSE
+
 /obj/manhattan/vehicle/motorcycle/get_braking_force()
 	return 1800
 
@@ -53,8 +55,8 @@
 		driver.pixel_y = y
 		vis_contents += driver
 	if(gunner)
-		gunner.pixel_x = round(x * 1.2)
-		gunner.pixel_y = round(y * 1.2)
+		gunner.pixel_x = round(x * 1.5)
+		gunner.pixel_y = round(y * 1.5)
 		vis_contents += gunner
 	overlays += img
 
@@ -62,3 +64,9 @@
 	. = ..()
 	user.pixel_x = 0
 	user.pixel_y = 0
+
+/obj/manhattan/vehicle/motorcycle/doors_locked()
+	return FALSE // Are you see doors?
+
+/obj/manhattan/vehicle/motorcycle/attack_key()
+	return

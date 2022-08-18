@@ -22,7 +22,7 @@
 	var/max_rpm = 6200
 
 	mass = 70
-	var/rpm = 0
+	var/tmp/rpm = 0
 
 /obj/item/vehicle_part/engine/fail()
 	..()

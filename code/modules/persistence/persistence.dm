@@ -9,8 +9,6 @@
 	var/data = list("type" = "[type]")
 	return data
 
-var/persistent_online = FALSE
-
 /*
 * This is given the byond list from above, to bring this atom to the state
 * described in the list.
@@ -42,6 +40,16 @@ var/persistent_online = FALSE
 
 /atom/proc/on_persistence_save()
 	persistence_loaded = TRUE
+
+/atom/proc/persistence_track()
+	return
+
+/atom/Destroy()
+	. = ..()
+	persistence_forget()
+
+/atom/proc/persistence_forget()
+	return
 
 /atom/proc/make_persistent()
 	dont_save = FALSE
@@ -140,11 +148,11 @@ var/persistent_online = FALSE
 
 // This is so specific atoms can override these, and ignore certain ones
 /atom/proc/vars_to_save()
- 	return list("x","y","z","color","dir","name","pixel_x","pixel_y","tagged_price")+unique_save_vars
+	return list("color","dir","alpha","plane","pixel_x","pixel_y","tagged_price","icon_state") + unique_save_vars
 
 /atom/proc/map_important_vars()
 	// A list of important things to save in the map editor
- 	return list("x","y","z","color","dir","layer","name","pixel_x","pixel_y")+unique_save_vars
+	return list("color","dir","layer","plane","pixel_x","pixel_y") + unique_save_vars
 
 /area/
 	unique_save_vars = list("name")
@@ -188,18 +196,14 @@ var/persistent_online = FALSE
 /obj
 	save_forensics = TRUE
 
-/obj/machinery
-	dont_save = TRUE
-
 /obj/vars_to_save()
- 	 return list("x","y","z","density","anchored","color","dir","name","pixel_x","pixel_y","suit_fibers","tagged_price", "fingerprintslast")+unique_save_vars
+	return list("density","anchored","color","dir","layer","plane","pixel_x","pixel_y","tagged_price","icon_state") + unique_save_vars
 
 /obj/item/weapon/clipboard
 	unique_save_vars = list("haspen","toppaper")
 
 /obj/structure/safe
 	unique_save_vars = list("open","tumbler_1_pos","tumbler_1_open","tumbler_2_pos","tumbler_2_open","dial")
-
 
 /obj/structure/on_persistence_load()
 	update_connections()
@@ -221,3 +225,15 @@ var/persistent_online = FALSE
 
 /obj/screen
 	dont_save = TRUE 	// what?
+
+/area
+	dont_save = TRUE
+
+/obj/machinery/organ_printer
+	dont_save = TRUE
+
+/obj/structure/sign/rent
+	dont_save = TRUE
+
+/obj/machinery/vending
+	dont_save = TRUE // TODO:

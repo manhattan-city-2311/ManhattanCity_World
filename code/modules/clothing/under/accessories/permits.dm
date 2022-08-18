@@ -99,24 +99,20 @@ GLOBAL_LIST_INIT(permit_types, list(
 	name = "tier five police weapon permit"
 	desc = "A card indicating that the owner is allowed to any type of weapon provided by the police department as long as they remain on the police force."
 	tier = 5
-	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/gun/tier_five/pdf
 	name = "tier five military weapon permit"
 	desc = "A card indicating that the owner is allowed to any type of weapon as long as they remain a member of the PDF."
 	tier = 5
-	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/gun/tier_five/nanotrasen
 	name = "tier five nanotrasen weapon permit"
 	desc = "A card indicating that the owner is allowed to any type of weapon as long as they are a member of the government."
 	tier = 5
-	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/gun/tier_three/bar
 	name = "bar shotgun permit"
 	desc = "A card indicating that the owner is allowed to carry a shotgun in the bar."
-	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/gun/planetside
 	name = "planetside gun permit"
@@ -134,28 +130,24 @@ GLOBAL_LIST_INIT(permit_types, list(
 	desc = "A card issued by the government, indicating that the owner is a Drone Intelligence. Drones are mandated to carry this card on PolGov colonies, by law."
 	icon_state = "permit_drone"
 	tiered = FALSE
-	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/synth
 	name = "synth identification card"
 	desc = "A card issued by the government, indicating that the owner is a Synthetic. Synths are mandated to carry this card on PolGov colonies, by law."
 	icon_state = "permit_synth"
 	tiered = FALSE
-	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/fbp
 	name = "full body identification card"
 	desc = "A card issued by the government. It signifies that the owner is human but has a full body prosthetic as a disability. It is used to differiate the owner from synths, it is optional to wear by law."
 	icon_state = "permit_fbp"
 	tiered = FALSE
-	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/vatborn
 	name = "mass produced vatborn identification card"
 	desc = "A card issued by the government, indicating that the owner is a Mass Produced Vatborn. Mass Produced are mandated to carry this card on PolGov colonies, by law."
 	icon_state = "permit_5"
 	tiered = FALSE
-	dont_save = TRUE
 
 //Some spare gun permits in a box
 /obj/item/weapon/storage/box/gun_permits

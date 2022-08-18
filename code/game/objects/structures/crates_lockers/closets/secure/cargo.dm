@@ -7,7 +7,6 @@
 	icon_opened = "securecargoopen"
 	icon_broken = "securecargobroken"
 	icon_off = "securecargooff"
-	dont_save = TRUE
 
 	New()
 		..()
@@ -40,7 +39,6 @@
 	icon_opened = "secureqmopen"
 	icon_broken = "secureqmbroken"
 	icon_off = "secureqmoff"
-	dont_save = TRUE
 
 	New()
 		..()
@@ -75,8 +73,7 @@
 	icon_opened = "miningsecopen"
 	icon_broken = "miningsecbroken"
 	icon_off = "miningsecoff"
-	req_access = list(access_mining)
-	dont_save = TRUE
+	req_access = list(access_mining)	
 
 /obj/structure/closet/secure_closet/miner/New()
 	..()

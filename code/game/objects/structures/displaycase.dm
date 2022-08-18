@@ -9,7 +9,6 @@
 	var/health = 30
 	var/occupied = 1
 	var/destroyed = 0
-	dont_save = TRUE
 
 /obj/structure/displaycase/ex_act(severity)
 	switch(severity)

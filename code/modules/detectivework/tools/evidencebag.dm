@@ -93,3 +93,8 @@
 /obj/item/weapon/evidencebag/examine(mob/user)
 	..(user)
 	if (stored_item) user.examinate(stored_item)
+
+/obj/item/weapon/evidencebag/proc/empty()
+	stored_item = null
+	w_class = initial(w_class)
+	update_icon()

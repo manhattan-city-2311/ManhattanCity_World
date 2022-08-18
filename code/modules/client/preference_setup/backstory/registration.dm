@@ -21,11 +21,11 @@
 	S["weight"]					<< pref.weight
 
 /datum/category_item/player_setup_item/registration/delete_character(savefile/S)
-	pref.records = global.records_blank.Copy()
+	pref.records = get_records_blank()
 
 /datum/category_item/player_setup_item/registration/sanitize_character()
 	if(!pref.records)
-		pref.records = global.records_blank.Copy()
+		pref.records = get_records_blank()
 
 /datum/category_item/player_setup_item/registration/copy_to_mob(mob/living/carbon/human/character)
 	character.records 	  = pref.records.Copy()

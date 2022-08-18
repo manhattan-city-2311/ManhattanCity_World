@@ -33,7 +33,7 @@
 
 	price_tag = 30
 
-	unique_save_vars = list("matter") // clothing matter can vary now
+	unique_save_vars = list("matter", "accessories") // clothing matter can vary now
 
 	tax_type = CLOTHING_TAX
 

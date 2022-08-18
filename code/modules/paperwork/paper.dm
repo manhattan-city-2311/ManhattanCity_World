@@ -156,6 +156,12 @@
 		updateinfolinks()
 		return
 
+/obj/item/weapon/paper/persistence_track()
+	SSpersistence.track_value(src, /datum/persistent/paper)
+
+/obj/item/weapon/paper/persistence_forget()
+	SSpersistence.forget_value(src, /datum/persistent/paper)
+
 /obj/item/weapon/paper/update_icon()
 	if(icon_state == "paper_talisman")
 		return

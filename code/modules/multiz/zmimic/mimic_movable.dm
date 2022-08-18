@@ -53,6 +53,7 @@
 	simulated = FALSE
 	anchored = TRUE
 	mouse_opacity = FALSE
+	dont_save = TRUE
 
 /atom/movable/openspace/can_fall()
 	return FALSE

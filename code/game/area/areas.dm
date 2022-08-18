@@ -44,8 +44,7 @@
 	var/uid
 	var/there_can_be_many = FALSE
 	var/lot_id
-	var/code = "" //blue, red, black
-	dont_save = TRUE
+	var/code = "" //blue, red, black	
 	var/outdoors = FALSE
 
 /area/New()

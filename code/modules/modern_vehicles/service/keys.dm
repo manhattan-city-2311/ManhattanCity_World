@@ -1,12 +1,23 @@
-/obj/item/car_key
-    name = "car key"
-    desc = "A key for some kind of car."
-    var/serial_number
-    var/obj/manhattan/vehicle/vehicle = null
+/obj/item/weapon/key/car
+	name = "key"
+	desc = "A small steel key, it's intended for a car."
+	icon = 'icons/obj/vehicle_keys.dmi'
+	icon_state = null
+	w_class = ITEMSIZE_TINY
+	var/key_data
+	slot_flags = SLOT_POCKET
 
-/obj/item/car_key/initialize()
-    for(var/obj/manhattan/vehicle/new_vehicle in range(3, src))
-        vehicle = new_vehicle
-        break
-    serial_number = vehicle.serial_number
-    desc += " This one seems to belong to [vehicle]. It's serial number is [serial_number]"
+/obj/item/weapon/key/car/initialize()
+	. = ..()
+	if(!icon_state)
+		icon_state = "key[rand(1, 5)]"
+
+/obj/item/weapon/key/car/vars_to_save()
+	return ..() + list("key_data")
+
+/obj/item/weapon/key/car/zakatneba 
+	icon_state = "keyzakatneba"
+	key_data = "zakatneba"
+
+/obj/item/weapon/key/car/police
+	icon_state = "keyzakatneba"

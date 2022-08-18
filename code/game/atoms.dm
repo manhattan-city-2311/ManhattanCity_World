@@ -32,7 +32,6 @@
 	var/initialized = FALSE
 	var/collision_sound
 
-
 /atom/New(loc, ...)
 	// Don't call ..() unless /datum/New() ever exists
 
@@ -41,14 +40,11 @@
 	if(use_preloader && (src.type == _preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		_preloader.load(src)
 
-	// Pass our arguments to InitAtom so they can be passed to initialize(), but replace 1st with if-we're-during-mapload.
-	var/do_initialize = SSatoms && SSatoms.initialized // Workaround our non-ideal initialization order: SSatoms may not exist yet.
-	//var/do_initialize = SSatoms.initialized
+	// Pass our arguments to InitAtom so they can be passed to initialize(), but replace 1st with if-we're-during-mapload or persistent world load
+	var/do_initialize = SSatoms.initialized
 	if(do_initialize > INITIALIZATION_INSSATOMS)
-		args[1] = (do_initialize == INITIALIZATION_INNEW_MAPLOAD)
-		if(SSatoms.InitAtom(src, args))
-			// We were deleted. No sense continuing
-			return
+		args[1] = SSpersistent_world.loading ? LOADSOURCE_PERSISTENCE : (do_initialize == INITIALIZATION_INNEW_MAPLOAD)
+		SSatoms.InitAtom(src, args)
 
 	// Uncomment if anything ever uses the return value of SSatoms.InitializeAtoms ~Leshana
 	// If a map is being loaded, it might want to know about newly created objects so they can be handled.
@@ -65,12 +61,13 @@
 // Must not sleep!
 // Other parameters are passed from New (excluding loc), this does not happen if mapload is TRUE
 // Must return an Initialize hint. Defined in code/__defines/subsystems.dm
-/atom/proc/initialize(mapload, ...)
+/atom/proc/initialize(loadsource, ...)
 	if(QDELETED(src))
 		crash_with("GC: -- [type] had initialize() called after qdel() --")
 	if(initialized)
 		crash_with("Warning: [src]([type]) initialized multiple times!")
-	initialized = TRUE
+	initialized = 1
+	persistence_track()
 	return INITIALIZE_HINT_NORMAL
 
 /atom/proc/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)

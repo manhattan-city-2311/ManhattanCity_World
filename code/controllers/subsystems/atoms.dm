@@ -70,7 +70,12 @@ SUBSYSTEM_DEF(atoms)
 
 	var/start_tick = world.time
 
-	var/result = A.initialize(arglist(arguments))
+	var/saveable = !isturf(A) && !A.dont_save && isturf(A.loc)
+	var/result
+	if(initialized == INITIALIZATION_INNEW_MAPLOAD && saveable && SSpersistent_world.online)
+		result = INITIALIZE_HINT_QDEL
+	else
+		result = A.initialize(arglist(arguments))
 
 	if(start_tick != world.time)
 		BadInitializeCalls[the_type] |= BAD_INIT_SLEPT
@@ -89,6 +94,8 @@ SUBSYSTEM_DEF(atoms)
 				qdeleted = TRUE
 			else
 				BadInitializeCalls[the_type] |= BAD_INIT_NO_HINT
+	else if(saveable)
+		SSpersistent_world.queue += A
 
 	if(!A)	//possible harddel
 		qdeleted = TRUE
