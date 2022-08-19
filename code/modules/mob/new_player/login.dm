@@ -14,7 +14,7 @@
 	loc = null
 	using_map.show_titlescreen(client)
 	my_client = client
-	sight |= SEE_TURFS | SEE_OBJS
+	set_sight(sight | SEE_TURFS | SEE_OBJS)
 	player_list |= src
 	if(client.prefs)
 		send_output(client, client.prefs.real_name, "lobbybrowser:change_cname")

@@ -38,6 +38,10 @@
 		if(C.is_preference_enabled(/datum/client_preference/debug/show_debug_logs))
 			to_chat(C, "DEBUG: [text]")
 
+/proc/log_warning(text)
+	warning(text)
+	log_debug("WARNING: [text]")
+
 /proc/log_game(text)
 	if (config.log_game)
 		diary << "\[[time_stamp()]]GAME: [text][log_end]"
