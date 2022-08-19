@@ -168,8 +168,8 @@
 			lock = L.create_lock(src,user)
 		return
 
-	if(istype(I, /obj/item/weapon/masterkey) && lock)
-		var/obj/item/weapon/masterkey/MK = I
+	if(istype(I, /obj/item/weapon/door/masterkey) && lock)
+		var/obj/item/weapon/door/masterkey/MK = I
 		playsound(src.loc, 'sound/effects/doors/door_key.wav', 100, 1)
 		for(var/obj/item/weapon/door/key/K in MK.contents)
 			if(!lock.toggle(K))

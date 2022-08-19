@@ -1,4 +1,4 @@
-/obj/item/weapon/masterkey
+/obj/item/weapon/door/masterkey
 	slot_flags = SLOT_ID|SLOT_BELT
 	icon = 'icons/obj/manhattan/items.dmi'
 	icon_state = "keyring"
@@ -9,12 +9,12 @@
 	New()
 		update_icon_state()
 
-/obj/item/weapon/masterkey/examine(mob/user)
+/obj/item/weapon/door/masterkey/examine(mob/user)
 	if (locate(src) in get_step(user, user.dir) || user.contents.Find(src))
 		user << "<span class = 'notice'>[desc]. Right now it's holding [print_keys()].</span>"
 	..()
 
-/obj/item/weapon/masterkey/proc/print_keys()
+/obj/item/weapon/door/masterkey/proc/print_keys()
 	if (contents.len == 0)
 		return "nothing"
 	else
@@ -24,7 +24,7 @@
 		return ret
 
 
-/obj/item/weapon/masterkey/proc/update_icon_state()
+/obj/item/weapon/door/masterkey/proc/update_icon_state()
 	switch (contents.len)
 		if (0)
 			icon_state = "keyring"
@@ -39,7 +39,7 @@
 		if (5 to INFINITY)
 			icon_state = "keyring-5"
 
-/obj/item/weapon/masterkey/attack_self(mob/user)
+/obj/item/weapon/door/masterkey/attack_self(mob/user)
 	if (!contents.len)
 		return
 	else
@@ -52,7 +52,7 @@
 			update_icon_state()
 			visible_message("<span class = 'notice'>[user] takes a key from their keychain.</span>", "<span class = 'notice'>You take out [which].</span>")
 
-/obj/item/weapon/masterkey/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/weapon/door/masterkey/attackby(obj/item/I as obj, mob/user as mob)
 	if (istype(I, /obj/item/weapon/door/key))
 		var/obj/item/weapon/door/key/key = I
 		if(!user.unEquip(I))
@@ -62,7 +62,7 @@
 		update_icon_state()
 		visible_message("<span class = 'notice'>[user] puts a key in their keychain.</span>", "<span class = 'notice'>You put a key in your keychain.</span>")
 
-/obj/item/weapon/masterkey/initialize()
+/obj/item/weapon/door/masterkey/initialize()
 	update_icon_state()
 
 /obj/item/weapon/door/key
@@ -293,3 +293,41 @@
 /obj/item/weapon/door/key/casino/
 	name = "Casino storage key"
 	key_data = "casino"
+
+// ГОСПИТАЛЬ
+
+/obj/item/weapon/door/key/medbay/
+	name = "Hospital key"
+	key_data = "medbay"
+
+/obj/item/weapon/door/key/medbay/pharmacy
+	name = "Hospital pharmacy key"
+	key_data = "pharmacy"
+
+/obj/item/weapon/door/key/medbay/lockerroom
+	name = "Hospital locker room key"
+	key_data = "lockerroom"
+
+/obj/item/weapon/door/key/medbay/archive
+	name = "Hospital archives key"
+	key_data = "archive"
+
+/obj/item/weapon/door/key/medbay/cabinet1
+	name = "#1 cabinet key"
+	key_data = "cabinet1"
+
+/obj/item/weapon/door/key/medbay/cabinet2
+	name = "#2 cabinet key"
+	key_data = "cabinet2"
+
+/obj/item/weapon/door/key/medbay/cabinet3
+	name = "#3 cabinet key"
+	key_data = "cabinet3"
+
+/obj/item/weapon/door/key/medbay/cabinet4
+	name = "#4 cabinet key"
+	key_data = "cabinet4"
+
+/obj/item/weapon/door/key/medbay/head
+	name = "Hospital Head cabinet key"
+	key_data = "head"
