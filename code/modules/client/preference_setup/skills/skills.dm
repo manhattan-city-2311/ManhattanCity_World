@@ -26,7 +26,7 @@
 /datum/category_item/player_setup_item/skills/content()
 	. = list()
 	. += "<b>Выберите ваши навыки</b><br>"
-	. += "Количество очков навыка: <b>[pref.skillpoints]<br>"
+	. += "Количество очков навыка: <b>[pref.skillpoints - pref.used_skillpoints]<br>"
 	. += "<a href='?src=\ref[src];preconfigured=1'>Использовать преднастроенный набор навыков</a><br>"
 	. += "<table>"
 	for(var/V in SKILLS)
@@ -43,7 +43,7 @@
 			else
 				. += skill_to_button(S, "Новичок", level, SKILL_AMATEUR)
 			. += skill_to_button(S, "Обучен", level, SKILL_TRAINED)
-			. += skill_to_button(S, "Профессионал", level, SKILL_PROFESSIONAL)
+			//. += skill_to_button(S, "Профессионал", level, SKILL_PROFESSIONAL)
 			. += "</tr>"
 	. += "</table>"
 	. = jointext(.,null)
@@ -63,9 +63,11 @@
 	else if(href_list["setskill"])
 		var/datum/skill/S = locate(href_list["setskill"])
 		var/value = text2num(href_list["newvalue"])
-		pref.skills[S.ID] = value
-		pref.CalculateSkillPoints()
-		return TOPIC_REFRESH
+		if(pref.CanAfford(value))
+			pref.skills[S.ID] = value
+			pref.CalculateSkillPoints()
+			return TOPIC_REFRESH
+		return TOPIC_HANDLED
 
 	else if(href_list["preconfigured"])
 		var/selected = input(user, "Выберите набор навыков", "Набор навыков") as null|anything in SKILL_PRE

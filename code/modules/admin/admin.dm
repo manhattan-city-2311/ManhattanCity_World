@@ -677,7 +677,7 @@ proc/admin_notice(var/message, var/rights)
 		world.Reboot()
 
 /datum/admins/proc/save_game()
-	set category = "Server"
+	set category = "Persistence"
 	set name = "Save game"
 	set desc = "Saves game"
 	if (!usr.client.holder)

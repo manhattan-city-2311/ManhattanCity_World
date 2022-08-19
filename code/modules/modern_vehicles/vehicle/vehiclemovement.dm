@@ -130,7 +130,7 @@
 
 /obj/manhattan/vehicle/proc/collide_with_obstacle(atom/obstacle)
 	if(!obstacle.handle_vehicle_collision(src))
-		visible_message(SPAN_DANGER("[icon2html(src, viewers(src))]\the [src] collides with [obstacle]!"))
+		visible_message(SPAN_DANGER("[icon2html(src, viewers(get_turf(src)))]\the [src] collides with [obstacle]!"))
 	comp_prof.take_component_damage(speed.modulus() * 0.21, "brute")
 
 	for(var/mob/living/carbon/human/H in occupants)

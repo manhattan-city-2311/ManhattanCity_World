@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(persistence)
 		P.Initialize()
 	. = ..()
 
+
 /datum/controller/subsystem/persistence/Shutdown()
 	for(var/thing in persistence_datums)
 		var/datum/persistent/P = persistence_datums[thing]

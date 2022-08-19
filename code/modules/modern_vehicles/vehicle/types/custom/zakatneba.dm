@@ -51,5 +51,7 @@
 		"south" = 12
 	)
 
+	serial_number = "zakatneba"
+
 /obj/manhattan/vehicle/motorcycle/zakatneba/get_braking_force()
 	return 2000

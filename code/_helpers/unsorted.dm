@@ -1675,8 +1675,6 @@ var/mob/dview/dview_mob = new
 /proc/href(href_src, list/href_params, href_text)
 	return "<a href='?src=\ref[href_src];[list2params(href_params)]'>[href_text]</a>"
 
-#define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"
-
 /proc/num2sign(numeric)
 	if(numeric > 0)
 		return 1

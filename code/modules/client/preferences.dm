@@ -37,40 +37,41 @@ GLOBAL_VAR_CONST(PREF_DARK, "Dark")
 /proc/is_record_title(record)
 	return copytext(record, 1, 2) == "@"
 
-var/list/records_blank = list(
-	"@1" = "ОБЩИЕ ДАННЫЕ"
-	, "ПОЛНОЕ ИМЯ" = null
-	, RECORD_BIRTHDAY = "1/1/2311" // This has custom behaviour
-	, RECORD_WEIGHT = null
-	, RECORD_HEIGHT = null
-	, "ЦВЕТ ВОЛОС" = null
-	, "ЦВЕТ ГЛАЗ" = null
-	, "ЭТНИЧНОСТЬ" = list(list("Меонец", "Марсианин (Тунеллер)", "Марсианин (Мансинец)", "Венерианец", "Селениан (Низший)", "Селениан (Высший)", "Землянин", "Фобас", "Цереровец", "Плутонец", "Цетит", "Спейсер (Центральный)", "Спейсер (Фронтир)", "Теранец", "Магнитовец", "Гайец (ЦПСС)", "Гайец (ГГК)"), "Меонец")
-	, RECORD_LANGUAGES = list(null)
-	, "СЕМЕЙНОЕ ПОЛОЖЕНИЕ" = list(list("Женат", "Не женат", "Замужем", "Не замужем"), null)
-	, "РОДСТВЕННИКИ" = list()
-	, "ОБРАЗОВАНИЕ" = null
-	, "КВАЛИФИКАЦИЯ" = list(null)
-	, "ЛИЦЕНЗИИ" = list(null)
+/proc/get_records_blank()
+	return list(
+		"@1" = "ОБЩИЕ ДАННЫЕ"
+		, "ПОЛНОЕ ИМЯ" = null
+		, RECORD_BIRTHDAY = "1/1/2311" // This has custom behaviour
+		, RECORD_WEIGHT = null
+		, RECORD_HEIGHT = null
+		, "ЦВЕТ ВОЛОС" = null
+		, "ЦВЕТ ГЛАЗ" = null
+		, "ЭТНИЧНОСТЬ" = list(list("Меонец", "Марсианин (Тунеллер)", "Марсианин (Мансинец)", "Венерианец", "Селениан (Низший)", "Селениан (Высший)", "Землянин", "Фобас", "Цереровец", "Плутонец", "Цетит", "Спейсер (Центральный)", "Спейсер (Фронтир)", "Теранец", "Магнитовец", "Гайец (ЦПСС)", "Гайец (ГГК)"), "Меонец")
+		, RECORD_LANGUAGES = list(null)
+		, "СЕМЕЙНОЕ ПОЛОЖЕНИЕ" = list(list("Женат", "Не женат", "Замужем", "Не замужем"), null)
+		, "РОДСТВЕННИКИ" = list()
+		, "ОБРАЗОВАНИЕ" = null
+		, "КВАЛИФИКАЦИЯ" = list(null)
+		, "ЛИЦЕНЗИИ" = list(null)
 
-	, "@2" = "МЕДИЦИНСКАЯ СПРАВКА"
-	, "ПРОТЕЗЫ, ИМПЛАНТЫ" = list()
-	, "ПОСМЕРТНЫЕ ИНСТРУКЦИИ" = list(list("Кремация", "Сохранение в морге", "Традиционное погребение", "Передача родственникам"), null)
-	, "ДОНОР ОРГАНОВ" = list(list("Да", "Нет"), "Да")
-	, "АЛЛЕРГИИ" = list()
-	, "ЗАКЛЮЧЕНИЕ ПСИХИАТРА" = null
+		, "@2" = "МЕДИЦИНСКАЯ СПРАВКА"
+		, "ПРОТЕЗЫ, ИМПЛАНТЫ" = list()
+		, "ПОСМЕРТНЫЕ ИНСТРУКЦИИ" = list(list("Кремация", "Сохранение в морге", "Традиционное погребение", "Передача родственникам"), null)
+		, "ДОНОР ОРГАНОВ" = list(list("Да", "Нет"), "Да")
+		, "АЛЛЕРГИИ" = list()
+		, "ЗАКЛЮЧЕНИЕ ПСИХИАТРА" = null
 
-	, "@3" = "ПОГРАНИЧНЫЙ КОНТРОЛЬ"
-	, "МЕСТО РОЖДЕНИЯ" = null
-	, "МЕСТО ПРОЖИВАНИЯ" = null
-	, "ГРАЖДАНСТВО БЕЛЬМЕОНА" = list(list("Имеется", "В процессе получения", "Отсутствует"), "Имеется")
+		, "@3" = "ПОГРАНИЧНЫЙ КОНТРОЛЬ"
+		, "МЕСТО РОЖДЕНИЯ" = null
+		, "МЕСТО ПРОЖИВАНИЯ" = null
+		, "ГРАЖДАНСТВО БЕЛЬМЕОНА" = list(list("Имеется", "В процессе получения", "Отсутствует"), "Имеется")
 
-	, "@4" = "ОТЧЕТ БЕЗОПАСНОСТИ"
-	, "РЕГИСТРАЦИЯ" = list(list("Южный район", "Северный район"), null)
-	, "КРИМИНАЛЬНЫЙ СТАТУС" = list()
+		, "@4" = "ОТЧЕТ БЕЗОПАСНОСТИ"
+		, "РЕГИСТРАЦИЯ" = list(list("Южный район", "Северный район"), null)
+		, "КРИМИНАЛЬНЫЙ СТАТУС" = list()
 
-	, "ПОСЛЕДНЕЕ ИЗМЕНЕНИЕ" = null
-)
+		, "ПОСЛЕДНЕЕ ИЗМЕНЕНИЕ" = null
+	)
 
 var/list/preferences_datums = list()
 
@@ -199,7 +200,7 @@ var/list/preferences_datums = list()
 	//Keeps track of preferrence for not getting any wanted jobs
 	var/alternate_option = 1
 
-	var/skillpoints = 16
+	var/skillpoints = 8
 	var/used_skillpoints = 0
 	var/skill_specialization = null
 	var/list/skills = list() // skills can range from 0 to 3
@@ -328,7 +329,7 @@ var/list/preferences_datums = list()
 	set_biological_gender(pick(MALE, FEMALE))
 	real_name = random_name(identifying_gender,species)
 	b_type = RANDOM_BLOOD_TYPE
-	records = global.records_blank.Copy()
+	records = get_records_blank()
 
 	gear = list()
 	gear_list = list()
@@ -349,40 +350,60 @@ var/list/preferences_datums = list()
 			skills[S.ID] = SKILL_UNSKILLED
 
 /datum/preferences/proc/CalculateSkillPoints()
-	skillpoints = 0
+	//skillpoints = 0
 	used_skillpoints = 0
-	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
-		switch(skills[S.ID])
-			if(SKILL_UNSKILLED)
-				used_skillpoints += 0
-			if(SKILL_AMATEUR)
-				if(check_skillpoints(1))
+	for(var/V in SKILLS)
+		for(var/datum/skill/S in SKILLS[V])
+			//used_skillpoints += S.costs[skills[S.ID]]
+			//if(skills[S.ID] >= newvalue)
+			switch(skills[S.ID])
+				if(SKILL_UNSKILLED)
+					used_skillpoints += 0
+				if(SKILL_AMATEUR)
+					//if(check_skillpoints(1))
 					used_skillpoints += 1
-
-			if(SKILL_TRAINED)
-				// secondary skills cost less
-				if(S.secondary)
-					if(check_skillpoints(1))
+				if(SKILL_TRAINED)
+					// secondary skills cost les
+					if(S.secondary)
+						//if(check_skillpoints(1))
 						used_skillpoints += 1
-				else
-					if(check_skillpoints(3))
+					else
+						//if(check_skillpoints(3))
 						used_skillpoints += 3
-			if(SKILL_PROFESSIONAL)
-				// secondary skills cost less
-				if(S.secondary)
-					if(check_skillpoints(3))
+				if(SKILL_PROFESSIONAL)
+					// secondary skills cost les
+					if(S.secondary)
+						//if(check_skillpoints(3))
 						used_skillpoints += 3
-				else
-					if(check_skillpoints(6))
+					else
+						//if(check_skillpoints(6))
 						used_skillpoints += 6
-	skillpoints -= used_skillpoints
 
-/datum/preferences/proc/check_skillpoints(var/amount)
-	var/test_skillpoints = skillpoints - amount
-	if(test_skillpoints >= 0)
-		return 1
-	else
-		return 0
+	//skillpoints -= used_skillpoints
+
+/datum/preferences/proc/CanAfford(value)
+	switch(value)
+		if(SKILL_UNSKILLED)
+			return TRUE
+		if(SKILL_AMATEUR)
+			if(check_skillpoints(1))
+				return TRUE
+		if(SKILL_TRAINED)
+			if(check_skillpoints(3))
+				return TRUE
+		if(SKILL_PROFESSIONAL)
+			if(check_skillpoints(6))
+				return TRUE
+	return FALSE
+
+/mob/proc/skill_check(skill,level)
+	if(!client || !client.prefs) return FALSE
+	var/answer = (client.prefs.skills[skill] >= level ? TRUE : FALSE)
+	return answer
+
+/datum/preferences/proc/check_skillpoints(amount)
+	var/test_skillpoints = skillpoints - used_skillpoints - amount
+	return test_skillpoints >= 0
 
 /datum/preferences/proc/GetSkillClass(points)
 	return CalculateSkillClass(points, age)

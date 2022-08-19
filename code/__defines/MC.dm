@@ -96,9 +96,13 @@
     PreInit();\
 }\
 /datum/controller/subsystem/##X
- #define PROCESSING_SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/processing/##X);\
+#define PROCESSING_SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/processing/##X);\
 /datum/controller/subsystem/processing/##X/New(){\
     NEW_SS_GLOBAL(SS##X);\
     PreInit();\
 }\
 /datum/controller/subsystem/processing/##X
+
+#define LOADSOURCE_RUNTIME 0
+#define LOADSOURCE_MAP 1
+#define LOADSOURCE_PERSISTENCE 2

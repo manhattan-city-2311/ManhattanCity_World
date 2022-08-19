@@ -1,7 +1,7 @@
 /obj/machinery/light
 	var/offset_of_light_forward = 0 // Depends on direction
 	var/offset_of_light_sides = 0
-	var/atom/movable/light_spot/LocationOfLightSource
+	var/tmp/atom/movable/light_spot/LocationOfLightSource
 
 /obj/machinery/light/Destroy()
 	qdel(LocationOfLightSource)

@@ -198,6 +198,8 @@
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(var/trigger = 1)
 	update_icon()
+	if(QDELETED(LocationOfLightSource))
+		LocationOfLightSource = null
 	if(on)
 		if(light_range != brightness_range || light_power != brightness_power || light_color != brightness_color)
 			switchcount++

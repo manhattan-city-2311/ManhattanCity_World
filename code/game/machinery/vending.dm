@@ -79,7 +79,7 @@
 
 	var/required_pass	//	if this needs a type of object instead of cash in order to access the items, this is it.
 
-	dont_save = TRUE
+	dont_save = FALSE
 
 	var/can_wrench = FALSE
 	var/can_hack = FALSE

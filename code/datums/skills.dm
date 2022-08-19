@@ -118,10 +118,10 @@ var/list/SKILL_CHEMIST = list("field" = "Science", SKILL_ATMOS = SKILL_TRAINED)
 	desc_professional = "Your engine is your baby and you know every minute detail of its workings. You can optimize the engine and you probably have your own favorite custom setup. You could build an engine from the ground up. When things go wrong, you know exactly what has happened and how to fix the problem. You can safely handle singularities and supermatter."
 // Category: Medical
 
-#define SKILL_ACLS "acls"
+#define SKILL_MEDICAL "acls"
 /datum/skill/acls
-	ID = SKILL_ACLS
-	name = "ACLS"
+	ID = SKILL_MEDICAL
+	name = "Medical"
 	desc = "Understanding of advanced cardiovascular life support, cpr and defibrillation quality."
 	field = "Medical"
 	desc_unskilled = "You know the signs of cases, what requires advanced medical help. You can make bad-quality CPR."

@@ -120,10 +120,14 @@
 			else
 				title+= "[R.title]"
 			title+= " ([R.req_amount] [src.singular_name]\s)"
+			var/skill_label = ""
+			if(!user.skill_check(SKILL_CONSTRUCTION, R.difficulty))
+				var/datum/skill/S = decls_repository.get_decl(SKILL_CONSTRUCTION)
+				skill_label = "<font color='red'>\[R.difficulty]</font>"
 			if (can_build)
-				t1 += text("<A href='?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")
+				t1 += text("[skill_label]<A href='?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")
 			else
-				t1 += text("[]", title)
+				t1 += "[skill_label][title]"
 				continue
 			if(R.max_res_amount > 1 && max_multiplier > 1)
 				max_multiplier = min(max_multiplier, round(R.max_res_amount/R.res_amount))
@@ -417,6 +421,7 @@
 	var/color_var	// if this is set, this is what will be colored instead of the regular "color" variable. It will check the object's variables for this.
 	var/apply_prefix
 	var/apply_suffix
+	var/difficulty = 0
 
 	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, \
 	supplied_material = null, apply_material_color = FALSE, ignore_direction = FALSE, colour_var = null, prefix = FALSE, suffix = FALSE)

@@ -74,8 +74,7 @@
 		written_text = null
 		user.put_in_hands(paper)
 		to_chat(user, SPAN_NOTICE("You pull \the [paper] off \the [src]."))
-		papers--
-		if(papers <= 0)
+		if(--papers <= 0)
 			qdel(src)
 		else
 			update_icon()
@@ -98,15 +97,15 @@
 
 /obj/item/weapon/paper/sticky/initialize()
 	. = ..()
-	GLOB.moved_event.register(src, src, /obj/item/weapon/paper/sticky/proc/reset_persistence_tracking)
+	GLOB.moved_event.register(src, src, /atom/proc/persistence_forget)
 
-/obj/item/weapon/paper/sticky/proc/reset_persistence_tracking()
+/obj/item/weapon/paper/sticky/persistence_track()
+	SSpersistence.track_value(src, /datum/persistent/paper/sticky)
+
+/obj/item/weapon/paper/sticky/persistence_forget()
 	SSpersistence.forget_value(src, /datum/persistent/paper/sticky)
-//	pixel_x = 0
-//	pixel_y = 0
 
 /obj/item/weapon/paper/sticky/Destroy()
-	reset_persistence_tracking()
 	GLOB.moved_event.unregister(src, src)
 	. = ..()
 
@@ -117,11 +116,8 @@
 // Copied from duct tape.
 /obj/item/weapon/paper/sticky/attack_hand()
 	. = ..()
-	if(!istype(loc, /turf))
-		reset_persistence_tracking()
-
-/obj/item/weapon/paper/sticky/proc/track_value()
-	SSpersistence.track_value(src, /datum/persistent/paper/sticky)
+	if(!isturf(loc))
+		persistence_forget()
 
 var/global/list/disallowed_sticky_items = list(/obj/item/weapon/storage, /obj/machinery/door)
 
@@ -145,7 +141,7 @@ var/global/list/disallowed_sticky_items = list(/obj/item/weapon/storage, /obj/ma
 			return
 
 	if(user.unEquip(src, source_turf))
-		track_value()
+		persistence_forget()
 		if(params)
 			var/list/mouse_control = params2list(params)
 			if(mouse_control["icon-x"])
@@ -171,8 +167,8 @@ var/global/list/disallowed_sticky_items = list(/obj/item/weapon/storage, /obj/ma
 	scrap_state = "scrap_poster"
 
 
-/obj/item/weapon/paper/sticky/poster/reset_persistence_tracking()
+/obj/item/weapon/paper/sticky/poster/persistence_forget()
 	SSpersistence.forget_value(src, /datum/persistent/paper/sticky/sticky_posters)
 
-/obj/item/weapon/paper/sticky/poster/track_value()
+/obj/item/weapon/paper/sticky/poster/persistence_track()
 	SSpersistence.track_value(src, /datum/persistent/paper/sticky/sticky_posters)

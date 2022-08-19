@@ -264,13 +264,10 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/tmp/iconCache.sav"))
 
 /proc/to_chat(target, message, handle_whitespace = TRUE, trailing_newline = TRUE)
 	set waitfor = FALSE
-/*
 	if(Master.current_runlevel == RUNLEVEL_INIT)
 		to_chat_immediate(target, message, handle_whitespace, trailing_newline)
 		return
-*/
 	SSchat.queue(target, message, handle_whitespace, trailing_newline)
-
 
 /chatOutput/proc/swaptolightmode() //Dark mode light mode stuff. Yell at KMC if this breaks! (See darkmode.dm for documentation)
 	owner.force_white_theme()
