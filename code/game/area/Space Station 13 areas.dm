@@ -1591,7 +1591,7 @@ area/space/atmosalert()
 /area/engineering/atmos/monitoring
 	name = "\improper Fire Station Monitoring Room"
 	icon_state = "atmos_monitoring"
-	sound_env = STANDARD_STATION
+	sound_env = CITY
 
 /area/engineering/atmos/storage
 	name = "\improper Fire Station Storage"

@@ -33,6 +33,13 @@
 /obj/manhattan/vehicle/motorcycle/get_braking_force()
 	return 1800
 
+/obj/manhattan/vehicle/truck/update_object_sprites()
+	. = ..()
+	if(dir == NORTH || dir == SOUTH)
+		bounds = "32,64"
+	else
+		bounds = "64,32"
+
 /obj/manhattan/vehicle/motorcycle/update_object_sprites()
 	vis_contents.Cut()
 	overlays.Cut()

@@ -300,7 +300,6 @@
 			data_core.manifest_inject(character)
 
 		ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
-
 		//Grab some data from the character prefs for use in random news procs.
 		if(!character.mind.prefs.silent_join)
 			AnnounceArrival(character, rank, join_message)
@@ -308,7 +307,6 @@
 	else
 		if(!character.mind.prefs.silent_join)
 			AnnounceCyborg(character, rank, join_message)
-
 
 	//assign antag role, if any
 	var/datum/antagonist/antag = all_antag_types[antag_type]
@@ -322,8 +320,6 @@
 	if (ticker.current_state == GAME_STATE_PLAYING)
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
-		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
-		global_announcer.autosay("A new[rank ? " [rank]" : " visitor" ] [join_message ? join_message : "has arrived to the city"].", "Arrivals Announcement Computer")
 
 
 /mob/new_player/proc/create_character(var/turf/T)

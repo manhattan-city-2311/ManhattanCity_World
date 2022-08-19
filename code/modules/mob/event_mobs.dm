@@ -22,7 +22,7 @@
 	src.mutations.Add(TK)
 	src.mutations.Add(XRAY)
 	src.mutations.Add(COLD_RESISTANCE)
-	src.sight |= (SEE_MOBS|SEE_OBJS|SEE_TURFS)
-	src.see_in_dark = 8
-	src.see_invisible = SEE_INVISIBLE_LEVEL_TWO
+	set_sight(sight | SEE_MOBS | SEE_OBJS | SEE_TURFS)
+	set_see_in_dark(8)
+	set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
 	src.update_mutations()
