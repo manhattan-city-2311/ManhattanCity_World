@@ -122,7 +122,7 @@
 			title+= " ([R.req_amount] [src.singular_name]\s)"
 			var/skill_label = ""
 			if(!user.skill_check(SKILL_CONSTRUCTION, R.difficulty))
-				var/datum/skill/S = decls_repository.get_decl(SKILL_CONSTRUCTION)
+				// var/datum/skill/S = decls_repository.get_decl(SKILL_CONSTRUCTION)
 				skill_label = "<font color='red'>\[R.difficulty]</font>"
 			if (can_build)
 				t1 += text("[skill_label]<A href='?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")
