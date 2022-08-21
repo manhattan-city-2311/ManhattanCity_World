@@ -1,12 +1,12 @@
 GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
-    /obj/item/stack/material/iron,
-    /obj/item/stack/material/lead,
-    /obj/item/stack/material/gold,
-    /obj/item/stack/material/silver,
-    /obj/item/stack/material/platinum,
-    /obj/item/stack/material/steel,
-    /obj/item/weapon/melee,
-    /obj/item/weapon/gun,
+	/obj/item/stack/material/iron,
+	/obj/item/stack/material/lead,
+	/obj/item/stack/material/gold,
+	/obj/item/stack/material/silver,
+	/obj/item/stack/material/platinum,
+	/obj/item/stack/material/steel,
+	/obj/item/weapon/melee,
+	/obj/item/weapon/gun,
 	/obj/item/device/transfer_valve,
 	/obj/item/weapon/grenade,
 	/obj/item/ammo_casing,
@@ -17,10 +17,8 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 
 /obj/machinery/mri
 	name = "magnetic resonance imager"
-	desc = "Магнитно-резонансный томограф. ПОСТОЯННО НАМАГНИЧЕН, БЕЗОПАСНАЯ ДИСТАНЦИЯ - 3 МЕТРА."
 	icon = 'icons/obj/mri.dmi'
 	icon_state = "mri"
-	dir = NORTH
 	density = TRUE
 	var/obj/structure/mri_tray/connected = null
 	anchored = TRUE
@@ -70,10 +68,12 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 /obj/machinery/mri/proc/start_scan()
 	operating = TRUE
 	handle_sound()
+	icon_state = "mri_active"
 
 /obj/machinery/mri/proc/stop_scan()
 	operating = FALSE
 	src << sound(null, repeat = 0, wait = 0, channel = MRI_SOUND_CHANNEL)
+	icon_state = "mri"
 
 /obj/machinery/mri/proc/check_for_marker(var/mob/living/carbon/human/occupant)
 	mob_has_marker = FALSE
@@ -97,13 +97,13 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	else
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		src.connected = new /obj/structure/mri_tray( src.loc )
-		step(src.connected, NORTH)
-		var/turf/T = get_step(src, NORTH)
+		step(src.connected, SOUTH)
+		var/turf/T = get_step(src, SOUTH)
 		if (list_find(T.contents, src.connected))
 			src.connected.connected = src
 			for(var/atom/movable/A as mob|obj in src)
 				A.forceMove(src.connected.loc)
-			src.connected.set_dir(NORTH)
+			src.connected.set_dir(SOUTH)
 		else
 			qdel(src.connected)
 			src.connected = null
@@ -114,8 +114,8 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	if (user.stat)
 		return
 	src.connected = new /obj/structure/mri_tray( src.loc )
-	step(src.connected, NORTH)
-	var/turf/T = get_step(src, NORTH)
+	step(src.connected, SOUTH)
+	var/turf/T = get_step(src, SOUTH)
 	if (list_find(T.contents, src.connected))
 		src.connected.connected = src
 		for(var/atom/movable/A as mob|obj in src)
@@ -135,8 +135,8 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 /obj/structure/mri_tray
 	name = "mri tray"
 	desc = "Apply patient before closing."
-	icon = 'icons/obj/medicine.dmi'
-	icon_state = "mri_seat"
+	icon = 'icons/obj/mri.dmi'
+	icon_state = "tray"
 	density = TRUE
 	layer = BELOW_MOB_LAYER
 	var/obj/machinery/mri/connected = null

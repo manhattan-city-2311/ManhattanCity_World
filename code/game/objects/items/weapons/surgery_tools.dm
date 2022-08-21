@@ -92,7 +92,7 @@
  */
 /obj/item/weapon/surgical/scalpel
 	name = "scalpel"
-	desc = "A special surgical tool for cutting operations. You shouldn't see this one though!"
+	desc = "A special surgical tool for cutting operations."
 	icon_state = "scalpel"
 	var/list/precise_limbs = list()
 	var/speed = 5 SECONDS
@@ -115,31 +115,6 @@
 		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>")
 		return (BRUTELOSS)
-
-/obj/item/weapon/surgical/scalpel/cutting
-	name = "soft tissue scalpel"
-	desc = "A special surgical tool for cutting operations. A large curved cutting edge, which represents a more traditional blade shape. It is used for cutting soft tissue, typically with large incisions."
-	precise_limbs = list(BP_TORSO, BP_GROIN)
-	speed = 3 SECONDS
-
-/obj/item/weapon/surgical/scalpel/precise_cutting
-	name = "triangular scalpel"
-	desc = "A special surgical tool for cutting operations. A long, triangular blade with the hypotenuse as its sharpest edge. This one is universal for incisions."
-	precise_limbs = list(BP_ALL)
-	speed = 6 SECONDS
-
-/obj/item/weapon/surgical/scalpel/suture
-	name = "suture scalpel"
-	desc = "A special surgical tool for cutting operations. A small, pointed, crescent-shaped blade used typically as a suture cutter. It is most sharp on the inside edge of its curve."
-	precise_limbs = list(BP_ALL)
-	speed = 2 SECONDS
-
-/obj/item/weapon/surgical/scalpel/precise
-	name = "precise scalpel"
-	desc = "A special surgical tool for cutting operations. Ideal for making short, precise incisions because of its small, curved cutting edge."
-	precise_limbs = list(BP_ALL)
-	speed = 10 SECONDS
-
 
 /*
  * Circular Saw

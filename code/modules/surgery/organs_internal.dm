@@ -149,7 +149,7 @@
 /datum/surgery_step/internal/detatch_organ/
 
 	allowed_tools = list(
-	/obj/item/weapon/surgical/scalpel/precise = 90,		\
+	/obj/item/weapon/surgical/scalpel = 90,		\
 	/obj/item/weapon/material/knife = 75,	\
 	/obj/item/weapon/material/shard = 50, 		\
 	)
