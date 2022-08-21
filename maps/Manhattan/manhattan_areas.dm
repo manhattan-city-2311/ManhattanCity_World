@@ -182,6 +182,79 @@
 /area/planets/Manhattan/indoor/north/crey/upper/briefing
 /area/planets/Manhattan/indoor/north/crey/upper/armory
 
+/area/planets/Manhattan/indoor/north/casino
+	base_turf = /turf/simulated/floor/plating
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/casino/director
+/area/planets/Manhattan/indoor/north/casino/recroom
+/area/planets/Manhattan/indoor/north/casino/hall1
+/area/planets/Manhattan/indoor/north/casino/hall2
+/area/planets/Manhattan/indoor/north/casino/restroom
+/area/planets/Manhattan/indoor/north/casino/securitypost
+
+/area/planets/Manhattan/indoor/north/casino/under
+	base_turf = /turf/simulated/floor/plating
+	icon_state = "north_m2"
+
+/area/planets/Manhattan/indoor/north/casino/under/moneystorage
+
+/area/planets/Manhattan/indoor/north/casino/upper
+	base_turf = /turf/simulated/open
+	icon_state = "north_m2"
+
+/area/planets/Manhattan/indoor/north/church
+	base_turf = /turf/simulated/floor/plating
+	icon_state = "north_m3"
+
+/area/planets/Manhattan/indoor/north/church/hall
+/area/planets/Manhattan/indoor/north/church/restroom
+
+/area/planets/Manhattan/indoor/north/church/upper
+	base_turf = /turf/simulated/open
+	icon_state = "north_m3"
+
+/area/planets/Manhattan/indoor/north/church/upper/hall
+/area/planets/Manhattan/indoor/north/church/upper/cabinet
+
+/area/planets/Manhattan/indoor/north/auto
+	base_turf = /turf/simulated/floor/plating
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/auto/store1
+/area/planets/Manhattan/indoor/north/auto/store2
+/area/planets/Manhattan/indoor/north/auto/hall
+/area/planets/Manhattan/indoor/north/auto/director
+/area/planets/Manhattan/indoor/north/auto/recroom
+
+/area/planets/Manhattan/indoor/north/auto/upper
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/auto/upper/office
+/area/planets/Manhattan/indoor/north/auto/upper/restroom
+/area/planets/Manhattan/indoor/north/auto/upper/storage
+/area/planets/Manhattan/indoor/north/auto/upper/powerplant
+
+/area/planets/Manhattan/indoor/north/cinema
+	base_turf = /turf/simulated/floor/plating
+	icon_state = "north_m4"
+
+/area/planets/Manhattan/indoor/north/cinema/room1
+/area/planets/Manhattan/indoor/north/cinema/room2
+/area/planets/Manhattan/indoor/north/cinema/hall1
+/area/planets/Manhattan/indoor/north/cinema/room3
+/area/planets/Manhattan/indoor/north/cinema/room4
+
+/area/planets/Manhattan/indoor/north/cinema/upper
+	base_turf = /turf/simulated/open
+	icon_state = "north_m4"
+
+/area/planets/Manhattan/indoor/north/cinema/upper/director
+/area/planets/Manhattan/indoor/north/cinema/upper/recroom
+/area/planets/Manhattan/indoor/north/cinema/upper/lounge
+/area/planets/Manhattan/indoor/north/cinema/upper/hall1
+
 /area/planets/Manhattan/indoor/north/house_standart1
 	base_turf = /turf/simulated/floor/plating
 
@@ -609,34 +682,203 @@
 /area/planets/Manhattan/indoor/north/office1/upper/cabinet
 /area/planets/Manhattan/indoor/north/office1/upper/briefing
 
+/area/planets/Manhattan/indoor/north/office2
+	icon_state = "north_m2"
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/office2/hall
+/area/planets/Manhattan/indoor/north/office2/restroom
+/area/planets/Manhattan/indoor/north/office2/recroom
+
+/area/planets/Manhattan/indoor/north/office2/upper
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/office2/upper/hall1
+/area/planets/Manhattan/indoor/north/office2/upper/restroom1
+/area/planets/Manhattan/indoor/north/office2/upper/hall2
+/area/planets/Manhattan/indoor/north/office2/upper/restroom2
+/area/planets/Manhattan/indoor/north/office2/upper/workplace1
+/area/planets/Manhattan/indoor/north/office2/upper/workplace2
+/area/planets/Manhattan/indoor/north/office2/upper/director1
+/area/planets/Manhattan/indoor/north/office2/upper/director2
+/area/planets/Manhattan/indoor/north/office2/upper/storage
+/area/planets/Manhattan/indoor/north/office2/upper/briefing1
+/area/planets/Manhattan/indoor/north/office2/upper/briefing2
+/area/planets/Manhattan/indoor/north/office2/upper/cab1
+/area/planets/Manhattan/indoor/north/office2/upper/cab2
+/area/planets/Manhattan/indoor/north/office2/upper/cab3
+
 /area/planets/Manhattan/indoor/north/police_dept
 	ambience = list('sound/ambience/MAIN0C.SAP.ogg', 'sound/ambience/MAIN05.SAP.ogg')
+	icon_state = "north_m3"
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/police_dept/mainhall
+/area/planets/Manhattan/indoor/north/police_dept/bullpen
+/area/planets/Manhattan/indoor/north/police_dept/westreception
+/area/planets/Manhattan/indoor/north/police_dept/westgarage
+/area/planets/Manhattan/indoor/north/police_dept/briefing
+/area/planets/Manhattan/indoor/north/police_dept/armoryouter
+/area/planets/Manhattan/indoor/north/police_dept/armoryinside
+/area/planets/Manhattan/indoor/north/police_dept/lockerroom
+/area/planets/Manhattan/indoor/north/police_dept/lockershower
+/area/planets/Manhattan/indoor/north/police_dept/powerplant
+/area/planets/Manhattan/indoor/north/police_dept/eastoffice
+/area/planets/Manhattan/indoor/north/police_dept/eastofficechief
+/area/planets/Manhattan/indoor/north/police_dept/press
+/area/planets/Manhattan/indoor/north/police_dept/restroom
+/area/planets/Manhattan/indoor/north/police_dept/eastgarage
+/area/planets/Manhattan/indoor/north/police_dept/interrogation
+/area/planets/Manhattan/indoor/north/police_dept/interrogationobservation
 
 /area/planets/Manhattan/indoor/north/police_dept/upper
 	base_turf = /turf/simulated/open
 
+/area/planets/Manhattan/indoor/north/police_dept/upper/mainhall
+/area/planets/Manhattan/indoor/north/police_dept/upper/archives
+/area/planets/Manhattan/indoor/north/police_dept/upper/restroom
+/area/planets/Manhattan/indoor/north/police_dept/upper/detectives
+/area/planets/Manhattan/indoor/north/police_dept/upper/recroom
+/area/planets/Manhattan/indoor/north/police_dept/upper/pdchiefcabinet
+/area/planets/Manhattan/indoor/north/police_dept/upper/eastoffice
+/area/planets/Manhattan/indoor/north/police_dept/upper/eastofficechief
+
 /area/planets/Manhattan/indoor/north/police_dept/underground
 
+/area/planets/Manhattan/indoor/north/police_dept/underground/maincells
+/area/planets/Manhattan/indoor/north/police_dept/underground/seccheckpoint
+/area/planets/Manhattan/indoor/north/police_dept/underground/perma
+/area/planets/Manhattan/indoor/north/police_dept/underground/perma/room1
+/area/planets/Manhattan/indoor/north/police_dept/underground/perma/room2
+/area/planets/Manhattan/indoor/north/police_dept/underground/perma/room3
+/area/planets/Manhattan/indoor/north/police_dept/underground/perma/library
+/area/planets/Manhattan/indoor/north/police_dept/underground/perma/restroom
+/area/planets/Manhattan/indoor/north/police_dept/underground/perma/boxring
+/area/planets/Manhattan/indoor/north/police_dept/underground/confiscation
+/area/planets/Manhattan/indoor/north/police_dept/underground/firingrange
+/area/planets/Manhattan/indoor/north/police_dept/underground/eastgarageunder
+
 /area/planets/Manhattan/indoor/north/hospital
-	name = "Central Manhattan Hospital"
+	icon_state = "north_m4"
+	base_turf = /turf/simulated/floor/plating
 
-/area/planets/Manhattan/indoor/north/hospital/icu
-	name = "Intensive Care Unit"
-/area/planets/Manhattan/indoor/north/hospital/icu/ward/w1
-	name = "ICU Ward 1"
-/area/planets/Manhattan/indoor/north/hospital/icu/ward/w2
-	name = "ICU Ward 2"
-/area/planets/Manhattan/indoor/north/hospital/icu/ward/w3
-	name = "ICU Ward 3"
-/area/planets/Manhattan/indoor/north/hospital/icu/ward/w4
-	name = "ICU Ward 4"
-/area/planets/Manhattan/indoor/north/hospital/icu/ward/w5
-	name = "ICU Ward 5"
-/area/planets/Manhattan/indoor/north/hospital/icu/ward/w6
-	name = "ICU Ward 6"
+/area/planets/Manhattan/indoor/north/hospital/hall
+/area/planets/Manhattan/indoor/north/hospital/cab1
+/area/planets/Manhattan/indoor/north/hospital/cab2
+/area/planets/Manhattan/indoor/north/hospital/recroom
+/area/planets/Manhattan/indoor/north/hospital/archive
+/area/planets/Manhattan/indoor/north/hospital/poweplant
+/area/planets/Manhattan/indoor/north/hospital/chamber1
+/area/planets/Manhattan/indoor/north/hospital/chamber2
+/area/planets/Manhattan/indoor/north/hospital/pharmacy
+/area/planets/Manhattan/indoor/north/hospital/lockerroom
 
-/area/planets/Manhattan/indoor/north/hospital/reanimation
-	name = "Reanimation Unit"
+
+/area/planets/Manhattan/indoor/north/hospital/upper
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/hospital/upper/vipchamber1
+/area/planets/Manhattan/indoor/north/hospital/upper/vipchamber2
+/area/planets/Manhattan/indoor/north/hospital/upper/cab3
+/area/planets/Manhattan/indoor/north/hospital/upper/cmocab
+/area/planets/Manhattan/indoor/north/hospital/upper/mri
+/area/planets/Manhattan/indoor/north/hospital/upper/emergency
+/area/planets/Manhattan/indoor/north/hospital/upper/emergency/recroom
+/area/planets/Manhattan/indoor/north/hospital/upper/restroom
+/area/planets/Manhattan/indoor/north/hospital/upper/shower
+/area/planets/Manhattan/indoor/north/hospital/upper/surgical
+/area/planets/Manhattan/indoor/north/hospital/upper/surgicalobservation
+/area/planets/Manhattan/indoor/north/hospital/upper/storagepills
+/area/planets/Manhattan/indoor/north/hospital/upper/hall
+
+/area/planets/Manhattan/indoor/north/hospital/underground
+
+/area/planets/Manhattan/indoor/north/hospital/underground/hall
+/area/planets/Manhattan/indoor/north/hospital/underground/morgue
+/area/planets/Manhattan/indoor/north/hospital/underground/storagemain
+/area/planets/Manhattan/indoor/north/hospital/underground/washroom
+/area/planets/Manhattan/indoor/north/hospital/underground/lab
+/area/planets/Manhattan/indoor/north/hospital/underground/storagevirus
+/area/planets/Manhattan/indoor/north/hospital/underground/blood
+/area/planets/Manhattan/indoor/north/hospital/underground/chamber
+
+/area/planets/Manhattan/indoor/north/transit
+	icon_state = "north_m2"
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/transit/secpost1
+/area/planets/Manhattan/indoor/north/transit/secpost2
+
+/area/planets/Manhattan/indoor/north/transit/under
+	icon_state = "north_m2"
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/transit/under/engiepost
+/area/planets/Manhattan/indoor/north/transit/under/restroom
+/area/planets/Manhattan/indoor/north/transit/under/storage
+/area/planets/Manhattan/indoor/north/transit/under/cabinet
+/area/planets/Manhattan/indoor/north/transit/under/hall
+
+/area/planets/Manhattan/indoor/north/sfp
+	icon_state = "north_m1"
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/sfp/hall
+/area/planets/Manhattan/indoor/north/sfp/office
+/area/planets/Manhattan/indoor/north/sfp/supervisorcab
+/area/planets/Manhattan/indoor/north/sfp/garage
+/area/planets/Manhattan/indoor/north/sfp/storage
+/area/planets/Manhattan/indoor/north/sfp/powerplant
+
+/area/planets/Manhattan/indoor/north/sfp/upper
+	icon_state = "north_m2"
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/sfp/upper/archive
+/area/planets/Manhattan/indoor/north/sfp/upper/restroom
+/area/planets/Manhattan/indoor/north/sfp/upper/investigator
+/area/planets/Manhattan/indoor/north/sfp/upper/hall
+/area/planets/Manhattan/indoor/north/sfp/upper/interrogationobservation
+/area/planets/Manhattan/indoor/north/sfp/upper/interrogation
+/area/planets/Manhattan/indoor/north/sfp/upper/hall2
+/area/planets/Manhattan/indoor/north/sfp/upper/lockerroom
+/area/planets/Manhattan/indoor/north/sfp/upper/evidencelocker
+
+/area/planets/Manhattan/indoor/north/shopping
+	icon_state = "north_m1"
+	base_turf = /turf/simulated/floor/plating
+
+/area/planets/Manhattan/indoor/north/shopping/checkpointsouth
+/area/planets/Manhattan/indoor/north/shopping/checkpointnorth
+/area/planets/Manhattan/indoor/north/shopping/secrecroom
+/area/planets/Manhattan/indoor/north/shopping/cafe
+/area/planets/Manhattan/indoor/north/shopping/gym
+/area/planets/Manhattan/indoor/north/shopping/gym/lockerroom
+/area/planets/Manhattan/indoor/north/shopping/gym/storage
+/area/planets/Manhattan/indoor/north/shopping/barber
+/area/planets/Manhattan/indoor/north/shopping/welfarestore
+/area/planets/Manhattan/indoor/north/shopping/clothingstore
+
+/area/planets/Manhattan/indoor/north/shopping/upper
+	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/indoor/north/shopping/upper/gamecenter
+/area/planets/Manhattan/indoor/north/shopping/upper/gamecenter/recroom
+/area/planets/Manhattan/indoor/north/shopping/upper/seccam
+/area/planets/Manhattan/indoor/north/shopping/upper/restroom
+/area/planets/Manhattan/indoor/north/shopping/upper/storage
+/area/planets/Manhattan/indoor/north/shopping/upper/bookstore
+/area/planets/Manhattan/indoor/north/shopping/upper/bookstore/upper
+/area/planets/Manhattan/indoor/north/shopping/upper/techstore
+/area/planets/Manhattan/indoor/north/shopping/upper/bank
+/area/planets/Manhattan/indoor/north/shopping/upper/bank/sec
+
+/area/planets/Manhattan/indoor/north/shopping/underground
+
+/area/planets/Manhattan/indoor/north/shopping/underground/gym
+/area/planets/Manhattan/indoor/north/shopping/underground/gym/pool
+/area/planets/Manhattan/indoor/north/shopping/underground/gym/boxring
+/area/planets/Manhattan/indoor/north/shopping/underground/gym/trainer
 
 /*
  		--------S O U T H---------
@@ -1317,9 +1559,149 @@
 	lift_floor_label = "Floor 2"
 	lift_floor_name = "Second floor"
 	lift_announce_str = "Lift arriving at second floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/manhattan_house13
+	name = "lift (third floor)"
+	lift_floor_label = "Floor 3"
+	lift_floor_name = "Third floor"
+	lift_announce_str = "Lift arriving at third floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/manhattan_house21
+	name = "lift (first floor)"
+	lift_floor_label = "Floor 1"
+	lift_floor_name = "First floor"
+	lift_announce_str = "Lift arriving at first floor, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/plating
 
+/area/turbolift/manhattan_house22
+	name = "lift (second floor)"
+	lift_floor_label = "Floor 2"
+	lift_floor_name = "Second floor"
+	lift_announce_str = "Lift arriving at second floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/manhattan_house23
+	name = "lift (third floor)"
+	lift_floor_label = "Floor 3"
+	lift_floor_name = "Third floor"
+	lift_announce_str = "Lift arriving at third floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
 /area/turbolift/hospital1
+	name = "lift (first floor)"
+	lift_floor_label = "Floor 1"
+	lift_floor_name = "First floor"
+	lift_announce_str = "Lift arriving at first floor, please stand clear of the doors."
+	base_turf = /turf/simulated/floor/plating
+
+/area/turbolift/hospital2
+	name = "lift (second floor)"
+	lift_floor_label = "Floor 2"
+	lift_floor_name = "Second floor"
+	lift_announce_str = "Lift arriving at second floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/crey1
+	name = "lift (first floor)"
+	lift_floor_label = "Floor 1"
+	lift_floor_name = "First floor"
+	lift_announce_str = "Lift arriving at first floor, please stand clear of the doors."
+	base_turf = /turf/simulated/floor/plating
+
+/area/turbolift/crey2
+	name = "lift (second floor)"
+	lift_floor_label = "Floor 2"
+	lift_floor_name = "Second floor"
+	lift_announce_str = "Lift arriving at second floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/hospitalm1
+	name = "lift (first floor)"
+	lift_floor_label = "Floor 1"
+	lift_floor_name = "First floor"
+	lift_announce_str = "Lift arriving at first floor, please stand clear of the doors."
+	base_turf = /turf/simulated/floor/plating
+
+/area/turbolift/hospitalm2
+	name = "lift (second floor)"
+	lift_floor_label = "Floor 2"
+	lift_floor_name = "Second floor"
+	lift_announce_str = "Lift arriving at second floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/hospitalm3
+	name = "lift (third floor)"
+	lift_floor_label = "Floor 3"
+	lift_floor_name = "Third floor"
+	lift_announce_str = "Lift arriving at third floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/hotel1
+	name = "lift (first floor)"
+	lift_floor_label = "Floor 1"
+	lift_floor_name = "First floor"
+	lift_announce_str = "Lift arriving at first floor, please stand clear of the doors."
+	base_turf = /turf/simulated/floor/plating
+
+/area/turbolift/hotel2
+	name = "lift (second floor)"
+	lift_floor_label = "Floor 2"
+	lift_floor_name = "Second floor"
+	lift_announce_str = "Lift arriving at second floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/hotel3
+	name = "lift (third floor)"
+	lift_floor_label = "Floor 3"
+	lift_floor_name = "Third floor"
+	lift_announce_str = "Lift arriving at third floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/office11
+	name = "lift (first floor)"
+	lift_floor_label = "Floor 1"
+	lift_floor_name = "First floor"
+	lift_announce_str = "Lift arriving at first floor, please stand clear of the doors."
+	base_turf = /turf/simulated/floor/plating
+
+/area/turbolift/office12
+	name = "lift (second floor)"
+	lift_floor_label = "Floor 2"
+	lift_floor_name = "Second floor"
+	lift_announce_str = "Lift arriving at second floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/office13
+	name = "lift (third floor)"
+	lift_floor_label = "Floor 3"
+	lift_floor_name = "Third floor"
+	lift_announce_str = "Lift arriving at third floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/office21
+	name = "lift (first floor)"
+	lift_floor_label = "Floor 1"
+	lift_floor_name = "First floor"
+	lift_announce_str = "Lift arriving at first floor, please stand clear of the doors."
+	base_turf = /turf/simulated/floor/plating
+
+/area/turbolift/office22
+	name = "lift (second floor)"
+	lift_floor_label = "Floor 2"
+	lift_floor_name = "Second floor"
+	lift_announce_str = "Lift arriving at second floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/office23
+	name = "lift (third floor)"
+	lift_floor_label = "Floor 3"
+	lift_floor_name = "Third floor"
+	lift_announce_str = "Lift arriving at third floor, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/*/area/turbolift/hospital1
 	name = "Elevator-1"
 	lift_floor_label = "1 этаж"
 	lift_floor_name = "Первый этаж"
@@ -1336,4 +1718,4 @@
 	name = "Elevator-3"
 	lift_floor_label = "3 этаж"
 	lift_floor_name = "Третий этаж"
-	lift_announce_str = "Третий этаж: Офисы, крыло персонала и смотровая операционной."
+	lift_announce_str = "Третий этаж: Офисы, крыло персонала и смотровая операционной."*/
