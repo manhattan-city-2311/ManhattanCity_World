@@ -5,6 +5,7 @@
 	animate_movement = 2
 	flags = PROXMOVE
 	vis_flags = VIS_INHERIT_DIR
+	appearance_flags = DEFAULT_APPEARANCE | TILE_MOVER | KEEP_TOGETHER
 	var/datum/mind/mind
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak

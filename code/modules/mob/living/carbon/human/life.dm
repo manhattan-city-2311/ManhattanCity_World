@@ -1010,15 +1010,17 @@
 		if(mind && hud_used)
 			ling_chem_display.invisibility = 101
 
-/mob/living/carbon/human/var/shock_decrease_coeff = 0.016666
+/mob/living/carbon/human/var/shock_decrease_coeff = 0.1
 
 /mob/living/carbon/human/proc/handle_shock()
-	if(status_flags & GODMODE)	return 0	//godmode
-	if(!can_feel_pain()) return
+	if(status_flags & GODMODE)
+		return	//godmode
+	if(!can_feel_pain())
+		return
 
 	shock_stage = min(shock_stage, SHOCK_STAGE_MAX)
 	shock_stage = max(shock_stage - shock_decrease_coeff * shock_stage , 0)
-	shock_stage = lerp(shock_stage, total_pain * shock_coeff, 0.5)
+	shock_stage = lerp(shock_stage, total_pain, 0.7)
 
 	if(stat)
 		return 0

@@ -1365,14 +1365,14 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/get_pain()
 	if(!can_feel_pain() || robotic >= ORGAN_ROBOT)
 		return 0
-	var/lasting_pain = 0
 	if(is_broken())
-		lasting_pain += 10
+		. = 10
 	else if(is_dislocated())
-		lasting_pain += 5
-	var/tox_dam = owner.getToxLoss()
-	return pain + lasting_pain + 0.7 * brute_dam + 0.8 * burn_dam + 0.3 * tox_dam + 0.5
-
+		. = 5
+	. += pain
+	. += 0.7 * brute_dam 
+	. += 0.8 * burn_dam 
+	. += 0.3 * owner.getToxLoss()
 
 /obj/item/organ/external/proc/add_pain(var/amount)
 	if(!can_feel_pain() || robotic >= ORGAN_ROBOT)
