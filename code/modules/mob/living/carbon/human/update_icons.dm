@@ -992,16 +992,12 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 /mob/living/carbon/human/update_water()
 	if(QDESTROYING(src))
 		return
-
-	remove_layer(SUBMERGE_LAYER)
-
-	var/depth = check_submerged()
-	if(!depth || lying)
-		return
-
-	overlays_standing[SUBMERGE_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+SUBMERGE_LAYER) //TODO: Improve
-
-	apply_layer(SUBMERGE_LAYER)
+	
+	if(check_submerged())
+		if(!get_filter_index("underwater"))
+			add_filter("underwater", 1, list("type" = "alpha", "icon" = icon('icons/effects/watermask.dmi')))
+	else
+		remove_filter("underwater")
 
 /mob/living/carbon/human/proc/update_surgery()
 	if(QDESTROYING(src))

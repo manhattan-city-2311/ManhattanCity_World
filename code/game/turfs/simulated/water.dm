@@ -30,7 +30,7 @@
 
 /turf/simulated/floor/water/get_edge_icon_state()
 	return "water_shallow"
-W
+
 /turf/simulated/floor/water/Entered(atom/movable/AM, atom/oldloc)
 	if(istype(AM, /mob/living/carbon/human))
 		var/mob/living/carbon/human/L = AM

@@ -13,6 +13,7 @@
 /mob
 	var/runechat_last_voice
 	var/runechat_color
+	var/runechat_font = "Small Fonts"
 
 /mob/proc/generate_runechat_color()
 	var/voice = name
@@ -91,7 +92,7 @@
 
 	var/datum/runechat_message_holder/msg = new
 
-	var/static/maptext_style = "font-family: 'Small Fonts';"
+	var/maptext_style = "font-family: '[speaker.runechat_font]';"
 	var/shadow_color = "0 2px 3px black"
 	var/style = "color:[speaker.runechat_color]; text-shadow: [shadow_color]; [maptext_style]"
 	var/complete_text = "<center><span style=\"[style]\">[text]</span></center>"

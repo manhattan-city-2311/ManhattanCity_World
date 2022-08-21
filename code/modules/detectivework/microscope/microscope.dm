@@ -34,6 +34,7 @@
 			return
 		to_chat(user, "<span class='notice'>You insert \the [W] into the microscope.</span>")
 		sample = W
+		sample.forceMove(src)
 		update_icon()
 
 /obj/machinery/microscope/attack_hand(mob/user)

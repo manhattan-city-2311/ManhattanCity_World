@@ -911,13 +911,17 @@
 	..()
 
 /obj/item/clothing
-	var/obj/item/clothing/has_suit = null		//the suit the tie may be attached to
-	var/image/inv_overlay = null	//overlay used when attached to clothing.
-	var/image/mob_overlay = null
-	var/overlay_state = null
+	var/tmp/obj/item/clothing/has_suit = null		//the suit the tie may be attached to
+	var/tmp/image/inv_overlay = null	//overlay used when attached to clothing.
+	var/tmp/image/mob_overlay = null
+	var/tmp/overlay_state = null
 	var/concealed_holster = 0
-	var/mob/living/carbon/human/wearer = null //To check if the wearer changes, so species spritesheets change properly
+	var/tmp/mob/living/carbon/human/wearer = null //To check if the wearer changes, so species spritesheets change properly
 
+/obj/item/clothing/on_persistence_load()
+	. = ..()
+	for(var/C in accessories)
+		attach_accessory(null, C)
 
 /obj/item/clothing/proc/get_mob_overlay()
 	if(!mob_overlay)
