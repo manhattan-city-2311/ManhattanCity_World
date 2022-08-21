@@ -28,8 +28,7 @@
 
 /datum/surgery_step/generic/cut_open
 	allowed_tools = list(
-	/obj/item/weapon/surgical/scalpel/cutting = 70,		\
-	/obj/item/weapon/surgical/scalpel/precise_cutting = 80,		\
+	/obj/item/weapon/surgical/scalpel = 70,
 	/obj/item/weapon/material/knife = 50,	\
 	/obj/item/weapon/material/shard = 15, 		\
 	)
