@@ -4,6 +4,7 @@
 	set category = "OOC"
 
 	var/list/Lines = list()
+	var/amount = 0
 
 	if(holder && (R_ADMIN & holder.rights || R_MOD & holder.rights))
 		for(var/client/C in GLOB.clients)
@@ -48,16 +49,9 @@
 
 			entry += " (<A HREF='?_src_=holder;adminmoreinfo=\ref[C.mob]'>?</A>)"
 			Lines += entry
+			++amount
 	else
-		to_chat(src, "Вы не имеете доступа к команде <b>Who</b>")
-		return
-/*
-		for(var/client/C in GLOB.clients)
-			if(C.holder && C.holder.fakekey)
-				Lines += C.holder.fakekey
-			else
-				Lines += C.key
-*/
+		amount = GLOB.clients.len
 
 	var/msg
 
@@ -67,7 +61,7 @@
 		for(var/line in sortList(Lines))
 			msg += "[line]\n"
 
-	msg += "<b>Total Players: [length(Lines)]</b>"
+	msg += "<b>Total Players: [amount]</b>"
 
 	to_chat(src, msg)
 

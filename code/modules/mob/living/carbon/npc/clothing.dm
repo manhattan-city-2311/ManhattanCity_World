@@ -1,29 +1,34 @@
-var/list/male_outfits = list(/decl/hierarchy/outfit/job/assistant)
-var/list/female_outfits = list(/decl/hierarchy/outfit/job/assistant)
-var/list/unisex_outfits = list(
-	/decl/hierarchy/outfit/job/assistant,
-	/decl/hierarchy/outfit/job/assistant/visitor,
-	/decl/hierarchy/outfit/job/assistant/socialite,
-	/decl/hierarchy/outfit/job/assistant/resident,
-	/decl/hierarchy/outfit/job/business/formal,
-	/decl/hierarchy/outfit/job/business/casual
+#define NPCS_UNISEX_OUTFITS /decl/hierarchy/outfit/job/assistant, \
+/decl/hierarchy/outfit/job/assistant/visitor, \
+/decl/hierarchy/outfit/job/assistant/socialite, \
+/decl/hierarchy/outfit/job/assistant/resident, \
+/decl/hierarchy/outfit/job/business/formal, \
+/decl/hierarchy/outfit/job/business/casual
+
+var/global/list/npcs_male_outfits = list(
+	NPCS_UNISEX_OUTFITS,
+	/decl/hierarchy/outfit/job/assistant
 )
+
+var/global/list/npcs_female_outfits = list(
+	NPCS_UNISEX_OUTFITS,
+	/decl/hierarchy/outfit/job/assistant
+)
+
 
 /mob/living/carbon/human/npc
 	var/decl/hierarchy/outfit/outfit
 
-/mob/living/carbon/human/npc/proc/random_outfit()
-	if(outfit)
+/mob/living/carbon/human/npc/proc/equip_outfit()
+	if(ispath(outfit))
+		outfit = new outfit()
 		outfit.equip(src)
 		return
 
-	var/list/outfits = list()
-	outfits += unisex_outfits.Copy()
-	if(gender == MALE && male_outfits)
-		outfits += male_outfits.Copy()
-	else if(female_outfits)
-		outfits += female_outfits.Copy()
+	var/list/outfits = outfit || (gender == MALE ? global.npcs_male_outfits : global.npcs_female_outfits)
 
 	var/decl/hierarchy/outfit/O = pick(outfits)
 	O = new O()
 	O.equip(src)
+
+#undef NPCS_UNISEX_OUTFITS

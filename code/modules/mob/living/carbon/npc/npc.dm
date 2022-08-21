@@ -34,15 +34,15 @@
 
 	var/flee_pain = 75
 
-/mob/living/carbon/human/npc/New()
+/mob/living/carbon/human/npc/initialize()
 	..()
 	switch_intent()
 	switch_mode()
 	START_PROCESSING(SSnpc, src)
 
-	gender = pick(MALE,FEMALE)
+	gender = pick(MALE, FEMALE)
 
-	age = rand(18,90)
+	age = rand(18, 55)
 
 	s_tone = random_skin_tone()
 	h_style = random_hair_style(gender, "Human")
@@ -71,7 +71,7 @@
 
 	update_glide()
 
-	random_outfit()
+	equip_outfit()
 
 /mob/living/carbon/human/npc/death()
 	..()

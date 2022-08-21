@@ -1,3 +1,6 @@
+/atom/movable/proc/see_emote(mob/source, text, emote_type)
+	return
+
 // All mobs should have custom emote, really..
 //m_type == 1 --> visual.
 //m_type == 2 --> audible
@@ -31,30 +34,15 @@
 		else
 			message = "<b>[src]</b> [message]"
 
- // Hearing gasp and such every five seconds is not good emotes were not global for a reason.
- // Maybe some people are okay with that.
-
-		// var/turf/T = get_turf(src)
-		// if(!T) return
-		// var/list/in_range = get_mobs_and_objs_in_view_fast(T,range,2,remote_ghosts = client ? TRUE : FALSE)
-		// var/list/m_viewers = in_range["mobs"]
-		// var/list/o_viewers = in_range["objs"]
-
-		// for(var/mob in m_viewers)
-		// 	var/mob/M = mob
-		// 	spawn(0) // It's possible that it could be deleted in the meantime, or that it runtimes.
-		// 		if(M)
-		// 			M.show_message(message, m_type)
-
-		// for(var/obj in o_viewers)
-		// 	var/obj/O = obj
-		// 	spawn(0)
-		// 		if(O)
-		// 			O.see_emote(src, message, m_type)
 		if(m_type == VISIBLE_MESSAGE)
 			visible_message(message)
+			for(var/atom/movable/AM in viewers(range, src))
+				AM.see_emote(src, message, m_type)
 		else
 			audible_message(message)
+			for(var/atom/movable/AM in hearers(range, src))
+				AM.see_emote(src, message, m_type)
+
 // Shortcuts for above proc
 /mob/proc/visible_emote(var/act_desc)
 	custom_emote(1, act_desc)
