@@ -1,0 +1,5 @@
+<h1>Welcome to Space Station 13!</h1>
+
+-<i>Этот сервер работает на модификации билда Polaris, преобразующей классическую станцию в город в сеттинге научной фантастики. <a href="https://discord.gg/sFbsCcW9Ug/">Discord</a</i>
+<br><br>
+<strong>Bugtracker:</strong> <a href="https://github.com/PolarisSS13/Polaris/issues">for posting of bugs and issues.</a>
