@@ -1,7 +1,7 @@
 /mob/living/carbon/human/npc/interactable
-	nanoui_interactive_dist = 3
-	nanoui_update_dist = 3
-	nanoui_disabled_dist = 3
+	nanoui_interactive_dist = 2
+	nanoui_update_dist = 2
+	nanoui_disabled_dist = 2
 
 /mob/living/carbon/human/npc/interactable/switch_mode()
 	return

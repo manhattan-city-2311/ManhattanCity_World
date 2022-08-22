@@ -104,11 +104,8 @@
 		S.cd = "/character[default_slot]"
 
 	player_setup.load_character(S)
-	load_organs(S)
+	load_persistence(S)
 	return 1
-
-/datum/preferences/proc/load_organs(savefile/S)
-	all_organ_damage = S["all_organ_damage"]
 
 /datum/preferences/proc/save_character()
 	if(!path)				return 0
@@ -124,11 +121,22 @@
 	S.cd = "/character[default_slot]"
 
 	player_setup.save_character(S)
-	save_organs(S)
+	save_persistence(S)
 	return 1
 
-/datum/preferences/proc/save_organs(savefile/S)
-	S["all_organ_damage"] = all_organ_damage
+/datum/preferences/proc/load_persistence(savefile/S)
+	from_save(S, bank_account)
+	from_save(S, bank_pin)
+	from_save(S, persistence_x)
+	from_save(S, persistence_y)
+	from_save(S, persistence_z)
+
+/datum/preferences/proc/save_persistence(savefile/S)
+	to_save(S, bank_account)
+	to_save(S, bank_pin)
+	to_save(S, persistence_x)
+	to_save(S, persistence_y)
+	to_save(S, persistence_z)
 
 /datum/preferences/proc/delete_character()
 	if(!path)				return 0

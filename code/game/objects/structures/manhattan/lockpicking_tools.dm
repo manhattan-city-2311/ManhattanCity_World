@@ -8,17 +8,22 @@
 	lock_picking_level = 4
 	var/uses = 2
 
-/*/obj/item/weapon/lockpick/afterattack(var/A, var/mob/user)
+/obj/item/weapon/lockpick/afterattack(var/A, var/mob/user)
 
 	if(!in_range(user, A))
 		return
 	if(/obj/machinery/door/unpowered/manhattan)
-		amogus()*/
+		amogus()
 
-/*/obj/item/weapon/lockpick/proc/amogus()
-	uses -= 1
-	if(uses =< 1)
-		qdel(src)*/
+/obj/item/weapon/lockpick/proc/amogus(var/mob/user)
+	uses--
+	if(uses == 1)
+		user << "<span class='warning'>\The [src] is going to break soon!</span>"
+	else if(uses <= 0)
+		user.drop_item(src)
+		user << "<span class='warning'>\The [src] crumbles in your hands.</span>"
+		qdel(src)
+	return ..()
 
 /obj/item/weapon/lockpick/upgraded
 	icon_state = "upgraded_lockpick"

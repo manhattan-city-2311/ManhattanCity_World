@@ -96,7 +96,7 @@
 	var/chem_strength_tox =		1						// Multiplier to toxic chem strength (inc. chloral/sopo/mindbreaker/etc. thresholds)
 	var/chemOD_threshold =		1						// Multiplier to overdose threshold; lower = easier overdosing
 	var/chemOD_mod =		1								// Damage modifier for overdose
-	var/vision_flags = SEE_SELF								// Same flags as glasses.
+	var/vision_flags = DEFAULT_SIGHT								// Same flags as glasses.
 
 	// Death vars.
 	var/meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/human

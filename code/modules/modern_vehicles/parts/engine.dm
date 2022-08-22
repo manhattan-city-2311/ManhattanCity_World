@@ -22,7 +22,9 @@
 	var/max_rpm = 6200
 
 	mass = 70
-	var/rpm = 0
+	var/tmp/rpm = 0
+	var/tmp/cur_sound
+	var/tmp/datum/sound_token/sound_token
 
 /obj/item/vehicle_part/engine/fail()
 	..()
@@ -47,6 +49,7 @@
 
 /obj/item/vehicle_part/engine/proc/handle_torque(delta = 2)
 	if(rpm < (RPM_IDLE - 200))
+		stop()
 		rpm = 0
 		return 0
 
@@ -57,7 +60,7 @@
 	. = interpolate_list(rpm, xs, ys) * delta
 
 	if(!vehicle.is_acceleration_pressed && rpm > RPM_IDLE)
-		. *= -0.1
+		. *= -0.25
 
 	if(!vehicle.is_transfering())
 		receive_torque(.)
@@ -70,16 +73,20 @@
 	handle_sound()
 
 /obj/item/vehicle_part/engine/proc/handle_sound()
-	if(!needs_processing)
-		return
+	. = null
 	switch(rpm)
-		if(1 to RPM_IDLE + 500)
-			playsound(vehicle, 'sound/vehicles/modern/zb_fb_idle.ogg', 100)
-			spawn(5)
-			handle_sound()
+		if(200 to RPM_IDLE + 500)
+			. = 'sound/vehicles/modern/zb_fb_idle.ogg'
 		if(RPM_IDLE + 500 to RPM_SLOW)
-			playsound(vehicle, 'sound/vehicles/modern/zb_fb_slow.ogg', 100)
+			. = 'sound/vehicles/modern/zb_fb_slow.ogg'
 		if(RPM_SLOW to RPM_FAST)
-			playsound(vehicle, 'sound/vehicles/modern/zb_fb_med.ogg', 100)
+			. = 'sound/vehicles/modern/zb_fb_med.ogg'
 		if(RPM_FAST to INFINITY)
-			playsound(vehicle, 'sound/vehicles/modern/zb_fb_fast.ogg', 100)
+			. = 'sound/vehicles/modern/zb_fb_fast.ogg'
+	
+	if(. != cur_sound)
+		if(sound_token)
+			sound_token.Stop()
+			qdel(sound_token)
+		sound_token = global.sound_player.PlayLoopingSound(vehicle, "[vehicle.serial_number][type]", ., 75, 7)
+		cur_sound = .

@@ -53,7 +53,7 @@ var/list/gamemode_cache = list()
 	var/continous_rounds = 0				// Gamemodes which end instantly will instead keep on going until the round ends by escape shuttle or nuke.
 	var/allow_Metadata = 0				// Metadata is supported.
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
-	var/fps = 100
+	var/fps = 50
 	var/tick_limit_mc_init = TICK_LIMIT_MC_INIT_DEFAULT	//SSinitialization throttling
 	var/Tickcomp = 0
 	var/socket_talk	= 0				// use socket_talk to communicate with other processes
@@ -275,6 +275,9 @@ var/list/gamemode_cache = list()
 
 	var/defib_timer = 30 // How long until someone can't be defibbed anymore, in minutes.
 	var/defib_braindamage_timer = 2 // How long until someone will get brain damage when defibbed, in minutes. The closer to the end of the above timer, the more brain damage they get.
+
+	var/observers_allowed = FALSE
+
 
 
 /datum/configuration/New()
@@ -893,7 +896,8 @@ var/list/gamemode_cache = list()
 
 				if("defib_braindamage_timer")
 					config.defib_braindamage_timer = text2num(value)
-
+				if("observers_allowed")
+					config.observers_allowed = text2num(value)
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
 

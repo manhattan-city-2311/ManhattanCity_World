@@ -796,57 +796,46 @@
 
 /obj/machinery/cash_register/city
 	account_to_connect = DEPT_COLONY
-	dont_save = TRUE
 	req_access = list(access_president)
 
 /obj/machinery/cash_register/command
 	account_to_connect = DEPT_COUNCIL
-	dont_save = TRUE
 	req_access = list(access_captain)
 
 /obj/machinery/cash_register/medical
 	account_to_connect = DEPT_HEALTHCARE
 	menu_items = MED
-	dont_save = TRUE
 	req_access = list(access_cmo)
 
 /obj/machinery/cash_register/engineering
 	account_to_connect = DEPT_MAINTENANCE
-	dont_save = TRUE
 	req_access = list(access_ce)
 
 /obj/machinery/cash_register/science
 	account_to_connect = DEPT_RESEARCH
-	dont_save = TRUE
 	req_access = list(access_rd)
 
 /obj/machinery/cash_register/security
 	account_to_connect = DEPT_POLICE
 	menu_items = LAW
-	dont_save = TRUE
 	req_access = list(access_hos)
 
 /obj/machinery/cash_register/cargo
 	account_to_connect = DEPT_FACTORY
-	dont_save = TRUE
 	req_access = list(access_qm)
 
 /obj/machinery/cash_register/civilian
 	account_to_connect = DEPT_PUBLIC
-	dont_save = TRUE
 
 /obj/machinery/cash_register/bar
 	account_to_connect = DEPT_BAR
-	dont_save = TRUE
 
 /obj/machinery/cash_register/botany
 	account_to_connect = DEPT_BOTANY
-	dont_save = TRUE
 
 /obj/machinery/cash_register/court
 	account_to_connect = DEPT_LEGAL
 	menu_items = COR
-	dont_save = TRUE
 #undef LAW
 #undef MED
 #undef COR

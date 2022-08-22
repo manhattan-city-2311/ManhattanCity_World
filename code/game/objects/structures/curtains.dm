@@ -13,7 +13,10 @@
 
 	unique_save_vars = list("open")
 
-/obj/structure/curtain/New()
+/obj/structure/curtain/vars_to_save()
+	return ..() + list("open")
+
+/obj/structure/curtain/initialize()
 	..()
 	update_icon()
 
@@ -30,13 +33,21 @@
 	else
 		..(P, def_zone)
 
+/obj/structure/curtain/verb/toggle_open()
+	set category = "Object"
+	set name = "Открыть/закрыть"
+	set src in oview(1)
+
+	var/mob/user = usr
+	if(!user.incapacitated())
+		toggle()
+
 /obj/structure/curtain/attack_hand(mob/user)
-	playsound(get_turf(loc), "rustle", 15, 1, -5)
 	toggle()
-	..()
 
 /obj/structure/curtain/proc/toggle()
 	open = !open
+	playsound(get_turf(loc), "rustle", 15, 1, -5)
 	update_icon()
 
 /obj/structure/curtain/update_icon()

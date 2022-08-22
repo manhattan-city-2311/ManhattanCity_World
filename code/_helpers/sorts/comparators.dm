@@ -41,3 +41,6 @@
 	. = B[STAT_ENTRY_TIME] - A[STAT_ENTRY_TIME]
 	if (!.)
 		. = B[STAT_ENTRY_COUNT] - A[STAT_ENTRY_COUNT]
+
+/proc/cmp_filter_data_priority(list/A, list/B)
+	return A["priority"] - B["priority"]

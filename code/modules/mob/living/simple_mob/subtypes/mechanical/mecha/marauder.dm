@@ -9,7 +9,7 @@
 
 	maxHealth = 500
 	deflect_chance = 25
-	sight = SEE_SELF | SEE_MOBS
+	sight = DEFAULT_SIGHT | SEE_MOBS
 	armor = list(
 				"melee"		= 50,
 				"bullet"	= 55,

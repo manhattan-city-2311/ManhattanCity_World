@@ -613,12 +613,8 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	var/src_z = src_turf.z
 	var/dst_z = dst_turf.z
 
-	//Mysterious!
-	if(!src_z || !dst_z)
-		return FALSE
-
 	//We can do the simple check first, if you have ad_hoc radios.
-	if(ad_hoc && src_z == dst_z)
+	if(ad_hoc && src_z in GetConnectedZlevels(dst_z))
 		return TRUE
 
 	//Let's look at hubs and see what we got.

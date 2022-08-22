@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(vehicles)
 	name = "Vehicles"
-	flags = SS_NO_INIT | SS_KEEP_TIMING
+	flags = SS_NO_INIT
 	wait = 1 // deciseconds
 	var/list/vehicles = list()
 	var/list/queue

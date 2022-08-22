@@ -156,17 +156,13 @@
 
 /mob/living/carbon/brain/handle_regular_hud_updates()
 	if (stat == 2 || (XRAY in src.mutations))
-		sight |= SEE_TURFS
-		sight |= SEE_MOBS
-		sight |= SEE_OBJS
-		see_in_dark = 8
-		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+		set_sight(sight | SEE_TURFS | SEE_MOBS | SEE_OBJS)
+		set_see_in_dark(8)
+		set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
 	else if (stat != 2)
-		sight &= ~SEE_TURFS
-		sight &= ~SEE_MOBS
-		sight &= ~SEE_OBJS
-		see_in_dark = 4
-		see_invisible = SEE_INVISIBLE_LIVING
+		set_sight(sight & ~(SEE_TURFS | SEE_MOBS | SEE_OBJS))
+		set_see_in_dark(4)
+		set_see_invisible(SEE_INVISIBLE_LIVING)
 
 	if (healths)
 		if (stat != 2)
@@ -189,17 +185,13 @@
 			healths.icon_state = "health7"
 
 		if (stat == 2 || (XRAY in src.mutations))
-			sight |= SEE_TURFS
-			sight |= SEE_MOBS
-			sight |= SEE_OBJS
-			see_in_dark = 8
-			see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			set_sight(sight | SEE_TURFS | SEE_MOBS | SEE_OBJS)
+			set_see_in_dark(8)
+			set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
 		else if (stat != 2)
-			sight &= ~SEE_TURFS
-			sight &= ~SEE_MOBS
-			sight &= ~SEE_OBJS
-			see_in_dark = 4
-			see_invisible = SEE_INVISIBLE_LIVING
+			set_sight(sight & ~(SEE_TURFS | SEE_MOBS | SEE_OBJS))
+			set_see_in_dark(4)
+			set_see_invisible(SEE_INVISIBLE_LIVING)
 	if (client)
 		client.screen.Remove(global_hud.blurry,global_hud.druggy,global_hud.vimpaired)
 

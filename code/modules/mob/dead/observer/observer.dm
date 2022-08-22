@@ -89,9 +89,9 @@
 	var/last_revive_notification = null // world.time of last notification, used to avoid spamming players from defibs or cloners.
 
 /mob/observer/dead/New(mob/body)
-	sight |= SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF
-	see_invisible = SEE_INVISIBLE_OBSERVER
-	see_in_dark = world.view //I mean. I don't even know if byond has occlusion culling... but...
+	set_sight(sight | SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF)
+	set_see_invisible(SEE_INVISIBLE_OBSERVER)
+	set_see_in_dark(world.view) //I mean. I don't even know if byond has occlusion culling... but...
 	plane = PLANE_GHOSTS //Why doesn't the var above work...???
 	verbs += /mob/observer/dead/proc/dead_tele
 
@@ -778,7 +778,7 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 	var/finalized = "No"
 
 	while(finalized == "No" && src.client)
-		choice = input(usr,"What would you like to use for your ghost sprite?") as null|anything in possible_ghost_sprites
+		choice = input(usr,"What would you like to use for your ghost sprite?", (icon_state in possible_ghost_sprites ? icon_state : null)) as null|anything in possible_ghost_sprites
 		if(!choice)
 			return
 

@@ -38,7 +38,7 @@ var/global/datum/global_init/init = new ()
 	cache_lifespan = 7
 	movement_mode = PIXEL_MOVEMENT_MODE
 
-	fps = 100
+	fps = 50
 
 /var/game_id = null
 /proc/generate_gameid()
@@ -64,7 +64,7 @@ var/global/datum/global_init/init = new ()
     if (dll)
         call(dll, "debug_initialize")()
 
-#define RECOMMENDED_VERSION 501
+#define RECOMMENDED_VERSION 514
 /world/New()
 	enable_debugger()
 	world.log << "Map Loading Complete"
@@ -461,12 +461,10 @@ var/world_topic_spam_protect_time = world.timeofday
 		else
 			return "Database connection failed or not set up"
 
-
-/world/Reboot(var/reason)
+/world/Reboot(reason)
 	/*spawn(0)
 		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
 		*/
-	save_world()
 	Master.Shutdown()	//run SS shutdowns
 	processScheduler.stop()
 

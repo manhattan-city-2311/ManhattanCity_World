@@ -1,6 +1,5 @@
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
-	appearance_flags = DEFAULT_APPEARANCE | TILE_MOVER
 
 	//Health and life related vars
 	var/maxHealth = 100 //Maximum health that should be possible.  Avoid adjusting this if you can, and instead use modifiers datums.

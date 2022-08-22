@@ -102,7 +102,7 @@
 				if(!cpr_check(H))
 					return				
 
-				var/acls_quality = M.get_skill(SKILL_ACLS)
+				var/acls_quality = M.get_skill(SKILL_MEDICAL)
 				if(!isnum(acls_quality))
 					acls_quality = 0
 				var/is_precordial_blow = acls_quality >= SKILL_AMATEUR && is_vfib()
@@ -155,7 +155,7 @@
 				if(!cpr_check(H))
 					return
 
-				var/acls_quality = M.get_skill(SKILL_ACLS)
+				var/acls_quality = M.get_skill(SKILL_MEDICAL)
 				if(!isnum(acls_quality))
 					acls_quality = 0
 

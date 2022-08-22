@@ -10,7 +10,6 @@
 
 /mob/living/carbon/var/shock_stage = 0
 /mob/living/carbon/var/pain_coeff = 1 / 50
-/mob/living/carbon/var/shock_coeff = 0.15
 /mob/living/carbon/proc/add_shock_from_pain(pain)
 	shock_stage += pain * pain_coeff
 
@@ -101,9 +100,10 @@
 	var/maxdam = 0
 	var/obj/item/organ/external/damaged_organ = null
 	for(var/obj/item/organ/external/E in organs_by_name)
-		if(!E.can_feel_pain()) continue
+		if(!E.can_feel_pain())
+			continue
 		var/dam = E.get_pain()
-		if(dam > maxdam && (maxdam == 0 || prob(70)) )
+		if(dam > maxdam)
 			damaged_organ = E
 			maxdam = dam
 

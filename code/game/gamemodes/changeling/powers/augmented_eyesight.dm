@@ -18,22 +18,5 @@
 	if(!changeling)
 		return 0
 	src.mind.changeling.chem_charges -= 5
-	src.sight |= SEE_MOBS
-	/*
-	var/mob/living/carbon/human/C = src
-
-	active = !active
-	if(active)
-		to_chat(C, "<span class='notice'>We feel a minute twitch in our eyes, and darkness creeps away.</span>")
-		C.sight |= SEE_MOBS
-		C.permanent_sight_flags |= SEE_MOBS
-		C.see_in_dark = 8
-		C.dna.species.invis_sight = SEE_INVISIBLE_MINIMUM
-	else
-		to_chat(C, "<span class='notice'>Our vision dulls. Shadows gather.</span>")
-		C.sight &= ~SEE_MOBS
-		C.permanent_sight_flags &= ~SEE_MOBS
-		C.see_in_dark = 0
-		C.dna.species.invis_sight = initial(user.dna.species.invis_sight)
-	return 1
-	*/
+	set_sight(sight | SEE_MOBS)
+	// чё.

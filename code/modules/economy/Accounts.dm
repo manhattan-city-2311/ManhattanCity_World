@@ -81,7 +81,6 @@
 	return M
 
 /proc/charge_to_account(attempt_account_number, source_name, var/purpose, terminal_id, amount, leave_log = TRUE)
-
 	for(var/datum/money_account/D in GLOB.all_money_accounts)
 		if(D.account_number == attempt_account_number && !D.suspended || D.account_number == attempt_account_number && !D.suspended)
 			D.money += amount
@@ -89,20 +88,6 @@
 			if(leave_log)
 				D.add_transaction_log(source_name, purpose, amount, terminal_id)
 			return 1
-
-
-	if(config.canonicity)
-		if(check_persistent_account(attempt_account_number) && !get_persistent_acc_suspension(attempt_account_number))
-
-			//create a transaction log entry
-			var/datum/transaction/T = create_transaction_log(source_name, purpose, amount, terminal_id)
-
-			persist_adjust_balance(attempt_account_number, amount)
-			if(leave_log)
-				add_persistent_acc_logs(attempt_account_number, T)
-
-			return 1
-
 	return 0
 
 //this returns the first account datum that matches the supplied accnum/pin combination, it returns null if the combination did not match any account
@@ -133,15 +118,10 @@
 	if(M)
 		return M.owner_name
 
-	return get_persistent_acc_name(account_number)
-
 /proc/check_account_exists(account_number)
 	for(var/datum/money_account/D in GLOB.all_money_accounts)
 		if(D.account_number == account_number)
 			return TRUE
-
-	if(check_persistent_account(account_number))
-		return TRUE
 
 	return FALSE
 
@@ -151,9 +131,6 @@
 	var/datum/money_account/M = get_account(account_number)
 	if(M)
 		return M.suspended
-
-	if(get_persistent_acc_suspension(account_number))
-		return TRUE
 
 	return FALSE
 

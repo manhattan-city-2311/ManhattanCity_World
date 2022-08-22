@@ -32,6 +32,7 @@
 	var/initialized = FALSE
 	var/collision_sound
 
+	var/list/filter_data
 
 /atom/New(loc, ...)
 	// Don't call ..() unless /datum/New() ever exists
@@ -41,14 +42,11 @@
 	if(use_preloader && (src.type == _preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		_preloader.load(src)
 
-	// Pass our arguments to InitAtom so they can be passed to initialize(), but replace 1st with if-we're-during-mapload.
-	var/do_initialize = SSatoms && SSatoms.initialized // Workaround our non-ideal initialization order: SSatoms may not exist yet.
-	//var/do_initialize = SSatoms.initialized
+	// Pass our arguments to InitAtom so they can be passed to initialize(), but replace 1st with if-we're-during-mapload or persistent world load
+	var/do_initialize = SSatoms.initialized
 	if(do_initialize > INITIALIZATION_INSSATOMS)
-		args[1] = (do_initialize == INITIALIZATION_INNEW_MAPLOAD)
-		if(SSatoms.InitAtom(src, args))
-			// We were deleted. No sense continuing
-			return
+		args[1] = SSpersistent_world.loading ? LOADSOURCE_PERSISTENCE : (do_initialize == INITIALIZATION_INNEW_MAPLOAD)
+		SSatoms.InitAtom(src, args)
 
 	// Uncomment if anything ever uses the return value of SSatoms.InitializeAtoms ~Leshana
 	// If a map is being loaded, it might want to know about newly created objects so they can be handled.
@@ -65,12 +63,13 @@
 // Must not sleep!
 // Other parameters are passed from New (excluding loc), this does not happen if mapload is TRUE
 // Must return an Initialize hint. Defined in code/__defines/subsystems.dm
-/atom/proc/initialize(mapload, ...)
+/atom/proc/initialize(loadsource, ...)
 	if(QDELETED(src))
 		crash_with("GC: -- [type] had initialize() called after qdel() --")
 	if(initialized)
 		crash_with("Warning: [src]([type]) initialized multiple times!")
-	initialized = TRUE
+	initialized = 1
+	persistence_track()
 	return INITIALIZE_HINT_NORMAL
 
 /atom/proc/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
@@ -485,7 +484,7 @@
 // message is the message output to anyone who can hear.
 // deaf_message (optional) is what deaf people will see.
 // hearing_distance (optional) is the range, how many tiles away the message can be heard.
-/atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance)
+/atom/proc/audible_message(message, deaf_message, hearing_distance)
 
 	var/range = hearing_distance || world.view
 	var/list/hear = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
@@ -557,3 +556,69 @@
 	if(collision_sound)
 		playsound(loc,vehicle.collision_sound,100,0,4)
 	return 0
+
+/atom/proc/add_filter(name, priority, list/params)
+	LAZYINITLIST(filter_data)
+	var/list/copied_parameters = params.Copy()
+	copied_parameters["priority"] = priority
+	filter_data[name] = copied_parameters
+	update_filters()
+
+/atom/proc/update_filters()
+	filters = null
+	filter_data = sortTim(filter_data, /proc/cmp_filter_data_priority, TRUE)
+	for(var/f in filter_data)
+		var/list/data = filter_data[f]
+		var/list/arguments = data.Copy()
+		arguments -= "priority"
+		filters += filter(arglist(arguments))
+	UNSETEMPTY(filter_data)
+
+/atom/proc/transition_filter(name, time, list/new_params, easing, loop)
+	var/filter = get_filter(name)
+	if(!filter)
+		return
+
+	var/list/old_filter_data = filter_data[name]
+
+	var/list/params = old_filter_data.Copy()
+	for(var/thing in new_params)
+		params[thing] = new_params[thing]
+
+	animate(filter, new_params, time = time, easing = easing, loop = loop)
+	for(var/param in params)
+		filter_data[name][param] = params[param]
+
+/atom/proc/change_filter_priority(name, new_priority)
+	if(!filter_data || !filter_data[name])
+		return
+
+	filter_data[name]["priority"] = new_priority
+	update_filters()
+
+/atom/proc/get_filter(name)
+	if(filter_data && filter_data[name])
+		return filters[filter_data.Find(name)]
+
+/// Returns the indice in filters of the given filter name.
+/// If it is not found, returns null.
+/atom/proc/get_filter_index(name)
+	return filter_data?.Find(name)
+
+/atom/proc/remove_filter(name_or_names)
+	if(!filter_data)
+		return
+
+	var/list/names = islist(name_or_names) ? name_or_names : list(name_or_names)
+
+	. = FALSE
+	for(var/name in names)
+		if(filter_data[name])
+			filter_data -= name
+			. = TRUE
+	if(.)
+		update_filters()
+
+/atom/proc/clear_filters()
+	filter_data = null
+	filters = null

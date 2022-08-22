@@ -302,7 +302,7 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	if(!get_blood_volume() && (spressure || mpressure || dpressure || mcv))
 		spressure = mpressure = dpressure = mcv = 0
 // update GVR
-	gvr = 218.50746
+	gvr = 218.50746268
 	gvr += LAZYACCESS0(chem_effects, CE_PRESSURE)
 	gvr += spressure * (0.0008 * spressure - 0.8833) + 94 // simulate elasticity of vascular resistance
 // update dpressure
@@ -310,21 +310,18 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	dpressure = max(0, LERP(dpressure, (gvr * (2180 + hr53))/((17820 - hr53)), 0.5))
 // update spressure
 
-	var/mcv50divhr27
-	if(hr)
-		mcv50divhr27 = (50 * mcv) / (27 * hr) / k
-	else
-		mcv50divhr27 = (50 * mcv) / 10000 / k
-
-	spressure = clamp(LERP(spressure,  mcv50divhr27 + 2.0 * dpressure - (7646.0)/54.0, 0.5), 0, MAX_PRESSURE)
+	var/mcv50divhr27 = (50 * mcv) / (hr ? (27 * hr) : 1000)
+	spressure = clamp(LERP(spressure, mcv50divhr27 + 2.0 * dpressure - (7646.0 * k)/54.0, 0.5), 0, MAX_PRESSURE)
 	dpressure = min(dpressure, spressure - rand(5, 15))
 // update mpressure
 	mpressure = dpressure + (spressure - dpressure) / 3.0
 // update MCV
-	mcv = LERP(mcv, clamp((((mpressure * 8610) / gvr) * coeff * get_cardiac_output_mod() + mcv_add) * get_blood_volume(), 0, MAX_MCV), 0.5)
+	var/mpressure2 = (mpressure + dpressure) * 0.5
+	var/nmcv = ((mpressure2 * 7999.2) / gvr * coeff * get_cardiac_output_mod() + mcv_add) * get_blood_volume()
+	mcv = LERP(mcv, clamp(nmcv, 0, MAX_MCV), 0.4)
 	mcv_add = 0
 // update perfusion
-	var/n_perfusion = mcv ? CLAMP01((mcv / (NORMAL_MCV * k)) * (get_blood_saturation() / 0.99)) : 0
+	var/n_perfusion = mcv ? CLAMP01((mcv / (NORMAL_MCV * k)) * (get_blood_saturation() / 0.97)) : 0
 
 	perfusion = round(LERP(perfusion, n_perfusion, 0.2), 0.01)
 
@@ -352,7 +349,7 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 
 /mob/living/carbon/human/get_deprivation()
 	if(oxy && mcv)
-		return 100 - round(oxy / (OXYGEN_LEVEL_NORMAL * k) * 100)
+		return 100 - round(oxy / (OXYGEN_LEVEL_NORMAL) * 100)
 	return 0
 
 // in minute

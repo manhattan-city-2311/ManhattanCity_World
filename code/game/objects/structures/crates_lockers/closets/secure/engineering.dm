@@ -7,7 +7,6 @@
 	icon_opened = "secureceopen"
 	icon_broken = "securecebroken"
 	icon_off = "secureceoff"
-	dont_save = TRUE
 
 
 	New()
@@ -53,7 +52,6 @@
 	icon_opened = "toolclosetopen"
 	icon_broken = "secureengelecbroken"
 	icon_off = "secureengelecoff"
-	dont_save = TRUE
 
 
 	New()
@@ -82,7 +80,6 @@
 	icon_opened = "toolclosetopen"
 	icon_broken = "secureengweldbroken"
 	icon_off = "secureengweldoff"
-	dont_save = TRUE
 
 
 	New()
@@ -112,7 +109,6 @@
 	icon_opened = "secureengopen"
 	icon_broken = "secureengbroken"
 	icon_off = "secureengoff"
-	dont_save = TRUE
 
 
 	New()
@@ -147,8 +143,7 @@
 	icon_locked = "secureatm1"
 	icon_opened = "secureatmopen"
 	icon_broken = "secureatmbroken"
-	icon_off = "secureatmoff"
-	dont_save = TRUE
+	icon_off = "secureatmoff"	
 
 
 	New()

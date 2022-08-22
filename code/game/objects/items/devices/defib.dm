@@ -315,7 +315,7 @@
 // This proc is used so that we can return out of the revive process while ensuring that busy and update_icon() are handled
 /obj/item/weapon/shockpaddles/proc/do_revive(mob/living/carbon/human/H, mob/user)
 
-	var/quality = user.get_skill(SKILL_ACLS)
+	var/quality = user.get_skill(SKILL_MEDICAL)
 	if(quality < SKILL_AMATEUR)
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return

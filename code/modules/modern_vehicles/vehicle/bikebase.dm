@@ -28,8 +28,17 @@
 
 	var/image/img
 
+	block_enter_exit = FALSE
+
 /obj/manhattan/vehicle/motorcycle/get_braking_force()
 	return 1800
+
+/obj/manhattan/vehicle/truck/update_object_sprites()
+	. = ..()
+	if(dir == NORTH || dir == SOUTH)
+		bounds = "32,64"
+	else
+		bounds = "64,32"
 
 /obj/manhattan/vehicle/motorcycle/update_object_sprites()
 	vis_contents.Cut()
@@ -53,8 +62,8 @@
 		driver.pixel_y = y
 		vis_contents += driver
 	if(gunner)
-		gunner.pixel_x = round(x * 1.2)
-		gunner.pixel_y = round(y * 1.2)
+		gunner.pixel_x = round(x * 1.5)
+		gunner.pixel_y = round(y * 1.5)
 		vis_contents += gunner
 	overlays += img
 
@@ -62,3 +71,9 @@
 	. = ..()
 	user.pixel_x = 0
 	user.pixel_y = 0
+
+/obj/manhattan/vehicle/motorcycle/doors_locked()
+	return FALSE // Are you see doors?
+
+/obj/manhattan/vehicle/motorcycle/attack_key()
+	return

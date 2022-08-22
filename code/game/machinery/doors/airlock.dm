@@ -82,6 +82,9 @@ var/list/airlock_overlays = list()
 
 	var/adjust_dir = TRUE
 
+/obj/machinery/door/airlock/vars_to_save()
+	return ..() + list("door_color")
+
 /obj/machinery/door/airlock/knock(mob/user)
 	if(!issilicon(usr) && try_zap(user))
 		return

@@ -186,6 +186,3 @@ SUBSYSTEM_DEF(persistent_options)
 			new_log_text += "Updated by [author].[changed ? " Change: [changed]" : ""] - [stationdate2text()] @ [stationtime2text()]."
 
 	log_option.add_value(new_log_text)
-
-
-

@@ -214,6 +214,9 @@ proc/get_radio_key_from_channel(var/channel)
 
 	//Clean up any remaining junk on the left like spaces.
 	message = trim_left(message)
+	var/lastchar = copytext_char(message, -1)
+	if(lastchar != "." && lastchar != "!" && lastchar != "?")
+		message = message + "."
 
 	//Autohiss handles auto-rolling tajaran R's and unathi S's/Z's
 	message = handle_autohiss(message, speaking)
@@ -265,7 +268,7 @@ proc/get_radio_key_from_channel(var/channel)
 	var/sound_vol = handle_v[2]
 
 	//Default range and italics, may be overridden past here
-	var/message_range = VIEW_SIZE_MEAN
+	var/message_range = VIEW_SIZE_X
 	var/italics = 0
 
 	//Speaking into radios
@@ -325,6 +328,8 @@ proc/get_radio_key_from_channel(var/channel)
 	images_to_clients[speech_bubble] = list()
 
 	var/list/speech_bubble_recipients = list()
+
+	generate_runechat_color()
 
 	//Main 'say' and 'whisper' message delivery
 	for(var/mob/M in listening)

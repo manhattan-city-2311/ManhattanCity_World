@@ -120,7 +120,7 @@
 	name = "transit station sign"
 	desc = "A sign for the city transit station."
 	icon_state = "transit"
-	light_color = COLOR_YELLOW
+	light_color = COLOR_ORANGE
 
 /obj/structure/sign/neon/big/transit/south
 	name = "south transit station sign"
@@ -162,12 +162,15 @@
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 	light_power = 10
 	light_range = 5
+	pixel_x = 8
+	pixel_y = 10
+	alpha = 150
 
 /obj/structure/sign/neon/big/street
 	name = "street name"
 	desc = "A sign that saying what street is that."
 	icon_state = "randomshit2"
-	light_color = COLOR_YELLOW
+	light_color = COLOR_ORANGE
 
 /obj/structure/sign/neon/big/oil
 	name = "Oil Station"
@@ -185,7 +188,7 @@
 	name = "big city sign"
 	desc = "A sign with Manhattan advertising."
 	icon_state = "randomshit4"
-	light_color = COLOR_YELLOW
+	light_color = COLOR_ORANGE
 
 /obj/structure/sign/neon/big/manhattan3
 	name = "big city sign"
@@ -198,6 +201,12 @@
 	desc = "A sign with Manhattan advertising."
 	icon_state = "randomshit7"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
+
+/obj/structure/sign/neon/big/manhattan5
+	name = "big city sign"
+	desc = "A sign with Manhattan advertising."
+	icon_state = "randomshit6"
+	light_color = LIGHT_COLOR_NEONGREEN
 
 /obj/structure/sign/neon/mars
 	name = "Mars sign"

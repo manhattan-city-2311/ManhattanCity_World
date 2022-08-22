@@ -6,6 +6,8 @@
 	density = 1
 	layer = ABOVE_MOB_LAYER
 
+	w_class = ITEM_SIZE_VEHICLE
+
 	var/headlights_overlay = "" //don't set this if vehicle has no headlights icon state
 	var/headlights = FALSE //on-off
 
@@ -15,10 +17,10 @@
 	var/active = 1
 	var/guns_disabled = 0
 	var/movement_destroyed = 0
-	var/block_enter_exit //Set this to block entering/exiting.
+	var/block_enter_exit = FALSE
 	var/can_traverse_zs = 0
 
-	var/keys_in_ignition = FALSE
+	var/obj/item/weapon/key/car/inserted_key
 
 	var/can_space_move = 0
 
@@ -73,7 +75,32 @@
 	var/is_acceleration_pressed = FALSE
 	var/is_brake_pressed		= FALSE
 	var/aerodynamics_coefficent = 0.32
-	var/traction_coefficent = 9.6
+	var/traction_coefficent 	= 9.6
+
+	var/key_type = /obj/item/weapon/key/car
+	var/serial_prefix = "CIV"
+
+/obj/manhattan/vehicle/on_persistence_load()
+	. = ..()
+	for(var/ID in components)
+		var/obj/item/vehicle_part/VP = components[ID]
+		VP.vehicle = src
+
+/obj/manhattan/vehicle/proc/doors_locked()
+	return block_enter_exit
+
+/obj/manhattan/vehicle/vars_to_save()
+	return ..() + list("comp_prof", "serial_number", "inserted_key", "components", "block_enter_exit")
+
+/obj/manhattan/vehicle/examine(mob/user)
+	. = ..()
+	to_chat(user, "There is a [serial_number] stamped on [src]'s license plate")
+
+/obj/manhattan/vehicle/proc/generate_serial_number()
+	var/part1 = "\[<b>[serial_prefix]</b>: "
+	var/source = md5("[world.timeofday]")
+	var/part2 = "[copytext(source, 1, 2)]-[copytext(source, 3, 6)]\]" // 12345 -> 12-345
+	return part1 + uppertext(part2)
 
 /mob/living/carbon/human/Stat()
 	. = ..()
@@ -90,7 +117,7 @@
 /obj/manhattan/vehicle/proc/update_step_size()
 	// TODO: Properly created system
 	//step_size = speed.modulus() * WORLD_ICON_SIZE / world.tick_lag
-	step_size = 96 + round(speed.modulus())
+	step_size = round(96 + round(speed.modulus()) * 1.5)
 
 /obj/manhattan/vehicle/proc/get_wheel_diameter()
 	return 0.34
@@ -115,23 +142,26 @@
 /obj/manhattan/vehicle/proc/get_wheels()
 	return get_components(/obj/item/vehicle_part/wheel)
 
-/obj/manhattan/vehicle/initialize(mapload)
+/obj/manhattan/vehicle/initialize(loadsource)
 	. = ..()
-	comp_prof = new comp_prof(src)
-	if(light_range != 0)
-		verbs += /obj/manhattan/vehicle/verb/toggle_headlights
-		set_light(0) //Switch off at spawn.
+
+	if(loadsource != LOADSOURCE_PERSISTENCE)
+		comp_prof = new comp_prof(src)
+		if(light_range != 0)
+			verbs += /obj/manhattan/vehicle/verb/toggle_headlights
+			set_light(0) //Switch off at spawn.
+		for(var/id in components)
+			var/type = components[id]
+			components[id] = new type
+			components[id].vehicle = src
+		if(!serial_number)
+			serial_number = generate_serial_number()
+		if(!inserted_key)
+			inserted_key = new key_type(src)
+			inserted_key.key_data = serial_number
+
 	cargo_capacity = base_storage_capacity(capacity_flag)
-
-	for(var/id in components)
-		var/type = components[id]
-		components[id] = new type
-		components[id].vehicle = src
-
 	SSvehicles.vehicles += src
-
-	serial_number = rand(1, 9999)
-
 	START_PROCESSING(SSobj, src)
 	update_object_sprites()
 
@@ -228,49 +258,52 @@
 			m.apply_damage((250/severity)*(exposed_positions[position]/100),BRUTE,,m.run_armor_check(null,"bomb"))
 
 /obj/manhattan/vehicle/attack_hand(var/mob/user)
+	if(doors_locked())
+		to_chat(user, "\The [src] is locked.")
+		return ..()
+
 	if(user.a_intent != "harm")
-		if(!enter_as_position(user,"driver"))
-			if(!enter_as_position(user,"gunner"))
-				enter_as_position(user,"passenger")
+		if(!enter_as_position(user, VP_DRIVER))
+			if(!enter_as_position(user, VP_GUNNER))
+				enter_as_position(user, VP_PASSENGER)
 	else
 		. = ..()
 
-/obj/manhattan/vehicle/attackby(var/obj/item/I,var/mob/user)
+/obj/manhattan/vehicle/attackby(obj/item/weapon/I, mob/user)
 	if(elevation > user.elevation || elevation > I.elevation)
 		to_chat(user,"<span class = 'notice'>[name] is too far away to interact with!</span>")
 		return
 	if(!istype(I))
 		return
-	if(istype(I,/obj/item/weapon/grab))
-		handle_grab_attack(I,user)
+	if(istype(I, /obj/item/weapon/grab))
+		handle_grab_attack(I, user)
 		return
-/*
-	if(istype(I, /obj/item/car_key))
-		var/obj/item/car_key/key = I
-		if(key.serial_number == serial_number)
-			playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1, 5)
-			if(block_enter_exit)
-				visible_message("<span class = 'notice'>[user] unlocks the [src].</span>")
-				block_enter_exit = 0
-			else
-				visible_message("<span class = 'notice'>[user] locks the [src].</span>")
-				block_enter_exit = 1
-		else
-			to_chat(user,"<span class = 'notice'>The key doesn't fit!</span>")
-*/
 	if(user.a_intent == I_HURT)
 		if(comp_prof.is_repair_tool(I))
-			comp_prof.repair_inspected_with_tool(I,user)
+			comp_prof.repair_inspected_with_tool(I, user)
 			return
 		if(istype(I,/obj/item/stack))
-			comp_prof.repair_inspected_with_sheet(I,user)
+			comp_prof.repair_inspected_with_sheet(I, user)
 			return
 		. = ..()
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		var/pos_to_dam = should_damage_occ()
 		if(!isnull(pos_to_dam))
-			damage_occupant(pos_to_dam,I,user)
+			damage_occupant(pos_to_dam, I, user)
 			return
-		comp_prof.take_component_damage(I.force,I.damtype)
+		comp_prof.take_component_damage(I.force, I.damtype)
 		return
-	put_cargo_item(user,I)
+	if(istype(I, /obj/item/weapon/key/car))
+		if(attack_key(I, user))
+			return
+
+	put_cargo_item(user, I)
+
+/obj/manhattan/vehicle/proc/attack_key(obj/item/weapon/key/car/key, user)
+	if(key.key_data != serial_number)
+		to_chat(user, SPAN_WARNING("The key doesn't fit!"))
+		return TRUE
+	playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1, 5)
+
+	block_enter_exit = !block_enter_exit
+	visible_message(SPAN_NOTICE("[user] [block_enter_exit ? "" : "un"]locks \the [src]."))

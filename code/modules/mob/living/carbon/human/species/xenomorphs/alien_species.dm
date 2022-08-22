@@ -41,7 +41,7 @@
 
 	virus_immune = 1
 
-	vision_flags = SEE_SELF|SEE_MOBS
+	vision_flags = DEFAULT_SIGHT|SEE_MOBS
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,

@@ -71,7 +71,8 @@
 /obj/screen/fullscreen/New()
 	..()
 	if(should_be_scaled)
-		transform = matrix().Scale(19.0 / 15.0, 1)
+		transform = matrix().Scale(VIEW_SIZE_X / VIEW_SIZE_Y, 1)
+
 
 /obj/screen/fullscreen/Destroy()
 	severity = 0

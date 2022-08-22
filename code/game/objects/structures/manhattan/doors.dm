@@ -78,17 +78,45 @@
 /obj/machinery/door/unpowered/manhattan/inoperable(var/additional_flags = 0)
 	return (stat & (BROKEN|additional_flags))
 
-/obj/machinery/door/unpowered/manhattan/close(var/forced = 0)
-	if(!can_close(forced))
-		return
-	playsound(src.loc, material.dooropen_noise, 100, 1)
-	..()
-
 /obj/machinery/door/unpowered/manhattan/open(var/forced = 0)
 	if(!can_open(forced))
 		return
 	playsound(src.loc, material.dooropen_noise, 100, 1)
-	..()
+
+	operating = 1
+	do_animate("opening")
+
+	icon_state = "door0"
+	set_opacity(0)
+	density = 0
+
+	layer = open_layer
+	explosion_resistance = 0
+	update_icon()
+	set_opacity(0)
+	operating = 0
+
+	if(autoclose)
+		close_door_at = next_close_time()
+
+/obj/machinery/door/unpowered/manhattan/close(var/forced = 0)
+	if(!can_close(forced))
+		return
+	playsound(src.loc, material.dooropen_noise, 100, 1)
+
+	operating = TRUE
+
+	close_door_at = 0
+	do_animate("closing")
+
+	density = TRUE
+	explosion_resistance = initial(explosion_resistance)
+	layer = closed_layer
+
+	update_icon()
+	if(visible && !glass)
+		set_opacity(TRUE)	//caaaaarn!
+	operating = FALSE
 
 /obj/machinery/door/unpowered/manhattan/set_broken()
 	..()
@@ -140,8 +168,8 @@
 			lock = L.create_lock(src,user)
 		return
 
-	if(istype(I, /obj/item/weapon/masterkey) && lock)
-		var/obj/item/weapon/masterkey/MK = I
+	if(istype(I, /obj/item/weapon/door/masterkey) && lock)
+		var/obj/item/weapon/door/masterkey/MK = I
 		playsound(src.loc, 'sound/effects/doors/door_key.wav', 100, 1)
 		for(var/obj/item/weapon/door/key/K in MK.contents)
 			if(!lock.toggle(K))
@@ -201,7 +229,6 @@
 	return
 
 /obj/machinery/door/unpowered/manhattan/attack_hand(mob/user as mob)
-//	var/mob/living/L = user
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(lock && lock.isLocked())
 		to_chat(user, "\The [src] is locked!")
@@ -211,9 +238,8 @@
 			else
 				playsound(src.loc, 'sound/effects/doors/doorknock.wav', 70, 1)
 			user.visible_message("<span class='danger'>\The [user] knocks at \the [src].</span>")
-/*	if(user.a_intent == I_HURT && L.skill_check(SKILL_COMBAT, SKILL_PROFESSIONAL))
+	if(user.a_intent == I_HURT && user.skill_check(SKILL_CLOSE_COMBAT, SKILL_TRAINED))
 		playsound(src.loc, 'sound/effects/doors/smod_freeman.ogg', 70, 1)
-		open()*/
 	if(operable())
 		if(src.density)
 			open()

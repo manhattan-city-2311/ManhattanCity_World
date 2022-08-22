@@ -29,3 +29,11 @@
 	max_storage_space = 48
 	starts_with = list(/obj/item/weapon/card/id/silver/hop = 15,
 						/obj/item/weapon/card/id/silver/secretary = 15)
+
+/obj/item/weapon/storage/box/ids_hospital
+	name = "box of spare Hospital IDs"
+	desc = "Has so many IDs."
+	icon_state = "id"
+	max_storage_space = 48
+	starts_with = list(/obj/item/weapon/card/id/medical/doctor = 20,
+						/obj/item/weapon/card/id/medical/intern = 10)

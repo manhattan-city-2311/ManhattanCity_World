@@ -8,8 +8,8 @@
 	var/id
 	var/integrity = 100 //0-100
 	var/broken = FALSE
-	var/needs_processing = FALSE
-	var/obj/manhattan/vehicle/vehicle = null
+	var/tmp/needs_processing = FALSE
+	var/tmp/obj/manhattan/vehicle/vehicle = null
 
 	var/break_message
 	var/break_sound = null

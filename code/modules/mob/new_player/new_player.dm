@@ -101,6 +101,50 @@
 		AttemptLateSpawn("Civilian")
 		return 1
 
+	if(href_list["observe"])
+		if(!check_rights(R_ADMIN|R_DEBUG, 0, src) && !config.observers_allowed)
+			to_chat(src, SPAN_WARNING("Вы не можете наблюдать за раундом."))
+			return
+
+		if(alert(src,"Вы уверены, что хотите наблюдать?", "Observe", "Да", "Нет") == "Да")
+			if(!client || !check_rights(R_ADMIN|R_DEBUG, 0, src) && !config.observers_allowed)
+				to_chat(src, SPAN_WARNING("Вы не можете наблюдать за раундом."))
+				return 1
+
+			var/mob/observer/dead/observer = new()
+
+			spawning = 1
+			sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))// MAD JAMS cant last forever yo
+
+
+			observer.started_as_observer = 1
+			var/obj/effect/landmark/O = locate("landmark*Observer-Start")
+			if(istype(O))
+				to_chat(src, "<span class='notice'>Телепортация.</span>")
+				observer.dropInto(O)
+			else
+				to_chat(src, SPAN_WARNING("Не удалость обнаружить точку появления наблюдателей, телепортация на точку появления персонажей."))
+				O = locate("landmark*JoinLate")
+				if(!istype(O))
+					to_chat(src, SPAN_DANGER("Упс? Кто-то не раставил лендмарки на карту?"))
+					O = locate(1, 1, 1)
+				observer.dropInto(O)
+			observer.timeofdeath = world.time
+			if(isnull(client.holder))
+				announce_ghost_joinleave(src)
+			// var/mob/living/carbon/human/dummy/mannequin = new()
+			// client.prefs.dress_preview_mob(mannequin)
+			// observer.set_appearance(mannequin)
+			// qdel(mannequin)
+			observer.real_name = client.prefs.real_name
+			observer.name = observer.real_name
+			if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
+				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
+			observer.key = key
+			qdel(src)
+		return 1
+
+
 	if(href_list["lobby_ready"])
 		ready = !ready
 		update_lobby()
@@ -190,7 +234,7 @@
 
 	return 1
 
-/mob/new_player/proc/AttemptLateSpawn(rank, var/turf/spawning_at, antag_type)
+/mob/new_player/proc/AttemptLateSpawn(rank, turf/spawning_at, antag_type)
 	if (src != usr)
 		return 0
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
@@ -256,7 +300,6 @@
 			data_core.manifest_inject(character)
 
 		ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
-
 		//Grab some data from the character prefs for use in random news procs.
 		if(!character.mind.prefs.silent_join)
 			AnnounceArrival(character, rank, join_message)
@@ -264,7 +307,6 @@
 	else
 		if(!character.mind.prefs.silent_join)
 			AnnounceCyborg(character, rank, join_message)
-
 
 	//assign antag role, if any
 	var/datum/antagonist/antag = all_antag_types[antag_type]
@@ -278,8 +320,6 @@
 	if (ticker.current_state == GAME_STATE_PLAYING)
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
-		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
-		global_announcer.autosay("A new[rank ? " [rank]" : " visitor" ] [join_message ? join_message : "has arrived to the city"].", "Arrivals Announcement Computer")
 
 
 /mob/new_player/proc/create_character(var/turf/T)

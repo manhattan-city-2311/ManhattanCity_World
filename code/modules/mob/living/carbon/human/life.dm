@@ -688,36 +688,37 @@
 		else
 			clear_fullscreen("brute")
 
-	if( stat == DEAD )
-		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
-		see_in_dark = 8
-		if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-		if(healths)		healths.icon_state = "health7"	//DEAD healthmeter
-		if(client)
-			if(client.view != world.view) // If mob dies while zoomed in with device, unzoom them.
-				for(var/obj/item/item in contents)
-					if(item.zoom)
-						item.zoom()
-						break
+	if(stat == DEAD)
+		set_sight(sight | SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF)
+		set_see_in_dark(8)
+		if(!druggy)
+			set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
+		if(healths)
+			healths.icon_state = "health7"	//DEAD healthmeter
+		if(client?.view != world.view) // If mob dies while zoomed in with device, unzoom them.
+			for(var/obj/item/item in contents)
+				if(item.zoom)
+					item.zoom()
+					break
 
 	else
-		sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
-		see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
+		set_sight(sight & ~(SEE_TURFS | SEE_MOBS | SEE_OBJS))
+		set_see_invisible(see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		if(XRAY in mutations)
-			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-			see_in_dark = 8
-			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			set_sight(sight | SEE_TURFS | SEE_MOBS | SEE_OBJS)
+			set_see_in_dark(8)
+			if(!druggy)
+				set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
 
 		if(!seedarkness)
-			sight = species.get_vision_flags(src)
-			see_in_dark = 8
-			see_invisible = SEE_INVISIBLE_NOLIGHTING
-
+			set_sight(species.get_vision_flags(src))
+			set_see_in_dark(8)
+			set_see_invisible(SEE_INVISIBLE_NOLIGHTING)
 		else
-			sight = species.get_vision_flags(src)
-			see_in_dark = species.darksight
-			see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
+			set_sight(species.get_vision_flags(src))
+			set_see_in_dark(species.darksight)
+			set_see_invisible(see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		var/glasses_processed = 0
 		var/obj/item/weapon/rig/rig = back
@@ -731,14 +732,15 @@
 			glasses_processed = 1
 			process_glasses(glasses)
 		if(XRAY in mutations)
-			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-			see_in_dark = 8
-			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			set_sight(sight | SEE_TURFS | SEE_MOBS | SEE_OBJS)
+			set_see_in_dark(8)
+			if(!druggy)
+				set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
 
 		if(!glasses_processed && (species.get_vision_flags(src) > 0))
-			sight |= species.get_vision_flags(src)
+			set_sight(sight | species.get_vision_flags(src))
 		if(!seer && !glasses_processed && seedarkness)
-			see_invisible = see_invisible_default
+			set_see_invisible(see_invisible_default)
 
 		if(healths)
 			if (chem_effects[CE_PAINKILLER] > 100)
@@ -892,7 +894,7 @@
 			if(viewflags < 0)
 				reset_view(null, 0)
 			else if(viewflags && !looking_elsewhere)
-				sight |= viewflags
+				set_sight(sight | viewflags)
 		else if(eyeobj)
 			if(eyeobj.owner != src)
 
@@ -918,7 +920,7 @@
 		if(G.overlay)
 			client.screen |= G.overlay
 		if(G.vision_flags)
-			sight |= G.vision_flags
+			set_sight(sight | G.vision_flags)
 		if(istype(G,/obj/item/clothing/glasses/night) && !seer)
 			see_invisible = SEE_INVISIBLE_MINIMUM
 
@@ -1008,15 +1010,17 @@
 		if(mind && hud_used)
 			ling_chem_display.invisibility = 101
 
-/mob/living/carbon/human/var/shock_decrease_coeff = 0.016666
+/mob/living/carbon/human/var/shock_decrease_coeff = 0.1
 
 /mob/living/carbon/human/proc/handle_shock()
-	if(status_flags & GODMODE)	return 0	//godmode
-	if(!can_feel_pain()) return
+	if(status_flags & GODMODE)
+		return	//godmode
+	if(!can_feel_pain())
+		return
 
 	shock_stage = min(shock_stage, SHOCK_STAGE_MAX)
 	shock_stage = max(shock_stage - shock_decrease_coeff * shock_stage , 0)
-	shock_stage = lerp(shock_stage, total_pain * shock_coeff, 0.5)
+	shock_stage = lerp(shock_stage, total_pain, 0.7)
 
 	if(stat)
 		return 0

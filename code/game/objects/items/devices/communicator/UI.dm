@@ -91,11 +91,12 @@
 		modules_ui[++modules_ui.len] = R
 
 	data["user"] = "\ref[user]"	// For receiving input() via topic, because input(usr,...) wasn't working on cartridges
+	data["address"] = exonet.address ? exonet.address : "Unallocated"
 	data["owner"] = owner ? owner : "Unset"
 	data["occupation"] = occupation ? occupation : "Swipe ID to set."
 	data["connectionStatus"] = get_connection_to_tcomms()
 	data["visible"] = network_visibility
-	data["address"] = exonet.address ? exonet.address : "Unallocated"
+
 	data["targetAddress"] = target_address
 	data["targetAddressName"] = target_address_name
 	data["currentTab"] = selected_tab
@@ -115,11 +116,9 @@
 	data["weather"] = weather
 	data["flashlight"] = fon
 	data["manifest"] = PDA_Manifest
+
 	data["selected_wallpaper"] = selected_wallpaper
 	data["wallpaper_color"] = wallpaper_color
-	// var/list/wresult[0]
-	// for(var/i in wallpapers)
-	// 	wresult += list(list("file" = i, "name" = wallpapers[i]))
 	data["wallpapers"] = wallpapers
 	data["contacts"] = contacts
 

@@ -389,23 +389,31 @@ SUBSYSTEM_DEF(jobs)
 			unassigned -= player
 	return 1
 
-/datum/controller/subsystem/jobs/proc/EquipRank(var/mob/living/carbon/human/H, var/rank, var/joined_late = 0)
-	if(!H)	return null
+/datum/controller/subsystem/jobs/proc/EquipRank(mob/living/carbon/human/H, rank, joined_late = FALSE)
+	if(!H)
+		return null
 
 	var/datum/job/job = GetJob(rank)
 	var/list/spawn_in_storage = list()
 
-	if(!joined_late || job.no_shuttle)
+	var/px = H.client.prefs.persistence_x
+	var/py = H.client.prefs.persistence_y
+	var/pz = H.client.prefs.persistence_z
+	if(px || py || pz)
+		H.forceMove(locate(px, py, pz))
+	else if(!joined_late || job.no_shuttle)
 		var/obj/S = null
 		for(var/obj/effect/landmark/start/sloc in landmarks_list)
-			if(sloc.name != rank)	continue
-			if(locate(/mob/living) in sloc.loc)	continue
+			if(sloc.name != rank)
+				continue
+			if(locate(/mob/living) in get_turf(sloc))
+				continue
 			S = sloc
 			break
 		if(!S)
 			S = locate("start*[rank]") // use old stype
-		if(istype(S, /obj/effect/landmark/start) && istype(S.loc, /turf))
-			H.forceMove(S.loc)
+		if(istype(S, /obj/effect/landmark/start) && isturf(get_turf(S)))
+			H.forceMove(get_turf(S))
 		else
 			var/list/spawn_props = LateSpawn(H.client, rank)
 			var/turf/T = spawn_props["turf"]
@@ -413,10 +421,19 @@ SUBSYSTEM_DEF(jobs)
 
 		// Moving wheelchair if they have one
 		if(H.buckled && istype(H.buckled, /obj/structure/bed/chair/wheelchair))
-			H.buckled.forceMove(H.loc)
+			H.buckled.forceMove(get_turf(H))
 			H.buckled.set_dir(H.dir)
 
-	if(job)
+	job.setup_account(H)
+
+	var/uid = md5(H.real_name)
+	var/datum/persistent_inventory/PI = check_persistent_storage_exists(uid)
+
+	if(PI)
+		PI.load()
+		for(var/ID in PI.stored_items)
+			H.equip_to_slot_if_possible(full_item_load(PI.stored_items[ID], get_turf(H)), text2num(ID))
+	else if(job)
 
 		//Equip custom gear loadout.
 		var/list/custom_equip_slots = list() //If more than one item takes the same slot, all after the first one spawn in storage.
@@ -463,7 +480,6 @@ SUBSYSTEM_DEF(jobs)
 					else
 						spawn_in_storage += thing
 		//Equip job items.
-		job.setup_account(H)
 		job.equip(H, H.mind ? H.mind.role_alt_title : "")
 		job.equip_backpack(H)
 		job.apply_fingerprints(H)

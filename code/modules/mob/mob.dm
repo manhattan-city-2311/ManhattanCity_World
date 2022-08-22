@@ -55,7 +55,7 @@
 	if(!client && !teleop)	return
 
 	if (type)
-		if((type & 1) && (is_blind() || paralysis) )//Vision related
+		if((type & VISIBLE_MESSAGE) && (is_blind() || paralysis) )//Vision related
 			if (!( alt ))
 				return
 			else
@@ -67,7 +67,7 @@
 			else
 				msg = alt
 				type = alt_type
-				if ((type & 1) && (sdisabilities & BLIND))
+				if ((type & VISIBLE_MESSAGE) && (sdisabilities & BLIND))
 					return
 	// Added voice muffling for Issue 41.
 	if(stat == UNCONSCIOUS || sleeping > 0)
@@ -192,14 +192,14 @@
 /mob/proc/reset_view(atom/A)
 	if (client)
 		if (istype(A, /atom/movable))
-			client.perspective = EYE_PERSPECTIVE
+			client.perspective = EYE_PERSPECTIVE | EDGE_PERSPECTIVE
 			client.eye = A
 		else
 			if (isturf(loc))
 				client.eye = client.mob
-				client.perspective = MOB_PERSPECTIVE
+				client.perspective = MOB_PERSPECTIVE | EDGE_PERSPECTIVE
 			else
-				client.perspective = EYE_PERSPECTIVE
+				client.perspective = EYE_PERSPECTIVE | EDGE_PERSPECTIVE
 				client.eye = loc
 	return
 
@@ -695,7 +695,8 @@
 		if(client.holder)
 			if(statpanel("Status"))
 				stat("Location:", "([x], [y], [z]) [loc]")
-				stat("CPU:","[world.cpu]")
+				stat("CPU:", "[world.cpu]")
+				stat("Map CPU:", "[world.map_cpu]")
 				stat("Instances:","[world.contents.len]")
 
 			if(statpanel("Processes"))
@@ -704,6 +705,7 @@
 
 			if(statpanel("MC"))
 				stat("CPU:","[world.cpu]")
+				stat("Map CPU:", "[world.map_cpu]")
 				stat("Instances:","[world.contents.len]")
 				stat(null)
 				if(GLOB)
@@ -1141,13 +1143,6 @@ mob/proc/yank_out_object()
 //Throwing stuff
 /mob/proc/throw_item(atom/target)
 	return
-
-/mob/MouseEntered(location, control, params)
-	return // TODO: tooltips rework
-	if(usr != src && usr.is_preference_enabled(/datum/client_preference/mob_tooltips))
-		openToolTip(user = usr, tip_src = src, params = params, title = get_nametag_name(usr), content = get_nametag_desc(usr))
-
-	..()
 
 /mob/MouseDown()
 	closeToolTip(usr) //No reason not to, really

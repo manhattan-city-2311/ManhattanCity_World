@@ -38,14 +38,13 @@
 	var/firedoors_closed = 0
 	var/list/ambience = list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
 	var/list/forced_ambience = null
-	var/sound_env = STANDARD_STATION
+	var/sound_env = CITY
 	var/turf/base_turf //The base turf type of the area, which can be used to override the z-level's base turf
 	var/global/global_uid = 0
 	var/uid
 	var/there_can_be_many = FALSE
 	var/lot_id
-	var/code = "" //blue, red, black
-	dont_save = TRUE
+	var/code = "" //blue, red, black	
 	var/outdoors = FALSE
 
 /area/New()

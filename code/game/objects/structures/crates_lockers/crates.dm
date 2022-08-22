@@ -340,6 +340,13 @@
 	new /obj/item/clothing/suit/radiation(src)
 	new /obj/item/clothing/head/radiation(src)
 
+/obj/structure/closet/crate/radiation_empty
+	name = "radioactive gear crate"
+	desc = "A crate with a radiation sign on it."
+	icon_state = "radiation"
+	icon_opened = "radiationopen"
+	icon_closed = "radiation"
+
 /obj/structure/closet/crate/secure/weapon
 	name = "weapons crate"
 	desc = "A secure weapons crate."

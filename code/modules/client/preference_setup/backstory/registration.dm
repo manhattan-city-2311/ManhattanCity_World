@@ -21,11 +21,11 @@
 	S["weight"]					<< pref.weight
 
 /datum/category_item/player_setup_item/registration/delete_character(savefile/S)
-	pref.records = global.records_blank.Copy()
+	pref.records = get_records_blank()
 
 /datum/category_item/player_setup_item/registration/sanitize_character()
 	if(!pref.records)
-		pref.records = global.records_blank.Copy()
+		pref.records = get_records_blank()
 
 /datum/category_item/player_setup_item/registration/copy_to_mob(mob/living/carbon/human/character)
 	character.records 	  = pref.records.Copy()
@@ -84,7 +84,11 @@
 		var/ID = href_list["recedit"]
 		if(!(ID in pref.records) || jobban_isbanned(user, "Records") || !CanUseTopic(user))
 			return TOPIC_NOACTION
-		var/nr = sanitize(input(user, "[ID]", "Записи", pref.records[ID]) as null|message, 500, extra = 0)
+
+		var/nr
+
+		nr = sanitize(input(user, "[ID]", "Записи", pref.records[ID]) as null|message, 500, extra = 0)
+
 		if(!nr)
 			return TOPIC_NOACTION
 
@@ -185,7 +189,7 @@
 		if(!prefix)
 			return
 
-		var/domain = input(user, "Выберите домен вашей почты?", "Email Provider") as null|anything in domains
+		var/domain = input(user, "Выберите домен вашей почты.", "Домен почты.") as null|anything in domains
 		if(!domain)
 			return
 

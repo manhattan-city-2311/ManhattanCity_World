@@ -57,7 +57,6 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	pref.metadata = null
 	pref.existing_character = null
 	pref.played = null
-	delete_persistent_inventory(pref.unique_id)
 	pref.unique_id = null
 	if(fdel("data/persistent/emails/[pref.email].sav"))
 		pref.email = null
@@ -138,9 +137,6 @@ F
 
 	if(pref.existing_character)
 		. += "<b>Уникальное ИД:</b> [pref.unique_id]<br>"
-
-	. += "<b>Точка захода</b>:<br> <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
-	. += "<b>Тихое прибытие</b>:<br> <a href='?src=\ref[src];silent_join=1'>[(pref.silent_join) ? "Yes" : "No"]</a><br>"
 
 	if(config.allow_Metadata)
 		. += "<b>OOC Заметки:</b><br> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"

@@ -210,7 +210,8 @@
 	desc = "A sign to regulate road traffic."
 	icon = 'icons/obj/road_signs.dmi'
 	icon_state = "stop"
-	light_color = LIGHT_COLOR_NEONBLUE
+	light_color = LIGHT_COLOR_NEONLIGHTBLUE
+	density = TRUE
 
 /obj/structure/sign/neon/trafficsign/emergency_stop
 	name = "secondary road traffic sign"
@@ -254,6 +255,9 @@
 	light_color = LIGHT_COLOR_NEONDARKBLUE
 	light_power = 20
 	light_range = 2
+	alpha = 155
+	pixel_x = 8
+	pixel_y = 10
 
 /obj/structure/sign/neon/big/luckystar
 	name = "luckystar sign"
@@ -267,6 +271,9 @@
 	light_color = "#ff2119"
 	light_power = 20
 	light_range = 3
+	pixel_x = -8
+	pixel_y = 14
+	alpha = 200
 
 /obj/structure/sign/neon/big/ianhi
 	name = "cryptic wall sign"
@@ -275,6 +282,9 @@
 	light_color = "#aa22ff" //LIGHT_COLOR_PURPLE
 	light_power = 10
 	light_range = 3
+	pixel_x = -8
+	pixel_y = 14
+	alpha = 200
 // light_color = "#aa22ff"
 
 /obj/structure/sign/neon/big/inn
@@ -319,6 +329,8 @@
 	name = "city hall sign"
 	desc = "A sign for the city hall."
 	icon_state = "city_hall"
+	density = 1
+	bound_width = 64
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 

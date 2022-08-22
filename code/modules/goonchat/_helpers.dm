@@ -4,7 +4,7 @@
 /proc/icon2base64(icon/icon, iconKey = "misc")
 	if (!isicon(icon))
 		return FALSE
-	to_save(GLOB.iconCache[iconKey], icon)
+	to_target(GLOB.iconCache[iconKey], icon)
 	var/iconData = GLOB.iconCache.ExportText(iconKey)
 	var/list/partial = splittext(iconData, "{")
 	return replacetext(copytext(partial[2], 3, -5), "\n", "")

@@ -5,6 +5,7 @@
 	animate_movement = 2
 	flags = PROXMOVE
 	vis_flags = VIS_INHERIT_DIR
+	appearance_flags = DEFAULT_APPEARANCE | TILE_MOVER | KEEP_TOGETHER
 	var/datum/mind/mind
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
@@ -105,7 +106,7 @@
 	var/species_language = null			// For species who want reset to use a specified default.
 	var/only_species_language  = 0		// For species who can only speak their default and no other languages. Does not affect understanding.
 	var/list/speak_emote = list("says") // Verbs used when speaking. Defaults to 'say' if speak_emote is null.
-	var/emote_type = 1		// Define emote default type, 1 for seen emotes, 2 for heard emotes
+	var/emote_type = VISIBLE_MESSAGE		// Define emote default type, 1 for seen emotes, 2 for heard emotes
 	var/facing_dir = null   // Used for the ancient art of moonwalking.
 
 	var/name_archive //For admin things like possession

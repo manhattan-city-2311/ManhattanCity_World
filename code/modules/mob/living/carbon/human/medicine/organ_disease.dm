@@ -57,12 +57,10 @@
 
 /obj/item/organ/internal/heart/proc/get_arrythmic()
 	. = LAZYACCESS0(owner.chem_effects, CE_ARRYTHMIC) - LAZYACCESS0(owner.chem_effects, CE_ANTIARRYTHMIC)
-	. += (damage / max_damage) / 0.25
+	. += (damage / max_damage) > 0.25
 	. += (owner.mpressure > BLOOD_PRESSURE_HCRITICAL) || (owner.mpressure < BLOOD_PRESSURE_LCRITICAL)
-	. += max(0, round((owner.gvr - 250) / 40))
 	. += owner.mcv > 10000
-	. += (owner.mcv < 1000) * 2
-	. += max(0, round((pulse - 180) / 50))
+	. += (owner.mcv < 500) * 2
 	var/glevel = owner.bloodstr.get_reagent_amount("glucose")
 	switch(glevel)
 		if(-INFINITY to GLUCOSE_LEVEL_LCRITICAL)
@@ -82,7 +80,6 @@
 	. = max(0, .)
 
 /obj/item/organ/internal/heart/proc/make_arrythmia(T, allocated = null)
-
 	var/datum/arrythmia/A = allocated || (new T)
 	if(A.severity >= ARRYTHMIA_SEVERITY_OVERWRITING)
 		arrythmias.Cut()

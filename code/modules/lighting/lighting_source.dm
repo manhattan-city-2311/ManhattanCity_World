@@ -201,6 +201,8 @@
 	applied_lum_b = lum_b
 
 	FOR_DVIEW(var/turf/T, light_range, source_turf, INVISIBILITY_LIGHTING)
+		while(T.below)
+			T = T.below
 		check_t:
 		if(!T.lighting_corners_initialised)
 			T.generate_missing_corners()

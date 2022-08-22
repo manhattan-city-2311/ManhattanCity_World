@@ -148,6 +148,7 @@ What is the naming convention for planes or layers?
 
 //Client UI HUD stuff
 #define PLANE_PLAYER_HUD		95 //The character's UI is on this plane
+	#define LAYER_HUD_RUNECHAT  0
 	#define LAYER_HUD_UNDER		1 //Under the HUD items
 	#define LAYER_HUD_BASE		2 //The HUD items themselves
 	#define LAYER_HUD_ITEM		3 //Things sitting on HUD items (largely irrelevant because PLANE_PLAYER_HUD_ITEMS)

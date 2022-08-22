@@ -16,11 +16,11 @@
 	allows_synths = FALSE
 
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
-			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
-			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
+			access_chemistry, access_virology, access_cmo, access_surgery,
+			access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
-			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
-			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
+			access_chemistry, access_virology, access_cmo, access_surgery,
+			access_psychiatrist)
 
 	minimum_character_age = 30
 	minimal_player_age = 3
@@ -50,8 +50,8 @@
 	synth_wage = 360
 
 	minimum_character_age = 25
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
+	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology)
+	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology)
 	outfit_type = /decl/hierarchy/outfit/job/medical/doctor
 	alt_titles = list(
 		"Surgeon" = /decl/hierarchy/outfit/job/medical/doctor/surgeon,
@@ -148,7 +148,7 @@
 
 	minimum_character_age = 20
 	access = list(access_medical)
-	minimal_access = list(access_medical, access_maint_tunnels)
+	minimal_access = list(access_medical)
 	outfit_type = /decl/hierarchy/outfit/job/medical/intern
 	clean_record_required = TRUE
 

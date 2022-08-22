@@ -676,6 +676,14 @@ proc/admin_notice(var/message, var/rights)
 		sleep(50)
 		world.Reboot()
 
+/datum/admins/proc/save_game()
+	set category = "Persistence"
+	set name = "Save game"
+	set desc = "Saves game"
+	if (!usr.client.holder)
+		return
+	save_world()
+
 
 /datum/admins/proc/announce()
 	set category = "Special Verbs"

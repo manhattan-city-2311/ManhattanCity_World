@@ -1,12 +1,15 @@
 // At minimum every mob has a hear_say proc.
 
+/mob/proc/handle_hear(text, italics, mob/speaker)
+	return
+
 /mob/proc/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
 	if(!client && !teleop)
 		return
 
 	if(speaker && !speaker.client && istype(src,/mob/observer/dead) && is_preference_enabled(/datum/client_preference/ghost_ears) && !(speaker in view(src)))
-			//Does the speaker have a client?  It's either random stuff that observers won't care about (Experiment 97B says, 'EHEHEHEHEHEHEHE')
-			//Or someone snoring.  So we make it where they won't hear it.
+		//Does the speaker have a client?  It's either random stuff that observers won't care about (Experiment 97B says, 'EHEHEHEHEHEHEHE')
+		//Or someone snoring.  So we make it where they won't hear it.
 		return
 
 	if(sleeping || stat == 1)
@@ -32,6 +35,8 @@
 
 	if(italics)
 		message = "<i>[message]</i>"
+
+	handle_hear(message, italics, speaker)
 
 	message = encode_html_emphasis(message)
 
@@ -62,9 +67,8 @@
 
 		on_hear_say(message_to_send)
 
-		if (speech_sound && (get_dist(speaker, src) <= world.view && src.z == speaker.z))
-			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
-			src.playsound_local(source, speech_sound, sound_vol, 1)
+		if (speech_sound && (speaker in ohearers(src)) && src.z == speaker.z)
+			playsound_local(get_turf(speaker), speech_sound, sound_vol, 1)
 
 // Done here instead of on_hear_say() since that is NOT called if the mob is clientless (which includes most AI mobs).
 /mob/living/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
@@ -73,7 +77,7 @@
 		ai_holder.on_hear_say(speaker, message)
 
 
-/mob/proc/on_hear_say(var/message)
+/mob/proc/on_hear_say(message)
 	to_chat(src, message)
 	if(teleop)
 		to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[message]")

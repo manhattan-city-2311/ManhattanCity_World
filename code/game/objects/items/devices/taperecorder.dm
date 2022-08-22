@@ -105,7 +105,7 @@
 
 
 /obj/item/device/taperecorder/see_emote(mob/M as mob, text, var/emote_type)
-	if(emote_type != 2) //only hearable emotes
+	if(emote_type != AUDIBLE_MESSAGE)
 		return
 	if(mytape && recording)
 		mytape.record_speech("[strip_html_properly(text)]")
@@ -113,9 +113,9 @@
 
 /obj/item/device/taperecorder/show_message(msg, type, alt, alt_type)
 	var/recordedtext
-	if (msg && type == 2) //must be hearable
+	if (msg && type == AUDIBLE_MESSAGE) //must be hearable
 		recordedtext = msg
-	else if (alt && alt_type == 2)
+	else if (alt && alt_type == AUDIBLE_MESSAGE)
 		recordedtext = alt
 	else
 		return

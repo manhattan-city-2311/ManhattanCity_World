@@ -4,6 +4,7 @@
 	set category = "OOC"
 
 	var/list/Lines = list()
+	var/amount = 0
 
 	if(holder && (R_ADMIN & holder.rights || R_MOD & holder.rights))
 		for(var/client/C in GLOB.clients)
@@ -48,14 +49,9 @@
 
 			entry += " (<A HREF='?_src_=holder;adminmoreinfo=\ref[C.mob]'>?</A>)"
 			Lines += entry
-/*
+			++amount
 	else
-		for(var/client/C in GLOB.clients)
-			if(C.holder && C.holder.fakekey)
-				Lines += C.holder.fakekey
-			else
-				Lines += C.key
-*/
+		amount = GLOB.clients.len
 
 	var/msg
 
@@ -65,7 +61,7 @@
 		for(var/line in sortList(Lines))
 			msg += "[line]\n"
 
-	msg += "<b>Total Players: [length(Lines)]</b>"
+	msg += "<b>Total Players: [amount]</b>"
 
 	to_chat(src, msg)
 
@@ -83,7 +79,7 @@
 	var/num_SSeventss_online = 0
 	if(holder)
 		for(var/client/C in admins)
-			if(R_ADMIN & C.holder.rights || (!R_MOD & C.holder.rights && !R_CBIA & C.holder.rights))	//Used to determine who shows up in admin rows
+			if(R_ADMIN & C.holder.rights || (!(R_MOD & C.holder.rights) && !(R_CBIA & C.holder.rights)))	//Used to determine who shows up in admin rows
 
 				if(C.holder.fakekey && (!R_ADMIN & holder.rights && !R_MOD & holder.rights))		//Event Managerss can't see stealthmins
 					continue
@@ -162,7 +158,7 @@
 
 	else
 		for(var/client/C in admins)
-			if(R_ADMIN & C.holder.rights || (!R_MOD & C.holder.rights && !R_CBIA & C.holder.rights))
+			if(R_ADMIN & C.holder.rights || (!(R_MOD & C.holder.rights) && !(R_CBIA & C.holder.rights)))
 				if(!C.holder.fakekey)
 					msg += "\t[C] is a [C.holder.rank]\n"
 					num_admins_online++

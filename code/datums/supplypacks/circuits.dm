@@ -130,25 +130,6 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Forensics Circuits"
 
-/datum/supply_pack/circuits/inventory_box
-	contains = list(/obj/item/weapon/circuitboard/inventory_box)
-	name = "Inventory box Circuit"
-	cost = 10000
-	containertype = /obj/structure/closet/crate
-	containername = "Inventory Box Circuit"
-
-/datum/supply_pack/circuits/science
-	contains = list(/obj/item/weapon/circuitboard/rdconsole/business,
-					/obj/item/weapon/circuitboard/rdserver/business,
-					/obj/item/weapon/circuitboard/protolathe,
-					/obj/item/weapon/circuitboard/circuit_imprinter,
-					/obj/item/weapon/circuitboard/destructive_analyzer)
-
-	name = "Research Circuits"
-	cost = 2000000 // a huge profit maker, so should be expensive. the entirety of research in one crate. has science gone too far?
-	containertype = /obj/structure/closet/crate/secure/science
-	containername = "Research Circuits"
-
 /datum/supply_pack/circuits/robotics
 	contains = list(/obj/item/weapon/circuitboard/prosthetics/business,
 					/obj/item/weapon/circuitboard/mechfab/business)

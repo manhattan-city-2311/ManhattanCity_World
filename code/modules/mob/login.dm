@@ -40,15 +40,15 @@
 		client.fps = 0 // Results in using the server FPS
 
 	next_move = 1
-	sight |= SEE_SELF
+	set_sight(sight | DEFAULT_SIGHT)
 	..()
 
 	if(loc && !isturf(loc))
 		client.eye = loc
-		client.perspective = EYE_PERSPECTIVE
+		client.perspective = EYE_PERSPECTIVE | EDGE_PERSPECTIVE
 	else
 		client.eye = src
-		client.perspective = MOB_PERSPECTIVE
+		client.perspective = MOB_PERSPECTIVE | EDGE_PERSPECTIVE
 	reload_fullscreen() // Reload any fullscreen overlays this mob has.
 	add_click_catcher()
 	update_client_color()

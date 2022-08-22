@@ -130,7 +130,7 @@
 
 /obj/manhattan/vehicle/proc/collide_with_obstacle(atom/obstacle)
 	if(!obstacle.handle_vehicle_collision(src))
-		visible_message(SPAN_DANGER("[icon2html(src, viewers(src))]\the [src] collides with [obstacle]!"))
+		visible_message(SPAN_DANGER("[icon2html(src, viewers(get_turf(src)))]\the [src] collides with [obstacle]!"))
 	comp_prof.take_component_damage(speed.modulus() * 0.21, "brute")
 
 	for(var/mob/living/carbon/human/H in occupants)
@@ -171,8 +171,6 @@
 /obj/manhattan/vehicle/proc/move_helper(x_step, y_step)
 	if(!(x_step || y_step))
 		return
-
-
 
 	var/nstep_x = x_step ? (SIGN(step_x) * max(abs(step_x) - WORLD_ICON_SIZE, 0)) : step_x
 	var/nstep_y = y_step ? (SIGN(step_y) * max(abs(step_y) - WORLD_ICON_SIZE, 0)) : step_y 

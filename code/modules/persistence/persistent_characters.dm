@@ -25,7 +25,7 @@
 	//There's no way (that I know of) to edit the "real name" of a character unless
 	//it's a body transformation, admin or antag fuckery. So this works.
 
-	save_organs_to_prefs()
+	//save_organs_to_prefs()
 	// Copy basic values
 	mind.prefs.nickname = nickname
 	mind.prefs.religion = religion //Maybe make features where people can change religion.
@@ -69,6 +69,9 @@
 	mind.prefs.weight = calories_to_weight(calories)
 	mind.prefs.nutrition = nutrition
 	mind.prefs.hydration = hydration
+	mind.prefs.persistence_x = get_x(src)
+	mind.prefs.persistence_y = get_y(src)
+	mind.prefs.persistence_z = get_z(src)
 
 	//ROBOLIMBS
 	for(var/limb in BP_ALL)
@@ -107,7 +110,6 @@
 	mind.prefs.existing_character = 1
 	mind.prefs.played = 1
 	//might need code for saving tattoos. Hm.
-	save_character_money()
 
 	mind.prefs.save_preferences()
 	mind.prefs.save_character()

@@ -562,12 +562,15 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	info += "GVR: [M.gvr]"
 	info += "O2 : [M.oxy]"
 	info += "CO2: [M.co2]"
-	info += "BP:  [M.spressure]/[M.dpressure] [M.mpressure]"
+	info += "BP : [M.spressure]/[M.dpressure] [M.mpressure]"
+	info += "K  : [M.k]"
 	if(CE_PRESSURE in M.chem_effects)
 		info += "BP mod: [M.chem_effects[CE_PRESSURE]]"
 
 	var/obj/item/organ/internal/heart/H = M.internal_organs_by_name[O_HEART]
 	if(H)
+		info += "Damage: [H.damage] [H.damage / H.max_damage]"
+		info += "Arrythmic: [H.get_arrythmic()]"
 		info += "[H.pulse] BPM"
 		info += "Pulse modificators:"
 		H.make_modificators()

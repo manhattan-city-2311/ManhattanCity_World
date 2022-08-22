@@ -8,7 +8,7 @@
 	parent_organ = BP_TORSO
 	dead_icon = "heart-off"
 	var/pulse = 60
-	var/cardiac_output = 1
+	var/cardiac_output = 1.2
 	var/list/pulse_modificators = list()
 	var/list/cardiac_output_modificators = list() // *
 	var/list/datum/arrythmia/arrythmias = list()
@@ -150,6 +150,7 @@
 			A.strengthen(src)
 			break
 
+/*
 	var/period = world.time - last_arrythmia_gain
 
 	if(prob(1) && period > 1.5 MINUTES && !get_ow_arrythmia())
@@ -159,7 +160,7 @@
 			make_common_arrythmia(arrythmic)
 		if(get_arrythmia_score() >= (ARRYTHMIA_SEVERITY_OVERWRITING - 1) || get_arrythmic() >= (ARRYTHMIA_SEVERITY_OVERWRITING - 1))
 			make_specific_arrythmia(ARRYTHMIA_SEVERITY_OVERWRITING)
-
+*/
 
 /obj/item/organ/internal/heart/proc/handle_heartbeat()
 	// This is very weird..
