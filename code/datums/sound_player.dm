@@ -107,14 +107,14 @@ var/global/decl/sound_player/sound_player = new()
 	Stop()
 	. = ..()
 
-datum/sound_token/proc/SetVolume(var/new_volume)
+/datum/sound_token/proc/SetVolume(var/new_volume)
 	new_volume = Clamp(new_volume, 0, 100)
 	if(volume == new_volume)
 		return
 	volume = new_volume
 	PrivUpdateListeners()
 
-datum/sound_token/proc/Mute()
+/datum/sound_token/proc/Mute()
 	PrivUpdateStatus(status|SOUND_MUTE)
 
 /datum/sound_token/proc/Unmute()

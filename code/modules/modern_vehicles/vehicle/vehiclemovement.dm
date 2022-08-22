@@ -172,10 +172,8 @@
 	if(!(x_step || y_step))
 		return
 
-
-
-	var/nstep_x = x_step ? (SIGN(step_x) * max(abs(step_x) - WORLD_ICON_SIZE, 0)) : step_x
-	var/nstep_y = y_step ? (SIGN(step_y) * max(abs(step_y) - WORLD_ICON_SIZE, 0)) : step_y 
+	var/nstep_x = x_step ? (SIGN(step_x) * (abs(step_x) - WORLD_ICON_SIZE)) : step_x
+	var/nstep_y = y_step ? (SIGN(step_y) * (abs(step_y) - WORLD_ICON_SIZE)) : step_y 
 
 	move_helper2(x_step, y_step, nstep_x, nstep_y)
 

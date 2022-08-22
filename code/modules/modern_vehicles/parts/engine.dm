@@ -87,6 +87,6 @@
 	if(. != cur_sound)
 		if(sound_token)
 			sound_token.Stop()
-			del sound_token
+			qdel(sound_token)
 		sound_token = global.sound_player.PlayLoopingSound(vehicle, "[vehicle.serial_number][type]", ., 75, 7)
 		cur_sound = .
