@@ -628,7 +628,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	handle_antibiotics()
 
 	//** Handle the effects of infections
-	handle_germ_effects()
+	//handle_germ_effects()
 
 /obj/item/organ/external/proc/handle_germ_sync()
 	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]

@@ -131,7 +131,7 @@ var/list/organ_cache = list()
 		//** Handle antibiotics and curing infections
 		handle_antibiotics()
 		handle_rejection()
-		handle_germ_effects()
+		//handle_germ_effects()
 
 	//check if we've hit max_damage
 	if(damage >= max_damage)
