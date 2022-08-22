@@ -1,0 +1,4 @@
+[submodule "config"]
+	path = config
+	url = https://gitlab.com/VoiceInYourHead/manhattan-city.git
+	branch = config
