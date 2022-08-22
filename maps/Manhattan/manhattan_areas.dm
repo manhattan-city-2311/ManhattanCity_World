@@ -914,14 +914,18 @@
 
 /area/planets/Manhattan/south/str/chpock
 	name = "\improper  South District Chpock Street"
+	icon_state = "south_m_chpock"
 /area/planets/Manhattan/south/str/helio
 	name = "\improper  South District Helio Street"
+	icon_state = "south_m_helio"
 /area/planets/Manhattan/south/str/chem
 	name = "\improper  South District Chem Street"
 /area/planets/Manhattan/south/str/dane
 	name = "\improper  South District Oui Street"
+	icon_state = "south_m_dane"
 /area/planets/Manhattan/south/str/sereo
 	name = "\improper  South District Sereo Street"
+	icon_state = "south_m_stereo"
 
 //BUILDINGS - FLATS
 
@@ -1719,3 +1723,24 @@
 	lift_floor_label = "3 этаж"
 	lift_floor_name = "Третий этаж"
 	lift_announce_str = "Третий этаж: Офисы, крыло персонала и смотровая операционной."*/
+
+/area/turbolift/factory1
+	name = "lift (1 floor)"
+	lift_floor_label = "Floor 1"
+	lift_floor_name = "First floor"
+	lift_announce_str = "Lift arriving at first floor, truck garage."
+	base_turf = /turf/simulated/floor/plating
+
+/area/turbolift/factory2
+	name = "lift (2 floor)"
+	lift_floor_label = "Floor 2"
+	lift_floor_name = "Second floor"
+	lift_announce_str = "Lift arriving at second floor, truck garage upper floor."
+	base_turf = /turf/simulated/floor/plating
+
+/area/turbolift/factory3
+	name = "lift (3 floor)"
+	lift_floor_label = "Floor 3"
+	lift_floor_name = "Third floor"
+	lift_announce_str = "Lift arriving at third floor, offices."
+	base_turf = /turf/simulated/floor/plating
