@@ -144,6 +144,18 @@
 	icon_state = "techfloor_gray"
 	initial_flooring = /decl/flooring/tiling/tech
 
+/turf/simulated/floor/tiled/pave_tilemoz
+	name = "paving tile"
+	icon = 'icons/turf/pavement.dmi'
+	icon_state = "pave_tilemoz"
+	initial_flooring = /decl/flooring/pavement/pave_tilemoz
+
+/turf/simulated/floor/tiled/brickstair
+	name = "brickstair tile"
+	icon = 'icons/turf/pavement.dmi'
+	icon_state = "pave_brickstair"
+	initial_flooring = /decl/flooring/tiling/brickstair
+
 /turf/simulated/floor/tiled/monotile
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'

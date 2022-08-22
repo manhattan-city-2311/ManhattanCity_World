@@ -286,6 +286,20 @@
 	matter = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
+/obj/item/stack/tile/floor/pave_tilemoz
+	name = "pavement tile"
+	singular_name = "pavement tile"
+	icon_state = "tile-pavemoz"
+	matter = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 4)
+	no_variants = FALSE
+
+/obj/item/stack/tile/floor/brickstairs
+	name = "brickstairs tile"
+	singular_name = "brickstairs tile"
+	icon_state = "tile-brickstair"
+	matter = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 4)
+	no_variants = FALSE
+
 /obj/item/stack/tile/floor/dark_monotile
 	name = "dark monotile floor tile"
 	singular_name = "dark monotile floor tile"

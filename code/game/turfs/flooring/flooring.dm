@@ -403,6 +403,15 @@ var/list/flooring_types
 	flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/dark_monotile
 
+/decl/flooring/tiling/brickstair
+	name = "floor"
+	desc = "How ominous."
+	icon = 'icons/turf/pavement.dmi'
+	icon_base = "pave_brickstair"
+	has_damage_range = null
+	flags = TURF_REMOVE_CROWBAR
+	build_type = /obj/item/stack/tile/floor/brickstairs
+
 /decl/flooring/tiling/monotile
 	name = "floor"
 	desc = "How ominous."
@@ -561,6 +570,11 @@ var/list/flooring_types
 /decl/flooring/pavement/pave_tiling
 	icon_base = "pave_tiling"
 	build_type = /obj/item/stack/tile/pave_tiling
+
+/decl/flooring/pavement/pave_tilemoz
+	icon_base = "pave_tilemoz"
+	flags = TURF_REMOVE_CROWBAR
+	build_type = /obj/item/stack/tile/floor/pave_tilemoz
 
 /decl/flooring/pavement/brick_paving
 	icon_base = "brick_paving"

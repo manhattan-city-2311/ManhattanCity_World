@@ -47,7 +47,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	var/independent = 0 // For business R&D consoles. They can no longer steal tech from Research.
 	var/owner_uid = "" //shitcode but necessary for businesses. Remember to optimize this some day.
 
-	req_access = list(access_research)	//Data and setting manipulation requires scientist access.
+	req_access = list()	//Data and setting manipulation requires scientist access.
 
 /obj/machinery/computer/rdconsole/proc/CallMaterialName(var/ID)
 	var/return_name = ID
@@ -800,7 +800,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 /obj/machinery/computer/rdconsole/robotics
 	name = "Robotics R&D Console"
 	id = 2
-	req_access = list(access_robotics)
+	req_access = list()
 
 /obj/machinery/computer/rdconsole/core
 	name = "Core R&D Console"

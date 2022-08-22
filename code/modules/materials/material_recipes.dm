@@ -69,11 +69,16 @@
 	recipes += new/datum/stack_recipe("personal closet", /obj/structure/closet/secure_closet/personal, 2, time = 15, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("canister", /obj/machinery/portable_atmospherics/canister, 10, time = 15, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("cannon frame", /obj/item/weapon/cannonframe, 10, time = 15, one_per_turf = 0, on_floor = 0)
-	recipes += new/datum/stack_recipe("regular floor tile", /obj/item/stack/tile/floor, 1, 4, 20)
-	recipes += new/datum/stack_recipe("regular monotile floor", /obj/item/stack/tile/floor/monotile, 1, 4, 20)
-	recipes += new/datum/stack_recipe("dark floor tile", /obj/item/stack/tile/floor/dark, 1, 4, 20)
-	recipes += new/datum/stack_recipe("dark monotile floor", /obj/item/stack/tile/floor/dark_monotile, 1, 4, 20)
-	recipes += new/datum/stack_recipe("roofing tile", /obj/item/stack/tile/roofing, 3, 4, 20)
+
+	recipes += new/datum/stack_recipe_list("flooring tiles", list( \
+		new/datum/stack_recipe("regular floor tile", /obj/item/stack/tile/floor, 1, 4, 20),\
+		new/datum/stack_recipe("regular monotile floor", /obj/item/stack/tile/floor/monotile, 1, 4, 20),\
+		new/datum/stack_recipe("dark floor tile", /obj/item/stack/tile/floor/dark, 1, 4, 20),\
+		new/datum/stack_recipe("dark monotile floor", /obj/item/stack/tile/floor/dark_monotile, 1, 4, 20),\
+		new/datum/stack_recipe("roofing tile", /obj/item/stack/tile/roofing, 3, 4, 20),\
+		new/datum/stack_recipe("brickstair floor tile", /obj/item/stack/tile/floor/brickstairs, 1, 4, 20),\
+		new/datum/stack_recipe("parquet floor tile", /obj/item/stack/tile/floor/pave_tilemoz, 1, 4, 20),\
+	))
 	recipes += new/datum/stack_recipe("metal rod", /obj/item/stack/rods, 1, 2, 60)
 	recipes += new/datum/stack_recipe("scooter frame", /obj/item/scooter_frame, 15, time = 15, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("frame", /obj/item/frame, 5, time = 25, one_per_turf = 1, on_floor = 1)
