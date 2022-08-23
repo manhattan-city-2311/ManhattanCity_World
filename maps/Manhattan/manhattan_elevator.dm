@@ -126,3 +126,18 @@
 		/area/turbolift/office22,
 		/area/turbolift/office23
 		)
+
+/obj/turbolift_map_holder/factory1
+	name = "Factory Industrial Garage Elevator"
+	depth = 3
+	lift_size_x = 3
+	lift_size_y = 4
+	icon = 'icons/obj/turbolift_preview_3x3.dmi'
+	wall_type =  /turf/simulated/wall/iron
+	floor_type = /turf/simulated/floor/tiled/techfloor/grid
+
+	areas_to_use = list(
+		/area/turbolift/factory1,
+		/area/turbolift/factory2,
+		/area/turbolift/factory3
+		)
