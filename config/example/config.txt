@@ -431,7 +431,7 @@ HUMANS_NEED_SURNAMES
 
 ## FPS ##
 #Set this to the default FPS (Can be customised in-game)
-FPS 100
+FPS 50
 
 ## Protecting people from attacking or looting from SSDs. Comment to disable.
 SSD_PROTECT
@@ -502,3 +502,6 @@ ALLOW_LOBBY_ANTAGONISTS
 
 # Allows people to sell things via exports in the factory
 #ALLOW_EXPORTS
+
+# Allow people to observe
+#OBSERVERS_ALLOWED 1
