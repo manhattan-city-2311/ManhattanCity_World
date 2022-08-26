@@ -39,7 +39,7 @@
 	for(var/ID in pref.records)
 		var/R = pref.records[ID]
 		if(!R)
-			. += "<b>[ID]</b>: <a href='?src=\ref[src];recedit=[ID]'><i>Необходимо заполнить</i></a><br/>"
+			. += "<b>[ID]</b>: <a href='?src=\ref[src];recedit=[ID]' class = 'requiredToBeFull'><i>Необходимо заполнить</i></a><br>"
 
 		else if(islist(R))
 			. += "<b>[ID]</b>:"
@@ -47,37 +47,37 @@
 
 			if(L.len == 2 && islist(L[1])) // list(list(...), ...) aka selectable
 				//                                   Value  ---^
-				. += "<a href='?src=\ref[src];receditlp=[ID];'>[L[2] || "<i>Заполнить</i>"]</a><br/>"
+				. += "<a href='?src=\ref[src];receditlp=[ID];' [L[2] ? "" : "class = 'requiredToBeFull'"]>[L[2] || "<i>Заполнить</i>"]</a><br>"
 				continue
 
 			. += "<br/>"
 
 			if(L.len && (!L[1]))
-				. += "\t<a href='?src=\ref[src];recappend=[ID];'><i>Необходимо добавить</i></a><br/>"
+				. += "\t<a href='?src=\ref[src];recappend=[ID];' class = 'requiredToBeFull'><i>Необходимо добавить</i></a><br>"
 				continue
 
 			var/i = 1
 			for(var/E in L)
 				var/buttons = "<a href='?src=\ref[src];receditl=[ID];count=[i]'><i>Редактировать</i></a>"
-				buttons += "<a href='?src=\ref[src];recerasel=[ID];count=[i]'><i>Удалить</i></a>"
+				buttons += "<a href='?src=\ref[src];recerasel=[ID];count=[i]'><i>X</i></a>"
 
 				. += "\t[E] [buttons]<br/>"
 				++i
 
-			. += "\t<a href='?src=\ref[src];recappend=[ID];'><i>Добавить</i></a><br/>"
+			. += "\t<a href='?src=\ref[src];recappend=[ID];'><i>Добавить</i></a><br>"
 
 		else if(is_record_title(ID))
-			. += "<br/><b>\[[R]\]</b><br/><br/>"
+			. += "<h1>\[[R]\]<hr></h1>"
 			continue
 		else
-			. += "<b>[ID]</b>: <a href='?src=\ref[src];recedit=[ID]'>[R]</a><br/>"
-	. += "<br/>"
-	. += "<b>Почтовый адрес:</b><br/>"
+			. += "<b>[ID]</b>: <a href='?src=\ref[src];recedit=[ID]'>[R]</a><br>"
+	. += "<br>"
+	. += "<b>Почтовый адрес:</b><br>"
 
 	if(!pref.existing_character)
-		. += "Почта: <a href='?src=\ref[src];email_domain=1'>[pref.email]</a><br/>"
+		. += "Почта: <a href='?src=\ref[src];email_domain=1'>[pref.email]</a><br>"
 	else
-		. += "Логин: [pref.email]<br>Пароль: [SSemails.get_persistent_email_password(pref.email)] <br/>"
+		. += "Логин: [pref.email]<br>Пароль: [SSemails.get_persistent_email_password(pref.email)]<br>"
 
 /datum/category_item/player_setup_item/registration/OnTopic(href, list/href_list, mob/user)
 	if(href_list["recedit"])
@@ -159,9 +159,15 @@
 			|| !islist(pref.records[ID][1]) \
 			|| jobban_isbanned(user, "Records"))
 			return TOPIC_NOACTION
-
-		pref.records[ID][2] = input(user, "[ID]", "Записи", pref.records[ID][2]) in pref.records[ID][1]
-
+		var/list/choices = pref.records[ID][1]
+		var/lc = length(choices)
+		if(lc < 2)
+			return
+		else if(lc > 2)
+			pref.records[ID][2] = input(user, "[ID]", "Записи", pref.records[ID][2]) in choices
+		else
+			var/current = choices.Find(pref.records[ID][2])
+			pref.records[ID][2] = choices[current % 2 + 1]
 		return TOPIC_REFRESH
 	if(href_list["recappend"])
 		var/ID = href_list["recappend"]

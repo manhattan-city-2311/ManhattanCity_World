@@ -557,6 +557,21 @@
 //	t = replacetext_char(t, "\[fleetlogo\]", "<img src = fleetlogo.png>")
 	t = replacetext_char(t, "\[editorbr\]", "\n")
 	return t
+// var/list/allowed_image_hosts = list("imgur.com", "user-images.githubusercontent.com")
+/proc/digitalPencode2html(var/text)
+	text = replacetext_char(text, "\[pre\]", "<pre>")
+	text = replacetext_char(text, "\[/pre\]", "</pre>")
+	text = replacetext_char(text, "\[fontred\]", "<font color=\"red\">") //</font> to pass html tag integrity unit test
+	text = replacetext_char(text, "\[fontblue\]", "<font color=\"blue\">")//</font> to pass html tag integrity unit test
+	text = replacetext_char(text, "\[fontgreen\]", "<font color=\"green\">")//</font> to pass html tag integrity unit test
+	text = replacetext_char(text, "\[/font\]", "</font>")
+	text = replacetext_char(text, "\[/fontgreen\]", "</font>")
+	text = replacetext_char(text, "\[/fontblue\]", "</font>")
+	text = replacetext_char(text, "\[/fontred\]", "</font>")
+	text = replacetext_char(text, "\[redacted\]", "<span class=\"redacted\">\[ДАННЫЕ УДАЛЕНЫ]</span>")
+	text = replacetext_char(text, "\[img]", "<img style = 'max-width: 500px;height:auto' src = '")
+	text = replacetext_char(text, "\[/img]", "'>")
+	return pencode2html(text)
 // Random password generator
 /proc/GenerateKey()
 	//Feel free to move to Helpers.
