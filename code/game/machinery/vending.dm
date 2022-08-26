@@ -79,8 +79,6 @@
 
 	var/required_pass	//	if this needs a type of object instead of cash in order to access the items, this is it.
 
-	dont_save = FALSE
-
 	var/can_wrench = FALSE
 	var/can_hack = FALSE
 
@@ -852,8 +850,7 @@
 
 //	charge_free_department = DEPT_BAR
 //	block_persistence = TRUE
-
-	dont_save = FALSE
+	
 	save_contents = FALSE // to stop hoarding since this regens the contents anyway
 
 
@@ -1478,8 +1475,7 @@
 	contraband = list(/obj/item/weapon/material/knife/butch = 2)
 
 //	charge_free_department = DEPT_BAR
-
-	dont_save = FALSE
+	
 	save_contents = FALSE
 
 /obj/machinery/vending/sovietsoda

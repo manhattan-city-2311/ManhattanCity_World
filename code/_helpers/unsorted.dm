@@ -1351,11 +1351,26 @@ var/mob/dview/dview_mob = new
 	global.dview_mob = new
 	return ..()
 
+/proc/params2turf(scr_loc, turf/origin)
+	if(!scr_loc)
+		return null
+	var/tX = splittext(scr_loc, ",")
+	var/tY = splittext(tX[2], ":")
+	var/tZ = origin.z
+	tY = tY[1]
+	tX = splittext(tX[1], ":")
+	tX = tX[1]
+	tX = clamp(origin.x + text2num(tX) - VIEW_SIZE_X + 1, 1, world.maxx)
+	tY = clamp(origin.y + text2num(tY) - VIEW_SIZE_Y + 1, 1, world.maxy)
+	return locate(tX, tY, tZ)
+
 // call to generate a stack trace and print to runtime logs
 /proc/crash_with(msg)
 	CRASH(msg)
 
 /proc/screen_loc2turf(scr_loc, turf/origin)
+	if(!scr_loc)
+		return
 	var/tX = splittext(scr_loc, ",")
 	var/tY = splittext(tX[2], ":")
 	var/tZ = origin.z

@@ -210,7 +210,6 @@
 	icon = 'icons/turf/shuttle_parts.dmi'
 	icon_state = "carry"
 	takes_underlays = 1
-	blocks_air = 1 //I'd make these unsimulated but it just fucks with so much stuff so many other places.
 
 	initialize()
 		icon_state = "carry_ingame"
@@ -220,7 +219,6 @@
 	icon = 'icons/turf/shuttle_parts.dmi'
 	icon_state = "carry"
 	takes_underlays = 1
-	blocks_air = 1
 
 	initialize()
 		icon_state = "carry_ingame"

@@ -92,6 +92,14 @@
 
 	var/datum/runechat_message_holder/msg = new
 
+	var/message_loc
+	if(!(speaker in hearers(get_turf(src)))) // Radio
+		var/icon/r_icon = icon('icons/emoji.dmi', icon_state = "radio")
+		text = "\icon[r_icon]&nbsp;[text]"
+		message_loc = src
+	else
+		message_loc = speaker.loc
+
 	var/maptext_style = "font-family: '[speaker.runechat_font]';"
 	var/shadow_color = "0 2px 3px black"
 	var/style = "color:[speaker.runechat_color]; text-shadow: [shadow_color]; [maptext_style]"
@@ -100,20 +108,12 @@
 	var/static/regex/html_metachars = new(@"&[A-Za-z]{1,7};", "g")
 	var/mheight = WXH_TO_HEIGHT(client.MeasureText(replacetext(complete_text, html_metachars, "m"), null, RUNECHAT_WIDTH))
 
-	var/message_loc
-	if(!(src in hearers(speaker))) // Radio
-		var/image/r_icon = image('icons/emoji.dmi', icon_state = "radio")
-		text = "\icon[r_icon]&nbsp;[text]"
-		message_loc = src
-	else
-		message_loc = speaker
-
 	if(client.seen_runechat_messages)
 		for(var/datum/runechat_message_holder/M as anything in client.seen_runechat_messages[message_loc])
 			animate(M.image, pixel_y = M.image.pixel_y + mheight, time = RUNECHAT_SPAWN_TIME)
 
 	msg.image = image(loc = message_loc, layer = LAYER_HUD_RUNECHAT)
-	var/image/message = msg.image
+	var/image/message 		= msg.image
 	message.plane 			= PLANE_PLAYER_HUD
 	message.appearance_flags= APPEARANCE_UI_IGNORE_ALPHA | KEEP_APART
 	message.maptext_width 	= RUNECHAT_WIDTH

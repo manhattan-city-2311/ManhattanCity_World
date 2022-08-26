@@ -15,7 +15,6 @@ var/list/mining_overlay_cache = list()
 //	nitrogen = 0
 	opacity = 1
 	density = 1
-	blocks_air = 1
 //	temperature = T0C
 
 	var/ore/mineral
@@ -69,7 +68,6 @@ var/list/mining_overlay_cache = list()
 	icon_state = "asteroid"
 	density = 0
 	opacity = 0
-	blocks_air = 0
 
 /turf/simulated/mineral/floor/ignore_mapgen
 	ignore_mapgen = 1
@@ -79,7 +77,6 @@ var/list/mining_overlay_cache = list()
 		return
 	density = 0
 	opacity = 0
-	blocks_air = 0
 	update_general()
 
 /turf/simulated/mineral/proc/make_wall()
@@ -87,7 +84,6 @@ var/list/mining_overlay_cache = list()
 		return
 	density = 1
 	opacity = 1
-	blocks_air = 1
 	update_general()
 
 /turf/simulated/mineral/proc/update_general()

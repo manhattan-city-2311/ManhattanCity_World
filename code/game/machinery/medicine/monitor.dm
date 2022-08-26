@@ -133,8 +133,8 @@
 			data["perfusion_s"] = "bad"
 		if(0.6 to 0.8)
 			data["perfusion_s"] = "average"
-	if(H)
-		data["ischemia"] = H.ischemia
+	//if(H)
+		//data["ischemia"] = H.ischemia
 	data["saturation"] = round(min(attached.get_blood_saturation() * 100, 99))
 	data["perfusion"] = round(attached.get_blood_perfusion() * 100)
 	data["status"] = (attached.stat == CONSCIOUS) ? "CONSCIOUS" : "UNCONSCIOUS"
@@ -147,8 +147,8 @@
 	else
 		data["ecg"] += list("Neurological system activity: [100 - round(100 * CLAMP01(brain.damage / brain.max_damage))]% of normal")
 
-	if(H.ischemia)
-		data["ecg"] += list("Ischemia [round(H.ischemia, 0.5)]%")
+	//if(H.ischemia)
+	//	data["ecg"] += list("Ischemia [round(H.ischemia, 0.5)]%")
 	data["ecg"] += list("GVR: [round(attached.gvr)] N·s·m<sup>-5</sup>")
 	data["ecg"] += list("MCV: [round(attached.mcv)/1000] L/m")
 	data["ecg"] += list("CO: [H.pulse ? round(attached.get_cardiac_output()) : "?"] ml")

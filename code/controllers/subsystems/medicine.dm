@@ -1,3 +1,4 @@
+//#define MEDICINE_SUBSYSTEM_CATCH_RUNTIMES
 SUBSYSTEM_DEF(medicine)
 	name = "Medicine"
 	priority = FIRE_PRIORITY_MEDICINE
@@ -24,8 +25,19 @@ SUBSYSTEM_DEF(medicine)
 			continue
 
 		if(!QDELETED(H))
-			H.handle_medicine()
-			H.update_cm()
+#ifdef MEDICINE_SUBSYSTEM_CATCH_RUNTIMES
+			try
+#else
+			do
+#endif
+				H.handle_medicine()
+				H.update_cm()
+#ifdef MEDICINE_SUBSYSTEM_CATCH_RUNTIMES
+			catch(var/exception/e)
+				log_runtime(e, H, "Caught by [name] subsystem")
+#else
+			while(FALSE);
+#endif
 		else
 			current_run -= H
 

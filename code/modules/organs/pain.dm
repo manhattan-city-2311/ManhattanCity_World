@@ -18,7 +18,7 @@
 	var/last_message = LAZYACCESS0(messages_throttles, id)
 
 	if(world.time < (last_message + delay))
-		return
+		return FALSE
 
 	if(span)
 		message = SPAN(span, message)
@@ -30,6 +30,8 @@
 	to_chat(src, message)
 
 	messages_throttles[id] = world.time
+
+	return TRUE
 
 
 /mob/living/carbon/proc/custom_pain(message, power, force, obj/item/organ/external/affecting, nohalloss, flash_pain)

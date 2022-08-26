@@ -756,50 +756,48 @@ default behaviour is:
 					var/atom/movable/t = M.pulling
 					M.stop_pulling()
 
-					if(!istype(M.loc, /turf/space))
-						var/area/A = get_area(M)
-						if(A.has_gravity)
-							//this is the gay blood on floor shit -- Added back -- Skie
-							if (M.lying && (prob(M.getBruteLoss() / 6)))
-								var/bloodtrail = 1	//Checks if it's possible to even spill blood
-								if(ishuman(M))
-									var/mob/living/carbon/human/H = M
-									if(H.species.flags & NO_BLOOD)
-										bloodtrail = 0
+					var/area/A = get_area(M)
+					if(A.has_gravity)
+						//this is the gay blood on floor shit -- Added back -- Skie
+						if (M.lying && (prob(M.getBruteLoss() / 6)))
+							var/bloodtrail = 1	//Checks if it's possible to even spill blood
+							if(ishuman(M))
+								var/mob/living/carbon/human/H = M
+								if(H.species.flags & NO_BLOOD)
+									bloodtrail = 0
+								else
+									var/blood_volume = round((H.vessel.get_reagent_amount(CI_BLOOD) / H.species.blood_volume) * 100)
+									if(blood_volume < 25)
+										bloodtrail = 0	//Most of it's gone already, just leave it be
 									else
-										var/blood_volume = round((H.vessel.get_reagent_amount("blood")/H.species.blood_volume)*100)
-										if(blood_volume < 25)
-											bloodtrail = 0	//Most of it's gone already, just leave it be
+										H.vessel.remove_reagent(CI_BLOOD, 8)
+							if(bloodtrail)
+								var/turf/location = M.loc
+								if(istype(location, /turf/simulated))
+									location.add_blood(M)
+						//pull damage with injured people
+							if(prob(25))
+								M.adjustBruteLoss(1)
+								visible_message("<span class='danger'>\The [M]'s [M.isSynthetic() ? "state worsens": "wounds open more"] from being dragged!</span>")
+						if(M.pull_damage())
+							if(prob(25))
+								M.adjustBruteLoss(2)
+								visible_message("<span class='danger'>\The [M]'s [M.isSynthetic() ? "state" : "wounds"] worsen terribly from being dragged!</span>")
+								var/turf/location = M.loc
+								if (istype(location, /turf/simulated))
+									var/bloodtrail = 1	//Checks if it's possible to even spill blood
+									if(ishuman(M))
+										var/mob/living/carbon/human/H = M
+										if(H.species.flags & NO_BLOOD)
+											bloodtrail = 0
 										else
-											H.vessel.remove_reagent("blood", 1)
-								if(bloodtrail)
-									var/turf/location = M.loc
-									if(istype(location, /turf/simulated))
-										location.add_blood(M)
-							//pull damage with injured people
-								if(prob(25))
-									M.adjustBruteLoss(1)
-									visible_message("<span class='danger'>\The [M]'s [M.isSynthetic() ? "state worsens": "wounds open more"] from being dragged!</span>")
-							if(M.pull_damage())
-								if(prob(25))
-									M.adjustBruteLoss(2)
-									visible_message("<span class='danger'>\The [M]'s [M.isSynthetic() ? "state" : "wounds"] worsen terribly from being dragged!</span>")
-									var/turf/location = M.loc
-									if (istype(location, /turf/simulated))
-										var/bloodtrail = 1	//Checks if it's possible to even spill blood
-										if(ishuman(M))
-											var/mob/living/carbon/human/H = M
-											if(H.species.flags & NO_BLOOD)
-												bloodtrail = 0
+											var/blood_volume = round((H.vessel.get_reagent_amount(CI_BLOOD) / H.species.blood_volume) * 100)
+											if(blood_volume < 25)
+												bloodtrail = 0	//Most of it's gone already, just leave it be
 											else
-												var/blood_volume = round((H.vessel.get_reagent_amount("blood")/H.species.blood_volume)*100)
-												if(blood_volume < 25)
-													bloodtrail = 0	//Most of it's gone already, just leave it be
-												else
-													H.vessel.remove_reagent("blood", 1)
-										if(bloodtrail)
-											if(istype(location, /turf/simulated))
-												location.add_blood(M)
+												H.vessel.remove_reagent(CI_BLOOD, 8)
+									if(bloodtrail)
+										location.add_blood(M)
 
 					step(pulling, get_dir(pulling.loc, T))
 					if(t)

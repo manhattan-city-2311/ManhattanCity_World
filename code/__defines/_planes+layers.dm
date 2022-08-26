@@ -40,9 +40,7 @@ What is the naming convention for planes or layers?
 
 */
 
-#define PARALLAX_PLANE  		-80	// Reserved for use in space/parallax
-
-#define OVER_OPENSPACE_PLANE     -3
+#define CLICKCATCHER_PLANE -99
 
 // Turf Planes
 #define SPACE_PLANE				-43 // Space turfs themselves
@@ -115,7 +113,7 @@ What is the naming convention for planes or layers?
 	#define SCREEN_LAYER			22	// Mob HUD/effects layer
 
 #define PLANE_ADMIN1			3 //Purely for shenanigans (below lighting)
-#define PLANE_PLANETLIGHTING	4 //Lighting on planets
+#define PLANE_WEATHER			4
 #define PLANE_LIGHTING			5 //Where the lighting (and darkness) lives
 #define PLANE_LIGHTING_ABOVE	6 //For glowy eyes etc. that shouldn't be affected by darkness
 

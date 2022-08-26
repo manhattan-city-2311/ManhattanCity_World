@@ -27,7 +27,7 @@
 	var/label_text = ""
 
 	var/blood_type = null
-	var/reag_id = "blood"
+	var/reag_id = CI_BLOOD
 
 /obj/item/weapon/reagent_containers/blood/can_empty()
 	return TRUE

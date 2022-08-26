@@ -270,8 +270,8 @@
 
 	mutate_period = 30 SECONDS
 
-/datum/arrythmia/asystole/on_appear(var/obj/item/organ/internal/heart/H)
-	H.pulse = 0
+/datum/arrythmia/asystole/on_appear(obj/item/organ/internal/heart/H)
+	H.change_heart_rate(0)
 
-/datum/arrythmia/asystole/can_weaken(var/obj/item/organ/internal/heart/H)
-	return H.pulse > (H.ischemia + LAZYACCESS0(H.owner.chem_effects, CE_ANTIARRYTHMIC) * 10)
+/datum/arrythmia/asystole/can_weaken(obj/item/organ/internal/heart/H)
+	return H.pulse > (/*H.ischemia + */LAZYACCESS0(H.owner.chem_effects, CE_ANTIARRYTHMIC) * 10)

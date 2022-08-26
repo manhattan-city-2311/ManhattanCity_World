@@ -53,7 +53,7 @@
 	if(nutriment_factor)
 		M.adjust_nutrition(nutriment_factor * nut_removed) // For hunger and fatness
 	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
-	M.bloodstr.add_reagent("glucose", calories_factor * removed * 0.1)
+	M.bloodstr.add_reagent("glucose", calories_factor * removed * 0.0125)
 
 /datum/reagent/nutriment/glucose
 	name = "Glucose"
@@ -147,8 +147,7 @@
 	price_tag = 0.5
 
 /datum/reagent/nutriment/flour/touch_turf(var/turf/simulated/T)
-	if(!istype(T, /turf/space))
-		new /obj/effect/decal/cleanable/flour(T)
+	new /obj/effect/decal/cleanable/flour(T)
 
 /datum/reagent/nutriment/coco
 	name = "Coco Powder"

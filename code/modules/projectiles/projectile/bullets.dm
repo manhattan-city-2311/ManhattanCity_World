@@ -130,48 +130,48 @@
 
 /obj/item/projectile/bullet/pistol/small // they really small
 	damage = 15
-	armor_penetration = 60
+	armor_penetration = 10
 	agony = 5
 
 /obj/item/projectile/bullet/pistol/small/ap // really?
 	damage = 10
-	armor_penetration = 90
+	armor_penetration = 15
 
 /obj/item/projectile/bullet/pistol/small/hollow // how these even works?
 	damage = 20
-	armor_penetration = 20
+	armor_penetration = 5
 
 /obj/item/projectile/bullet/pistol/ap
 	damage = 10
-	armor_penetration = 30
+	armor_penetration = 10
 
 /obj/item/projectile/bullet/pistol/medium
 	damage = 20.5
 
 /obj/item/projectile/bullet/pistol/medium/ap
 	damage = 15
-	armor_penetration = 15
+	armor_penetration = 10
 
 /obj/item/projectile/bullet/pistol/medium/hollow
 	damage = 20
-	armor_penetration = -50
+	armor_penetration = -10
 
 /obj/item/projectile/bullet/pistol/strong //revolvers and matebas
 	fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
 	damage = 50
 
-/obj/item/projectile/bullet/pistol/rubber/strong //"rubber" bullets for revolvers and matebas
-	fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
-	damage = 10
-	agony = 60
-	embed_chance = 0
-	sharp = 0
-	check_armour = "melee"
-
 /obj/item/projectile/bullet/pistol/rubber //"rubber" bullets
 	name = "rubber bullet"
 	damage = 5
 	agony = 40
+	embed_chance = 0
+	sharp = 0
+	check_armour = "melee"
+
+/obj/item/projectile/bullet/pistol/rubber/strong //"rubber" bullets for revolvers and matebas
+	fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
+	damage = 10
+	agony = 60
 	embed_chance = 0
 	sharp = 0
 	check_armour = "melee"
@@ -182,7 +182,7 @@
 	name = "slug"
 	fire_sound = 'sound/weapons/gunshot/shotgun.ogg'
 	damage = 40
-	armor_penetration = 15
+	armor_penetration = 10
 
 /obj/item/projectile/bullet/shotgun/beanbag		//because beanbags are not bullets
 	name = "beanbag"
@@ -224,7 +224,7 @@
 
 /obj/item/projectile/bullet/rifle
 	fire_sound = 'sound/weapons/gunshot/gunshot3.ogg'
-	armor_penetration = 15
+	armor_penetration = 25
 	penetrating = 1
 
 /obj/item/projectile/bullet/rifle/a762
@@ -233,11 +233,11 @@
 
 /obj/item/projectile/bullet/rifle/a762/ap
 	damage = 30
-	armor_penetration = 50 // At 30 or more armor, this will do more damage than standard rounds.
+	armor_penetration = 25
 
 /obj/item/projectile/bullet/rifle/a762/hollow
 	damage = 40
-	armor_penetration = -50
+	armor_penetration = 10
 	penetrating = 0
 
 /obj/item/projectile/bullet/rifle/a762/hunter // Optimized for killing simple animals and not people, because Balance.
@@ -250,11 +250,11 @@
 
 /obj/item/projectile/bullet/rifle/a545/ap
 	damage = 20
-	armor_penetration = 50 // At 40 or more armor, this will do more damage than standard rounds.
+	armor_penetration = 20
 
 /obj/item/projectile/bullet/rifle/a545/hollow
 	damage = 35
-	armor_penetration = -50
+	armor_penetration = 10
 	penetrating = 0
 
 /obj/item/projectile/bullet/rifle/a545/hunter
@@ -268,7 +268,7 @@
 	stun = 3
 	weaken = 3
 	penetrating = 5
-	armor_penetration = 80
+	armor_penetration = 20
 	hitscan = 1 //so the PTR isn't useless as a sniper weapon
 
 /* Miscellaneous */

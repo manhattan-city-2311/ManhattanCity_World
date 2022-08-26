@@ -358,7 +358,7 @@
 		heart.get_ow_arrythmia()?.weak(heart)
 	else if(!H.is_asystole())
 		heart.make_common_arrythmia(1)
-	heart.pulse_modificators["defibrillation"] = rand(80, 120)
+	heart.cpr += rand(80, 120)
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
 
 /obj/item/weapon/shockpaddles/proc/do_electrocute(mob/living/carbon/human/H, mob/user, var/target_zone)

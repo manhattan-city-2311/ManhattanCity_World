@@ -22,7 +22,6 @@
 			icon_state = "[unique_reskin]-e"
 		else
 			icon_state = "[initial(icon_state)]-e"
-
 /obj/item/weapon/gun/projectile/colt/detective
 	desc = "A Martian recreation of an old pistol. Uses .45 rounds."
 	magazine_type = /obj/item/ammo_magazine/m45/rubber

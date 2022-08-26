@@ -7,25 +7,24 @@
 	organ_tag = "heart"
 	parent_organ = BP_TORSO
 	dead_icon = "heart-off"
-	var/pulse = 60
-	var/cardiac_output = 1.2
-	var/list/pulse_modificators = list()
-	var/list/cardiac_output_modificators = list() // *
-	var/list/datum/arrythmia/arrythmias = list()
-	var/heartbeat = 0
-	var/beat_sound = 'sound/effects/singlebeat.ogg'
+	var/tmp/pulse = 60
+	var/tmp/cardiac_output = 1.2
+	var/tmp/list/pulse_modificators = list()
+	var/tmp/list/cardiac_output_modificators = list() // *
+	var/tmp/list/datum/arrythmia/arrythmias = list()
+	var/tmp/heartbeat = 0
+	var/const/beat_sound = 'sound/effects/singlebeat.ogg'
 	var/tmp/next_blood_squirt = 0
 	max_damage = 100
 	var/open
 	influenced_hormones = list(
-		"adrenaline",
-		"noradrenaline",
-		"dopamine"
+		CI_ADRENALINE,
+		CI_NORADRENALINE,
+		CI_DOPAMINE
 	)
-	var/last_arrythmia_gain
+	var/tmp/last_arrythmia_gain
 
-	var/cpr = 0
-	ischemia_mod = 0.6
+	var/tmp/cpr = 0
 
 /obj/item/organ/internal/heart/rejuvenate()
 	. = ..()
@@ -37,17 +36,18 @@
 	..()
 
 /obj/item/organ/internal/heart/influence_hormone(T, amount)
-	if(ishormone(T, adrenaline))
-		owner.add_chemical_effect(CE_PULSE, amount * 5)
-		owner.add_chemical_effect(CE_CARDIAC_OUTPUT, 1 + amount * 0.05)
-	if(ishormone(T, noradrenaline))
-		owner.add_chemical_effect(CE_PRESSURE, 1 + amount * 1.2)
-		owner.add_chemical_effect(CE_CARDIAC_OUTPUT, 1 + amount * -0.01)
-		owner.add_chemical_effect(CE_PULSE, amount * 2)
-	if(ishormone(T, dopamine))
-		owner.add_chemical_effect(CE_PRESSURE, 1 + amount * 2)
-		owner.add_chemical_effect(CE_CARDIAC_OUTPUT, 1 + amount * 0.005)
-		owner.add_chemical_effect(CE_ARRYTHMIC, amount / 15)
+	switch(T)
+		if(CI_ADRENALINE)
+			owner.add_chemical_effect(CE_PULSE, amount * 5)
+			owner.add_chemical_effect(CE_CARDIAC_OUTPUT, 1 + amount * 0.05)
+		if(CI_NORADRENALINE)
+			owner.add_chemical_effect(CE_PRESSURE, 1 + amount * 1.2)
+			owner.add_chemical_effect(CE_CARDIAC_OUTPUT, 1 + amount * -0.01)
+			owner.add_chemical_effect(CE_PULSE, amount * 2)
+		if(CI_DOPAMINE)
+			owner.add_chemical_effect(CE_PRESSURE, 1 + amount * 2)
+			owner.add_chemical_effect(CE_CARDIAC_OUTPUT, 1 + amount * 0.005)
+			owner.add_chemical_effect(CE_ARRYTHMIC, amount / 15)
 
 
 /obj/item/organ/internal/heart/die()
@@ -74,7 +74,6 @@
 			should_work = FALSE
 			break
 
-
 	if(should_work)
 		var/should_add_modificators = TRUE
 
@@ -90,10 +89,9 @@
 		pulse_modificators["!should_work"] = -initial(pulse) - 1
 		oxygen_consumption = 0.15 * owner.k
 
-	cardiac_output_modificators["damage"] = 1 - (damage / max_damage * 0.2)
+	cardiac_output_modificators["damage"] = 1 - (damage / max_damage)
 
 	handle_rythme()
-	handle_ischemia()
 
 	handle_pulse()
 	handle_cardiac_output()
@@ -103,17 +101,28 @@
 
 	handle_heartbeat()
 
-	make_up_to_hormone("ast", 30 + ((damage / max_damage) * 2))
-	make_up_to_hormone("alt", 25 + ((damage / max_damage) * 0.1))
+	make_up_to_hormone(CI_AST, 30 + ((damage / max_damage) * 2))
+	make_up_to_hormone(CI_ALT, 25 + ((damage / max_damage) * 0.1))
+	if(damage / max_damage > 0.2)
+		make_up_to_hormone(CI_TROPONIN_T, damage / max_damage * 2)
+
+/obj/item/organ/internal/heart/proc/change_heart_rate(nhr)
+	owner?.handle_heart_rate_change(nhr)
+	pulse = nhr
 
 /obj/item/organ/internal/heart/proc/handle_pulse()
 	var/n_pulse = max(initial(pulse) + sumListAndCutAssoc(pulse_modificators), cpr)
 	cpr = 0
-	pulse = LERP(pulse, n_pulse, HEART_PULSE_DT)
-	pulse = round(Clamp(pulse, 0, 476))
+	n_pulse = LERP(pulse, n_pulse, HEART_PULSE_DT)
+	n_pulse = round(clamp(n_pulse, 0, 476))
+
+	change_heart_rate(n_pulse)
 
 /obj/item/organ/internal/heart/proc/handle_cardiac_output()
-	cardiac_output = initial(cardiac_output) * mulListAndCutAssoc(cardiac_output_modificators) * (owner?.k || 1)
+	var/n_cardiac_output = initial(cardiac_output) * mulListAndCutAssoc(cardiac_output_modificators) * (owner?.k || 1)
+	if(cardiac_output != n_cardiac_output)
+		cardiac_output = n_cardiac_output
+		change_heart_rate(pulse)
 
 /obj/item/organ/internal/heart/proc/make_chem_modificators()
 	if(CE_PULSE in owner.chem_effects)
@@ -122,14 +131,12 @@
 		cardiac_output_modificators["chem"] = owner.chem_effects[CE_CARDIAC_OUTPUT]
 
 /obj/item/organ/internal/heart/proc/make_modificators()
-	if(owner.get_blood_perfusion() < 0.95 && (owner.mcv + owner.mcv_add) < NORMAL_MCV * owner.k && owner.get_cardiac_output())
+	if(owner.get_blood_perfusion() < 0.95 && (owner.mcv + owner.mcv_add) < NORMAL_MCV * owner.k)
 		pulse_modificators["hypoperfusion"] = clamp((NORMAL_MCV * owner.k - (owner.mcv + owner.mcv_add)) / 30, 0, 115)
 	pulse_modificators["hyposaturation"] = owner.get_deprivation()
 	if(owner.get_deprivation() < 1 && ((owner.mcv + owner.mcv_add) > NORMAL_MCV * owner.k))
-		pulse_modificators["hypermcv"] = ((owner.mcv + owner.mcv_add) - NORMAL_MCV * owner.k) / 30
-
-	if(owner.shock_stage > 20)
-		pulse_modificators["shock"] = Clamp(owner.shock_stage * 0.55, 0, 110)
+		pulse_modificators["hypermcv"] = -((owner.mcv + owner.mcv_add) - NORMAL_MCV * owner.k) / owner.get_cardiac_output()
+	pulse_modificators["shock"] = Clamp(owner.shock_stage * 0.55, 0, 110)
 
 /obj/item/organ/internal/heart/proc/handle_rythme()
 	for(var/T in arrythmias)
@@ -167,23 +174,12 @@
 	if(pulse >= 140 || owner.shock_stage >= 10)
 		var/rate = 0.0119 * pulse - 0.1795
 
-		if(heartbeat >= rate)
+		if(heartbeat++ >= rate)
 			heartbeat = 0
 			sound_to(owner, sound(beat_sound, 0, 0, 0, 50))
-		else
-			heartbeat++
-
-/obj/item/organ/internal/heart/proc/handle_ischemia()
-	cardiac_output_modificators["ischemia"] = max(1 - (ischemia / 100), 0.3)
-	if(damage / max_damage > (20 / max_damage))
-		make_up_to_hormone("troponint", damage / max_damage * 2)
-
 
 /obj/item/organ/internal/heart/proc/handle_blood()
 	if(!owner)
-		return
-
-	if(owner.stat == DEAD)
 		return
 
 	if(owner.mpressure <= 5)
@@ -208,32 +204,33 @@
 					//somehow you can apply pressure to every wound on the organ at the same time
 					//you're basically forced to do nothing at all, so let's make it pretty effective
 					var/min_eff_damage = max(0, W.damage - 10) / 6 //still want a little bit to drip out, for effect
-					blood_max += max(min_eff_damage, W.damage - 30) * 0.016
+					blood_max += max(min_eff_damage, W.damage - 30)
 				else
-					blood_max += W.damage * 0.016
+					blood_max += W.damage
 
 		if(temp.is_artery_cut())
 			var/bleed_amount = temp.get_artery_cut_damage()
 			if(temp.applied_pressure)
 				bleed_amount *= 0.5
 			if(open_wound)
-				blood_max += bleed_amount * 0.005
+				blood_max += bleed_amount
+				do_spray += "the [temp.artery_name] in \the [owner]'s [temp]"
 			else
-				owner.vessel.remove_reagent("blood", bleed_amount * 0.005 * owner.mpressure / BLOOD_PRESSURE_NORMAL)
+				owner.remove_blood(bleed_amount * owner.mpressure / BLOOD_PRESSURE_NORMAL)
 
-		blood_max *= owner.mpressure / BLOOD_PRESSURE_NORMAL
+	blood_max *= owner.mpressure / BLOOD_PRESSURE_NORMAL
 
-		if(world.time >= next_blood_squirt && isturf(owner.loc) && do_spray.len)
-			owner.visible_message("<span class='danger'>Blood squirts from [pick(do_spray)]!</span>")
-			// It becomes very spammy otherwise. Arterial bleeding will still happen outside of this block, just not the squirt effect.
-			next_blood_squirt = world.time + 100
-			var/turf/sprayloc = get_turf(owner)
-			blood_max -= owner.drip(ceil(blood_max/3), sprayloc)
-			if(blood_max > 0)
-				blood_max -= owner.blood_squirt(blood_max, sprayloc)
-				owner.drip(blood_max, get_turf(owner))
-		else
-			owner.drip(blood_max)
+	if(world.time >= next_blood_squirt && isturf(owner.loc) && do_spray.len)
+		owner.visible_message("<span class='danger'>Blood squirts from [pick(do_spray)]!</span>")
+		// It becomes very spammy otherwise. Arterial bleeding will still happen outside of this block, just not the squirt effect.
+		next_blood_squirt = world.time + 200
+		var/turf/sprayloc = get_turf(owner)
+		blood_max -= owner.drip(ceil(blood_max/3), sprayloc)
+		if(blood_max > 0)
+			blood_max -= owner.blood_squirt(blood_max, sprayloc)
+			owner.drip(blood_max, get_turf(owner))
+	else
+		owner.drip(blood_max)
 
 /obj/item/organ/internal/heart/proc/is_working()
 	if(!is_usable())

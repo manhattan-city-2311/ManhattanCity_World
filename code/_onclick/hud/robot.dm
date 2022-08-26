@@ -51,6 +51,7 @@ var/obj/screen/robot_inventory
 	using.icon_state = "inv1"
 	using.screen_loc = ui_inv1
 	using.layer = HUD_LAYER
+	using.plane = PLANE_PLAYER_HUD
 	src.adding += using
 	robomob.inv1 = using
 
@@ -63,6 +64,7 @@ var/obj/screen/robot_inventory
 	using.icon_state = "inv2"
 	using.screen_loc = ui_inv2
 	using.layer = HUD_LAYER
+	using.plane = PLANE_PLAYER_HUD
 	src.adding += using
 	robomob.inv2 = using
 
@@ -75,6 +77,7 @@ var/obj/screen/robot_inventory
 	using.icon_state = "inv3"
 	using.screen_loc = ui_inv3
 	using.layer = HUD_LAYER
+	using.plane = PLANE_PLAYER_HUD
 	src.adding += using
 	robomob.inv3 = using
 
@@ -89,6 +92,7 @@ var/obj/screen/robot_inventory
 	using.icon_state = robomob.a_intent
 	using.screen_loc = ui_acti
 	using.layer = HUD_LAYER
+	using.plane = PLANE_PLAYER_HUD
 	src.adding += using
 	action_intent = using
 
@@ -129,6 +133,7 @@ var/obj/screen/robot_inventory
 	using.alpha = ui_alpha
 	using.screen_loc = ui_borg_panel
 	using.layer = HUD_LAYER-0.01
+	using.plane = PLANE_PLAYER_HUD
 	src.adding += using
 
 //Store

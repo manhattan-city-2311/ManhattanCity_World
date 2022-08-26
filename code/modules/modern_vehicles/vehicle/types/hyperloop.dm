@@ -23,15 +23,19 @@
 
 	var/state = HYPERLOOP_STATE_OUT
 
+/obj/manhattan/vehicle/large/hyperloop/update_object_sprites()
+	. = ..()
+	if(dir == NORTH || dir == SOUTH)
+		bounds = "160,256"
+	else
+		bounds = "256,160"
+
 /obj/manhattan/vehicle/large/hyperloop/get_calculation_iterations()
 	return 1
 
 /obj/manhattan/vehicle/large/hyperloop/attack_hand(mob/user)
 	enter_as_position(user, "passenger")
-
-/obj/manhattan/vehicle/large/hyperloop/process_vehicle(delta)
-	pixel_y = sin(world.timeofday / 100.1) * 10
-
+	
 /datum/map_template/hyperloop
 	name = "Hyperloop"
 	mappath = 'maps/interiors/hyperloop.dmm'

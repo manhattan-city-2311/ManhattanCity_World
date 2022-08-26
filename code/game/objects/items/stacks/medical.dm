@@ -481,6 +481,8 @@
 	affecting.gauze()
 
 	affecting.update_damages()
+	affecting.update_icon()
+	owner.UpdateDamageIcon(1)
 	use(1)
 
 /obj/item/stack/medical/harness

@@ -10,21 +10,17 @@
 		can_open = WALL_OPENING
 		//flick("[material.icon_base]fwall_opening", src)
 		density = 0
-		blocks_air = ZONE_BLOCKED
 		update_icon()
 		update_air()
 		set_light(0)
-		src.blocks_air = 0
 		set_opacity(0)
 	else
 		can_open = WALL_OPENING
 		//flick("[material.icon_base]fwall_closing", src)
 		density = 1
-		blocks_air = AIR_BLOCKED
 		update_icon()
 		update_air()
 		set_light(1)
-		src.blocks_air = 1
 		set_opacity(1)
 
 	can_open = WALL_CAN_OPEN
@@ -144,7 +140,7 @@
 
 		// Place plating over a wall
 		if(T)
-			if(istype(T, /turf/simulated/open) || istype(T, /turf/space))
+			if(istype(T, /turf/simulated/open))
 				if(R.use(1)) // Cost of roofing tiles is 1:1 with cost to place lattice and plating
 					T.ReplaceWithLattice()
 					T.ChangeTurf(/turf/simulated/floor)
