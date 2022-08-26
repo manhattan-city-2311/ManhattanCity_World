@@ -34,6 +34,11 @@
 	brightness_color = LIGHT_COLOR_YELLOW
 	light_color = LIGHT_COLOR_YELLOW
 
+/obj/item/weapon/light/tube/large/neon/white
+	color = "#f0ffff"
+	brightness_color = "#f0ffff"
+	light_color = "#f0ffff"
+
 
 // Bulb
 /obj/item/weapon/light/bulb/red

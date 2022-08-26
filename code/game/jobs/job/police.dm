@@ -143,3 +143,32 @@
 /datum/job/officer/get_job_email()
 	return using_map.police_email
 
+/datum/job/sfp
+	title = "SFP Officer"
+
+	flag = OFFICER
+	faction = "City"
+	department = DEPT_POLICE
+	department_flag = ENGSEC
+	total_positions = 0
+	spawn_positions = 0
+	supervisors = "the SFP supervisor"
+	selection_color = "#601C1C"
+	idtype = /obj/item/weapon/card/id/sfp
+	wage = 500
+	synth_wage = 180
+
+	access = list(access_sfp)
+	minimal_access = list(access_sfp)
+	minimal_player_age = 3
+	minimum_character_age = 23
+
+	outfit_type = /decl/hierarchy/outfit/job/security/officer
+
+	clean_record_required = TRUE
+
+	duties = list("Arrest criminals", "Beg higher-ups for warrants", "Cry over arrest reports", "Empty the donut box", "Survive")
+
+/datum/job/sfp/get_job_email()
+	return using_map.police_email
+

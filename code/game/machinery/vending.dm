@@ -872,7 +872,7 @@
 	vend_delay = 34
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	vend_power_usage = 85000 //85 kJ to heat a 250 mL cup of coffee
-	products = list(/obj/item/weapon/reagent_containers/food/drinks/coffee = 25,/obj/item/weapon/reagent_containers/food/drinks/tea = 25,/obj/item/weapon/reagent_containers/food/drinks/h_chocolate = 25,/obj/item/weapon/reagent_containers/food/drinks/chicory = 25)
+	products = list(/obj/item/weapon/reagent_containers/food/drinks/coffee = 35,/obj/item/weapon/reagent_containers/food/drinks/tea = 35,/obj/item/weapon/reagent_containers/food/drinks/h_chocolate = 35,/obj/item/weapon/reagent_containers/food/drinks/chicory = 35)
 	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/ice = 10)
 	vending_sound = "machines/vending_coffee.ogg"
 
@@ -887,10 +887,10 @@
 	product_slogans = "Try our new nougat bar!;Twice the calories for half the price!"
 	product_ads = "The healthiest!;Award-winning chocolate bars!;Mmm! So good!;Oh my god it's so juicy!;Have a snack.;Snacks are good for you!;Have some more Getmore!;Best quality snacks straight from mars.;We love chocolate!;Try our new jerky!"
 	icon_state = "snack"
-	products = list(/obj/item/weapon/reagent_containers/food/snacks/candy = 2,/obj/item/weapon/reagent_containers/food/drinks/dry_ramen = 8,/obj/item/weapon/reagent_containers/food/snacks/chips =4,
-					/obj/item/weapon/reagent_containers/food/snacks/sosjerky = 2,/obj/item/weapon/reagent_containers/food/snacks/no_raisin = 3,/obj/item/weapon/reagent_containers/food/snacks/spacetwinkie = 1,
-					/obj/item/weapon/reagent_containers/food/snacks/cheesiehonkers = 3, /obj/item/weapon/reagent_containers/food/snacks/tastybread = 4)
-	contraband = list(/obj/item/weapon/reagent_containers/food/snacks/syndicake = 6,/obj/item/weapon/reagent_containers/food/snacks/unajerky = 6,)
+	products = list(/obj/item/weapon/reagent_containers/food/snacks/candy = 15,/obj/item/weapon/reagent_containers/food/drinks/dry_ramen = 12,/obj/item/weapon/reagent_containers/food/snacks/chips =30,
+					/obj/item/weapon/reagent_containers/food/snacks/sosjerky = 40,/obj/item/weapon/reagent_containers/food/snacks/no_raisin = 13,/obj/item/weapon/reagent_containers/food/snacks/spacetwinkie = 20,
+					/obj/item/weapon/reagent_containers/food/snacks/cheesiehonkers = 16, /obj/item/weapon/reagent_containers/food/snacks/tastybread = 25)
+	contraband = list(/obj/item/weapon/reagent_containers/food/snacks/syndicake = 15,/obj/item/weapon/reagent_containers/food/snacks/unajerky = 20,)
 
 
 	vendor_department = DEPT_PUBLIC
@@ -902,12 +902,12 @@
 	icon_state = "Cola_Machine"
 	product_slogans = "Robust Softdrinks: More robust than a toolbox to the head!"
 	product_ads = "Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not cola?;Please, have a drink!;Drink up!;The best drinks in space."
-	products = list(/obj/item/weapon/reagent_containers/food/drinks/cans/cola = 10,/obj/item/weapon/reagent_containers/food/drinks/cans/space_mountain_wind = 10,
-					/obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb = 10,/obj/item/weapon/reagent_containers/food/drinks/cans/starkist = 10,
-					/obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle = 10,/obj/item/weapon/reagent_containers/food/drinks/cans/space_up = 10,
-					/obj/item/weapon/reagent_containers/food/drinks/cans/iced_tea = 10, /obj/item/weapon/reagent_containers/food/drinks/cans/grape_juice = 10,
-					/obj/item/weapon/reagent_containers/food/drinks/cans/gingerale = 10, /obj/item/weapon/reagent_containers/food/drinks/bottle/cola = 10)
-	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/weapon/reagent_containers/food/snacks/liquidfood = 6)
+	products = list(/obj/item/weapon/reagent_containers/food/drinks/cans/cola = 20,/obj/item/weapon/reagent_containers/food/drinks/cans/space_mountain_wind = 20,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb = 20,/obj/item/weapon/reagent_containers/food/drinks/cans/starkist = 20,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle = 10,/obj/item/weapon/reagent_containers/food/drinks/cans/space_up = 20,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/iced_tea = 20, /obj/item/weapon/reagent_containers/food/drinks/cans/grape_juice = 20,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/gingerale = 20, /obj/item/weapon/reagent_containers/food/drinks/bottle/cola = 20)
+	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/weapon/reagent_containers/food/snacks/liquidfood = 16)
 
 	vendor_department = DEPT_PUBLIC
 	auto_price = TRUE
@@ -936,16 +936,16 @@
 					/obj/item/weapon/reagent_containers/pill/diet = 8,
 					/obj/item/clothing/suit/towel/random = 8)
 
-	prices = list(/obj/item/weapon/reagent_containers/food/drinks/smallmilk = 3,
-					/obj/item/weapon/reagent_containers/food/drinks/smallchocmilk = 3,
-					/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake = 20,
-					/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask = 5,
-					/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar = 5,
-					/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 5,
+	prices = list(/obj/item/weapon/reagent_containers/food/drinks/smallmilk = 8,
+					/obj/item/weapon/reagent_containers/food/drinks/smallchocmilk = 8,
+					/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake = 30,
+					/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask = 15,
+					/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar = 10,
+					/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 30,
 					/obj/item/weapon/reagent_containers/pill/diet = 35,
 					/obj/item/clothing/suit/towel/random = 40)
 
-	contraband = list(/obj/item/weapon/reagent_containers/syringe/steroid = 4)
+	contraband = list(/obj/item/weapon/reagent_containers/syringe/steroid = 50)
 
 	vendor_department = DEPT_PUBLIC
 

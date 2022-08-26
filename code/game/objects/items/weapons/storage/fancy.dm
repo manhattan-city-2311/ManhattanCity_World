@@ -47,12 +47,12 @@
 	icon_state = "eggbox"
 	icon_type = "egg"
 	name = "egg box"
-	storage_slots = 12
+	storage_slots = 10
 	can_hold = list(
 		/obj/item/weapon/reagent_containers/food/snacks/egg,
 		/obj/item/weapon/reagent_containers/food/snacks/boiledegg
 		)
-	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/egg = 12)
+	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/egg = 10)
 
 
 /*

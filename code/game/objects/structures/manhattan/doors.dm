@@ -240,6 +240,7 @@
 			user.visible_message("<span class='danger'>\The [user] knocks at \the [src].</span>")
 	if(user.a_intent == I_HURT && user.skill_check(SKILL_CLOSE_COMBAT, SKILL_TRAINED))
 		playsound(src.loc, 'sound/effects/doors/smod_freeman.ogg', 70, 1)
+		open()
 	if(operable())
 		if(src.density)
 			open()

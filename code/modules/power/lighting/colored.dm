@@ -123,3 +123,8 @@
 	base_state = "green"		// base description and icon_state
 	icon_state = "green1"
 	light_color = LIGHT_COLOR_GREEN
+
+/obj/machinery/light/colored/white
+	base_state = "white"		// base description and icon_state
+	icon_state = "white1"
+	light_color = "#f0ffff"

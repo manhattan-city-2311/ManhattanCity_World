@@ -64,9 +64,24 @@
 	name = "\improper New-Manhattan third level outdoors"
 	base_turf = /turf/simulated/open
 
+/area/planets/Manhattan/indoor/north/underground_global
+	name = "\improper New-Manhattan underground"
+
+/area/planets/Manhattan/indoor/north/underground_global/sewer
+	name = "\improper New-Manhattan north sewers"
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/underground_global/sewer/hideout
+
 /area/planets/Manhattan/indoor/north/bar
 
 /area/planets/Manhattan/indoor/north/bar/entrance
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/bar/underground_storage
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/bar/entrance/upper
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/bar/other1
@@ -77,10 +92,16 @@
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/bar/other2
-	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/bar/other3
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/bar/other2/upper
+	base_turf = /turf/simulated/open
+	icon_state = "north_m1"
+
+/area/planets/Manhattan/indoor/north/bar/other3/upper
 	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
 
@@ -97,6 +118,7 @@
 /area/planets/Manhattan/indoor/north/bar/vip_zone
 	base_turf = /turf/simulated/open
 	icon_state = "north_m4"
+	outdoors = TRUE
 
 /area/planets/Manhattan/indoor/north/gas
 
@@ -157,6 +179,8 @@
 /area/planets/Manhattan/indoor/north/crey/under
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m2"
+
+/area/planets/Manhattan/indoor/north/crey/under/archives
 
 /area/planets/Manhattan/indoor/north/crey/under/backrooms
 /area/planets/Manhattan/indoor/north/crey/under/backrooms/sec
@@ -1468,6 +1492,30 @@
 /area/planets/Manhattan/south/building/social/restaurant/upper
 	name = "\improper Restaurant '3xi' Upper"
 	base_turf = /turf/simulated/open
+
+/area/planets/Manhattan/south/building/social/retail
+	name = "\improper Store 'Echpochmak'"
+/area/planets/Manhattan/south/building/social/retail/back
+
+/area/planets/Manhattan/south/building/social/cafe_oui
+	name = "\improper Cafe 'Oui'"
+/area/planets/Manhattan/south/building/social/cafe_oui/back
+	name = "\improper Cafe 'Oui' Backroom"
+
+/area/planets/Manhattan/south/building/social/atelier
+	name = "\improper Atelier"
+	icon_state = "south_m_atelier"
+/area/planets/Manhattan/south/building/social/atelier/back
+	name = "\improper Atelier Backroom"
+/area/planets/Manhattan/south/building/social/atelier/bath
+	name = "\improper Atelier Toilet"
+/area/planets/Manhattan/south/building/social/atelier/storage
+	name = "\improper Atelier Storage"
+/area/planets/Manhattan/south/building/social/atelier/hall
+/area/planets/Manhattan/south/building/social/atelier/room1
+/area/planets/Manhattan/south/building/social/atelier/room2
+/area/planets/Manhattan/south/building/social/atelier/room3
+/area/planets/Manhattan/south/building/social/atelier/fabric
 
 /area/planets/Manhattan/south/building/social/gas
 	name = "\improper South GAS Station"

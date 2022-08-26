@@ -329,6 +329,11 @@
 	rank = "Police Officer"
 	job_access_type = /datum/job/officer
 
+/obj/item/weapon/card/id/sfp
+	assignment = "SFP Officer"
+	rank = "SFP Officer"
+	job_access_type = /datum/job/sfp
+
 /obj/item/weapon/card/id/security/detective
 	assignment = "Detective"
 	rank = "Detective"

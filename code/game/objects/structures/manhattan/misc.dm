@@ -84,7 +84,7 @@
 
 /obj/structure/sign/manhattan/posters/random/big/New()
 	. = ..()
-	icon_state = "posterbig[rand(1,12)]"
+	icon_state = "posterbig[rand(1,15)]"
 	return .
 
 /obj/structure/sign/manhattan/posters/random/small
@@ -178,6 +178,30 @@
 	icon_state = "oil_station"
 	light_color = COLOR_YELLOW
 
+/obj/structure/sign/neon/big/citynight
+	name = "Strange neon art"
+	desc = "Neon artwork of...something."
+	icon_state = "city_of_night"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/big/restaurant
+	name = "Restaurant sign"
+	desc = "A sign that saying what this place for."
+	icon_state = "restaurant"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/big/grandhotel
+	name = "Grand Hotel sign"
+	desc = "A sign that saying what this place for."
+	icon_state = "grand"
+	light_color = COLOR_ORANGE
+
+/obj/structure/sign/neon/ufo
+	name = "UFO neon art"
+	desc = "Art of UFO on the wall"
+	icon_state = "ufo"
+	light_color = COLOR_LIGHTING_PURPLE_BRIGHT
+
 /obj/structure/sign/neon/big/name
 	name = "big city sign"
 	desc = "A sign with some unknown language."
@@ -226,6 +250,36 @@
 	icon_state = "pizza2"
 	light_color = COLOR_YELLOW
 
+/obj/structure/sign/neon/startech
+	name = "Startech logo"
+	desc = "Neon corporation logo on a wall."
+	icon_state = "startech"
+	light_color = LIGHT_COLOR_NEONBLUE
+
+/obj/structure/sign/neon/cray
+	name = "CRAY Ind. logo"
+	desc = "Neon corporation logo on a wall."
+	icon_state = "cray"
+	light_color = LIGHT_COLOR_HALOGEN
+
+/obj/structure/sign/neon/loreasteregg2
+	name = "Strange neon art"
+	desc = "Neon artwork of...something."
+	icon_state = "loreasteregg2"
+	light_color = LIGHT_COLOR_HALOGEN
+
+/obj/structure/sign/neon/loreasteregg1
+	name = "Strange neon art"
+	desc = "Neon artwork of...something."
+	icon_state = "loreasteregg1"
+	light_color = LIGHT_COLOR_YELLOW
+
+/obj/structure/sign/neon/cocktails_wall
+	name = "cocktails sign"
+	desc = "Neon art of cocktail."
+	icon_state = "cocktail"
+	light_color = LIGHT_COLOR_NEONBLUE
+
 /obj/structure/sign/neon/unicorn
 	name = "unicorn"
 	icon_state = "unicorn"
@@ -257,6 +311,12 @@
 	icon_state = "bar_holo"
 	light_color = LIGHT_COLOR_NEONGREEN
 
+/obj/structure/sign/neon/food
+	name = "food neon sign"
+	desc = "A sign, marking there is food nearby."
+	icon_state = "food"
+	light_color = LIGHT_COLOR_NEONGREEN
+
 /obj/structure/sign/neon/big/triangle
 	name = "big neon sign"
 	desc = "Some kind of triangle, but with big eye."
@@ -281,6 +341,12 @@
 	name = "big neon sign"
 	desc = "Cool neon words."
 	icon_state = "japan"
+	light_color = LIGHT_COLOR_RED
+
+/obj/structure/sign/neon/clothing
+	name = "neon sign"
+	desc = "Neon art, marking the clothing store."
+	icon_state = "clothing"
 	light_color = LIGHT_COLOR_RED
 
 /obj/structure/sign/neon/big/manhattan2

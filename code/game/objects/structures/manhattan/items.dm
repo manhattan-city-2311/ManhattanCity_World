@@ -37,3 +37,10 @@
 	max_storage_space = 48
 	starts_with = list(/obj/item/weapon/card/id/medical/doctor = 20,
 						/obj/item/weapon/card/id/medical/intern = 10)
+
+/obj/item/weapon/storage/box/ids_sfp
+	name = "box of spare PD IDs"
+	desc = "Has so many IDs."
+	icon_state = "id"
+	max_storage_space = 48
+	starts_with = list(/obj/item/weapon/card/id/sfp = 20)

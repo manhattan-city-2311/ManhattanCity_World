@@ -507,6 +507,30 @@ var/const/access_boardofdirectors = 83
 	desc = "Board of Directors"
 	region = ACCESS_REGION_MEDBAY
 
+/var/const/access_factory_director = 84
+/datum/access/factory_director
+    id = access_factory_director
+    desc = "Factory Director"
+    region = ACCESS_REGION_ENGINEERING
+
+/var/const/access_factory_pmchead = 85
+/datum/access/factory_pmchead
+    id = access_factory_pmchead
+    desc = "Factory PMC Head"
+    region = ACCESS_REGION_ENGINEERING
+
+/var/const/access_factory_pmc = 86
+/datum/access/factory_pmc
+    id = access_factory_pmc
+    desc = "Factory PMC"
+    region = ACCESS_REGION_ENGINEERING
+
+/var/const/access_sfp = 88
+/datum/access/sfp
+	id = access_sfp
+	desc = "Sol Federal Police"
+	region = ACCESS_REGION_SECURITY
+
 /******************
 * Central Command *
 ******************/

@@ -17,9 +17,9 @@
 
 /obj/item/weapon/lockpick/proc/amogus(var/mob/user)
 	uses--
-	if(uses == 1)
+	if(uses == 2)
 		user << "<span class='warning'>\The [src] is going to break soon!</span>"
-	else if(uses <= 0)
+	else if(uses <= 1)
 		user.drop_item(src)
 		user << "<span class='warning'>\The [src] crumbles in your hands.</span>"
 		qdel(src)
