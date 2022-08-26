@@ -13,7 +13,6 @@
 	var/respiratory_rate = 15
 	var/list/respiratory_rate_modificators = list()
 	var/last_breath = 0
-	ischemia_mod = 0.2
 
 /obj/item/organ/internal/lungs/New()
 	..()
@@ -58,7 +57,7 @@
 					SPAN_DANGER("You cough up blood!"),
 					"You hear someone coughing!",
 				)
-			owner.drip(100)
+			owner.drip(50)
 
 	make_modificators()
 	handle_respiratory_rate()

@@ -2,7 +2,6 @@
 	//saves all political data - TODO: Move this into law subsystem
 	SSpersistent_options.save_all_options()
 	SSpersistent_options.save_ballots()
-
 	//save economy and department money
 	SSeconomy.save_economy()
 
@@ -20,6 +19,8 @@
 
 	SSlaw.save_warrants()
 
+	// Save misc
+	callHook("save_world")
 	//saves all characters
 
 	for(var/mob/living/carbon/human/H in mob_list)

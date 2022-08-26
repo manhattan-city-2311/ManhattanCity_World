@@ -274,6 +274,7 @@ emp_act
 	else if(I.sharp)
 		playsound(user, "sharp")
 	hit_zone = user.zone_sel.selecting
+	handle_damage_stun(effective_force, blocked + soaked, hit_zone)
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if(!affecting)
 		return 0

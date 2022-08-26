@@ -51,7 +51,7 @@ var/global/list/all_exonet_connections = list()
 /datum/exonet_protocol/proc/make_address(var/string)
 	if(string)
 		var/new_address = null
-		while(new_address == find_address(new_address)) //Collision test.
+		while(is_address_exist(new_address)) //Collision test.
 			var/hash = md5(string)
 			var/raw_address = copytext(hash,1,25)
 			var/addr_0 = "fc00" //Used for unique local address in real-life IPv6.
@@ -69,7 +69,7 @@ var/global/list/all_exonet_connections = list()
 // Description: Allocates that specific address, if it is available.
 /datum/exonet_protocol/proc/make_arbitrary_address(var/new_address)
 	if(new_address)
-		if(new_address == find_address(new_address) )	//Collision test.
+		if(is_address_exist(new_address)) //Collision test.
 			return 0
 		address = new_address
 		all_exonet_connections |= src
@@ -97,13 +97,13 @@ var/global/list/all_exonet_connections = list()
 	all_exonet_connections.Remove(src)
 
 
-// Proc: find_address()
+// Proc: is_address_exist()
 // Parameters: 1 (target_address - the desired address to find)
 // Description: Searches the global list all_exonet_connections for a specific address, and returns it if found, otherwise returns null.
-/datum/exonet_protocol/proc/find_address(var/target_address)
+/datum/exonet_protocol/proc/is_address_exist(var/target_address)
 	for(var/datum/exonet_protocol/exonet in all_exonet_connections)
 		if(exonet.address == target_address)
-			return exonet.address
+			return TRUE
 	return null
 
 // Proc: get_atom_from_address()

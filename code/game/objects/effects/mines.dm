@@ -112,10 +112,6 @@
 
 /obj/effect/mine/phoron/explode(var/mob/living/M)
 	triggered = 1
-	//for (var/turf/simulated/floor/target in range(1,src))
-		//if(!target.blocks_air)
-			//target.assume_gas("phoron", 30)
-			//target.hotspot_expose(1000, CELL_VOLUME)
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
 		qdel(src)

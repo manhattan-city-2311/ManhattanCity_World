@@ -5,6 +5,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	var/icon/bgstate = "000"
 	var/list/bgstate_options = list("000", "midgrey", "FFF", "white", "steel", "techmaint", "dark", "plating", "reinforced")
+	var/hide_warning_neurochasis = FALSE
 
 /datum/category_item/player_setup_item/general/body
 	name = "Тело"
@@ -44,6 +45,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.preview_icon = null
 	S["bgstate"]			>> pref.bgstate
 	S["cyber_control"]		>> pref.cyber_control
+	S["hide_warning_neurochasis"] >> pref.hide_warning_neurochasis
 
 /datum/category_item/player_setup_item/general/body/save_character(var/savefile/S)
 	S["species"]			<< pref.species
@@ -78,6 +80,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["body_markings"]		<< pref.body_markings
 	S["bgstate"]			<< pref.bgstate
 	S["cyber_control"]		<< pref.cyber_control
+	S["hide_warning_neurochasis"] << pref.hide_warning_neurochasis
 
 /datum/category_item/player_setup_item/general/body/delete_character(var/savefile/S)
 	pref.species = null
@@ -236,7 +239,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		. += "<b>Тело:</b> "
 		. += "<a href='?src=\ref[src];random=1'>&reg; Random</A><br>"
 	. += "<br>"
-/*
+	/*
 	. += "<b>Вид: </b><br>"
 
 	if(!pref.existing_character)
@@ -244,7 +247,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else
 		. += "[pref.weight]lbs ([get_weight(pref.calories,mob_species)])"
 	. += "<br>"
-*/
+	*/
 	. += "<b>Группа крови: </b><br>"
 	if(!pref.existing_character)
 		. += "<a href='?src=\ref[src];blood_type=1'>[pref.b_type]</a><br>"
@@ -372,15 +375,21 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			. += "Normal Limbs"
 	if(!ind)
 
-		. += "\[...\]<br><br>"
+		. += "\[...]<br><br>"
 	else
 		. += "<br><br>"
 
 	if(LAZYLEN(pref.rlimb_data) && !pref.is_synth())
-		. += "<div class='notice'><b>Предупреждение. Для использования кибернетических конечностей требуется имплантант нейрокаркаса.</b> Если он не был установлен перед сохранением \
-		персонажа, вы НЕ сможете управлять кибернетическими конечностями, что ставит вас в существенно невыгодное положение в зависимости от затронутых\
-		конечности. Чтобы в будущем использовать свои кибернетические конечности, вам придется вживить имплантат во время игры.</div><br>"
-		. += "<b>Имплант нейрокаркаса установлен: </b><br>"
+		. += "<a href='?src=\ref[src];hide_NC_warning=1'>[pref.hide_warning_neurochasis ? "\\/" : "^"]</a>"
+		if(!pref.hide_warning_neurochasis)
+			. += "<div class='notice'><b>Предупреждение.<br>\
+			Для использования кибернетических конечностей требуется имплантант нейрокаркаса.</b>\
+			Если он не был установлен перед сохранением персонажа,\
+			вы НЕ сможете управлять кибернетическими конечностями,\
+			что ставит вас в существенно невыгодное положение в зависимости от затронутых конечности.\
+			Чтобы в будущем использовать свои кибернетические конечности,\
+			вам придется вживить имплантат во время игры.</div>"
+		. += "<br><b>Имплант нейрокаркаса установлен: </b><br>"
 		. += "<a href='?src=\ref[src];cyber_control=[pref.cyber_control]'><b>[pref.cyber_control ? "Да" : "Нет"]</b></a><br>"
 
 	if(pref.is_synth())
@@ -874,7 +883,9 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else if(href_list["cycle_bg"])
 		pref.bgstate = next_in_list(pref.bgstate, pref.bgstate_options)
 		return TOPIC_REFRESH_UPDATE_PREVIEW
-
+	else if(href_list["hide_NC_warning"])
+		pref.hide_warning_neurochasis = !pref.hide_warning_neurochasis
+		return TOPIC_REFRESH
 	return ..()
 
 /datum/category_item/player_setup_item/general/body/proc/reset_limbs()

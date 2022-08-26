@@ -1500,7 +1500,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/blackpudding/New()
 	..()
 	reagents.add_reagent("protein", 2)
-	reagents.add_reagent("blood", 5)
+	reagents.add_reagent(CI_BLOOD, 5)
 	bitesize = 3
 
 /obj/item/weapon/reagent_containers/food/snacks/soydope
@@ -1674,7 +1674,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/bloodsoup/New()
 	..()
 	reagents.add_reagent("protein", 2)
-	reagents.add_reagent("blood", 10)
+	reagents.add_reagent(CI_BLOOD, 10)
 	reagents.add_reagent("water", 5)
 	bitesize = 5
 
@@ -1758,7 +1758,7 @@
 			reagents.add_reagent("banana", 10)
 		if(6)
 			reagents.add_reagent("nutriment", 6)
-			reagents.add_reagent("blood", 10)
+			reagents.add_reagent(CI_BLOOD, 10)
 		if(7)
 			reagents.add_reagent("slimejelly", 10)
 			reagents.add_reagent("water", 10)

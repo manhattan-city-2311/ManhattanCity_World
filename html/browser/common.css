@@ -328,3 +328,14 @@ div.notice
 	width: 100%;
 	clear: both;
 }
+
+.requiredToBeFull
+{
+	color: #ff0000 !important;
+	text-shadow: 0 2px 4px #000000;
+}
+
+.redacted {
+	background-color: black;
+	color: black;
+}

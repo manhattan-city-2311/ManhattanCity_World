@@ -93,7 +93,6 @@
 	data["user"] = "\ref[user]"	// For receiving input() via topic, because input(usr,...) wasn't working on cartridges
 	data["address"] = exonet.address ? exonet.address : "Unallocated"
 	data["owner"] = owner ? owner : "Unset"
-	data["occupation"] = occupation ? occupation : "Swipe ID to set."
 	data["connectionStatus"] = get_connection_to_tcomms()
 	data["visible"] = network_visibility
 
@@ -114,7 +113,7 @@
 	data["homeScreen"] = modules_ui
 	data["note"] = note					// current notes
 	data["weather"] = weather
-	data["flashlight"] = fon
+	data["flashlight"] = flashlight_on
 	data["manifest"] = PDA_Manifest
 
 	data["selected_wallpaper"] = selected_wallpaper
@@ -163,8 +162,8 @@
 			selected_wallpaper = w["file"]
 			wallpaper_color = w["color"]
 
-	if(href_list["rename"])
-		var/new_name = sanitizeSafe(input(usr,"Please enter your name.","Communicator",usr.name) )
+	if(href_list["rename_owner"])
+		var/new_name = sanitizeSafe(input(usr,"Please enter your name.","Communicator",usr.name))
 		if(new_name)
 			register_device(new_name)
 
@@ -299,8 +298,8 @@
 			ui.add_template("Body", href_list["switch_template"])
 
 	if(href_list["Light"])
-		fon = !fon
-		set_light(fon * flum)
+		flashlight_on = !flashlight_on
+		set_light(flashlight_on * flashlight_lum)
 
 	if(href_list["apps"])
 		computer.enable_computer(usr)

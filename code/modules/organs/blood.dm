@@ -16,9 +16,9 @@
 	if(!should_have_organ(O_HEART)) //We want the var for safety but we can do without the actual blood.
 		return
 	if(client && client.prefs.blood_level)
-		vessel.add_reagent("blood",client.prefs.blood_level)
+		vessel.add_reagent("blood", client.prefs.blood_level)
 	else
-		vessel.add_reagent("blood",species.blood_volume)
+		vessel.add_reagent("blood", species.blood_volume)
 	fixblood()
 
 //Resets blood data
@@ -138,7 +138,7 @@
 /mob/living/carbon/human/proc/sync_vessel()
 	for(var/R in vessel.reagent_list)
 		var/datum/reagent/reagent = R
-		if(reagent && reagent.id == "blood")
+		if(reagent?.id == CI_BLOOD)
 			var/datum/reagent/blood/blood = reagent
 			blood.sync_to(src)
 			return
@@ -149,7 +149,7 @@
 		reagents.trans_to_obj(container, amount)
 		return 1
 
-	if(vessel.get_reagent_amount("blood") < amount)
+	if(vessel.get_reagent_amount(CI_BLOOD) < amount)
 		return null
 
 	sync_vessel()
@@ -221,14 +221,13 @@
 	return 0
 
 /mob/living/carbon/human/proc/regenerate_blood(amount)
-	var/blood_volume_raw = vessel.get_reagent_amount("blood")
-	amount = max(0,min(amount, species.blood_volume - blood_volume_raw))
-	if(amount)
+	var/blood_volume_raw = vessel.get_reagent_amount(CI_BLOOD)
+	. = max(0, min(amount, species.blood_volume - blood_volume_raw))
+	if(.)
 		var/datum/reagent/blood/B = get_blood(vessel)
 		if(istype(B))
 			B.volume += amount
 			vessel.update_total()
-	return amount
 
 proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spray_dir)
 
@@ -290,42 +289,52 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 /mob/living/carbon/human/proc/get_blood_volume()
 	return vessel.total_volume ? vessel.total_volume / vessel.maximum_volume : 0
 
-/mob/living/carbon/human/proc/update_cm()
-	var/hr = get_heart_rate()
+/mob/living/carbon/human/proc/calc_heart_rate_coeff(hr)
+	. = hr && (60.0 / hr) // hrp should be INFINITY when hr = 0, but will be zero.
+	. = hr && (. * 0.109 + 0.159)
+	. *= 3.73134328358209 // 1 = hrpd(where hr = 60) => 3.73...
 
-	var/hrp = hr ? (60.0 / hr) : 0 // hrp should be INFINITY when hr = 0, but will be zero.
-	var/hrpd = hr ? (hrp * 0.109 + 0.159) : 0
-	var/coeff = (hrpd * 3.73134328358209) // 1 = hrpd(where hr = 60) => 3.73...
+// Recalcs some cmed parameters due to HR change, use before true changing
+/mob/living/carbon/human/proc/handle_heart_rate_change(newhr)
+	mcv = get_cardiac_output() * newhr
+	update_cm(newhr)
 
+/mob/living/carbon/human/proc/update_cm(hr = get_heart_rate())
 	if(get_cardiac_output_mod() && get_blood_volume() && mcv < 100)
 		mcv = 1000 * get_cardiac_output_mod() * get_blood_volume() // MCV should'nt be zero if any circulation present
 	if(!get_blood_volume() && (spressure || mpressure || dpressure || mcv))
 		spressure = mpressure = dpressure = mcv = 0
-// update GVR
+
+	var/coeff = calc_heart_rate_coeff(hr)
+
 	gvr = 218.50746268
 	gvr += LAZYACCESS0(chem_effects, CE_PRESSURE)
 	gvr += spressure * (0.0008 * spressure - 0.8833) + 94 // simulate elasticity of vascular resistance
-// update dpressure
-	var/hr53 = hr * coeff * 53.0
-	dpressure = max(0, LERP(dpressure, (gvr * (2180 + hr53))/((17820 - hr53)), 0.5))
-// update spressure
 
-	var/mcv50divhr27 = (50 * mcv) / (hr ? (27 * hr) : 1000)
-	spressure = clamp(LERP(spressure, mcv50divhr27 + 2.0 * dpressure - (7646.0 * k)/54.0, 0.5), 0, MAX_PRESSURE)
-	dpressure = min(dpressure, spressure - rand(5, 15))
-// update mpressure
-	mpressure = dpressure + (spressure - dpressure) / 3.0
-// update MCV
-	var/mpressure2 = (mpressure + dpressure) * 0.5
-	var/nmcv = ((mpressure2 * 7999.2) / gvr * coeff * get_cardiac_output_mod() + mcv_add) * get_blood_volume()
-	mcv = LERP(mcv, clamp(nmcv, 0, MAX_MCV), 0.4)
-	mcv_add = 0
-// update perfusion
+	update_blood_pressure(hr, mcv, coeff)
+	update_mcv(coeff)
+
+
 	var/n_perfusion = mcv ? CLAMP01((mcv / (NORMAL_MCV * k)) * (get_blood_saturation() / 0.97)) : 0
 
 	perfusion = round(LERP(perfusion, n_perfusion, 0.2), 0.01)
 
 	oxy = min(get_max_blood_oxygen_delta(), oxy)
+
+/mob/living/carbon/human/proc/update_blood_pressure(hr, mcv, coeff, force = 0.5)
+	var/hr53 = hr * coeff * 53.0
+	dpressure = max(0, LERP(dpressure, (gvr * (2180 + hr53))/((17820 - hr53)), force))
+	var/mcv50divhr27 = (50 * mcv) / ((27 * hr) || 1000)
+	spressure = clamp(LERP(spressure, mcv50divhr27 + 2.0 * dpressure - (7646.0 * k)/54.0, force), 0, MAX_PRESSURE)
+	dpressure = min(dpressure, spressure - rand(5, 15))
+// update mpressure
+	mpressure = dpressure + (spressure - dpressure) / 3.0
+
+/mob/living/carbon/human/proc/update_mcv(coeff)
+	var/mpressure2 = (mpressure + dpressure) * 0.5
+	var/nmcv = ((mpressure2 * 7999.2) / gvr * coeff * get_cardiac_output_mod() + mcv_add) * get_blood_volume()
+	mcv = clamp(nmcv, 0, MAX_MCV)
+	mcv_add = 0
 
 /mob/living/carbon/human/proc/get_heart_rate()
 	var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
@@ -338,7 +347,7 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	return heart.cardiac_output
 
 /mob/living/carbon/human/proc/get_cardiac_output()
-	return get_heart_rate() ? (max(mcv - mcv_add, 0) / get_heart_rate()) : 0
+	return get_heart_rate() && (max(mcv - mcv_add, 0) / get_heart_rate())
 
 /mob/living/carbon/human/proc/get_blood_saturation()
 	return clamp(1 - (get_deprivation() / 100), 0, 0.99)
@@ -349,7 +358,7 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 
 /mob/living/carbon/human/get_deprivation()
 	if(oxy && mcv)
-		return 100 - round(oxy / (OXYGEN_LEVEL_NORMAL) * 100)
+		return max(0, 100 - round(oxy / (OXYGEN_LEVEL_NORMAL) * 100))
 	return 0
 
 // in minute
@@ -361,7 +370,7 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 
 /mob/living/carbon/human/proc/make_oxygen(amount, force = FALSE)
 	if(!force)
-		oxy = min(oxy + amount, oxy + get_max_blood_oxygen_delta())
+		oxy += get_max_blood_oxygen_delta() - min(avail_oxygen + amount, get_max_blood_oxygen_delta())
 	else
 		oxy += amount
 	avail_oxygen += amount
@@ -383,7 +392,6 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	co2 += amount / efficiency
 	oxy -= amount
 	oxy_demand += amount
-
 
 // 0-1
 /mob/living/carbon/human/proc/get_blood_perfusion()

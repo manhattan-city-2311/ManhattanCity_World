@@ -99,7 +99,7 @@
 		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
 			ai_holder.react_to_attack(L)
 
-/mob/living/bullet_act(var/obj/item/projectile/P, var/def_zone)
+/mob/living/bullet_act(obj/item/projectile/P, def_zone)
 
 	//Being hit while using a deadman switch
 	if(istype(get_active_hand(),/obj/item/device/assembly/signaler))
@@ -112,48 +112,49 @@
 	if(ai_holder && P.firer)
 		ai_holder.react_to_attack(P.firer)
 
+	var/damage = P.damage
+
 	//Armor
 	var/soaked = get_armor_soak(def_zone, P.check_armour, P.armor_penetration)
 	var/absorb = run_armor_check(def_zone, P.check_armour, P.armor_penetration)
 	var/proj_sharp = is_sharp(P)
 	var/proj_edge = has_edge(P)
 
-	if ((proj_sharp || proj_edge) && (soaked >= round(P.damage*0.8)))
+	if(prob(absorb + soaked))
 		proj_sharp = 0
 		proj_edge = 0
 
-	if ((proj_sharp || proj_edge) && prob(getarmor(def_zone, P.check_armour)))
-		proj_sharp = 0
-		proj_edge = 0
-	var/pdamage = P.damage
-	if(istype(P, /obj/item/projectile/bullet/ap) && soaked > 10)
-		pdamage *= 1.5
-	else if(istype(P, /obj/item/projectile/bullet/hp) && soaked < 20)
-		pdamage *= 1.5
-	//Stun Beams
+	// Stun Beams
 	if(P.taser_effect)
 		stun_effect_act(0, P.agony, def_zone, P)
-		to_chat(src, "<font color='red'>You have been hit by [P]!</font>")
+		to_chat(src, SPAN_DANGER("You have been hit by [P]!"))
 		if(!P.nodamage)
-			apply_damage(pdamage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
+			apply_damage(damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp = proj_sharp, edge = proj_edge)
 		qdel(P)
 		return
 
 	if(!P.nodamage)
-		apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
-	P.on_hit(src, absorb, soaked, def_zone)
+		apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp = proj_sharp, edge = proj_edge)
 
-	if(absorb == 100)
-		return 2
-	else if (absorb >= 0)
-		return 1
-	else
-		return 0
+	P.on_hit(src, absorb + soaked, def_zone)
 
-//	return absorb
+	return absorb
+
+/mob/living/proc/handle_damage_stun(damage, blocked, def_zone)
+	var/stun_add = damage * (100 - blocked) * 0.001
+	var/agony_add = damage * (100 - blocked) * 0.001
+
+	. = stun_add >= 1.5
+
+	//to_world("handle_damage_stun(damage = [damage], blocked = [blocked]) -> [stun_add], [agony_add], [.]")
+
+	if(!.)
+		stun_add = 0
+
+	stun_effect_act(stun_add, agony_add, def_zone)
 
 //Handles the effects of "stun" weapons
-/mob/living/proc/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
+/mob/living/proc/stun_effect_act(stun_amount, agony_amount, def_zone, used_weapon = null)
 	flash_pain()
 
 	if (stun_amount)

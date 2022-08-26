@@ -319,12 +319,12 @@
 
 /mob/proc/print_flavor_text()
 	if (flavor_text && flavor_text != "")
-		var/msg = replacetext_char(flavor_text, "\n", " ")
-		if(length(msg) <= 40)
-			return SPAN_INFO("[msg]")
-		else
-			return "<font color='blue'>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
-
+		// var/msg = replacetext_char(flavor_text, "\n", "  ")
+		// if(length_char(msg) <= 30)
+			// return SPAN_INFO("[msg]")
+		// else
+			// return "<font color='blue'>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
+		return "<a href='byond://?src=\ref[src];flavor_more=1'>\[View Flavor]</a>"
 /*
 /mob/verb/help()
 	set name = "Help"
@@ -518,8 +518,13 @@
 		src << browse(null, t1)
 
 	if(href_list["flavor_more"])
-		to_target(usr, browse(text("<HTML><meta charset=\"UTF-8\"><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", name, replacetext_char(flavor_text, "\n", "<BR>")), text("window=[];size=500x200", name)))
-		onclose(usr, "[name]")
+		var/data = "<TT>[digitalPencode2html(flavor_text)]</TT>"
+		// to_target(usr, browse("<HTML><meta charset=\"UTF-8\"><HEAD><TITLE>[name]</TITLE></HEAD><BODY><TT>[replacetext_char(flavor_text, "\n", "<BR>")]</TT></BODY></HTML>", "window=[name];size=500x200"))
+		var/datum/browser/popup = new(usr, "flavor_changes", name, 800, 600)
+		popup.set_content(data)
+		popup.open()
+
+		// onclose(usr, "[name]")
 	if(href_list["flavor_change"])
 		update_flavor_text()
 //	..()
@@ -696,7 +701,7 @@
 			if(statpanel("Status"))
 				stat("Location:", "([x], [y], [z]) [loc]")
 				stat("CPU:", "[world.cpu]")
-				stat("Map CPU:", "[world.map_cpu]")
+				stat("Map CPU, MPC:", "[world.map_cpu] [world.map_cpu / GLOB.clients.len]")
 				stat("Instances:","[world.contents.len]")
 
 			if(statpanel("Processes"))
@@ -705,7 +710,7 @@
 
 			if(statpanel("MC"))
 				stat("CPU:","[world.cpu]")
-				stat("Map CPU:", "[world.map_cpu]")
+				stat("Map CPU, MPC:", "[world.map_cpu] [world.map_cpu / GLOB.clients.len]")
 				stat("Instances:","[world.contents.len]")
 				stat(null)
 				if(GLOB)

@@ -9,21 +9,20 @@
 	min_broken_damage = 45
 	max_damage = 70
 	influenced_hormones = list(
-		"glucose"
+		CI_GLUCAGONE
 	)
 	hormones = list(
-		"glucose" = 5
+		CI_GLUCOSE = 5
 	)
 
 	var/bilirubine_norm = -1
 	oxygen_consumption = 2
-	ischemia_mod = 1.1
 	var/absorbed = 0
 	var/absorbed_max = 30
 
 /obj/item/organ/internal/liver/influence_hormone(T, amount)
-	if(ishormone(T, glucose))
-		free_hormone("glucose", min(amount, 0.1))
+	if(T == CI_GLUCAGONE)
+		free_hormone(CI_GLUCOSE, min(amount, 0.1))
 		absorb_hormone(T, min(amount, 0.1) * 10)
 
 /obj/item/organ/internal/liver/Process()
@@ -34,16 +33,17 @@
 	if(bilirubine_norm < 0)
 		bilirubine_norm = rand(5, 21)
 
-	make_up_to_hormone("bilirubine", bilirubine_norm)
-	make_up_to_hormone("ast", 30 + ((damage / max_damage) * 0.1))
-	make_up_to_hormone("alt", 25 + ((damage / max_damage) * 2))
+	make_up_to_hormone(CI_BILIRUBINE, bilirubine_norm)
+	make_up_to_hormone(CI_AST, 30 + ((damage / max_damage) * 0.1))
+	make_up_to_hormone(CI_ALT, 25 + ((damage / max_damage) * 2))
 
 	if (germ_level > INFECTION_LEVEL_ONE)
 		if(prob(1))
-			to_chat(owner, "<span class='danger'>Your skin itches.</span>")
+			to_chat(owner, SPAN_DANGER("Your skin itches."))
 	if (germ_level > INFECTION_LEVEL_TWO)
 		if(prob(1))
-			spawn owner.vomit()
+			spawn()
+				owner.vomit()
 
 	//Detox can heal small amounts of damage
 	if (damage < max_damage && !owner.chem_effects[CE_TOXIN])
@@ -62,14 +62,14 @@
 		heal_damage(to_regen)
 		absorbed += to_regen
 
-	if(prob(2) && absorbed)
-		switch(absorbed)
+	if(prob(2) && (absorbed || damage))
+		switch(absorbed + damage)
 			if(8 to 15)
 				to_chat(owner, SPAN_WARNING("You fill faint."))
 			if(15 to 22)
 				to_chat(owner, SPAN_WARNING("You feel poisoned."))
 			if(22 to 30)
-				to_chat(owner, SPAN_DANGER("You feel poisoned."))
+				to_chat(owner, SPAN_DANGER("You feel extremely poisoned and faint."))
 
 	//Blood regeneration if there is some space
-	owner.regenerate_blood(0.1 + owner.chem_effects[CE_BLOODRESTORE])
+	owner.regenerate_blood(1 + owner.chem_effects[CE_BLOODRESTORE])

@@ -8,16 +8,13 @@
 	var/list/watched_hormones // list of hormones, what always process in influence_hormone
 
 	var/list/waste_hormones = list(
-		"potassium_hormone" = 0.02
+		CI_POTASSIUM_HORMONE = 0.02
 	)
 
-	var/ischemia = 0
-	var/ischemia_mod = 0.1
 	var/oxygen_consumption = 0
 
 /obj/item/organ/internal/rejuvenate(ignore_prosthetic_prefs)
 	..()
-	ischemia = 0
 
 /obj/item/organ/internal/initialize()
 	..()
@@ -99,7 +96,6 @@
 	..()
 	if((status & ORGAN_DEAD) && dead_icon)
 		icon_state = dead_icon
-	ischemia = 100
 
 /obj/item/organ/internal/Destroy()
 	if(owner)
@@ -140,17 +136,18 @@
 // Brain is defined in brain.dm
 /obj/item/organ/internal/handle_germ_effects()
 	. = ..() //Should be an interger value for infection level
-	if(!.) return
+	if(!.)
+		return
 
 	var/antibiotics = LAZYACCESS0(owner.chem_effects, CE_ANTIBIOTIC)
 
 	if(. >= INFECTION_LEVEL_TWO && antibiotics < ANTIBIO_NORM) //INFECTION_LEVEL_TWO
 		if (prob(3))
-			take_damage(1,silent=prob(30))
+			take_damage(1, silent = prob(30))
 
 	if(. >= INFECTION_LEVEL_THREE && antibiotics < ANTIBIO_OD)	//INFECTION_LEVEL_THREE
 		if (prob(50))
-			take_damage(1,silent=prob(15))
+			take_damage(1, silent = prob(15))
 
 /obj/item/organ/internal/Process()
 	..()
@@ -163,6 +160,7 @@
 			qdel(OD)
 			break
 		OD.update()
+
 	for(var/T in SANITIZE_LIST(influenced_hormones))
 		if(owner.bloodstr.has_reagent(T))
 			influence_hormone(T, min(owner.bloodstr.get_reagent_amount(T), 15))
@@ -171,14 +169,9 @@
 	for(var/T in SANITIZE_LIST(waste_hormones))
 		make_hormone(T, waste_hormones[T])
 
-	if(!vital && damage && owner.bloodstr.get_reagent_amount("glucose") >= GLUCOSE_LEVEL_NORMAL_LOW)
+	if(!vital && damage && owner.bloodstr.get_reagent_amount(CI_GLUCOSE) >= GLUCOSE_LEVEL_NORMAL_LOW)
 		var/regen = min(0.02, damage)
-		absorb_hormone("glucose", regen)
+		absorb_hormone(CI_GLUCOSE, regen)
 		damage = max(0, damage - regen)
+
 	owner.consume_oxygen(oxygen_consumption)
-	if(oxygen_consumption > owner.oxy)
-		ischemia = clamp(ischemia + ischemia_mod, 0, 100)
-		if(ischemia > 50)
-			take_damage(1)
-	else if(ischemia)
-		ischemia = clamp(ischemia - ischemia_mod, 0, 100)

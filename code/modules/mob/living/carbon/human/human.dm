@@ -1132,8 +1132,7 @@
 	spawn(0)
 		if(regen_icons) regenerate_icons()
 		make_blood()
-		bloodstr.add_reagent("glucose", GLUCOSE_LEVEL_NORMAL)
-		bloodstr.add_reagent("glycogen", GLYCOGEN_LEVEL_NORMAL)
+		bloodstr.add_reagent(CI_GLUCOSE, GLUCOSE_LEVEL_NORMAL)
 /*		if(vessel.total_volume < species.blood_volume)
 			vessel.maximum_volume = species.blood_volume
 			vessel.add_reagent("blood", species.blood_volume - vessel.total_volume)
@@ -1249,7 +1248,13 @@
 		to_chat(user, "<span class='alert'>[fail_msg]</span>")
 
 /mob/living/carbon/human/print_flavor_text(var/shrink = 1)
-	var/list/equipment = list(src.head,src.wear_mask,src.glasses,src.w_uniform,src.wear_suit,src.gloves,src.shoes)
+	UpdateFlavor()
+	if(!shrink)
+		return flavor_text
+	else
+		return ..()
+/mob/living/carbon/human/proc/UpdateFlavor()
+	var/list/equipment = list(head, wear_mask, glasses, w_uniform, wear_suit, gloves, shoes)
 	var/head_exposed = 1
 	var/face_exposed = 1
 	var/eyes_exposed = 1
@@ -1276,17 +1281,20 @@
 			legs_exposed = 0
 		if(C.body_parts_covered & FEET)
 			feet_exposed = 0
-
 	flavor_text = ""
+	var/b_parts_began = FALSE
 	for (var/T in flavor_texts)
 		if(flavor_texts[T] && flavor_texts[T] != "")
 			if((T == "general") || (T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed))
-				flavor_text += flavor_texts[T]
-				flavor_text += "\n\n"
-	if(!shrink)
-		return flavor_text
-	else
-		return ..()
+				if(T == "general")
+					flavor_text += flavor_texts[T]
+				else
+					if(!b_parts_began)
+						b_parts_began = TRUE
+						flavor_text += "\[h3]Видимые части тела\[hr]\[/h3]"
+					flavor_text += flavor_texts[T]
+				if(b_parts_began)
+					flavor_text += "\n\n"
 
 /mob/living/carbon/human/getDNA()
 	if(species.flags & NO_SCAN)

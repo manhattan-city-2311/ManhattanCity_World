@@ -552,7 +552,7 @@ This function completely restores a damaged organ to perfect condition.
 		if(W)
 			wounds += W
 
-	owner.regenerate_icons() // FIXME: fucking shit
+	owner.update_icons_body()
 
 /****************************************************
 			   PROCESSING & UPDATING
@@ -628,32 +628,37 @@ Note that amputating the affected organ does in fact remove the infection from t
 	handle_antibiotics()
 
 	//** Handle the effects of infections
-	//handle_germ_effects()
+	handle_germ_effects()
+
+	if(is_gauze_breed())
+		++germ_level
+
+/obj/item/organ/external/proc/is_gauze_breed()
+	return gauzed && (world.time - gauzed > 7 MINUTES)
 
 /obj/item/organ/external/proc/handle_germ_sync()
-	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]
+	var/antibiotics = LAZYACCESS0(owner.chem_effects, CE_ANTIBIOTIC)
+
 	for(var/datum/wound/W in wounds)
 		if(W.infection_check())
-			W.germ_level += W.germ_speed()
-		else
-			W.germ_level -= antibiotics / 5
+			W.germ_level += W.germ_speed() - antibiotics / 5
 	if(antibiotics >= 15)
 		return
+
 	for(var/datum/wound/W in wounds)
 		// Infected wounds raise the organ's germ level
 		if(W.germ_level > germ_level && prob(100 - (antibiotics / 15) * 100))
-			germ_level++
+			++germ_level
 			break	// Limit increase to a maximum of one per second
 
 /obj/item/organ/external/handle_germ_effects()
-	. = ..() //May be null or an infection level, if null then no specific processing needed here
-	if(!.) return
-	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]
-
-	germ_level += 0.1
+	if(germ_level < INFECTION_LEVEL_TWO)
+		return ..()
+	
+	var/antibiotics = LAZYACCESS0(owner.chem_effects, CE_ANTIBIOTIC)
 
 	// Spread the infection to internal organs
-	var/obj/item/organ/target_organ = null	// Make internal organs become infected one at a time instead of all at once
+	var/obj/item/organ/target_organ	// Make internal organs become infected one at a time instead of all at once
 	for(var/obj/item/organ/I in internal_organs)
 		if(I.germ_level < germ_level)	// Once the organ reaches whatever we can give it, or level two, switch to a different one
 			if(!target_organ || I.germ_level < target_organ.germ_level)	// Choose the organ with the lowest germ_level
@@ -670,37 +675,35 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(target_organ)
 		if(target_organ.germ_level < germ_level - 250)
-			if(prob(Interpolate(20, 70, germ_level / INFECTION_LEVEL_THREE) - antibiotics))
-				target_organ.germ_level = max(0, target_organ.germ_level + (germ_level - 250) / 5)
-		target_organ.germ_level++
+			if(prob(lerp(20, 70, germ_level / INFECTION_LEVEL_THREE) - antibiotics))
+				target_organ.germ_level += max(0, germ_level / 5 - 50)
+		++target_organ.germ_level
 
 	// Spread the infection to child and parent organs
 	for(var/obj/item/organ/external/child in SANITIZE_LIST(children))
 		if(child.germ_level < germ_level)
 			if(child.germ_level < INFECTION_LEVEL_ONE * 2 || prob(30 - antibiotics))
-				child.germ_level++
+				++child.germ_level
 
 	if(parent)
 		if(parent.germ_level < germ_level)
 			if(parent.germ_level < INFECTION_LEVEL_ONE * 2 || prob(30 - antibiotics))
-				parent.germ_level++
+				++parent.germ_level
 
 	if(germ_level >= INFECTION_LEVEL_MAX && antibiotics < 15) // Overdosing is necessary to stop severe infections
 		if(!(status & ORGAN_DEAD))
 			die()
-			to_chat(owner, "<span class='notice'>You can't feel your [name] anymore...</span>")
-			owner.bloodstr.add_reagent("potassium_hormone", 35) //septic shock
-		germ_level++
+			to_chat(owner, SPAN_NOTICE("You can't feel your [name] anymore..."))
+			owner.update_icons_body()
+		++germ_level
+		owner.adjustToxLoss(1)
 
 	switch(germ_level)
 		if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_THREE)
-			take_damage(0.5)
 			owner.bloodstr.add_reagent("potassium_hormone", 0.3)
 		if(INFECTION_LEVEL_THREE to INFECTION_LEVEL_MAX)
-			take_damage(1)
 			owner.bloodstr.add_reagent("potassium_hormone", 0.9)
 		if(INFECTION_LEVEL_MAX to INFINITY)
-			take_damage(2.5)
 			owner.bloodstr.add_reagent("potassium_hormone", 2.5)
 
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
@@ -769,7 +772,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				brute_dam += W.damage
 
 		if(!(robotic >= ORGAN_ROBOT) && W.bleeding() && (H && H.should_have_organ(O_HEART)) && !(H.species.flags & NO_BLOOD))
-			W.bleed_timer--
+			--W.bleed_timer
 			status |= ORGAN_BLEEDING
 
 		clamped |= W.clamped
@@ -1339,13 +1342,13 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/proc/gauze()
 	status &= ~ORGAN_BLEEDING
-	var/rval = 0
+	. = 0
 	for(var/datum/wound/W in wounds)
-		rval |= !W.bandaged
+		. ||= !W.bandaged
 		W.bandaged = 1
-	if(rval)
-		owner.update_surgery()
-	gauzed = world.time
+	if(.)
+		owner.update_icons_body()
+		gauzed = world.time
 
 /obj/item/organ/external/proc/clamp_()
 	clamped = world.time
@@ -1365,16 +1368,15 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/get_pain()
 	if(!can_feel_pain() || robotic >= ORGAN_ROBOT)
 		return 0
-	if(is_broken())
-		. = 10
-	else if(is_dislocated())
-		. = 5
-	. += pain
+
+	. = pain
+	. += is_broken() && 10
+	. += is_dislocated() && 5
 	. += 0.7 * brute_dam 
 	. += 0.8 * burn_dam 
 	. += 0.3 * owner.getToxLoss()
 
-/obj/item/organ/external/proc/add_pain(var/amount)
+/obj/item/organ/external/proc/add_pain(amount)
 	if(!can_feel_pain() || robotic >= ORGAN_ROBOT)
 		pain = 0
 		return

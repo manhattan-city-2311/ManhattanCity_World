@@ -160,13 +160,15 @@
 			return ask_verb
 	return speech_verb
 
-/datum/language/proc/can_speak_special(var/mob/speaker)
+/datum/language/proc/can_speak_special(mob/speaker)
 	. = TRUE
 	if(ishuman(speaker))
 		var/mob/living/carbon/human/H = speaker
 		if(H.species.has_organ[O_VOICE] && !(flags & SIGNLANG) && !(flags & NONVERBAL)) // Does the species need a voicebox? Is the language even spoken?
 			var/obj/item/organ/internal/voicebox/vocal = H.internal_organs_by_name[O_VOICE]
 			if(!vocal || vocal.is_broken() || vocal.mute)
+				return FALSE
+			if(!(src.name in vocal.will_assist_languages))
 				return FALSE
 
 // Language handling.

@@ -154,9 +154,10 @@ var/list/outfits_decls_by_type_
 		return
 	var/obj/item/device/communicator/phone = new
 	if(H.equip_to_slot_or_del(phone, pda_slot))
-		phone.owner = H.real_name
-		phone.occupation = rank
-		phone.name = "[H.real_name]'s communicator"
+		// phone.owner = H.real_name
+		// phone.occupation = rank
+		// phone.name = "[H.real_name]'s communicator"
+		phone.register_device(H.real_name)
 		return phone
 
 /decl/hierarchy/outfit/dd_SortValue()

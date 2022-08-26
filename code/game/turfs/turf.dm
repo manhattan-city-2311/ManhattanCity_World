@@ -20,7 +20,6 @@
 
 	//Properties for both
 	var/temperature = T20C      // Initial turf temperature.
-	var/blocks_air = 0          // Does this turf contain air/let air through?
 
 	// General properties.
 	var/icon_old = null
@@ -43,9 +42,6 @@
 		return !density
 
 	else // Now, doing more detailed checks for air movement and air group formation
-		if(target.blocks_air||blocks_air)
-			return 0
-
 		for(var/obj/obstacle in src)
 			if(!obstacle.CanPass(mover, target, height, air_group))
 				return 0

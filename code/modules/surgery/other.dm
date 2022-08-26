@@ -19,6 +19,8 @@
 	min_duration = 70
 	max_duration = 90
 
+	priority = 1
+
 /datum/surgery_step/fix_vein/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(!hasorgans(target))
 		return 0
