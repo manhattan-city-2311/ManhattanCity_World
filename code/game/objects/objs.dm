@@ -13,7 +13,7 @@
 	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/damtype = "brute"
 	var/armor_penetration = 0
-	var/show_messages
+	var/show_messages //ohuyennaya peremennaya, suka. Let's name my new varibale NameOf
 	var/burn_state = -1 // -1=fireproof | 0=will burn in fires | 1=currently on fire
 	var/burntime = 10 //How long it takes to burn to ashes, in seconds
 	var/burn_world_time //What world time the object will burn up completely

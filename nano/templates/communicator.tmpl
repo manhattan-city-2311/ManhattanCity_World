@@ -11,6 +11,10 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 		background-color: {{:data.wallpaper_color}} !important;
 	}
 	{{/if}}
+	.dialPadKeys:before
+	{
+		content: "";
+	}
 </style>
 {{if data.currentTab == 1}}
 	<style type="text/css">
@@ -84,9 +88,9 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 				{{:helper.link('9', null, {'add_hex' : '9'}, null, 'dialPadKeys')}}
 			</div>
 			<div style="clear: both; padding-top: 1px;">
-				<div class="dialPadKeys">_</div>
+				<div class="dialPadKeys"></div>
 				{{:helper.link('0', null, {'add_hex' : '0'}, null, 'dialPadKeys')}}
-				<div class="dialPadKeys">_</div>
+				<div class="dialPadKeys"></div>	
 			</div>
 			<div style="clear: both; padding-top: 1px;">
 				{{:helper.link('Call', 'phone64', {'dial' : data.targetAddress}, null, 'dialPadButtons')}}
@@ -274,18 +278,7 @@ Used In File(s): code\game\objects\items\devices\communicator\communicator.dm
 			<div style="float: left; width: 180px;">
 				{{:data.owner}}
 			</div>
-			{{:helper.link('Rename', 'pencil', {'rename' : 1})}}
-		</div>
-	</div>
-
-	<div class="item">
-		<div class="itemLabel">
-			Occupation:
-		</div>
-		<div class="itemContent">
-			<div style="float: left; width: 180px;">
-				{{:data.occupation}}
-			</div>
+			{{:helper.link('Rename', 'pencil', {'rename_owner' : 1})}}
 		</div>
 	</div>
 
