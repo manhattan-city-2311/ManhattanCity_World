@@ -400,6 +400,12 @@
 	icon_state = "id"
 	starts_with = list(/obj/item/weapon/card/id = 7)
 
+/obj/item/weapon/storage/box/ids_startech/pmc
+	name = "box of spare Factory PMC IDs"
+	desc = "Has so many IDs."
+	icon_state = "id"
+	starts_with = list(/obj/item/weapon/card/id/engineering/pmc = 14)
+
 /obj/item/weapon/storage/box/seccarts
 	name = "box of spare R.O.B.U.S.T. Cartridges"
 	desc = "A box full of R.O.B.U.S.T. Cartridges, used by Security."

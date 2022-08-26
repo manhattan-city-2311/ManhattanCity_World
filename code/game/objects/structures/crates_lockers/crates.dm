@@ -354,6 +354,11 @@
 	icon_opened = "weaponcrateopen"
 	icon_closed = "weaponcrate"
 
+/obj/structure/closet/crate/secure/weapon/pmc
+	name = "pmc gear crate"
+	desc = "A secure PMC gear crate."
+	req_access = list(access_factory_pmc)
+
 /obj/structure/closet/crate/secure/phoron
 	name = "phoron crate"
 	desc = "A secure phoron crate."

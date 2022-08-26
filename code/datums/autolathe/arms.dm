@@ -38,13 +38,37 @@
 //////////////////
 
 /////// 5mm
-/*
+
 /datum/category_item/crafting/autolathe/arms/pistol_5mm
 	name = "pistol magazine (5mm)"
-	path =/obj/item/ammo_magazine/c5mm
-	category = "Arms and Ammunition"
+	path = /obj/item/ammo_magazine/m5mm
 	hidden = 1
-*/
+
+/datum/category_item/crafting/autolathe/arms/pistol_5mmap
+	name = "pistol magazine (5mmAP)"
+	path = /obj/item/ammo_magazine/m5mm/ap
+	hidden = 1
+
+/datum/category_item/crafting/autolathe/arms/pistol_5mmh
+	name = "pistol magazine (5mmH)"
+	path = /obj/item/ammo_magazine/m5mm/hollow
+	hidden = 1
+
+/datum/category_item/crafting/autolathe/arms/box_5mm
+	name = "ammo box (5mm)"
+	path = /obj/item/ammo_magazine/box/c5mm
+	hidden = 1
+
+/datum/category_item/crafting/autolathe/arms/box_5mmap
+	name = "ammo box (5mm-AP)"
+	path = /obj/item/ammo_magazine/box/c5mm/ap
+	hidden = 1
+
+/datum/category_item/crafting/autolathe/arms/box_5mmh
+	name = "ammo box (5mm-H)"
+	path = /obj/item/ammo_magazine/box/c5mm/hollow
+	hidden = 1
+
 
 /////// .45
 /datum/category_item/crafting/autolathe/arms/pistol_45

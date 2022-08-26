@@ -142,6 +142,67 @@
 
 
 
+/obj/structure/closet/secure_closet/factory_director
+	name = "Factory Director locker"
+	req_access = list(access_factory_director)
+	icon_state = "hopsecure1"
+	icon_closed = "hopsecure"
+	icon_locked = "hopsecure1"
+	icon_opened = "hopsecureopen"
+	icon_broken = "hopsecurebroken"
+	icon_off = "hopsecureoff"
+
+	New()
+		..()
+		new /obj/item/clothing/suit/storage/vest(src)
+		new /obj/item/weapon/storage/box/ids(src)
+		new /obj/item/weapon/storage/box/ids_startech( src )
+		new /obj/item/weapon/storage/box/ids_startech/pmc( src )
+		new /obj/item/weapon/storage/box/ids_startech( src )
+		new /obj/item/weapon/storage/box/ids_startech/pmc( src )
+		new /obj/item/device/flash(src)
+		new /obj/item/clothing/under/dress/dress_hr(src)
+		new /obj/item/clothing/under/lawyer/female(src)
+		new /obj/item/clothing/under/lawyer/black(src)
+		new /obj/item/clothing/under/lawyer/black/skirt(src)
+		new /obj/item/clothing/shoes/brown(src)
+		new /obj/item/clothing/shoes/leather(src)
+		new /obj/item/clothing/glasses/sunglasses(src)
+		return
+
+/obj/structure/closet/secure_closet/pmc_head
+	name = "PMC Chief's locker"
+	req_access = list(access_factory_pmchead)
+	icon_state = "hossecure1"
+	icon_closed = "hossecure"
+	icon_locked = "hossecure1"
+	icon_opened = "hossecureopen"
+	icon_broken = "hossecurebroken"
+	icon_off = "hossecureoff"
+	storage_capacity = 2.5 * MOB_MEDIUM
+
+	New()
+		..()
+		new /obj/item/weapon/storage/backpack/satchel/sec(src)
+		new /obj/item/clothing/head/helmet/police(src)
+		new /obj/item/clothing/head/police/policechiefcap(src)
+		new /obj/item/clothing/head/soft/policechief(src)
+		new /obj/item/clothing/head/beret/policegold(src)
+		new /obj/item/clothing/suit/armor/pcarrier/medium/police(src)
+		new /obj/item/taperoll/police(src)
+		new /obj/item/weapon/shield/riot(src)
+		new /obj/item/clothing/glasses/sunglasses(src)
+		new /obj/item/weapon/reagent_containers/spray/pepper(src)
+		new /obj/item/weapon/storage/belt/security(src)
+		new /obj/item/device/flash(src)
+		new /obj/item/weapon/melee/baton/loaded(src)
+		new /obj/item/clothing/accessory/holster/waist(src)
+		new /obj/item/weapon/melee/telebaton(src)
+		new /obj/item/device/flashlight/maglight(src)
+		return
+
+
+
 /obj/structure/closet/secure_closet/warden
 	name = "prison warden's locker"
 	req_access = list(access_armory)
@@ -245,6 +306,35 @@
 		new /obj/item/device/flashlight/maglight(src)
 		new /obj/item/weapon/gun/energy/taser(src)
 		new /obj/item/device/holowarrant(src)
+		return
+
+/obj/structure/closet/secure_closet/pmc
+	name = "PMC Operative's locker"
+	req_access = list(access_factory_pmc)
+	icon_state = "sec1"
+	icon_closed = "sec"
+	icon_locked = "sec1"
+	icon_opened = "secopen"
+	icon_broken = "secbroken"
+	icon_off = "secoff"
+
+	New()
+		..()
+		new /obj/item/weapon/storage/backpack/satchel/sec(src)
+		new /obj/item/clothing/suit/storage/vest/officer(src)
+		new /obj/item/clothing/head/helmet/combat(src)
+		new /obj/item/clothing/gloves/combat(src)
+		new /obj/item/clothing/shoes/boots/combat(src)
+		new /obj/item/clothing/under/tactical(src)
+		new /obj/item/weapon/storage/belt/security(src)
+		new /obj/item/device/flash(src)
+		new /obj/item/weapon/reagent_containers/spray/pepper(src)
+		new /obj/item/weapon/melee/baton/loaded(src)
+		new /obj/item/clothing/glasses/sunglasses(src)
+		new /obj/item/taperoll/police(src)
+		new /obj/item/device/flashlight/maglight(src)
+		new /obj/item/clothing/accessory/storage/black_vest(src)
+		new /obj/item/clothing/under/rank/security/corp(src)
 		return
 
 /obj/structure/closet/secure_closet/security_empty

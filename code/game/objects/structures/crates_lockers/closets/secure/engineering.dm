@@ -11,12 +11,8 @@
 
 	New()
 		..()
-		if(prob(50))
-			new /obj/item/weapon/storage/backpack/industrial(src)
-		else
-			new /obj/item/weapon/storage/backpack/satchel/eng(src)
-		if(prob(50))
-			new /obj/item/weapon/storage/backpack/dufflebag/eng(src)
+		new /obj/item/weapon/storage/backpack/satchel/eng(src)
+		new /obj/item/weapon/storage/backpack/dufflebag/eng(src)
 		new /obj/item/clothing/accessory/storage/brown_vest(src)
 		new /obj/item/blueprints(src)
 		new /obj/item/clothing/under/rank/chief_engineer(src)
@@ -24,6 +20,7 @@
 		new /obj/item/clothing/head/hardhat/white(src)
 		new /obj/item/clothing/head/welding(src)
 		new /obj/item/clothing/gloves/yellow(src)
+		new /obj/item/clothing/glasses/welding/superior(src)
 		new /obj/item/clothing/shoes/brown(src)
 		new /obj/item/weapon/cartridge/ce(src)
 		new /obj/item/device/radio/headset/heads/ce(src)
@@ -38,7 +35,6 @@
 		new /obj/item/taperoll/engineering(src)
 		new /obj/item/clothing/suit/storage/hooded/wintercoat/engineering(src)
 		new /obj/item/clothing/shoes/boots/winter/engineering(src)
-		new /obj/item/weapon/tank/emergency/oxygen/engi(src)
 
 
 
@@ -113,13 +109,10 @@
 
 	New()
 		..()
-		if(prob(50))
-			new /obj/item/weapon/storage/backpack/industrial(src)
-		else
-			new /obj/item/weapon/storage/backpack/satchel/eng(src)
-		if(prob(50))
-			new /obj/item/weapon/storage/backpack/dufflebag/eng(src)
+		new /obj/item/weapon/storage/backpack/satchel/eng(src)
+		new /obj/item/weapon/storage/backpack/dufflebag/eng(src)
 		new /obj/item/clothing/accessory/storage/brown_vest(src)
+		new /obj/item/weapon/storage/belt/utility/full(src)
 		new /obj/item/weapon/storage/toolbox/mechanical(src)
 		new /obj/item/device/radio/headset/headset_eng(src)
 		new /obj/item/device/radio/headset/headset_eng/alt(src)
@@ -128,9 +121,6 @@
 		new /obj/item/clothing/glasses/meson(src)
 		new /obj/item/weapon/cartridge/engineering(src)
 		new /obj/item/taperoll/engineering(src)
-		new /obj/item/clothing/suit/storage/hooded/wintercoat/engineering(src)
-		new /obj/item/clothing/shoes/boots/winter/engineering(src)
-		new /obj/item/weapon/tank/emergency/oxygen/engi(src)
 
 
 

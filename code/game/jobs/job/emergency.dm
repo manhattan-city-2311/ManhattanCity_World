@@ -131,13 +131,15 @@
 	access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
 			            access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
 			            access_heads, access_construction, access_sec_doors,
-			            access_ce, access_janitor, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload, access_medical, access_medical_equip,
-						access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
+			            access_ce, access_janitor, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload, access_medical,
+						access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_factory_pmc,
+						access_factory_pmchead, access_factory_director)
 	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
 			            access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
 			            access_heads, access_construction, access_sec_doors,
-			            access_ce, access_janitor, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload, access_medical, access_medical_equip,
-						access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
+			            access_ce, access_janitor, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload, access_medical,
+						access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_factory_pmc,
+						access_factory_pmchead, access_factory_director)
 	minimal_player_age = 7
 
 	outfit_type = /decl/hierarchy/outfit/job/engineering/chief_engineer
@@ -145,3 +147,41 @@
 
 /datum/job/factory_chief/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email
+
+/datum/job/factory_pmc
+	title = "Factory PMC"
+	flag = ENGINEER
+	department_flag = ENGSEC
+	faction = "City"
+	department = DEPT_MAINTENANCE
+	total_positions = 0
+	spawn_positions = 0
+	supervisors = "the Factory PMC Chief"
+	selection_color = "#d61919"
+	idtype = /obj/item/weapon/card/id/engineering/pmc
+	wage = 150
+	access = list(access_engine, access_construction, access_atmospherics, access_external_airlocks, access_maint_tunnels, access_external_airlocks, access_factory_pmc, access_cargo)
+	minimal_access = list(access_engine, access_construction, access_atmospherics, access_external_airlocks, access_maint_tunnels, access_external_airlocks, access_factory_pmc, access_cargo)
+	minimum_character_age = 18
+	minimal_player_age = 3
+	outfit_type = /decl/hierarchy/outfit/job/security/officer
+	alt_titles = list("Factory PMC Operative", "PMC Operative")
+
+/datum/job/factory_pmc_head
+	title = "Factory PMC Chief"
+	flag = ENGINEER
+	department_flag = ENGSEC
+	faction = "City"
+	department = DEPT_MAINTENANCE
+	total_positions = 0
+	spawn_positions = 0
+	supervisors = "the Factory PMC Chief"
+	selection_color = "#d61919"
+	idtype = /obj/item/weapon/card/id/engineering/pmc_head
+	wage = 1000
+	access = list(access_engine, access_construction, access_atmospherics, access_external_airlocks, access_maint_tunnels, access_external_airlocks, access_factory_pmc, access_cargo, access_factory_pmchead)
+	minimal_access = list(access_engine, access_construction, access_atmospherics, access_external_airlocks, access_maint_tunnels, access_external_airlocks, access_factory_pmc, access_cargo, access_factory_pmchead)
+	minimum_character_age = 18
+	minimal_player_age = 3
+	outfit_type = /decl/hierarchy/outfit/job/security/hos
+	alt_titles = list("Factory PMC Chief", "PMC Chief")

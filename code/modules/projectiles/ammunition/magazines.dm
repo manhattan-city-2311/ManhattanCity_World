@@ -233,6 +233,15 @@
 	ammo_type = /obj/item/ammo_casing/a5mm/ap
 	max_ammo = 38
 
+/obj/item/ammo_magazine/box/c5mm/hollow
+	name = "ammunition Box (5mm hollow)"
+	icon_state = "5mm_h"
+	origin_tech = list(TECH_COMBAT = 4)
+	matter = list(DEFAULT_WALL_MATERIAL = 900, "copper" = 150)
+	caliber = "5mm"
+	ammo_type = /obj/item/ammo_casing/a5mm/hollow
+	max_ammo = 38
+
 ///////// 9mm /////////
 
 /obj/item/ammo_magazine/m9mm
