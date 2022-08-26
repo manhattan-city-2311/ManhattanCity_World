@@ -49,7 +49,6 @@
 		pref.flavour_texts_robot[module] = null
 
 /datum/category_item/player_setup_item/general/flavor/sanitize_character()
-	return
 
 // Moved from /datum/preferences/proc/copy_to()
 /datum/category_item/player_setup_item/general/flavor/copy_to_mob(var/mob/living/carbon/human/character)
@@ -73,7 +72,7 @@
 		switch(href_list["flavor_text"])
 			if("open")
 			if("general")
-				var/msg = sanitize(input(usr,"Дайте общую характеристику своему характеру. Не включайте вещи, которые незнакомец не узнал бы о вас с первого взгляда. Никаких примечаний OOC — придерживайтесь только физических/слуховых описаний.","Описание персонажа",html_decode(pref.flavor_texts[href_list["flavor_text"]])) as message, extra = 0)
+				var/msg = sanitize(input(usr,"Дайте общую характеристику своему характеру. Не включайте вещи, которые незнакомец не узнал бы о вас с первого взгляда. Никаких примечаний OOC — придерживайтесь только физических/слуховых описаний. Рекомендуется добавить изображение в описание через тег \[img]ссылка на картинку\[/img]. Рекомендованные хостинги imgur.com, user-images.githubusercontent.com (github.com).","Описание персонажа",html_decode(pref.flavor_texts[href_list["flavor_text"]])) as message, extra = 0)
 				if(CanUseTopic(user))
 					pref.flavor_texts[href_list["flavor_text"]] = msg
 			else
@@ -132,9 +131,11 @@
 	HTML += TextPreview(pref.flavor_texts["feet"])
 	HTML += "<br>"
 	HTML += "<hr />"
-	HTML += "<tt>"
-	user << browse(HTML, "window=flavor_text;size=430x300")
-	return
+	HTML += "</tt>"
+	var/datum/browser/popup = new(user, "flavor_changes", name, 430, 360)
+	popup.set_content(HTML)
+	popup.open()
+	// src << browse(HTML, "window=flavor_changes;size=430x300")
 
 /datum/category_item/player_setup_item/general/flavor/proc/SetFlavourTextRobot(mob/user)
 	var/HTML = "<meta charset='UTF-8'><body>"
@@ -149,6 +150,7 @@
 		HTML += TextPreview(pref.flavour_texts_robot[module])
 		HTML += "<br>"
 	HTML += "<hr />"
-	HTML += "<tt>"
-	user << browse(HTML, "window=flavour_text_robot;size=430x300")
-	return
+	HTML += "</tt>"
+	var/datum/browser/popup = new(user, "flavour_text_robot", name, 430, 360)
+	popup.set_content(HTML)
+	popup.open()

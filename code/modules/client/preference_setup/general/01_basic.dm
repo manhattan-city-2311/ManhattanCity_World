@@ -117,7 +117,6 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	character.gender = pref.biological_gender
 	character.identifying_gender = pref.identifying_gender
 
-F
 
 /datum/category_item/player_setup_item/general/basic/content()
 	. = list()

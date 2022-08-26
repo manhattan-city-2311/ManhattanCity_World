@@ -989,4 +989,7 @@
 	HTML += "<hr />"
 	HTML +="<a href='?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
-	src << browse(HTML, "window=flavor_changes;size=430x300")
+	var/datum/browser/popup = new(usr, "flavor_changes", name, 430, 300)
+	popup.set_content(HTML)
+	popup.open()
+	// src << browse(HTML, "window=flavor_changes;size=430x300")
