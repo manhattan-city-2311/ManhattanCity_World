@@ -241,9 +241,9 @@
 			var/name_used = M.GetVoice()
 			var/rendered = null
 			if(speaking) //Language being used
-				rendered = "<span class='game say'>\icon[src] <span class='name'>[name_used]</span> [speaking.format_message(text, verb)]</span>"
+				rendered = "<span class='game say'><b>(PHONE)</b> <span class='name'>[name_used]</span> [speaking.format_message(text, verb)]</span>"
 			else
-				rendered = "<span class='game say'>\icon[src] <span class='name'>[name_used]</span> [verb], <span class='message'>\"[text]\"</span></span>"
+				rendered = "<span class='game say'><b>(PHONE)</b> <span class='name'>[name_used]</span> [verb], <span class='message'>\"[text]\"</span></span>"
 			mob.show_message(rendered, 2)
 
 // Proc: show_message()

@@ -94,3 +94,10 @@
  * Parameters: var/area/area_shuttle
  */
 /hook/sell_shuttle
+
+/**
+ * Save world hook.
+ * Called in persistent_world.dm on save_world.
+ */
+/hook/save_world
+	

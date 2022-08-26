@@ -31,8 +31,8 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 10,"copper" = 5)
 
 	var/video_range = 4
-	var/obj/machinery/camera/communicator/video_source	// Their camera
-	var/obj/machinery/camera/communicator/camera		// Our camera
+	var/tmp/obj/machinery/camera/communicator/video_source	// Their camera
+	var/tmp/obj/machinery/camera/communicator/camera		// Our camera
 
 	var/list/voice_mobs = list()
 	var/list/voice_requests = list()
@@ -45,13 +45,13 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 	var/notehtml = ""
 
 	var/obj/item/weapon/commcard/cartridge = null //current cartridge
-	var/fon = 0 // Internal light
-	var/flum = 4 // Brightness
+	var/flashlight_on = 0 // Internal light
+	var/flashlight_lum = 4 // Brightness
 
-	var/obj/item/weapon/card/id/id = null //add the ID slot
-	var/obj/item/modular_computer/communicator_internal/computer	//the integrated modular computer.
+	var/tmp/obj/item/weapon/card/id/id = null //add the ID slot
+	var/tmp/obj/item/modular_computer/communicator_internal/computer	//the integrated modular computer.
 
-	var/list/modules = list(
+	var/static/list/modules = list(
 			list("module" = "Phone", "icon" = "phone64", "number" = PHONTAB),
 			list("module" = "Contacts", "icon" = "person64", "number" = CONTTAB),
 			list("module" = "Messaging", "icon" = "comment64", "number" = MESSTAB),
@@ -62,54 +62,84 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 //			list("module" = "Emergency Hotline", "icon" = "service64", "number" = HOTLINETAB)
 		)	//list("module" = "Name of Module", "icon" = "icon name64", "number" = "what tab is the module")
 
-	var/selected_tab = HOMETAB
+	var/tmp/selected_tab = HOMETAB
 	var/owner = ""
-	var/occupation = ""
-	var/alert_called = 0
-	var/obj/machinery/exonet_node/node = null //Reference to the Exonet node, to avoid having to look it up so often.
+	// var/occupation = ""
+	var/tmp/alert_called = 0
+	var/tmp/obj/machinery/exonet_node/node = null //Reference to the Exonet node, to avoid having to look it up so often.
 
-	var/target_address = ""
-	var/target_address_name = ""
+	var/tmp/target_address = ""
+	var/tmp/target_address_name = ""
 	var/network_visibility = 1
 	var/ringer = 1
 	var/list/contacts = list() // list("number" = 0, "name" = "A")
-	var/list/known_devices = list()
-	var/datum/exonet_protocol/exonet = null
-	var/list/communicating = list()
-	var/update_ticks = 0
-	var/selected_wallpaper = "blade.png"
-	var/wallpaper_color = "#040603"
-	var/static/list/wallpapers = list(
-		list("file" = "blade.png", "name" = "Desert City", "color" = "#040603"),
-		list("file" = "shade.png", "name" = "Shade", "color" = "#000000")
-	) //filename:CustomName_for_UI
+	var/tmp/list/known_devices = list()
+	var/tmp/datum/exonet_protocol/exonet = null
+	var/tmp/list/communicating = list()
+	var/tmp/update_ticks = 0
+	var/panel_open
+	var/init_number = null// No! Memes are prohibitten! var/init_numba = null
 
+/obj/item/device/communicator/vars_to_save()
+	return ..() + list("init_number", "owner", "ringer", "network_visibility", "panel_open", "contacts", "selected_wallpaper", "note", "notehtml")
+
+/obj/item/device/communicator/on_persistence_save()
+	init_number = exonet?.address
+	. = ..()
+
+/obj/item/device/communicator/on_persistence_load()
+	. = ..()
+	change_wallpaper(selected_wallpaper)
+	if(!exonet)
+		initialize_exonet()
+	else
+		existing_phone_numbers -= exonet.address
+		exonet.address = init_number
+
+#define WALLPAPER_COMM(name, file_name, color) list("file" = file_name, "name" = name, "color" = color)
+/obj/item/device/communicator
+	var/selected_wallpaper = "blade.png"
+	var/tmp/wallpaper_color
+	var/static/list/wallpapers = list(
+		WALLPAPER_COMM("Desert City", "blade.png", "#040603"),
+		WALLPAPER_COMM("Cloudy", "cloudy.png", "#090013"),
+		WALLPAPER_COMM("Grid", "grid.png", "#040603"),
+		WALLPAPER_COMM("Heavens", "heavens.png", "#6A252C"),
+		WALLPAPER_COMM("Hermit", "hermit.png", "#96A45F"),
+		WALLPAPER_COMM("Night", "night.png", "#41269B"),
+		WALLPAPER_COMM("Sweet Home", "home.png", "#000235"),
+		WALLPAPER_COMM("Shadowfell", "shadowfell.png", "#000000"),
+		WALLPAPER_COMM("Terra", "terra.png", "#01066A"),
+		WALLPAPER_COMM("Shade", "shade.png", "#040603")
+	) //filename:CustomName_for_UI
+/obj/item/device/communicator/proc/change_wallpaper(value)
+	for(var/i in wallpapers)
+		if(wallpapers["file"] == value)
+			wallpaper_color = wallpapers["color"]
+			break
 // Proc: New()
 // Parameters: None
 // Description: Adds the new communicator to the global list of all communicators, sorts the list, obtains a reference to the Exonet node, then tries to
 //				assign the device to the holder's name automatically in a spectacularly shitty way.
 /obj/item/device/communicator/New()
 	..()
+	change_wallpaper(selected_wallpaper)
 	all_communicators += src
 	all_communicators = sortAtom(all_communicators)
 	node = get_exonet_node()
 	processing_objects |= src
-	camera = new(src)
+	camera = new()
 	camera.name = "[src] #[rand(100,999)]"
 	camera.c_tag = camera.name
-	new /obj/item/weapon/pen(src)
-	computer = new(src)
+	computer = new()
 	//This is a pretty terrible way of doing this.
-	spawn(5 SECONDS) //Wait for our mob to finish spawning.
-		if(ismob(loc))
-			register_device(loc.name)
-			initialize_exonet(loc)
-		else if(istype(loc, /obj/item/weapon/storage))
-			var/obj/item/weapon/storage/S = loc
-			if(ismob(S.loc))
-				register_device(S.loc.name)
-				initialize_exonet(S.loc)
-
+	if(ismob(loc))
+		register_device(loc.name)
+	else if(istype(loc, /obj/item/weapon/storage))
+		var/obj/item/weapon/storage/S = loc
+		if(ismob(S.loc))
+			register_device(S.loc.name)
+	initialize_exonet()
 // Proc: examine()
 // Parameters: user - the user doing the examining
 // Description: Allows the user to click a link when examining to look at video if one is going.
@@ -119,16 +149,19 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 		to_chat(user, "<span class='notice'>It looks like it's on a video call: <a href='?src=\ref[src];watchvideo=1'>\[view\]</a></span>")
 
 // Proc: initialize_exonet()
-// Parameters: 1 (user - the person the communicator belongs to)
 // Description: Sets up the exonet datum, gives the device an address, and then gets a node reference.  Afterwards, populates the device
 //				list.
-/obj/item/device/communicator/proc/initialize_exonet(mob/user)
-	if(!user || !istype(user, /mob/living))
-		return
+/obj/item/device/communicator/proc/initialize_exonet()
 	if(!exonet)
 		exonet = new/datum/exonet_protocol/phone(src)
 	if(!exonet.address)
-		exonet.make_address("communicator-[user.client]-[user.name]")
+		if(!init_number)
+			if(owner)
+				exonet.make_address("communicator-[owner]")
+			else
+				exonet.make_address("communicator-\ref[src]")
+		else
+			exonet.address = init_number
 	if(!node)
 		node = get_exonet_node()
 	populate_known_devices()
@@ -170,13 +203,22 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 // Parameters: 1 (hex - a single hexadecimal character)
 // Description: Called when someone is manually dialing with nanoUI.  Adds colons when appropiate.
 /obj/item/device/communicator/proc/add_to_EPv2(var/hex)
-	var/length = length(target_address)
-	if(length >= 24)
+	var/l = length(target_address)
+	if(l >= 11)
 		return
-	if(length == 4 || length == 9 || length == 14 || length == 19 || length == 24 || length == 29)
-		target_address += ":[hex]"
-		return
+	// Fucking hardcode, i hate le antichrist!!!!!!!!!!!!!!! ~ _Elar_
+	// if(length == 4 || length == 9 || length == 14 || length == 19 || length == 24 || length == 29)
+	// 	target_address += ":[hex]"
+	// 	return
+
+	// // I love god ~ _Elar_
+	// if((l + 1) % 5 == 0)
+	// 	target_address += ":"
+	if((l+1) % 4 == 0)
+		target_address += "-"
 	target_address += hex
+
+
 
 // Proc: populate_known_devices()
 // Parameters: 1 (user - the person using the device)
@@ -184,17 +226,17 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 /obj/item/device/communicator/proc/populate_known_devices(mob/user)
 	if(!exonet)
 		exonet = new(src)
-	src.known_devices.Cut()
+	known_devices.Cut()
 	if(!get_connection_to_tcomms()) //If the network's down, we can't see anything.
 		return
 	for(var/obj/item/device/communicator/comm in all_communicators)
-		if(!comm || !comm.exonet || !comm.exonet.address || comm.exonet.address == src.exonet.address) //Don't add addressless devices, and don't add ourselves.
+		if(!comm || !comm.exonet || !comm.exonet.address || comm.exonet.address == exonet.address) //Don't add addressless devices, and don't add ourselves.
 			continue
-		src.known_devices |= comm
+		known_devices |= comm
 	for(var/mob/observer/dead/O in dead_mob_list)
 		if(!O.client || O.client.prefs.communicator_visibility == 0)
 			continue
-		src.known_devices |= O
+		known_devices |= O
 
 // Proc: get_connection_to_tcomms()
 // Parameters: None
@@ -230,31 +272,37 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 // Proc: attackby()
 // Parameters: 2 (C - what is used on the communicator. user - the mob that has the communicator)
 // Description: When an ID is swiped on the communicator, the communicator reads the job and checks it against the Owner name, if success, the occupation is added.
-/obj/item/device/communicator/attackby(obj/item/C as obj, mob/user as mob)
+/obj/item/device/communicator/attackby(obj/item/weapon/C as obj, mob/user as mob)
 	..()
-	if(istype(C, /obj/item/weapon/card/id))
+	if(isscrewdriver(C))
+		panel_open = !panel_open
+		user.visible_message(SPAN_WARNING("[user] screws the [src]'s panel [panel_open ? "open" : "closed"]!"),
+		SPAN_NOTICE("You screw the [src]'s panel [panel_open ? "open" : "closed"]."))
+		update_icon()
+		playsound(get_turf(src), C.usesound, 50, 1)
+
+	else if(istype(C, /obj/item/weapon/card/id))
 		var/obj/item/weapon/card/id/idcard = C
-		if(!idcard.registered_name || !idcard.assignment)
-			to_chat(user, "<span class='notice'>\The [src] rejects the ID.</span>")
 		if(!owner)
-			owner = idcard.registered_name
-			to_chat(user, "<span class='notice'>Occupation updated.</span>")
-		else
-			if(((src in user.contents) && (C in user.contents)) || (istype(loc, /turf) && in_range(src, user) && (C in user.contents)) )
-				if(id_check(user, 2))
-					to_chat(user, "<span class='notice'>You put the ID into \the [src]'s slot.</span>")
-					updateSelfDialog()//Update self dialog on success.
-			return
+			if(panel_open && !owner && idcard.registered_name)
+				register_device(idcard.registered_name)
+				to_chat(user, SPAN_NOTICE("Occupation updated."))
+			else
+				to_chat(user, SPAN_NOTICE("\The [src] rejects the ID."))
+		else if(((src in user.contents) && (C in user.contents)) || (istype(loc, /turf) && in_range(src, user) && (C in user.contents)) )
+			if(id_check(user, 2))
+				to_chat(user, SPAN_NOTICE("You put the ID into \the [src]'s slot."))
+				updateSelfDialog()//Update self dialog on success.
 		updateSelfDialog()
 
 	else if(istype(C, /obj/item/weapon/pen))
 		var/obj/item/weapon/pen/O = locate() in src
 		if(O)
-			to_chat(user, "<span class='notice'>There is already a pen in \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("There is already a pen in \the [src]."))
 		else
 			user.drop_item()
-			C.loc = src
-			to_chat(user, "<span class='notice'>You slot \the [C] into \the [src].</span>")
+			C.forceMove(src)
+			to_chat(user, SPAN_NOTICE("You slot \the [C] into \the [src]."))
 
 	else if(istype(C, /obj/item/weapon/commcard) && !cartridge)
 		cartridge = C
@@ -270,7 +318,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 // Description: Makes an exonet datum if one does not exist, allocates an address for it, maintains the lists of all devies, clears the alert icon, and
 //				finally makes NanoUI appear.
 /obj/item/device/communicator/attack_self(mob/user)
-	initialize_exonet(user)
+	initialize_exonet()
 	alert_called = 0
 	update_icon()
 	ui_interact(user)
@@ -329,7 +377,6 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 		return
 	owner = new_name
 
-	name = "[new_name]'s [initial(name)]"
 	if(camera)
 		camera.name = name
 		camera.c_tag = name
