@@ -299,7 +299,7 @@ obj/item/weapon/gun/projectile/revolver/detective45/verb/rename_gun()
 
 /obj/item/weapon/gun/projectile/revolver/saitako
 	name = "revolver 'SAITAKO'"
-	icon = 'icons/manhattan/aaaaa.dmi'
+	icon = 'icons/obj/manhattan/aaaaa.dmi'
 	icon_state = "revolver"
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)

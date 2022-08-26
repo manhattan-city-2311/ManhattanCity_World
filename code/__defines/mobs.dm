@@ -411,7 +411,7 @@
 #define EXAMINE_SKIPLEGS			0x0080
 #define EXAMINE_SKIPFEET			0x0100
 
-#define RUN_DELAY   0
+#define RUN_DELAY   1
 #define WALK_DELAY  3
 
 #define M_RUN "run"

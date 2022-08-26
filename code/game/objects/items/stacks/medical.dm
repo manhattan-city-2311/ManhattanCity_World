@@ -128,7 +128,7 @@
 				if(used >= available)
 					to_chat(user, "<span class='warning'>You run out of [src]!</span>")
 					break
-				
+
 				if (W.current_stage <= W.max_bleeding_stage)
 					user.visible_message("<span class='notice'>\The [user] bandages \a [W.desc] on [M]'s [affecting.name].</span>", \
 					                              "<span class='notice'>You bandage \a [W.desc] on [M]'s [affecting.name].</span>" )
@@ -482,7 +482,7 @@
 
 	affecting.update_damages()
 	affecting.update_icon()
-	owner.UpdateDamageIcon(1)
+	//owner.UpdateDamageIcon(1)
 	use(1)
 
 /obj/item/stack/medical/harness
