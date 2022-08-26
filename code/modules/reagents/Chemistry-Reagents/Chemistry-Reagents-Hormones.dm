@@ -9,7 +9,7 @@
 	return
 /datum/reagent/hormone/adrenaline
 	name = "Adrenaline"
-	id = RI_ADRENALINE
+	id = CI_ADRENALINE
 	description = "Adrenaline is a hormone used as emergency drug to quickly increase BP by increasing HR and CO."
 	overdose = 10
 
@@ -18,7 +18,7 @@
 
 /datum/reagent/hormone/noradrenaline
 	name = "Noradrenaline"
-	id = RI_NORADRENALINE
+	id = CI_NORADRENALINE
 	description = "Noradrenaline is a hormone used as emergency drug in shock states to increase BP by vasoconstricting."
 	overdose = 10
 
@@ -27,7 +27,7 @@
 
 /datum/reagent/hormone/dopamine
 	name = "Dopamine"
-	id = RI_DOPAMINE
+	id = CI_DOPAMINE
 	description = "Dopamine is a hormone used to treat hypotension by vasoconstricting. Can cause arrythmia."
 
 /datum/reagent/hormone/dopamine/affect_blood(mob/living/carbon/human/M, alien, removed)
@@ -37,75 +37,72 @@
 		heart.make_common_arrythmia(1)
 
 // METABOLISM
+
 /datum/reagent/hormone/glucose
 	name = "Glucose"
-	id = "glucose"
-	metabolism = 0 // reduced only by insulin.
+	id = CI_GLUCOSE
+	metabolism = 0 // reduced just by insulin.
 
 // 1u insulin produce 0.1u glucose decrease.
 
 /datum/reagent/hormone/insulin
 	name = "Insulin"
-	id = "insulin"
+	id = CI_INSULIN
 	metabolism = 0.1
 	overdose = 1
 	price_tag = 12
 
 /datum/reagent/hormone/insulin/affect_blood(mob/living/carbon/human/M, alien, removed)
-	var/amount = min(M.bloodstr.get_reagent_amount("glucose"), 0.1)
-	M.bloodstr.remove_reagent("glucose", amount)
-	M.bloodstr.remove_reagent("potassium_hormone", max(amount * 10, 0.1))
+	var/amount = min(M.bloodstr.get_reagent_amount(CI_GLUCOSE), 0.1)
+	M.bloodstr.remove_reagent(CI_GLUCOSE, amount)
+	M.bloodstr.remove_reagent(CI_POTASSIUM_HORMONE, max(amount * 10, 0.1))
 	volume = max(0, amount * 10)
 	M.adjustToxLoss(-amount * 15)
 
 // 1u glucagone produces 0.1u glucose increase.
 /datum/reagent/hormone/glucagone
 	name = "Glucagone"
-	id = "glucagone"
+	id = CI_GLUCAGONE
 	price_tag = 1.5
 	metabolism = 0.8
-
-/datum/reagent/hormone/glucagone/affect_blood(mob/living/carbon/M, alien, removed)
-	M.reagents.remove_reagent("glycogen", removed * 0.2)
-	M.reagents.add_reagent("glucose", removed * 0.1)
-
-// 1ml glycogen equals 0.5ml glucose
-/datum/reagent/hormone/glycogen
-	name = "Glycogen"
-	id = "glycogen"
-	metabolism = 0 // reduced only by glucagone.
 
 // MARKERS
 
 /datum/reagent/hormone/marker/troponin_t
 	name = "Troponin-T"
-	id = "troponint"
+	id = CI_TROPONIN_T
+
 /datum/reagent/hormone/marker/bilirubine
 	name = "Bilirubine"
-	id = "bilirubine"
+	id = CI_BILIRUBINE
+
 /datum/reagent/hormone/marker/ast
 	name = "AST"
-	id = "ast"
+	id = CI_AST
+
+
 /datum/reagent/hormone/marker/alt
 	name = "ALT"
-	id = "alt"
+	id = CI_ALT
+
 /datum/reagent/hormone/marker/crp
 	name = "CRP"
-	id = "crp"
+	id = CI_CRP
 
 
 // Ions.
 // Wer convert normal reagents to hormone variant(to ions of reagent)
 
+
 /datum/reagent/hormone/potassium
 	name = "Potassium"
-	id = "potassium_hormone"
+	id = CI_POTASSIUM_HORMONE
 
 /datum/reagent/hormone/potassium/affect_blood(mob/living/carbon/human/H, alien, removed)
 	var/obj/item/organ/internal/heart/heart = H.internal_organs_by_name[O_HEART]
 	var/amount = volume * 0.99
-	amount -= H.bloodstr.get_reagent_amount("adrenaline") * 0.7
-	amount -= H.bloodstr.get_reagent_amount("noradrenaline") * 0.5
+	amount -= H.bloodstr.get_reagent_amount(CI_ADRENALINE) * 0.7
+	amount -= H.bloodstr.get_reagent_amount(CI_NORADRENALINE) * 0.5
 
 	if(amount < POTASSIUM_LEVEL_HBAD)
 		return

@@ -66,7 +66,7 @@
 		heart.get_ow_arrythmia()?.weak(heart)
 	else if(!pads.attached.is_asystole())
 		heart.make_common_arrythmia(1)
-	heart.pulse_modificators["defibrillation"] = rand(80, 120)
+	heart.cpr += rand(80, 120)
 	shock_charged = FALSE
 	log_and_message_admins("used \a [src] to electrocute [key_name(pads.attached)].")
 

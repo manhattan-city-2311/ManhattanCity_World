@@ -1,5 +1,6 @@
 /atom
 	layer = TURF_LAYER //This was here when I got here. Why though?
+	appearance_flags = TILE_MOVER
 	var/level = 2
 	var/flags = 0
 	var/list/fingerprints

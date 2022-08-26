@@ -701,7 +701,7 @@
 			if(statpanel("Status"))
 				stat("Location:", "([x], [y], [z]) [loc]")
 				stat("CPU:", "[world.cpu]")
-				stat("Map CPU:", "[world.map_cpu]")
+				stat("Map CPU, MPC:", "[world.map_cpu] [world.map_cpu / GLOB.clients.len]")
 				stat("Instances:","[world.contents.len]")
 
 			if(statpanel("Processes"))
@@ -710,7 +710,7 @@
 
 			if(statpanel("MC"))
 				stat("CPU:","[world.cpu]")
-				stat("Map CPU:", "[world.map_cpu]")
+				stat("Map CPU, MPC:", "[world.map_cpu] [world.map_cpu / GLOB.clients.len]")
 				stat("Instances:","[world.contents.len]")
 				stat(null)
 				if(GLOB)

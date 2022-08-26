@@ -9,6 +9,8 @@ SUBSYSTEM_DEF(persistent_world)
 	// Probably very bad idea, but other variants are far worse.
 	var/loading
 
+	var/skip_saving = FALSE
+
 	var/list/obj/queue = list()
 
 /datum/controller/subsystem/persistent_world/stat_entry()
@@ -52,6 +54,10 @@ SUBSYSTEM_DEF(persistent_world)
 	SSpersistent_world.queue -= src
 
 /datum/controller/subsystem/persistent_world/proc/save_map()
+	if(skip_saving)
+		to_world("Map saving skipped.")
+		return
+
 	start = world.timeofday
 	fdel("data/world.sav")
 	var/savefile/S = new("data/world.sav")
@@ -64,7 +70,7 @@ SUBSYSTEM_DEF(persistent_world)
 	//var/list/turfs_data = list()
 	for(var/obj/O as anything in current_run)
 		++i
-		if(!QDELETED(O) && isturf(O.loc))
+		if(isturf(O.loc))
 			data += full_item_save(O)
 			CHECK_TICK_HIGH_PRIORITY
 

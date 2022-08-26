@@ -16,7 +16,7 @@
 	// initial rush.
 	if(H.chem_doses[type] < 5)
 		H.make_heart_rate(-heart.pulse - 150, "adenosine_av_blockage")
-		heart.pulse = 0
+		heart.change_heart_rate(0)
 
 	// TODO: rewrite this more compact
 	if(ARRYTHMIA_AFIB in heart.arrythmias)

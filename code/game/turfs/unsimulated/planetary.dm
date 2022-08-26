@@ -9,7 +9,6 @@
 	opacity = 1
 	density = 1
 	alpha = 0
-	blocks_air = 0
 
 
 /turf/unsimulated/wall/planetary/initialize()

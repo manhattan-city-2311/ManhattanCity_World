@@ -44,7 +44,7 @@
 // Thus, unlike viewing hearing is communicative. I.e. if Mob A can hear Mob B then Mob B can also hear Mob A.
 
 // Gets the hosts of all the virtual mobs that can hear the given virtual mob
-/proc/all_hearers(var/atom/movable/heard_vmob, var/range = world.view)
+/proc/all_hearers(atom/movable/heard_vmob, range = world.view)
 	. = list()
 
 	for(var/mob/observer/virtual/v_mob in hearers(range, heard_vmob))

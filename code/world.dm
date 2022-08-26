@@ -572,16 +572,13 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	s += "Sex, drugs and permanent death. <b>Author's storyline.</b>";
 
-	s += "(<a href=\"https://discord.gg/4KUpvnJ\">" //Change this to wherever you want the hub to link to.
+	s += "(<a href=\"https://discord.gg/PK7cRuSQmM\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
 	s += "DISCORD"
 	s += "</a>"
 	s += ")"
 
 	var/list/features = list()
-	if(SSelections && SSelections.current_president)
-		features += "<br><b>Current President:</b> [SSelections.current_president.name]"
-
 	if(ticker)
 		if(master_mode)
 			features += master_mode

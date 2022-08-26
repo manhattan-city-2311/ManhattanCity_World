@@ -296,3 +296,13 @@ obj/item/weapon/gun/projectile/revolver/detective45/verb/rename_gun()
 /obj/item/weapon/gun/projectile/revolver/president/proc/shoot_self(mob/living/carbon/human/user, target_zone = BP_HEAD)
 	user.apply_damage(300, BRUTE, target_zone)
 	user.visible_message("<span class='danger'>[user.name] fires [src] at their head!</span>", "<span class='userdanger'>You fire [src] at your head!</span>", "<span class='italics'>You hear a gunshot!</span>")
+
+/obj/item/weapon/gun/projectile/revolver/saitako
+	name = "revolver 'SAITAKO'"
+	icon = 'icons/manhattan/aaaaa.dmi'
+	icon_state = "revolver"
+	caliber = ".45"
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
+	fire_sound = 'sound/weapons/gunshot_heavy.ogg'
+	ammo_type = /obj/item/ammo_casing/a45r
+	max_shells = 7

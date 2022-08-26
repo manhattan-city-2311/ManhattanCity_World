@@ -26,14 +26,14 @@
 	var/tmp/cur_sound
 	var/tmp/datum/sound_token/sound_token
 
+	needs_processing = TRUE
+
 /obj/item/vehicle_part/engine/fail()
 	..()
 	vehicle.active = FALSE
-	needs_processing = FALSE
 
 /obj/item/vehicle_part/engine/proc/start()
 	if(prob(integrity))
-		needs_processing = TRUE
 		playsound(vehicle, start_sound, 150, 1, 5)
 		spawn(15)
 			playsound(vehicle, 'sound/vehicles/modern/zb_fb_med.ogg', 7)
@@ -42,7 +42,6 @@
 		playsound(vehicle, failstart_sound, 150, 1, 5)
 
 /obj/item/vehicle_part/engine/proc/stop()
-	needs_processing = FALSE
 	vehicle.active = FALSE
 	playsound(vehicle, stop_sound, 150, 1, 5)
 	rpm = 0

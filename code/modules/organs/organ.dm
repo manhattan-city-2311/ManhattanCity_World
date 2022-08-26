@@ -131,7 +131,7 @@ var/list/organ_cache = list()
 		//** Handle antibiotics and curing infections
 		handle_antibiotics()
 		handle_rejection()
-		//handle_germ_effects()
+		handle_germ_effects()
 
 	//check if we've hit max_damage
 	if(damage >= max_damage)
@@ -183,11 +183,11 @@ var/list/organ_cache = list()
 			if(owner.blood_incompatible(dna.b_type, species))
 				rejecting = 1
 		else
-			rejecting++ //Rejection severity increases over time.
+			++rejecting //Rejection severity increases over time.
 			if(rejecting % 10 == 0) //Only fire every ten rejection ticks.
 				switch(rejecting)
 					if(1 to 50)
-						germ_level++
+						++germ_level
 					if(51 to 200)
 						germ_level += rand(1,2)
 					if(201 to 500)

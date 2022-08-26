@@ -46,7 +46,7 @@
 "T" = (/obj/structure/bed/roller/adv,/turf/simulated/floor/tiled/dark,/area/aisat)
 "U" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/paper_bin,/turf/simulated/floor/tiled/dark,/area/aisat)
 "V" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/pen/red,/turf/simulated/floor/tiled/dark,/area/aisat)
-"W" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/vending/medical/hospital/chem,/turf/simulated/floor/tiled/dark,/area/aisat)
+"X" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/card/id/security/detective,/turf/simulated/floor/tiled/dark,/area/aisat)
 
 (1,1,1) = {"
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -64,11 +64,11 @@ bnEnnnnnnchklmhnhhooohnnnnnnnHnb
 bnEnnnnnnhhqrshthhooohnnnnnnnHnb
 bnEnnnnnnhhhhhhnhhooohnnnnnnnHnb
 bnEnnnnnnhhhNhhnhhhhhhnnnnnnnHnb
-bnEnnnnnnhhORRQvhhhhhhnnnnnnnHnb
+bnEnnnnnnhhORXQvhhhhhhnnnnnnnHnb
 bnEnnnnnnwnnnnxjznnnnpnnnnnnnHnb
 bnEnnnnnnhhhhhBCDhhhhhnnnnnnnHnb
 bnEnnnnnnUhFFFhnhhPRShnnnnnnnHnb
-bnEnnnnnnVhFFFhGhhhThWnnnnnnnHnb
+bnEnnnnnnVhFFFhGhhhThhnnnnnnnHnb
 bnEnnnnnnRhFFFhnhhhhhhnnnnnnnHnb
 bnEnnnnnnhhhhhhJhhhhhhnnnnnnnHnb
 bnEnnnnnnhhhKhhnhhhhhhnnnnnnnHnb

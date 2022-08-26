@@ -121,7 +121,6 @@
 	icon_state = "light"
 	opacity = 1
 	density = 1
-	blocks_air = 1
 
 	var/base_state = "light" //The base iconstate to base sprites on
 	var/hard_corner = 0 //Forces hard corners (as opposed to diagonals)

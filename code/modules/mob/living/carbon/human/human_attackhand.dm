@@ -100,7 +100,7 @@
 					cpr_time = 1
 
 				if(!cpr_check(H))
-					return				
+					return
 
 				var/acls_quality = M.get_skill(SKILL_MEDICAL)
 				if(!isnum(acls_quality))
@@ -331,6 +331,8 @@
 			// Apply additional unarmed effects.
 			attack.apply_effects(H, src, armour, rand_damage, hit_zone)
 
+			handle_damage_stun(real_damage, armour + soaked, hit_zone)
+
 			// Finally, apply damage to target
 			apply_damage(real_damage, hit_dam_type, hit_zone, armour, soaked, sharp=attack.sharp, edge=attack.edge)
 
@@ -360,19 +362,21 @@
 				visible_message("<span class='warning'>[M] has weakly pushed [src]!</span>")
 				return
 
-			var/randn = rand(1, 100)
+			var/randn = rand(1, 40)
 			last_push_time = world.time
-			if(!(species.flags & NO_SLIP) && randn <= 25)
-				var/armor_check = run_armor_check(affecting, "melee")
-				apply_effect(3, WEAKEN, armor_check)
+			var/armour = run_armor_check(affecting, "melee")
+			var/soaked = get_armor_soak(affecting, "melee")
+			handle_damage_stun(randn * 0.25, armour + soaked, affecting)
+
+			if(!(species.flags & NO_SLIP) && randn <= 10)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-				if(armor_check < 60)
+				if((armour + soaked) < 60)
 					visible_message("<span class='danger'>[M] has pushed [src]!</span>")
 				else
 					visible_message("<span class='warning'>[M] attempted to push [src]!</span>")
 				return
 
-			if(randn <= 60)
+			if(randn <= 30)
 				//See about breaking grips or pulls
 				if(break_all_grabs(M))
 					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)

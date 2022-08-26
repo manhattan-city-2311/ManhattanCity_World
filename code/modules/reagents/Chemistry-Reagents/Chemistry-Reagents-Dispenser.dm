@@ -245,7 +245,6 @@
 	reagent_state = GAS
 	color = "#808080"
 
-#define CI_OXYGEN "oxygen"
 /datum/reagent/oxygen
 	name = "Oxygen"
 	id = CI_OXYGEN
@@ -253,8 +252,6 @@
 	taste_mult = 0
 	reagent_state = GAS
 	color = "#808080"
-
-#define CI_CO2 "co2"
 /datum/reagent/carbon_dioxide
 	name = "CO2"
 	id = CI_CO2

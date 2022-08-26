@@ -1017,13 +1017,13 @@
 		return	//godmode
 	if(!can_feel_pain())
 		return
+	if(stat == DEAD)
+		shock_stage = 0
+		return
 
 	shock_stage = min(shock_stage, SHOCK_STAGE_MAX)
 	shock_stage = max(shock_stage - shock_decrease_coeff * shock_stage , 0)
 	shock_stage = lerp(shock_stage, total_pain, 0.7)
-
-	if(stat)
-		return 0
 
 	var/font_size
 	var/message
@@ -1062,8 +1062,8 @@
 			message = pick(SHOCK_PAIN_MESSAGES_SEVERE)
 			if((life_tick % SHOCK_STAGE_STUN) == 0)
 				Weaken(20)
-			if(prob(7))
-				Stun(rand(10, 15))
+			if(prob(4))
+				Stun(rand(5, 10))
 	
 			font_size = 3
 			emote_pick = pick("groan", "cry", "scream")
@@ -1074,8 +1074,8 @@
 			if((life_tick % SHOCK_STAGE_STUN) == 0)
 				Weaken(20)
 
-			if(prob(7))
-				Stun(rand(10, 15))
+			if(prob(4))
+				Stun(rand(7, 12))
 
 			if(prob(1))
 				emote("collapse")
@@ -1286,9 +1286,13 @@
 
 	losebreath = 0
 
+	bloodstr.add_reagent(CI_GLUCOSE, GLUCOSE_LEVEL_NORMAL)
+
+	co2 = 0
+	oxy = OXYGEN_LEVEL_NORMAL //* k
+
 	. = ..()
-	bloodstr.add_reagent("glucose", GLUCOSE_LEVEL_NORMAL)
-	bloodstr.add_reagent("glycogen", GLYCOGEN_LEVEL_NORMAL)
+
 
 /mob/living/carbon/human/proc/handle_defib_timer()
 	if(!should_have_organ(O_BRAIN))

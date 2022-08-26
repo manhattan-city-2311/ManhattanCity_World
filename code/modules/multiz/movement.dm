@@ -316,6 +316,9 @@
 	if(landing.CheckFall(src))
 		return landing
 
+/mob/observer/dead/find_fall_target(turf/oldloc, turf/landing)
+	return
+
 /mob/living/carbon/human/find_fall_target(var/turf/landing)
 	if(species)
 		var/atom/A = species.find_fall_target_special(src, landing)

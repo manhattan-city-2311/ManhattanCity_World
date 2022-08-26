@@ -88,14 +88,42 @@
 	var/falloff = 3 //How much speed a bullet loses per second
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
-/obj/item/projectile/proc/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
-	if(blocked >= 100)		return 0//Full block
-	if(!isliving(target))	return 0
+/obj/item/projectile/proc/on_hit(atom/target, blocked = 0, def_zone = null)
+	if(blocked >= 100)
+		return 0//Full block
+	if(!isliving(target))
+		return 0
 //	if(isanimal(target))	return 0
 	var/mob/living/L = target
-	L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, blocked, incendiary, flammability) // add in AGONY!
+	L.apply_effects(0, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, 0, blocked, incendiary, flammability)
+	L.handle_damage_stun(damage, blocked, def_zone)
+	
+	var/c = L.stun_effect_act(stun, agony, def_zone, src) ? 2 : 1
+
+	animate(L, pixel_x = -c, time = 1, flags = ANIMATION_RELATIVE)
+	animate(pixel_x = 2 * c, time = 1, flags = ANIMATION_RELATIVE)
+	animate(pixel_x = -c, time = 1, flags = ANIMATION_RELATIVE)
+
+
 	if(modifier_type_to_apply)
 		L.add_modifier(modifier_type_to_apply, modifier_duration)
+
+	if(damage && damage_type == BRUTE)
+		var/turf/T = get_turf(target)
+		var/splatter_dir
+		if(prob(50) && starting)
+			T = get_step(T, splatter_dir)
+			splatter_dir = get_dir(starting, T)
+			if(isalien(L))
+				new /obj/effect/overlay/temp/dir_setting/bloodsplatter/xenosplatter(T, splatter_dir)
+			else
+				var/blood_color = "#C80000"
+				if(ishuman(target))
+					var/mob/living/carbon/human/H = target
+					blood_color = H.species.blood_color
+				new /obj/effect/overlay/temp/dir_setting/bloodsplatter(T, splatter_dir, blood_color)
+			T.add_blood(L)
+
 	return 1
 
 //called when the projectile stops flying because it collided with something
