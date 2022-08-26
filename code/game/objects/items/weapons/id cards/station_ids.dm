@@ -360,6 +360,22 @@
 	assignment = "Engineer"
 	rank = "Engineer"
 	job_access_type = /datum/job/engineer
+
+/obj/item/weapon/card/id/engineering/pmc
+	assignment = "PMC Operative"
+	rank = "PMC Operative"
+	job_access_type = /datum/job/factory_pmc
+	icon_state = "sec"
+	primary_color = rgb(201, 32, 10)
+	secondary_color = rgb(224, 172, 26)
+
+/obj/item/weapon/card/id/engineering/pmc_head
+	assignment = "PMC Chief"
+	rank = "PMC Chief"
+	job_access_type = /datum/job/factory_pmc_head
+	icon_state = "secGold"
+	primary_color = rgb(241, 9, 9)
+	secondary_color = rgb(255,223,127)
 /*
 /obj/item/weapon/card/id/engineering/atmos
 	assignment = "Maintenance Worker"
