@@ -38,7 +38,7 @@
 			handle_turning(-1)
 		else
 			return 1
-		next_steering_input = world.time + 2
+		next_steering_input = world.time + 3
 	else
 		if(world.time < next_strafe_input)
 			return 0

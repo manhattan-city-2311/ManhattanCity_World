@@ -45,11 +45,13 @@
 	vehicle.active = FALSE
 	playsound(vehicle, stop_sound, 150, 1, 5)
 	rpm = 0
+	vehicle.visible_message("\The [vehicle]'s engines stops.")
 
 /obj/item/vehicle_part/engine/proc/handle_torque(delta = 2)
 	if(rpm < (RPM_IDLE - 200))
-		stop()
-		rpm = 0
+		if(rpm)
+			stop()
+			rpm = 0
 		return 0
 
 	if(rpm > max_rpm)
@@ -85,7 +87,6 @@
 	
 	if(. != cur_sound)
 		if(sound_token)
-			sound_token.Stop()
 			qdel(sound_token)
 		sound_token = global.sound_player.PlayLoopingSound(vehicle, "[vehicle.serial_number][type]", ., 75, 7)
 		cur_sound = .

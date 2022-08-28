@@ -14,14 +14,13 @@
 	icon = 'icons/obj/traffic.dmi'
 	icon_state = "off"
 	var/broken
-	var/shift
+	var/shift = 0
 
 /obj/machinery/street/traffic/initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
 	broken = prob(5)
-	shift = rand(0, 6)
 
 /obj/machinery/street/traffic/proc/update_light_color()
 	if(icon_state != "off" && !light_range)

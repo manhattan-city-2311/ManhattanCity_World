@@ -1026,8 +1026,7 @@
 	name = "NanoMed General Medical Supplies Vendor"
 	desc = "A patent pending, branded, NanoMed machine which holds general medical supplies. You feel the healthcare costs rising while looking at this machine."
 	req_access = list(access_medical)
-	products = list (/obj/item/clothing/glasses/hud/health = 6,
-					 /obj/item/weapon/storage/belt/medical = 6,
+	products = list (/obj/item/weapon/storage/belt/medical = 6,
 					 /obj/item/roller = 6,
 					 /obj/item/weapon/storage/firstaid/regular = 4,
 					 /obj/item/weapon/storage/firstaid/adv = 4,
@@ -1055,7 +1054,8 @@
 					 /obj/item/weapon/storage/firstaid/surgery = 2,
 					 /obj/item/weapon/storage/box/rxglasses = 2,
 					 /obj/item/weapon/storage/box/autoinjectors = 1,
-					 /obj/item/weapon/storage/box/cdeathalarm_kit = 1)
+					 /obj/item/weapon/storage/box/cdeathalarm_kit = 1,
+					 /obj/item/pager/medical = 2)
 	charge_free_department = DEPT_HEALTHCARE
 	block_persistence = TRUE
 

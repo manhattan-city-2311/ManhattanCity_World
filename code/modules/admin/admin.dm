@@ -684,6 +684,14 @@ proc/admin_notice(var/message, var/rights)
 		return
 	save_world()
 
+/datum/admins/proc/change_world_fps()
+	set category = "Debug"
+	set name = "Change world FPS"
+	set desc = "Changes world.fps"
+	if (!usr.client.holder)
+		return
+	world.fps = input(usr, "Enter new FPS", "world.fps", world.fps)
+
 
 /datum/admins/proc/announce()
 	set category = "Special Verbs"

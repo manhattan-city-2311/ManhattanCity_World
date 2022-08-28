@@ -105,7 +105,7 @@ var/global/decl/sound_player/sound_player = new()
 
 /datum/sound_token/Destroy()
 	Stop()
-	. = ..()
+	return QDEL_HINT_IWILLGC
 
 /datum/sound_token/proc/SetVolume(var/new_volume)
 	new_volume = Clamp(new_volume, 0, 100)
