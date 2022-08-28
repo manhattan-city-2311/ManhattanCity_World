@@ -46,7 +46,7 @@
 	var/vehicle_carry_size = 0		//the max size of a carried vehicle
 	var/obj/manhattan/vehicle/carried_vehicle
 
-	var/vehicle_view_modifier = 1 //The view-size modifier to apply to the occupants of the vehicle.
+	var/vehicle_view_modifier = 1.5 //The view-size modifier to apply to the occupants of the vehicle.
 	var/move_sound = null
 
 	var/datum/mobile_spawn/spawn_datum //Setting this makes this a mobile spawn point.
@@ -112,12 +112,13 @@
 			stat("Передача:", V.components[VC_GEARBOX]?.selected_gear)
 
 /obj/manhattan/vehicle/proc/get_calculation_iterations()
-	return round(max(1, speed.modulus() * 0.2))
+	return round(max(1, speed.modulus() * 0.25))
 
+/obj/manhattan/vehicle/var/step_coef = 1.7
 /obj/manhattan/vehicle/proc/update_step_size()
 	// TODO: Properly created system
 	//step_size = speed.modulus() * WORLD_ICON_SIZE / world.tick_lag
-	step_size = round(96 + round(speed.modulus()) * 1.5)
+	step_size = round(96 + round(speed.modulus()) * step_coef)
 
 /obj/manhattan/vehicle/proc/get_wheel_diameter()
 	return 0.34

@@ -6,7 +6,7 @@
 
 	exit_vehicle(usr)
 
-/obj/manhattan/vehicle/proc/exit_vehicle(var/mob/user,var/ignore_incap_check = 0)
+/obj/manhattan/vehicle/proc/exit_vehicle(mob/user, ignore_incap_check = FALSE)
 	if(user.loc != src)
 		to_chat(user,"<span class = 'notice'>You must be inside [src] to exit it.</span>")
 		return
@@ -20,9 +20,10 @@
 	occupants -= user
 	contents -= user
 	user.forceMove(loc_moveto)
-	
+
 	if(user.client)
-		animate(user.client, pixel_x = 0, pixel_y = 0, 10)
+		animate(user.client, pixel_x = 0, pixel_y = 0, time = 10)
+		//user.client.view = VIEW_SIZE
 
 	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
 	update_object_sprites()
@@ -125,6 +126,7 @@
 		return 1
 
 	occupants += user
+	//user.client.view = "[round(VIEW_SIZE_X * vehicle_view_modifier)]x[round(VIEW_SIZE_Y * vehicle_view_modifier)]"
 	occupants[user] = position
 	user.loc = contents
 	contents += user

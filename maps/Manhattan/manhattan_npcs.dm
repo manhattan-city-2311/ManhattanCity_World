@@ -91,37 +91,37 @@
         list(
             "key" = "candy",
             "price" = 15,
-            "name" = "Шоколадный батончик",
+            "name" = "РЁРѕРєРѕР»Р°РґРЅС‹Р№ Р±Р°С‚РѕРЅС‡РёРє",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/candy
         ),
         list(
             "key" = "chips",
             "price" = 30,
-            "name" = "Пачка чипсов",
+            "name" = "РџР°С‡РєР° С‡РёРїСЃРѕРІ",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/chips
         ),
         list(
             "key" = "twinkie",
             "price" = 20,
-            "name" = "Упаковка космического Твинки",
+            "name" = "РЈРїР°РєРѕРІРєР° РєРѕСЃРјРёС‡РµСЃРєРѕРіРѕ РўРІРёРЅРєРё",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/spacetwinkie
         ),
         list(
             "key" = "bread",
             "price" = 25,
-            "name" = "Сладкая булка",
+            "name" = "РЎР»Р°РґРєР°СЏ Р±СѓР»РєР°",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/tastybread
         ),
         list(
             "key" = "sosison",
             "price" = 40,
-            "name" = "Охотничьи колбаски",
+            "name" = "РћС…РѕС‚РЅРёС‡СЊРё РєРѕР»Р±Р°СЃРєРё",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/sosjerky
         ),
         list(
             "key" = "protein",
             "price" = 10,
-            "name" = "Протеиновый батончик",
+            "name" = "РџСЂРѕС‚РµРёРЅРѕРІС‹Р№ Р±Р°С‚РѕРЅС‡РёРє",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar
         ),
     )
@@ -131,145 +131,145 @@
         list(
             "key" = "candy",
             "price" = 15,
-            "name" = "Шоколадный батончик",
+            "name" = "РЁРѕРєРѕР»Р°РґРЅС‹Р№ Р±Р°С‚РѕРЅС‡РёРє",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/candy
         ),
         list(
             "key" = "chips",
             "price" = 30,
-            "name" = "Пачка чипсов",
+            "name" = "РџР°С‡РєР° С‡РёРїСЃРѕРІ",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/chips
         ),
         list(
             "key" = "twinkie",
             "price" = 20,
-            "name" = "Упаковка космического Твинки",
+            "name" = "РЈРїР°РєРѕРІРєР° РєРѕСЃРјРёС‡РµСЃРєРѕРіРѕ РўРІРёРЅРєРё",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/spacetwinkie
         ),
         list(
             "key" = "bread",
             "price" = 25,
-            "name" = "Сладкая булка",
+            "name" = "РЎР»Р°РґРєР°СЏ Р±СѓР»РєР°",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/tastybread
         ),
         list(
             "key" = "sosison",
             "price" = 40,
-            "name" = "Охотничьи колбаски",
+            "name" = "РћС…РѕС‚РЅРёС‡СЊРё РєРѕР»Р±Р°СЃРєРё",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/sosjerky
         ),
         list(
             "key" = "protein",
             "price" = 10,
-            "name" = "Протеиновый батончик",
+            "name" = "РџСЂРѕС‚РµРёРЅРѕРІС‹Р№ Р±Р°С‚РѕРЅС‡РёРє",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar
         ),
         list(
             "key" = "flour",
             "price" = 10,
-            "name" = "Упаковка муки",
+            "name" = "РЈРїР°РєРѕРІРєР° РјСѓРєРё",
             "type" = /obj/item/weapon/reagent_containers/food/condiment/flour
         ),
         list(
             "key" = "spaghetti",
             "price" = 16,
-            "name" = "Упаковка спагетти",
+            "name" = "РЈРїР°РєРѕРІРєР° СЃРїР°РіРµС‚С‚Рё",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/spagetti
         ),
         list(
             "key" = "beans",
             "price" = 13,
-            "name" = "Консервированная фасоль",
+            "name" = "РљРѕРЅСЃРµСЂРІРёСЂРѕРІР°РЅРЅР°СЏ С„Р°СЃРѕР»СЊ",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/beans
         ),
         list(
             "key" = "saltsmall",
             "price" = 5,
-            "name" = "Пакетированная соль",
+            "name" = "РџР°РєРµС‚РёСЂРѕРІР°РЅРЅР°СЏ СЃРѕР»СЊ",
             "type" = /obj/item/weapon/reagent_containers/food/condiment/small/packet/salt
         ),
         list(
             "key" = "salt",
             "price" = 10,
-            "name" = "Солонка",
+            "name" = "РЎРѕР»РѕРЅРєР°",
             "type" = /obj/item/weapon/reagent_containers/food/condiment/small/saltshaker
         ),
         list(
             "key" = "peppersmall",
             "price" = 4,
-            "name" = "Пакетированный перец",
+            "name" = "РџР°РєРµС‚РёСЂРѕРІР°РЅРЅС‹Р№ РїРµСЂРµС†",
             "type" = /obj/item/weapon/reagent_containers/food/condiment/small/packet/pepper
         ),
         list(
             "key" = "pepper",
             "price" = 8,
-            "name" = "Мельница для перца",
+            "name" = "РњРµР»СЊРЅРёС†Р° РґР»СЏ РїРµСЂС†Р°",
             "type" = /obj/item/weapon/reagent_containers/food/condiment/small/peppermill
         ),
         list(
             "key" = "sugarsmall",
             "price" = 7,
-            "name" = "Пакетированный сахар",
+            "name" = "РџР°РєРµС‚РёСЂРѕРІР°РЅРЅС‹Р№ СЃР°С…Р°СЂ",
             "type" = /obj/item/weapon/reagent_containers/food/condiment/small/packet/sugar
         ),
         list(
             "key" = "sugart",
             "price" = 14,
-            "name" = "Сахарница",
+            "name" = "РЎР°С…Р°СЂРЅРёС†Р°",
             "type" = /obj/item/weapon/reagent_containers/food/condiment/small/sugar
         ),
         list(
             "key" = "baguette",
             "price" = 15,
-            "name" = "Багет",
+            "name" = "Р‘Р°РіРµС‚",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/baguette
         ),
         list(
             "key" = "bread",
             "price" = 16,
-            "name" = "Буханка хлеба",
+            "name" = "Р‘СѓС…Р°РЅРєР° С…Р»РµР±Р°",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/variable/bread
         ),
         list(
             "key" = "bun",
             "price" = 15,
-            "name" = "Булка с кунжутом",
+            "name" = "Р‘СѓР»РєР° СЃ РєСѓРЅР¶СѓС‚РѕРј",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/bun
         ),
         list(
             "key" = "flatbread",
             "price" = 16,
-            "name" = "Хлебная лепёшка",
+            "name" = "РҐР»РµР±РЅР°СЏ Р»РµРїС‘С€РєР°",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/sliceable/flatdough
         ),
         list(
             "key" = "eggbox",
             "price" = 6,
-            "name" = "Коробка яиц(10 штук)",
+            "name" = "РљРѕСЂРѕР±РєР° СЏРёС†(10 С€С‚СѓРє)",
             "type" = /obj/item/weapon/storage/fancy/egg_box
         ),
         list(
             "key" = "milk",
             "price" = 24,
-            "name" = "Бутылка молока",
+            "name" = "Р‘СѓС‚С‹Р»РєР° РјРѕР»РѕРєР°",
             "type" = /obj/item/weapon/reagent_containers/food/drinks/bottle/milk
         ),
         list(
             "key" = "cheese",
             "price" = 21,
-            "name" = "Сырное колесо",
+            "name" = "РЎС‹СЂРЅРѕРµ РєРѕР»РµСЃРѕ",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel
         ),
         list(
             "key" = "colabig",
             "price" = 30,
-            "name" = "Бутылка космической колы",
+            "name" = "Р‘СѓС‚С‹Р»РєР° РєРѕСЃРјРёС‡РµСЃРєРѕР№ РєРѕР»С‹",
             "type" = /obj/item/weapon/reagent_containers/food/drinks/bottle/cola
         ),
         list(
             "key" = "cola",
             "price" = 20,
-            "name" = "Банка космической колы",
+            "name" = "Р‘Р°РЅРєР° РєРѕСЃРјРёС‡РµСЃРєРѕР№ РєРѕР»С‹",
             "type" = /obj/item/weapon/reagent_containers/food/drinks/cans/cola
         ),
     )
@@ -279,25 +279,25 @@
         list(
             "key" = "margherita",
             "price" = 150,
-            "name" = "Пицца-Маргарита",
+            "name" = "РџРёС†С†Р°-РњР°СЂРіР°СЂРёС‚Р°",
             "type" = /obj/item/pizzabox/margherita
         ),
         list(
             "key" = "meatpizza",
             "price" = 100,
-            "name" = "Мясная пицца",
+            "name" = "РњСЏСЃРЅР°СЏ РїРёС†С†Р°",
             "type" = /obj/item/pizzabox/meat
         ),
         list(
             "key" = "mushroompizza",
             "price" = 50,
-            "name" = "Пицца с грибами",
+            "name" = "РџРёС†С†Р° СЃ РіСЂРёР±Р°РјРё",
             "type" = /obj/item/pizzabox/mushroom
         ),
         list(
             "key" = "vegetablepizza",
             "price" = 200,
-            "name" = "Вегетерианская пицца",
+            "name" = "Р’РµРіРµС‚РµСЂРёР°РЅСЃРєР°СЏ РїРёС†С†Р°",
             "type" = /obj/item/pizzabox/vegetable
         ),
     )
@@ -307,49 +307,49 @@
         list(
             "key" = "tsoup",
             "price" = 200,
-            "name" = "Томатный суп",
+            "name" = "РўРѕРјР°С‚РЅС‹Р№ СЃСѓРї",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/tomatosoup
         ),
         list(
             "key" = "acake",
             "price" = 400,
-            "name" = "Яблочный пирог",
+            "name" = "РЇР±Р»РѕС‡РЅС‹Р№ РїРёСЂРѕРі",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/sliceable/applecake
         ),
         list(
             "key" = "pastatomato",
             "price" = 250,
-            "name" = "Спагетти с томатной пастой",
+            "name" = "РЎРїР°РіРµС‚С‚Рё СЃ С‚РѕРјР°С‚РЅРѕР№ РїР°СЃС‚РѕР№",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/pastatomato
         ),
         list(
             "key" = "omelette",
             "price" = 200,
-            "name" = "Омлет",
+            "name" = "РћРјР»РµС‚",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/omelette
         ),
         list(
             "key" = "msoup",
             "price" = 200,
-            "name" = "Суп Майло",
+            "name" = "РЎСѓРї РњР°Р№Р»Рѕ",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/milosoup
         ),
         list(
             "key" = "steak",
             "price" = 300,
-            "name" = "Мясной стейк",
+            "name" = "РњСЏСЃРЅРѕР№ СЃС‚РµР№Рє",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/meatsteak
         ),
         list(
             "key" = "fsalad",
             "price" = 400,
-            "name" = "Фруктовый салат",
+            "name" = "Р¤СЂСѓРєС‚РѕРІС‹Р№ СЃР°Р»Р°С‚",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/fruitsalad
         ),
         list(
             "key" = "eggsbenedict",
             "price" = 250,
-            "name" = "Яйца Бенедикт",
+            "name" = "РЇР№С†Р° Р‘РµРЅРµРґРёРєС‚",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/benedict
         ),
     )
@@ -360,37 +360,37 @@
         list(
             "key" = "candy",
             "price" = 15,
-            "name" = "Шоколадный батончик",
+            "name" = "РЁРѕРєРѕР»Р°РґРЅС‹Р№ Р±Р°С‚РѕРЅС‡РёРє",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/candy
         ),
         list(
             "key" = "chips",
             "price" = 30,
-            "name" = "Пачка чипсов",
+            "name" = "РџР°С‡РєР° С‡РёРїСЃРѕРІ",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/chips
         ),
         list(
             "key" = "twinkie",
             "price" = 20,
-            "name" = "Упаковка космического Твинки",
+            "name" = "РЈРїР°РєРѕРІРєР° РєРѕСЃРјРёС‡РµСЃРєРѕРіРѕ РўРІРёРЅРєРё",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/spacetwinkie
         ),
         list(
             "key" = "bread",
             "price" = 25,
-            "name" = "Сладкая булочка",
+            "name" = "РЎР»Р°РґРєР°СЏ Р±СѓР»РѕС‡РєР°",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/tastybread
         ),
         list(
             "key" = "sosison",
             "price" = 40,
-            "name" = "Охотничьи колбаски",
+            "name" = "РћС…РѕС‚РЅРёС‡СЊРё РєРѕР»Р±Р°СЃРєРё",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/sosjerky
         ),
         list(
             "key" = "protein",
             "price" = 10,
-            "name" = "Протеиновый батончик",
+            "name" = "РџСЂРѕС‚РµРёРЅРѕРІС‹Р№ Р±Р°С‚РѕРЅС‡РёРє",
             "type" = /obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar
         ),
     )
