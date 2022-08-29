@@ -41,7 +41,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 	if(check_cache && (client.cache.Find(asset_name) || client.sending.Find(asset_name)))
 		return 0
 
-	client << browse_rsc(asset_cache.cache[asset_name], asset_name)
+	client << browse_rsc(GLOB.asset_cache.cache[asset_name], asset_name)
 	if(!verify || !winexists(client, "asset_cache_browser")) // Can't access the asset cache browser, rip.
 		if (client)
 			client.cache += asset_name
@@ -91,8 +91,8 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 	if (unreceived.len >= ASSET_CACHE_TELL_CLIENT_AMOUNT)
 		to_chat(client, "Sending Resources...")
 	for(var/asset in unreceived)
-		if (asset in asset_cache.cache)
-			client << browse_rsc(asset_cache.cache[asset], asset)
+		if (asset in GLOB.asset_cache.cache)
+			client << browse_rsc(GLOB.asset_cache.cache[asset], asset)
 
 	if(!verify || !winexists(client, "asset_cache_browser")) // Can't access the asset cache browser, rip.
 		if (client)
@@ -136,7 +136,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 //This proc "registers" an asset, it adds it to the cache for further use, you cannot touch it from this point on or you'll fuck things up.
 //if it's an icon or something be careful, you'll have to copy it before further use.
 /proc/register_asset(var/asset_name, var/asset)
-	asset_cache.cache[asset_name] = asset
+	GLOB.asset_cache.cache[asset_name] = asset
 
 //These datums are used to populate the asset cache, the proc "register()" does this.
 
@@ -283,8 +283,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 /*
 	Asset cache
 */
-var/decl/asset_cache/asset_cache = new()
-
+GLOBAL_DATUM_INIT(asset_cache, /decl/asset_cache, new())
 /decl/asset_cache
 	var/list/cache
 
@@ -300,7 +299,7 @@ var/decl/asset_cache/asset_cache = new()
 	for(var/client/C in GLOB.clients)
 		// Doing this to a client too soon after they've connected can cause issues, also the proc we call sleeps.
 		spawn(10)
-			getFilesSlow(C, asset_cache.cache, FALSE)
+			getFilesSlow(C, GLOB.asset_cache.cache, FALSE)
 
 	return TRUE
 
