@@ -358,6 +358,21 @@
 	pixel_x = 12
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
+/obj/structure/sign/neon/big/hospital1
+	name = "city hospital sign"
+	desc = "Holographic Hospital sign."
+	icon_state = "med1"
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
+/obj/structure/sign/neon/big/hospital2
+	name = "city hospital sign"
+	desc = "Holographic Hospital sign."
+	icon_state = "med2"
+	density = 1
+	bounds = "64,32"
+	pixel_x = 12
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
 /obj/structure/sign/neon/big/menu
 	name = "neon menu screen"
 	desc = "A sign with some options to choose."
