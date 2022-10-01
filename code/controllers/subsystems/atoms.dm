@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(atoms)
 
 	var/start_tick = world.time
 
-	var/saveable = !isturf(A) && !A.dont_save && isturf(A.loc)
+	var/saveable = !isturf(A) && !A.dont_save && isturf(A.loc) && get_area(A).should_be_saved
 	var/result
 	if(initialized == INITIALIZATION_INNEW_MAPLOAD && saveable && SSpersistent_world.online)
 		result = INITIALIZE_HINT_QDEL
@@ -94,8 +94,6 @@ SUBSYSTEM_DEF(atoms)
 				qdeleted = TRUE
 			else
 				BadInitializeCalls[the_type] |= BAD_INIT_NO_HINT
-	else if(saveable)
-		SSpersistent_world.queue += A
 
 	if(!A)	//possible harddel
 		qdeleted = TRUE

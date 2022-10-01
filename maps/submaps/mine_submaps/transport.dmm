@@ -1,0 +1,49 @@
+"a" = (/turf/simulated/wall/r_wall,/area/template_noop)
+"b" = (/turf/template_noop,/area/template_noop)
+"c" = (/obj/structure/ore_box,/turf/template_noop,/area/template_noop)
+"d" = (/obj/item/stack/material/copper/full,/turf/template_noop,/area/template_noop)
+"e" = (/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"f" = (/obj/structure/closet/crate,/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"g" = (/obj/machinery/crystal,/turf/template_noop,/area/template_noop)
+"h" = (/obj/item/weapon/ore/strangerock,/turf/template_noop,/area/template_noop)
+"i" = (/obj/item/stack/material/iron,/obj/item/stack/material/iron,/turf/template_noop,/area/template_noop)
+"j" = (/obj/machinery/mining/brace{anchored = 1; dir = 8; icon_state = "mining_brace"},/turf/template_noop,/area/template_noop)
+"k" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/plating,/area/template_noop)
+"l" = (/turf/simulated/wall/iron/silver_paint,/area/template_noop)
+"m" = (/turf/simulated/floor/plating,/area/template_noop)
+"n" = (/obj/structure/manhattan/rails{icon_state = "rail"; dir = 8},/turf/template_noop,/area/template_noop)
+"o" = (/obj/item/stack/material/wood/ebony/twentyfive,/turf/simulated/floor/plating,/area/template_noop)
+"p" = (/obj/structure/closet/crate/secure/large/reinforced,/obj/item/weapon/pickaxe/drill,/obj/item/weapon/pickaxe/drill,/turf/simulated/floor/plating,/area/template_noop)
+"q" = (/obj/machinery/light/colored/red{dir = 1; icon_state = "red1"},/turf/simulated/floor/tiled/techfloor/grid,/area/template_noop)
+"r" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/template_noop)
+"s" = (/obj/structure/sign/nosmoking_1{pixel_y = 27},/turf/simulated/floor/tiled/techfloor/grid,/area/template_noop)
+"t" = (/obj/structure/closet/crate/large/wooden,/obj/item/weapon/storage/excavation,/obj/item/weapon/storage/excavation,/obj/effect/decal/cleanable/cobweb2,/turf/simulated/floor/tiled/techfloor/grid,/area/template_noop)
+"u" = (/obj/structure/manhattan/rails/tie,/turf/template_noop,/area/template_noop)
+"v" = (/obj/structure/door_assembly/door_assembly_hatch{icon_state = "construction"; dir = 8},/turf/simulated/floor/tiled/techfloor/grid,/area/template_noop)
+"w" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor/grid,/area/template_noop)
+"x" = (/turf/simulated/floor/tiled/techfloor/grid,/area/template_noop)
+"y" = (/obj/structure/closet/crate/large/wooden,/obj/item/weapon/ore/strangerock,/obj/item/weapon/ore/strangerock,/obj/item/weapon/ore/strangerock,/obj/item/weapon/ore/strangerock,/obj/item/weapon/ore/strangerock,/obj/item/weapon/ore/strangerock,/turf/simulated/floor/tiled/techfloor/grid,/area/template_noop)
+"z" = (/obj/machinery/mining/brace,/turf/simulated/floor/tiled/techfloor/grid,/area/template_noop)
+"A" = (/obj/structure/reagent_dispensers/fueltank,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor/grid,/area/template_noop)
+"B" = (/obj/structure/closet/crate/large/wooden,/obj/item/weapon/tank/oxygen,/obj/item/weapon/tank/oxygen,/obj/item/weapon/tank/oxygen,/obj/item/clothing/mask/gas/explorer,/obj/item/clothing/mask/gas/explorer,/obj/item/clothing/mask/gas/explorer,/turf/simulated/floor/tiled/techfloor/grid,/area/template_noop)
+"C" = (/obj/structure/closet/crate/large/wooden,/obj/item/stack/material/plasteel/full,/obj/item/stack/material/steel/full,/obj/item/stack/material/steel/full,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor/grid,/area/template_noop)
+"D" = (/obj/item/weapon/storage/bag/ore,/turf/simulated/floor/plating,/area/template_noop)
+"E" = (/obj/machinery/mining/drill,/turf/simulated/floor/tiled/techfloor/grid,/area/template_noop)
+"F" = (/obj/item/stack/material/iron,/turf/template_noop,/area/template_noop)
+"G" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"H" = (/obj/item/stack/material/gold,/turf/template_noop,/area/template_noop)
+"I" = (/obj/effect/decal/cleanable/blood,/turf/template_noop,/area/template_noop)
+
+(1,1,1) = {"
+abbbbcbbbbbbbbabb
+bbbbbdbbbbbeefebg
+bhbbbbbbbbibbbbbb
+bjbbbekllmllllbbb
+nbbloempqmrstlnnb
+bubvwmwwxyzxxvbub
+bnnlABCrmDExxlnnn
+bbFlllllllllllbbb
+gGbbbebbHbbbbbIhb
+bbbbbbeeeeebbbcbb
+abbbgbeeebbbchabb
+"}

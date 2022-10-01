@@ -1,4 +1,4 @@
-#define Clamp(x, y, z) 	(x <= y ? y : (x >= z ? z : x))
+#define CLAMP01(x) clamp(x, 0, 1)
 
 #define span(class, text) ("<span class='[class]'>[text]</span>")
 
@@ -96,7 +96,8 @@
 
 #define CanInteractWith(user, target, state) (target.CanUseTopic(user, state) == STATUS_INTERACTIVE)
 
-#define QDEL_NULL_LIST(x) if(x) { for(var/y in x) { qdel(y) } ; x = null }
+#define QDEL_LIST(x) if(x) { for(var/y in x) { qdel(y) }}
+#define QDEL_NULL_LIST(x) QDEL_LIST(x) ; x = null
 
 #define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
 

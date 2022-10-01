@@ -1,0 +1,17 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"b" = (/obj/structure/flora/rock,/turf/template_noop,/area/template_noop)
+"c" = (/obj/structure/flora/ausbushes/ppflowers,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+"d" = (/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+"e" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+"f" = (/obj/structure/flora/ausbushes/brflowers,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+"g" = (/obj/structure/flora/rock,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+"h" = (/obj/structure/flora/ausbushes/leafybush,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+
+(1,1,1) = {"
+abcdaa
+adddea
+edddda
+aeafdd
+aaagdf
+aaaaah
+"}

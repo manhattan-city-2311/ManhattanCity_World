@@ -36,6 +36,7 @@
 	name = "alarm"
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "alarm0"
+	plane = WALL_OBJ_PLANE
 	anchored = 1
 	use_power = 1
 	idle_power_usage = 80

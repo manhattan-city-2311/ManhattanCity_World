@@ -114,7 +114,7 @@
 
 /obj/machinery/defibrillator/proc/change_pacing_rate(mob/user)
 	var/pace_rate_new = input(user, "Select a pacing rate in beats per minute", "Pacing rate") as null|num
-	pace_rate = Clamp(pace_rate_new, 1, 300)
+	pace_rate = clamp(pace_rate_new, 1, 300)
 	user.visible_message("<span class='notice'>\The [user] changed the pacing rate of [src] to [pace_rate].</span>", "<span class='warning'>You change the pace rate of [src] to [pace_rate].</span>")
 
 /obj/machinery/defibrillator/proc/sync_pacer()

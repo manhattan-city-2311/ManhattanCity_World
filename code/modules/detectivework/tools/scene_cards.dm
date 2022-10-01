@@ -13,7 +13,7 @@
 	update_icon()
 
 /obj/item/weapon/csi_marker/update_icon()
-	icon_state = "card[Clamp(number,1,7)]"
+	icon_state = "card[clamp(number,1,7)]"
 
 /obj/item/weapon/csi_marker/n1
 	number = 1

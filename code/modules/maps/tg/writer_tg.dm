@@ -167,9 +167,10 @@
 	var/attributes_text = "{"
 	var/list/attributes = list()
 	if(!use_json)
-		for(var/V in A.vars)
+		for(var/V in A.vars_to_save())
 			CHECK_TICK
-			if((!issaved(A.vars[V])) || (A.vars[V]==initial(A.vars[V])))	continue
+			if((!issaved(A.vars[V])) || (A.vars[V] == initial(A.vars[V])))
+				continue
 
 			attributes += var_to_dmm(A.vars[V], V)
 	else

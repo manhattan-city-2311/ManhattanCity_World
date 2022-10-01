@@ -1,0 +1,18 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"b" = (/obj/effect/decal/remains/deer,/turf/simulated/floor/outdoors/rocks/caves,/area/template_noop)
+"c" = (/turf/simulated/floor/outdoors/rocks/caves,/area/template_noop)
+"d" = (/turf/simulated/floor/lava,/area/template_noop)
+"e" = (/obj/effect/decal/cleanable/ash,/turf/template_noop,/area/template_noop)
+"f" = (/obj/effect/decal/remains/ribcage,/turf/simulated/floor/outdoors/rocks/caves,/area/template_noop)
+"g" = (/obj/effect/decal/cleanable/ash,/turf/simulated/floor/outdoors/rocks/caves,/area/template_noop)
+
+(1,1,1) = {"
+aabaaaaa
+ccdcccce
+cddcddca
+acddddfc
+agddddcc
+accddddc
+aacgcddc
+aaaaaccc
+"}

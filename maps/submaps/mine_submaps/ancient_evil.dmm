@@ -1,0 +1,26 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"b" = (/obj/structure/boulder,/turf/template_noop,/area/template_noop)
+"c" = (/turf/simulated/mineral,/area/template_noop)
+"d" = (/turf/simulated/wall/titanium,/area/template_noop)
+"e" = (/turf/simulated/floor/diamond,/area/template_noop)
+"f" = (/obj/item/weapon/archaeological_find,/turf/simulated/floor/diamond,/area/template_noop)
+"g" = (/mob/living/simple_mob/animal/giant_spider/electric,/turf/simulated/floor/diamond,/area/template_noop)
+"h" = (/obj/structure/morgue,/turf/simulated/floor/diamond,/area/template_noop)
+"i" = (/obj/item/weapon/arrow/quill,/turf/simulated/floor/diamond,/area/template_noop)
+"j" = (/obj/structure/boulder,/turf/simulated/floor/diamond,/area/template_noop)
+"k" = (/obj/structure/simple_door/iron,/turf/simulated/floor/diamond,/area/template_noop)
+
+(1,1,1) = {"
+aabaccaaaaaa
+acccccacccca
+accccccccaca
+ccddddddcdca
+ccdefeegcdcc
+ccdheeheiccc
+ccdegcjeedca
+ccdddddkddca
+accccaaaaaaa
+aaccbaaaccaa
+aaaaaaaaccca
+aaaacaaccccc
+"}

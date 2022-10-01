@@ -5,6 +5,8 @@
 	#include "example_defines.dm"
 	#include "example_elevator.dm"
 	#include "example_areas.dm"
+	#include "interiors.dmm"
+	#include "mining.dmm"
 
 	#define USING_MAP_DATUM /datum/map/example
 

@@ -1,5 +1,17 @@
 var/global/list/ore_data = list()
 
+/hook/startup/proc/initialise_ore_data()
+	ensure_ore_data_initialised()
+	return 1
+
+/proc/ensure_ore_data_initialised()
+	if(ore_data?.len)
+		return
+
+	for(var/oretype in subtypesof(/ore))
+		var/ore/O = new oretype()
+		ore_data[O.name] = O
+
 /ore
 	var/name
 	var/display_name

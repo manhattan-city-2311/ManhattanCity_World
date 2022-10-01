@@ -61,13 +61,15 @@ GLOBAL_LIST_INIT(recomended_holoplants_colors,list(HOLOPLANT_REC_COLORS))
 	if(!islist(possible_states))
 		parse_icon()
 	overlays.Cut()
+	add_overlay(emissive_appearance())
 	hologram_opacity = (emagged ? 0.95 : initial(hologram_opacity))
 	if(!isicon(plant))
 		change_plant(plant)
 	change_color(plant_color)
 
 	if(enabled)
-		overlays += plant
+		add_overlay(plant)
+		add_overlay(emissive_appearance(plant))
 		use_power = 2
 	else
 		use_power = 0

@@ -279,7 +279,7 @@
 	if(!expense_purpose) return
 
 	var/expense_amount = round(input("Enter amount", "New amount") as num)
-	expense_amount = Clamp(expense_amount, 0, expense_limit)
+	expense_amount = clamp(expense_amount, 0, expense_limit)
 
 	if(!expense_amount) return
 
@@ -363,7 +363,7 @@
 	if(!(user.ckey in E.ckey_edit_list))
 		E.ckey_edit_list += user.ckey
 
-	E.cost_per_payroll = Clamp(E.cost_per_payroll, 0, E.amount_left)
+	E.cost_per_payroll = clamp(E.cost_per_payroll, 0, E.amount_left)
 
 	var/datum/money_account/M = dept_acc_by_id(E.department)
 	if(M)

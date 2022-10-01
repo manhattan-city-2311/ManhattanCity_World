@@ -760,18 +760,15 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/y_pos = null
 	var/z_pos = null
 
-/area/proc/move_contents_to(var/area/A, var/turftoleave=null, var/direction = null)
-	//Takes: Area. Optional: turf type to leave behind.
-	//Returns: Nothing.
-	//Notes: Attempts to move the contents of one area to another area.
-	//       Movement based on lower left corner. Tiles that do not fit
-	//		 into the new area will not be moved.
+/datum/coords/New(x, y, z)
+	x_pos = x
+	y_pos = y
+	z_pos = z
 
-	if(!A || !src) return 0
+/datum/coords/proc/locate_turf()
+	return locate(x_pos, y_pos, z_pos)
 
-	var/list/turfs_src = get_area_turfs(src.type)
-	var/list/turfs_trg = get_area_turfs(A.type)
-
+/proc/move_contents(turf/turfs_src, turf/turfs_trg, turftoleave, direction, xoff = 0, yoff = 0, destroy = FALSE)
 	var/src_min_x = 0
 	var/src_min_y = 0
 	for (var/turf/T in turfs_src)
@@ -797,21 +794,26 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		refined_trg += T
 		refined_trg[T] = new/datum/coords
 		var/datum/coords/C = refined_trg[T]
-		C.x_pos = (T.x - trg_min_x)
-		C.y_pos = (T.y - trg_min_y)
+		C.x_pos = (T.x - trg_min_x) - xoff
+		C.y_pos = (T.y - trg_min_y) - yoff
 
+	. = list()
 	moving:
 		for (var/turf/T in refined_src)
 			var/datum/coords/C_src = refined_src[T]
 			for (var/turf/B in refined_trg)
 				var/datum/coords/C_trg = refined_trg[B]
 				if(C_src.x_pos == C_trg.x_pos && C_src.y_pos == C_trg.y_pos)
-
 					//You can stay, though.
 					if(istype(T,/turf/space))
 						refined_src -= T
 						refined_trg -= B
 						continue moving
+
+					if(destroy)
+						for(var/A1 in B)
+							qdel(A1)
+					. += B
 
 					var/turf/X //New Destination Turf
 
@@ -847,7 +849,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 					//Move the mobs unless it's an AI eye or other eye type.
 					for(var/mob/M in T)
-						if(istype(M, /mob/observer/eye)) 
+						if(istype(M, /mob/observer/eye))
 							continue // If we need to check for more mobs, I'll add a variable
 						M.loc = X
 						M.update_above()
@@ -862,7 +864,24 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 					refined_src -= T
 					refined_trg -= B
+
 					continue moving
+
+/area/proc/move_contents_to(area/A, turftoleave, direction, xoff = 0, yoff = 0, destroy = FALSE)
+	//Takes: Area. Optional: turf type to leave behind.
+	//Returns: Nothing
+	//Notes: Attempts to move the contents of one area to another area.
+	//       Movement based on lower left corner. Tiles that do not fit
+	//		 into the new area will not be moved.
+
+	if(!A || !src)
+		return
+
+	var/list/turfs_src = get_area_turfs(src.type)
+	var/list/turfs_trg = get_area_turfs(A.type)
+
+	return move_contents(turfs_src, turfs_trg, turftoleave, direction, xoff, yoff, destroy)
+
 
 proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 	if(!original)

@@ -39,7 +39,7 @@
 	var/list/obj/structure/cable/cables = list()
 	var/list/obj/machinery/atmospherics/atmos_machines = list()
 	var/list/turf/turfs = block(locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
-	                   			locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
+								locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
 	for(var/L in turfs)
 		var/turf/B = L
 		atoms += B
@@ -152,15 +152,13 @@
 			admin_notice("Z level [zl] does not exist - Not generating submaps", R_DEBUG)
 			return
 
-	var/overall_sanity = 100 // If the proc fails to place a submap more than this, the whole thing aborts.
+	var/overall_sanity = 200 // If the proc fails to place a submap more than this, the whole thing aborts.
 	var/list/potential_submaps = list() // Submaps we may or may not place.
 	var/list/priority_submaps = list() // Submaps that will always be placed.
 
 	// Lets go find some submaps to make.
 	for(var/map in SSmapping.map_templates)
 		var/datum/map_template/MT = SSmapping.map_templates[map]
-		if(!MT.allow_duplicates && MT.loaded > 0) // This probably won't be an issue but we might as well.
-			continue
 		if(!istype(MT, desired_map_template_type)) // Not the type wanted.
 			continue
 		if(MT.discard_prob && prob(MT.discard_prob))
@@ -169,6 +167,9 @@
 			priority_submaps += MT
 		else
 			potential_submaps += MT
+	
+	shuffle_inplace(potential_submaps)
+	shuffle_inplace(priority_submaps)
 
 //	CHECK_TICK
 
@@ -177,7 +178,7 @@
 
 	// Now lets start choosing some.
 	while(budget > 0 && overall_sanity > 0)
-		overall_sanity--
+		--overall_sanity
 		var/datum/map_template/chosen_template = null
 
 		if(potential_submaps.len)
@@ -205,7 +206,7 @@
 			continue
 
 		// If so, try to place it.
-		var/specific_sanity = 100 // A hundred chances to place the chosen submap.
+		var/specific_sanity = 300
 		while(specific_sanity > 0)
 			specific_sanity--
 			var/width_border = TRANSITIONEDGE + SUBMAP_MAP_EDGE_PAD + round(chosen_template.width / 2)
@@ -214,12 +215,17 @@
 			var/turf/T = locate(rand(width_border, world.maxx - width_border), rand(height_border, world.maxy - height_border), z_level)
 			var/valid = TRUE
 
-			for(var/turf/check in chosen_template.get_affected_turfs(T,1))
-				var/area/new_area = get_area(check)
-				if(!(istype(new_area, whitelist)))
-					valid = FALSE // Probably overlapping something important.
-				//	to_world("Invalid due to overlapping with area [new_area.type], when wanting area [whitelist].")
-					break
+			for(var/turf/check in chosen_template.get_affected_turfs(T, TRUE))
+				if(ispath(whitelist, /area))
+					var/area/new_area = get_area(check)
+					if(!istype(new_area, whitelist))
+						valid = FALSE // Probably overlapping something important.
+					//	to_world("Invalid due to overlapping with area [new_area.type], when wanting area [whitelist].")
+						break
+				else if(ispath(whitelist, /turf))
+					if(!istype(check, whitelist))
+						valid = FALSE
+						break
 //				CHECK_TICK
 
 //			CHECK_TICK

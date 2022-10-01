@@ -168,7 +168,7 @@
 	if(!remote_access_pin)
 		remote_access_pin = rand(1111,9999)
 
-	money = Clamp(money, -MAX_MONEY, MAX_MONEY)
+	money = clamp(money, -MAX_MONEY, MAX_MONEY)
 	if(!transaction_log)
 		transaction_log = list()
 

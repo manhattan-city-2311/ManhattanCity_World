@@ -62,8 +62,6 @@
 
 
 /proc/get_object_data(obj/O)
-	set background = 1
-
 	var/datum/map_object/MO = new
 
 	O.on_persistence_save()
@@ -181,18 +179,21 @@
 */
 
 /proc/full_item_save(obj/O)
-	set background = 1
-
 // get all objects in a area. I hate the method that's about to follow, but after finding exploits and potential shitcode that's in the game right now
 // actually worried we'd get the bad reference juju happening (like syringes containing blood and that blood having the actual mob reference in its data
 // which caused an infinite loop) - or items non-existing causing broken loading. because of this, the saving process has to be manually filtered for all the loops.
 
 	var/datum/map_object/MO = get_object_data(O)
-	if(!MO) return
+	if(!MO)
+		return
+	
+	. = MO
+
+
+	if(!O.save_contents)
+		return
 
 	for(var/obj/A as anything in O.get_saveable_contents())
-		if(!O.save_contents)
-			continue
 		if(A.dont_save)
 			continue
 		var/datum/map_object/MO_2 = get_object_data(A)
@@ -201,23 +202,28 @@
 
 		MO.contents += MO_2
 
+		if(!A.save_contents)
+			continue
 		for(var/obj/B as anything in A.get_saveable_contents())
-			if(!A.save_contents) continue
-			if(B.dont_save) continue
+			if(B.dont_save)
+				continue
 			var/datum/map_object/MO_3 = get_object_data(B)
-			if(!MO_3) continue
+			if(!MO_3)
+				continue
 
 			MO_2.contents += MO_3
 
+			if(!B.save_contents)
+				continue
+
 			for(var/obj/C as anything in B.get_saveable_contents())
-				if(!B.save_contents) continue
-				if(C.dont_save) continue
+				if(C.dont_save)
+					continue
 				var/datum/map_object/MO_4 = get_object_data(C)
-				if(!MO_4) continue
+				if(!MO_4)
+					continue
 
 				MO_3.contents += MO_4
-
-	return MO
 
 /proc/full_item_load(datum/map_object/MO, loc)
 	if(!ispath(MO.savedtype))

@@ -1,0 +1,10 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"b" = (/obj/structure/ore_box,/turf/template_noop,/area/template_noop)
+"c" = (/obj/effect/decal/cleanable/spiderling_remains,/turf/template_noop,/area/template_noop)
+
+(1,1,1) = {"
+aaab
+baaa
+acaa
+aaac
+"}

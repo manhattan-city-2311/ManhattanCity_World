@@ -35,6 +35,8 @@
 
 	var/list/filter_data
 
+	var/list/managed_vis_overlays //vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays
+
 /atom/New(loc, ...)
 	// Don't call ..() unless /datum/New() ever exists
 

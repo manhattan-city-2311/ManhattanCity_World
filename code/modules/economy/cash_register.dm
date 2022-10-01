@@ -254,7 +254,7 @@
 				var/t_amount = round(input("Enter price (Max 10000)", "New price") as num)
 				if (!t_amount || !Adjacent(usr)) return
 				if(t_amount < 0) return
-				t_amount = Clamp(t_amount, 0, 10000)
+				t_amount = clamp(t_amount, 0, 10000)
 				transaction_amount += t_amount
 //				price_list += t_amount
 
@@ -317,7 +317,7 @@
 			if("set_amount")
 				var/item_name = locate(href_list["item"])
 				var/n_amount = round(input("Enter amount", "New amount") as num)
-				n_amount = Clamp(n_amount, 0, 20)
+				n_amount = clamp(n_amount, 0, 20)
 				if (!item_list[item_name] || !Adjacent(usr)) return
 				transaction_amount += (n_amount - item_list[item_name]) * price_list[item_name]
 				if(!n_amount)
@@ -355,7 +355,7 @@
 			if("set_price")
 				var/item_name = locate(href_list["item"])
 				var/n_amount = round(input("Enter new price. (Max 10000)", "New price") as num)
-				n_amount = Clamp(n_amount, 0, 10000)
+				n_amount = clamp(n_amount, 0, 10000)
 				if (!item_list[item_name]  || !price_list[item_name] || !Adjacent(usr)) return
 
 				transaction_amount -= (item_list[item_name] * price_list[item_name])

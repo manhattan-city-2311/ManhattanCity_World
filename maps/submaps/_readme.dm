@@ -25,7 +25,7 @@ irreplacable objects or players, as they will all get deleted if annihilate is o
 other objects have a chance to spawn (before random map gen), you shouldn't need to use annihilate.
 
 	When adding a new submap which will be loaded at runtime, you should add it to the list of '#include'-s on the top of the
-map template file. This forces the submap to be compiled when the code is undergoing a unit test, which will help keep the
+map template file.	 This forces the submap to be compiled when the code is undergoing a unit test, which will help keep the
 submap from suffering errors such as invalid paths due to them being changed elsewhere.
 
 */

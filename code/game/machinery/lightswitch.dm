@@ -6,6 +6,7 @@
 	desc = "It turns lights on and off. What are you, simple?"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "light1"
+	plane = WALL_OBJ_PLANE
 	anchored = 1.0
 	use_power = 1
 	idle_power_usage = 10

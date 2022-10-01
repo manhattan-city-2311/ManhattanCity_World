@@ -40,6 +40,7 @@
 
 	plane_masters[VIS_LIGHTING_OBJS] = new /obj/screen/plane_master/main{plane = LIGHTING_OBJS_PLANE; filters = LIGHTING_BLOOM}
 	plane_masters[VIS_LIGHTING_OBJS2] = new /obj/screen/plane_master/main{plane = NEON_DECALS_PLANE; filters = NEON_DECALS_BLOOM}
+	plane_masters[VIS_EMISSIVE] = new /obj/screen/plane_master/emissive
 	..()
 
 /datum/plane_holder/Destroy()
@@ -168,7 +169,26 @@ as far as i can tell, this is unused.
 /obj/screen/plane_master/lighting
 	plane = PLANE_LIGHTING
 	blend_mode = BLEND_MULTIPLY
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 255
+	filters = filter(type = "alpha", render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE)
+
+/**
+  * Things placed on this mask the lighting plane. Doesn't render directly.
+  *
+  * Gets masked by blocking plane. Use for things that you want blocked by
+  * mobs, items, etc.
+  */
+/obj/screen/plane_master/emissive
+	name = "emissive plane master"
+	plane = EMISSIVE_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	render_target = EMISSIVE_RENDER_TARGET
+	alpha = 255
+
+/obj/screen/plane_master/emissive/initialize()
+	. = ..()
+	filters = filter(type = "color", color = GLOB.em_mask_matrix)
 
 /////////////////
 //Ghosts has a special alpha level
