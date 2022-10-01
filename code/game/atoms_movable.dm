@@ -42,21 +42,21 @@
 		update_emissive_block()
 
 /atom/movable/proc/update_emissive_block()
+	if(em_block)
+		overlays -= em_block
+		em_block = null
+
 	if (blocks_emissive == EMISSIVE_BLOCK_GENERIC)
-		var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)
+		var/mutable_appearance/gen_emissive_blocker = new(src)
 		gen_emissive_blocker.color = GLOB.em_block_color
-		gen_emissive_blocker.dir = dir
-		gen_emissive_blocker.alpha = alpha
-		gen_emissive_blocker.appearance_flags |= appearance_flags
-		. = gen_emissive_blocker
+		gen_emissive_blocker.plane = EMISSIVE_PLANE
+		em_block = gen_emissive_blocker
+		overlays += em_block
 	else if(blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
 		if(!em_block)
 			render_target = ref(src)
 			em_block = new(src, render_target)
-		. = em_block
-	else
-		return
-	add_overlay(.)
+		add_overlay(em_block)
 
 /atom/movable/proc/update_glide(movement_delay = 2)
 	if (movement_delay != lastmovementdelay && movement_delay)

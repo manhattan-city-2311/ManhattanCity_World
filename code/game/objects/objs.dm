@@ -27,7 +27,6 @@
 	var/wall_drag = FALSE
 	var/wall_shift = 0	// If dragged onto a wall, what's the pixel y of this?
 	var/register_as_dangerous_object = FALSE // Should this tell its turf that it is dangerous automatically?
-	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 /obj/New()
 	if(register_as_dangerous_object)

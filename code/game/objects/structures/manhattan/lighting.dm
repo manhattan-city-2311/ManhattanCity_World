@@ -3,7 +3,7 @@
 	icon = 'icons/turf/flooring/decals.dmi'
 	icon_state = "spline_fancy"
 	plane = NEON_DECALS_PLANE
-	light_power = 3
+	light_power = 1
 	light_range = 1.5
 	anchored = TRUE
 	blocks_emissive = FALSE

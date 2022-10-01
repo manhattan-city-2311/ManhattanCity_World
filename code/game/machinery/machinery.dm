@@ -117,6 +117,8 @@ Class Procs:
 	var/clicksound			// sound played on succesful interface. Just put it in the list of vars at the start.
 	var/clickvol = 40		// volume
 
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+
 
 /obj/machinery/New(l, d=0)
 	..(l)

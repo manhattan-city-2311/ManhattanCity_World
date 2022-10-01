@@ -13,6 +13,7 @@
 	var/list/other_connections = list("0", "0", "0", "0")
 	var/list/blend_objects = newlist() // Objects which to blend with
 	var/list/noblend_objects = newlist() //Objects to avoid blending with (such as children of listed blend objects.
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 /obj/structure/on_persistence_load()
 	update_connections(1)
