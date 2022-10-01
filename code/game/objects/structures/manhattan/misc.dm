@@ -394,6 +394,18 @@
 	light_power = 8
 	light_range = 6
 
+/obj/structure/sign/neon/big/south_promotion
+	name = "neon sign"
+	desc = "A neon flickering sign, motivating people living here."
+	icon_state = "randomshit10"
+	light_color = "#ff67cb"
+
+/obj/structure/sign/neon/big/startech_promotion
+	name = "neon Startech ad"
+	desc = "A neon flickering sign, explaining how various things made by corporation works."
+	icon_state = "startech"
+	light_color = COLOR_YELLOW
+
 /obj/structure/sign/neon/big/casino
 	name = "neon casino sign"
 	desc = "A sign for the city local casino."
