@@ -1,0 +1,29 @@
+"a" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"b" = (/obj/machinery/floodlight{on = 1},/turf/template_noop,/area/template_noop)
+"c" = (/turf/template_noop,/area/template_noop)
+"d" = (/obj/item/weapon/screwdriver,/turf/template_noop,/area/template_noop)
+"e" = (/obj/effect/decal/cleanable/blood/oil/streak,/turf/template_noop,/area/template_noop)
+"f" = (/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"g" = (/obj/machinery/mining/brace{anchored = 1; dir = 4; icon_state = "mining_brace"},/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"h" = (/obj/machinery/mining/drill{anchored = 1},/turf/template_noop,/area/template_noop)
+"i" = (/obj/machinery/mining/brace{anchored = 1; dir = 8; icon_state = "mining_brace"},/turf/template_noop,/area/template_noop)
+"j" = (/obj/structure/table/standard,/obj/item/weapon/storage/excavation,/turf/template_noop,/area/template_noop)
+"k" = (/obj/item/weapon/wrench,/obj/item/weapon/tape_roll{pixel_x = -11; pixel_y = -9},/turf/template_noop,/area/template_noop)
+"l" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood/oil/streak,/turf/template_noop,/area/template_noop)
+"m" = (/obj/structure/table/standard,/turf/template_noop,/area/template_noop)
+"n" = (/obj/item/weapon/stool/bar/padded,/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"o" = (/obj/structure/ore_box,/obj/item/weapon/shovel,/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"p" = (/obj/structure/closet/crate,/obj/item/weapon/storage/mre/random,/obj/item/weapon/storage/mre/random,/turf/template_noop,/area/template_noop)
+"q" = (/obj/item/weapon/pickaxe/steel,/turf/template_noop,/area/template_noop)
+"r" = (/obj/machinery/floodlight,/obj/effect/decal/cleanable/blood/oil/streak,/turf/template_noop,/area/template_noop)
+
+(1,1,1) = {"
+abcccdcc
+ccceccfc
+cccghicc
+jccklfaf
+mncccofc
+pfccccqc
+cccccffc
+ccccrafc
+"}

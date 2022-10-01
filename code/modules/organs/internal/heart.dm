@@ -136,7 +136,7 @@
 	pulse_modificators["hyposaturation"] = owner.get_deprivation()
 	if(owner.get_deprivation() < 1 && ((owner.mcv + owner.mcv_add) > NORMAL_MCV * owner.k))
 		pulse_modificators["hypermcv"] = -((owner.mcv + owner.mcv_add) - NORMAL_MCV * owner.k) / owner.get_cardiac_output()
-	pulse_modificators["shock"] = Clamp(owner.shock_stage * 0.55, 0, 110)
+	pulse_modificators["shock"] = clamp(owner.shock_stage * 0.55, 0, 110)
 
 /obj/item/organ/internal/heart/proc/handle_rythme()
 	for(var/T in arrythmias)

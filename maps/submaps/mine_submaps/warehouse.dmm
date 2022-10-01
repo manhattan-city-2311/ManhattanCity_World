@@ -1,0 +1,32 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"b" = (/turf/simulated/mineral,/area/template_noop)
+"c" = (/turf/simulated/wall/iron,/area/template_noop)
+"d" = (/obj/structure/sign/fine{pixel_y = 29},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/template_noop)
+"e" = (/obj/item/weapon/weldpack,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/template_noop)
+"f" = (/obj/structure/bed,/obj/structure/bed{pixel_y = 15},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/template_noop)
+"g" = (/turf/simulated/floor/tiled/techfloor,/area/template_noop)
+"h" = (/obj/structure/sign/manhattan/posters{icon_state = "poster12"; pixel_y = 28},/obj/structure/closet,/obj/item/weapon/shovel,/obj/item/weapon/pickaxe/steel,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/template_noop)
+"i" = (/obj/structure/closet,/obj/effect/decal/cleanable/cobweb2,/turf/simulated/floor/plating,/area/template_noop)
+"j" = (/obj/structure/table/steel_reinforced,/obj/structure/bedsheetbin,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/template_noop)
+"k" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/template_noop)
+"l" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/template_noop)
+"m" = (/turf/simulated/floor/plating,/area/template_noop)
+"n" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/paper_bin,/obj/item/weapon/pen,/turf/simulated/floor/plating,/area/template_noop)
+"o" = (/obj/structure/bed/chair/general_alt1{icon_state = "plastic_chair"; dir = 8},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/plating,/area/template_noop)
+"p" = (/obj/structure/closet/crate/large/wooden,/obj/item/weapon/storage/mre/random,/obj/item/weapon/storage/mre/random,/obj/item/weapon/storage/mre/random,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/template_noop)
+"q" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/template_noop)
+"r" = (/obj/structure/sign/manhattan/posters{icon_state = "posterbig5"; pixel_x = 26},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/template_noop)
+"s" = (/obj/structure/bonfire/permanent,/turf/template_noop,/area/template_noop)
+"t" = (/obj/machinery/door/unpowered/manhattan/steel/north,/turf/simulated/floor/tiled/techfloor,/area/template_noop)
+
+(1,1,1) = {"
+aaabbabbbb
+bbbbbbbbbb
+bccccccccb
+bcdefghicb
+bcjkllmkca
+acnoplqrca
+bccccctcca
+abbbasaaab
+aabaaaaabb
+"}

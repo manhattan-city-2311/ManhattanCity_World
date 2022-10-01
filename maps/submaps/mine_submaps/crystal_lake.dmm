@@ -1,0 +1,15 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"b" = (/obj/machinery/crystal,/turf/template_noop,/area/template_noop)
+
+(1,1,1) = {"
+abaaaaaa
+aaaaaaba
+aaaaaaaa
+aaaabaaa
+baaaaaaa
+aaaaaaaa
+aaaaaaaa
+aaaababa
+aaaaaaab
+abaaaaaa
+"}

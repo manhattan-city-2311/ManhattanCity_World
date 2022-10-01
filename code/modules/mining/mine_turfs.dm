@@ -59,6 +59,9 @@ var/list/mining_overlay_cache = list()
 
 	var/mineral_chance = 10
 
+	var/floor_type = /turf/simulated/mineral/floor
+	var/floor_seed
+
 /turf/simulated/mineral/ignore_mapgen
 	ignore_mapgen = 1
 
@@ -73,11 +76,10 @@ var/list/mining_overlay_cache = list()
 	ignore_mapgen = 1
 
 /turf/simulated/mineral/proc/make_floor()
-	if(!density && !opacity)
-		return
-	density = 0
-	opacity = 0
-	update_general()
+	var/turf/T = ChangeTurf(floor_type)
+	if(floor_seed)
+		var/turf/simulated/floor/mining/M = T
+		M.generate(floor_seed)
 
 /turf/simulated/mineral/proc/make_wall()
 	if(density && opacity)
@@ -132,11 +134,14 @@ var/list/mining_overlay_cache = list()
 		icon_state = "rock"
 
 		for(var/direction in cardinal)
-			var/turf/T = get_step(src,direction)
+			var/turf/T = get_step(src, direction)
 			if(istype(T) && !T.density)
 				var/place_dir = turn(direction, 180)
 				if(!mining_overlay_cache["rock_side_[place_dir]"])
-					mining_overlay_cache["rock_side_[place_dir]"] = image('icons/turf/walls.dmi', "rock_side", dir = place_dir)
+					var/image/I = image('icons/turf/walls.dmi', "rock_side", dir = place_dir, layer = src.layer)
+					I.plane = src.plane
+					mining_overlay_cache["rock_side_[place_dir]"] = I
+
 				T.overlays += mining_overlay_cache["rock_side_[place_dir]"]
 
 			if(archaeo_overlay)
@@ -156,16 +161,11 @@ var/list/mining_overlay_cache = list()
 			overlays += mining_overlay_cache["dug_overlay"]
 
 		for(var/direction in cardinal)
-			if(istype(get_step(src, direction), /turf/space) && !istype(get_step(src, direction), /turf/space/cracked_asteroid))
-				if(!mining_overlay_cache["asteroid_edge_[direction]"])
-					mining_overlay_cache["asteroid_edge_[direction]"] = image('icons/turf/flooring/asteroid.dmi', "asteroid_edges", dir = direction)
-				overlays += mining_overlay_cache["asteroid_edge_[direction]"]
-			else
-				var/turf/simulated/mineral/M = get_step(src, direction)
-				if(istype(M) && M.density)
-					if(!mining_overlay_cache["rock_side_[direction]"])
-						mining_overlay_cache["rock_side_[direction]"] = image('icons/turf/walls.dmi', "rock_side", dir = direction)
-					overlays += mining_overlay_cache["rock_side_[direction]"]
+			var/turf/simulated/mineral/M = get_step(src, direction)
+			if(istype(M) && M.density)
+				if(!mining_overlay_cache["rock_side_[direction]"])
+					mining_overlay_cache["rock_side_[direction]"] = image('icons/turf/walls.dmi', "rock_side", dir = direction)
+				overlays += mining_overlay_cache["rock_side_[direction]"]
 
 		if(overlay_detail)
 
@@ -468,8 +468,9 @@ var/list/mining_overlay_cache = list()
 				while(next_rock > 50)
 					next_rock -= 50
 					var/obj/item/weapon/ore/O = new(src)
-					geologic_data.UpdateNearbyArtifactInfo(src)
-					O.geologic_data = geologic_data
+					if(geologic_data)
+						geologic_data.UpdateNearbyArtifactInfo(src)
+						O.geologic_data = geologic_data
 			return
 
 	return attack_hand(user)
@@ -598,3 +599,46 @@ var/list/mining_overlay_cache = list()
 		mineral = ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
+
+/turf/simulated/mineral/mining
+	mineral_chance = 33
+
+/turf/simulated/floor/mining
+	name = "mine floor"
+	desc = ""
+	icon = 'icons/turf/manhattan/pol_agroprom.dmi'
+
+/turf/simulated/floor/mining/proc/generate(seed)
+	select_icon_state(seed)
+	select_overlays()
+
+/turf/simulated/floor/mining/proc/select_icon_state(seed)
+	icon_state = "gryaz[rand(1, 11)]"
+
+/turf/simulated/floor/mining/proc/select_overlays()
+	if(rand(2))
+		overlays += icon('icons/turf/flooring/decals.dmi', icon_state = "asteroid[rand(0,9)]")
+
+/turf/simulated/floor/mining/dirt
+	icon = 'icons/turf/manhattan/worlds.dmi'
+	icon_state = "dirt"
+
+/turf/simulated/floor/mining/dirt/select_icon_state()
+	return
+
+/turf/simulated/floor/mining/dirt/select_overlays()
+	return
+
+/turf/simulated/floor/mining/dirt/rootfloor/select_icon_state(seed)
+	icon_state = "rootfloor_[seed % 3 + 1]"
+
+/turf/simulated/floor/mining/dirt/iowall/select_icon_state(seed)
+	icon_state = "iowall[rand(1, 3)]"
+
+/turf/simulated/floor/mining/sand
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_state = "asteroid"
+
+/turf/simulated/floor/mining/sand/select_icon_state()
+	return
+	

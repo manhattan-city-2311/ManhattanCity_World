@@ -156,6 +156,7 @@
 
 /area/
 	unique_save_vars = list("name")
+	var/should_be_saved = TRUE
 
 /atom/serialize()
 	var/list/data = ..()
@@ -210,6 +211,9 @@
 	update_icon()
 
 // Don't save list - Better to keep a track of things here.
+
+/turf
+	dont_save = TRUE
 
 /mob
 	dont_save = TRUE

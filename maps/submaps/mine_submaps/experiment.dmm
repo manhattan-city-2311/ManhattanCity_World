@@ -1,0 +1,24 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"b" = (/turf/simulated/mineral,/area/template_noop)
+"c" = (/obj/machinery/floodlight{on = 1},/turf/template_noop,/area/template_noop)
+"d" = (/obj/structure/cable{icon_state = "6-10"},/turf/template_noop,/area/template_noop)
+"e" = (/obj/machinery/power/emitter{icon_state = "emitter"; dir = 1},/obj/structure/cable{icon_state = "0-2"; pixel_y = 1; d2 = 2},/turf/template_noop,/area/template_noop)
+"f" = (/obj/machinery/power/port_gen/pacman,/obj/structure/cable{icon_state = "0-10"; dir = 1},/turf/template_noop,/area/template_noop)
+"g" = (/obj/structure/cable{icon_state = "2-5"; dir = 4},/turf/template_noop,/area/template_noop)
+"h" = (/obj/structure/cable{icon_state = "1-8"},/turf/template_noop,/area/template_noop)
+"i" = (/obj/structure/boulder,/turf/template_noop,/area/template_noop)
+
+(1,1,1) = {"
+baaaaaaia
+baabbabaa
+babbbbbba
+aabbbbbba
+ibbbbbbba
+abbbbbbba
+abbbaibaa
+abbiaabac
+aaiaaaaaa
+aadaeaaaa
+afaghaaib
+acaaaaabb
+"}

@@ -37,7 +37,7 @@
 		return
 
 	var/total_damage = strength - armor * 0.5
-	var/delta_damage = Clamp(total_damage, 0, integrity)
+	var/delta_damage = clamp(total_damage, 0, integrity)
 	if(!delta_damage)
 		return
 	integrity -= delta_damage

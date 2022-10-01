@@ -251,7 +251,7 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 			var/new_value = input(usr, "[edit_text ? edit_text : "Please enter a new value for [name]."] (Min: [min_value]. Max: [max_value].)", "[name]", value) as num|null
 
 			sanitize_integer(new_value, min_value, max_value, initial(value))
-			the_new_value = Clamp(new_value, min_value, max_value)
+			the_new_value = clamp(new_value, min_value, max_value)
 
 
 		if(var_to_edit == "toggle_status") //updates the TRUE/FALSE or ON/OFF status

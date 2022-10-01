@@ -3,6 +3,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "launcherbtt"
 	desc = "A remote control switch for something."
+	plane = WALL_OBJ_PLANE
 	var/id = null
 	var/active = 0
 	anchored = 1.0

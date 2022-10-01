@@ -98,7 +98,7 @@ var/global/list/possible_cash_values = list(500, 100, 50, 20, 10, 2, 1)
 	if(amount > worth)
 		return 0
 
-	amount = round(Clamp(amount, 0, src.worth))
+	amount = round(clamp(amount, 0, src.worth))
 	if(amount==0) return 0
 
 	src.worth -= amount

@@ -18,8 +18,8 @@ SUBSYSTEM_DEF(vehicles)
 		if(!QDELETED(V))
 			var/iterations = V.get_calculation_iterations()
 			for(var/j = 0, j < iterations, ++j)
-				V.process_vehicle(wait * 0.1 / iterations)
-				V.process_movement(wait * 0.1 / iterations)
+				V.process_vehicle(0.1 / iterations)
+				V.process_movement(0.1 / iterations)
 		else
 			queue -= V
 

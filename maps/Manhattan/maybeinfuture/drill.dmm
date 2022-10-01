@@ -1,0 +1,69 @@
+"a" = (/turf/space,/area/space)
+"b" = (/obj/structure/railing{dir = 8; icon_state = "railing0"; tag = "icon-railing0 (WEST)"},/obj/structure/railing{dir = 1; icon_state = "railing0"},/obj/effect/floor_decal/industrial/warning/corner,/turf/simulated/floor/plating,/area/space)
+"c" = (/obj/structure/railing{dir = 1; icon_state = "railing0"},/obj/effect/floor_decal/industrial/warning,/turf/simulated/floor/plating,/area/space)
+"d" = (/obj/structure/railing{dir = 4; icon_state = "railing0"; tag = "icon-railing0 (EAST)"},/obj/structure/railing{dir = 1; icon_state = "railing0"},/obj/effect/floor_decal/industrial/warning/corner{dir = 8},/turf/simulated/floor/plating,/area/space)
+"e" = (/obj/structure/railing{dir = 8; icon_state = "railing0"; tag = "icon-railing0 (WEST)"},/obj/effect/floor_decal/industrial/warning{dir = 4},/turf/simulated/floor/plating,/area/space)
+"f" = (/turf/simulated/floor/plating,/area/space)
+"g" = (/turf/simulated/wall/titanium,/area/space)
+"h" = (/obj/structure/railing{dir = 4; icon_state = "railing0"; tag = "icon-railing0 (EAST)"},/obj/effect/floor_decal/industrial/warning{dir = 8},/turf/simulated/floor/plating,/area/space)
+"i" = (/obj/structure/ore_box,/obj/effect/floor_decal/industrial/hatch/yellow,/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"j" = (/obj/structure/closet/secure_closet/miner,/obj/effect/floor_decal/industrial/outline/yellow,/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"k" = (/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"l" = (/obj/structure/table/standard,/obj/item/weapon/mining_scanner,/obj/item/weapon/mining_scanner,/obj/item/weapon/mining_scanner,/obj/effect/floor_decal/corner/beige{dir = 6},/obj/machinery/light/small{dir = 4; pixel_y = 0},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"m" = (/obj/effect/wallframe_spawn/reinforced/titanium,/turf/simulated/floor/reinforced,/area/space)
+"n" = (/obj/structure/closet/secure_closet/miner,/obj/effect/floor_decal/industrial/outline/yellow,/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"o" = (/obj/structure/table/standard,/obj/item/weapon/pickaxe/steel,/obj/item/weapon/pickaxe/steel,/obj/item/weapon/pickaxe/steel,/obj/effect/floor_decal/corner/beige{dir = 6},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"p" = (/obj/structure/table/standard,/obj/item/weapon/pickaxe/plasmacutter,/obj/effect/floor_decal/corner/beige{dir = 6},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"q" = (/obj/machinery/giga_drill{drill_time = 5; name = "giant drill"},/obj/effect/floor_decal/industrial/outline/yellow,/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"r" = (/obj/structure/table/standard,/obj/machinery/cell_charger,/obj/machinery/cell_charger{pixel_y = 13},/obj/effect/floor_decal/corner/beige{dir = 6},/obj/random/powercell,/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"s" = (/obj/structure/closet/crate,/obj/structure/railing{dir = 1; icon_state = "railing0"},/turf/simulated/floor/reinforced,/area/space)
+"t" = (/obj/structure/catwalk,/obj/effect/floor_decal/industrial/warning{dir = 4},/turf/simulated/floor/plating,/area/space)
+"u" = (/obj/effect/floor_decal/techfloor{dir = 8},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"v" = (/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/obj/structure/closet/crate,/obj/structure/railing,/turf/simulated/floor/reinforced,/area/space)
+"w" = (/obj/effect/floor_decal/industrial/warning/corner,/obj/machinery/light/small{dir = 4; pixel_y = 0},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"x" = (/obj/effect/floor_decal/techfloor{dir = 4},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"y" = (/obj/structure/catwalk,/obj/effect/floor_decal/industrial/warning{dir = 8},/turf/simulated/floor/plating,/area/space)
+"z" = (/obj/machinery/door/airlock/mining{name = "Mining Train"},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"A" = (/obj/effect/floor_decal/industrial/warning{dir = 8},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"B" = (/obj/effect/floor_decal/industrial/warning{dir = 4},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"C" = (/obj/effect/floor_decal/industrial/warning/corner{dir = 1},/obj/effect/floor_decal/industrial/warning/corner{dir = 8},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"D" = (/obj/effect/floor_decal/industrial/warning/corner{dir = 4; icon_state = "warningcorner"},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"E" = (/obj/machinery/mech_recharger,/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"F" = (/obj/machinery/vending/mining,/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"G" = (/obj/effect/floor_decal/industrial/warning{dir = 8},/obj/machinery/light/small,/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"H" = (/obj/structure/bed/chair/shuttle{dir = 8},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"I" = (/obj/machinery/door/airlock/mining{name = "Mining Train Control"},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"J" = (/obj/structure/bed/chair/shuttle{dir = 4},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"K" = (/obj/structure/bed/chair/shuttle{dir = 4},/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"L" = (/obj/structure/bed/chair/shuttle{dir = 8},/obj/machinery/light/small{dir = 4; pixel_y = 0},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"M" = (/obj/structure/bed/chair/shuttle,/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"N" = (/obj/structure/flight_right{dir = 1; name = "mining train computer panel"},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"O" = (/obj/structure/flight_center{dir = 1; name = "mining train computer console"},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"P" = (/obj/structure/flight_left{dir = 1; name = "mining train computer meters"},/turf/simulated/floor/tiled/techfloor/grid,/area/space)
+"Q" = (/obj/structure/railing{dir = 8; icon_state = "railing0"; tag = "icon-railing0 (WEST)"},/obj/effect/floor_decal/industrial/warning/corner{dir = 4; icon_state = "warningcorner"},/turf/simulated/floor/plating,/area/space)
+"R" = (/obj/effect/floor_decal/industrial/warning{dir = 1},/turf/simulated/floor/plating,/area/space)
+"S" = (/obj/structure/manhattan/rails,/obj/effect/floor_decal/industrial/warning{dir = 1},/turf/simulated/floor/plating,/area/space)
+"T" = (/obj/structure/railing{dir = 4; icon_state = "railing0"; tag = "icon-railing0 (EAST)"},/obj/effect/floor_decal/industrial/warning/corner{dir = 1},/turf/simulated/floor/plating,/area/space)
+
+(1,1,1) = {"
+bcccccccdaaaaaaaaaaa
+efgggggfhaaaaaaaaaaa
+eggiiigghaaaaaaaaaaa
+egjkkklghaaaaaaaaaaa
+emnkkkomhaaaaaaaaaaa
+emnkkkpmhaaaaaaaaaaa
+egqkkkrghaaaaaaaaaaa
+eggskkgghaaaaaaaaaaa
+tugvkwgxyaaaaaaaaaaa
+tuzAkBzxyaaaaaaaaaaa
+eggCkDgghaaaaaaaaaaa
+emEAkkFmhaaaaaaaaaaa
+emEGkkHmhaaaaaaaaaaa
+egggIggghaaaaaaaaaaa
+egJkkkHghaaaaaaaaaaa
+egKkkkLghaaaaaaaaaaa
+emJkMkHmhaaaaaaaaaaa
+emmNOPmmhaaaaaaaaaaa
+efmmmmmfhaaaaaaaaaaa
+QRRSRSRRTaaaaaaaaaaa
+"}

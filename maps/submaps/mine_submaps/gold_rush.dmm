@@ -1,0 +1,35 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"b" = (/obj/effect/decal/remains/human,/turf/template_noop,/area/template_noop)
+"c" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"d" = (/obj/machinery/crystal,/turf/template_noop,/area/template_noop)
+"e" = (/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"f" = (/obj/effect/decal/remains/ribcage,/turf/template_noop,/area/template_noop)
+"g" = (/obj/machinery/crystal,/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"h" = (/obj/item/weapon/ore/gold,/turf/template_noop,/area/template_noop)
+"i" = (/obj/effect/decal/remains/deer,/turf/template_noop,/area/template_noop)
+"j" = (/obj/item/weapon/ore/gold{pixel_x = -7; pixel_y = -5},/obj/item/weapon/ore/gold{pixel_x = -21},/turf/template_noop,/area/template_noop)
+"k" = (/obj/effect/decal/cleanable/generic,/turf/template_noop,/area/template_noop)
+"l" = (/obj/effect/decal/remains/mouse,/turf/template_noop,/area/template_noop)
+"m" = (/obj/item/weapon/ore/gold{pixel_x = -10; pixel_y = 9},/turf/template_noop,/area/template_noop)
+"n" = (/obj/item/weapon/ore/gold{pixel_x = -13; pixel_y = -16},/turf/template_noop,/area/template_noop)
+"o" = (/obj/structure/closet/crate/miningcar,/obj/item/weapon/ore/gold,/turf/template_noop,/area/template_noop)
+"p" = (/obj/effect/decal/remains/posi,/turf/template_noop,/area/template_noop)
+"q" = (/obj/effect/decal/remains/unathi,/turf/template_noop,/area/template_noop)
+"r" = (/obj/item/weapon/ore/gold,/obj/item/weapon/ore/gold,/turf/template_noop,/area/template_noop)
+"s" = (/obj/effect/decal/remains/lizard,/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"t" = (/obj/effect/decal/remains/human,/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+"u" = (/obj/machinery/crystal,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/template_noop,/area/template_noop)
+
+(1,1,1) = {"
+aaabaaaaaca
+adaaefaagae
+aeehadaaaae
+ieajaabehka
+aaaalmndaaa
+akaheoahapa
+adeeabeeeea
+aqeeaarcsea
+aateaaauaad
+eeaadaaeaaa
+aaeaaaaaaba
+"}

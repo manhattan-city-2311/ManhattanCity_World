@@ -1,0 +1,15 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"b" = (/turf/simulated/mineral,/area/template_noop)
+"c" = (/obj/item/weapon/bone/arm{pixel_x = 24; pixel_y = 7},/turf/template_noop,/area/template_noop)
+"d" = (/obj/item/weapon/bone/skull{pixel_x = 8; pixel_y = 11},/obj/item/weapon/bone/ribs,/obj/item/clothing/head/hardhat{pixel_x = 9; pixel_y = 21},/obj/item/weapon/pickaxe/steel{pixel_x = 9; pixel_y = -15},/turf/template_noop,/area/template_noop)
+"e" = (/obj/structure/ore_box,/turf/template_noop,/area/template_noop)
+"f" = (/obj/item/device/gps/mining/on,/turf/template_noop,/area/template_noop)
+"g" = (/obj/item/weapon/bone/leg{pixel_x = 12; pixel_y = -6},/turf/template_noop,/area/template_noop)
+
+(1,1,1) = {"
+aabaa
+acdeb
+afabb
+bagaa
+bbbaa
+"}

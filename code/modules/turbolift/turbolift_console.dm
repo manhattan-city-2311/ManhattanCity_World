@@ -52,6 +52,7 @@
 /obj/structure/lift/button
 	name = "elevator button"
 	desc = "A call button for an elevator. Be sure to hit it three hundred times."
+	plane = WALL_OBJ_PLANE
 	icon_state = "button"
 	var/light_up = FALSE
 	var/datum/turbolift_floor/floor

@@ -87,6 +87,9 @@
 	x = cos(degrees)
 	y = sin(degrees)
 
+/vector2/proc/dot(vector2/other)
+	return x * other.x + y * other.y
+
 /proc/vector2_from_angle(degrees)
 	var/vector2/vec = new
 

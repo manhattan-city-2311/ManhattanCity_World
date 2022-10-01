@@ -40,19 +40,19 @@
 	return FALSE
 
 /mob/living/carbon/proc/set_nutrition(var/amt)
-	nutrition = Clamp(amt, 0, initial(nutrition))
+	nutrition = clamp(amt, 0, initial(nutrition))
 
 /mob/living/carbon/proc/adjust_nutrition(var/amt)
 	set_nutrition(nutrition + amt)
 
 /mob/living/carbon/proc/set_hydration(var/amt)
-	hydration = Clamp(amt, 0, initial(hydration))
+	hydration = clamp(amt, 0, initial(hydration))
 
 /mob/living/carbon/proc/adjust_hydration(var/amt)
 	set_hydration(hydration + amt)
 
 /mob/living/carbon/proc/set_calories(var/amt)
-	calories = Clamp(amt, species.min_calories, species.max_calories)
+	calories = clamp(amt, species.min_calories, species.max_calories)
 
 /mob/living/carbon/proc/adjust_calories(var/amt)
 	set_calories(calories + amt)

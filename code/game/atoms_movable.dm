@@ -22,6 +22,42 @@
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
 	var/lastmovementdelay = 0
 
+	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
+	var/blocks_emissive = FALSE
+	///Internal holder for emissive blocker object, do not use directly use blocks_emissive
+	var/atom/movable/emissive_blocker/em_block
+
+/atom/movable/initialize()
+	. = ..()
+	if(blocks_emissive)
+		update_emissive_block()
+
+/atom/movable/Destroy()
+	QDEL_NULL(em_block)
+	return ..()
+
+/atom/movable/update_icon()
+	. = ..()
+	if(blocks_emissive)
+		update_emissive_block()
+
+/atom/movable/proc/update_emissive_block()
+	if (blocks_emissive == EMISSIVE_BLOCK_GENERIC)
+		var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)
+		gen_emissive_blocker.color = GLOB.em_block_color
+		gen_emissive_blocker.dir = dir
+		gen_emissive_blocker.alpha = alpha
+		gen_emissive_blocker.appearance_flags |= appearance_flags
+		. = gen_emissive_blocker
+	else if(blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
+		if(!em_block)
+			render_target = ref(src)
+			em_block = new(src, render_target)
+		. = em_block
+	else
+		return
+	add_overlay(.)
+
 /atom/movable/proc/update_glide(movement_delay = 2)
 	if (movement_delay != lastmovementdelay && movement_delay)
 		lastmovementdelay = movement_delay

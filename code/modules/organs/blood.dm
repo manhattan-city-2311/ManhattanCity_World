@@ -290,8 +290,9 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	return vessel.total_volume ? vessel.total_volume / vessel.maximum_volume : 0
 
 /mob/living/carbon/human/proc/calc_heart_rate_coeff(hr)
-	. = hr && (60.0 / hr) // hrp should be INFINITY when hr = 0, but will be zero.
-	. = hr && (. * 0.109 + 0.159)
+	if(!hr)
+		return 0 // hrp should be INFINITY when hr = 0, but will be zero.
+	. = ((60.0 / hr) * 0.109 + 0.159)
 	. *= 3.73134328358209 // 1 = hrpd(where hr = 60) => 3.73...
 
 // Recalcs some cmed parameters due to HR change, use before true changing
@@ -300,19 +301,28 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	update_cm(newhr)
 
 /mob/living/carbon/human/proc/update_cm(hr = get_heart_rate())
-	if(get_cardiac_output_mod() && get_blood_volume() && mcv < 100)
-		mcv = 1000 * get_cardiac_output_mod() * get_blood_volume() // MCV should'nt be zero if any circulation present
-	if(!get_blood_volume() && (spressure || mpressure || dpressure || mcv))
+	var/blood_volume = get_blood_volume()
+	var/cardiac_output_mod = get_cardiac_output_mod()
+	if(cardiac_output_mod && blood_volume && mcv < 100)
+		mcv = 1000 * cardiac_output_mod * blood_volume // MCV should'nt be zero if any circulation present
+	if(!blood_volume && (mpressure + mcv))
 		spressure = mpressure = dpressure = mcv = 0
 
 	var/coeff = calc_heart_rate_coeff(hr)
 
-	gvr = 218.50746268
-	gvr += LAZYACCESS0(chem_effects, CE_PRESSURE)
-	gvr += spressure * (0.0008 * spressure - 0.8833) + 94 // simulate elasticity of vascular resistance
+	gvr = 218.50746268 + LAZYACCESS0(chem_effects, CE_PRESSURE)
+	gvr += spressure * (0.0008 * spressure - 0.8833) + 94 // elasticity of vascular resistance model
 
-	update_blood_pressure(hr, mcv, coeff)
-	update_mcv(coeff)
+	if(mcv)
+		update_blood_pressure(hr, mcv, coeff)
+	else if(mpressure)
+		spressure = mpressure = dpressure = 0
+
+	// update mcv
+	var/mpressure2 = (mpressure + dpressure) * 0.5
+	var/nmcv = ((mpressure2 * 7999.2) / gvr * coeff * cardiac_output_mod + mcv_add) * blood_volume
+	mcv = clamp(nmcv, 0, MAX_MCV)
+	mcv_add = 0
 
 
 	var/n_perfusion = mcv ? CLAMP01((mcv / (NORMAL_MCV * k)) * (get_blood_saturation() / 0.97)) : 0
@@ -329,12 +339,6 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	dpressure = min(dpressure, spressure - rand(5, 15))
 // update mpressure
 	mpressure = dpressure + (spressure - dpressure) / 3.0
-
-/mob/living/carbon/human/proc/update_mcv(coeff)
-	var/mpressure2 = (mpressure + dpressure) * 0.5
-	var/nmcv = ((mpressure2 * 7999.2) / gvr * coeff * get_cardiac_output_mod() + mcv_add) * get_blood_volume()
-	mcv = clamp(nmcv, 0, MAX_MCV)
-	mcv_add = 0
 
 /mob/living/carbon/human/proc/get_heart_rate()
 	var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]

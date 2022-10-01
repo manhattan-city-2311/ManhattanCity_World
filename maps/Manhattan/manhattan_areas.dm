@@ -45,6 +45,7 @@
 	flags = null
 	outdoors = TRUE
 	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+	should_be_saved = FALSE
 
 /area/planets/Manhattan/indoor
 	name = "\improper New-Manhattan Interior"
@@ -936,6 +937,8 @@
 	name = "\improper New-Manhattan South District third level outdoors"
 	base_turf = /turf/simulated/open
 
+/area/planets/Manhattan/south/str
+	should_be_saved = FALSE
 /area/planets/Manhattan/south/str/chpock
 	name = "\improper  South District Chpock Street"
 	icon_state = "south_m_chpock"
@@ -1792,3 +1795,13 @@
 	lift_floor_name = "Third floor"
 	lift_announce_str = "Lift arriving at third floor, offices."
 	base_turf = /turf/simulated/floor/plating
+
+
+/area/planets/Manhattan/indoor/mining_lift
+	name = "mine shaft lift"
+	requires_power = FALSE
+
+/area/mine
+	name = "mine"
+	requires_power = FALSE
+	should_be_saved = FALSE

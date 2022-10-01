@@ -1,0 +1,18 @@
+"a" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+"b" = (/turf/template_noop,/area/template_noop)
+"c" = (/turf/simulated/floor/mining/dirt,/area/template_noop)
+"d" = (/obj/structure/flora/ausbushes/fullgrass,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+"e" = (/obj/structure/gravemarker,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+"f" = (/obj/structure/flora/ausbushes/ppflowers,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+"g" = (/obj/structure/flora/ausbushes/brflowers,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+"h" = (/obj/item/clothing/head/hardhat{pixel_y = 15},/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+"i" = (/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+"j" = (/obj/item/weapon/shovel,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
+
+(1,1,1) = {"
+abcdb
+ccefc
+cghic
+bcijc
+bcacb
+"}

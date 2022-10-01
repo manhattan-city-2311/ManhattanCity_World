@@ -66,7 +66,7 @@
 
 /obj/item/weapon/defibrillator/attack_self(mob/user)
 	var/new_shock_power = input(user, "Set the shock power(240-360)", "Shock power", shock_power) as num
-	shock_power = Clamp(new_shock_power, 1, 720)
+	shock_power = clamp(new_shock_power, 1, 720)
 
 /obj/item/weapon/defibrillator/attack_hand(mob/user)
 	if(loc == user)

@@ -21,7 +21,7 @@
 /obj/item/vehicle_part/wheel/proc/handle_pressure(var/strength)
 	if(pressure < WHEEL_PRESSURE_MINIMUM)
 		return
-	var/delta_damage = Clamp(strength, 0, pressure)
+	var/delta_damage = clamp(strength, 0, pressure)
 	pressure -= delta_damage
 
 // N

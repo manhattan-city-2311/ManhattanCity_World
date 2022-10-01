@@ -188,8 +188,8 @@
 	while(pixel_y < -16)
 		pixel_y += 32
 		new_y--
-	new_x = CLAMP(new_x, 0, world.maxx)
-	new_y = CLAMP(new_y, 0, world.maxy)
+	new_x = clamp(new_x, 0, world.maxx)
+	new_y = clamp(new_y, 0, world.maxy)
 	return locate(new_x, new_y, starting.z)
 
 // Returns a list where [1] is all x values and [2] is all y values that overlap between the given pair of rectangles
@@ -222,15 +222,17 @@
 #define ISPOWEROFTWO(x) ((x & (x - 1)) == 0)
 #define ROUNDUPTOPOWEROFTWO(x) (2 ** -round(-log(2,x)))
 
+#define SMOOTH_INTER(a, b, t) LERP(a, b, (t) * (t) * (3-2*(t)))
+
 /proc/frac(x)
-	return x % 1
+	return MODULUS(x, 1)
 
 /proc/remove_frac(x)
-	return x - frac(x)
+	return round(x)
 
 // Performs a linear interpolation between a and b.
 /proc/lerp(a, b, t = 0.5)
-	return a + t * (b - a)
+	return LERP(a, b, t)
 
 // Lagrage interpolation
 /proc/interpolate_list(x, list/xs, list/ys)
@@ -241,4 +243,46 @@
 			if(j != i)
 				l *= (x - xs[j]) / (xs[i] - xs[j])
 		. += ys[i] * l
-		
+
+var/global/random2d_seed = rand(1, 130000)
+
+/proc/bitmerge(x, y)
+	. |= (x &  3)
+	. |= (y &  3) << 2
+	. |= (x & 12) << 4
+	. |= (y & 12) << 6
+	. |= (x & 48) << 8
+	. |= (y & 48) << 10
+	. |= (x & 192)<< 12
+	. |= (y & 192)<< 14
+
+/proc/random2d(x, y)
+	return (8121 * ((bitmerge(x, y) ^ global.random2d_seed) + 28411)) % 134456; // LCPRNG
+
+/proc/perlin_noise(x, y, scale = 0.1, octaves = 5)
+	var/amplitude = 1
+	var/div = 0
+	x *= scale
+	y *= scale
+	do
+		var/xi = remove_frac(x)
+		var/yi = remove_frac(y)
+		var/x_frac = frac(x)
+		var/y_frac = frac(y)
+
+		var/s = random2d(xi  , yi  )
+		var/t = random2d(xi+1, yi  )
+		var/u = random2d(xi  , yi+1)
+		var/v = random2d(xi+1, yi+1)
+
+		var/r1 = SMOOTH_INTER(s, t, x_frac)
+		var/r2 = SMOOTH_INTER(u, v, x_frac)
+
+		. += (SMOOTH_INTER(r1, r2, y_frac)) * amplitude
+		div += 134455 * amplitude
+		amplitude *= 0.5
+		x *= 2
+		y *= 2
+	while(--octaves)
+
+	. /= div

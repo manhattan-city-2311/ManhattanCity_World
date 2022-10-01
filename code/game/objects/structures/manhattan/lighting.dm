@@ -3,9 +3,14 @@
 	icon = 'icons/turf/flooring/decals.dmi'
 	icon_state = "spline_fancy"
 	plane = NEON_DECALS_PLANE
-	light_power = 8
+	light_power = 3
 	light_range = 1.5
 	anchored = TRUE
+	blocks_emissive = FALSE
+
+/obj/structure/neon_spline/initialize()
+	. = ..()
+	add_overlay(emissive_appearance(icon, icon_state))
 
 #define NEON_SPLINE(id, col) /obj/structure/neon_spline/##id {color = col ; light_color = col }
 #define NEON_SPLINE_CORNER(id) /obj/structure/neon_spline/##id/corner { icon_state = "spline_fancy_corner" ; }

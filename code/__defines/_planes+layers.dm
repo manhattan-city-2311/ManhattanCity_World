@@ -65,6 +65,7 @@ What is the naming convention for planes or layers?
 #define NEON_DECALS_PLANE -41
 // Obj planes
 #define OBJ_PLANE				-35
+#define WALL_OBJ_PLANE			-34
 	#define STAIRS_LAYER			2.5 // Layer for stairs
 	#define HIDING_LAYER			2.6 // Layer at which mobs hide to be under things like tables
 	#define DOOR_OPEN_LAYER			2.7 // Under all objects if opened. 2.7 due to tables being at 2.6
@@ -113,28 +114,26 @@ What is the naming convention for planes or layers?
 	#define SCREEN_LAYER			22	// Mob HUD/effects layer
 
 #define PLANE_ADMIN1			3 //Purely for shenanigans (below lighting)
-#define PLANE_WEATHER			4
-#define PLANE_LIGHTING			5 //Where the lighting (and darkness) lives
-#define PLANE_LIGHTING_ABOVE	6 //For glowy eyes etc. that shouldn't be affected by darkness
+#define PLANE_WEATHER			5
 
-#define PLANE_GHOSTS			10 //Spooooooooky ghooooooosts
-#define PLANE_AI_EYE			11 //The AI eye lives here
+#define PLANE_GHOSTS			20 //Spooooooooky ghooooooosts
+#define PLANE_AI_EYE			21 //The AI eye lives here
 
 // "Character HUDs", aka HUDs, but not the game's UI. Things like medhuds. I know Planes say they must be intergers, but it's lies.
-#define PLANE_CH_STATUS			15 //Status icon
-#define PLANE_CH_HEALTH			16 //Health icon
-#define PLANE_CH_LIFE			17 //Health bar
-#define PLANE_CH_ID				18 //Job icon
-#define PLANE_CH_WANTED			19 //Arrest icon
-#define PLANE_CH_IMPLOYAL		20 //Loyalty implant icon
-#define PLANE_CH_IMPTRACK		21 //Tracking implant icon
-#define PLANE_CH_IMPCHEM		22 //Chemical implant icon
-#define PLANE_CH_SPECIAL		23 //Special role icon (revhead or w/e)
-#define PLANE_CH_STATUS_OOC		24 //OOC status hud for spooks
+#define PLANE_CH_STATUS			25 //Status icon
+#define PLANE_CH_HEALTH			26 //Health icon
+#define PLANE_CH_LIFE			27 //Health bar
+#define PLANE_CH_ID				28 //Job icon
+#define PLANE_CH_WANTED			29 //Arrest icon
+#define PLANE_CH_IMPLOYAL		30 //Loyalty implant icon
+#define PLANE_CH_IMPTRACK		31 //Tracking implant icon
+#define PLANE_CH_IMPCHEM		32 //Chemical implant icon
+#define PLANE_CH_SPECIAL		33 //Special role icon (revhead or w/e)
+#define PLANE_CH_STATUS_OOC		34 //OOC status hud for spooks
 
-#define PLANE_MESONS			30 //Stuff seen with mesons, like open ceilings. This is 30 for downstreams.
+#define PLANE_MESONS			40 //Stuff seen with mesons, like open ceilings. This is 30 for downstreams.
 
-#define PLANE_ADMIN2			33 //Purely for shenanigans (above lighting)
+#define PLANE_ADMIN2			43 //Purely for shenanigans (above lighting)
 
 //Fullscreen overlays under inventory
 #define PLANE_FULLSCREEN		90 //Blindness, mesons, druggy, etc
@@ -156,6 +155,13 @@ What is the naming convention for planes or layers?
 
 #define PLANE_ADMIN3			99 //Purely for shenanigans (above HUD)
 
+#define PLANE_LIGHTING			10 //Where the lighting (and darkness) lives
+#define PLANE_LIGHTING_ABOVE	11 //For glowy eyes etc. that shouldn't be affected by darkness
+
+#define EMISSIVE_PLANE 150
+#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
+
+#define LIGHTING_RENDER_TARGET "LIGHT_PLANE"
 
 //////////////////////////
 /atom/proc/hud_layerise()
