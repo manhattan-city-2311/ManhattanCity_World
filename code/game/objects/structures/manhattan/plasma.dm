@@ -24,8 +24,10 @@
 		if("Change mode")
 			icon_state = input("Choose a new state", "New state") in states
 			set_light(n_light_range, n_light_power, l_color = states[icon_state])
+			add_overlay(emissive_appearance(icon, icon_state))
 		if("Switch off")
 			icon_state = "off"
 			set_light(0, 0)
+			cut_overlays()
 		else
 			. = ..()

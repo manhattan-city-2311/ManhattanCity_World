@@ -28,9 +28,9 @@
 	var/atom/movable/emissive_blocker/em_block
 
 /atom/movable/initialize()
-	. = ..()
 	if(blocks_emissive)
 		update_emissive_block()
+	. = ..()
 
 /atom/movable/Destroy()
 	QDEL_NULL(em_block)
@@ -42,14 +42,18 @@
 		update_emissive_block()
 
 /atom/movable/proc/update_emissive_block()
-	if(em_block)
-		overlays -= em_block
+	if(em_block) // TODO: rewrite some objects iconcode to add SSoverlay-based emissive blocking scheme for EMISSIVE_BLOCK_GENERIC
+		if(ismovable(em_block))
+			cut_overlay(em_block)
+		else
+			overlays -= em_block
 		em_block = null
 
 	if (blocks_emissive == EMISSIVE_BLOCK_GENERIC)
 		var/mutable_appearance/gen_emissive_blocker = new(src)
-		gen_emissive_blocker.color = GLOB.em_block_color
+		gen_emissive_blocker.color = EM_BLOCK_COLOR
 		gen_emissive_blocker.plane = EMISSIVE_PLANE
+		gen_emissive_blocker.appearance_flags |= EMISSIVE_APPEARANCE
 		em_block = gen_emissive_blocker
 		overlays += em_block
 	else if(blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
@@ -283,10 +287,6 @@
 
 /atom/movable/proc/touch_map_edge()
 	if(z in using_map.sealed_levels)
-		return
-
-	if(config.use_overmap)
-		overmap_spacetravel(get_turf(src), src)
 		return
 
 	var/move_to_z = src.get_transit_zlevel()

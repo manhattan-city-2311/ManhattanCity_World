@@ -157,7 +157,7 @@ var/list/organ_cache = list()
 	var/antibiotics = LAZYACCESS0(owner.chem_effects, CE_ANTIBIOTIC)
 
 	if(germ_level > 0 && germ_level < INFECTION_LEVEL_ONE / 2)
-		germ_level--
+		--germ_level
 
 	if(germ_level >= INFECTION_LEVEL_ONE)
 		if(owner.bodytemperature - T0C < 45.5)
@@ -274,7 +274,8 @@ var/list/organ_cache = list()
 		if(user)
 			log_admin(user, owner, "Removed a vital organ ([src]).", "Had a vital organ ([src]) removed.", "removed a vital organ ([src]) from")
 		owner.death()
-	owner.internal_organs_by_name -= src
+	owner.internal_organs_by_name -= organ_tag
+	owner.internal_organs -= src
 	owner.organs_by_name -= src
 	owner = null
 

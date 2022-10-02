@@ -69,6 +69,7 @@
 	return
 
 /obj/structure/bed/chair/post_buckle_mob()
+	. = ..()
 	update_icon()
 
 /obj/structure/bed/chair/unbuckle_mob()
@@ -152,22 +153,13 @@
 	applies_material_colour = 0
 	color = null
 	armrest_icon = TRUE
+	buckle_pixel_shift = list(0, -10, -MOB_PIXEL_Z)
 
 /obj/structure/bed/chair/bath/attack_hand(mob/user as mob)
 	if(icon_state == "bath")
 		icon_state = "bath_active"
 	else
 		icon_state = "bath"
-
-/obj/structure/bed/chair/bath/post_buckle_mob(mob/living/M as mob)
-	if(M.buckled == src)
-		M.pixel_y = -10
-		M.old_y = -10
-		buckle_dir = EAST
-		buckle_lying = 1
-	else
-		M.pixel_y = 0
-		M.old_y = 0
 
 /obj/structure/bed/chair/comfy/brown/New(var/newloc,var/newmaterial)
 	..(newloc,"steel","leather")

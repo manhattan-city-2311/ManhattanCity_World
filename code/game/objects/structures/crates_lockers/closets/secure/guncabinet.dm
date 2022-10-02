@@ -8,6 +8,7 @@
 	icon_locked ="base"
 	icon_closed ="base"
 	icon_opened = "base"
+	icon_emissive = null
 
 /obj/structure/closet/secure_closet/guncabinet/New()
 	..()

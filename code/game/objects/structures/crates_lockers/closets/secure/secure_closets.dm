@@ -13,13 +13,16 @@
 	icon_opened = "secureopen"
 	var/icon_broken = "securebroken"
 	var/icon_off = "secureoff"
+	var/icon_emissive = "emissive"
 	wall_mounted = 0 //never solid (You can always pass over it)
 	health = 200
 
-/obj/structure/closet/secure_closet/New()
-	..()
+/obj/structure/closet/secure_closet/initialize()
+	. = ..()
 	if(dont_save)
 		make_nonpersistent()
+	if(icon_emissive)
+		update_icon()
 
 /obj/structure/closet/secure_closet/can_open()
 	if(src.locked)
@@ -151,9 +154,13 @@
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
 /obj/structure/closet/secure_closet/update_icon()//Putting the welded stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
-	overlays.Cut()
+	cut_overlays()
+	luminosity = 0
 
 	if(!opened)
+		if(!broken && icon_emissive)
+			add_overlay(emissive_appearance(icon, icon_emissive))
+			luminosity = 1
 		if(broken)
 			icon_state = icon_off
 		else if(locked)
@@ -161,7 +168,7 @@
 		else
 			icon_state = icon_closed
 		if(welded)
-			overlays += "welded"
+			add_overlay("welded")
 	else
 		icon_state = icon_opened
 

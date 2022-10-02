@@ -2,6 +2,8 @@ SUBSYSTEM_DEF(events)
 	name = "Events"
 	wait = 20
 
+	flags = SS_NO_FIRE | SS_NO_INIT // FIXME: 
+
 	var/list/datum/event/active_events = list()
 	var/list/datum/event/finished_events = list()
 

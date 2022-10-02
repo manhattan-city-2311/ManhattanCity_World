@@ -66,6 +66,7 @@
 
 /obj/machinery/computer/update_icon()
 	cut_overlays()
+	luminosity = 0
 	// No power
 	if(stat & NOPOWER)
 		set_light(0)
@@ -82,7 +83,8 @@
 			add_overlay("[icon_state]_broken")
 		// Not broken
 		else
-			add_overlay(icon_screen)
+			add_overlay(emissive_appearance(icon, icon_screen))
+			luminosity = 1
 
 /obj/machinery/computer/power_change()
 	..()

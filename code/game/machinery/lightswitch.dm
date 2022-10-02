@@ -59,17 +59,13 @@
 				pixel_y = 0
 
 /obj/machinery/light_switch/proc/updateicon()
-	if(!overlay)
-		overlay = image(icon, "light1-overlay")
-
-	overlays.Cut()
+	cut_overlays()
 	if(stat & NOPOWER)
 		icon_state = "light-p"
 		set_light(0)
 	else
 		icon_state = "light[on]"
-		overlay.icon_state = "light[on]-overlay"
-		overlays += overlay
+		add_overlay(emissive_appearance(icon, "light-emission"))
 		set_light(2, 0.1, on ? "#82FF4C" : "#F86060")
 
 /obj/machinery/light_switch/examine(mob/user)

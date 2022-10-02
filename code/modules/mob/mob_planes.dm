@@ -188,7 +188,7 @@ as far as i can tell, this is unused.
 
 /obj/screen/plane_master/emissive/initialize()
 	. = ..()
-	filters = filter(type = "color", color = GLOB.em_mask_matrix)
+	filters = filter(type = "color", color = EM_MASK_MATRIX)
 
 /////////////////
 //Ghosts has a special alpha level

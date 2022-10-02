@@ -60,11 +60,9 @@ GLOBAL_LIST_INIT(recomended_holoplants_colors,list(HOLOPLANT_REC_COLORS))
 /obj/machinery/holoplant/update_icon()
 	if(!islist(possible_states))
 		parse_icon()
-	overlays.Cut()
-	add_overlay(emissive_appearance())
+	cut_overlays(force_compile = TRUE)
 	hologram_opacity = (emagged ? 0.95 : initial(hologram_opacity))
-	if(!isicon(plant))
-		change_plant(plant)
+	change_plant(plant)
 	change_color(plant_color)
 
 	if(enabled)
@@ -76,6 +74,7 @@ GLOBAL_LIST_INIT(recomended_holoplants_colors,list(HOLOPLANT_REC_COLORS))
 	set_light(enabled ? brightness_on : 0, 10, plant_color)
 /obj/machinery/holoplant/proc/get_states_list()
 	return (emagged ? emagged_states : possible_states)
+
 /obj/machinery/holoplant/proc/change_plant(var/state, list/states)
 	if(length(states))
 		state = states[state]
@@ -102,7 +101,7 @@ GLOBAL_LIST_INIT(recomended_holoplants_colors,list(HOLOPLANT_REC_COLORS))
 	plant_color = ncolor
 	plant.ColorTone(ncolor)
 
-	set_light(l_color=ncolor)
+	set_light(l_color = ncolor)
 
 /obj/machinery/holoplant/attack_hand(mob/user)
 	if(!interference)

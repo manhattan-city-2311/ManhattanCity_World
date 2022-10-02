@@ -417,3 +417,5 @@
 
 #define M_RUN "run"
 #define M_WALK "walk"
+
+#define MOB_PIXEL_Z 7

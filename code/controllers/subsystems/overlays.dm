@@ -127,7 +127,7 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
  *
  *  @param priority If true, also will cut priority overlays.
  */
-/atom/proc/cut_overlays(priority = FALSE)
+/atom/proc/cut_overlays(priority = FALSE, force_compile = FALSE)
 	var/list/cached_overlays = our_overlays
 	var/list/cached_priority = priority_overlays
 
@@ -141,7 +141,9 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 		cached_priority.Cut()
 		need_compile = TRUE
 
-	if(NOT_QUEUED_ALREADY && need_compile)
+	if(force_compile)
+		COMPILE_OVERLAYS(src)
+	else if(NOT_QUEUED_ALREADY && need_compile)
 		QUEUE_FOR_COMPILE
 
 /**

@@ -137,6 +137,7 @@
 	name = "direction sign"
 	desc = "A sign for the navigation inside of the city."
 	icon_state = "directions"
+	emissive_state = "directions"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 /*
 	light_color = "#00ffff"
@@ -147,6 +148,7 @@
 	name = "direction sign"
 	desc = "A sign for the navigation inside of the city."
 	icon_state = "directions-large"
+	emissive_state = "directions-large"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 /obj/structure/sign/neon/big/rent
@@ -159,6 +161,7 @@
 	name = "advertising signboard"
 	desc = "A sign that saying something about another soda brand."
 	icon_state = "randomshit3"
+	emissive_state = "randomshit3-emissive"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 	light_power = 10
 	light_range = 5
@@ -170,12 +173,14 @@
 	name = "street name"
 	desc = "A sign that saying what street is that."
 	icon_state = "randomshit2"
+	emissive_state = "randomshit2-emissive"
 	light_color = COLOR_ORANGE
 
 /obj/structure/sign/neon/big/oil
 	name = "Oil Station"
 	desc = "A sign that saying what this place for."
 	icon_state = "oil_station"
+	emissive_state = "oil_station"
 	light_color = COLOR_YELLOW
 
 /obj/structure/sign/neon/big/citynight
@@ -212,12 +217,14 @@
 	name = "big city sign"
 	desc = "A sign with Manhattan advertising."
 	icon_state = "randomshit4"
+	emissive_state = "randomshit4-emissive"
 	light_color = COLOR_ORANGE
 
 /obj/structure/sign/neon/big/manhattan3
 	name = "big city sign"
 	desc = "A sign with Manhattan advertising."
 	icon_state = "manhattan"
+	emissive_state = "manhattan"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 /obj/structure/sign/neon/big/manhattan4
@@ -260,6 +267,7 @@
 	name = "CRAY Ind. logo"
 	desc = "Neon corporation logo on a wall."
 	icon_state = "cray"
+	emissive_state = "cray"
 	light_color = LIGHT_COLOR_HALOGEN
 
 /obj/structure/sign/neon/loreasteregg2
@@ -278,6 +286,7 @@
 	name = "cocktails sign"
 	desc = "Neon art of cocktail."
 	icon_state = "cocktail"
+	emissive_state = "cocktail"
 	light_color = LIGHT_COLOR_NEONBLUE
 
 /obj/structure/sign/neon/unicorn
@@ -309,6 +318,7 @@
 	name = "big bar sign"
 	desc = "A sign for a bar."
 	icon_state = "bar_holo"
+	emissive_state = "bar_holo-emissive"
 	light_color = LIGHT_COLOR_NEONGREEN
 
 /obj/structure/sign/neon/food
@@ -322,6 +332,7 @@
 	desc = "Some kind of triangle, but with big eye."
 	icon = 'icons/obj/signs_verylarge.dmi'
 	icon_state = "trianglebig"
+	emissive_state = "trianglebig"
 	light_color = LIGHT_COLOR_NEONGREEN
 
 /obj/structure/sign/neon/big/wings
@@ -329,18 +340,21 @@
 	desc = "Cool neon wings."
 	icon = 'icons/obj/signs_verylarge.dmi'
 	icon_state = "wings"
+	emissive_state = "wings"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 /obj/structure/sign/neon/big/twosides
 	name = "big neon sign"
 	desc = "Cool neon heart."
 	icon_state = "twosides"
+	emissive_state = "twosides"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 /obj/structure/sign/neon/big/japan
 	name = "big neon sign"
 	desc = "Cool neon words."
 	icon_state = "japan"
+	emissive_state = "japan"
 	light_color = LIGHT_COLOR_RED
 
 /obj/structure/sign/neon/clothing
@@ -352,7 +366,8 @@
 /obj/structure/sign/neon/big/manhattan2
 	name = "neon city map"
 	desc = "Holographic Manhattan map."
-	icon_state = "randomshit5"
+	icon_state = "manhattanmap"
+	emissive_state = "manhattanmap-emissive"
 	density = 1
 	bounds = "64,32"
 	pixel_x = 12
@@ -404,6 +419,7 @@
 	name = "neon Startech ad"
 	desc = "A neon flickering sign, explaining how various things made by corporation works."
 	icon_state = "startech"
+	emissive_state = "startech-emissive"
 	light_color = COLOR_YELLOW
 
 /obj/structure/sign/neon/big/casino

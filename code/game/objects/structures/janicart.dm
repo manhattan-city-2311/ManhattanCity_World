@@ -239,8 +239,8 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 
 /obj/structure/bed/chair/janicart/post_buckle_mob(mob/living/M)
+	. = ..()
 	update_mob()
-	return ..()
 
 
 /obj/structure/bed/chair/janicart/update_icon()

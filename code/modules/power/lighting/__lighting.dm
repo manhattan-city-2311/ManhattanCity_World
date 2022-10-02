@@ -39,7 +39,7 @@
 	var/auto_flicker = FALSE // If true, will constantly flicker, so long as someone is around to see it (otherwise its a waste of CPU).
 
 	unique_save_vars = list("status", "switchcount", "on", "rigged")
-
+	var/emissive_state = "tube-emissive"
 
 // create a new lighting fixture
 /obj/machinery/light/New(atom/newloc, obj/machinery/light_construct/construct = null)
@@ -182,9 +182,12 @@
 					// pixel_x = +/- 10
 					//
 
+	cut_overlays()
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
 			icon_state = "[base_state][on]"
+			if(on && emissive_state)
+				add_overlay(emissive_appearance(icon, emissive_state))
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 			on = 0

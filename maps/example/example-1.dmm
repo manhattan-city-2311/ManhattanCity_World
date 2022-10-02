@@ -1,40 +1,31 @@
-"aa" = (/obj/machinery/atmospherics/pipe/zpipe/up{icon_state = "up"; dir = 4},/obj/structure/disposalpipe/up,/turf/simulated/floor/tiled/dark,/area/aisat)
+"aa" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/light_switch{pixel_y = 24},/turf/simulated/floor/tiled/dark,/area/aisat)
 "ab" = (/turf/simulated/wall,/area/aisat)
-"ac" = (/obj/structure/disposalpipe/segment,/turf/simulated/floor/tiled/dark,/area/aisat)
-"ad" = (/obj/machinery/atmospherics/pipe/simple/visible{dir = 4},/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
-"ae" = (/obj/machinery/atmospherics/pipe/manifold/visible{dir = 1},/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
-"af" = (/obj/machinery/atmospherics/binary/pump/high_power{dir = 8},/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
-"ag" = (/obj/machinery/atmospherics/pipe/simple/visible{icon_state = "intact"; dir = 10},/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
+"ac" = (/obj/structure/bed/chair/sofa/black/right,/turf/simulated/floor/tiled/dark,/area/aisat)
+"ad" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/bed/chair/sofa/black,/obj/structure/plasma{pixel_x = -28; pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/aisat)
+"ae" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/bed/chair/sofa/black/left,/turf/simulated/floor/tiled/dark,/area/aisat)
+"af" = (/obj/structure/sign/neon/figures/circle,/turf/simulated/wall,/area/aisat)
+"ag" = (/obj/structure/table/standard,/obj/item/weapon/storage/belt/utility/full,/turf/simulated/floor/tiled/dark,/area/aisat)
 "ah" = (/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
-"ai" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
-"aj" = (/obj/machinery/light_switch,/turf/simulated/floor/tiled/dark,/area/aisat)
-"ak" = (/obj/machinery/atmospherics/pipe/simple/visible,/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/meter,/turf/simulated/floor/tiled/dark,/area/aisat)
-"al" = (/obj/machinery/atmospherics/portables_connector{dir = 4},/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
-"am" = (/obj/machinery/atmospherics/pipe/manifold/visible{icon_state = "map"; dir = 4},/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/meter,/turf/simulated/floor/tiled/dark,/area/aisat)
+"ai" = (/obj/structure/sign/neon/figures/crest,/turf/simulated/wall,/area/aisat)
+"aj" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/holoplant,/turf/simulated/floor/tiled/dark,/area/aisat)
+"ak" = (/obj/machinery/light,/turf/simulated/floor/tiled/dark,/area/aisat)
+"al" = (/obj/structure/sign/neon/figures/square,/turf/simulated/wall,/area/aisat)
+"am" = (/obj/structure/sign/neon/figures/triangle,/turf/simulated/wall,/area/aisat)
 "an" = (/turf/simulated/floor/tiled/dark,/area/aisat)
-"ao" = (/obj/effect/floor_decal/industrial/hatch/yellow,/turf/simulated/floor/tiled/dark,/area/aisat)
-"ap" = (/obj/machinery/light{icon_state = "tube1"; dir = 4},/obj/machinery/power/apc{dir = 4; name = "east bump"; pixel_x = 24},/turf/simulated/floor/tiled/dark,/area/aisat)
-"aq" = (/obj/machinery/atmospherics/pipe/simple/visible{icon_state = "intact"; dir = 5},/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
-"ar" = (/obj/machinery/atmospherics/binary/pump/high_power{icon_state = "map_off"; dir = 4},/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
-"as" = (/obj/machinery/atmospherics/pipe/simple/visible{icon_state = "intact"; dir = 9},/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
-"at" = (/obj/structure/ladder/up,/turf/simulated/floor/tiled/dark,/area/aisat)
+"ao" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/light/colored/green{icon_state = "green1"; dir = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
+"aq" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/steel,/obj/item/device/flashlight/lamp/lava/green,/turf/simulated/floor/tiled/dark,/area/aisat)
 "au" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 9},/obj/structure/neon_spline/red/corner,/turf/simulated/floor/tiled/dark,/area/aisat)
-"av" = (/obj/machinery/light,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aw" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/obj/machinery/disposal,/obj/structure/disposalpipe/trunk{icon_state = "pipe-t"; dir = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
 "ax" = (/obj/machinery/light{icon_state = "tube1"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
 "ay" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 1},/obj/structure/neon_spline/red,/turf/simulated/floor/tiled/dark,/area/aisat)
 "az" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
 "aA" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 5},/obj/structure/neon_spline/red/corner{icon_state = "spline_fancy_corner"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
 "aB" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/device/multitool,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aC" = (/obj/machinery/light{dir = 1},/obj/structure/table/standard,/obj/item/weapon/storage/belt/utility/full,/turf/simulated/floor/tiled/dark,/area/aisat)
 "aD" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/clothing/gloves/yellow,/turf/simulated/floor/tiled/dark,/area/aisat)
 "aE" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 8},/obj/structure/neon_spline/red{icon_state = "spline_fancy"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
 "aF" = (/obj/effect/landmark{name = "JoinLate"},/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
 "aG" = (/obj/effect/landmark/start,/turf/simulated/floor/tiled/dark,/area/aisat)
 "aH" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 4},/obj/structure/neon_spline/red{icon_state = "spline_fancy"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
 "aI" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 10},/obj/structure/neon_spline/red/corner{icon_state = "spline_fancy_corner"; dir = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
-"aJ" = (/obj/effect/floor_decal/sign/a,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aK" = (/obj/machinery/light,/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
 "aL" = (/obj/structure/neon_spline/green,/obj/structure/neon_spline/red{icon_state = "spline_fancy"; dir = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
 "aM" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 6},/obj/structure/neon_spline/red/corner{icon_state = "spline_fancy_corner"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
 "aN" = (/obj/effect/floor_decal/corner/white/diagonal,/mob/living/carbon/human/npc/interactable/retail/testing,/turf/simulated/floor/tiled/dark,/area/aisat)
@@ -51,6 +42,13 @@
 "aY" = (/obj/machinery/door/airlock,/turf/simulated/floor/tiled/dark,/area/example_mine_lift)
 "aZ" = (/obj/machinery/mine_lift_button{pixel_x = -24},/turf/simulated/floor/tiled/dark,/area/example_mine_lift)
 "ba" = (/turf/simulated/floor/tiled/dark,/area/example_mine_lift)
+"bb" = (/obj/structure/neon_spline/purple/corner,/turf/simulated/floor/tiled/dark,/area/aisat)
+"bd" = (/obj/structure/neon_spline/purple/corner{icon_state = "spline_fancy_corner"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
+"be" = (/obj/structure/neon_spline/purple{icon_state = "spline_fancy"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
+"bf" = (/obj/structure/neon_spline/purple{icon_state = "spline_fancy"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
+"bg" = (/obj/structure/neon_spline/purple/corner{icon_state = "spline_fancy_corner"; dir = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
+"bh" = (/obj/structure/neon_spline/purple{icon_state = "spline_fancy"; dir = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
+"bi" = (/obj/structure/neon_spline/purple/corner{icon_state = "spline_fancy_corner"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
 
 (1,1,1) = {"
 abababababababababababababababababababababababababababababababab
@@ -62,21 +60,21 @@ abanaEananananananananananananananananananananananananananaHanab
 abanaEananananananananananananananananananananananananananaHanab
 abanaEananananananananananananananananananananananananananaHanab
 abanaEananananananananananananananananananananananananananaHanab
-abanaEananananananananananananananananananananananananananaHanab
-abanaEananananananaaadaeafagahaiahahahahahahanananananananaHanab
-abanaEananananananacahakalamahanahahaoaoaoahanananananananaHanab
-abanaEananananananahahaqarasahatahahaoaoaoahanananananananaHanab
-abanaEananananananahahahahahahanahahaoaoaoahanananananananaHanab
-abanaEananananananahahahaNahahanahahahahahahanananananananaHanab
-abanaEananananananahahaOaRaXaQavahahahahahahanananananananaHanab
-abanaEananananananawananananaxajazananananapanananananananaHanab
-abanaEananananananahahahahahaBaCaDahahahahahanananananananaHanab
-abanaEananananananaUahaFaFaFahanahahaPaRaSahanananananananaHanab
-abanaEananananananaVahaFaFaFahaGahahahaTahahanananananananaHanab
-abanaEananananananaRahaFaFaFahanahahahahahahanananananananaHanab
-abanaEananananananahahahahahahaJahahahahahahanananananananaHanab
-abanaEananananananahahahaKahahanahahahahahahanananananananaHanab
-abanaEananananananananananananananananananananananananananaHanab
+abanaEanananananbbabababafaialamababababababbdananananananaHanab
+abanaEanananananbeahaaaoahahahanaoahacadaeahbfananananananaHanab
+abanaEanananananbeahahahahahahanahahajaqajahbfananananananaHanab
+abanaEanananananbeahahahahahahanahahahahahahbfananananananaHanab
+abanaEanananananbeahahahahahahanahahahahahahbfananananananaHanab
+abanaEanananananbeahahahaNahahanahahahahahahbfananananananaHanab
+abanaEanananananbeahahaOaRaXaQakahahahahahahbfananananananaHanab
+abanaEanananananbeazananananaxabazananananaxbfananananananaHanab
+abanaEanananananbeahahahahahaBagaDahahahahahbfananananananaHanab
+abanaEanananananbeaUahaFaFaFahanahahaPaRaSahbfananananananaHanab
+abanaEanananananbeaVahaFaFaFahaGahahahaTahahbfananananananaHanab
+abanaEanananananbeaRahaFaFaFahanahahahahahahbfananananananaHanab
+abanaEanananananbeahahahahahahanahahahahahahbfananananananaHanab
+abanaEanananananbeahahahahahahakahahahahahahbfananananananaHanab
+abanaEanananananbgbhbhbhbhbhbhbhbhbhbhbhbhbhbiananananananaHanab
 abanaEanananananananananananananananananananananaWaYaYaWanaHanab
 abanaEanananananananananananananananananananananaWaZbaaWanaHanab
 abanaEanananananananananananananananananananananaWbabaaWanaHanab

@@ -4,6 +4,7 @@
 	icon = 'icons/obj/coloredlights.dmi'
 	base_state = "yellow"		// base description and icon_state
 	icon_state = "yellow1"
+	emissive_state = "emissive"
 	desc = "A lighting fixture."
 	brightness_range = 8
 	brightness_power = 6
@@ -81,9 +82,12 @@
 					// pixel_x = +/- 10
 */
 
+	cut_overlays()
 	switch(status)
 		if(LIGHT_OK)
 			icon_state = (on ? "[base_state]1" : "off")
+			if(on && emissive_state)
+				add_overlay(emissive_appearance(icon, emissive_state))
 		if(LIGHT_EMPTY)
 			icon_state = "empty"
 			on = 0

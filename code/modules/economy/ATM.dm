@@ -34,15 +34,16 @@ log transactions
 	var/editing_security_level = 0
 	var/view_screen = NO_SCREEN
 	var/datum/effect/effect/system/spark_spread/spark_system
-
+	luminosity = 1
 	var/is_printing = FALSE
 
-/obj/machinery/atm/New()
-	..()
+/obj/machinery/atm/initialize()
+	. = ..()
 	machine_id = "[station_name()] RT #[GLOB.num_financial_terminals++]"
 	spark_system = new /datum/effect/effect/system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
+	add_overlay(emissive_appearance(icon, "atm-emissive"))
 
 /obj/machinery/atm/process()
 	if(stat & NOPOWER)

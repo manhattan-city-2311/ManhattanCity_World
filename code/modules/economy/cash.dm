@@ -6,13 +6,7 @@ var/global/list/possible_cash_values = list(500, 100, 50, 20, 10, 2, 1)
 	gender = PLURAL
 	icon = 'icons/obj/cash.dmi'
 	icon_state = "1"
-	opacity = 0
-	density = 0
-	anchored = 0.0
-	force = 1.0
-	throwforce = 1.0
-	throw_speed = 1
-	throw_range = 2
+	appearance_flags = DEFAULT_APPEARANCE | KEEP_TOGETHER
 	w_class = ITEMSIZE_TINY
 	var/access = list()
 	access = access_crate_cash
@@ -31,7 +25,8 @@ var/global/list/possible_cash_values = list(500, 100, 50, 20, 10, 2, 1)
 
 /obj/item/weapon/spacecash/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/spacecash))
-		if(istype(W, /obj/item/weapon/spacecash/ewallet)) return 0
+		if(istype(W, /obj/item/weapon/spacecash/ewallet))
+			return 0
 
 		var/obj/item/weapon/spacecash/bundle/bundle
 		if(!istype(W, /obj/item/weapon/spacecash/bundle))

@@ -625,3 +625,9 @@
 /atom/proc/clear_filters()
 	filter_data = null
 	filters = null
+
+/atom/proc/translate_screen(w_input = 0, z_input)
+	if(isnull(z_input))
+		z_input = w_input
+	pixel_w += w_input
+	pixel_z += z_input
