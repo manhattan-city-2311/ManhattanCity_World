@@ -2600,6 +2600,7 @@ area/space/atmosalert()
 /area/aisat
 	name = "\improper AI Satellite"
 	icon_state = "ai"
+	requires_power = FALSE
 
 /area/aisat_interior
 	name = "\improper AI Satellite"

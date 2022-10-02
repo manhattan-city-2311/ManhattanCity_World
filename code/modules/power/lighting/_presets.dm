@@ -4,6 +4,7 @@
 /obj/machinery/light/overhead_blue
 	icon_state = "inv1"
 	base_state = "inv"
+	emissive_state = null
 	brightness_range = 12
 	brightness_power = 2
 	brightness_color = LIGHT_COLOR_DARK_BLUE
@@ -11,6 +12,7 @@
 /obj/machinery/light/floor
 	icon_state = "floor1"
 	base_state = "floor"
+	emissive_state = "floor-emissive"
 	light_type = /obj/item/weapon/light/bulb
 	layer = TURF_LAYER+0.002
 	plane = UNDER_MOB_PLANE
@@ -22,6 +24,7 @@
 /obj/machinery/light/invis
 	icon_state = "inv1"
 	base_state = "inv"
+	emissive_state = null
 	brightness_range = 8
 
 // the smaller bulb light fixture
@@ -29,6 +32,7 @@
 /obj/machinery/light/small
 	icon_state = "bulb1"
 	base_state = "bulb"
+	emissive_state = "bulb-emissive"
 	brightness_range = 4
 	brightness_power = 10
 	brightness_color = LIGHT_COLOR_INCANDESCENT_BULB
@@ -41,6 +45,7 @@
 /obj/machinery/light/flamp
 	icon_state = "flamp1"
 	base_state = "flamp"
+	emissive_state = null
 	construct_type = /obj/machinery/light_construct/flamp
 	brightness_range = 8
 	brightness_power = 4
@@ -134,6 +139,7 @@
 	icon = 'icons/obj/big_floodlight.dmi'
 	icon_state = "flamp1"
 	base_state = "flamp"
+	emissive_state = null
 	construct_type = /obj/machinery/light_construct/flamp
 	light_range = 8
 	light_power = 6

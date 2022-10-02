@@ -6,6 +6,7 @@
 	var/buckle_dir = 0
 	var/buckle_lying = -1 //bed-like behavior, forces mob.lying = buckle_lying if != -1
 	var/buckle_require_restraints = 0 //require people to be handcuffed before being able to buckle. eg: pipes
+	var/buckle_pixel_shift = list(0, 0, -MOB_PIXEL_Z)
 //	var/mob/living/buckled_mob = null
 	var/list/mob/living/buckled_mobs = null //list()
 	var/max_buckled_mobs = 1
@@ -125,7 +126,14 @@
 //Handle any extras after buckling/unbuckling
 //Called on buckle_mob() and unbuckle_mob()
 /atom/movable/proc/post_buckle_mob(mob/living/M)
-	return
+	if(M.buckled == src)
+		animate(M, pixel_x = M.default_pixel_x + buckle_pixel_shift[1], \
+				   pixel_y = M.default_pixel_y + buckle_pixel_shift[2], \
+				   pixel_z = M.default_pixel_z + buckle_pixel_shift[3], time = 4)
+	else
+		animate(M, pixel_x = M.default_pixel_x, \
+				   pixel_y = M.default_pixel_y, \
+				   pixel_z = M.default_pixel_z, time = 4)
 
 //Wrapper procs that handle sanity and user feedback
 /atom/movable/proc/user_buckle_mob(mob/living/M, mob/user, var/forced = FALSE, var/silent = FALSE)

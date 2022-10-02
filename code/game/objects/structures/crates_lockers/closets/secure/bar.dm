@@ -7,6 +7,7 @@
 	icon_opened = "cabinetdetective_open"
 	icon_broken = "cabinetdetective_broken"
 	icon_off = "cabinetdetective_broken"
+	icon_emissive = null
 
 	will_contain = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer = 10)
 

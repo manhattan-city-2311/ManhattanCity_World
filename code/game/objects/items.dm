@@ -97,13 +97,46 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
-/obj/item/New()
+/obj/item/initialize()
 	..()
 	if(embed_chance < 0)
 		if(sharp)
 			embed_chance = max(5, round(force/w_class))
 		else
 			embed_chance = max(5, round(force/(w_class*3)))
+
+/obj/item/MouseEntered(location, control, params)
+	. = ..()
+	if(QDELETED(src) || isturf(loc))
+		return
+	
+	var/mob/living/L = usr
+
+	if(istype(L) && L.incapacitated())
+		apply_outline(COLOR_RED_GRAY)
+	else
+		apply_outline()
+
+/obj/item/MouseDrop(atom/over)
+	. = ..()
+	remove_outline()
+
+/obj/item/MouseExited(location, control, params)
+	. = ..()
+	remove_outline()
+
+/obj/item/dropped()
+	. = ..()
+	remove_outline()
+
+/obj/item/proc/apply_outline(color = LIGHT_COLOR_PURPLE)
+	add_filter("outline", 1, list("type" = "outline", "size" = 1, "color" = color))
+
+/obj/item/proc/remove_outline()
+	if(get_filter("outline"))
+		transition_filter("outline", 5, list("size" = 0))
+		spawn(5)
+			remove_filter("outline")
 
 /obj/item/Destroy()
 	if(ismob(loc))

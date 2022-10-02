@@ -72,20 +72,24 @@
 					on = 0
 					update_icon()
 
+/obj/item/device/flashlight/proc/set_light_helper()
+	if(!on)
+		set_light(0)
+	
+	if(brightness_level == "low")
+		set_light(brightness_on/2)
+	else if(brightness_level == "high")
+		set_light(brightness_on*1.5)
+	else
+		set_light(brightness_on)
+
 /obj/item/device/flashlight/update_icon()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
-
-		if(brightness_level == "low")
-			set_light(brightness_on/2)
-		else if(brightness_level == "high")
-			set_light(brightness_on*1.5)
-		else
-			set_light(brightness_on)
-
 	else
 		icon_state = "[initial(icon_state)]"
-		set_light(0)
+	
+	set_light_helper()
 
 /obj/item/device/flashlight/examine(mob/user)
 	..()
@@ -487,55 +491,58 @@
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "lavalamp"
 	w_class = ITEMSIZE_SMALL
-	on = 0
+	on = TRUE
 	action_button_name = "Toggle lamp"
 	matter = list(DEFAULT_WALL_MATERIAL = 200,"glass" = 50)
 	brightness_on = 5
 
 /obj/item/device/flashlight/lamp/lava/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	var/image/I = image(icon = icon, icon_state = "lavalamp-[on ? "on" : "off"]")
 	I.color = light_color
-	overlays += I
+	add_overlay(I)
+	if(on)
+		add_overlay(emissive_appearance(icon, "lavalamp-emissive"))
+	set_light_helper()
 
 /obj/item/device/flashlight/lamp/lava/red
 	name = "red lava lamp"
 	desc = "A kitchy red decorative light."
-	light_color = COLOR_RED
+	light_color = LIGHT_COLOR_NEONRED
 
 /obj/item/device/flashlight/lamp/lava/blue
 	name = "blue lava lamp"
 	desc = "A kitchy blue decorative light"
-	light_color = COLOR_BLUE
+	light_color = LIGHT_COLOR_NEONBLUE
 
 /obj/item/device/flashlight/lamp/lava/cyan
 	name = "cyan lava lamp"
 	desc = "A kitchy cyan decorative light"
-	light_color = COLOR_CYAN
+	light_color = LIGHT_COLOR_NEONLIGHTBLUE
 
 /obj/item/device/flashlight/lamp/lava/green
 	name = "green lava lamp"
 	desc = "A kitchy green decorative light"
-	light_color = COLOR_GREEN
+	light_color = LIGHT_COLOR_NEONGREEN
 
 /obj/item/device/flashlight/lamp/lava/orange
 	name = "orange lava lamp"
 	desc = "A kitchy orange decorative light"
-	light_color = COLOR_ORANGE
+	light_color = LIGHT_COLOR_NEONORANGE
 
 /obj/item/device/flashlight/lamp/lava/purple
 	name = "purple lava lamp"
 	desc = "A kitchy purple decorative light"
-	light_color = COLOR_PURPLE
+	light_color = LIGHT_COLOR_PURPLE
 /obj/item/device/flashlight/lamp/lava/pink
 	name = "pink lava lamp"
 	desc = "A kitchy pink decorative light"
-	light_color = COLOR_PINK
+	light_color = LIGHT_COLOR_HOTPINK
 
 /obj/item/device/flashlight/lamp/lava/yellow
 	name = "yellow lava lamp"
 	desc = "A kitchy yellow decorative light"
-	light_color = COLOR_YELLOW
+	light_color = LIGHT_COLOR_NEONYELLOW
 
 
 /obj/item/device/flashlight/slime/New()

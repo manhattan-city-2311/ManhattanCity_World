@@ -55,6 +55,9 @@
 	if(modifiers["shift"] && modifiers["ctrl"])
 		CtrlShiftClickOn(A)
 		return 1
+	if(modifiers["ctrl"] && modifiers["alt"])
+		CtrlAltClickOn(A)
+		return 1
 	if(modifiers["middle"])
 		MiddleClickOn(A)
 		return 1
@@ -275,7 +278,18 @@
 	A.CtrlShiftClick(src)
 	return
 
+/*
+	Control+Alt click
+*/
 /atom/proc/CtrlShiftClick(mob/user)
+	return
+
+/mob/proc/CtrlAltClickOn(atom/A)
+	if(A.CtrlAltClick(src))
+		return
+	pointed(A)
+
+/atom/proc/CtrlAltClick(mob/user)
 	return
 
 /*

@@ -6,6 +6,7 @@
 	icon_opened = "fridgeopen"
 	icon_broken = "fridgebroken"
 	icon_off = "fridge1"
+	icon_emissive = null
 
 /obj/structure/closet/secure_closet/freezer/update_icon()
 	if(broken)

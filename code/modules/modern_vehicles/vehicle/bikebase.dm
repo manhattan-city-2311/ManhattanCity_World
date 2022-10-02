@@ -60,17 +60,20 @@
 	if(driver)
 		driver.pixel_x = x
 		driver.pixel_y = y
+		driver.pixel_z = 0
 		vis_contents += driver
 	if(gunner)
 		gunner.pixel_x = round(x * 1.5)
 		gunner.pixel_y = round(y * 1.5)
+		gunner.pixel_z = 0
 		vis_contents += gunner
 	overlays += img
 
 /obj/manhattan/vehicle/motorcycle/exit_vehicle(mob/user)
 	. = ..()
-	user.pixel_x = 0
-	user.pixel_y = 0
+	user.pixel_x = user.default_pixel_x
+	user.pixel_y = user.default_pixel_y
+	user.pixel_z = user.default_pixel_z
 
 /obj/manhattan/vehicle/motorcycle/doors_locked()
 	return FALSE // Are you see doors?

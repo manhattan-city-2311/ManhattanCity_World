@@ -18,11 +18,11 @@
 	appearance_flags = RESET_TRANSFORM
 	dont_save = TRUE
 
-/atom/movable/emissive_blocker/New(nloc, source)
+/atom/movable/emissive_blocker/initialize(nloc, source)
 	. = ..()
 	verbs.Cut() //Cargo culting from lighting object, this maybe affects memory usage?
 	render_source = source
-	color = GLOB.em_block_color
+	color = EM_BLOCK_COLOR
 
 /atom/movable/emissive_blocker/ex_act(severity)
 	return FALSE

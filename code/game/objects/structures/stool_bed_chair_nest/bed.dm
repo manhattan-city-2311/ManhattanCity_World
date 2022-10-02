@@ -219,55 +219,33 @@
 	name = "double bed"
 	icon_state = "doublebed"
 	base_icon = "doublebed"
+	buckle_pixel_shift = list(0, 13, -MOB_PIXEL_Z)
 
 /obj/structure/bed/double/padded/New(var/newloc)
 	..(newloc,"wood","cotton")
-
-/obj/structure/bed/double/post_buckle_mob(mob/living/M as mob)
-	if(M.buckled == src)
-		M.pixel_y = 13
-		M.old_y = 13
-	else
-		M.pixel_y = 0
-		M.old_y = 0
 
 /obj/structure/bed/wood
 	name = "double wooden bed"
 	icon_state = "bed_double_wood"
 	base_icon = "bed_double_wood"
+	buckle_pixel_shift = list(13, 0, -MOB_PIXEL_Z)
 
 /obj/structure/bed/wood/New(var/newloc)
 	..(newloc,"wood","cotton")
-
-/obj/structure/bed/wood/post_buckle_mob(mob/living/M as mob)
-	if(M.buckled == src)
-		M.pixel_y = 13
-		M.old_y = 13
-	else
-		M.pixel_y = 0
-		M.old_y = 0
-
 /obj/structure/bed/neon
 	name = "double neon bed"
 	icon_state = "bed_double_nightlight"
 	base_icon = "bed_double_nightlight"
-	var/image/overlay
+	buckle_pixel_shift = list(0, 13, -MOB_PIXEL_Z)
+	luminosity = 1
 
 /obj/structure/bed/neon/New(var/newloc)
 	..(newloc,"wood","cotton")
 
-/obj/structure/bed/neon/post_buckle_mob(mob/living/M as mob)
-	if(M.buckled == src)
-		M.pixel_y = 13
-		M.old_y = 13
-	else
-		M.pixel_y = 0
-		M.old_y = 0
-
 /obj/structure/bed/neon/update_icon()
-	overlays.Cut()
-	if(!overlay)
-		overlays += image(icon, "bed_light")
+	cut_overlays()
+	add_overlay("bed_light")
+	add_overlay(emissive_appearance(icon, "bed_light"))
 
 /*
  * Roller beds
@@ -282,6 +260,7 @@
 	var/bedtype = /obj/structure/bed/roller
 	var/rollertype = /obj/item/roller
 	matter = list(DEFAULT_WALL_MATERIAL = 3875)
+	buckle_pixel_shift = list(1, 3, -MOB_PIXEL_Z)
 
 /obj/structure/bed/roller/adv
 	name = "advanced roller bed"
@@ -379,19 +358,9 @@
 			if(L.buckled == src)
 				L.loc = src.loc
 
-/obj/structure/bed/roller/post_buckle_mob(mob/living/M as mob)
-	if(M.buckled == src)
-		M.pixel_y = 6
-		M.old_y = 6
-		density = 1
-		icon_state = "[initial(icon_state)]_up"
-	else
-		M.pixel_y = 0
-		M.old_y = 0
-		density = 0
-		icon_state = "[initial(icon_state)]"
+/obj/structure/bed/roller/post_buckle_mob(mob/living/M)
+	. = ..()
 	update_icon()
-	return ..()
 
 /obj/structure/bed/roller/MouseDrop(over_object, src_location, over_location)
 	..()

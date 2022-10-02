@@ -12,6 +12,7 @@
 	var/material/material
 	var/set_temperature = T0C + 30	//K
 	var/heating_power = 80000
+	buckle_pixel_shift = list(13, 0, -MOB_PIXEL_Z)
 
 /obj/structure/bonfire/New(newloc, material_name)
 	..(newloc)
@@ -240,10 +241,7 @@
 		extinguish()
 
 /obj/structure/bonfire/post_buckle_mob(mob/living/M)
-	if(M.buckled == src) // Just buckled someone
-		M.pixel_y += 13
-	else // Just unbuckled someone
-		M.pixel_y -= 13
+	. = ..()
 	update_icon()
 
 /obj/structure/fireplace //more like a space heater than a bonfire. A cozier alternative to both.

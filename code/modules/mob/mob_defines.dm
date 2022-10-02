@@ -173,6 +173,8 @@
 
 	var/can_be_antagged = FALSE // To prevent pAIs/mice/etc from getting antag in autotraitor and future auto- modes. Uses inheritance instead of a bunch of typechecks.
 
+	pixel_z = MOB_PIXEL_Z
+
 //Generic list for proc holders. Only way I can see to enable certain verbs/procs. Should be modified if needed.
 	var/proc_holder_list[] = list()//Right now unused.
 	//Also unlike the spell list, this would only store the object in contents, not an object in itself.
@@ -239,6 +241,7 @@
 
 	var/default_pixel_x = 0 //For offsetting mobs
 	var/default_pixel_y = 0
+	var/default_pixel_z = MOB_PIXEL_Z
 
 	var/attack_icon //Icon to use when attacking w/o anything in-hand
 	var/attack_icon_state //State for above

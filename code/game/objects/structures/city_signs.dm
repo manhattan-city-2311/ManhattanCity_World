@@ -1,13 +1,15 @@
-/obj/structure/sign/neon/Destroy()
-	set_light(0)
-	return ..()
-
 /obj/structure/sign/neon
 	desc = "A glowing sign."
 	icon = 'icons/obj/signs.dmi'
 	plane = LIGHTING_OBJS_PLANE
 	light_range = 3
 	light_power = 6.5
+	var/emissive_state
+
+/obj/structure/sign/neon/initialize()
+	. = ..()
+	if(emissive_state)
+		add_overlay(emissive_appearance(icon, emissive_state))
 
 /obj/structure/sign/neon/item
 	name = "item store"
@@ -47,6 +49,7 @@
 /obj/structure/sign/neon/beer
 	name = "pub"
 	icon_state = "beer"
+	emissive_state = "beer"
 	light_color = LIGHT_COLOR_YELLOW
 
 /obj/structure/sign/neon/inn
@@ -82,6 +85,7 @@
 /obj/structure/sign/neon/sale
 	name = "neon sale sign"
 	icon_state = "neon_sale"
+	emissive_state = "neon_sale"
 	light_color = LIGHT_COLOR_NEONBLUE
 
 /obj/structure/sign/neon/exit
@@ -149,6 +153,7 @@
 	name = "hospital sign"
 	desc = "A neon hospital sign"
 	icon_state = "medical_on"
+	emissive_state = "medical-emissive"
 	light_color = LIGHT_COLOR_GREEN
 
 /obj/structure/sign/neon/heath/red
@@ -159,6 +164,7 @@
 	name = "airbus sign"
 	desc = "A neon yellow airbus sign that indicates this is an airbus area."
 	icon_state = "bus"
+	emissive_state = "bus-emissive"
 	light_color = COLOR_YELLOW
 	light_range = 5
 	light_power = 15
@@ -209,33 +215,38 @@
 	name = "stop traffic sign"
 	desc = "A sign to regulate road traffic."
 	icon = 'icons/obj/road_signs.dmi'
-	icon_state = "stop"
+	icon_state = "base"
+	var/overlay_state = "stop"
 	light_color = LIGHT_COLOR_NEONLIGHTBLUE
 	density = TRUE
 
+/obj/structure/sign/neon/trafficsign/initialize()
+	. = ..()
+	add_overlay(overlay_state)
+	add_overlay(emissive_appearance(icon, overlay_state))
 /obj/structure/sign/neon/trafficsign/emergency_stop
 	name = "secondary road traffic sign"
-	icon_state = "emergency_stop"
+	overlay_state = "emergency_stop"
 
 /obj/structure/sign/neon/trafficsign/stop
 	name = "stop traffic sign"
-	icon_state = "stop"
+	overlay_state = "stop"
 
 /obj/structure/sign/neon/trafficsign/pedestrian_crossing
 	name = "pedestrian crossing traffic sign"
-	icon_state = "pedestrian_crossing"
+	overlay_state = "pedestrian_crossing"
 
 /obj/structure/sign/neon/trafficsign/circle_move
 	name = "roundabout traffic sign"
-	icon_state = "circle_move"
+	overlay_state = "circle_move"
 
 /obj/structure/sign/neon/trafficsign/main_road
 	name = "main road traffic sign"
-	icon_state = "main_road"
+	overlay_state = "main_road"
 
 /*|	                                             */
 /*| Big Neon Signs
-   ----------------------------------------------*/
+	----------------------------------------------*/
 
 /obj/structure/sign/neon/big
 	icon = 'icons/obj/signs_large.dmi'
