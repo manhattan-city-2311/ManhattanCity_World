@@ -1415,6 +1415,8 @@
 
 /area/planets/Manhattan/south/factory/cargo/mining
 	name = "\improper Mining"
+/area/planets/Manhattan/south/factory/cargo/mining/equip
+	name = "\improper Mining equipment"
 
 /area/planets/Manhattan/south/factory/engineering
 	name = "\improper Engineering"
