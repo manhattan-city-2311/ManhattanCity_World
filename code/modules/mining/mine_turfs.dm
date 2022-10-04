@@ -641,4 +641,4 @@ var/list/mining_overlay_cache = list()
 
 /turf/simulated/floor/mining/sand/select_icon_state()
 	return
-	
+

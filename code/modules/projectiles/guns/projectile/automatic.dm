@@ -47,7 +47,7 @@
 	if(ammo_magazine)
 		icon_state = "c20r-[round(ammo_magazine.stored_ammo.len,4)]"
 	else
-		icon_state = "c20r"
+		icon_state = "c20r-empty"
 	return
 
 /obj/item/weapon/gun/projectile/automatic/sts35
