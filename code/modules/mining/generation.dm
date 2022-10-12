@@ -55,9 +55,9 @@
 			open_doors()
 			marker = null
 			transferred = null
+			SSmining.clean()
 			transfering = 0
 	else
-		SSmining.clean()
 		SSmining.generate()
 		spawn(150)
 			if(!transfering) // Cancel
@@ -71,6 +71,7 @@
 			open_doors()
 			transfering = 0
 			SSmining.next_invasion = world.time + rand(13 MINUTES, 16 MINUTES)
+			SSmining.invasion_destination = get_turf(src)
 	spawn(100)
 		if(!transfering) // Cancel
 			return
@@ -92,6 +93,7 @@
 /decl/mine_structure
 	var/min_level = 0.3
 	var/max_level = 0.5
+	var/density = FALSE
 	var/chance = 100
 	var/min_amount
 	var/max_amount
@@ -107,18 +109,23 @@
 	LAZYADD(SSmining.dulls, new /obj/structure/mine_dull(T))
 
 /decl/mine_structure/spider
-	min_amount = 20
-	max_amount = 30
+	min_amount = 25
+	max_amount = 40
 
 /decl/mine_structure/spider/generate(turf/T)
 	new /obj/random/mob/spider(T)
 
+/decl/mine_structure/spider/mutant
+	min_amount = 10
+	max_amount = 15
+
+/decl/mine_structure/spider/mutant/generate(turf/T)
+	new /obj/random/mob/spider/mutant(T)
 /decl/mine_structure/spiderweb
-	min_amount = 1
+	min_amount = 2
 	max_amount = 5
 
 /decl/mine_structure/spiderweb/generate(turf/B)
-	var/d = rand(3, 5)
-	for(var/turf/T in RANGE_TURFS(d, B))
+	for(var/turf/T in circlerange(B, rand(3, 5)))
 		if(!T.density && prob(66))
 			new /obj/effect/spider/stickyweb(T)

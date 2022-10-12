@@ -100,18 +100,14 @@
 	name = "Package Bomb (Small)"
 	item_cost = 30
 	path = /obj/item/weapon/storage/box/syndie_kit/demolitions
-*/
 /datum/uplink_item/item/tools/powersink
 	name = "Powersink (DANGER!)"
 	item_cost = 40
 	path = /obj/item/device/powersink
-/*
 /datum/uplink_item/item/tools/packagebomb/large
 	name = "Package Bomb (Large)"
 	item_cost = 60
 	path = /obj/item/weapon/storage/box/syndie_kit/demolitions_heavy
-*/
-/*
 /datum/uplink_item/item/tools/packagebomb/huge
 	name = "Package Bomb (Huge)
 	item_cost = 100

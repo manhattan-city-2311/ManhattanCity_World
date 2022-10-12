@@ -55,14 +55,6 @@
 	admin_notice("<span class='danger'>Initializing newly created atom(s) in submap.</span>", R_DEBUG)
 	SSatoms.InitializeAtoms(atoms)
 
-	admin_notice("<span class='danger'>Rebuilding powernets due to submap creation.</span>", R_DEBUG)
-	SSmachines.setup_powernets_for_cables(cables)
-
-	// Ensure all machines in loaded areas get notified of power status
-	for(var/I in areas)
-		var/area/A = I
-		A.power_change()
-
 	admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
 
 /datum/map_template/proc/load_new_z(var/centered = FALSE)
@@ -167,7 +159,7 @@
 			priority_submaps += MT
 		else
 			potential_submaps += MT
-	
+
 	shuffle_inplace(potential_submaps)
 	shuffle_inplace(priority_submaps)
 

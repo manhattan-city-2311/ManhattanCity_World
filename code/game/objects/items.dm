@@ -112,8 +112,8 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 	
 	var/mob/living/L = usr
 
-	if(istype(L) && L.incapacitated())
-		apply_outline(COLOR_RED_GRAY)
+	if(istype(L) && (L.incapacitated() || L.restrained()))
+		apply_outline(COLOR_GRAY)
 	else
 		apply_outline()
 
@@ -126,6 +126,10 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 	remove_outline()
 
 /obj/item/dropped()
+	. = ..()
+	remove_outline()
+
+/obj/item/forceMove(atom/dest)
 	. = ..()
 	remove_outline()
 
@@ -778,11 +782,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 		if(!cannotzoom)
 			usr.visible_message("[zoomdevicename ? "[usr] looks up from the [src.name]" : "[usr] lowers the [src.name]"].")
-
-	return
-
-/obj/item/proc/pwr_drain()
-	return 0 // Process Kill
 
 // Used for non-adjacent melee attacks with specific weapons capable of reaching more than one tile.
 // This uses changeling range string A* but for this purpose its also applicable.

@@ -516,6 +516,7 @@
 
 		if(carpeted)
 			overlays += "carpet_flip[type]"
+	update_emissive_block()
 
 // set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
 /obj/structure/table/update_connections(propagate=0)

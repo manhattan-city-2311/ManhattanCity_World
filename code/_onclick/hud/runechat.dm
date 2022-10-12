@@ -98,7 +98,7 @@
 		text = "\icon[r_icon]&nbsp;[text]"
 		message_loc = src
 	else
-		message_loc = speaker.loc
+		message_loc = speaker
 
 	var/maptext_style = "font-family: '[speaker.runechat_font]';"
 	var/shadow_color = "0 2px 3px black"

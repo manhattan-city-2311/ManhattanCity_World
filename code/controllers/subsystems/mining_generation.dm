@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(mining)
 	var/ydisplace = 0.5
 
 	var/next_invasion = 0
+	var/turf/invasion_destination
 
 /datum/controller/subsystem/mining/Initialize()
 	. = ..()
@@ -61,11 +62,14 @@ SUBSYSTEM_DEF(mining)
 	else// if(f <= MINING_STONE_LEVEL)
 		T = T.ChangeTurf(/turf/simulated/mineral/mining)
 		var/turf/simulated/mineral/M = T
+		if(!M)
+			return
 		M.floor_type = floor_type
 		M.floor_seed = global.random2d_seed
+		SSxenoarch.process_mineral(M)
 
 	if(floor)
-		T.generate(global.random2d_seed)
+		T?.generate(global.random2d_seed)
 
 	return T
 
@@ -89,7 +93,7 @@ SUBSYSTEM_DEF(mining)
 
 		do
 			var/turf/T = pick(L)
-			if(!ISINRANGE(L[T], S.min_level, S.max_level))
+			if(!ISINRANGE(L[T], S.min_level, S.max_level) || T.density != S.density)
 				continue
 			L -= T
 			S.generate(T)
@@ -120,7 +124,7 @@ SUBSYSTEM_DEF(mining)
 	seed_submaps(list(marker.z), rand(50, 150), /turf/simulated/floor/mining, /datum/map_template/mine)
 
 	for(var/turf/simulated/floor/T as anything in cache)
-		T.regenerate_ao()
+		T?.regenerate_ao()
 		CHECK_TICK
 
 	cache = null
@@ -130,10 +134,32 @@ SUBSYSTEM_DEF(mining)
 /datum/controller/subsystem/mining/proc/start_invasion()
 	set waitfor = FALSE
 
+	for(var/mob/M in block(locate(1, 1, marker.z), locate(world.maxx, world.maxy, marker.z)))
+		spawn()
+			shake_camera(M, rand(3, 5), 1)
+			sleep(3)
+			shake_camera(M, rand(3, 5), 1)
+			sleep(2)
+			shake_camera(M, rand(4, 7), 1)
+		to_chat(M, SPAN_DANGER("The floor is shaking under your feets. It seems it's time to get out of here!"))
+
+		if(istype(M, /mob/living/simple_mob/animal/giant_spider) && invasion_destination)
+			var/mob/living/simple_mob/animal/giant_spider/S = M
+			//S.ai_holder.use_astar = TRUE // too expensive ;(
+			S.ai_holder.give_destination(invasion_destination)
+
 	for(var/obj/structure/mine_dull/D as anything in dulls)
 		for(var/i in 1 to rand(5, 10))
 			spawn(i * 50 + rand(0, 100))
-				new /obj/random/mob/spider/mutant(get_turf(D))
+				var/turf/T = get_step_rand(get_turf(D))
+				new /obj/random/mob/spider/mutant(T)
+
+				if(invasion_destination)
+					spawn()
+						for(var/mob/living/simple_mob/animal/giant_spider/S in T) // Insanely
+							//S.ai_holder.use_astar = TRUE // too expensive ;(
+							S.ai_holder.give_destination(invasion_destination)
+			CHECK_TICK
 
 /datum/controller/subsystem/mining/fire(resumed)
 	if(next_invasion && world.time > next_invasion)

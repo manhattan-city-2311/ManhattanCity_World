@@ -23,9 +23,9 @@
 	if((CLUMSY in user.mutations) && prob(50))
 		user << text("<font color='red'>You try to analyze the floor's vitals!</font>")
 		for(var/mob/O in viewers(M, null))
-			O.show_message(text("<font color='red'>[user] has analyzed the floor's vitals!</font>"), 1)
-		user.show_message(text(SPAN_INFO("Analyzing Results for The floor:\n\t Overall Status: Healthy")), 1)
-		user.show_message(text(SPAN_INFO("\t Damage Specifics: [0]-[0]-[0]-[0]")), 1)
+			O.show_message("<font color='red'>[user] has analyzed the floor's vitals!</font>", 1)
+		user.show_message(SPAN_INFO("Analyzing Results for The floor:\n\t Overall Status: Healthy"), 1)
+		user.show_message(SPAN_INFO("\t Damage Specifics: [0]-[0]-[0]-[0]"), 1)
 		user.show_message(SPAN_INFO("Key: Suffocation/Toxin/Burns/Brute"), 1)
 		user.show_message(SPAN_INFO("Body Temperature: ???"), 1)
 		return

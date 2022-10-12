@@ -30,6 +30,7 @@ SUBSYSTEM_DEF(persistent_world)
 	to_world_log("Loading persistent world")
 	admin_notice(SPAN_DANGER("Loading persistent world"), R_DEBUG)
 	load_map()
+	load_all_businesses()
 	to_world("World loading took [(world.timeofday - start_timeofday) / (1 SECOND)] seconds.")
 	return ..()
 

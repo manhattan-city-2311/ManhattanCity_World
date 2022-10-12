@@ -7,7 +7,6 @@
 
 //Initializes blood vessels
 /mob/living/carbon/human/proc/make_blood()
-
 	if(vessel)
 		return
 
@@ -47,15 +46,15 @@
 		return amt
 	return 0
 
-#define BLOOD_SPRAY_DISTANCE 2
-/mob/living/carbon/human/proc/blood_squirt(var/amt, var/turf/sprayloc)
+#define BLOOD_SPRAY_DISTANCE 3
+/mob/living/carbon/human/proc/blood_squirt(amt, turf/sprayloc)
 	if(amt <= 0 || !istype(sprayloc))
 		return
 	var/spraydir = pick(GLOB.alldirs)
 	amt = ceil(amt/BLOOD_SPRAY_DISTANCE)
 	var/bled = 0
 	spawn(0)
-		for(var/i = 1 to BLOOD_SPRAY_DISTANCE)
+		for(var/i in 1 to BLOOD_SPRAY_DISTANCE)
 			sprayloc = get_step(sprayloc, spraydir)
 			if(!istype(sprayloc) || sprayloc.density)
 				break
@@ -90,7 +89,8 @@
 
 			drip(amt, sprayloc, spraydir)
 			bled += amt
-			if(hit_mob) break
+			if(hit_mob)
+				break
 			sleep(1)
 	return bled
 #undef BLOOD_SPRAY_DISTANCE
@@ -310,8 +310,10 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 
 	var/coeff = calc_heart_rate_coeff(hr)
 
-	gvr = 218.50746268 + LAZYACCESS0(chem_effects, CE_PRESSURE)
-	gvr += spressure * (0.0008 * spressure - 0.8833) + 94 // elasticity of vascular resistance model
+	var/ngvr = 218.50746268 + LAZYACCESS0(chem_effects, CE_PRESSURE)
+	ngvr += spressure * (0.0008 * spressure - 0.8833) + 94 // elasticity of vascular resistance model
+
+	ngvr = LERP(gvr, ngvr, 0.5)
 
 	if(mcv)
 		update_blood_pressure(hr, mcv, coeff)

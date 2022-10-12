@@ -45,12 +45,9 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	if(!ismob(user))
 		return 0
 
-	if(can_operate(src, user) && I.do_surgery(src,user))
-		if(I.can_do_surgery(src,user))
-			return 1
-		else
-			return 0
-	return I.attack(src, user, user.zone_sel.selecting)
+	if(can_operate(src, user) && I.do_surgery(src, user))
+		return I.can_do_surgery(src, user)
+	return I.attack(src, user, user.zone_sel.selecting) 
 
 // Used to get how fast a mob should attack, and influences click delay.
 // This is just for inheritence.

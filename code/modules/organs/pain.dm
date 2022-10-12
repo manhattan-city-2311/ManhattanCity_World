@@ -94,8 +94,6 @@
 		return
 	if(!can_feel_pain())
 		return
-	if(world.time < next_pain_time)
-		return
 
 	total_pain = 0
 
@@ -111,8 +109,30 @@
 
 		total_pain += dam
 
-	total_pain -= LAZYACCESS0(chem_effects, CE_PAINKILLER)
+	// Damage to internal organs hurts a lot.
+	for(var/obj/item/organ/I in internal_organs)
+		if((I.status & ORGAN_DEAD) || I.robotic >= ORGAN_ROBOT)
+			continue
+		if(I.damage > 2 && prob(2))
+			var/obj/item/organ/external/parent = get_organ(I.parent_organ)
+			if(world.time > next_pain_time)
+				custom_pain("You feel a sharp pain in your [parent.name]", 50, affecting = parent)
+			total_pain += 50
+	
+	total_pain = max(0, total_pain + getToxLoss() - LAZYACCESS0(chem_effects, CE_PAINKILLER))
 
+	if(world.time < next_pain_time)
+		return
+
+	if(prob(3))
+		switch(getToxLoss())
+			if(10 to 25)
+				custom_pain("Your body stings slightly.", getToxLoss())
+			if(25 to 45)
+				custom_pain("Your whole body hurts badly.", getToxLoss())
+			if(61 to INFINITY)
+				custom_pain("Your body aches all over, it's driving you mad.", getToxLoss())
+	
 	if(damaged_organ)
 		if(maxdam > 10 && paralysis)
 			paralysis = max(0, paralysis - round(maxdam/10))
@@ -131,21 +151,3 @@
 				msg = "<font size=3>OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!</font>"
 
 		custom_pain(SPAN_DANGER(msg), 0, prob(10), affecting = damaged_organ, flash_pain = maxdam)
-
-	// Damage to internal organs hurts a lot.
-	for(var/obj/item/organ/I in internal_organs)
-		if((I.status & ORGAN_DEAD) || I.robotic >= ORGAN_ROBOT) continue
-		if(I.damage > 2) if(prob(2))
-			var/obj/item/organ/external/parent = get_organ(I.parent_organ)
-			src.custom_pain("You feel a sharp pain in your [parent.name]", 50, affecting = parent)
-			total_pain += 50
-
-	if(prob(3))
-		switch(getToxLoss())
-			if(10 to 25)
-				custom_pain("Your body stings slightly.", getToxLoss())
-			if(25 to 45)
-				custom_pain("Your whole body hurts badly.", getToxLoss())
-			if(61 to INFINITY)
-				custom_pain("Your body aches all over, it's driving you mad.", getToxLoss())
-		total_pain += getToxLoss()

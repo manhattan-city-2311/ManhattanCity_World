@@ -111,16 +111,17 @@
 
 #define SPAN_PLEASURE(X) "<span class='pleasure'>[X]</span>"
 
-#define SPAN_INFO(X) "<span class='info'>[X]</span>"
-#define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
+#define SPAN_INFO(X) SPAN("info", X)
 
-#define SPAN_SUBTLE(X) "<span class='subtle'>[X]</span>"
+#define SPAN_SUBTLE(X) SPAN("subtle", X)
 
-#define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
+#define SPAN_NOTICE(X) SPAN("notice", X)
 
-#define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
+#define SPAN_WARNING(X) SPAN("warning", X)
 
-#define SPAN_OCCULT(X) "<span class='cult'>[X]</span>"
+#define SPAN_DANGER(X) SPAN("danger", X)
+
+#define SPAN_OCCULT(X) SPAN("cult", X)
 
 #define FONT_SMALL(X) "<font size='1'>[X]</font>"
 

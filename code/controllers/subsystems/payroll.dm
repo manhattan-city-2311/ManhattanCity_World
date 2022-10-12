@@ -134,7 +134,7 @@ SUBSYSTEM_DEF(payroll)
 
 
 	//dynamically figure out what tax bracket you're in based on business and current money. No more tax evasion by shifting money between accounts
-	if(bank_account && SSbusiness)
+	if(bank_account)
 		class = get_economic_class(bank_account.money, unique_id)
 
 	switch(class)
