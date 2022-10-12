@@ -36,7 +36,7 @@
 
 	tax_type = PHARMA_TAX
 	var/pain_power = 300 //magnitide of painkilling effect
-	var/effective_dose = 0.5 //how many units it need to process to reach max power
+	var/effective_dose = 10 //how many units it need to process to reach max power
 	var/soft_overdose = 15 //determines when it starts causing negative effects w/out actually causing OD
 	var/additiction_coef = 0.8
 

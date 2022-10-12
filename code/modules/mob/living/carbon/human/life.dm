@@ -745,6 +745,7 @@
 		if(healths)
 			if (chem_effects[CE_PAINKILLER] > 100)
 				healths.icon_state = "health_numb"
+				healths.overlays = null
 			else
 				// Generate a by-limb health display.
 				var/mutable_appearance/healths_ma = new(healths)
@@ -775,12 +776,13 @@
 				healths.appearance = healths_ma
 
 		if(nutrition_icon)
-			switch(bloodstr?.get_reagent_amount("glucose"))
-				if(GLUCOSE_LEVEL_HBAD - 2   to INFINITY)				    nutrition_icon.icon_state = "nutrition0"
-				if(GLUCOSE_LEVEL_NORMAL - 0.1 to INFINITY)		nutrition_icon.icon_state = "nutrition1"
-				if(GLUCOSE_LEVEL_LBAD   to GLUCOSE_LEVEL_NORMAL_LOW + 2)	nutrition_icon.icon_state = "nutrition2"
-				if(GLUCOSE_LEVEL_LBAD - 0.5  to GLUCOSE_LEVEL_LBAD)		nutrition_icon.icon_state = "nutrition3"
-				else														nutrition_icon.icon_state = "nutrition4"
+			switch(bloodstr?.get_reagent_amount(CI_GLUCOSE))
+				if(GLUCOSE_LEVEL_NORMAL + 0.2 to INFINITY)				     nutrition_icon.icon_state = "nutrition0"
+				if(GLUCOSE_LEVEL_NORMAL - 0.5 to GLUCOSE_LEVEL_NORMAL + 0.2) nutrition_icon.icon_state = "nutrition1"
+				if(GLUCOSE_LEVEL_NORMAL - 2   to GLUCOSE_LEVEL_NORMAL - 0.5) nutrition_icon.icon_state = "nutrition2"
+				if(GLUCOSE_LEVEL_LBAD + 2.5   to GLUCOSE_LEVEL_NORMAL - 2)   nutrition_icon.icon_state = "nutrition2"
+				if(GLUCOSE_LEVEL_LBAD - 1     to GLUCOSE_LEVEL_LBAD + 2.5)	 nutrition_icon.icon_state = "nutrition4"
+				if(-INFINITY 				  to GLUCOSE_LEVEL_LBAD)		 nutrition_icon.icon_state = "nutrition5"
 		if(!isSynthetic())
 			if(hydration_icon)
 				switch(hydration)

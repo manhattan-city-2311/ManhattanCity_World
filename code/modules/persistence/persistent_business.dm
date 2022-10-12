@@ -1,13 +1,12 @@
 
-/datum/controller/subsystem/business/proc/save_all_businesses()
+/proc/save_all_businesses()
 	save_bizlist()
 
 	for(var/datum/business/B in GLOB.all_businesses)
 		B.save_business()
 
 	return 1
-
-/datum/controller/subsystem/business/proc/load_all_businesses()
+/proc/load_all_businesses()
 	load_bizlist()
 
 	for(var/V in GLOB.business_ids)
@@ -18,7 +17,16 @@
 		B.load_business()
 
 	return 1
+/proc/refresh_all_businesses()
+	for(var/datum/business/B in GLOB.all_businesses)
+		B.refresh_business_support_list()
 
+/proc/get_all_business_accesses()
+	var/list/accesses = list()
+	for(var/datum/access/A in GLOB.all_business_accesses)
+		accesses |= A.id
+
+	return accesses
 
 /proc/save_bizlist()
 	for(var/datum/business/B in GLOB.all_businesses)

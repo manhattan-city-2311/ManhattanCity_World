@@ -6,7 +6,7 @@
 	SSeconomy.save_economy()
 
 	//save business data
-	SSbusiness.save_all_businesses()
+	save_all_businesses()
 
 	//save politics related data
 	SSelections.save_data.save_candidates()

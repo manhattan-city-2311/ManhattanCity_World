@@ -6,7 +6,7 @@
 	flags = PROXMOVE
 	vis_flags = VIS_INHERIT_DIR
 	appearance_flags = DEFAULT_APPEARANCE | TILE_MOVER | KEEP_TOGETHER
-	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	var/datum/mind/mind
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak

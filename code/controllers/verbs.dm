@@ -66,7 +66,7 @@
 
 /client/proc/debug_controller(controller in list("Master","Ticker","Ticker Process","Jobs","Sun","Economy","Payroll", \
 	"Laws","Emails","Lots","Radio","Supply","Shuttles","Emergency Shuttle","Configuration","pAI", "Cameras", "Transfer Controller", \
-	"Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets", "Persistent Options", "Websites", "Businesses", "Bounties"))
+	"Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets", "Persistent Options", "Websites", "Bounties"))
 
 	set category = "Debug"
 	set name = "Debug Controller"
@@ -152,9 +152,6 @@
 		if("Websites")
 			debug_variables(SSwebsites)
 			feedback_add_details("admin_verb", "DWebsites")
-		if("Businesses")
-			debug_variables(SSbusiness)
-			feedback_add_details("admin_verb", "DBusinesses")
 		if("Bounties")
 			debug_variables(SSbounties)
 			feedback_add_details("admin_verb", "DBounties")

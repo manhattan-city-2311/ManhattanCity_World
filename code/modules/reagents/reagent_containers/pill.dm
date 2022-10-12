@@ -132,7 +132,7 @@
 	desc = "A simple antiarrhythmic drug. Contains 15 ml of Amiodarone."
 	icon_state = "pill5"
 
-/obj/item/weapon/reagent_containers/pill/Amiodarone/New()
+/obj/item/weapon/reagent_containers/pill/amiodarone/New()
 	..()
 	reagents.add_reagent("amiodarone", 15)
 

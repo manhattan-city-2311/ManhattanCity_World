@@ -51,7 +51,7 @@
 					t1 += "<a style='color: red' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
 
 			t1 += "<br><b>Business Accesses:</b><br>"
-			var/list/baccesses = SSbusiness.business_access_list
+			var/list/baccesses = GLOB.all_business_accesses
 			for (var/datum/access/accb in baccesses)
 				var/bname = get_biz_access_name_id(accb.id)
 				if(!bname)

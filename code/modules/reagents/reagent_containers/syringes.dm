@@ -4,6 +4,7 @@
 #define SYRINGE_DRAW 0
 #define SYRINGE_INJECT 1
 #define SYRINGE_BROKEN 2
+#define SYRINGE_PACKAGED 3
 
 /obj/item/weapon/reagent_containers/syringe
 	name = "syringe"
@@ -13,13 +14,12 @@
 	icon_state = "0"
 	matter = list("glass" = 150)
 	amount_per_transfer_from_this = 1
-	possible_transfer_amounts = list(1,2,3,4,5,10,15,20)
+	possible_transfer_amounts = list(1,2,2.5,3,4,5,10,15,20)
 	volume = 20
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 	sharp = 1
 	unacidable = 1 //glass
-	var/obj/item/weapon/needle/needle = new
 	var/mode = SYRINGE_DRAW
 	var/image/filling //holds a reference to the current filling overlay
 	var/visible_name = "a syringe"
@@ -27,64 +27,27 @@
 	var/drawing = 0
 	var/pain = 5
 	drop_sound = 'sound/items/drop/glass.ogg'
-
-
-/obj/item/weapon/needle
-	name = "needle packet"
-	desc = "A cheap disposable needle for a syringe or an IV."
-	icon = 'icons/obj/syringe.dmi'
-	icon_state = "syringe_pack"
-	w_class = ITEMSIZE_TINY
-	var/possible_transfer_amounts = list(1,2,3,4,5,10,15,20)
-	var/use_times = 0
-	var/transfer_amount = 5
-	var/time = 30
-	germ_level = 0
-	var/open = FALSE
-	sharp = 1
-
-/obj/item/weapon/needle/attack_self(mob/user)
-	. = ..()
-	if(!open)
-		open = TRUE
-		user.visible_message("<span class='notice'>[user] unwraps the [src].</span>")
-		playsound(user, 'sound/items/package_unwrap.ogg', 50, 1)
+	var/starting_label
+	var/package_state = "package"
+	var/list/initial_reagents
 
 /obj/item/weapon/reagent_containers/syringe/initialize()
-	time = needle.time
-	amount_per_transfer_from_this = needle.transfer_amount
-	possible_transfer_amounts = needle.possible_transfer_amounts
-
-/obj/item/weapon/reagent_containers/syringe/examine(mob/user, distance)
 	. = ..()
-	if(needle.use_times >= 1)
-		to_chat(user, "<span class='warning'>The needle looks used!</span>")
-	if(mode == SYRINGE_BROKEN)
-		to_chat(user, "<span class='warning'>The needle is broken!</span>")
-
-/obj/item/weapon/reagent_containers/syringe/proc/use_needle(var/mob/living/carbon/human/user)
-	if(!user)
-		return
-
-	pain = initial(pain)
-	if(needle.use_times == 1)
-		pain += 15
-	if(needle.use_times >= 2)
-		pain += 30
-	user.custom_pain("<span class='warning'>You feel a prick!</span>", pain, 1)
-	user.germ_level += needle.germ_level / 4
-	needle.germ_level += user.germ_level
-	needle.use_times += 1
+	spawn()
+		for(var/I in initial_reagents)
+			reagents.add_reagent(I, initial_reagents[I])
+		update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/on_reagent_change()
+	. = ..()
 	update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/dropped(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/attack_self(mob/user as mob)
@@ -95,32 +58,21 @@
 			mode = SYRINGE_DRAW
 		if(SYRINGE_BROKEN)
 			return
+		if(SYRINGE_PACKAGED)
+			to_chat(user, SPAN_NOTICE("You unwrap \the [src]."))
+			mode = SYRINGE_INJECT
 	update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/attack_hand()
 	..()
 	update_icon()
 
-/obj/item/weapon/reagent_containers/syringe/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I, /obj/item/weapon/needle))
-		var/obj/item/weapon/needle/new_needle = I
-		if(new_needle.open == 1)
-			user.visible_message("<span class='notice'>[user] replaces the needle on the syringe.</span>")
-			qdel(needle)
-			needle = new_needle
-			new_needle.forceMove(null)
-			mode = SYRINGE_DRAW
-			update_icon()
-		else
-			to_chat(user, "<span class='warning'>The needle packet is closed!</span>")
-	return
-
 /obj/item/weapon/reagent_containers/syringe/afterattack(obj/target, mob/user, proximity)
 	if(!proximity || !target.reagents)
 		return
 
 	if(mode == SYRINGE_BROKEN)
-		to_chat(user, "<span class='warning'>This syringe is broken!</span>")
+		to_chat(user, SPAN_WARNING("This syringe is broken!"))
 		return
 
 	if(user.a_intent == I_HURT && ismob(target))
@@ -186,7 +138,6 @@
 						on_reagent_change()
 						reagents.handle_reactions()
 					to_chat(user, "<span class='notice'>You take a blood sample from [target].</span>")
-					use_needle(target)
 					for(var/mob/O in viewers(4, user))
 						O.show_message("<span class='notice'>[user] takes a blood sample from [target].</span>", 1)
 
@@ -274,8 +225,6 @@
 			if (reagents.total_volume <= 0 && mode == SYRINGE_INJECT)
 				mode = SYRINGE_DRAW
 				update_icon()
-			if(ismob(target))
-				use_needle(target)
 			if(trans)
 				to_chat(user, "<span class='notice'>You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units.</span>")
 				if(ismob(target))
@@ -286,8 +235,6 @@
 				mode = SYRINGE_DRAW
 				update_icon()
 
-	return
-
 /obj/item/weapon/reagent_containers/syringe/update_icon()
 	overlays.Cut()
 
@@ -295,15 +242,7 @@
 		icon_state = "broken"
 		return
 
-	var/rounded_vol = round(reagents.total_volume, round(reagents.maximum_volume / 4))
-	if(ismob(loc))
-		var/injoverlay
-		switch(mode)
-			if (SYRINGE_DRAW)
-				injoverlay = "draw"
-			if (SYRINGE_INJECT)
-				injoverlay = "inject"
-		overlays += injoverlay
+	var/rounded_vol = reagents.total_volume == 1 || round(reagents.total_volume, 5)
 	icon_state = "[rounded_vol]"
 	item_state = "syringe_[rounded_vol]"
 
@@ -312,6 +251,17 @@
 		filling.icon_state = "syringe[rounded_vol]"
 		filling.color = reagents.get_color()
 		overlays += filling
+
+	if(mode == SYRINGE_PACKAGED && package_state)
+		overlays += package_state
+		return
+
+	if(ismob(loc))
+		switch(mode)
+			if(SYRINGE_DRAW)
+				overlays += "draw"
+			if(SYRINGE_INJECT)
+				overlays += "inject"
 
 /obj/item/weapon/reagent_containers/syringe/proc/syringestab(mob/living/carbon/target as mob, mob/living/carbon/user as mob)
 	if(istype(target, /mob/living/carbon/human))
@@ -357,7 +307,6 @@
 	if(isnull(trans)) trans = 0
 	add_attack_logs(user,target,"Stabbed with [src.name] containing [contained], trasferred [trans] units")
 	break_syringe(target, user)
-	use_needle(target)
 
 /obj/item/weapon/reagent_containers/syringe/proc/break_syringe(mob/living/carbon/target, mob/living/carbon/user)
 	mode = SYRINGE_BROKEN
@@ -435,23 +384,25 @@
 	reagents.add_reagent("hyperzine",10)
 
 /obj/item/weapon/reagent_containers/syringe/adrenaline
-	name = "Adrenaline Syringe"
-	desc = "Adrenaline injection for emergency use. EXTREMELY large needle."
-	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list()
-	mode = SYRINGE_INJECT
+	name = "syringe (adrenaline 15ml)"
+	mode = SYRINGE_PACKAGED
+	initial_reagents = list(CI_ADRENALINE = 15)
+	volume = 15
 
-/obj/item/weapon/reagent_containers/syringe/adrenaline/New()
-	..()
-	reagents.add_reagent("adrenaline",20)
+/obj/item/weapon/reagent_containers/syringe/noradrenaline
+	name = "syringe (noradrenaline 15ml)"
+	mode = SYRINGE_PACKAGED
+	initial_reagents = list(CI_NORADRENALINE = 15)
+	volume = 15
 
 /obj/item/weapon/reagent_containers/syringe/atropine
-	name = "Atropine Syringe"
-	desc = "Atropine injection for emergency use. EXTREMELY large needle."
-	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list()
-	mode = SYRINGE_INJECT
-
-/obj/item/weapon/reagent_containers/syringe/atropine/New()
-	..()
-	reagents.add_reagent("atropine",20)
+	name = "syringe (atropine 15ml)"
+	mode = SYRINGE_PACKAGED
+	initial_reagents = list("atropine" = 15)
+	volume = 15
+/obj/item/weapon/reagent_containers/syringe/morphine
+	name = "syringe (morphine 7.5ml)"
+	amount_per_transfer_from_this = 2.5
+	mode = SYRINGE_PACKAGED
+	initial_reagents = list("morphine" = 7.5)
+	volume = 7.5

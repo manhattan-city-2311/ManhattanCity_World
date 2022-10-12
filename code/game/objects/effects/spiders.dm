@@ -6,6 +6,7 @@
 	anchored = 1
 	density = 0
 	var/health = 15
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 //similar to weeds, but only barfed out by nurses manually
 /obj/effect/spider/ex_act(severity)
@@ -18,7 +19,6 @@
 		if(3.0)
 			if (prob(5))
 				qdel(src)
-	return
 
 /obj/effect/spider/attackby(var/obj/item/weapon/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))

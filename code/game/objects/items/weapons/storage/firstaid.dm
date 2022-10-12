@@ -74,16 +74,20 @@
 	)
 
 /obj/item/weapon/storage/firstaid/combat
-	name = "combat medical kit"
-	desc = "Contains advanced medical treatments."
+	name = "martial medical kit"
+	desc = "Contains treatments used to martial use."
 	icon_state = "bezerk"
 	item_state_slots = list(slot_r_hand_str = "firstaid-advanced", slot_l_hand_str = "firstaid-advanced")
 	starts_with = list(
-		/obj/item/weapon/storage/pill_bottle/tramadol,
-		/obj/item/weapon/storage/pill_bottle/penicillin,
-		/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/clotting,
+		/obj/item/weapon/reagent_containers/syringe/morphine = 3,
+		/obj/item/weapon/reagent_containers/syringe/adrenaline,
+		/obj/item/weapon/reagent_containers/syringe/noradrenaline,
+		/obj/item/weapon/reagent_containers/pill/amicile = 3,
+		/obj/item/stack/medical/gauze = 2,
+		/obj/item/stack/medical/harness,
 		/obj/item/stack/medical/splint,
-		/obj/item/device/healthanalyzer/advanced
+		/obj/item/stack/medical/ointment,
+		/obj/item/weapon/surgical/suture
 	)
 
 /obj/item/weapon/storage/firstaid/surgery
@@ -244,9 +248,6 @@
 		/obj/item/intubation_tube,
 		/obj/item/intubation_baloon,
 		/obj/item/weapon/reagent_containers/syringe,
-		/obj/item/weapon/needle,
-		/obj/item/weapon/needle,
-		/obj/item/weapon/needle,
 		/obj/item/weapon/defibrillator/loaded,
 		/obj/item/weapon/surgical/scalpel,
 		/obj/item/stack/medical/gauze,

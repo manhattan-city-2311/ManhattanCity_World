@@ -58,12 +58,6 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 			message_admins("Explosion with [shaped ? "shaped" : "non-shaped"] size ([devastation_range], [heavy_impact_range], [light_impact_range]) in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[epicenter.x];Y=[epicenter.y];Z=[epicenter.z]'>JMP</a>)")
 			log_game("Explosion with [shaped ? "shaped" : "non-shaped"] size ([devastation_range], [heavy_impact_range], [light_impact_range]) in area [epicenter.loc.name] ")
 
-		var/approximate_intensity = (devastation_range * 3) + (heavy_impact_range * 2) + light_impact_range
-		var/powernet_rebuild_was_deferred_already = defer_powernet_rebuild
-		// Large enough explosion. For performance reasons, powernets will be rebuilt manually
-		if(!defer_powernet_rebuild && (approximate_intensity > 25))
-			defer_powernet_rebuild = 1
-
 		if(heavy_impact_range > 1)
 			var/datum/effect/system/explosion/E = new/datum/effect/system/explosion()
 			E.set_up(epicenter)
@@ -101,11 +95,6 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 			var/obj/machinery/doppler_array/Array = doppler_arrays[i]
 			if(Array)
 				Array.sense_explosion(x0,y0,z0,devastation_range,heavy_impact_range,light_impact_range,took)
-		sleep(8)
-
-		if(!powernet_rebuild_was_deferred_already && defer_powernet_rebuild)
-			SSmachines.makepowernets()
-			defer_powernet_rebuild = 0
 	return 1
 
 proc/secondaryexplosion(turf/epicenter, range)

@@ -278,7 +278,7 @@ Ccomp's first proc.
 	G.has_enabled_antagHUD = 2
 	G.can_reenter_corpse = 1
 
-	G:show_message(text(SPAN_INFO("<B>You may now respawn.  You should roleplay as if you learned nothing about the round during your time with the dead.</B>")), 1)
+	G:show_message(SPAN_INFO("<B>You may now respawn.  You should roleplay as if you learned nothing about the round during your time with the dead.</B>"), 1)
 	log_admin("[key_name(usr)] allowed [key_name(G)] to bypass the respawn time limit")
 	message_admins("Admin [key_name_admin(usr)] allowed [key_name_admin(G)] to bypass the respawn time limit", 1)
 

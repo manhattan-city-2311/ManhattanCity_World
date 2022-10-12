@@ -241,7 +241,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		if(inoperable(MAINT)) return
 		if(screen == RCS_MESSAUTH)
 			var/obj/item/weapon/stamp/T = O
-			msgStamped = text(SPAN_INFO("<b>Stamped with the [T.name]</b>"))
+			msgStamped = SPAN_INFO("<b>Stamped with the [T.name]</b>")
 			updateUsrDialog()
 	return
 

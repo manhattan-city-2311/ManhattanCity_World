@@ -245,7 +245,7 @@
 			. += href(src, list("toggle_access" = thing), "Add")
 		. += "<br>"
 	. += "<h3>Business Accesses</h3>"
-	for(var/thing in SSbusiness.business_access_list)
+	for(var/thing in GLOB.all_business_accesses)
 		var/datum/access/A = thing
 		. += " - "
 		. += get_biz_access_name_id(A.id)

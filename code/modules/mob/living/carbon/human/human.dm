@@ -1,5 +1,4 @@
 /mob/living/carbon/human
-	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	name = "unknown"
 	real_name = "unknown"
 	voice_name = "unknown"

@@ -13,6 +13,7 @@
 	icon_living = "guard"
 	icon_dead = "guard_dead"
 	has_eye_glow = TRUE
+	luminosity = 1
 
 	faction = "spiders"
 	maxHealth = 200
