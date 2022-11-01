@@ -72,3 +72,11 @@ var/list/grass_types = list(
 	tree_chance = 10
 	grass_chance = 0
 
+/turf/simulated/floor/outdoors/grass/manhattan
+	name = "thick grass"
+	icon = 'icons/turf/auto_strata_grass.dmi'
+	icon_state = "grass_1"
+
+/turf/simulated/floor/outdoors/grass/manhattan/dark
+	name = "thick grass"
+	icon_state = "grass_0"
