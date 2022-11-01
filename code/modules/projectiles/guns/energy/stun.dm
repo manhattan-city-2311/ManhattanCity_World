@@ -6,6 +6,14 @@
 	projectile_type = /obj/item/projectile/nonlethal
 	price_tag = 500
 
+/obj/item/weapon/gun/energy/taser/handmade
+	name = "taser gun"
+	desc = "The handmade taser, cheap and pretty unstable."
+	icon_state = "taserhandmade"
+	projectile_type = /obj/item/projectile/nonlethal
+	price_tag = 500
+	uses = 40
+
 /obj/item/weapon/gun/energy/taser/carbine
 	name = "taser carbine"
 	desc = "The NTEPD Carbine is a weapon produced by NanoTrasen that fires overcharged beams of electricity to quickly make a non-lethal takedown. The weapon is rarely used due to burns caused by the electric shock."
