@@ -6,7 +6,7 @@
 	desc = "Used to provide air in case of blocked patient airway or lack of functionality in lungs."
 	icon = 'icons/obj/medicine.dmi'
 	icon_state = "int_tube"
-	var/lubed = FALSE //Gotta get some vaselin
+	var/lubed = FALSE
 	var/pain = 30
 	var/list/lubes = list(
 		"silicon" = 20,

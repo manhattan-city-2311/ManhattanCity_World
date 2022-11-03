@@ -14,6 +14,7 @@ data/
 cfg/
 
 maps/Geminus/backup/*
+.VSCodeCounter
 .vscode/tasks.json
 maps/Geminus/backup/geminus-3.dmm
 maps/Geminus/backup/geminus-2.dmm

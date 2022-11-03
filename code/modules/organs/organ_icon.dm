@@ -125,45 +125,38 @@ var/global/list/limb_icon_cache = list()
 	..()
 
 /obj/item/organ/external/proc/get_icon(skeletal)
-
-	var/gender = "f"
-	if(owner && owner.gender == MALE)
-		gender = "m"
+	var/gender = gendered_icon && (owner?.gender == FEMALE ? "_f" : "_m")
 
 	icon_cache_key = "[icon_name]_[species ? species.name : SPECIES_HUMAN]"
 
 	if(force_icon)
-		mob_icon = new /icon(force_icon, "[icon_name][gendered_icon ? "_[gender]" : ""]")
+		mob_icon = new /icon(force_icon, "[icon_name][gender]")
 	else
 		if(!dna)
-			mob_icon = new /icon('icons/mob/human_races/r_human.dmi', "[icon_name][gendered_icon ? "_[gender]" : ""]")
+			mob_icon = new /icon('icons/mob/human_races/r_human.dmi', "[icon_name][gender]")
 		else
-
-			if(!gendered_icon)
-				gender = null
-			else
-				if(dna.GetUIState(DNA_UI_GENDER))
-					gender = "f"
-				else
-					gender = "m"
+			gender = gendered_icon ? (dna.GetUIState(DNA_UI_GENDER) ? "_f" : "_m") : ""
 
 			if(skeletal)
-				mob_icon = new /icon('icons/mob/human_races/r_skeleton.dmi', "[icon_name][gender ? "_[gender]" : ""]")
+				mob_icon = 'icons/mob/human_races/r_skeleton.dmi'
 			else if (robotic >= ORGAN_ROBOT)
-				mob_icon = new /icon('icons/mob/human_races/robotic.dmi', "[icon_name][gender ? "_[gender]" : ""]")
-				apply_colouration(mob_icon)
+				mob_icon = 'icons/mob/human_races/robotic.dmi'
 			else
-				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][gender ? "_[gender]" : ""]")
+				mob_icon = species.get_icobase(owner, status & ORGAN_MUTATED)
+
+			mob_icon = icon(mob_icon, icon_name + gender)
+
+			if(!skeletal)
 				apply_colouration(mob_icon)
 
-			//Body markings, actually does not include head this time. Done separately above.
+			// Body markings, actually does not include head this time. Done separately above.
 			if(!istype(src,/obj/item/organ/external/head))
 				for(var/M in markings)
 					var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
 					var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 					mark_s.Blend(markings[M]["color"], ICON_ADD)
-					overlays |= mark_s //So when it's not on your body, it has icons
-					mob_icon.Blend(mark_s, ICON_OVERLAY) //So when it's on your body, it has icons
+					overlays |= mark_s // So when it's not on your body, it has icons
+					mob_icon.Blend(mark_s, ICON_OVERLAY) // So when it's on your body, it has icons
 					icon_cache_key += "[M][markings[M]["color"]]"
 
 			if(body_hair && islist(h_col) && h_col.len >= 3)

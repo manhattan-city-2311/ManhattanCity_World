@@ -16,7 +16,7 @@
 	amputation_point = "spine"
 	joint = "neck"
 	dislocated = -1
-	gendered_icon = 1
+	gendered_icon = TRUE
 	cannot_amputate = 1
 	parent_organ = null
 	encased = "ribcage"
@@ -55,7 +55,7 @@
 	amputation_point = "lumbar"
 	joint = "hip"
 	dislocated = -1
-	gendered_icon = 1
+	gendered_icon = TRUE
 	cannot_amputate = 1
 	organ_rel_size = 30
 
@@ -257,7 +257,7 @@
 	parent_organ = BP_TORSO
 	joint = "jaw"
 	amputation_point = "neck"
-	gendered_icon = 1
+	gendered_icon = TRUE
 	encased = "skull"
 	base_miss_chance = 40
 	var/can_intake_reagents = 1

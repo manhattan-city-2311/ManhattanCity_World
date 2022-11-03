@@ -191,8 +191,7 @@
 			visible_message("<B>\The [src]</B> drops what they were holding in their [grasp_name]!")
 
 /mob/living/carbon/human/proc/sync_organ_dna()
-	var/list/all_bits = internal_organs_by_name
-	for(var/obj/item/organ/O in all_bits)
+	for(var/obj/item/organ/O in internal_organs_by_name + organs_by_name)
 		O.set_dna(dna)
 
 /mob/living/carbon/human/proc/get_rythme()
