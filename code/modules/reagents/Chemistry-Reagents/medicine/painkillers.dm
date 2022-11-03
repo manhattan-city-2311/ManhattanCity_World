@@ -163,7 +163,7 @@
 		M.add_chemical_effect(CE_SLOWDOWN, 2)
 		if(prob(5))
 			M.slurring = max(M.slurring, 20)
-	if(whole_volume > overdose)
+	else if(whole_volume > overdose)
 		M.add_chemical_effect(CE_SLOWDOWN, 3)
 		M.slurring = max(M.slurring, 30)
 		M.Weaken(5)

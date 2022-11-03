@@ -186,6 +186,7 @@
 		return
 	//Bleeding out
 	var/blood_max = 0
+	var/bpcoef = min(1.5, owner.mpressure / BLOOD_PRESSURE_NORMAL)
 	var/list/do_spray = list()
 	for(var/obj/item/organ/external/temp in owner.organs_by_name)
 		var/open_wound
@@ -209,16 +210,16 @@
 					blood_max += W.damage
 
 		if(temp.is_artery_cut())
-			var/bleed_amount = temp.get_artery_cut_damage()
+			var/bleed_amount = temp.get_artery_cut_damage() * 0.1
 			if(temp.applied_pressure)
 				bleed_amount *= 0.5
 			if(open_wound)
 				blood_max += bleed_amount
 				do_spray += "the [temp.artery_name] in \the [owner]'s [temp]"
 			else
-				owner.remove_blood(bleed_amount * owner.mpressure / BLOOD_PRESSURE_NORMAL)
+				owner.remove_blood(bleed_amount * bpcoef)
 
-	blood_max *= owner.mpressure / BLOOD_PRESSURE_NORMAL
+	blood_max *= bpcoef
 
 	if(world.time >= next_blood_squirt && isturf(owner.loc) && do_spray.len)
 		owner.visible_message("<span class='danger'>Blood squirts from [pick(do_spray)]!</span>")
@@ -233,10 +234,7 @@
 		owner.drip(blood_max)
 
 /obj/item/organ/internal/heart/proc/is_working()
-	if(!is_usable())
-		return FALSE
-
-	return pulse
+	return is_usable() && pulse
 
 /obj/item/organ/internal/heart/listen()
 	if(pulse <= 0)

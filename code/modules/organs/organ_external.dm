@@ -33,7 +33,7 @@
 	var/model                          // Used when caching robolimb icons.
 	var/force_icon                     // Used to force override of species-specific limb icons (for prosthetics).
 	var/icon/mob_icon                  // Cached icon for use in mob overlays.
-	var/gendered_icon = 0              // Whether or not the icon state appends a gender.
+	var/gendered_icon = FALSE              // Whether or not the icon state appends a gender.
 	var/s_tone                         // Skin tone.
 	var/list/s_col                     // skin colour
 	var/s_col_blend = ICON_ADD         // How the skin colour is applied.
@@ -788,15 +788,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 		src.fracture()
 
 // new damage icon system
-// adjusted to set damage_state to brute/burn code only (without r_name0 as before)
-/obj/item/organ/external/update_icon()
-	var/n_is = damage_state_text()
-	if (n_is != damage_state)
-		damage_state = n_is
-		return 1
-	return 0
-
-// new damage icon system
 // returns just the brute/burn damage code
 /obj/item/organ/external/proc/damage_state_text()
 
@@ -1123,7 +1114,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 		T.robotize(company, 1)
 
 	if(owner)
-
 		if(!keep_organs)
 			for(var/obj/item/organ/thing in internal_organs)
 				if(istype(thing))

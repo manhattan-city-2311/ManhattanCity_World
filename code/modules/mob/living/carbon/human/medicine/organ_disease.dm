@@ -61,8 +61,8 @@
 	. += (owner.mpressure > BLOOD_PRESSURE_HCRITICAL) || (owner.mpressure < BLOOD_PRESSURE_LCRITICAL)
 	. += owner.mcv > 10000
 	. += (owner.mcv < 500) * 2
-	var/glevel = owner.bloodstr.get_reagent_amount("glucose")
-	switch(glevel)
+	. += pulse > 240
+	switch(owner.bloodstr.get_reagent_amount(CI_GLUCOSE))
 		if(-INFINITY to GLUCOSE_LEVEL_LCRITICAL)
 			. += 4
 		if(GLUCOSE_LEVEL_LCRITICAL to GLUCOSE_LEVEL_L2BAD)
@@ -71,7 +71,7 @@
 			. += 3
 		if(GLUCOSE_LEVEL_HCRITICAL to GLUCOSE_LEVEL_H2CRITICAL)
 			. += 4
-	var/plevel = owner.bloodstr.get_reagent_amount("potassium_hormone")
+	var/plevel = owner.bloodstr.get_reagent_amount(CI_POTASSIUM_HORMONE)
 	switch(plevel)
 		if(POTASSIUM_LEVEL_HBAD to POTASSIUM_LEVEL_HCRITICAL)
 			. += 1

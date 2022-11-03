@@ -30,12 +30,6 @@
 	id = CI_DOPAMINE
 	description = "Dopamine is a hormone used to treat hypotension by vasoconstricting. Can cause arrythmia."
 
-/datum/reagent/hormone/dopamine/affect_blood(mob/living/carbon/human/M, alien, removed)
-	M.add_chemical_effect(CE_PRESSURE,  min(3 * volume, 40))
-	var/obj/item/organ/internal/heart/heart = M.internal_organs_by_name[O_HEART]
-	if(prob(1) && heart.get_arrythmia_score() < 1)
-		heart.make_common_arrythmia(1)
-
 // METABOLISM
 
 /datum/reagent/hormone/glucose
@@ -91,7 +85,7 @@
 
 
 // Ions.
-// Wer convert normal reagents to hormone variant(to ions of reagent)
+// Wer converting normal reagents to hormone variant(to ions of reagent)
 
 
 /datum/reagent/hormone/potassium
@@ -116,5 +110,5 @@
 			heart.pulse_modificators["potassium_level"] = volume * 0.4
 
 /datum/reagent/potassium/affect_blood(mob/living/carbon/human/H, alien, removed)
-	H.bloodstr.add_reagent("potassium_hormone", volume * 0.5)
+	H.bloodstr.add_reagent(CI_POTASSIUM_HORMONE, volume * 0.5)
 	volume = 0
