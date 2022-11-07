@@ -35,7 +35,8 @@
 
 	var/item_place = 1 //allows items to be placed on the table, but not on benches.
 
-	unique_save_vars = list("health", "carpeted")
+/obj/structure/table/vars_to_save()
+	return ..() + list("health", "carpeted")
 
 /obj/structure/table/get_persistent_metadata()
 	if(!material)

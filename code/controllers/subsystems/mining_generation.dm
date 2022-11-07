@@ -50,8 +50,7 @@ SUBSYSTEM_DEF(mining)
 	mining_state = SSMINING_STATE_IDLE
 
 /datum/controller/subsystem/mining/proc/generate_turf(x, y, f, floor_type)
-	var/turf/simulated/floor/mining/T = locate(marker.x + x, marker.y - y, marker.z)
-	var/floor = f <= MINING_FREE_LEVEL
+	var/turf/simulated/mining/T = locate(marker.x + x, marker.y - y, marker.z)
 
 	if(f <= MINING_TOTAL_FREE_LEVEL)
 		T = T.ChangeTurf(floor_type)
@@ -67,9 +66,6 @@ SUBSYSTEM_DEF(mining)
 		M.floor_type = floor_type
 		M.floor_seed = global.random2d_seed
 		SSxenoarch.process_mineral(M)
-
-	if(floor)
-		T?.generate(global.random2d_seed)
 
 	return T
 
@@ -108,7 +104,7 @@ SUBSYSTEM_DEF(mining)
 
 	global.random2d_seed = rand(1, 130000)
 
-	var/floor_type = pick(typesof(/turf/simulated/floor/mining))
+	var/floor_type = pick(typesof(/turf/simulated/mining))
 
 	cache = list()
 
@@ -121,7 +117,7 @@ SUBSYSTEM_DEF(mining)
 
 	generate_structures()
 
-	seed_submaps(list(marker.z), rand(50, 150), /turf/simulated/floor/mining, /datum/map_template/mine)
+	seed_submaps(list(marker.z), rand(50, 150), /turf/simulated/mining, /datum/map_template/mine)
 
 	for(var/turf/simulated/floor/T as anything in cache)
 		T?.regenerate_ao()

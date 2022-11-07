@@ -3,7 +3,8 @@ SUBSYSTEM_DEF(persistent_world)
 	flags = SS_NO_FIRE
 	init_order = INIT_ORDER_PERSISTENT_WORLD
 	var/online = FALSE
-	var/i
+	var/saved_objects = 0
+	var/saved_turfs = 0
 	var/start
 
 	// Probably very bad idea, but other variants are far worse.
@@ -11,15 +12,17 @@ SUBSYSTEM_DEF(persistent_world)
 
 	var/skip_saving = FALSE
 
-	var/list/obj/queue = list()
+	var/list/obj/queue
 
 /datum/controller/subsystem/persistent_world/stat_entry()
 	if(!statclick)
 		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
 
-	var/msg = "Q: [queue.len]"
-	if(i)
-		msg += " i: [i] V: [i / ((world.timeofday-start) / (1 SECOND))] O/s"
+	var/msg = "Q: [LAZYLEN(queue)]"
+	if(saved_objects)
+		var/ts = saved_turfs / ((world.timeofday-start) / (1 SECOND))
+		var/os = saved_objects / ((world.timeofday-start) / (1 SECOND))
+		msg += " T: [saved_turfs] O: [saved_objects] T/s: [ts] O/s: [os]"
 	stat("\[[state_letter()]][name]", statclick.update(msg))
 
 /datum/controller/subsystem/persistent_world/PreInit()
@@ -41,16 +44,27 @@ SUBSYSTEM_DEF(persistent_world)
 	var/savefile/S = new("data/world.sav")
 
 	var/list/data
-	//var/list/turfs_data
-	from_save(S, data)
-	//from_save(S, turfs_data)
+	var/list/turfs_data
 
-	for(var/datum/map_object/MO as anything in data)
-		full_item_load(MO, locate(MO.x, MO.y, MO.z))
-		if(TICK_CHECK_HIGH_PRIORITY)
-			online = FALSE
-			stoplag()
-			online = TRUE
+	from_save(S, data)
+	from_save(S, turfs_data)
+
+	for(var/list/chunk as anything in data)
+		for(var/datum/map_object/MO as anything in chunk)
+			full_item_load(MO, locate(MO.x, MO.y, MO.z))
+			if(TICK_CHECK_HIGH_PRIORITY)
+				online = FALSE
+				stoplag()
+				online = TRUE
+
+	for(var/list/chunk as anything in turfs_data)
+		for(var/datum/map_turf/MT as anything in chunk)
+			full_turf_load(MT)
+			if(TICK_CHECK_HIGH_PRIORITY)
+				online = FALSE
+				stoplag()
+				online = TRUE
+
 	loading = FALSE
 
 /datum/controller/subsystem/persistent_world/proc/save_map()
@@ -65,27 +79,38 @@ SUBSYSTEM_DEF(persistent_world)
 	var/original_processing = Master.processing
 	Master.processing = FALSE
 
-	var/list/data = list()
-	//var/list/current_run = queue
-	//var/list/turfs_data = list()
+	var/list/data = list(list())
+	var/data_chunk = 1
+
+	var/list/turfs_data = list(list())
+	var/turfs_chunk = 1
+
 	for(var/area/A)
-		if(!A.should_be_saved)
+		if(!A.should_objects_be_saved && !A.should_turfs_be_saved)
 			continue
 		for(var/atom/V as anything in A)
 			if(!V.dont_save)
-				data += full_item_save(V)
+				if(A.should_turfs_be_saved && isturf(V))
+					turfs_data[turfs_chunk] += full_turf_save(V)
+					if((++saved_turfs % 40000) == 0)
+						turfs_data += list(list())
+						++turfs_chunk
+				else if(A.should_objects_be_saved)
+					data[data_chunk] += full_item_save(V)
+					if((++saved_objects % 40000) == 0)
+						data += list(list())
+						++data_chunk
 				CHECK_TICK_HIGH_PRIORITY
-				++i
+			
 
 	to_save(S, data)
-	//to_save(S, turfs_data)
+	to_save(S, turfs_data)
 
 	Master.processing = original_processing
 
-/*
-	var/dmm_suite/dmm_suite = new
-	for(var/z in using_map.station_levels)
-		dmm_suite.save_map(locate(1, 1, z), locate(world.maxx, world.maxy, z), "map_save[z]", flags = DMM_IGNORE_MOBS)
-*/
-	to_world("World saving took [(world.timeofday - start) / (1 SECOND)] seconds with [i / ((world.timeofday-start) / (1 SECOND))] O/s.")
-	i = 0
+	var/ts = saved_turfs / ((world.timeofday-start) / (1 SECOND))
+	var/os = saved_objects / ((world.timeofday-start) / (1 SECOND))
+	to_world("World saving took [(world.timeofday - start) / (1 SECOND)] seconds with [ts] T/s and [os] O/s.")
+
+	saved_turfs = 0
+	saved_objects = 0

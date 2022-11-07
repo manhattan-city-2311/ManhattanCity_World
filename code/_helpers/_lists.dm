@@ -117,18 +117,11 @@ proc/isemptylist(list/list)
 
 //////////////////////////////////////////////////////
 
-//Empties the list by setting the length to 0. Hopefully the elements get garbage collected
-proc/clearlist(list/list)
-	if(istype(list))
-		list.len = 0
-	return
-
 //Removes any null entries from the list
 proc/listclearnulls(list/list)
 	if(istype(list))
 		while(null in list)
 			list -= null
-	return
 
 /*
  * Returns list containing all the entries from first list that are not present in second.

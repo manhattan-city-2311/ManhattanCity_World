@@ -19,8 +19,10 @@ var/list/existing_phone_numbers = null
 		fdel(PHONE_NUMBERS_DB)
 	text2file(jointext(existing_phone_numbers, "\n"), PHONE_NUMBERS_DB)
 
-/hook/save_world/proc/save_phone_numbas()
+/hook/save_world/proc/save_phone_numbers()
 	upload_phone_numbers()
+
+	return TRUE
 
 /datum/exonet_protocol/phone/make_address(var/string)
 	var/na

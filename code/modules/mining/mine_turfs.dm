@@ -79,7 +79,7 @@ var/list/mining_overlay_cache = list()
 	var/seed = floor_seed
 	var/turf/T = ChangeTurf(floor_type)
 	if(seed)
-		var/turf/simulated/floor/mining/M = T
+		var/turf/simulated/mining/M = T
 		spawn()
 			M.generate(seed)
 
@@ -615,71 +615,76 @@ var/list/mining_overlay_cache = list()
 /turf/simulated/mineral/mining
 	mineral_chance = 33
 
-/turf/simulated/floor/mining
+/turf/simulated/mining
 	name = "mine floor"
 	desc = ""
 	icon = 'icons/turf/manhattan/pol_agroprom.dmi'
 	has_resources = TRUE
 
-/turf/simulated/floor/mining/proc/generate(seed)
+/turf/simulated/mining/initialize(loadsource)
+	..()
+	if(loadsource != LOADSOURCE_PERSISTENCE)
+		generate(global.random2d_seed)
+
+/turf/simulated/mining/proc/generate(seed)
 	select_icon_state(seed)
 	select_overlays()
 
-/turf/simulated/floor/mining/proc/select_icon_state(seed)
+/turf/simulated/mining/proc/select_icon_state(seed)
 	icon_state = "gryaz[rand(1, 11)]"
 
-/turf/simulated/floor/mining/proc/select_overlays()
-	if(rand(2))
+/turf/simulated/mining/proc/select_overlays()
+	if(prob(33))
 		overlays += icon('icons/turf/flooring/decals.dmi', icon_state = "asteroid[rand(0,9)]")
 
-/turf/simulated/floor/mining/dirt
+/turf/simulated/mining/dirt
 	icon = 'icons/turf/manhattan/worlds.dmi'
 	icon_state = "dirt"
 
-/turf/simulated/floor/mining/dirt/select_icon_state()
+/turf/simulated/mining/dirt/select_icon_state()
 	return
 
-/turf/simulated/floor/mining/dirt/select_overlays()
+/turf/simulated/mining/dirt/select_overlays()
 	return
 
-/turf/simulated/floor/mining/dirt/rootfloor/select_icon_state(seed)
+/turf/simulated/mining/dirt/rootfloor/select_icon_state(seed)
 	icon_state = "rootfloor_[seed % 3 + 1]"
 
-/turf/simulated/floor/mining/dirt/bloodfloor/select_icon_state(seed)
+/turf/simulated/mining/dirt/bloodfloor/select_icon_state(seed)
 	icon_state = "bloodfloor_[seed % 3 + 1]"
 
-/turf/simulated/floor/mining/dirt/iowall/select_icon_state(seed)
+/turf/simulated/mining/dirt/iowall/select_icon_state(seed)
 	icon_state = "iowall[rand(1, 3)]"
 
-/turf/simulated/floor/mining/sand
+/turf/simulated/mining/sand
 	name = "sand"
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
 
-/turf/simulated/floor/mining/sand/select_icon_state()
+/turf/simulated/mining/sand/select_icon_state()
 	return
 
-/turf/simulated/floor/mining/stone
+/turf/simulated/mining/stone
 	name = "stone"
 	icon = 'icons/turf/manhattan/mine_stones.dmi'
 	icon_state = "dirt_sand"
 	var/static/list/states = list("dirt", "slate", "phylite", "siltstone", "greengranite")
 	var/static/list/substates = list("sand", "rubble", "rough", "smooth")
 
-/turf/simulated/floor/mining/stone/select_icon_state(seed)
+/turf/simulated/mining/stone/select_icon_state(seed)
 	icon_state = "[states[seed % states.len + 1]]_[substates[(seed + 7) % substates.len + 1]]"
 	
-/turf/simulated/floor/mining/basalt
+/turf/simulated/mining/basalt
 	name = "basalt"
 	icon = 'icons/turf/outdoors.dmi'
 	var/static/list/luminosity_states = list(1, 2, 3, 5, 9)
 
-/turf/simulated/floor/mining/basalt/select_icon_state(seed)
+/turf/simulated/mining/basalt/select_icon_state(seed)
 	var/n = rand(0, 12)
 	icon_state = "basalt[n]"
 	if(n in luminosity_states)
 		luminosity = 1
 		overlays += emissive_appearance(icon, "[icon_state]-emissive")
 
-/turf/simulated/floor/mining/basalt/select_overlays()
+/turf/simulated/mining/basalt/select_overlays()
 	return

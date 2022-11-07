@@ -29,9 +29,9 @@
 	var/list/blend_objects = list(/obj/structure/window/framed, /obj/machinery/door, /obj/machinery/door/airlock/multi_tile, /obj/structure/wall_frame, /obj/structure/grille, /obj/structure/window/reinforced/full, /obj/structure/window/reinforced/polarized/full, /obj/structure/window/shuttle, ,/obj/structure/window/phoronbasic/full, /obj/structure/window/phoronreinforced/full) // Objects which to blend with
 	var/list/noblend_objects = list(/obj/machinery/door/window, /obj/structure/grille/smallfence) //Objects to avoid blending with (such as children of listed blend objects.
 
-
-	unique_save_vars = list("paint_color", "stripe_color", "damage", "can_open")
-
+/turf/simulated/wall/vars_to_save()
+	return ..() + list("paint_color", "stripe_color", "damage", "can_open")
+	
 /turf/simulated/wall/on_persistence_load()
 	update_material()
 
