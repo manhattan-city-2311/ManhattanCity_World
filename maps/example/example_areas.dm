@@ -19,4 +19,4 @@
 /area/mine
 	name = "mine"
 	requires_power = FALSE
-	should_be_saved = FALSE
+	should_objects_be_saved = FALSE

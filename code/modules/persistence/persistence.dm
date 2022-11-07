@@ -135,7 +135,7 @@
 	if(isemptylist(saved_reagents))
 		return FALSE
 
-	clearlist(reagents.reagent_list)
+	reagents.reagent_list.Cut()
 
 	for(var/datum/map_reagent_data/reagent_holder in saved_reagents)
 		var/datum/reagent/new_reagent = reagents.add_reagent(reagent_holder.id, reagent_holder.amount)
@@ -148,15 +148,16 @@
 
 // This is so specific atoms can override these, and ignore certain ones
 /atom/proc/vars_to_save()
-	return list("color","dir","alpha","plane","pixel_x","pixel_y","tagged_price","icon_state") + unique_save_vars
+	return list("color","dir","alpha","plane","pixel_x","pixel_y","icon_state") + unique_save_vars
 
 /atom/proc/map_important_vars()
 	// A list of important things to save in the map editor
 	return list("color","dir","layer","plane","pixel_x","pixel_y") + unique_save_vars
 
-/area/
-	unique_save_vars = list("name")
-	var/should_be_saved = TRUE
+/area
+	unique_save_vars = null
+	var/should_objects_be_saved = TRUE
+	var/should_turfs_be_saved = FALSE
 
 /atom/serialize()
 	var/list/data = ..()
@@ -198,7 +199,7 @@
 	save_forensics = TRUE
 
 /obj/vars_to_save()
-	return list("density","anchored","color","dir","layer","plane","pixel_x","pixel_y","tagged_price","icon_state") + unique_save_vars
+	return list("density","anchored","color","dir","layer","plane","pixel_x","pixel_y","icon_state") + unique_save_vars
 
 /obj/item/weapon/clipboard
 	unique_save_vars = list("haspen","toppaper")
@@ -211,33 +212,38 @@
 	update_icon()
 
 // Don't save list - Better to keep a track of things here.
-
-/turf
-	dont_save = TRUE
-
 /mob
+	unique_save_vars = null
 	dont_save = TRUE
 
 /atom/movable/lighting_overlay
+	unique_save_vars = null
 	dont_save = TRUE
 
 /obj/singularity		// lmao just in case
+	unique_save_vars = null
 	dont_save = TRUE
 
 /obj/effect
+	unique_save_vars = null
 	dont_save = TRUE
 
 /obj/screen
+	unique_save_vars = null
 	dont_save = TRUE 	// what?
 
 /area
+	unique_save_vars = null
 	dont_save = TRUE
 
 /obj/machinery/organ_printer
+	unique_save_vars = null
 	dont_save = TRUE
 
 /obj/structure/sign/rent
+	unique_save_vars = null
 	dont_save = TRUE
 
 /obj/machinery/vending
+	unique_save_vars = null
 	dont_save = TRUE // TODO:

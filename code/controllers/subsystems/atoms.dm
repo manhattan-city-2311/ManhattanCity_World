@@ -70,7 +70,12 @@ SUBSYSTEM_DEF(atoms)
 
 	var/start_tick = world.time
 
-	var/saveable = !isturf(A) && !A.dont_save && isturf(A.loc) && get_area(A).should_be_saved
+	var/saveable
+	if(isturf(A))
+		saveable = !A.dont_save && get_area(A).should_turfs_be_saved
+	else
+		saveable = !A.dont_save && isturf(A.loc) && get_area(A).should_objects_be_saved
+
 	var/result
 	if(initialized == INITIALIZATION_INNEW_MAPLOAD && saveable && SSpersistent_world.online)
 		result = INITIALIZE_HINT_QDEL

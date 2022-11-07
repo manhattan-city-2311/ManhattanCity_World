@@ -8,17 +8,12 @@
 	var/list/resources
 
 	var/thermite = 0
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
 	var/to_be_destroyed = 0 //Used for fire, if a melting temperature was reached, it will be destroyed
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 	var/dirt = 0
 
 /turf/simulated/vars_to_save()
- 	return list("color","dirt","name","thermite","wet")+unique_save_vars
-/turf/simulated/map_important_vars()
-	// A list of important things to save in the map editor
- 	return list("color","dirt","name","thermite","wet")+unique_save_vars
+	return list("color", "name", "icon_state", "thermite", "wet") + unique_save_vars
 
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)

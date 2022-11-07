@@ -97,86 +97,60 @@
 
 	return MO
 
-/*
-/proc/full_turf_save(obj/O)
-	set background = 1
+/proc/full_turf_save(turf/T)
+	T.on_persistence_save()
 
-// get all objects in a area. I hate the method that's about to follow, but after finding exploits and potential shitcode that's in the game right now
-// actually worried we'd get the bad reference juju happening (like syringes containing blood and that blood having the actual mob reference in its data
-// which caused an infinite loop) - or items non-existing causing broken loading. because of this, the saving process has to be manually filtered for all the loops.
+	var/datum/map_turf/MT = new
 
-	if(O.dont_save) return
-	var/datum/map_object/MO = get_object_data(O)
-	if(!MO) return
+	MT.turf_type = T.type
+	MT.x = T.x
+	MT.y = T.y
+	MT.z = T.z
+	MT.metadata = T.get_persistent_metadata()
 
-	CHECK_TICK
+	if(istype(T, /turf/simulated/wall))
+		var/turf/simulated/wall/new_wall = T
+		MT.material = new_wall.material?.name
+		MT.reinforced_material = new_wall.reinf_material?.name
+		MT.girder_material = new_wall.girder_material?.name
 
+	if(istype(T, /turf/simulated/floor) && T.decals)
+		var/list/full_decals_save = list()
+		var/dcl_count = 0
+		for(var/image/I in T.decals)
+			var/list/dcl_save = list()
+			dcl_save["type"] = I.metadata
+			dcl_save["color"] = I.color
+			dcl_save["dir"] = I.dir
+			full_decals_save["[++dcl_count]"] = dcl_save
+		MT.decals += full_decals_save
+	for(var/V in T.vars_to_save())
+		if(T.vars[V] != initial(T.vars[V]))
+			MT.turf_vars[V] = T.vars[V]
 
-	for(var/obj/A in O.get_saveable_contents())
-		if(!O.save_contents)
-			continue
-		if(A.dont_save)
-			continue
-		var/datum/map_object/MO_2 = get_object_data(A)
-		if(!MO_2)
-			continue
+	return MT
 
-		MO.contents += MO_2
+/proc/full_turf_load(datum/map_turf/MT)
+	var/turf/newturf = new MT.turf_type(locate(MT.x, MT.y, MT.z))
 
-		CHECK_TICK
+	for(var/V in MT.turf_vars)
+		newturf.vars[V] = MT.turf_vars[V]
 
-		for(var/obj/B in A.get_saveable_contents())
-			if(!A.save_contents) continue
-			if(B.dont_save) continue
-			var/datum/map_object/MO_3 = get_object_data(B)
-			if(!MO_3) continue
+	if(MT.metadata)
+		newturf.load_persistent_metadata(MT.metadata)
 
-			MO_2.contents += MO_3
+	if(MT.material)
+		var/turf/simulated/wall/new_wall = newturf
+		new_wall.set_material(get_material_by_name(MT.material), get_material_by_name(MT.reinforced_material), get_material_by_name(MT.girder_material))
 
-			CHECK_TICK
-
-			for(var/obj/C in B.get_saveable_contents())
-				if(!B.save_contents) continue
-				if(C.dont_save) continue
-				var/datum/map_object/MO_4 = get_object_data(C)
-				if(!MO_4) continue
-
-				MO_3.contents += MO_4
-
-				CHECK_TICK
-
-		CHECK_TICK
-
-	return MO
-
-/proc/full_turf_load(var/datum/map_turf/MT, loc)
-	if(!ispath(MO.turf_type))
-		error("Undefined save type [MT.turf_type]")
-		return
-
-	if(!loc)
-		loc = locate(MT.x, MT.y, MT.z)
-	var/turf/T = new MT.turf_type (loc)
-
-	CHECK_TICK
-
-	MO.unpack_object_data(O)
-	O.forceMove(loc)
-
-	for(var/datum/map_object/MD in MO.contents)
-		if(!ispath(MD.savedtype))
-			error("Undefined save type [MD.savedtype]")
-			continue
-
-		var/obj/A = new MD.savedtype (loc)
-		CHECK_TICK
-		MD.unpack_object_data(A)
-		A.forceMove(O)
-
-		CHECK_TICK
-
-	return O
-*/
+	if(MT.decals)
+		var/no_count = 0
+		for(var/V in MT.decals)
+			var/list/L = MT.decals["[++no_count]"]
+			if(!L)
+				continue
+			var/decal_type = L["type"]
+			new decal_type(newturf, L["dir"], L["color"])
 
 /proc/full_item_save(obj/O)
 // get all objects in a area. I hate the method that's about to follow, but after finding exploits and potential shitcode that's in the game right now
@@ -186,7 +160,7 @@
 	var/datum/map_object/MO = get_object_data(O)
 	if(!MO)
 		return
-	
+
 	. = MO
 
 
@@ -273,7 +247,7 @@
 	if(!O.initialized && !QDELETED(O))
 		SSatoms.InitAtom(O, list())
 
-	clearlist(O.contents)
+	O.contents.Cut()
 
 	for(var/V in object_vars)
 		O.vars[V] = object_vars[V]

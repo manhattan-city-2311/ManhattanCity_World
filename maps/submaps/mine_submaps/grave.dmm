@@ -1,6 +1,6 @@
 "a" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
 "b" = (/turf/template_noop,/area/template_noop)
-"c" = (/turf/simulated/floor/mining/dirt,/area/template_noop)
+"c" = (/turf/simulated/mining/dirt,/area/template_noop)
 "d" = (/obj/structure/flora/ausbushes/fullgrass,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
 "e" = (/obj/structure/gravemarker,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)
 "f" = (/obj/structure/flora/ausbushes/ppflowers,/turf/simulated/floor/outdoors/grass/forest/nogrowth,/area/template_noop)

@@ -56,7 +56,8 @@
 	var/lamp_shade = 1
 	anchored = FALSE
 
-	unique_save_vars = list("lamp_shade")
+/obj/machinery/light/flamp/vars_to_save()
+	return ..() + list("lamp_shade")
 
 /obj/machinery/light/flamp/built/New()
 	status = LIGHT_EMPTY

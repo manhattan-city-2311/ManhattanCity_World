@@ -671,7 +671,8 @@
 	var/sortType = ""
 	var/subtype = 0
 
-	unique_save_vars = list("icon_state", "dir", "dpdir", "sortType", "subtype", "health", "level")
+	vars_to_save()
+		return ..() + list("icon_state", "dir", "dpdir", "sortType", "subtype", "health", "level")
 
 	// new pipe, set the icon_state as on map
 	New()
@@ -1146,8 +1147,8 @@
 	var/sort_tag = ""
 	var/partial = 0
 
-	unique_save_vars = list("partial", "sort_tag", "icon_state", "dir", "dpdir", "sortType", "subtype", "health", "level")
-
+	vars_to_save()
+		return ..() + list("partial", "sort_tag", "icon_state", "dir", "dpdir", "sortType", "subtype", "health", "level")
 	proc/updatedesc()
 		desc = initial(desc)
 		if(sort_tag)

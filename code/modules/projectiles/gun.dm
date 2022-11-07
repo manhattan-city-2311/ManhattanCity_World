@@ -101,10 +101,11 @@
 	var/usage_buffer = 5 // each gun is different and will have a variation of this amount on how many uses it has.
 	var/uses = 100 // uses until this gun finally kicks the can
 
-	unique_save_vars = list("uses")
-
 	tax_type = WEAPONS_TAX
 	contraband_type = CONTRABAND_GUN
+
+/obj/item/weapon/gun/vars_to_save()
+	return ..() + list("uses")
 
 /obj/item/weapon/gun/New()
 	..()

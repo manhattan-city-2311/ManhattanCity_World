@@ -33,7 +33,8 @@
 	heat_capacity = 10000
 	var/lava = 0
 
-	unique_save_vars = list("broken", "burnt")
+/turf/simulated/floor/vars_to_save()
+	return ..() + list("broken", "burnt", "icon")
 
 /turf/simulated/floor/get_persistent_metadata()
 	if(flooring)
