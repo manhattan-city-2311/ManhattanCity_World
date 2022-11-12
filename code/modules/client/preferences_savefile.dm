@@ -138,8 +138,20 @@
 	to_save(S, persistence_y)
 	to_save(S, persistence_z)
 
+/datum/preferences/proc/delete_persistence(savefile/S)
+	bank_account = initial(bank_account)
+	bank_pin     = initial(bank_pin)
+	persistence_x= initial(persistence_x)
+	persistence_y= initial(persistence_y)
+	persistence_z= initial(persistence_z)
+
+	delete_persistent_inventory(md5(real_name))
+
+	save_persistence(S)
+
 /datum/preferences/proc/delete_character()
-	if(!path)				return 0
+	if(!path)
+		return 0
 
 	if(world.time < savecharcooldown)
 		if(istype(client))
@@ -148,10 +160,13 @@
 	savecharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
+	if(!S)
+		return 0
 	S.cd = "/character[default_slot]"
 
+	delete_persistence(S)
 	player_setup.delete_character(S)
+
 	return 1
 
 /datum/preferences/proc/sanitize_preferences()

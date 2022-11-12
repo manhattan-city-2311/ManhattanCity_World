@@ -25,15 +25,6 @@
 		/area/mine
 	)
 	var/static/list/SPECIAL_AREA_TYPES = list(
-		/area/shuttle,
-		/area/admin,
-		/area/arrival,
-		/area/centcom,
-		/area/asteroid,
-		/area/tdome,
-		/area/syndicate_station,
-		/area/wizard_station,
-		/area/prison
 		// /area/derelict //commented out, all hail derelict-rebuilders!
 	)
 

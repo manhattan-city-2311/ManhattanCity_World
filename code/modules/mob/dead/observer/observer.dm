@@ -152,48 +152,47 @@ Works together with spawning an observer, noted above.
 
 /mob/observer/dead/Life()
 	..()
-	if(!loc) return
-	if(!client) return 0
+	if(!loc)
+		return
+	if(!client)
+		return
 
 	handle_regular_hud_updates()
 	handle_vision()
 
 /mob/proc/permadelete()
 	client.prefs.delete_character()
-	client.screen.Cut()
-	client.screen += client.void
-	var/mob/new_player/M = new /mob/new_player()
-	M.ckey = ckey
-	to_chat(usr, SPAN_INFO("<B>Make sure to play a different character, and please roleplay correctly!</B>"))
-	M.mind.reset()
+
+	abandon()
 
 /mob/proc/ghostize(can_reenter_corpse = 1)
-	if(key)
-		if(!client.holder)
-			if("No" == alert("Если вы выйдете из тела в данный момент, то ваш персонаж будет удалён навсегда и вы не сможете зайти за него снова", "Подтверждение", "No", "Yes"))
-				return 0
-			permadelete()
-		else
-			if(ishuman(src))
-				var/mob/living/carbon/human/H = src
-				if(H.vr_holder && !can_reenter_corpse)
-					H.exit_vr()
-					return 0
-			var/mob/observer/dead/ghost = new(src)	//Transfer safety to observer spawning proc.
-			ghost.can_reenter_corpse = can_reenter_corpse
-			ghost.timeofdeath = src.timeofdeath //BS12 EDIT
-			ghost.key = key
-			if(istype(loc, /obj/structure/morgue))
-				var/obj/structure/morgue/M = loc
-				M.update()
-			else if(istype(loc, /obj/structure/closet/body_bag))
-				var/obj/structure/closet/body_bag/B = loc
-				B.update()
-			if(ghost.client)
-				ghost.client.time_died_as_mouse = ghost.timeofdeath
-			if(ghost.client && !ghost.client.holder && !config.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
-				ghost.verbs -= /mob/observer/dead/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
-			return ghost
+	if(!key)
+		return
+
+	if(!client.holder)
+		permadelete()
+		return
+
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		if(H.vr_holder && !can_reenter_corpse)
+			H.exit_vr()
+			return
+	var/mob/observer/dead/ghost = new(src)	//Transfer safety to observer spawning proc.
+	ghost.can_reenter_corpse = can_reenter_corpse
+	ghost.timeofdeath = src.timeofdeath //BS12 EDIT
+	ghost.key = key
+	if(istype(loc, /obj/structure/morgue))
+		var/obj/structure/morgue/M = loc
+		M.update()
+	else if(istype(loc, /obj/structure/closet/body_bag))
+		var/obj/structure/closet/body_bag/B = loc
+		B.update()
+	if(ghost.client)
+		ghost.client.time_died_as_mouse = ghost.timeofdeath
+	if(ghost.client && !ghost.client.holder && !config.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
+		ghost.verbs -= /mob/observer/dead/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
+	return ghost
 /*
 This is the proc mobs get to turn into a ghost. Forked from ghostize due to compatibility issues.
 */

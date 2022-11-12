@@ -187,13 +187,7 @@ default behaviour is:
 			return
 	return
 
-/mob/living/verb/succumb()
-	set hidden = 1
-	if ((src.health < 0 && src.health > (5-src.getMaxHealth()))) // Health below Zero but above 5-away-from-death, as before, but variable
-		src.death()
-		to_chat(src, SPAN_INFO("You have given up life and succumbed to death."))
-	else
-		to_chat(src, SPAN_INFO("You are not injured enough to succumb to death!"))
+
 
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)

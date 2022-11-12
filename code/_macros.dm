@@ -80,8 +80,8 @@
 #define send_link(target, url)                to_target(target, link(url))
 #define send_output(target, msg, control)     to_target(target, output(msg, control))
 #define to_file(handle, value)                to_target(handle, value)
-#define to_save(savefile, var)				  to_target(savefile[#var], var)
-#define from_save(savefile, var)			  from_target(savefile[#var], var)
+#define to_save(savefile, var)		      to_target(savefile[#var], var)
+#define from_save(savefile, var)	      from_target(savefile[#var], var)
 // TODO - Baystation has this log to crazy places. For now lets just world.log, but maybe look into it later.
 #define log_world(message) world.log << message
 #define from_file(file_entry, target_var) file_entry >> target_var
@@ -110,28 +110,18 @@
 #define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"
 
 #define SPAN_PLEASURE(X) "<span class='pleasure'>[X]</span>"
-
 #define SPAN_INFO(X) SPAN("info", X)
-
 #define SPAN_SUBTLE(X) SPAN("subtle", X)
-
 #define SPAN_NOTICE(X) SPAN("notice", X)
-
 #define SPAN_WARNING(X) SPAN("warning", X)
-
 #define SPAN_DANGER(X) SPAN("danger", X)
-
 #define SPAN_OCCULT(X) SPAN("cult", X)
 
-#define FONT_SMALL(X) "<font size='1'>[X]</font>"
+#define SPAN_STYLE(style, X) "<span style='" + style + "'>" + ##X + "</span>"
 
-#define FONT_NORMAL(X) "<font size='2'>[X]</font>"
-
-#define FONT_LARGE(X) "<font size='3'>[X]</font>"
-
-#define FONT_HUGE(X) "<font size='4'>[X]</font>"
-
-#define FONT_GIANT(X) "<font size='5'>[X]</font>"
+#define SPAN_SMALL(X) SPAN_STYLE("font-size:small", X)
+#define SPAN_LARGE(X) SPAN_STYLE("font-size:large", X)
+#define SPAN_XXLARGE(X) SPAN_STYLE("font-size:xx-large", X)
 
 #define isvehicle(X) istype(X, /obj/manhattan/vehicle)
 

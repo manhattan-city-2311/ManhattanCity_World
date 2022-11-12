@@ -278,18 +278,19 @@ var/list/mob/living/forced_ambiance_list = new
 	L.lastarea = newarea
 	play_ambience(L)
 
-/area/proc/play_ambience(var/mob/living/L)
+/area/proc/play_ambience(mob/living/L)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(!(L && L.is_preference_enabled(/datum/client_preference/play_ambiance)))	return
+	if(!(L && L.is_preference_enabled(/datum/client_preference/play_ambiance)))
+		return
 
 	// If we previously were in an area with force-played ambiance, stop it.
 	if(L in forced_ambiance_list)
-		L << sound(null, channel = CHANNEL_AMBIENCE_FORCED)
+		sound_to(L, sound(null, channel = CHANNEL_AMBIENCE_FORCED))
 		forced_ambiance_list -= L
 
 	if(!L.client.ambience_playing)
 		L.client.ambience_playing = 1
-		L << sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE)
+		sound_to(L, sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE))
 
 	if(forced_ambience)
 		if(forced_ambience.len)
@@ -297,14 +298,20 @@ var/list/mob/living/forced_ambiance_list = new
 			var/sound/chosen_ambiance = pick(forced_ambience)
 			if(!istype(chosen_ambiance))
 				chosen_ambiance = sound(chosen_ambiance, repeat = 1, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE_FORCED)
-			L << chosen_ambiance
+			sound_to(L, chosen_ambiance)
 		else
-			L << sound(null, channel = CHANNEL_AMBIENCE_FORCED)
+			sound_to(L, sound(null, channel = CHANNEL_AMBIENCE_FORCED))
 	else if(src.ambience.len) //&& prob(40))
 		if((world.time >= L.client.played + 120))
 			var/sound = pick(ambience)
-			L << sound(sound, repeat = 0, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE)
+			sound_to(L, sound(sound, repeat = 0, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE))
 			L.client.played = world.time
+
+/proc/stop_ambience(mob/living/L)
+	if(L in forced_ambiance_list)
+		sound_to(L, sound(null, channel = CHANNEL_AMBIENCE_FORCED))
+		forced_ambiance_list -= L
+	sound_to(L, sound(null, channel = CHANNEL_AMBIENCE))
 
 /area/proc/gravitychange(var/gravitystate = 0, var/area/A)
 	A.has_gravity = gravitystate

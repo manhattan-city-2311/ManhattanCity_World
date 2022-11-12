@@ -54,27 +54,27 @@
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.sanitize_setup()
 
-/datum/category_collection/player_setup_collection/proc/load_character(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/load_character(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.load_character(S)
 
-/datum/category_collection/player_setup_collection/proc/save_character(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/save_character(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.save_character(S)
 
-/datum/category_collection/player_setup_collection/proc/delete_character(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/delete_character(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.delete_character(S)
 
-/datum/category_collection/player_setup_collection/proc/load_preferences(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/load_preferences(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.load_preferences(S)
 
-/datum/category_collection/player_setup_collection/proc/save_preferences(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/save_preferences(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.save_preferences(S)
 
-/datum/category_collection/player_setup_collection/proc/copy_to_mob(var/mob/living/carbon/human/C)
+/datum/category_collection/player_setup_collection/proc/copy_to_mob(mob/living/carbon/human/C)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.copy_to_mob(C)
 

@@ -196,8 +196,7 @@ SUBSYSTEM_DEF(zcopy)
 			QDEL_NULL(T.below.z_delegate)
 
 		// Add everything below us to the update queue.
-		for (var/thing in T.below)
-			var/atom/movable/object = thing
+		for (var/atom/movable/object as anything in T.below)
 			if (QDELETED(object) || object.no_z_overlay || object.loc != T.below || object.invisibility == INVISIBILITY_ABSTRACT)
 				// Don't queue deleted stuff, stuff that's not visible, blacklisted stuff, or stuff that's centered on another tile but intersects ours.
 				continue
@@ -263,8 +262,7 @@ SUBSYSTEM_DEF(zcopy)
 
 	while (qo_idex <= curr_ov.len)
 		var/atom/movable/openspace/overlay/OO = curr_ov[qo_idex]
-		curr_ov[qo_idex] = null
-		qo_idex++
+		curr_ov[qo_idex++] = null
 
 		if (QDELETED(OO))
 			if (no_mc_tick)
