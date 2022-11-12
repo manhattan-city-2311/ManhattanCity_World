@@ -335,6 +335,35 @@
 	return
 */
 
+// Moves client to lobby
+/mob/proc/abandon()
+	log_game("[name]/[ckey] was abandoned.")
+
+	if(!client)
+		log_game("[ckey] AM failed due to disconnect.")
+		return
+
+	client.screen.Cut()
+	client.screen += client.void
+
+	if(!client)
+		log_game("[ckey] AM failed due to disconnect.")
+		return
+
+	announce_ghost_joinleave(client, 0)
+
+	if(isliving(src))
+		stop_ambience(src)
+
+	var/mob/new_player/M = new()
+	if(!client)
+		log_game("[ckey] AM failed due to disconnect.")
+		qdel(M)
+		return
+
+	M.ckey = ckey
+	M.mind?.reset()
+
 /mob/verb/abandon_mob()
 	set name = "Respawn"
 	set category = "OOC"
@@ -372,11 +401,8 @@
 			return
 		else
 			to_chat(usr, "You can respawn now, enjoy your new life!")
-
-	log_game("[usr.name]/[usr.key] used abandon mob.")
-
-	if(ishuman(usr))
-		var/mob/living/carbon/human/H = usr
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
 		if(H.save_mob_to_prefs()) // saves character if round is canon.
 			spawn(20)
 			to_chat(H, "<span class='notice'><b>Your character has now been saved.</b> All changes from this round will apply to your current character.</span>")
@@ -384,28 +410,7 @@
 			to_chat(H, "<span class='notice'><b>As this is not a canon round, your character will not be saved this time.</b></span>")
 
 	to_chat(usr, SPAN_INFO("<B>Make sure to play a different character, and please roleplay correctly!</B>"))
-
-	if(!client)
-		log_game("[usr.key] AM failed due to disconnect.")
-		return
-	client.screen.Cut()
-	client.screen += client.void
-	if(!client)
-		log_game("[usr.key] AM failed due to disconnect.")
-		return
-
-	announce_ghost_joinleave(client, 0)
-
-	var/mob/new_player/M = new /mob/new_player()
-	if(!client)
-		log_game("[usr.key] AM failed due to disconnect.")
-		qdel(M)
-		return
-
-	M.key = key
-	if(M.mind)
-		M.mind.reset()
-	return
+	abandon()
 
 /client/verb/changes()
 	set name = "Changelog"

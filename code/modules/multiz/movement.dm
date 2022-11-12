@@ -299,7 +299,7 @@
 		return species.fall_impact_special(src, A)
 	return FALSE
 
-/atom/movable/proc/find_fall_target(var/turf/oldloc, var/turf/landing)
+/atom/movable/proc/find_fall_target(turf/oldloc, turf/landing)
 	if(isopenspace(oldloc))
 		oldloc.visible_message("\The [src] falls down through \the [oldloc]!", "You hear something falling through the air.")
 
@@ -316,7 +316,7 @@
 	if(landing.CheckFall(src))
 		return landing
 
-/mob/observer/dead/find_fall_target(turf/oldloc, turf/landing)
+/mob/observer/find_fall_target(turf/oldloc, turf/landing)
 	return
 
 /mob/living/carbon/human/find_fall_target(var/turf/landing)

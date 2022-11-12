@@ -516,15 +516,9 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	switch (cause)
 		if("death")
 			var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset/heads/captain(null)
-			if(istype(t, /area/syndicate_station) || istype(t, /area/syndicate_mothership) || istype(t, /area/shuttle/syndicate_elite) )
-				//give the syndies a bit of stealth
-				a.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm")
-//				a.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm", "Security")
-//				a.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm", "Medical")
-			else
-				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm")
-//				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm", "Security")
-//				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm", "Medical")
+			a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm")
+//			a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm", "Security")
+//			a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm", "Medical")
 			qdel(a)
 			processing_objects.Remove(src)
 		if ("emp")

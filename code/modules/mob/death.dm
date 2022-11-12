@@ -1,7 +1,7 @@
 //This is the proc for gibbing a mob. Cannot gib ghosts.
 //added different sort of gibs and animations. N
 /mob/proc/gib(anim="gibbed-m", do_gibs, gib_file = 'icons/mob/mob.dmi')
-	death(1)
+	death(TRUE)
 	transforming = 1
 	canmove = 0
 	icon = null
@@ -26,7 +26,7 @@
 //Originally created for wizard disintegrate. I've removed the virus code since it's irrelevant here.
 //Dusting robots does not eject the MMI, so it's a bit more powerful than gib() /N
 /mob/proc/dust(anim="dust-m",remains=/obj/effect/decal/cleanable/ash)
-	death(1)
+	death(TRUE)
 	var/atom/movable/overlay/animation = null
 	transforming = 1
 	canmove = 0
@@ -47,7 +47,7 @@
 		if(src)			qdel(src)
 
 /mob/proc/ash(anim="dust-m")
-	death(1)
+	death(TRUE)
 	var/atom/movable/overlay/animation = null
 	transforming = 1
 	canmove = 0
@@ -66,15 +66,14 @@
 		if(animation)	qdel(animation)
 		if(src)			qdel(src)
 
-/mob/proc/death(gibbed,deathmessage="seizes up and falls limp...")
-
+/mob/proc/death(gibbed, deathmessage="seizes up and falls limp...")
 	if(stat == DEAD)
-		return 0
+		return FALSE
 
 	facing_dir = null
 
 	if(!gibbed && deathmessage != "no message") // This is gross, but reliable. Only brains use it.
-		src.visible_message("<b>\The [src.name]</b> [deathmessage]")
+		visible_message("<b>\The [src.name]</b> [deathmessage]")
 
 	stat = DEAD
 
@@ -85,28 +84,17 @@
 
 	layer = MOB_LAYER
 
-	set_sight(sight | SEE_TURFS | SEE_MOBS | SEE_OBJS)
-	set_see_in_dark(8)
-	set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
-
 	drop_r_hand()
 	drop_l_hand()
 
-	if(healths)
-		healths.overlays = null // This is specific to humans but the relevant code is here; shouldn't mess with other mobs.
-		healths.icon_state = "health6"
-
 	timeofdeath = world.time
-	if(mind) mind.store_memory("Time of death: [stationtime2text()]", 0)
 	living_mob_list -= src
-	dead_mob_list |= src
 
 	updateicon()
-	handle_regular_hud_updates()
-	handle_vision()
 
-	if(ticker && ticker.mode)
-		ticker.mode.check_win()
+	ticker?.mode?.check_win()
 
+	to_chat(src, SPAN_XXLARGE(SPAN_OCCULT("You died and your character has left Manhattan City forever.")))
+	permadelete()
 
-	return 1
+	return TRUE

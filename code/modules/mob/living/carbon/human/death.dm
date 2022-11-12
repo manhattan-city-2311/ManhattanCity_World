@@ -124,12 +124,10 @@
 	mutations.Add(HUSK)
 	status_flags |= DISFIGURED	//makes them unknown without fucking up other stuff like admintools
 	update_icons_body()
-	return
 
 /mob/living/carbon/human/proc/Drain()
 	ChangeToHusk()
 	mutations |= HUSK
-	return
 
 /mob/living/carbon/human/proc/ChangeToSkeleton()
 	if(SKELETON in src.mutations)	return
@@ -143,4 +141,13 @@
 	mutations.Add(SKELETON)
 	status_flags |= DISFIGURED
 	update_icons_body()
-	return
+
+/mob/living/carbon/human/verb/succumb()
+	set category = "OOC"
+	set name = "Succumb"
+	if (get_brain_damage() > 50)
+		if("Покинуть Манхэттен" != alert("Если вы выйдете из тела в данный момент, то ваш персонаж будет удалён навсегда и вы не сможете зайти за него снова, а персонаж мгновенно помрёт. Вы уверены?", "Подтверждение", "Остаться", "Покинуть Манхэттен"))
+			return
+		death()
+	else
+		to_chat(src, SPAN_INFO("You are not injured enough to succumb to death!"))
