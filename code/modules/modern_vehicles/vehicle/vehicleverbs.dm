@@ -36,7 +36,7 @@
 	set category = "Транспорт"
 	set src in view(1)
 
-	if(!ishuman(usr) || !(usr in get_occupants_in_position("driver")))
+	if(!ishuman(usr) || !(usr in get_occupants_in_position(VP_DRIVER)))
 		to_chat(usr, SPAN_NOTICE("You must be the driver of [src] to shift the gearbox."))
 		return
 
@@ -48,7 +48,7 @@
 	set category = "Транспорт"
 	set src in view(1)
 
-	if(!ishuman(usr) || !(usr in get_occupants_in_position("driver")))
+	if(!ishuman(usr) || !(usr in get_occupants_in_position(VP_DRIVER)))
 		to_chat(usr, SPAN_NOTICE("You must be the driver of [src] to toggle the headlights."))
 		return
 
@@ -56,12 +56,11 @@
 		to_chat(usr, SPAN_NOTICE("This vehicle has no headlights."))
 		return
 
-	if(!headlights)
-		headlights = TRUE
+	if(!headlights_on)
 		set_light(6, 4)
 	else
-		headlights = FALSE
 		set_light(0, 0)
+	headlights_on = !headlights_on
 
 /obj/manhattan/vehicle/verb/keys()
 	set name = "Вставить/достать ключ"
@@ -73,7 +72,7 @@
 		return
 	if(inserted_key)
 		if(user.put_in_hands(inserted_key))
-			to_chat(user, SPAN_NOTICE("You remove the keys from the ignition."))
+			to_chat(user, SPAN_NOTICE("You have removed keys from the ignition."))
 			inserted_key = null
 		else
 			inserted_key.forceMove(src)
@@ -86,7 +85,7 @@
 			to_chat(user, SPAN_WARNING("The key doesn't fit!"))
 			return
 
-		to_chat(user, SPAN_NOTICE("You insert the keys into the ignition."))
+		to_chat(user, SPAN_NOTICE("You have inserted keys into the ignition."))
 		user.drop_from_inventory(key)
 		inserted_key = key
 		key.forceMove(src)
@@ -97,12 +96,13 @@
 	set category = "Транспорт"
 	set src in view(1)
 	var/mob/living/user = usr
-	if(!istype(user) || !(user in get_occupants_in_position("driver")))
+	if(!istype(user) || !(user in get_occupants_in_position(VP_DRIVER)))
 		to_chat(user, SPAN_NOTICE("You must be the driver of [src] to reach for the ignition."))
 		return
 	if(!inserted_key)
 		to_chat(user, SPAN_NOTICE("There are no keys in the ignition."))
 		return
+
 	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
 
 	if(!engine)
@@ -110,7 +110,7 @@
 
 	if(engine.rpm < (RPM_IDLE - 300))
 		engine.start()
-		to_chat(user, SPAN_NOTICE("You attempt to start the engine."))
+		to_chat(user, SPAN_NOTICE("You turned the engine ingnition key."))
 	else
 		engine.stop()
 		to_chat(user, SPAN_NOTICE("You stop the engine."))
@@ -139,7 +139,7 @@
 /obj/manhattan/vehicle/verb/verb_inspect_components()
 	set name = "Осмотреть детали"
 	set category = "Транспорт"
-	set src in view(1)
+	set src in oview(1)
 
 	var/mob/living/user = usr
 	if(!istype(user))
@@ -159,3 +159,58 @@
 			msg = "is about a quarter full."
 		to_chat(user,"<span class = 'notice'>[src]'s [mag] [msg]</span>")
 
+/obj/manhattan/vehicle/verb/verb_toggle_fueltank()
+	set name = "Переключить крышку бака"
+	set category = "Транспорт"
+	set src in oview(1)
+	if(usr in contents)
+		to_chat(usr, "You need to be outside the [src] to do this.")
+		return
+
+	fueltank_open = !fueltank_open
+	visible_message("[usr] [fueltank_open ? "opens" : "closes"] tank cap on [icon2html(src, viewers(src) + contents)][src]")
+
+/obj/manhattan/vehicle/verb/verb_exit_vehicle()
+	set name = "Выйти из транспорта"
+	set category = "Транспорт"
+	set src in view(1)
+
+	exit_vehicle(usr)
+
+/obj/manhattan/vehicle/verb/enter_vehicle()
+	set name = "Войти в транспорт"
+	set category = "Транспорт"
+	set src in view(1)
+
+	var/mob/living/user = usr
+	if(!istype(user) || !Adjacent(user) || user.incapacitated())
+		return
+	var/player_pos_choice
+	var/list/positions = get_all_positions()
+	if(positions.len == 1)
+		player_pos_choice = positions[1]
+	else
+		player_pos_choice = input(user, "Enter which position?", "Vehicle Entry Position Select", "Cancel") in positions + list("Cancel")
+
+	if(player_pos_choice == "Cancel")
+		return
+
+	enter_as_position(user, player_pos_choice)
+
+/obj/manhattan/vehicle/verb/switch_seats()
+	set name = "Пересесть"
+	set category = "Транспорт"
+	set src in view(1)
+	var/mob/user = usr
+	if(!istype(user) || !Adjacent(user))
+		return
+	var/position_switchto = input(user, "Enter which position?", "Vehicle Position Select", "Cancel") in get_all_positions() + list("Cancel")
+
+	if(position_switchto == "Cancel")
+		return
+	if(check_position_blocked(position_switchto))
+		do_seat_switch(user,position_switchto)
+		return
+	else
+		enter_as_position(user,position_switchto)
+	update_icon()

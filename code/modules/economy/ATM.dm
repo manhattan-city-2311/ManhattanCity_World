@@ -201,7 +201,7 @@ log transactions
 							dat += "<b>Account balance:</b> [cash2text( authenticated_account.money, FALSE, TRUE, TRUE )]"
 
 							//show expenses
-							if(!isemptylist(authenticated_account.expenses))
+							if(!LAZYLEN(authenticated_account.expenses))
 								dat += "<br><br><b>Debts:</b><br>"
 								for(var/datum/expense/E in authenticated_account.expenses)
 									var/dept_name

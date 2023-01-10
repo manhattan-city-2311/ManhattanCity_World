@@ -16,7 +16,7 @@
 	siemens_coefficient = 0.9
 	species_restricted = list("exclude",SPECIES_DIONA)
 	preserve_item = 1
-	
+
 	flash_protection = FLASH_PROTECTION_MAJOR
 	valid_accessory_slots = null
 
@@ -55,7 +55,7 @@
 	permeability_coefficient = 0.02
 	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/emergency/oxygen,/obj/item/device/suit_cooling_unit)
+	allowed = list(/obj/item/device/flashlight)
 	slowdown = 3
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 50)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
@@ -64,7 +64,7 @@
 	siemens_coefficient = 0.9
 	species_restricted = list("exclude",SPECIES_DIONA)
 	preserve_item = 1
-	
+
 
 	var/list/supporting_limbs //If not-null, automatically splints breaks. Checked when removing the suit.
 

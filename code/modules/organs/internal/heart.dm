@@ -255,7 +255,7 @@
 			speed = "very fast"
 		if(170 to 220)
 			speed = "extremely fast"
-		if(220 to INFINITY)
+		if(220 to POSITIVE_INFINITY)
 			speed = "thready"
 
 	. = "[strength][rythme_d][speed] pulse."

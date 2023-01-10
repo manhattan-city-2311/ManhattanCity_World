@@ -231,7 +231,7 @@
 			total_price = mat.amount * mat.material.get_worth()
 			return round(total_price)
 
-		if(!isemptylist(associated_reagents))
+		if(!LAZYLEN(associated_reagents))
 			var/divider = amount / associated_reagents.len
 			for(var/R in associated_reagents)
 				var/datum/reagent/rgnt = chemical_reagents_list[R]

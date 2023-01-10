@@ -1,7 +1,7 @@
 #define FUSION_ENERGY_PER_K 20
 #define FUSION_MAX_ENVIRO_HEAT 5000 //raise this if you want the reactor to dump more energy into the atmosphere
 #define PLASMA_TEMP_RADIATION_DIVISIOR 20 //radiation divisior. plasma temp / divisor = radiation.
-
+#define FUSION_HEAT_CAP 1.57e7
 
 /obj/effect/fusion_em_field
 	name = "electromagnetic field"
@@ -137,9 +137,6 @@
 				added_particles = TRUE
 		if(added_particles)
 			uptake_gas.update_values()
-
-	//let the particles inside the field react
-	React()
 
 	// Dump power to our powernet.
 	owned_core.add_avail(FUSION_ENERGY_PER_K * plasma_temperature)
@@ -318,7 +315,7 @@
 /obj/effect/fusion_em_field/proc/Radiate()
 	if(istype(loc, /turf))
 		var/empsev = max(1, min(3, ceil(size/2)))
-		for(var/atom/movable/AM in range(max(1,Floor(size/2)), loc))
+		for(var/atom/movable/AM in range(max(1,floor(size/2)), loc))
 
 			if(AM == src || AM == owned_core || !AM.simulated)
 				continue
@@ -374,118 +371,6 @@
 	for(var/obj/effect/fusion_particle_catcher/catcher in particle_catchers)
 		catcher.UpdateSize()
 	return changed
-
-//the !!fun!! part
-/obj/effect/fusion_em_field/proc/React()
-	//loop through the reactants in random order
-	var/list/react_pool = dormant_reactant_quantities.Copy()
-
-	//cant have any reactions if there aren't any reactants present
-	if(react_pool.len)
-		//determine a random amount to actually react this cycle, and remove it from the standard pool
-		//this is a hack, and quite nonrealistic :(
-		for(var/reactant in react_pool)
-			react_pool[reactant] = rand(Floor(react_pool[reactant]/2),react_pool[reactant])
-			dormant_reactant_quantities[reactant] -= react_pool[reactant]
-			if(!react_pool[reactant])
-				react_pool -= reactant
-
-		//loop through all the reacting reagents, picking out random reactions for them
-		var/list/produced_reactants = new/list
-		var/list/p_react_pool = react_pool.Copy()
-		while(p_react_pool.len)
-			//pick one of the unprocessed reacting reagents randomly
-			var/cur_p_react = pick(p_react_pool)
-			p_react_pool.Remove(cur_p_react)
-
-			//grab all the possible reactants to have a reaction with
-			var/list/possible_s_reacts = react_pool.Copy()
-			//if there is only one of a particular reactant, then it can not react with itself so remove it
-			possible_s_reacts[cur_p_react] -= 1
-			if(possible_s_reacts[cur_p_react] < 1)
-				possible_s_reacts.Remove(cur_p_react)
-
-			//loop through and work out all the possible reactions
-			var/list/possible_reactions = new/list
-			for(var/cur_s_react in possible_s_reacts)
-				if(possible_s_reacts[cur_s_react] < 1)
-					continue
-				var/decl/fusion_reaction/cur_reaction = get_fusion_reaction(cur_p_react, cur_s_react)
-				if(cur_reaction && plasma_temperature >= cur_reaction.minimum_energy_level)
-					possible_reactions.Add(cur_reaction)
-
-			//if there are no possible reactions here, abandon this primary reactant and move on
-			if(!possible_reactions.len)
-				continue
-
-			//split up the reacting atoms between the possible reactions
-			while(possible_reactions.len)
-				var/decl/fusion_reaction/cur_reaction = pick(possible_reactions)
-				possible_reactions.Remove(cur_reaction)
-
-				//set the randmax to be the lower of the two involved reactants
-				var/max_num_reactants = react_pool[cur_reaction.p_react] > react_pool[cur_reaction.s_react] ? \
-				react_pool[cur_reaction.s_react] : react_pool[cur_reaction.p_react]
-				if(max_num_reactants < 1)
-					continue
-
-				//make sure we have enough energy
-				if(plasma_temperature < cur_reaction.minimum_reaction_temperature)
-					continue
-
-				if(plasma_temperature < max_num_reactants * cur_reaction.energy_consumption)
-					max_num_reactants = round(plasma_temperature / cur_reaction.energy_consumption)
-					if(max_num_reactants < 1)
-						continue
-
-				//randomly determined amount to react
-				var/amount_reacting = rand(1, max_num_reactants)
-
-				//removing the reacting substances from the list of substances that are primed to react this cycle
-				//if there aren't enough of that substance (there should be) then modify the reactant amounts accordingly
-				if( react_pool[cur_reaction.p_react] - amount_reacting >= 0 )
-					react_pool[cur_reaction.p_react] -= amount_reacting
-				else
-					amount_reacting = react_pool[cur_reaction.p_react]
-					react_pool[cur_reaction.p_react] = 0
-				//same again for secondary reactant
-				if(react_pool[cur_reaction.s_react] - amount_reacting >= 0 )
-					react_pool[cur_reaction.s_react] -= amount_reacting
-				else
-					react_pool[cur_reaction.p_react] += amount_reacting - react_pool[cur_reaction.p_react]
-					amount_reacting = react_pool[cur_reaction.s_react]
-					react_pool[cur_reaction.s_react] = 0
-
-				plasma_temperature -= max_num_reactants * cur_reaction.energy_consumption  // Remove the consumed energy.
-				plasma_temperature += max_num_reactants * cur_reaction.energy_production   // Add any produced energy.
-				radiation +=   max_num_reactants * cur_reaction.radiation           // Add any produced radiation.
-				tick_instability += max_num_reactants * cur_reaction.instability
-
-				// Create the reaction products.
-				for(var/reactant in cur_reaction.products)
-					var/success = 0
-					for(var/check_reactant in produced_reactants)
-						if(check_reactant == reactant)
-							produced_reactants[reactant] += cur_reaction.products[reactant] * amount_reacting
-							success = 1
-							break
-					if(!success)
-						produced_reactants[reactant] = cur_reaction.products[reactant] * amount_reacting
-
-				// Handle anything special. If this proc returns true, abort the current reaction.
-				if(cur_reaction.handle_reaction_special(src))
-					return
-
-				// This reaction is done, and can't be repeated this sub-cycle.
-				possible_reactions.Remove(cur_reaction.s_react)
-
-		// Loop through the newly produced reactants and add them to the pool.
-		for(var/reactant in produced_reactants)
-			AddParticles(reactant, produced_reactants[reactant])
-
-		// Check whether there are reactants left, and add them back to the pool.
-		for(var/reactant in react_pool)
-			AddParticles(reactant, react_pool[reactant])
 
 /obj/effect/fusion_em_field/Destroy()
 	set_light(0)

@@ -242,7 +242,7 @@
 	var/level = bloodstr.get_reagent_amount("glucose")
 
 	switch(level)
-		if(-INFINITY to GLUCOSE_LEVEL_LCRITICAL)
+		if(NEGATIVE_INFINITY to GLUCOSE_LEVEL_LCRITICAL)
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.1)
 		if(GLUCOSE_LEVEL_LCRITICAL to GLUCOSE_LEVEL_L2BAD)
 			add_chemical_effect(CE_CARDIAC_OUTPUT, 0.45)
@@ -653,7 +653,7 @@
 				if(-80 to -70)			severity = 7
 				if(-90 to -80)			severity = 8
 				if(-95 to -90)			severity = 9
-				if(-INFINITY to -95)	severity = 10
+				if(NEGATIVE_INFINITY to -95)	severity = 10
 			overlay_fullscreen("crit", /obj/screen/fullscreen/crit, severity)
 		else
 			clear_fullscreen("crit")
@@ -667,7 +667,7 @@
 					if(30 to 35)		severity = 4
 					if(35 to 40)		severity = 5
 					if(40 to 45)		severity = 6
-					if(45 to INFINITY)	severity = 7
+					if(45 to POSITIVE_INFINITY)	severity = 7
 				overlay_fullscreen("oxy", /obj/screen/fullscreen/oxy, severity)
 			else
 				clear_fullscreen("oxy")
@@ -683,7 +683,7 @@
 				if(40 to 55)		severity = 3
 				if(55 to 70)		severity = 4
 				if(70 to 85)		severity = 5
-				if(85 to INFINITY)	severity = 6
+				if(85 to POSITIVE_INFINITY)	severity = 6
 			overlay_fullscreen("brute", /obj/screen/fullscreen/brute, severity)
 		else
 			clear_fullscreen("brute")
@@ -777,16 +777,16 @@
 
 		if(nutrition_icon)
 			switch(bloodstr?.get_reagent_amount(CI_GLUCOSE))
-				if(GLUCOSE_LEVEL_NORMAL + 0.2 to INFINITY)				     nutrition_icon.icon_state = "nutrition0"
+				if(GLUCOSE_LEVEL_NORMAL + 0.2 to POSITIVE_INFINITY)				     nutrition_icon.icon_state = "nutrition0"
 				if(GLUCOSE_LEVEL_NORMAL - 0.5 to GLUCOSE_LEVEL_NORMAL + 0.2) nutrition_icon.icon_state = "nutrition1"
 				if(GLUCOSE_LEVEL_NORMAL - 2   to GLUCOSE_LEVEL_NORMAL - 0.5) nutrition_icon.icon_state = "nutrition2"
 				if(GLUCOSE_LEVEL_LBAD + 2.5   to GLUCOSE_LEVEL_NORMAL - 2)   nutrition_icon.icon_state = "nutrition2"
 				if(GLUCOSE_LEVEL_LBAD - 1     to GLUCOSE_LEVEL_LBAD + 2.5)	 nutrition_icon.icon_state = "nutrition4"
-				if(-INFINITY 				  to GLUCOSE_LEVEL_LBAD)		 nutrition_icon.icon_state = "nutrition5"
+				if(NEGATIVE_INFINITY 				  to GLUCOSE_LEVEL_LBAD)		 nutrition_icon.icon_state = "nutrition5"
 		if(!isSynthetic())
 			if(hydration_icon)
 				switch(hydration)
-					if(450 to INFINITY)				hydration_icon.icon_state = "thirst0"
+					if(450 to POSITIVE_INFINITY)				hydration_icon.icon_state = "thirst0"
 					if(350 to 450)					hydration_icon.icon_state = "thirst1"
 					if(250 to 350)					hydration_icon.icon_state = "thirst2"
 					if(150 to 250)					hydration_icon.icon_state = "thirst3"
@@ -811,7 +811,7 @@
 		if(bodytemp)
 			if (!species)
 				switch(bodytemperature) //310.055 optimal body temp
-					if(370 to INFINITY)		bodytemp.icon_state = "temp4"
+					if(370 to POSITIVE_INFINITY)		bodytemp.icon_state = "temp4"
 					if(350 to 370)			bodytemp.icon_state = "temp3"
 					if(335 to 350)			bodytemp.icon_state = "temp2"
 					if(320 to 335)			bodytemp.icon_state = "temp1"
@@ -1023,19 +1023,14 @@
 		shock_stage = 0
 		return
 
-	shock_stage = min(shock_stage, SHOCK_STAGE_MAX)
-	shock_stage = max(shock_stage - shock_decrease_coeff * shock_stage , 0)
-	shock_stage = lerp(shock_stage, total_pain, 0.7)
+	shock_stage = clamp(shock_stage - shock_decrease_coeff * shock_stage, 0, SHOCK_STAGE_MAX)
+	shock_stage = LERP(shock_stage, total_pain, 0.7)
 
 	var/font_size
 	var/message
 	var/emote_pick
 	switch(shock_stage)
-		if(SHOCK_STAGE_PAIN_MESSAGE to SHOCK_STAGE_SCREAM-5)
-			message = pick(SHOCK_PAIN_MESSAGES)
-
 		if(SHOCK_STAGE_SCREAM-5 to SHOCK_STAGE_STUN - 15)
-			message = pick(SHOCK_PAIN_MESSAGES)
 			emote_pick = pick("groan", "cry", "scream")
 
 		if(SHOCK_STAGE_STUN-15 to SHOCK_STAGE_STUN-2)
@@ -1044,7 +1039,7 @@
 			if(life_tick % SHOCK_STAGE_STUN == 0)
 				Weaken(20)
 			
-			font_size = 3
+			font_size = 2
 			emote_pick = pick("groan", "cry", "scream")
 
 		if(SHOCK_STAGE_STUN - 1 to SHOCK_STAGE_STUN + 1)
@@ -1058,7 +1053,7 @@
 
 				if((life_tick % SHOCK_STAGE_STUN) == 0)
 					Weaken(5)
-			font_size = 2
+			font_size = 3
 
 		if(SHOCK_STAGE_STUN+2 to SHOCK_STAGE_AGONY)
 			message = pick(SHOCK_PAIN_MESSAGES_SEVERE)
@@ -1070,7 +1065,7 @@
 			font_size = 3
 			emote_pick = pick("groan", "cry", "scream")
 
-		if(SHOCK_STAGE_AGONY to INFINITY)
+		if(SHOCK_STAGE_AGONY to POSITIVE_INFINITY)
 			message = pick(SHOCK_PAIN_MESSAGES_SEVERE)
 
 			if((life_tick % SHOCK_STAGE_STUN) == 0)
@@ -1089,8 +1084,8 @@
 	if(message)
 		throttle_message("shock", message, bold = TRUE, font_size = font_size, span = "danger", delay = SHOCK_MESSAGE_PERIOD)
 
-	if(emote_pick && istext(emote_pick) && (life_tick % SHOCK_EMOTE_PERIOD) == 0)
-		emote(emote_pick)	
+	if(emote_pick && (life_tick % SHOCK_EMOTE_PERIOD) == 0)
+		emote(emote_pick, supress_warning = TRUE)
 
 
 /mob/living/carbon/human/proc/handle_pulse()
@@ -1100,16 +1095,16 @@
 	if (nutrition <= 0)
 		if (prob(1.5))
 			if(!isSynthetic())
-				to_chat(src, span("warning", "Your hunger pangs are excruciating as the stomach acid sears in your stomach... you feel weak."))
+				to_chat(src, SPAN("warning", "Your hunger pangs are excruciating as the stomach acid sears in your stomach... you feel weak."))
 			else
-				to_chat(src, span("warning", "Your internal battery makes a silent beep. It is time to recharge."))
+				to_chat(src, SPAN("warning", "Your internal battery makes a silent beep. It is time to recharge."))
 
 		return
 
 	if (hydration <= 0)
 		if (prob(1.5))
 			if(!isSynthetic())
-				to_chat(src, span("warning", "You feel dizzy and disorientated as your lack of hydration becomes impossible to ignore."))
+				to_chat(src, SPAN("warning", "You feel dizzy and disorientated as your lack of hydration becomes impossible to ignore."))
 
 		return
 

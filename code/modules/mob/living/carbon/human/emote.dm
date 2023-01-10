@@ -1,4 +1,4 @@
-/mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
+/mob/living/carbon/human/emote(act, m_type=1, message = null, supress_warning = FALSE)
 	var/param = null
 
 	var/datum/gender/T = gender_datums[get_visible_gender()]
@@ -927,7 +927,8 @@
 					twitch_v, vomit, whimper, whistle, wwhistle, qwhistle, swhistle, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping, dwoop"
 
 		else
-			to_chat(src, SPAN_INFO("Unusable emote '[act]'. Say *help for a list."))
+			if(!supress_warning)
+				to_chat(src, SPAN_INFO("Unusable emote '[act]'. Say *help for a list."))
 
 	if (message)
 

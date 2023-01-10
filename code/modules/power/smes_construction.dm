@@ -231,7 +231,7 @@
 			apcs_overload(1, 10)
 			ping("Caution. Output regulator malfunction. Uncontrolled discharge detected.")
 
-		if (61 to INFINITY)
+		if (61 to POSITIVE_INFINITY)
 			// Massive overcharge
 			// Sparks, Near - instantkill shock, Strong EMP, 25% light overload, 5% APC failure. 50% of SMES explosion. This is bad.
 			s.set_up(10,1,src)

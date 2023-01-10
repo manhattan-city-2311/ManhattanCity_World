@@ -39,7 +39,7 @@
 			M.drop_from_inventory(src)
 			playsound(src, "shatter", 70, 1)
 
-			if(reagents && !isemptylist(reagents.reagent_list))
+			if(reagents && !LAZYLEN(reagents.reagent_list))
 				hit_atom.visible_message("<span class='notice'>The contents of \the [src] splash all over [hit_atom]!</span>")
 				reagents.splash(hit_atom, reagents.total_volume)
 

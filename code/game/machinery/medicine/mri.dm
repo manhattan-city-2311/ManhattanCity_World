@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 				infected = "Acute Infection+:"
 			if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
 				infected = "Acute Infection++:"
-			if (INFECTION_LEVEL_THREE -49 to INFINITY)
+			if (INFECTION_LEVEL_THREE -49 to POSITIVE_INFINITY)
 				infected = "Gangrene Detected:"
 
 		var/unknown_body = 0
@@ -318,7 +318,7 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 				infection = "Acute Infection+:"
 			if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
 				infection = "Acute Infection++:"
-			if (INFECTION_LEVEL_THREE -49 to INFINITY)
+			if (INFECTION_LEVEL_THREE -49 to POSITIVE_INFINITY)
 				infection = "Necrosis Detected:"
 		dat += "<tr>"
 		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech][i_dead]</td><td></td>"

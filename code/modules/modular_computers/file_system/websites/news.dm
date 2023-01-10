@@ -27,7 +27,7 @@
 
 	var/page_metadata = nm.page_metadata
 
-	if(!news_source || isemptylist(news_source.messages))
+	if(!news_source || LAZYLEN(news_source.messages))
 		dat += "No current available news."
 		return dat
 

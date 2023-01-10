@@ -38,7 +38,7 @@
 	var/i = 1
 
 	switch(wax)
-		if(1500 to INFINITY)
+		if(1500 to POSITIVE_INFINITY)
 			i = 1
 		if(800 to 1500)
 			i = 2

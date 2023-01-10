@@ -84,7 +84,7 @@
 		[pick("front","side","top","bottom","rear","inside")].</font>"
 
 /obj/machinery/replicator/process()
-	if(spawning_types.len && powered())
+	if(spawning_types.len)
 		spawn_progress_time += world.time - last_process_time
 		if(spawn_progress_time > max_spawn_time)
 			src.visible_message("<span class='notice'>\icon[src] [src] pings!</span>")

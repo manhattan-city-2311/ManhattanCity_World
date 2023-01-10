@@ -78,7 +78,7 @@
 		return -1
 
 	if(type)
-		if(!isemptylist(D.allowed_buy_types) && !(type in D.allowed_buy_types))
+		if(!LAZYLEN(D.allowed_buy_types) && !(type in D.allowed_buy_types))
 			return -2
 
 	var/department_money = D.get_balance()

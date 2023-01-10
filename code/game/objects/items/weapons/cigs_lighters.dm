@@ -139,7 +139,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return
 	var/smoke_percent = round((smoketime / max_smoketime) * 100)
 	switch(smoke_percent)
-		if(90 to INFINITY)
+		if(90 to POSITIVE_INFINITY)
 			to_chat(user, "[src] is still fresh.")
 		if(60 to 90)
 			to_chat(user, "[src] has a good amount of burn time remaining.")

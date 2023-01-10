@@ -4,10 +4,11 @@
 
 #define NUM_E 2.71828183
 #define SQRT_2 1.41421356237
-#define M_PI						(3.14159265)
-#define M_2PI						(6.28318530)
-#define INFINITY				(1.#INF)	//closer then enough
-
+#define M_PI 3.141592653
+#define M_2PI 6.28318530
+#define POSITIVE_INFINITY 1#INF
+#define NEGATIVE_INFINITY (-POSITIVE_INFINITY) 
+#define M_G 9.81665
 #define SHORT_REAL_LIMIT 16777216
 
 //"fancy" math for calculating time in ms from tick_usage percentage and the length of ticks
@@ -26,7 +27,7 @@
 #define REALTIMEOFDAY (world.timeofday + (MIDNIGHT_ROLLOVER * MIDNIGHT_ROLLOVER_CHECK))
 #define MIDNIGHT_ROLLOVER_CHECK ( rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : midnight_rollovers )
 
-#define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
+#define CEILING(x, y) (-round(-(x) / (y)) * (y))
 
 //Floors the input then adds 1 to give the next integer up
 #define ROUNDUP(x) ( round((x)) + 1 )
@@ -224,11 +225,8 @@
 
 #define SMOOTH_INTER(a, b, t) LERP(a, b, (t) * (t) * (3-2*(t)))
 
-/proc/frac(x)
-	return MODULUS(x, 1)
-
-/proc/remove_frac(x)
-	return round(x)
+#define FRAC(x) MODULUS((x), 1)
+#define REMOVE_FRAC(x) round((x), 1)
 
 // Performs a linear interpolation between a and b.
 /proc/lerp(a, b, t = 0.5)
@@ -265,10 +263,10 @@ var/global/random2d_seed = rand(1, 130000)
 	x *= scale
 	y *= scale
 	do
-		var/xi = remove_frac(x)
-		var/yi = remove_frac(y)
-		var/x_frac = frac(x)
-		var/y_frac = frac(y)
+		var/xi = REMOVE_FRAC(x)
+		var/yi = REMOVE_FRAC(y)
+		var/x_frac = FRAC(x)
+		var/y_frac = FRAC(y)
 
 		var/s = random2d(xi  , yi  )
 		var/t = random2d(xi+1, yi  )

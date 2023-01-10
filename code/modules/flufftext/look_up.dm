@@ -9,7 +9,7 @@
 
 	var/turf/T = get_turf(usr)
 	if(!T) // In null space.
-		to_chat(usr, span("warning", "You appear to be in a place without any sort of concept of direction. You have bigger problems to worry about."))
+		to_chat(usr, SPAN("warning", "You appear to be in a place without any sort of concept of direction. You have bigger problems to worry about."))
 		return
 
 	if(!get_area(T).outdoors) // They're inside.
@@ -19,7 +19,7 @@
 	else // They're outside and hopefully on a planet.
 		var/datum/planet/P = SSplanets.z_to_planet[T.z]
 		if(!P)
-			to_chat(usr, span("warning", "You appear to be outside, but not on a planet... Something is wrong."))
+			to_chat(usr, SPAN("warning", "You appear to be outside, but not on a planet... Something is wrong."))
 			return
 
 		var/datum/weather_holder/WH = P.weather_holder

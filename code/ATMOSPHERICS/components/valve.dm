@@ -231,8 +231,6 @@
 	return src.attack_hand(user)
 
 /obj/machinery/atmospherics/valve/digital/attack_hand(mob/user as mob)
-	if(!powered())
-		return
 	if(!src.allowed(user))
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
@@ -247,11 +245,6 @@
 	..()
 	if(old_stat != stat)
 		update_icon()
-
-/obj/machinery/atmospherics/valve/digital/update_icon()
-	..()
-	if(!powered())
-		icon_state = "valve[open]nopower"
 
 /obj/machinery/atmospherics/valve/digital/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)

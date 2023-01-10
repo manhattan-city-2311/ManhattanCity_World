@@ -810,7 +810,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 		if(H.internal_organs_by_name[O_ZOMBIE])
 			return
 
-		if(!isemptylist(H.search_contents_for(/obj/item/organ/internal/parasite/zombie)))
+		if(!LAZYLEN(H.search_contents_for(/obj/item/organ/internal/parasite/zombie)))
 			return
 		else
 			if(!H.internal_organs_by_name[O_ZOMBIE])

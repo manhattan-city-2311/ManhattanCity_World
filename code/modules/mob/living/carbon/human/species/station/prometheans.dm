@@ -186,5 +186,5 @@ var/datum/species/shapeshifter/promethean/prometheans
 			return "[t_she] glowing gently with moderate levels of electrical activity.\n"
 		if(21 to 35)
 			return "<span class='warning'>[t_she] glowing brightly with high levels of electrical activity.</span>"
-		if(35 to INFINITY)
+		if(35 to POSITIVE_INFINITY)
 			return "<span class='danger'>[t_she] radiating massive levels of electrical activity!</span>"

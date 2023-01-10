@@ -911,7 +911,7 @@
 			to_chat(user, "<i>You can see something in there...</i>")
 
 /obj/structure/plushie/on_persistence_load()
-	if(isemptylist(contents))
+	if(LAZYLEN(contents))
 		return TRUE
 
 	if(contents[1])
@@ -1010,7 +1010,7 @@
 	unique_save_vars = list("opened")
 
 /obj/item/toy/plushie/on_persistence_load()
-	if(isemptylist(contents))
+	if(LAZYLEN(contents))
 		return TRUE
 
 	if(contents[1])

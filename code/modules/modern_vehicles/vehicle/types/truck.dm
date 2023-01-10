@@ -23,7 +23,7 @@
 
 	light_color = "#E1FDFF"
 
-/obj/manhattan/vehicle/truck/update_object_sprites()
+/obj/manhattan/vehicle/truck/update_icon()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
 		bounds = "64,96"

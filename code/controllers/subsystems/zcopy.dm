@@ -330,7 +330,7 @@ SUBSYSTEM_DEF(zcopy)
 		Td = Td.below
 		found_oo += Td
 
-	sortTim(found_oo, /proc/cmp_planelayer)
+	sortTim(found_oo, GLOBAL_PROC_REF(cmp_planelayer))
 	for (var/thing in found_oo)
 		var/atom/A = thing
 		if (istype(A, /atom/movable/openspace/overlay))

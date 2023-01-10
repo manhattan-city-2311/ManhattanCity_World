@@ -23,6 +23,11 @@
 	brightness_range = 6
 	brightness_power = 6
 	pixel_x = -32
+	bound_width = 13
+	bound_height = 10
+	bound_x = 10
+	bound_y = 7
+
 	layer = ABOVE_MOB_LAYER
 	light_color = LIGHT_COLOR_BLUE
 	light_type = /obj/item/weapon/light/bulb/street2

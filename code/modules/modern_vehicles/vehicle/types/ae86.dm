@@ -6,7 +6,7 @@
 	ys = list(0, 60,   100,  115,  125,  140,  130,  105)
 	max_rpm = 7150
 
-	mass = 80
+	mass = 65
 
 /obj/item/vehicle_part/gearbox/ae86
 	name = "ae86's brand gearbox"
@@ -22,6 +22,9 @@
 	)
 	topgear = 4.778
 	efficiency = 0.87
+
+/obj/item/vehicle_part/fueltank/ae86
+	capacity = 50
 
 /obj/manhattan/vehicle/ae86
 	name = "Ae86"
@@ -46,16 +49,20 @@
 		VC_LEFT_BACK_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_ENGINE = /obj/item/vehicle_part/engine/ae86,
 		VC_GEARBOX = /obj/item/vehicle_part/gearbox/ae86,
-		VC_CARDAN = /obj/item/vehicle_part/cardan
+		VC_CARDAN = /obj/item/vehicle_part/cardan,
+		VC_FUELTANK = /obj/item/vehicle_part/fueltank/ae86
 	)
 
 	aerodynamics_coefficent = 0.33
 	traction_coefficent = 19.8
 
+/obj/manhattan/vehicle/ae86/get_transfer_case()
+	return TRANSFER_CASE_FWD
+
 /obj/manhattan/vehicle/ae86/get_braking_force()
 	return 1770
 
-/obj/manhattan/vehicle/ae86/update_object_sprites()
+/obj/manhattan/vehicle/ae86/update_icon()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
 		bounds = "32,64"

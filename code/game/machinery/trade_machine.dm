@@ -67,12 +67,12 @@
 			var/datum/business/B = get_business_by_owner_uid(ID.unique_ID)
 			var/datum/department/D = dept_by_id(B?.business_uid)
 			if(!D || !D.bank_account)
-				to_chat(user, span("warning", "No business associated with you was found. Please register one and try again."))
+				to_chat(user, SPAN("warning", "No business associated with you was found. Please register one and try again."))
 				return
 
 			owner_uid = ID.unique_ID
 			business_bank_id = D.bank_account.account_number
-			to_chat(user, span("notice", "You claim \the [src] as your own."))
+			to_chat(user, SPAN("notice", "You claim \the [src] as your own."))
 			interact(user)
 		// Return here to avoid people setting up deals for ID cards or something.
 		return
@@ -99,7 +99,7 @@
 			break
 
 	if(!sold)
-		to_chat(user, span("warning", "\The [src] doesn't have any valid offers for \the [I]."))
+		to_chat(user, SPAN("warning", "\The [src] doesn't have any valid offers for \the [I]."))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25, TRUE)
 	else
 		playsound(src, 'sound/machines/chime.ogg', 25, TRUE)
@@ -107,13 +107,13 @@
 // Called when hitting the machine with something while in maint mode.
 /obj/machinery/trade_machine/proc/add_offer(obj/item/I, mob/user)
 	if(LAZYLEN(trade_offers) >= max_offers)
-		to_chat(user, span("warning", "\The [src] has reached it's maximum capacity for trading offers, which is [max_offers]. Remove one and try again."))
+		to_chat(user, SPAN("warning", "\The [src] has reached it's maximum capacity for trading offers, which is [max_offers]. Remove one and try again."))
 		return FALSE
 
 	for(var/thing in trade_offers)
 		var/datum/trade_offer/offer = thing
 		if(offer.check_item(I))
-			to_chat(user, span("warning", "\The [src] already has a deal for [offer.display_name()]."))
+			to_chat(user, SPAN("warning", "\The [src] already has a deal for [offer.display_name()]."))
 			return FALSE
 
 	var/type_to_use = /datum/trade_offer
@@ -126,12 +126,12 @@
 
 	var/datum/trade_offer/offer = new type_to_use()
 	if(!offer.scan_prototype(I))
-		to_chat(user, span("warning", "\The [src] failed to scan \the [I]."))
+		to_chat(user, SPAN("warning", "\The [src] failed to scan \the [I]."))
 		qdel(offer)
 		return FALSE
 
 	trade_offers += offer
-	to_chat(user, span("notice", "\The [src] scans \the [I], and can now buy more of those on your behalf. \
+	to_chat(user, SPAN("notice", "\The [src] scans \the [I], and can now buy more of those on your behalf. \
 		You should adjust the quantity and price before leaving."))
 	interact(user)
 	return TRUE
@@ -140,7 +140,7 @@
 /obj/machinery/trade_machine/proc/sell_to_machine(obj/item/I, datum/trade_offer/offer, mob/living/user)
 	// Check that the user isn't trying to sell nonpersistant stuff.
 	if(I.dont_save)
-		to_chat(user, span("warning", "\The [src] detects that \the [I] belongs to someone, and thus refuses to buy it from you."))
+		to_chat(user, SPAN("warning", "\The [src] detects that \the [I] belongs to someone, and thus refuses to buy it from you."))
 		return FALSE
 
 	// Check that the owner can afford to buy, to maintain the laws of econo-dynamics and not make money from thin air.
@@ -150,25 +150,25 @@
 	// In the future, maybe there can be code in the trade offer datum to automatically split stacks or reagents somehow.
 	// For now let's be lazy and make the player do it.
 	if(quantity_to_sell != offer.check_item_quantity(I))
-		to_chat(user, span("warning", "\The [src] doesn't want [offer.check_item_quantity(I)] of \the [I], but only [quantity_to_sell]. \
+		to_chat(user, SPAN("warning", "\The [src] doesn't want [offer.check_item_quantity(I)] of \the [I], but only [quantity_to_sell]. \
 		Please try again with a smaller amount."))
 	var/value_to_transfer = offer.payment_offered * quantity_to_sell
 
 	if(quantity_to_sell <= 0)
-		to_chat(user, span("warning", "\The [src] doesn't want any more of \the [I]."))
+		to_chat(user, SPAN("warning", "\The [src] doesn't want any more of \the [I]."))
 		return FALSE
 
 	if(!check_account_exists(business_bank_id))
-		to_chat(user, span("warning", "No bank account appears to be associated with \the [src], and thus it cannot pay you."))
+		to_chat(user, SPAN("warning", "No bank account appears to be associated with \the [src], and thus it cannot pay you."))
 		return FALSE
 
 	if(check_account_suspension(business_bank_id))
-		to_chat(user, span("warning", "The bank account associated with \the [src] appears to be suspended, and thus it cannot pay you."))
+		to_chat(user, SPAN("warning", "The bank account associated with \the [src] appears to be suspended, and thus it cannot pay you."))
 		return FALSE
 
 	var/datum/money_account/owner_account = get_account(business_bank_id)
 	if(owner_account.money < value_to_transfer)
-		to_chat(user, span("warning", "The bank account associated with \the [src] does not have sufficient funds to cover this transaction, \
+		to_chat(user, SPAN("warning", "The bank account associated with \the [src] does not have sufficient funds to cover this transaction, \
 		and thus it cannot pay you."))
 		return FALSE
 
@@ -177,7 +177,7 @@
 	var/obj/item/weapon/card/id/ID = user.GetIdCard()
 
 	if(!ID)
-		to_chat(user, span("warning", "Please wear a valid citizen ID card that is linked to your bank details."))
+		to_chat(user, SPAN("warning", "Please wear a valid citizen ID card that is linked to your bank details."))
 		return FALSE
 
 	// Determine if the money should go to the player's personal account or their department/business's account, if one exists.
@@ -193,16 +193,16 @@
 
 	if(!target_account_number) // If we didn't find a business/dept acc number let's try for personal accounts instead.
 		if(!ID.associated_account_number)
-			to_chat(user, span("warning", "Your ID does not appear to have any bank details."))
+			to_chat(user, SPAN("warning", "Your ID does not appear to have any bank details."))
 			return FALSE
 		target_account_number = ID.associated_account_number
 
 	if(!check_account_exists(target_account_number))
-		to_chat(user, span("warning", "Account '[target_account_number]' does not appear to exist."))
+		to_chat(user, SPAN("warning", "Account '[target_account_number]' does not appear to exist."))
 		return FALSE
 
 	if(check_account_suspension(target_account_number))
-		to_chat(user, span("warning", "Account '[target_account_number]' appears to be suspended."))
+		to_chat(user, SPAN("warning", "Account '[target_account_number]' appears to be suspended."))
 		return FALSE
 
 	// Move item to the machine.
@@ -210,7 +210,7 @@
 	I.forceMove(src)
 	purchased_goods += I
 	offer.quantity_wanted -= quantity_to_sell
-	visible_message(span("notice", "\The [user] places \the [I] into \the [src]."))
+	visible_message(SPAN("notice", "\The [user] places \the [I] into \the [src]."))
 	playsound(src, 'sound/machines/chime.ogg', 25)
 
 	// Take money out of the owner's account.
@@ -242,11 +242,11 @@
 		)
 
 	// Tell the user everything went well.
-	to_chat(user, span("notice", "You have sold \the [I] to \the [src]."))
-	to_chat(user, span("notice", "Payment offered was <b>[value_to_transfer]</b>CR."))
+	to_chat(user, SPAN("notice", "You have sold \the [I] to \the [src]."))
+	to_chat(user, SPAN("notice", "Payment offered was <b>[value_to_transfer]</b>CR."))
 	if(tax_owed)
-		to_chat(user, span("notice", "This transaction was subject to a tax of <b>[tax_owed]</b>CR by the government."))
-	to_chat(user, span("notice", "<b>[value_to_user]</b>CR has been deposited into \
+		to_chat(user, SPAN("notice", "This transaction was subject to a tax of <b>[tax_owed]</b>CR by the government."))
+	to_chat(user, SPAN("notice", "<b>[value_to_user]</b>CR has been deposited into \
 	[department_transaction ? "the departmental" : "your personal"] bank account electronically."))
 	return TRUE
 
@@ -370,7 +370,7 @@
 	// Maint mode restricted actions.
 	// href hackers go away.
 	if(!maint_mode)
-		to_chat(usr, span("warning", "Maintenance mode has to be active to do that."))
+		to_chat(usr, SPAN("warning", "Maintenance mode has to be active to do that."))
 		interact(usr)
 		return
 
@@ -380,9 +380,9 @@
 		playsound(src, 'sound/items/drill_use.ogg', 25)
 
 		if(anchored)
-			to_chat(usr, span("notice", "The anchors tether themselves back into the floor. It is now secured."))
+			to_chat(usr, SPAN("notice", "The anchors tether themselves back into the floor. It is now secured."))
 		else
-			to_chat(usr, span("notice", "You toggle the anchors of \the [src]. It can now be moved."))
+			to_chat(usr, SPAN("notice", "You toggle the anchors of \the [src]. It can now be moved."))
 
 	if(href_list["set_staff_pin"])
 		if(!auth)
@@ -395,7 +395,7 @@
 	if(href_list["remove_offer"])
 		var/datum/trade_offer/offer = trade_offers[index]
 		trade_offers -= offer
-		to_chat(usr, span("notice", "Removed trade offer for [offer.display_name()]."))
+		to_chat(usr, SPAN("notice", "Removed trade offer for [offer.display_name()]."))
 		qdel(offer)
 
 	if(href_list["set_quantity"])
@@ -404,7 +404,7 @@
 		var/new_value = input(usr, "Input new quantity here. The current setting is [offer.quantity_wanted].", "New Quantity", offer.quantity_wanted) as null|num
 		if(!isnull(new_value))
 			if(new_value <= 0)
-				to_chat(usr, span("warning", "Please use positive numbers only."))
+				to_chat(usr, SPAN("warning", "Please use positive numbers only."))
 				return
 
 			offer.quantity_wanted = new_value
@@ -415,7 +415,7 @@
 		var/new_value = input(usr, "Input new payment offer here. The current setting is [offer.payment_offered].", "New Payment Offer", offer.payment_offered) as null|num
 		if(!isnull(new_value))
 			if(new_value <= 0)
-				to_chat(usr, span("warning", "Please use positive numbers only."))
+				to_chat(usr, SPAN("warning", "Please use positive numbers only."))
 				return
 
 			offer.payment_offered = new_value
@@ -424,18 +424,18 @@
 		var/datum/trade_offer/offer = trade_offers[index]
 
 		offer.wanted = !offer.wanted
-		to_chat(usr, span("notice", "\The [src] will [offer.wanted ? "now" : "no longer"] buy [offer.display_name()]."))
+		to_chat(usr, SPAN("notice", "\The [src] will [offer.wanted ? "now" : "no longer"] buy [offer.display_name()]."))
 
 	if(href_list["withdraw_item"])
 		var/atom/movable/AM = LAZYACCESS(purchased_goods, index)
 		if(AM)
 			AM.forceMove(get_turf(src))
-			to_chat(usr, span("notice", "You withdraw \the [AM] from \the [src]'s storage."))
+			to_chat(usr, SPAN("notice", "You withdraw \the [AM] from \the [src]'s storage."))
 
 	if(href_list["factory_reset"])
 		if(alert(usr, "Really reset everything?", "Factory Reset Confirmation", "No", "Yes") == "No")
 			return
 		factory_reset()
-		to_chat(usr, span("notice", "All settings on \the [src] have been reset."))
+		to_chat(usr, SPAN("notice", "All settings on \the [src] have been reset."))
 
 	interact(usr) // To refresh the UI.

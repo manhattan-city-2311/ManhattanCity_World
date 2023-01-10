@@ -153,18 +153,18 @@
 	..()
 	if(linked_pod)
 		if(linked_pod.z != 4)
-			to_chat(user, span("warning", "The linked ballistic transportation pod is already in the area and cannot be recalled!"))
+			to_chat(user, SPAN("warning", "The linked ballistic transportation pod is already in the area and cannot be recalled!"))
 			playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 			return 0
 		else
 			var/turf/T = get_turf(user)
-			to_chat(user, span("notice", "Your ballistic transportation pod will arrive in approximately 20 seconds."))
+			to_chat(user, SPAN("notice", "Your ballistic transportation pod will arrive in approximately 20 seconds."))
 			spawn(rand(150,250)) //15-20 seconds to arrive
 			playsound(user.loc, 'sound/effects/shuttles/hyperspace_end.ogg', 50, 1)
 			linked_pod.forceMove(T)
 			return 1
 	else
-		to_chat(user, span("warning", "Your [src] does not have a linked transportation pod!"))
+		to_chat(user, SPAN("warning", "Your [src] does not have a linked transportation pod!"))
 		return 0
 
 /obj/item/weapon/device/pod_recaller/president/New()

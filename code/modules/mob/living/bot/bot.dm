@@ -241,7 +241,7 @@
 	return
 
 /mob/living/bot/proc/getPatrolTurf()
-	var/minDist = INFINITY
+	var/minDist = POSITIVE_INFINITY
 	var/obj/machinery/navbeacon/targ = locate() in get_turf(src)
 
 	if(!targ)

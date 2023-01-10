@@ -121,7 +121,7 @@
 			if(get_paperwork_access(T, I))
 				available_paperwork += T.name
 
-		if(isemptylist(available_paperwork))
+		if(LAZYLEN(available_paperwork))
 			to_chat(user, "No templates currently found under \"[category]\" - this may also be due to your access.")
 			return
 

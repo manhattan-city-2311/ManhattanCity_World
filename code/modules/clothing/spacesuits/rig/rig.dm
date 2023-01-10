@@ -340,54 +340,6 @@
 		else
 			piece.item_flags |=  (STOPPRESSUREDAMAGE|AIRTIGHT)
 
-/obj/item/weapon/rig/ui_action_click()
-	toggle_cooling(usr)
-
-/obj/item/weapon/rig/proc/toggle_cooling(var/mob/user)
-	if(cooling_on)
-		turn_cooling_off(user)
-	else
-		turn_cooling_on(user)
-
-/obj/item/weapon/rig/proc/turn_cooling_on(var/mob/user)
-	if(!cell)
-		return
-	if(cell.charge <= 0)
-		to_chat(user, "<span class='notice'>\The [src] has no power!.</span>")
-		return
-	if(!suit_is_deployed())
-		to_chat(user, "<span class='notice'>The hardsuit needs to be deployed first!.</span>")
-		return
-
-	cooling_on = 1
-	to_chat(usr, "<span class='notice'>You switch \the [src]'s cooling system on.</span>")
-
-
-/obj/item/weapon/rig/proc/turn_cooling_off(var/mob/user, var/failed)
-	if(failed) visible_message("\The [src]'s cooling system clicks and whines as it powers down.")
-	else to_chat(usr, "<span class='notice'>You switch \the [src]'s cooling system off.</span>")
-	cooling_on = 0
-
-/obj/item/weapon/rig/proc/get_environment_temperature()
-	if (ishuman(loc))
-		var/mob/living/carbon/human/H = loc
-		if(istype(H.loc, /obj/mecha))
-			var/obj/mecha/M = H.loc
-			return M.return_temperature()
-		else if(istype(H.loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			var/obj/machinery/atmospherics/unary/cryo_cell/cryo = H.loc
-			return cryo.air_contents.temperature
-
-	var/turf/T = get_turf(src)
-	if(istype(T, /turf/space))
-		return 0	//space has no temperature, this just makes sure the cooling unit works in space
-
-	var/datum/gas_mixture/environment = T.return_air()
-	if (!environment)
-		return 0
-
-	return environment.temperature
-
 /obj/item/weapon/rig/proc/attached_to_back(mob/M)
 	if (!ishuman(M))
 		return 0
@@ -399,36 +351,6 @@
 
 	return 1
 
-/obj/item/weapon/rig/proc/coolingProcess()
-	if (!cooling_on || !cell)
-		return
-
-	if (!ismob(loc))
-		return
-
-	if (!attached_to_back(loc))		//make sure the rig's not just in their hands
-		return
-
-	if (!suit_is_deployed())		//inbuilt systems only work on the suit they're designed to work on
-		return
-
-	var/mob/living/carbon/human/H = loc
-
-	var/env_temp = get_environment_temperature()		//wont save you from a fire
-	var/temp_adj = min(H.bodytemperature - max(thermostat, env_temp), max_cooling)
-
-	if (temp_adj < 0.5)	//only cools, doesn't heat, also we don't need extreme precision
-		return
-
-	var/charge_usage = (temp_adj/max_cooling)*charge_consumption
-
-	H.bodytemperature -= temp_adj
-
-	cell.use(charge_usage)
-
-	if(cell.charge <= 0)
-		turn_cooling_off(H, 1)
-
 /obj/item/weapon/rig/process()
 	// If we've lost any parts, grab them back.
 	var/mob/living/M
@@ -438,8 +360,6 @@
 				M = piece.loc
 				M.unEquip(piece)
 			piece.forceMove(src)
-	// Run through cooling
-	coolingProcess()
 
 	if(!istype(wearer) || loc != wearer || wearer.back != src || canremove || !cell || cell.charge <= 0)
 		if(!cell || cell.charge <= 0)
@@ -541,7 +461,7 @@
 
 	data["charge"] =       cell ? round(cell.charge,1) : 0
 	data["maxcharge"] =    cell ? cell.maxcharge : 0
-	data["chargestatus"] = cell ? Floor((cell.charge/cell.maxcharge)*50) : 0
+	data["chargestatus"] = cell ? floor((cell.charge/cell.maxcharge)*50) : 0
 
 	data["emagged"] =       subverted
 	data["coverlock"] =     locked

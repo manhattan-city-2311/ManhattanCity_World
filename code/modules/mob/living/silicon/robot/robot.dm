@@ -676,7 +676,7 @@
 
 //Robots take half damage from basic attacks.
 /mob/living/silicon/robot/attack_generic(var/mob/user, var/damage, var/attack_message)
-	return ..(user,Floor(damage/2),attack_message)
+	return ..(user,floor(damage/2),attack_message)
 
 /mob/living/silicon/robot/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
@@ -1006,11 +1006,7 @@
 	return 0
 
 /mob/living/silicon/robot/binarycheck()
-	if(is_component_functioning("comms"))
-		var/datum/robot_component/RC = get_component("comms")
-		use_power(RC.active_usage)
-		return 1
-	return 0
+	return is_component_functioning("comms")
 
 /mob/living/silicon/robot/proc/notify_ai(var/notifytype, var/first_arg, var/second_arg)
 	if(!connected_ai)

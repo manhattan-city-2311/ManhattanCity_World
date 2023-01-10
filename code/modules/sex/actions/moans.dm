@@ -30,7 +30,7 @@
 				return msgs1
 			if(FEMALE_NO_AROUSAL to FEMALE_MEDIUM_AROUSAL)
 				return msgs2
-			if(FEMALE_MEDIUM_AROUSAL to INFINITY)
+			if(FEMALE_MEDIUM_AROUSAL to POSITIVE_INFINITY)
 				return msgs3
 	else
 		switch(user1.pleasure)
@@ -38,5 +38,5 @@
 				return msgs1
 			if(MALE_NO_AROUSAL to MALE_MEDIUM_AROUSAL)
 				return msgs2
-			if(MALE_MEDIUM_AROUSAL to INFINITY)
+			if(MALE_MEDIUM_AROUSAL to POSITIVE_INFINITY)
 				return msgs3

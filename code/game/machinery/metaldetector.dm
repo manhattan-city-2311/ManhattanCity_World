@@ -75,12 +75,12 @@ GLOBAL_LIST_INIT(metal_detector_items, typecacheof(list(
 			break
 
 /obj/machinery/metal_detector/proc/trigger_alarm(mob/M)
-	use_power(100)
+	//use_power(100)
 	flick("metal_detector_anim", src)
 	visible_message("<span class='danger'>\The [src] sends off an alarm!</span>")
 	playsound(src, 'sound/machines/alarm4.ogg', 60, 1)
 
-	if(declare_radio && !isemptylist(radio_departments))
+	if(declare_radio && !LAZYLEN(radio_departments))
 		if(get_game_time() > next_announcement_time)
 			for(var/V in radio_departments)
 				global_announcer.autosay("<b>[src]</b> alarm: Potentially unauthorized object found on <b>[M]</b> in <b>[get_area(src)]</b>.", "[src]", V)

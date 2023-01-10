@@ -258,7 +258,7 @@ SUBSYSTEM_DEF(timer)
 	if (!length(alltimers))
 		return
 
-	sortTim(alltimers, .proc/cmp_timer)
+	sortTim(alltimers, GLOBAL_PROC_REF(cmp_timer))
 
 	var/datum/timedevent/head = alltimers[1]
 
@@ -466,8 +466,8 @@ SUBSYSTEM_DEF(timer)
 
 	wait = max(CEILING(wait, world.tick_lag), world.tick_lag)
 
-	if(wait >= INFINITY)
-		CRASH("Attempted to create timer with INFINITY delay")
+	if(wait >= POSITIVE_INFINITY)
+		CRASH("Attempted to create timer with POSITIVE_INFINITY delay")
 
 	var/hash
 

@@ -192,14 +192,14 @@
 /mob/proc/reset_view(atom/A)
 	if (client)
 		if (istype(A, /atom/movable))
-			client.perspective = EYE_PERSPECTIVE | EDGE_PERSPECTIVE
+			client.perspective = EYE_PERSPECTIVE
 			client.eye = A
 		else
 			if (isturf(loc))
 				client.eye = client.mob
-				client.perspective = MOB_PERSPECTIVE | EDGE_PERSPECTIVE
+				client.perspective = MOB_PERSPECTIVE
 			else
-				client.perspective = EYE_PERSPECTIVE | EDGE_PERSPECTIVE
+				client.perspective = EYE_PERSPECTIVE
 				client.eye = loc
 	return
 
@@ -695,15 +695,13 @@
 
 /mob/Stat()
 	..()
-	. = (is_client_active(10 MINUTES))
+	. = (is_client_active(2 MINUTES))
 
 	if(.)
 		if(statpanel("Status") && ticker && ticker.current_state != GAME_STATE_PREGAME)
 			stat("Current Time", stationtime2text())
 			stat("Current Date", stationdate2text())
 			stat("Round Duration", roundduration2text())
-			stat("Round Persistence:", "[config.canonicity ? "Canon" : "Non-Canon"]")
-			stat("Game ID:", "[game_id]")
 
 		if(client.holder)
 			if(statpanel("Status"))
@@ -752,6 +750,8 @@
 						if(is_type_in_list(A, shouldnt_see))
 							continue
 						stat(A)
+	else
+		stat("AFK")
 
 
 // facing verbs

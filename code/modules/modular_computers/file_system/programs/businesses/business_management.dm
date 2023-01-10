@@ -382,7 +382,7 @@
 	if(!biz_mgr)
 		return
 
-	to_chat(usr, span("notice", "Printing transaction balance..."))
+	to_chat(usr, SPAN("notice", "Printing transaction balance..."))
 
 	var/datum/department/biz_dept = dept_by_id(biz_mgr.selected_business.department)
 	if(!biz_dept || !biz_dept.bank_account)
@@ -821,7 +821,7 @@
 			reg_error = "A password is required!"
 			return
 
-		if(isemptylist(b_categories) || !b_categories )
+		if(LAZYLEN(b_categories) || !b_categories )
 			reg_error = "You must select at least one category!"
 			return
 
@@ -1199,7 +1199,7 @@
 				if(!current_business || !job)
 					return
 
-				if(isemptylist(current_business.business_accesses))
+				if(LAZYLEN(current_business.business_accesses))
 					error_msg = "No access data found - please make new accesses from the access panel."
 					return
 
@@ -1209,7 +1209,7 @@
 						continue
 					access_add += A.desc
 
-				if(isemptylist(access_add))
+				if(LAZYLEN(access_add))
 					error_msg = "You currently don't have any more accesses to add to this job."
 					return
 

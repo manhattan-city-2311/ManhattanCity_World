@@ -92,7 +92,7 @@
 			H.custom_pain("You feel a light pain in your head.",0)
 		if(11 to 30)
 			H.custom_pain("You feel a throbbing pain in your head!",1)
-		if(31 to INFINITY)
+		if(31 to POSITIVE_INFINITY)
 			H.custom_pain("You feel an excrutiating pain in your head!",1)
 
 // BAD STOMACH
@@ -109,7 +109,7 @@
 			H.custom_pain("You feel a bit light around the stomach.",0)
 		if(11 to 30)
 			H.custom_pain("Your stomach hurts.",0)
-		if(31 to INFINITY)
+		if(31 to POSITIVE_INFINITY)
 			H.custom_pain("You feel sick.",1)
 
 // CRAMPS
@@ -126,7 +126,7 @@
 			H.custom_pain("The muscles in your body hurt a little.",0)
 		if(11 to 30)
 			H.custom_pain("The muscles in your body cramp up painfully.",0)
-		if(31 to INFINITY)
+		if(31 to POSITIVE_INFINITY)
 			H.emote("me",1,"flinches as all the muscles in their body cramp up.")
 			H.custom_pain("There's pain all over your body.",1)
 
@@ -144,6 +144,6 @@
 			H.custom_pain("You feel a slight itch.",0)
 		if(11 to 30)
 			H.custom_pain("You want to scratch your itch badly.",0)
-		if(31 to INFINITY)
+		if(31 to POSITIVE_INFINITY)
 			H.emote("me",1,"shivers slightly.")
 			H.custom_pain("This itch makes it really hard to concentrate.",1)

@@ -703,7 +703,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			owner.bloodstr.add_reagent("potassium_hormone", 0.3)
 		if(INFECTION_LEVEL_THREE to INFECTION_LEVEL_MAX)
 			owner.bloodstr.add_reagent("potassium_hormone", 0.9)
-		if(INFECTION_LEVEL_MAX to INFINITY)
+		if(INFECTION_LEVEL_MAX to POSITIVE_INFINITY)
 			owner.bloodstr.add_reagent("potassium_hormone", 2.5)
 
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
@@ -1257,7 +1257,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			switch(brute_dam)
 				if(0 to 20)
 					. += "some [LL ? "cuts" : "dents"]"
-				if(21 to INFINITY)
+				if(21 to POSITIVE_INFINITY)
 					. += "[LL ? pick("exposed wiring","torn-back synthflesh") : pick("a lot of dents","severe denting")]"
 
 		if(brute_dam && burn_dam)
@@ -1267,7 +1267,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			switch(burn_dam)
 				if(0 to 20)
 					. += "some burns"
-				if(21 to INFINITY)
+				if(21 to POSITIVE_INFINITY)
 					. += "[LL ? pick("roasted synth-flesh","melted internal wiring") : pick("many burns","scorched metal")]"
 
 		if(open)
@@ -1320,7 +1320,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 					flavor_text += "[prob(10) && !(wound in no_exclude) ? "what might be " : ""]a pair of [wound]s"
 				if(3 to 5)
 					flavor_text += "several [wound]s"
-				if(6 to INFINITY)
+				if(6 to POSITIVE_INFINITY)
 					flavor_text += "a ton of [wound]\s"
 		return english_list(flavor_text)
 

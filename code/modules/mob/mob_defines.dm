@@ -5,7 +5,7 @@
 	animate_movement = 2
 	flags = PROXMOVE
 	vis_flags = VIS_INHERIT_DIR
-	appearance_flags = DEFAULT_APPEARANCE | TILE_MOVER | KEEP_TOGETHER
+	appearance_flags = DEFAULT_APPEARANCE | KEEP_TOGETHER
 	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	var/datum/mind/mind
 

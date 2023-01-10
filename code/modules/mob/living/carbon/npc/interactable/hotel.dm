@@ -65,35 +65,11 @@
 			if(L["number"] != number)
 				continue
 			if(L["selled"])
-				return 
-			var/price = L["price"]
-
-			var/avail = H.get_available_money()
-			var/obj/item/weapon/card/debit/C = H.get_active_hand()
-			if(istype(C))
-				avail += C.get_account().money
-			else
-				C = null
-
-			if(avail < price)
-				to_chat(usr, "Not enough cash!")
 				return
 
-			var/from_card = min(price, C?.get_account().money)
-			var/from_cash = price - from_card
-
-			if(from_card > 0)
-				if(C.get_account().suspended)
-					to_chat(usr, "Your account was suspended")
-					return
-
-				C.get_account().add_transaction_log(transaction_owner, number, -price, "Hotel terminal")
-				C.get_account().money -= from_card
-
 			var/nL = get_step(loc, dir)
-
-			if(from_cash > 0)
-				H.take_cash(from_cash, nL)
+			if(!H.take_money(L["price"], nL, department, transaction_owner, number, "Receptionist in [get_area(src)]"))
+				return
 
 			var/ptype = L["type"]
 			var/key_item = new ptype(nL)
@@ -101,7 +77,3 @@
 			L["selled"] = TRUE
 
 			H.put_in_hands(key_item)
-
-			if(department)
-				var/datum/money_account/department/D = department.bank_account
-				D.add_transaction_log(D.owner_name, number, "([price])", "Receptionist in [get_area(src)]")

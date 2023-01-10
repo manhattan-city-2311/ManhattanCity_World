@@ -71,7 +71,7 @@
 
 /obj/effect/map/ship/proc/get_brake_path()
 	if(!get_acceleration())
-		return INFINITY
+		return POSITIVE_INFINITY
 	return get_speed()/get_acceleration()
 
 /obj/effect/map/ship/proc/decelerate()

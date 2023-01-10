@@ -28,7 +28,7 @@
 	return price
 
 /obj/item/weapon/redemption_box/proc/unlock_box()
-	visible_message(span("notice", "<b>[src]</b> beeps, \"Unlocking...Now extracting contents.\""))
+	visible_message(SPAN("notice", "<b>[src]</b> beeps, \"Unlocking...Now extracting contents.\""))
 	playsound(src, 'sound/machines/chime.ogg', 25)
 	for(var/obj/O in get_saveable_contents())
 		O.forceMove(get_turf(src))
@@ -51,16 +51,16 @@
 	var/obj/item/weapon/card/id/I = W.GetID()
 
 	if (!istype(W, /obj/item/weapon/card/id))
-		to_chat(user, span("warning", "You need to scan your ID in order to pay for this item."))
+		to_chat(user, SPAN("warning", "You need to scan your ID in order to pay for this item."))
 		return
 
 	var/datum/money_account/customer_account = get_account(I.associated_account_number)
 	if(!customer_account)
-		visible_message(span("warning", "Error: Unable to access bank account details from this card, please try again."))
+		visible_message(SPAN("warning", "Error: Unable to access bank account details from this card, please try again."))
 		return
 
 	if(customer_account.suspended)
-		visible_message(span("notice", "Unable to access account: account suspended."))
+		visible_message(SPAN("notice", "Unable to access account: account suspended."))
 		return
 
 	// Have the customer punch in the PIN before checking if there's enough money. Prevents people from figuring out acct is
@@ -74,7 +74,7 @@
 			return
 
 	if(price > customer_account.money)
-		visible_message(span("warning", "Insufficient funds in account."))
+		visible_message(SPAN("warning", "Insufficient funds in account."))
 		return
 
 	// debit money from the purchaser's account

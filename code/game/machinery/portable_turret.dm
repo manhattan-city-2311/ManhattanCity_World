@@ -210,7 +210,7 @@ var/list/turret_icons
 	if(stat & BROKEN)
 		icon_state = "destroyed_target_prism"
 	else if(raised || raising)
-		if(powered() && enabled)
+		if(enabled)
 			if(iconholder)
 				//lasers have a orange icon
 				icon_state = "[icon_color]_target_prism"
@@ -317,13 +317,8 @@ var/list/turret_icons
 		return 1
 
 /obj/machinery/porta_turret/power_change()
-	if(powered())
-		stat &= ~NOPOWER
-		update_icon()
-	else
-		spawn(rand(0, 15))
-			stat |= NOPOWER
-			update_icon()
+	stat &= ~NOPOWER
+	update_icon()
 
 
 /obj/machinery/porta_turret/attackby(obj/item/I, mob/user)
@@ -531,7 +526,7 @@ var/list/turret_icons
 					popDown() // no valid targets, close the cover
 
 	if(auto_repair && (health < maxhealth))
-		use_power(20000)
+		//use_power(20000)
 		health = min(health+1, maxhealth) // 1HP for 20kJ
 
 /obj/machinery/porta_turret/proc/assess_and_assign(var/mob/living/L, var/list/targets, var/list/secondarytargets)
@@ -703,7 +698,7 @@ var/list/turret_icons
 
 	// Lethal/emagged turrets use twice the power due to higher energy beams
 	// Emagged turrets again use twice as much power due to higher firing rates
-	use_power(reqpower * (2 * (emagged || lethal)) * (2 * emagged))
+	//use_power(reqpower * (2 * (emagged || lethal)) * (2 * emagged))
 
 	//Turrets aim for the center of mass by default.
 	//If the target is grabbing someone then the turret smartly aims for extremities

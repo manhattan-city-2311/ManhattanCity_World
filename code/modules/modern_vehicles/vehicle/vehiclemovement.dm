@@ -10,7 +10,7 @@
 
 	update_angle_vector()
 	speed = angle_vector * speed.modulus()
-	update_object_sprites()
+	update_icon()
 
 /obj/manhattan/vehicle/var/next_steering_input = 0
 /obj/manhattan/vehicle/var/next_strafe_input = 0
@@ -30,7 +30,7 @@
 	if(movement_destroyed)
 		to_chat(user, SPAN_NOTICE("[src] is in no state to move!"))
 		return 0
-	
+
 	if(!(user.client.mod_keys_held & ALT_KEY))
 		if(user.client.move_keys_held & EAST_KEY)
 			handle_turning(1)
@@ -49,12 +49,12 @@
 			direction = -1
 		else
 			return 1
-		var/vector2/temp = vector2_from_angle(round(90 - (angle + 90 * direction), 90))
+		var/vector2/temp = vector2_from_angle(round(90 - (angle + 90 * direction), 90)) * WORLD_ICON_SIZE
 		temp.round_components(1)
 
-		move_helper2(temp.x, temp.y, update_dir = FALSE)
+		move_helper(temp.x, temp.y, update_dir = FALSE)
 
-		next_strafe_input = world.time + 5
+		next_strafe_input = world.time + 2
 	return 1
 
 /obj/manhattan/vehicle/proc/handle_input()
@@ -101,6 +101,16 @@
 		else
 			engine.rpm += rpm_add
 
+	var/max_F = weight / delta
+	if(get_transfer_case() != TRANSFER_CASE_AWD)
+		max_F /= 2
+
+	skid = !ISINRANGE(F, -max_F, max_F)
+	if(skid)
+		var/nF = clamp(F, -max_F, max_F)
+		skid = (F - nF) * delta
+		F = nF
+
 	acceleration = angle_vector * F
 
 	acceleration -= speed * (speed.modulus() * aerodynamics_coefficent + traction_coefficent)
@@ -108,7 +118,7 @@
 	speed += acceleration / weight * delta
 
 	if(is_brake_pressed)
-		var/force = get_braking_force() / weight
+		var/force = get_braking_force() / weight * delta * 10
 		speed.x = SIGN(speed.x) * max(abs(speed.x) - force, 0)
 		speed.y = SIGN(speed.y) * max(abs(speed.y) - force, 0)
 		update_occupants_eye_offsets()
@@ -117,25 +127,29 @@
 	if(abs(speed.angle() - angle_vector.angle()) > 1)
 		speed.rotate(closer_angle_difference(speed.angle(), angle_vector.angle()))
 
-	update_step_size()
-
 /obj/manhattan/vehicle/Move(newloc, newdir)
 	if(anchored)
-		anchored = 0
+		anchored = FALSE
 		. = ..()
-		anchored = 1
+		anchored = TRUE
 	else
 		. = ..()
-	update_object_sprites()
 
+/obj/manhattan/vehicle/var/last_collision = 0
 /obj/manhattan/vehicle/proc/collide_with_obstacle(atom/obstacle)
+	if(world.time < last_collision + 5)
+		return
+	last_collision = world.time
+
 	if(!obstacle.handle_vehicle_collision(src))
-		visible_message(SPAN_DANGER("[icon2html(src, viewers(get_turf(src)))]\the [src] collides with [obstacle]!"))
-	comp_prof.take_component_damage(speed.modulus() * 0.21, "brute")
+		visible_message(SPAN_DANGER("[icon2html(src, viewers(get_turf(src)) + contents)]\The [src] collides with [obstacle]!"))
+	comp_prof.take_component_damage(speed.modulus() * 0.5, BRUTE)
 
 	for(var/mob/living/carbon/human/H in occupants)
 		for(var/i in 1 to 5)
-			H.adjustBruteLoss(speed.modulus() * 0.0083)
+			H.adjustBruteLoss(speed.modulus() * 0.083)
+	if(components[VC_GEARBOX]?.get_ratio())
+		components[VC_ENGINE]?.stop()
 	speed.x = 0
 	speed.y = 0
 	step_x = 0
@@ -144,19 +158,15 @@
 	update_occupants_eye_offsets()
 
 /obj/manhattan/vehicle/Bump(atom/obstacle)
+	if(obstacle == src)
+		return
+
 	. = ..()
-	if(obstacle != src)
-		. = collide_with_obstacle(obstacle)
+	collide_with_obstacle(obstacle)
 
-/obj/manhattan/vehicle/var/last_movement
-
-/obj/manhattan/vehicle/proc/move_helper2(x_step, y_step, nstep_x = step_x, nstep_y = step_y, update_dir = TRUE)
-	if(last_movement)
-		update_glide(world.time - last_movement)
-	last_movement = world.time
-
+/obj/manhattan/vehicle/proc/move_helper3(x_step, y_step, nstep_x = step_x, nstep_y = step_y, update_dir = TRUE)
 	var/turf/newLoc = locate(x + x_step, y + y_step, z)
-	 // FIXME: FUCK FUCK FUCK SORRY
+	 // FIXME:
 	if(isopenspace(newLoc) && newLoc.below)
 		for(var/obj/structure/stairs/S in newLoc.below)
 			newLoc = newLoc.below
@@ -165,41 +175,42 @@
 		for(var/obj/structure/stairs/S in newLoc)
 			newLoc = newLoc.above
 			break
-	
+
 	Move(newLoc, update_dir ? get_dir(loc, newLoc) : dir, nstep_x, nstep_y)
 
-/obj/manhattan/vehicle/proc/move_helper(x_step, y_step)
-	if(!(x_step || y_step))
-		return
+// Tile step
+/obj/manhattan/vehicle/proc/move_helper2(x_step, y_step, nstep_x, nstep_y, update_dir = TRUE)
+	var/nstep_x1 = x_step ? (SIGN(nstep_x) * max(abs(nstep_x) - WORLD_ICON_SIZE, 0)) : nstep_x
+	var/nstep_y1 = y_step ? (SIGN(nstep_y) * max(abs(nstep_y) - WORLD_ICON_SIZE, 0)) : nstep_y
 
-	var/nstep_x = x_step ? (SIGN(step_x) * max(abs(step_x) - WORLD_ICON_SIZE, 0)) : step_x
-	var/nstep_y = y_step ? (SIGN(step_y) * max(abs(step_y) - WORLD_ICON_SIZE, 0)) : step_y 
+	move_helper3(x_step, y_step, nstep_x1, nstep_y1, update_dir = update_dir)
 
-	move_helper2(x_step, y_step, nstep_x, nstep_y)
+// Pixel step
+/obj/manhattan/vehicle/proc/move_helper(dx, dy, update_dir = TRUE)
+	var/nstep_x = step_x + dx
+	var/nstep_y = step_y + dy
 
-/obj/manhattan/vehicle/proc/process_movement(delta)
-	if(speed.modulus() < (delta / WORLD_ICON_SIZE))
-		return
+	var/x_step
+	var/y_step
 
-	var/x_step = 0
-	var/y_step = 0
-	var/dx = speed.x * WORLD_ICON_SIZE * delta
-	var/dy = speed.y * WORLD_ICON_SIZE * delta
-
-	if(abs(step_x + dx) >= WORLD_ICON_SIZE)
-		var/temp = step_x + dx
-		x_step += SIGN(temp)
-		step_x -= SIGN(temp) * WORLD_ICON_SIZE
-	else
-		step_x += dx
-
-	if(abs(step_y + dy) >= WORLD_ICON_SIZE)
-		var/temp = step_y + dy
-		y_step += SIGN(temp)
-		step_y -= SIGN(temp) * WORLD_ICON_SIZE
-	else
-		step_y += dy
+	if(abs(nstep_x) > WORLD_ICON_SIZE)
+		x_step += REMOVE_FRAC(nstep_x / WORLD_ICON_SIZE)
+	if(abs(nstep_y) > WORLD_ICON_SIZE)
+		y_step += REMOVE_FRAC(nstep_y / WORLD_ICON_SIZE)
 
 	update_occupants_eye_offsets()
 
-	move_helper(x_step, y_step)
+	move_helper2(x_step, y_step, nstep_x, nstep_y, update_dir = update_dir)
+
+/obj/manhattan/vehicle/update_glide()
+	. = ..()
+	for(var/mob/M in contents)
+		M.client?.glide_size = glide_size
+
+/obj/manhattan/vehicle/proc/process_movement(delta)
+	if(speed.modulus() == 0)
+		return
+
+	update_glide(max(world.tick_lag, 10 / speed.modulus()))
+	update_step_size()
+	move_helper(speed.x * WORLD_ICON_SIZE * delta, speed.y * WORLD_ICON_SIZE * delta)

@@ -290,7 +290,7 @@
 			return
 
 	else
-		if(!isemptylist(src.search_contents_for(/obj/item/weapon/disk/nuclear)))
+		if(!LAZYLEN(src.search_contents_for(/obj/item/weapon/disk/nuclear)))
 			to_chat(user,"You get the feeling that you shouldn't cremate one of the items in the cremator.")
 			return
 

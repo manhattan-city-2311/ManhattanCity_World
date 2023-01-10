@@ -13,5 +13,4 @@
 	return R
 
 /decl/crafting_recipe/energy_main_part/can_be_crafted(mob/M, obj/item/stack/material/steel/item1, atom/item2)
-	if(item1.amount < 5)
-		return FALSE
+	return ..() && (item1.amount < 5)

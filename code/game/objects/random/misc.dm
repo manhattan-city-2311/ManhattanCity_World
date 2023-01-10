@@ -303,22 +303,6 @@
 				/obj/item/stack/rods{amount = 10},
 				/obj/item/stack/material/plasteel{amount = 10})
 
-/obj/random/tank
-	name = "random tank"
-	desc = "This is a tank."
-	icon = 'icons/obj/tank.dmi'
-	icon_state = "canister"
-
-/obj/random/tank/item_to_spawn()
-	return pick(prob(5);/obj/item/weapon/tank/oxygen,
-				prob(4);/obj/item/weapon/tank/oxygen/yellow,
-				prob(4);/obj/item/weapon/tank/oxygen/red,
-				prob(3);/obj/item/weapon/tank/air,
-				prob(4);/obj/item/weapon/tank/emergency/oxygen,
-				prob(3);/obj/item/weapon/tank/emergency/oxygen/engi,
-				prob(2);/obj/item/weapon/tank/emergency/oxygen/double,
-				prob(1);/obj/item/device/suit_cooling_unit)
-
 /obj/random/cigarettes
 	name = "random cigarettes"
 	desc = "This is a cigarette."

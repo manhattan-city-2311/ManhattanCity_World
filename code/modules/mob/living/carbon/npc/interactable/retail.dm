@@ -64,38 +64,8 @@
 		var/key = href_list["buy"]
 		for(var/list/L in products)
 			if(L["key"] != key)
-				continue
-			var/price = L["price"]
-
-			var/avail = H.get_available_money()
-			var/obj/item/weapon/card/debit/C = H.get_active_hand()
-			if(istype(C))
-				avail += C.get_account().money
-			else
-				C = null
-
-			if(avail < price)
-				to_chat(usr, "Not enough cash!")
+				continue	
+			if(H.take_money(L["price"], get_step(loc, dir), department, transaction_owner, L["name"]))
+				var/ptype = L["type"]
+				give_item(H, new ptype(get_step(loc, dir)))
 				return
-
-			var/nL = get_step(loc, dir)
-
-			var/from_card = min(price, C?.get_account().money)
-			var/from_cash = price - from_card
-
-			if(from_card > 0)
-				if(C.get_account().suspended)
-					to_chat(usr, "Your account was suspended")
-					return
-
-				C.get_account().add_transaction_log(transaction_owner, L["name"], -price, "Retail terminal")
-				C.get_account().money -= from_card
-			if(from_cash > 0)
-				H.take_cash(from_cash, nL)
-
-			var/ptype = L["type"]
-			give_item(H, new ptype(nL))
-
-			if(department)
-				var/datum/money_account/department/D = department.bank_account
-				D.add_transaction_log(D.owner_name, L["name"], "([price])", "Retailer in [get_area(src)]")

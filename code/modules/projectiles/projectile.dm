@@ -351,7 +351,7 @@
 				step_delay = 3
 			if(21 to 30)
 				step_delay = 2
-			if(30 to INFINITY)
+			if(30 to POSITIVE_INFINITY)
 				step_delay = 1
 
 		if((!( current ) || loc == current))

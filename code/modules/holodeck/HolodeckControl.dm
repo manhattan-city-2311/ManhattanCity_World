@@ -218,7 +218,7 @@
 	if(!..())
 		return
 	if(active)
-		use_power(item_power_usage * (holographic_objs.len + holographic_mobs.len))
+		//use_power(item_power_usage * (holographic_objs.len + holographic_mobs.len))
 
 		if(!checkInteg(linkedholodeck))
 			damaged = 1

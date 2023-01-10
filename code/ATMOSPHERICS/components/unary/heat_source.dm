@@ -71,7 +71,7 @@
 
 	if(network && air_contents.total_moles && air_contents.temperature < set_temperature)
 		air_contents.add_thermal_energy(power_rating * HEATER_PERF_MULT)
-		use_power(power_rating)
+		//use_power(power_rating)
 
 		heating = 1
 		network.update = 1

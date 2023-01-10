@@ -348,11 +348,14 @@
 
 /obj/screen/click_catcher/Click(location, control, params)
 	var/list/modifiers = params2list(params)
-	if(modifiers["middle"] && istype(usr, /mob/living/carbon))
+	if(modifiers["middle"] && iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		C.swap_hand()
 	else
-		var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr))
+		var/turf/origin = get_turf(usr)
+		if(!isturf(origin))
+			return
+		var/turf/T = params2turf(modifiers["screen-loc"], origin)
 		if(T)
 			T.Click(location, control, params)
 	. = 1

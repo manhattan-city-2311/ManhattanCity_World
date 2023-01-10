@@ -132,7 +132,7 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 						success = TRUE
 						break
 				if(!success)
-					to_chat(L, span("warning", "You need wirecutters!"))
+					to_chat(L, SPAN("warning", "You need wirecutters!"))
 
 			else if(href_list["pulse"])
 				for(var/obj/item/I in items)
@@ -143,7 +143,7 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 						success = TRUE
 						break
 				if(!success)
-					to_chat(L, span("warning", "You need a multitool!"))
+					to_chat(L, SPAN("warning", "You need a multitool!"))
 
 			else if(href_list["attach"])
 				var/colour = href_list["attach"]
@@ -160,7 +160,7 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 						L.drop_from_inventory(S)
 						Attach(colour, S)
 					else
-						to_chat(L, span("warning", "You need a remote signaller!"))
+						to_chat(L, SPAN("warning", "You need a remote signaller!"))
 
 
 

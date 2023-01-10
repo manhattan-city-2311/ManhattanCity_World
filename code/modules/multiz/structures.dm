@@ -51,7 +51,7 @@
 			attack_hand(user)
 			return
 		else if(G.state < GRAB_AGGRESSIVE)
-			to_chat(user, span("warning", "You need a better grab on [grabbed] to climb the ladder with them!"))
+			to_chat(user, SPAN("warning", "You need a better grab on [grabbed] to climb the ladder with them!"))
 			return
 		else
 			attack_hand(user, grabbed)

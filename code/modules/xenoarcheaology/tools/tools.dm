@@ -250,7 +250,7 @@
 				icon_state = "pinonclose"
 			if(11 to 30)
 				icon_state = "pinonmedium"
-			if(31 to INFINITY)
+			if(31 to POSITIVE_INFINITY)
 				icon_state = "pinonfar"
 	else
 		if(scan_ticks)

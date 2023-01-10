@@ -94,17 +94,11 @@
 			src.occupant_message("Unable to move while in zoom mode.")
 			last_message = world.time
 		return 0
-	if(connected_port)
-		if(world.time - last_message > 20)
-			src.occupant_message("Unable to move while connected to the air system port")
-			last_message = world.time
-		return 0
 	if(!thrusters && src.pr_inertial_movement.active())
 		return 0
 	if(state || !has_charge(step_energy_drain))
 		return 0
 	var/tmp_step_in = step_in
-	var/tmp_step_energy_drain = step_energy_drain
 	var/move_result = 0
 	if(internal_damage&MECHA_INT_CONTROL_LOST)
 		move_result = mechsteprand()
@@ -118,11 +112,9 @@
 				src.pr_inertial_movement.start(list(src,direction))
 				if(thrusters)
 					src.pr_inertial_movement.set_process_args(list(src,direction))
-					tmp_step_energy_drain = step_energy_drain*2
 
 		can_move = 0
 		spawn(tmp_step_in) can_move = 1
-		use_power(tmp_step_energy_drain)
 		return 1
 	return 0
 

@@ -314,7 +314,7 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 				//actual products
 				dat += "<div class='statusDisplay'>"
 
-				if(isemptylist(stored_products))
+				if(LAZYLEN(stored_products))
 					dat += "No products found."
 				else
 					for(var/obj/O in stored_products)
@@ -526,7 +526,7 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 		to_chat(user, "You were unable to load the item into [name].")
 		return
 
-	if(!isemptylist(stored_products))
+	if(!LAZYLEN(stored_products))
 		if((stored_products.len + 1) > max_items)
 			to_chat(user, "You may have no more than [max_items] in your display case.")
 			return
@@ -721,7 +721,7 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 		if(!maint_mode)
 			return
 
-		if(!isemptylist(stored_products))
+		if(!LAZYLEN(stored_products))
 			alert("All items must be removed from the machine before this can take place.")
 			return
 

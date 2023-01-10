@@ -47,10 +47,6 @@ obj/machinery/recharger
 		if(charging)
 			to_chat(user, "<span class='warning'>\A [charging] is already charging here.</span>")
 			return
-		// Checks to make sure he's not in space doing it, and that the area got proper power.
-		if(!powered())
-			to_chat(user, "<span class='warning'>The [name] blinks red as you try to insert the item!</span>")
-			return
 		if(istype(G, /obj/item/weapon/gun/energy))
 			var/obj/item/weapon/gun/energy/E = G
 			if(E.self_recharge)

@@ -47,7 +47,7 @@
 /obj/machinery/mass_driver/proc/drive(amount)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	use_power(500)
+	//use_power(500)
 	var/O_limit
 	var/atom/target = get_edge_target_turf(src, dir)
 	for(var/atom/movable/O in loc)
@@ -57,7 +57,7 @@
 				for(var/mob/M in hearers(src, null))
 					to_chat(M, "<span class='notice'>The mass driver lets out a screech, it mustn't be able to handle any more items.</span>")
 				break
-			use_power(500)
+			//use_power(500)
 			spawn(0)
 				O.throw_at(target, drive_range * power, power)
 	flick("mass_driver1", src)

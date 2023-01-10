@@ -1,6 +1,6 @@
 /atom/movable
 	layer = OBJ_LAYER
-	appearance_flags = DEFAULT_APPEARANCE | TILE_MOVER
+	appearance_flags = DEFAULT_APPEARANCE
 	var/last_move = null
 	var/anchored = 0
 	glide_size = 8

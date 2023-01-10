@@ -45,10 +45,10 @@
 
 	if(loc && !isturf(loc))
 		client.eye = loc
-		client.perspective = EYE_PERSPECTIVE | EDGE_PERSPECTIVE
+		client.perspective = EYE_PERSPECTIVE
 	else
 		client.eye = src
-		client.perspective = MOB_PERSPECTIVE | EDGE_PERSPECTIVE
+		client.perspective = MOB_PERSPECTIVE
 	reload_fullscreen() // Reload any fullscreen overlays this mob has.
 	add_click_catcher()
 	update_client_color()

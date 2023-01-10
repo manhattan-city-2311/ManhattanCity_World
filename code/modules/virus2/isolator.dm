@@ -16,16 +16,22 @@
 	var/obj/item/weapon/reagent_containers/syringe/sample = null
 
 /obj/machinery/disease2/isolator/update_icon()
+	overlays.Cut()
+	..()
+
 	if (stat & (BROKEN|NOPOWER))
-		icon_state = "isolator"
+		icon_state = "isolator_off"
 		return
 
 	if (isolating)
 		icon_state = "isolator_processing"
+		overlays += emissive_appearance(icon, "[icon_state]-emissive")
 	else if (sample)
 		icon_state = "isolator_in"
+		overlays += emissive_appearance(icon, "isolator-emissive")
 	else
 		icon_state = "isolator"
+		overlays += emissive_appearance(icon, "isolator-emissive")
 
 /obj/machinery/disease2/isolator/attackby(var/obj/O as obj, var/mob/user)
 	if(default_unfasten_wrench(user, O, 20))

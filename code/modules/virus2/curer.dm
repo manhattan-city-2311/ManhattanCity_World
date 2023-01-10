@@ -69,7 +69,7 @@
 
 	if(stat & (NOPOWER|BROKEN))
 		return
-	use_power(500)
+	//use_power(500)
 
 	if(curing)
 		curing -= 1

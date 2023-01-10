@@ -138,12 +138,3 @@ if(DATUM.is_processing) {\
 // Note - I would prefer these be defined machines.dm, but some are used prior in file order. ~Leshana
 #define START_MACHINE_PROCESSING(Datum) START_PROCESSING_IN_LIST(Datum, global.machines)
 #define STOP_MACHINE_PROCESSING(Datum) STOP_PROCESSING_IN_LIST(Datum, global.machines)
-
-#define START_PROCESSING_PIPENET(Datum) START_PROCESSING_IN_LIST(Datum, global.pipe_networks)
-#define STOP_PROCESSING_PIPENET(Datum) STOP_PROCESSING_IN_LIST(Datum, global.pipe_networks)
-
-#define START_PROCESSING_POWERNET(Datum) START_PROCESSING_IN_LIST(Datum, global.powernets)
-#define STOP_PROCESSING_POWERNET(Datum) STOP_PROCESSING_IN_LIST(Datum, global.powernets)
-
-#define START_PROCESSING_POWER_OBJECT(Datum) START_PROCESSING_IN_LIST(Datum, global.processing_power_items)
-#define STOP_PROCESSING_POWER_OBJECT(Datum) STOP_PROCESSING_IN_LIST(Datum, global.processing_power_items)

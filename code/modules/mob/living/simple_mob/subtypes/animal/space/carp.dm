@@ -38,7 +38,7 @@
 		var/mob/living/L = A
 		if(prob(knockdown_chance))
 			L.Weaken(3)
-			L.visible_message(span("danger", "\The [src] knocks down \the [L]!"))
+			L.visible_message(SPAN("danger", "\The [src] knocks down \the [L]!"))
 
 // Subtypes.
 
@@ -115,7 +115,7 @@
 
 // Called on death.
 /mob/living/simple_mob/animal/space/carp/holographic/proc/derez()
-	visible_message(span("notice", "\The [src] fades away!"))
+	visible_message(SPAN("notice", "\The [src] fades away!"))
 	qdel(src)
 
 /mob/living/simple_mob/animal/space/carp/holographic/gib()

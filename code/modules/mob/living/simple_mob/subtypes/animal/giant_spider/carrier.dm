@@ -32,15 +32,15 @@
 	return ..()
 
 /mob/living/simple_mob/animal/giant_spider/carrier/death()
-	visible_message(span("warning", "\The [src]'s abdomen splits as it rolls over, spiderlings crawling from the wound.") )
+	visible_message(SPAN("warning", "\The [src]'s abdomen splits as it rolls over, spiderlings crawling from the wound.") )
 	spawn(1)
 		var/list/new_spiders = list()
 		for(var/i = 1 to spiderling_count)
 			if(prob(swarmling_prob) && src)
 				var/mob/living/simple_mob/animal/giant_spider/swarmling = new swarmling_type(src.loc)
-				var/swarm_health = Floor(swarmling.maxHealth * 0.4)
-				var/swarm_dam_lower = Floor(melee_damage_lower * 0.4)
-				var/swarm_dam_upper = Floor(melee_damage_upper * 0.4)
+				var/swarm_health = floor(swarmling.maxHealth * 0.4)
+				var/swarm_dam_lower = floor(melee_damage_lower * 0.4)
+				var/swarm_dam_upper = floor(melee_damage_upper * 0.4)
 				swarmling.name = "spiderling"
 				swarmling.maxHealth = swarm_health
 				swarmling.health = swarm_health

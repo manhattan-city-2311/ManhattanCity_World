@@ -56,7 +56,7 @@
 
 		page_msg += text("<BR>\n<a href='?src=\ref[src];choice=criminal_record_add'>Add Criminal Record</a><br>")
 
-		if(!isemptylist(criminal_record))
+		if(!LAZYLEN(criminal_record))
 			for(var/datum/record/C in criminal_record)
 				page_msg += text("<BR>\n<a href='?src=\ref[src];choice=criminal_record_remove;criminal_record_r=\ref[C]'>(Remove)</a> <b>[C.name]</b>: [C.details] - [C.author] <i>([C.date_added])</i><br>")
 		else

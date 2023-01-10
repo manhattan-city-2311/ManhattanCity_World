@@ -64,8 +64,6 @@
 	src.add_fingerprint(usr)
 	src.updateUsrDialog()
 
-	return
-
 /**********************Mineral stacking unit**************************/
 
 
@@ -110,8 +108,6 @@
 		for (var/dir in cardinal)
 			src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 			if(src.output) break
-		return
-	return
 
 /obj/machinery/mineral/stacking_machine/process()
 	if (src.output && src.input)
@@ -136,6 +132,4 @@
 			stack_storage[sheet] -= stack_amt
 			S.update_icon()
 
-	console.updateUsrDialog()
-	return
-
+	console?.updateUsrDialog()

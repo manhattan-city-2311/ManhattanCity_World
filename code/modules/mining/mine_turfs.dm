@@ -205,7 +205,7 @@ var/list/mining_overlay_cache = list()
 	if(severity <= 2) // Now to expose the ore lying under the sand.
 		spawn(1) // Otherwise most of the ore is lost to the explosion, which makes this rather moot.
 			for(var/ore in resources)
-				var/amount_to_give = rand(Ceiling(resources[ore]/2), resources[ore])  // Should result in at least one piece of ore.
+				var/amount_to_give = rand(ceil(resources[ore]/2), resources[ore])  // Should result in at least one piece of ore.
 				for(var/i=1, i <= amount_to_give, i++)
 					var/oretype = ore_types[ore]
 					new oretype(src)
@@ -673,7 +673,7 @@ var/list/mining_overlay_cache = list()
 
 /turf/simulated/mining/stone/select_icon_state(seed)
 	icon_state = "[states[seed % states.len + 1]]_[substates[(seed + 7) % substates.len + 1]]"
-	
+
 /turf/simulated/mining/basalt
 	name = "basalt"
 	icon = 'icons/turf/outdoors.dmi'

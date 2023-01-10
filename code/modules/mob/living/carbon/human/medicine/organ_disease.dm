@@ -63,7 +63,7 @@
 	. += (owner.mcv < 500) * 2
 	. += pulse > 240
 	switch(owner.bloodstr.get_reagent_amount(CI_GLUCOSE))
-		if(-INFINITY to GLUCOSE_LEVEL_LCRITICAL)
+		if(NEGATIVE_INFINITY to GLUCOSE_LEVEL_LCRITICAL)
 			. += 4
 		if(GLUCOSE_LEVEL_LCRITICAL to GLUCOSE_LEVEL_L2BAD)
 			. += 3
@@ -75,7 +75,7 @@
 	switch(plevel)
 		if(POTASSIUM_LEVEL_HBAD to POTASSIUM_LEVEL_HCRITICAL)
 			. += 1
-		if(POTASSIUM_LEVEL_HCRITICAL to INFINITY)
+		if(POTASSIUM_LEVEL_HCRITICAL to POSITIVE_INFINITY)
 			. += rand(1, ARRYTHMIA_SEVERITY_OVERWRITING)
 	. = max(0, .)
 

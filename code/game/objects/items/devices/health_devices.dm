@@ -76,7 +76,7 @@
 						found_reagents += R
 						continue
 
-	if(isemptylist(found_reagents) || obscure)
+	if(LAZYLEN(found_reagents) || obscure)
 		results = "<b>[M]:</b> No drugs found in bloodstream."
 	else
 		results = "<b>[M]:</b>"

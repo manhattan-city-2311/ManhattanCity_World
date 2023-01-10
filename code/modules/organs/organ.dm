@@ -51,7 +51,7 @@ var/list/organ_cache = list()
 	..(holder)
 
 	if(max_damage)
-		min_broken_damage = Floor(max_damage / 2)
+		min_broken_damage = floor(max_damage / 2)
 	else
 		max_damage = min_broken_damage * 2
 
@@ -192,7 +192,7 @@ var/list/organ_cache = list()
 						germ_level += rand(1,2)
 					if(201 to 500)
 						germ_level += rand(2,3)
-					if(501 to INFINITY)
+					if(501 to POSITIVE_INFINITY)
 						germ_level += rand(3,5)
 
 /obj/item/organ/proc/receive_chem(chemical as obj)
@@ -355,7 +355,7 @@ var/list/organ_cache = list()
 			. += "Septic II"
 		if(INFECTION_LEVEL_THREE + 200 to INFECTION_LEVEL_MAX)
 			. += "Septic III"
-		if(INFECTION_LEVEL_MAX to INFINITY)
+		if(INFECTION_LEVEL_MAX to POSITIVE_INFINITY)
 			. += "Gangrene"
 	if(rejecting)
 		. += "Genetic Rejection"

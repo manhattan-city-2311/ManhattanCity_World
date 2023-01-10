@@ -178,11 +178,6 @@
 	build_path = /obj/machinery/computer/aifixer
 	origin_tech = list(TECH_DATA = 3, TECH_BIO = 2)
 
-/obj/item/weapon/circuitboard/area_atmos
-	name = T_BOARD("area air control console")
-	build_path = /obj/machinery/computer/area_atmos
-	origin_tech = list(TECH_DATA = 2)
-
 /obj/item/weapon/circuitboard/rcon_console
 	name = T_BOARD("RCON remote control console")
 	build_path = /obj/machinery/computer/rcon

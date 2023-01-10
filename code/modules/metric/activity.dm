@@ -17,7 +17,7 @@
 				. -= round( (afk / 200), 1)
 			if(10 MINUTES to 30 MINUTES)
 				. -= round( (afk / 150), 1)
-			if(30 MINUTES to INFINITY) // They're probably not coming back if it's been 30 minutes.
+			if(30 MINUTES to POSITIVE_INFINITY) // They're probably not coming back if it's been 30 minutes.
 				. -= 100
 	. = max(. , 0) // No negative numbers, or else people could drag other, non-afk players down.
 

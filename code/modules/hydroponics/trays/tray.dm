@@ -553,11 +553,6 @@
 		check_health()
 
 	else if(mechanical && istype(O, /obj/item/weapon/wrench))
-
-		//If there's a connector here, the portable_atmospherics setup can handle it.
-		if(locate(/obj/machinery/atmospherics/portables_connector/) in loc)
-			return ..()
-
 		playsound(loc, O.usesound, 50, 1)
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
@@ -630,16 +625,10 @@
 		var/turf/T = loc
 		var/datum/gas_mixture/environment
 
-		var/environment_type
-		if(closed_system && (connected_port || holding) && air_contents)
-			environment = air_contents
-			environment_type = "connected"
-		else
-			if(istype(T))
-				environment = T.return_air()
-			if(!environment) //We're in a crate or nullspace, bail out.
-				return
-			environment_type = "surrounding"
+		if(istype(T))
+			environment = T.return_air()
+		if(!environment) //We're in a crate or nullspace, bail out.
+			return
 
 		var/light_string
 		if(closed_system && mechanical)
@@ -648,7 +637,7 @@
 			var/light_available = T.get_lumcount() * 5
 			light_string = "a light level of [light_available] lumens"
 
-		to_chat(usr, "The tray's sensor suite is reporting [light_string] and a temperature of [environment.temperature]K at [environment.return_pressure()] kPa in the [environment_type] environment")
+		to_chat(usr, "The tray's sensor suite is reporting [light_string]")
 
 /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid_verb()
 	set name = "Toggle Tray Lid"

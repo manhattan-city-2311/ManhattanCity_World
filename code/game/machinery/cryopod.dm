@@ -535,7 +535,7 @@
 	if(isliving(usr))
 		var/mob/living/L = usr
 		if(L.has_buckled_mobs())
-			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
+			to_chat(L, SPAN("warning", "You have other entities attached to yourself. Remove them first."))
 
 	visible_message("[usr] [on_enter_visible_message] [src].", 3)
 
@@ -626,7 +626,7 @@
 		if(alert(M,"Would you like to enter long-term storage?",,"Yes","No") == "Yes")
 			if(!M) return
 			if(!M.Adjacent(src))
-				to_chat(M, span("warning", "You are too far away from \the [src]!"))
+				to_chat(M, SPAN("warning", "You are too far away from \the [src]!"))
 				return
 			willing = 1
 	else

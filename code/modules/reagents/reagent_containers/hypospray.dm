@@ -61,14 +61,14 @@
 		return FALSE
 
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-	to_chat(user, span("notice", "You inject [H] with \the [src]."))
-	to_chat(H, span("notice", "You feel a tiny prick!"))
+	to_chat(user, SPAN("notice", "You inject [H] with \the [src]."))
+	to_chat(H, SPAN("notice", "You feel a tiny prick!"))
 
 	if(H.reagents)
 		var/contained = reagentlist()
 		var/trans = reagents.trans_to_mob(H, amount_per_transfer_from_this, CHEM_BLOOD)
 		add_attack_logs(user,H,"Injected with [src.name] containing [contained], trasferred [trans] units")
-		to_chat(user, span("notice", "[trans] units injected. [reagents.total_volume] units remaining in \the [src]."))
+		to_chat(user, SPAN("notice", "[trans] units injected. [reagents.total_volume] units remaining in \the [src]."))
 		return TRUE
 	return FALSE
 

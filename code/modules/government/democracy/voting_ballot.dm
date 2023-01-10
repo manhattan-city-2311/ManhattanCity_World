@@ -69,7 +69,7 @@
 				dat += "<br>It is currently campaign period. <i>No further registrations can be registered at this time.</i> Voting starts on the 21st to the 27th.<p>"
 
 				dat += "<h3>Currently Registered Candidates for [get_month_from_num(get_game_month())] [get_game_year()]:</h3><hr>"
-				if(!isemptylist(SSelections.political_candidates))
+				if(!LAZYLEN(SSelections.political_candidates))
 					for(var/datum/president_candidate/P in SSelections.political_candidates)
 						dat += "<b>[P.name]</b> - <i>[P.slogan]</i><p>"
 						dat += "<br>I will:</b> \"[P.pitch]\"<br><hr>"
@@ -79,7 +79,7 @@
 			else if( SSelections.is_voting_days(get_game_day()) )
 				dat += "<h3>List of Candidates for [get_month_from_num(get_game_month())] [get_game_year()]:</h3><hr>"
 
-				if(!isemptylist(SSelections.political_candidates))
+				if(!LAZYLEN(SSelections.political_candidates))
 					for(var/datum/president_candidate/P in SSelections.political_candidates)
 						dat += "<h4>[P.name]</h4> - <i>[P.slogan]</i><p>"
 						dat += "<b>I will:</b> \"[P.pitch]\"<br><hr>"

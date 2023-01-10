@@ -62,10 +62,7 @@
 	if(!istype(T))
 		return
 
-	if(!powered())
-		scrubber_icon += "off"
-	else
-		scrubber_icon += "[use_power ? "[scrubbing ? "on" : "in"]" : "off"]"
+	scrubber_icon += "[use_power ? "[scrubbing ? "on" : "in"]" : "off"]"
 
 	overlays += icon_manager.get_atmos_icon("device", , , scrubber_icon)
 
@@ -162,7 +159,7 @@
 
 	if (power_draw >= 0)
 		last_power_draw = power_draw
-		use_power(power_draw)
+		//use_power(power_draw)
 
 	if(network)
 		network.update = 1

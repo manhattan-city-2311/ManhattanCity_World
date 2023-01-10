@@ -93,7 +93,7 @@
 				if(prob(30))
 					spawn()
 						H.vomit()
-			if(30 to INFINITY)
+			if(30 to POSITIVE_INFINITY)
 				if(chronic && power > 60)
 					H.custom_pain("Your body crushes all over.", P * 3.5, 0, null, 0)
 				else
@@ -115,7 +115,7 @@
 			description = SPAN_DANGER("You need opiates!")
 		if(30 to 60)
 			description = SPAN_DANGER("<big>You really need opiates!</big>")
-		if(60 to INFINITY)
+		if(60 to POSITIVE_INFINITY)
 			description = SPAN_DANGER("<big>OH GOD! You cannot live without opiates!</big>")
 	to_chat(H, description)
 
@@ -165,7 +165,7 @@
 			msg = SPAN_NOTICE("You wanna drink.")
 		if(12 to 30)
 			msg = SPAN_WARNING("You really wanna drink.")
-		if(30 to INFINITY)
+		if(30 to POSITIVE_INFINITY)
 			msg = SPAN_DANGER("You need to drink right now, it's driving you mad.")
 
 	if(prob(3))
@@ -196,7 +196,7 @@
 			msg = SPAN_NOTICE("You wanna smoke.")
 		if(12 to 30)
 			msg = SPAN_WARNING("You really wanna smoke.")
-		if(30 to INFINITY)
+		if(30 to POSITIVE_INFINITY)
 			msg = SPAN_DANGER("You need to smoke right now, it's driving you mad.")
 	if(prob(3))
 		to_chat(H, msg)

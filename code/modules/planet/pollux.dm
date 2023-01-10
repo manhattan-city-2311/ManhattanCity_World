@@ -758,7 +758,7 @@ var/datum/planet/pollux/planet_pollux = null
 						turfs_around += T
 					else
 						continue
-				if(isemptylist(turfs_around))
+				if(LAZYLEN(turfs_around))
 					return
 				var/turf/X = pick(turfs_around)
 				if(X)

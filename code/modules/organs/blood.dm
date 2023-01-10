@@ -291,11 +291,11 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 
 /mob/living/carbon/human/proc/calc_heart_rate_coeff(hr)
 	if(!hr)
-		return 0 // hrp should be INFINITY when hr = 0, but will be zero.
+		return 0 // hrp should be POSITIVE_INFINITY when hr = 0, but will be zero.
 	. = ((60.0 / hr) * 0.109 + 0.159)
 	. *= 3.73134328358209 // 1 = hrpd(where hr = 60) => 3.73...
 
-// Recalcs some cmed parameters due to HR change, use before true changing
+// Recalcs cmed parameters due to HR change, use before true changing
 /mob/living/carbon/human/proc/handle_heart_rate_change(newhr)
 	mcv = get_cardiac_output() * newhr
 	update_cm(newhr)
@@ -326,7 +326,6 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	mcv = clamp(nmcv, 0, MAX_MCV)
 	mcv_add = 0
 
-
 	var/n_perfusion = mcv ? CLAMP01((mcv / (NORMAL_MCV * k)) * (get_blood_saturation() / 0.97)) : 0
 
 	perfusion = round(LERP(perfusion, n_perfusion, 0.2), 0.01)
@@ -336,10 +335,11 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 /mob/living/carbon/human/proc/update_blood_pressure(hr, mcv, coeff, force = 0.5)
 	var/hr53 = hr * coeff * 53.0
 	dpressure = max(0, LERP(dpressure, (gvr * (2180 + hr53))/((17820 - hr53)), force))
+
 	var/mcv50divhr27 = (50 * mcv) / ((27 * hr) || 1000)
 	spressure = clamp(LERP(spressure, mcv50divhr27 + 2.0 * dpressure - (7646.0 * k)/54.0, force), 0, MAX_PRESSURE)
 	dpressure = min(dpressure, spressure - rand(5, 15))
-// update mpressure
+
 	mpressure = dpressure + (spressure - dpressure) / 3.0
 
 /mob/living/carbon/human/proc/get_heart_rate()

@@ -313,7 +313,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				dat+="<BR><HR>The newscaster recognises you as: <FONT COLOR='green'>[scanned_user]</FONT>"
 			if(1)
 				dat+= "City Feed Channels<HR>"
-				if(isemptylist(news_network.network_channels))
+				if(LAZYLEN(news_network.network_channels))
 					dat+="<I>No active channels found...</I>"
 				else
 					for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
@@ -404,7 +404,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					dat+="<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the city, and marked with a [using_map.company_name] D-Notice.<BR>"
 					dat+="No further feed story additions are allowed while the D-Notice is in effect.</FONT><BR><BR>"
 				else
-					if(isemptylist(viewing_channel.messages))
+					if(LAZYLEN(viewing_channel.messages))
 						dat+="<I>No feed messages found in channel...</I><BR>"
 					else
 						dat+= get_newspaper_header(viewing_channel.channel_name, viewing_channel.channel_topics,"#d4cec1")
@@ -445,7 +445,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				dat+="<FONT SIZE=1>NOTE: Due to the nature of news Feeds, total deletion of a Feed Story is not possible.<BR>"
 				dat+="Keep in mind that users attempting to view a censored feed will instead see the \[REDACTED\] tag above it.</FONT>"
 				dat+="<HR>Select Feed channel to get Stories from:<BR>"
-				if(isemptylist(news_network.network_channels))
+				if(LAZYLEN(news_network.network_channels))
 					dat+="<I>No feed channels found active...</I><BR>"
 				else
 					for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
@@ -456,7 +456,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				dat+="<FONT SIZE=1>A D-Notice is to be bestowed upon the channel if the handling Authority deems it as harmful for the city's"
 				dat+="morale, integrity or disciplinary behaviour. A D-Notice will render a channel unable to be updated by anyone, without deleting any feed"
 				dat+="stories it might contain at the time. You can lift a D-Notice if you have the required access at any time.</FONT><HR>"
-				if(isemptylist(news_network.network_channels))
+				if(LAZYLEN(news_network.network_channels))
 					dat+="<I>No feed channels found active...</I><BR>"
 				else
 					for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
@@ -468,7 +468,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				dat+="<FONT SIZE=2><A href='?src=\ref[src];censor_channel_author=\ref[viewing_channel]'>[(viewing_channel.author=="\[REDACTED\]") ? ("Undo Author censorship") : ("Censor channel Author")]</A></FONT><HR>"
 
 
-				if(isemptylist(viewing_channel.messages))
+				if(LAZYLEN(viewing_channel.messages))
 					dat+="<I>No feed messages found in channel...</I><BR>"
 				else
 					for(var/datum/feed_message/MESSAGE in viewing_channel.messages)
@@ -482,7 +482,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					dat+="<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the city, and marked with a [using_map.company_name] D-Notice.<BR>"
 					dat+="No further feed story additions are allowed while the D-Notice is in effect.<BR><BR>"
 				else
-					if(isemptylist(viewing_channel.messages))
+					if(LAZYLEN(viewing_channel.messages))
 						dat+="<I>No feed messages found in channel...</I><BR>"
 					else
 						for(var/datum/feed_message/MESSAGE in viewing_channel.messages)

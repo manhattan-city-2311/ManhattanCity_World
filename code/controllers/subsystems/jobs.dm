@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(jobs)
 		if(!job)	continue
 		if(job.faction != faction)	continue
 		occupations += job
-	sortTim(occupations, /proc/cmp_job_datums)
+	sortTim(occupations, GLOBAL_PROC_REF(cmp_job_datums))
 
 
 	return 1
@@ -80,7 +80,7 @@ SUBSYSTEM_DEF(jobs)
 			return 0
 		if(!is_hard_whitelisted(player, job))
 			return 0
-		if(job.clean_record_required && !isemptylist(player.client.prefs.crime_record) )
+		if(job.clean_record_required && !LAZYLEN(player.client.prefs.crime_record) )
 			return 0
 		if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner")
 			return 0
@@ -123,7 +123,7 @@ SUBSYSTEM_DEF(jobs)
 		if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner") //CASSJUMP
 			Debug("DO player is prisoner, Player: [player], Job:[job.title]")
 			continue
-		if(job.clean_record_required && !isemptylist(player.client.prefs.crime_record) )
+		if(job.clean_record_required && !LAZYLEN(player.client.prefs.crime_record) )
 			Debug("DO player needs clean record, Player: [player], Job:[job.title]")
 			continue
 		if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
@@ -169,7 +169,7 @@ SUBSYSTEM_DEF(jobs)
 		if(!job.player_old_enough(player.client))
 			Debug("GRJ player not old enough, Player: [player], Job: [job.title]")
 			continue
-		if(job.clean_record_required && !isemptylist(player.client.prefs.crime_record) )
+		if(job.clean_record_required && !LAZYLEN(player.client.prefs.crime_record) )
 			Debug("DO player needs clean record, Player: [player], Job:[job.title]")
 			continue
 		if(!is_hard_whitelisted(player, job))
@@ -224,7 +224,7 @@ SUBSYSTEM_DEF(jobs)
 						weightedCandidates[V] = 10 // Great.
 					if((job.ideal_character_age+10) to (job.ideal_character_age+20))
 						weightedCandidates[V] = 6 // Still good.
-					if((job.ideal_character_age+20) to INFINITY)
+					if((job.ideal_character_age+20) to POSITIVE_INFINITY)
 						weightedCandidates[V] = 3 // Geezer.
 					else
 						// If there's ABSOLUTELY NOBODY ELSE
@@ -327,7 +327,7 @@ SUBSYSTEM_DEF(jobs)
 				if(!is_hard_whitelisted(player, job))
 					Debug("DO not hard whitelisted failed, Player: [player], Job:[job.title]")
 					continue
-				if(job.clean_record_required && !isemptylist(player.client.prefs.crime_record) )
+				if(job.clean_record_required && !LAZYLEN(player.client.prefs.crime_record) )
 					Debug("DO player needs clean record, Player: [player], Job:[job.title]")
 					continue
 				if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner") //CASSJUMP

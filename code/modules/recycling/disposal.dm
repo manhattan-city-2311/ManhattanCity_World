@@ -394,13 +394,9 @@
 	var/atom/L = loc						// recharging from loc turf
 	var/datum/gas_mixture/env = L.return_air()
 
-	var/power_draw = -1
-	if(env && env.temperature > 0)
+	if(env?.temperature > 0)
 		var/transfer_moles = (PUMP_MAX_FLOW_RATE/env.volume)*env.total_moles	//group_multiplier is divided out here
-		power_draw = pump_gas(src, env, air_contents, transfer_moles, active_power_usage)
-
-	if (power_draw > 0)
-		use_power(power_draw)
+		pump_gas(src, env, air_contents, transfer_moles, active_power_usage)
 
 // perform a flush
 /obj/machinery/disposal/proc/flush()

@@ -19,7 +19,7 @@
 
 	if(use_desc)
 		switch(num)
-			if(1000000 to INFINITY)
+			if(1000000 to POSITIVE_INFINITY)
 				text_desc = "mil"
 				multiplier = 1000000
 

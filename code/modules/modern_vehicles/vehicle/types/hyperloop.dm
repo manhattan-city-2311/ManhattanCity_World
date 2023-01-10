@@ -23,7 +23,7 @@
 
 	var/state = HYPERLOOP_STATE_OUT
 
-/obj/manhattan/vehicle/large/hyperloop/update_object_sprites()
+/obj/manhattan/vehicle/large/hyperloop/update_icon()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
 		bounds = "160,256"
@@ -35,7 +35,7 @@
 
 /obj/manhattan/vehicle/large/hyperloop/attack_hand(mob/user)
 	enter_as_position(user, "passenger")
-	
+
 /datum/map_template/hyperloop
 	name = "Hyperloop"
 	mappath = 'maps/interiors/hyperloop.dmm'

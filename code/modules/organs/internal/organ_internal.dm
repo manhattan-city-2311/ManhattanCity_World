@@ -61,7 +61,7 @@
 		return
 	free_hormone(T, amount - cur_amount)
 
-/obj/item/organ/internal/proc/generate_hormone(T, amount, max = INFINITY)
+/obj/item/organ/internal/proc/generate_hormone(T, amount, max = POSITIVE_INFINITY)
 	if(!owner)
 		return
 	var/cur_amount = LAZYACCESS(hormones, T)

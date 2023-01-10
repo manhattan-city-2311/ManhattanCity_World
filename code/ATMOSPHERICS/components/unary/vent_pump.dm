@@ -198,7 +198,7 @@
 
 	if (power_draw >= 0)
 		last_power_draw = power_draw
-		use_power(power_draw)
+		//use_power(power_draw)
 		if(network)
 			network.update = 1
 

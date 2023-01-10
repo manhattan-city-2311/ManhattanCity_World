@@ -18,10 +18,10 @@
 
 		if(diff > 0) // >normal
 			free_up_to_hormone(CI_INSULIN, produce_hormone_level)
-			absorb_hormone(CI_GLUCAGONE, INFINITY, hold = TRUE)
+			absorb_hormone(CI_GLUCAGONE, POSITIVE_INFINITY, hold = TRUE)
 		else if(diff < 0) // <normal
 			free_up_to_hormone(CI_GLUCAGONE, produce_hormone_level)
-			absorb_hormone(CI_INSULIN, INFINITY, hold = TRUE)
+			absorb_hormone(CI_INSULIN, POSITIVE_INFINITY, hold = TRUE)
 
 /obj/item/organ/internal/stomach/initialize()
 	. = ..()

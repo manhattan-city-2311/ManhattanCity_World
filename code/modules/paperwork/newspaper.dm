@@ -27,7 +27,7 @@ obj/item/weapon/newspaper/attack_self(mob/user as mob)
 			if(0) //Cover
 				dat+="<DIV ALIGN='center'><B><FONT SIZE=6>[name]</FONT></B></div>"
 				dat+="<DIV ALIGN='center'><FONT SIZE=2>[using_map.company_name]-standard newspaper, for use on [using_map.company_name]� Space Facilities</FONT></div><HR>"
-				if(isemptylist(news_content))
+				if(LAZYLEN(news_content))
 					if(important_message)
 						dat+="Contents:<BR><ul><B><FONT COLOR='red'>**</FONT>Important Security Announcement<FONT COLOR='red'>**</FONT></B> <FONT SIZE=2>\[page [pages+2]\]</FONT><BR></ul>"
 					else
@@ -54,7 +54,7 @@ obj/item/weapon/newspaper/attack_self(mob/user as mob)
 				if(C.censored)
 					dat+="This channel was deemed dangerous to the general welfare of the city and therefore marked with a <B><FONT COLOR='red'>D-Notice</B></FONT>. Its contents were not transferred to the newspaper at the time of printing."
 				else
-					if(isemptylist(C.messages))
+					if(LAZYLEN(C.messages))
 						dat+="No Feed stories stem from this channel..."
 					else
 						dat+="<ul>"

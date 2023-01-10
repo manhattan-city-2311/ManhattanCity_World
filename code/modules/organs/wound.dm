@@ -231,7 +231,7 @@
 	switch(type)
 		if(CUT)
 			switch(damage)
-				if(70 to INFINITY)
+				if(70 to POSITIVE_INFINITY)
 					return /datum/wound/cut/massive
 				if(60 to 70)
 					return /datum/wound/cut/gaping_big
@@ -245,7 +245,7 @@
 					return /datum/wound/cut/small
 		if(PIERCE)
 			switch(damage)
-				if(60 to INFINITY)
+				if(60 to POSITIVE_INFINITY)
 					return /datum/wound/puncture/massive
 				if(50 to 60)
 					return /datum/wound/puncture/gaping_big
@@ -259,7 +259,7 @@
 			return /datum/wound/bruise
 		if(BURN)
 			switch(damage)
-				if(50 to INFINITY)
+				if(50 to POSITIVE_INFINITY)
 					return /datum/wound/burn/carbonised
 				if(40 to 50)
 					return /datum/wound/burn/deep

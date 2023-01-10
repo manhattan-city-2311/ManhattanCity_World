@@ -28,11 +28,6 @@ obj/dugpit/New(lnk)
 		else
 			to_chat(user, "<span class='danger'>The ground is too heavy!</span>")
 
-/obj/dugpit/return_air()
-	var/datum/gas_mixture/GM = new
-	GM.temperature = parent.temperature
-	return GM
-
 //This proc is present in code/game/objects/items/weapons/storage/storage.dm L355, and should probably have them all merged up to /obj/ level, since it likely covers itself in a few other places.
 //Cross-ref code/game/objects/items.dm L292
 /turf/simulated/floor/outdoors/dirt/proc/handle_item_insertion(obj/item/W, mob/usr)

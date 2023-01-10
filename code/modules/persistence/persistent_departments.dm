@@ -40,7 +40,7 @@
 /datum/controller/subsystem/economy/proc/save_economy()
 	prepare_economy_save()
 
-	if(isemptylist(GLOB.departments))
+	if(LAZYLEN(GLOB.departments))
 		message_admins("Economy Subsystem error: No department accounts found. Unable to save.", 1)
 		return FALSE
 
@@ -89,7 +89,7 @@
 
 
 /datum/controller/subsystem/economy/proc/load_economy()
-	if(isemptylist(GLOB.departments))
+	if(LAZYLEN(GLOB.departments))
 		message_admins("Economy Subsystem error: No department accounts found. Unable to load.", 1)
 		return FALSE
 

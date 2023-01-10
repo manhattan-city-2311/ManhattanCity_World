@@ -158,7 +158,7 @@
 
 	// Otherwise they're probably fighting the slime.
 	if(prob(25))
-		visible_message(span("warning", "\The [user]'s [I] passes right through \the [src]!"))
+		visible_message(SPAN("warning", "\The [user]'s [I] passes right through \the [src]!"))
 		user.setClickCooldown(user.get_attack_speed(I))
 		return
 	..()
@@ -171,16 +171,16 @@
 // Hat simulator
 /mob/living/simple_mob/slime/proc/give_hat(var/obj/item/clothing/head/new_hat, var/mob/living/user)
 	if(!istype(new_hat))
-		to_chat(user, span("warning", "\The [new_hat] isn't a hat."))
+		to_chat(user, SPAN("warning", "\The [new_hat] isn't a hat."))
 		return
 	if(hat)
-		to_chat(user, span("warning", "\The [src] is already wearing \a [hat]."))
+		to_chat(user, SPAN("warning", "\The [src] is already wearing \a [hat]."))
 		return
 	else
 		user.drop_item(new_hat)
 		hat = new_hat
 		new_hat.forceMove(src)
-		to_chat(user, span("notice", "You place \a [new_hat] on \the [src].  How adorable!"))
+		to_chat(user, SPAN("notice", "You place \a [new_hat] on \the [src].  How adorable!"))
 		update_icon()
 		return
 

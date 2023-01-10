@@ -12,14 +12,14 @@
 
 	//It'd be nice to lazy init these but some of them are important to just EXIST. Like without ghost planemaster, you can see ghosts. Go figure.
 	plane_masters[VIS_FULLBRIGHT] 	= new /obj/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
-	plane_masters[VIS_LIGHTING] 	= new /obj/screen/plane_master/lighting							//Lighting system (but different!)
-	plane_masters[VIS_GHOSTS] 		= new /obj/screen/plane_master/ghosts							//Ghosts!
-	plane_masters[VIS_AI_EYE]		= new /obj/screen/plane_master{plane = PLANE_AI_EYE}			//AI Eye!
+	plane_masters[VIS_LIGHTING]     = new /obj/screen/plane_master/lighting							//Lighting system (but different!)
+	plane_masters[VIS_GHOSTS]       = new /obj/screen/plane_master/ghosts							//Ghosts!
+	plane_masters[VIS_AI_EYE]       = new /obj/screen/plane_master{plane = PLANE_AI_EYE}			//AI Eye!
 
-	plane_masters[VIS_CH_STATUS] 	= new /obj/screen/plane_master{plane = PLANE_CH_STATUS}			//Status is the synth/human icon left side of medhuds
-	plane_masters[VIS_CH_HEALTH] 	= new /obj/screen/plane_master{plane = PLANE_CH_HEALTH}			//Health bar
-	plane_masters[VIS_CH_LIFE] 		= new /obj/screen/plane_master{plane = PLANE_CH_LIFE}			//Alive-or-not icon
-	plane_masters[VIS_CH_ID] 		= new /obj/screen/plane_master{plane = PLANE_CH_ID}				//Job ID icon
+	plane_masters[VIS_CH_STATUS]    = new /obj/screen/plane_master{plane = PLANE_CH_STATUS}			//Status is the synth/human icon left side of medhuds
+	plane_masters[VIS_CH_HEALTH]    = new /obj/screen/plane_master{plane = PLANE_CH_HEALTH}			//Health bar
+	plane_masters[VIS_CH_LIFE]      = new /obj/screen/plane_master{plane = PLANE_CH_LIFE}			//Alive-or-not icon
+	plane_masters[VIS_CH_ID]        = new /obj/screen/plane_master{plane = PLANE_CH_ID}				//Job ID icon
 	plane_masters[VIS_CH_WANTED] 	= new /obj/screen/plane_master{plane = PLANE_CH_WANTED}			//Wanted status
 	plane_masters[VIS_CH_IMPLOYAL] 	= new /obj/screen/plane_master{plane = PLANE_CH_IMPLOYAL}		//Loyalty implants
 	plane_masters[VIS_CH_IMPTRACK] 	= new /obj/screen/plane_master{plane = PLANE_CH_IMPTRACK}		//Tracking implants
@@ -27,20 +27,20 @@
 	plane_masters[VIS_CH_SPECIAL] 	= new /obj/screen/plane_master{plane = PLANE_CH_SPECIAL}		//"Special" role stuff
 	plane_masters[VIS_CH_STATUS_OOC]= new /obj/screen/plane_master{plane = PLANE_CH_STATUS_OOC}		//OOC status HUD
 
-	plane_masters[VIS_ADMIN1] 		= new /obj/screen/plane_master{plane = PLANE_ADMIN1}			//For admin use
-	plane_masters[VIS_ADMIN2] 		= new /obj/screen/plane_master{plane = PLANE_ADMIN2}			//For admin use
-	plane_masters[VIS_ADMIN3] 		= new /obj/screen/plane_master{plane = PLANE_ADMIN3}			//For admin use
+	plane_masters[VIS_ADMIN1]       = new /obj/screen/plane_master{plane = PLANE_ADMIN1}			//For admin use
+	plane_masters[VIS_ADMIN2]       = new /obj/screen/plane_master{plane = PLANE_ADMIN2}			//For admin use
+	plane_masters[VIS_ADMIN3]       = new /obj/screen/plane_master{plane = PLANE_ADMIN3}			//For admin use
 
-	plane_masters[VIS_MESONS]		= new /obj/screen/plane_master{plane = PLANE_MESONS} 			//Meson-specific things like open ceilings.
+	plane_masters[VIS_MESONS]       = new /obj/screen/plane_master{plane = PLANE_MESONS} 			//Meson-specific things like open ceilings.
 
 	// Real tangible stuff planes
-	plane_masters[VIS_TURFS]	= new /obj/screen/plane_master/main{plane = TURF_PLANE}
-	plane_masters[VIS_OBJS]		= new /obj/screen/plane_master/main{plane = OBJ_PLANE}
-	plane_masters[VIS_MOBS]		= new /obj/screen/plane_master/main{plane = MOB_PLANE}
+	plane_masters[VIS_TURFS]        = new /obj/screen/plane_master/main{plane = TURF_PLANE}
+	plane_masters[VIS_OBJS]         = new /obj/screen/plane_master/main{plane = OBJ_PLANE}
+	plane_masters[VIS_MOBS]	        = new /obj/screen/plane_master/main{plane = MOB_PLANE}
 
 	plane_masters[VIS_LIGHTING_OBJS] = new /obj/screen/plane_master/main{plane = LIGHTING_OBJS_PLANE; filters = LIGHTING_BLOOM}
-	plane_masters[VIS_LIGHTING_OBJS2] = new /obj/screen/plane_master/main{plane = NEON_DECALS_PLANE; filters = NEON_DECALS_BLOOM}
-	plane_masters[VIS_EMISSIVE] = new /obj/screen/plane_master/emissive
+	plane_masters[VIS_LIGHTING_OBJS2]= new /obj/screen/plane_master/main{plane = NEON_DECALS_PLANE; filters = NEON_DECALS_BLOOM}
+	plane_masters[VIS_EMISSIVE]      = new /obj/screen/plane_master/emissive
 	..()
 
 /datum/plane_holder/Destroy()

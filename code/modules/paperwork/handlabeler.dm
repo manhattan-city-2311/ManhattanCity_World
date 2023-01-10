@@ -12,14 +12,14 @@
 
 	if (!name_unlabel)
 		to_chat(usr, "<span class='notice'>You look again, unable to find the label! Perhaps your eyes need checking?</span>")
-		src.verbs -= .proc/unlabel
+		src.verbs -= PROC_REF(unlabel)
 		return FALSE
 
 	var/mob/living/carbon/human/H = usr
 
 	name = name_unlabel
 	name_unlabel = ""
-	src.verbs -= .proc/unlabel
+	src.verbs -= PROC_REF(unlabel)
 
 	H.visible_message("<span class='notice'>\The [H] removes the label from \the [src].</span>",
 		"<span class='notice'>You remove the label from \the [src].</span>")

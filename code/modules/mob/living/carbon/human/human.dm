@@ -82,8 +82,6 @@
 /mob/living/carbon/human/Stat()
 	..()
 	if(statpanel("Status"))
-		stat("Intent:", "[a_intent]")
-		stat("Move Mode:", "[m_intent]")
 		if(emergency_shuttle)
 			var/eta_status = emergency_shuttle.get_status_panel_eta()
 			if(eta_status)
@@ -438,7 +436,7 @@
 								to_chat(usr, "<b>Criminal Record:</b><br>")
 
 								var/list/criminal_record = R.fields["crim_record"]
-								if(!isemptylist(criminal_record))
+								if(!LAZYLEN(criminal_record))
 									for(var/datum/record/C in criminal_record)
 										to_target(usr, text("<b>[C.name]</b>: [C.details] - [C.author] <i>([C.date_added])</i>"))
 								else

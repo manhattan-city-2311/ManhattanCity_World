@@ -6,6 +6,7 @@
 	icon = 'icons/obj/bike.dmi'
 	icon_state = "bike_off"
 	var/overlay_icon_state = "bike_off_overlay"
+	anchored = TRUE
 
 	components = list(
 		VC_FRONT_WHEEL = /obj/item/vehicle_part/wheel,
@@ -33,16 +34,16 @@
 /obj/manhattan/vehicle/motorcycle/get_braking_force()
 	return 1800
 
-/obj/manhattan/vehicle/truck/update_object_sprites()
+/obj/manhattan/vehicle/truck/update_icon()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
 		bounds = "32,64"
 	else
 		bounds = "64,32"
 
-/obj/manhattan/vehicle/motorcycle/update_object_sprites()
+/obj/manhattan/vehicle/motorcycle/update_icon()
+	. = ..()
 	vis_contents.Cut()
-	overlays.Cut()
 
 	if(img)
 		del(img)

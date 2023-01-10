@@ -158,7 +158,7 @@
 		playsound(src.loc, pick(threat_found_sounds), 50)
 		global_announcer.autosay("[src] was attacked by a hostile <b>[target_name(attacker)]</b> in <b>[get_area(src)]</b>.", "[src]", "Police")
 	target = attacker
-	awaiting_surrender = INFINITY	// Don't try and wait for surrender
+	awaiting_surrender = POSITIVE_INFINITY	// Don't try and wait for surrender
 
 // Say "freeze!" and demand surrender
 /mob/living/bot/secbot/proc/demand_surrender(mob/target, var/threat)
@@ -173,7 +173,7 @@
 // Callback invoked if the registered target moves
 /mob/living/bot/secbot/proc/target_moved(atom/movable/moving_instance, atom/old_loc, atom/new_loc)
 	if(get_dist(get_turf(src), get_turf(target)) >= 1)
-		awaiting_surrender = INFINITY	// Done waiting!
+		awaiting_surrender = POSITIVE_INFINITY	// Done waiting!
 		GLOB.moved_event.unregister(moving_instance, src)
 
 /mob/living/bot/secbot/resetTarget()

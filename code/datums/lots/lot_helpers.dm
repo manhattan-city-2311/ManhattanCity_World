@@ -15,7 +15,7 @@
 	return landlord.unique_id
 
 /datum/lot/proc/has_tenants()
-	if(!isemptylist(tenants))
+	if(!LAZYLEN(tenants))
 		return TRUE
 
 /datum/lot/proc/get_tenants()

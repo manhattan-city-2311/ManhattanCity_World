@@ -46,7 +46,7 @@
 		icon_state = "monitor-[owa.id]"
 	else
 		switch(H.pulse)
-			if(-INFINITY to 1)
+			if(NEGATIVE_INFINITY to 1)
 				icon_state = "monitor-asystole"
 			if(1 to 40)
 				icon_state = "monitor-normal0"
@@ -56,7 +56,7 @@
 				icon_state = "monitor-normal2"
 			if(140 to 190)
 				icon_state = "monitor-normal3"
-			if(190 to INFINITY)
+			if(190 to POSITIVE_INFINITY)
 				icon_state = "monitor-normal4"
 
 	if(attached.mpressure < BLOOD_PRESSURE_L2BAD || attached.mpressure > BLOOD_PRESSURE_H2BAD)
@@ -88,13 +88,13 @@
 		data["hr"] = "UNKNOWN"
 	data["bp"] = attached.get_blood_pressure_fluffy()
 	switch(attached.mpressure)
-		if(-INFINITY to BLOOD_PRESSURE_L2BAD)
+		if(NEGATIVE_INFINITY to BLOOD_PRESSURE_L2BAD)
 			data["bp_s"] = "bad"
 		if(BLOOD_PRESSURE_L2BAD to BLOOD_PRESSURE_NORMAL - 30)
 			data["bp_s"] = "average"
 		if(BLOOD_PRESSURE_HBAD to BLOOD_PRESSURE_H2BAD)
 			data["bp_s"] = "average"
-		if(BLOOD_PRESSURE_H2BAD to INFINITY)
+		if(BLOOD_PRESSURE_H2BAD to POSITIVE_INFINITY)
 			data["bp_s"] = "bad"
 
 	switch(attached.get_blood_perfusion())

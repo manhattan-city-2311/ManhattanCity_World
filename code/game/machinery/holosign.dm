@@ -72,7 +72,7 @@
 		return
 	add_fingerprint(user)
 
-	use_power(5)
+	//use_power(5)
 
 	active = !active
 	icon_state = "light[active]"

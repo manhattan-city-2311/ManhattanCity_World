@@ -29,6 +29,6 @@
 	switch(money)
 		if(0 to 9999)				return CLASS_WORKING
 		if(10000 to 79999)			return CLASS_MIDDLE
-		if(80000 to INFINITY)		return CLASS_UPPER
+		if(80000 to POSITIVE_INFINITY)		return CLASS_UPPER
 
 		else 					return CLASS_WORKING	// this accounts for balances that are negative

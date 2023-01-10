@@ -78,7 +78,7 @@
 
 /obj/item/modular_computer/processor/get_header_data()
 	var/list/L = ..()
-	if(machinery_computer.tesla_link && machinery_computer.tesla_link.enabled && machinery_computer.powered())
+	if(machinery_computer.tesla_link && machinery_computer.tesla_link.enabled)
 		L["PC_apclinkicon"] = "charging.gif"
 	return L
 
@@ -88,7 +88,7 @@
 		return 0
 	if(!machinery_computer.tesla_link || !machinery_computer.tesla_link.enabled)
 		return 0
-	return machinery_computer.powered()
+	return TRUE 
 
 // This thing is not meant to be used on it's own, get topic data from our machinery owner.
 /obj/item/modular_computer/processor/CanUseTopic(user, state)

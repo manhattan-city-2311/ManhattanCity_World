@@ -150,11 +150,9 @@
 	set category = "Object"
 	set src in view(1)
 
-	if(powered())
-		on = !on
-		to_chat(user, "<span class='notice'>You turn \the [src] [on ? "on" : "off"].</span>")
-	else
-		to_chat(user, "<span class='notice'> Nothing happens.</span>")
+	on = !on
+	to_chat(user, "<span class='notice'>You turn \the [src] [on ? "on" : "off"].</span>")
+
 
 /obj/machinery/portable_atmospherics/powered/reagent_distillery/verb/toggle_mixing(mob/user = usr)
 	set name = "Start Distillery Mixing"
@@ -302,9 +300,6 @@
 		avg_temp /= members.len
 		avg_pressure /= members.len
 
-	if(!powered())
-		on = FALSE
-
 	if(!on || (use_atmos && (!connected_port || (avg_pressure / avg_temp) < (1000 / T20C)))) // This mostly respects gas laws by ignoring volume but it should make it usable at low temps
 		current_temp = round((current_temp + T20C) / 2)
 
@@ -328,7 +323,7 @@
 				var/temp_diff = (current_temp < target_temp ? dy * 10 * target_temp / current_temp : dy * -10 * current_temp / target_temp)
 
 				current_temp = clamp(round((current_temp + temp_diff), 0.01), min_temp, max_temp)
-				use_power(power_rating * CELLRATE)
+				//use_power(power_rating * CELLRATE)
 
 				if(target_temp == round(current_temp, 1.0))
 					current_temp = target_temp // Hard set it so we don't need to worry about exact decimals any more, after we've been keeping track of it all this time
@@ -345,7 +340,7 @@
 			InputBeaker.reagents.trans_to_holder(Reservoir.reagents, amount = rand(10,20))
 
 		if(OutputBeaker && OutputBeaker.reagents.total_volume < OutputBeaker.reagents.maximum_volume)
-			use_power(power_rating * CELLRATE * 0.5)
+			//use_power(power_rating * CELLRATE * 0.5)
 			Reservoir.reagents.trans_to_holder(OutputBeaker.reagents, amount = rand(1, 5))
 
 	update_icon()

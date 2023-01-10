@@ -46,9 +46,6 @@
 
 	//var/datum/global_iterator/pr_int_temp_processor //normalizes internal air mixture temperature     //In airtight.dm you go -Agouri
 	var/datum/global_iterator/pr_inertial_movement //controls intertial movement in spesss
-
-	//var/datum/global_iterator/pr_give_air //moves air from tank to cabin   //Y-you too -Agouri
-
 	var/datum/global_iterator/pr_internal_damage //processes internal damage
 
 
@@ -121,7 +118,6 @@
 	pr_inertial_movement = new /datum/global_iterator/vehicle_intertial_movement(null,0)
 	//pr_internal_damage = new /datum/global_iterator/vehicle_internal_damage(list(src),0)
 	//pr_int_temp_processor = new /datum/global_iterator/vehicle_preserve_temp(list(src)) //In airtight.dm's add_airtight_iterators -Agouri
-	//pr_give_air = new /datum/global_iterator/vehicle_tank_give_air(list(src)            //Same here -Agouri
 
 /obj/vehicle/proc/check_for_support()
 	if(locate(/obj/structure/grille, orange(1, src)) || locate(/obj/structure/lattice, orange(1, src)) || locate(/turf/simulated, orange(1, src)) || locate(/turf/unsimulated, orange(1, src)))

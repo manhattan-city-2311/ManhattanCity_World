@@ -24,9 +24,8 @@
 	min_speed = 6
 	max_speed = 2
 
-/obj/vehicles/mongoose/update_object_sprites()
-	underlays.Cut()
-	overlays.Cut()
+/obj/vehicles/mongoose/update_icon()
+	. = ..()
 	var/list/offsets_to_use = sprite_offsets["[dir]"]
 	var/list/drivers = get_occupants_in_position("driver")
 	if(!(isnull(offsets_to_use) || isnull(drivers) || drivers.len == 0))

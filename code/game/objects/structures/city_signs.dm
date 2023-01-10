@@ -80,6 +80,7 @@
 /obj/structure/sign/neon/peace
 	name = "peace"
 	icon_state = "peace"
+	emissive_state = "peace-emissive"
 	light_color = LIGHT_COLOR_LAVENDER
 
 /obj/structure/sign/neon/sale
@@ -321,6 +322,7 @@
 	name = "police department sign"
 	desc = "A sign for the police department of Geminus City. It glows blue."
 	icon_state = "police_dept"
+	emissive_state = "police_dept-emissive"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 

@@ -53,7 +53,7 @@
 /obj/machinery/artifact/New()
 	..()
 
-	if(!persistence_loaded)
+	if(!(persistence_flags & PF_PERSISTENCE_LOADED))
 		set_effects()
 
 	if(my_effect.contraband_level == CONTRABAND_ARTIFACTSHARMFUL || secondary_effect ==  CONTRABAND_ARTIFACTSHARMFUL)

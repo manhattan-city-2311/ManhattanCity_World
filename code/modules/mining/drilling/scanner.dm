@@ -44,6 +44,6 @@
 		switch(metals[ore_type])
 			if(1 to 25) result = "trace amounts"
 			if(26 to 75) result = "significant amounts"
-			if(76 to INFINITY) result = "huge quantities"
+			if(76 to POSITIVE_INFINITY) result = "huge quantities"
 
 		to_chat(user, "- [result] of [ore_type].")

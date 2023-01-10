@@ -22,7 +22,7 @@
 	unique_save_vars = list("emagged")
 
 /obj/item/device/taperecorder/on_persistence_load()
-	if(!isemptylist(contents))
+	if(!LAZYLEN(contents))
 		mytape = contents[1]
 
 /obj/item/device/taperecorder/New()

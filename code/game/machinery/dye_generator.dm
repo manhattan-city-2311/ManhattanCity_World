@@ -31,15 +31,9 @@
 		icon_state = "[initial(icon_state)]-broken"
 		set_light(0)
 	else
-		if(powered())
-			icon_state = initial(icon_state)
-			stat &= ~NOPOWER
-			set_light(2, l_color = dye_color)
-		else
-			spawn(rand(0, 15))
-				src.icon_state = "[initial(icon_state)]-off"
-				stat |= NOPOWER
-				set_light(0)
+		icon_state = initial(icon_state)
+		stat &= ~NOPOWER
+		set_light(2, l_color = dye_color)
 
 /obj/machinery/dye_generator/ex_act(severity)
 	switch(severity)
