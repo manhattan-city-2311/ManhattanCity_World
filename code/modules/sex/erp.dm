@@ -74,12 +74,12 @@
 			height_msg = "среднего"
 		if(175 to 185)
 			height_msg = "высокого"
-		if(185 to INFINITY)
+		if(185 to POSITIVE_INFINITY)
 			height_msg = "очень высокого"
 
 	var/body_build_msg
 	switch(weight / (((height / 100.0) ** 2) || -1))
-		if(-INFINITY to 0)
+		if(NEGATIVE_INFINITY to 0)
 			body_build_msg = "стройного"
 		if(0 to 16)
 			body_build_msg = "скелетного"
@@ -120,11 +120,11 @@
 					. += "очень большая, даже громадная"
 			. += " грудь. Она "
 		switch(pleasure)
-			if(-INFINITY to FEMALE_NO_AROUSAL)
+			if(NEGATIVE_INFINITY to FEMALE_NO_AROUSAL)
 				. += "не возбуждена."
 			if(FEMALE_NO_AROUSAL to FEMALE_MEDIUM_AROUSAL)
 				. += "немного возбуждена."
-			if(FEMALE_MEDIUM_AROUSAL to INFINITY)
+			if(FEMALE_MEDIUM_AROUSAL to POSITIVE_INFINITY)
 				. += "сильно возбуждена."
 	else
 		. = "Это "
@@ -135,11 +135,11 @@
 			. += "Его член "
 
 			switch(pleasure)
-				if(-INFINITY to FEMALE_NO_AROUSAL)
+				if(NEGATIVE_INFINITY to FEMALE_NO_AROUSAL)
 					. += "мягкий, "
 				if(FEMALE_NO_AROUSAL to FEMALE_MEDIUM_AROUSAL)
 					. += "полутвёрдый, "
-				if(FEMALE_MEDIUM_AROUSAL to INFINITY)
+				if(FEMALE_MEDIUM_AROUSAL to POSITIVE_INFINITY)
 					. += "стоит колом, "
 			switch(P.length)
 				if(0 to 8)
@@ -150,7 +150,7 @@
 					. += "средней"
 				if(16 to 18)
 					. += "большой"
-				if(18 to INFINITY)
+				if(18 to POSITIVE_INFINITY)
 					. += "огромной"
 			. += " длины, средний в обхвате."
 
@@ -158,19 +158,19 @@
 /mob/living/carbon/human/proc/get_self_pleasure_message()
 	if(gender == FEMALE)
 		switch(pleasure)
-			if(-INFINITY to FEMALE_NO_AROUSAL)
+			if(NEGATIVE_INFINITY to FEMALE_NO_AROUSAL)
 				return "Внизу сухо. Если сейчас в вас попытаются войти - вам будет больно, очень."
 			if(FEMALE_NO_AROUSAL to FEMALE_MEDIUM_AROUSAL)
 				return "Ваши соски твердеют, вы намокаете внизу. Если постараетесь, то сможете быстро успокоиться."
-			if(FEMALE_MEDIUM_AROUSAL to INFINITY)
+			if(FEMALE_MEDIUM_AROUSAL to POSITIVE_INFINITY)
 				return "Ваши соски стоят торчком и даже могут быть видны через лёгкую одежду. Внизу вы полностью намокли и там немного тянет."
 	else
 		switch(pleasure)
-			if(-INFINITY to MALE_NO_AROUSAL)
+			if(NEGATIVE_INFINITY to MALE_NO_AROUSAL)
 				return "Вы не чувствуете какого-либо возбуждения."
 			if(MALE_NO_AROUSAL to MALE_MEDIUM_AROUSAL)
 				return "Вы чувствуете тяжесть в паху."
-			if(MALE_MEDIUM_AROUSAL to INFINITY)
+			if(MALE_MEDIUM_AROUSAL to POSITIVE_INFINITY)
 				return "Вас немного ведёт. Ваше дыхание загнано, а член стоит колом."
 
 /mob/living/carbon/human/proc/orgasm()

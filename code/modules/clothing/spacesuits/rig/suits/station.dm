@@ -33,8 +33,6 @@
 
 	allowed = list(
 		/obj/item/device/flashlight,
-		/obj/item/weapon/tank,
-		/obj/item/device/suit_cooling_unit,
 		/obj/item/weapon/storage/briefcase,
 		/obj/item/weapon/storage/secure/briefcase
 		)
@@ -79,8 +77,6 @@
 
 	allowed = list(
 		/obj/item/device/flashlight,
-		/obj/item/weapon/tank,
-		/obj/item/device/suit_cooling_unit,
 		/obj/item/weapon/storage/bag/ore,
 		/obj/item/device/t_scanner,
 		/obj/item/weapon/pickaxe,
@@ -117,8 +113,6 @@
 
 	allowed = list(
 		/obj/item/device/flashlight,
-		/obj/item/weapon/tank,
-		/obj/item/device/suit_cooling_unit,
 		/obj/item/weapon/storage/briefcase/inflatable,
 		/obj/item/device/t_scanner,
 		/obj/item/weapon/rcd
@@ -161,8 +155,6 @@
 
 	allowed = list(
 		/obj/item/device/flashlight,
-		/obj/item/weapon/tank,
-		/obj/item/device/suit_cooling_unit,
 		/obj/item/weapon/storage/briefcase/inflatable,
 		/obj/item/device/t_scanner,
 		/obj/item/weapon/rcd
@@ -204,8 +196,6 @@
 
 	allowed = list(
 		/obj/item/device/flashlight,
-		/obj/item/weapon/tank,
-		/obj/item/device/suit_cooling_unit,
 		/obj/item/stack/flag,
 		/obj/item/weapon/storage/excavation,
 		/obj/item/weapon/pickaxe,
@@ -249,8 +239,6 @@
 
 	allowed = list(
 		/obj/item/device/flashlight,
-		/obj/item/weapon/tank,
-		/obj/item/device/suit_cooling_unit,
 		/obj/item/weapon/storage/firstaid,
 		/obj/item/device/healthanalyzer,
 		/obj/item/stack/medical,
@@ -290,7 +278,6 @@
 		/obj/item/weapon/gun,
 		/obj/item/device/flashlight,
 		/obj/item/weapon/tank,
-		/obj/item/device/suit_cooling_unit,
 		/obj/item/weapon/melee/baton
 		)
 

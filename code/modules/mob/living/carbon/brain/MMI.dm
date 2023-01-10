@@ -20,7 +20,7 @@
 	var/obj/mecha = null//This does not appear to be used outside of reference in mecha.dm.
 	var/obj/item/device/radio/headset/mmi_radio/radio = null//Let's give it a radio.
 
-	save_contents = FALSE
+	persistence_flags = 0
 
 /obj/item/device/mmi/New()
 	radio = new(src)//Spawns a radio inside the MMI.

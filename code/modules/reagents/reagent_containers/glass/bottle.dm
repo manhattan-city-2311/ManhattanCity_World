@@ -69,7 +69,7 @@
 			if(50 to 74)	filling.icon_state = "[icon_state]-50"
 			if(75 to 79)	filling.icon_state = "[icon_state]-75"
 			if(80 to 90)	filling.icon_state = "[icon_state]-80"
-			if(91 to INFINITY)	filling.icon_state = "[icon_state]-100"
+			if(91 to POSITIVE_INFINITY)	filling.icon_state = "[icon_state]-100"
 
 		filling.color = reagents.get_color()
 		overlays += filling

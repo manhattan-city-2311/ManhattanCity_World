@@ -11,18 +11,23 @@ SUBSYSTEM_DEF(persistent_world)
 	var/loading
 
 	var/skip_saving = FALSE
+	var/list/obstructions
 
-	var/list/obj/queue
+/datum/controller/subsystem/persistent_world/proc/add_obstruction(id, message)
+	LAZYSET(obstructions, id, message)
+
+/datum/controller/subsystem/persistent_world/proc/resolve_obstruction(id)
+	LAZYREMOVE(obstructions, id)
 
 /datum/controller/subsystem/persistent_world/stat_entry()
 	if(!statclick)
 		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
 
-	var/msg = "Q: [LAZYLEN(queue)]"
+	var/msg = "HOLD"
 	if(saved_objects)
 		var/ts = saved_turfs / ((world.timeofday-start) / (1 SECOND))
 		var/os = saved_objects / ((world.timeofday-start) / (1 SECOND))
-		msg += " T: [saved_turfs] O: [saved_objects] T/s: [ts] O/s: [os]"
+		msg = "T: [saved_turfs] O: [saved_objects] T/s: [ts] O/s: [os]"
 	stat("\[[state_letter()]][name]", statclick.update(msg))
 
 /datum/controller/subsystem/persistent_world/PreInit()
@@ -80,9 +85,11 @@ SUBSYSTEM_DEF(persistent_world)
 	Master.processing = FALSE
 
 	var/list/data = list(list())
+	var/list/dchunk = data[1]
 	var/data_chunk = 1
 
 	var/list/turfs_data = list(list())
+	var/list/tchunk = turfs_data[1]
 	var/turfs_chunk = 1
 
 	for(var/area/A)
@@ -90,16 +97,18 @@ SUBSYSTEM_DEF(persistent_world)
 			continue
 		for(var/atom/V as anything in A)
 			if(!V.dont_save)
-				if(A.should_turfs_be_saved && isturf(V))
-					turfs_data[turfs_chunk] += full_turf_save(V)
+				if(isturf(V))
+					if(!A.should_turfs_be_saved)
+						continue
+					tchunk += full_turf_save(V)
 					if((++saved_turfs % 40000) == 0)
 						turfs_data += list(list())
-						++turfs_chunk
+						tchunk = turfs_data[++turfs_chunk]
 				else if(A.should_objects_be_saved)
-					data[data_chunk] += full_item_save(V)
+					dchunk += full_item_save(V)
 					if((++saved_objects % 40000) == 0)
 						data += list(list())
-						++data_chunk
+						dchunk = data[++data_chunk]
 				CHECK_TICK_HIGH_PRIORITY
 			
 

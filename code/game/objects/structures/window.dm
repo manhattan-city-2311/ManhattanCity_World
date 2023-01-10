@@ -497,7 +497,7 @@
 
 	// Damage overlays.
 	var/ratio = health / maxhealth
-	ratio = Ceiling(ratio * 4) * 25
+	ratio = CEILING(ratio * 4) * 25
 
 	if(ratio > 75)
 		return
@@ -693,7 +693,7 @@
 	toggle_tint()
 
 /obj/machinery/button/windowtint/proc/toggle_tint()
-	use_power(5)
+	//use_power(5)
 
 	active = !active
 	update_icon()

@@ -211,7 +211,7 @@
 	if(description)
 		dat += "[description]<br><br>"
 
-	if(!isemptylist(duties))
+	if(!LAZYLEN(duties))
 		for(var/V in duties)
 			dat += "     - [V].<br>"
 	if(wage)

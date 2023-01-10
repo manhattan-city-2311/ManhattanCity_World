@@ -264,9 +264,9 @@
 			return 1
 		return 0
 	if(src.use_power == 1)
-		use_power(idle_power_usage,power_channel)
+		//use_power(idle_power_usage,power_channel)
 	else if(src.use_power >= 2)
-		use_power(active_power_usage,power_channel)
+		//use_power(active_power_usage,power_channel)
 	return 1
 
 /obj/machinery/computer3/use_power(var/amount, var/chan = -1)
@@ -286,7 +286,7 @@
 		stat &= ~NOPOWER
 
 /obj/machinery/computer3/process()
-	auto_use_power()
+	//auto_use_power()
 	power_change()
 	update_icon()
 	if(stat & (NOPOWER|BROKEN))

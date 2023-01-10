@@ -47,7 +47,7 @@
 		flick("doorctrl-denied",src)
 		return
 
-	use_power(5)
+	//use_power(5)
 	icon_state = "doorctrl1"
 	desiredstate = !desiredstate
 	trigger(user)

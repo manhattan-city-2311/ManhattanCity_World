@@ -78,7 +78,7 @@
 			dat += "You need to be playing for at least [job.minimal_player_age] days."
 		else if(job.minimum_character_age && client && (client.prefs.age < job.minimum_character_age))
 			dat += "Your character needs to be at least [job.minimum_character_age]."
-		else if(!isemptylist(client.prefs.crime_record) && job.clean_record_required)
+		else if(!LAZYLEN(client.prefs.crime_record) && job.clean_record_required)
 			dat += "Your criminal record prevents you from working in this role."
 		else if(job.title == "Prisoner" && client.prefs.criminal_status != "Incarcerated")
 			dat += "Only incarcerated individuals can play this role."
@@ -86,7 +86,7 @@
 			dat += "You are currently in prison and are unable to work. Play as a prisoner."
 		else if(!job.is_position_available())
 			dat += "This role is fully filled. Try again later."
-		else if(!isemptylist(job.exclusive_employees) && !(client.prefs.unique_id in job.exclusive_employees))
+		else if(!LAZYLEN(job.exclusive_employees) && !(client.prefs.unique_id in job.exclusive_employees))
 			dat += "This job requires you to apply in-person and be accepted by the employer."
 		else if(job.business)
 			var/datum/business/biz = get_business_by_biz_uid(job.business)
@@ -142,16 +142,16 @@
 
 
 
-	if(!isemptylist(GLOB.public_departments))
+	if(!LAZYLEN(GLOB.public_departments))
 
 		for(var/datum/department/PUB_D in job_departments)
 			var/list/available_jobs = PUB_D.get_available_jobs(src)
 			var/list/net_jobs = PUB_D.get_all_jobs()
 
-			if(switch_type == "ALL" && isemptylist(available_jobs))
+			if(switch_type == "ALL" && LAZYLEN(available_jobs))
 				continue
 
-			if(isemptylist(net_jobs))
+			if(LAZYLEN(net_jobs))
 				continue
 
 			dat += "<fieldset style='width: 80%; border: 2px solid #515151; display: inline'>"

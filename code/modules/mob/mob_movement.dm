@@ -86,15 +86,12 @@
 	if(istype(mob,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = mob
 		R.cycle_modules()
-	return
-
 
 
 /client/verb/attack_self()
 	set hidden = 1
 	if(mob)
 		mob.mode()
-	return
 
 
 /client/verb/toggle_throw_mode()
@@ -103,16 +100,12 @@
 		return
 	if (!mob.stat && isturf(mob.loc) && !mob.restrained())
 		mob:toggle_throw_mode()
-	else
-		return
 
 
 /client/verb/drop_item()
 	set hidden = 1
 	if(!isrobot(mob) && mob.stat == CONSCIOUS && isturf(mob.loc))
 		return mob.drop_item()
-	return
-
 
 /client/Center()
 	/* No 3D movement in 2D spessman game. dir 16 is Z Up
@@ -171,7 +164,6 @@
 			src.last_move = get_dir(A, src.loc)
 		if(.)
 			Moved(A, direct)
-	return
 
 // Called on a successful Move().
 /atom/movable/proc/Moved(atom/oldloc)
@@ -185,7 +177,6 @@
 			mob.control_object.dir = direct
 		else
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
-	return
 
 /mob/living/key_down(key, client/user)
 	. = ..()
@@ -217,7 +208,8 @@
 		next_move_dir_sub = 0 	// I'm not really sure why next_move_dir_sub even exis
 		return
 
-	if(moving)	return 0
+	if(moving)
+		return 0
 
 	if(!mob.check_move_cooldown())
 		return
@@ -430,8 +422,6 @@
 		moving = 0
 
 		return .
-
-	return
 
 /mob/proc/SelfMove(turf/n, direct)
 	return Move(n, direct)

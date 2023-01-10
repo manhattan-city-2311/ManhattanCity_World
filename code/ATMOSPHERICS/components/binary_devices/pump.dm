@@ -51,10 +51,7 @@ Thus, the two variables affect pump operation are set in New():
 
 
 /obj/machinery/atmospherics/binary/pump/update_icon()
-	if(!powered())
-		icon_state = "off"
-	else
-		icon_state = "[use_power ? "on" : "off"]"
+	icon_state = "[use_power ? "on" : "off"]"
 
 /obj/machinery/atmospherics/binary/pump/update_underlays()
 	if(..())
@@ -85,7 +82,7 @@ Thus, the two variables affect pump operation are set in New():
 
 	if (power_draw >= 0)
 		last_power_draw = power_draw
-		use_power(power_draw)
+		//use_power(power_draw)
 
 		if(network1)
 			network1.update = 1

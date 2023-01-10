@@ -10,6 +10,10 @@
 
 	var/obj/item/weapon/virusdish/dish = null
 
+/obj/machinery/disease2/diseaseanalyser/initialize()
+	. = ..()
+	overlays += emissive_appearance(icon, "analyser-emissive")
+
 /obj/machinery/disease2/diseaseanalyser/attackby(var/obj/O as obj, var/mob/user as mob)
 	if(default_unfasten_wrench(user, O, 20))
 		return
@@ -54,6 +58,8 @@
 			dish = null
 
 			icon_state = "analyser"
+			overlays.Cut()
+			overlays += emissive_appearance(icon, "analyser-emissive")
 			src.state("\The [src] prints a sheet of paper.")
 
 	else if(dish && !scanning && !pause)
@@ -61,6 +67,8 @@
 			dish.growth -= 10
 			scanning = 5
 			icon_state = "analyser_processing"
+			overlays.Cut()
+			overlays += emissive_appearance(icon, "[icon_state]-emissive")
 		else
 			pause = 1
 			spawn(25)
@@ -69,4 +77,3 @@
 
 				src.state("\The [src] buzzes, \"Insufficient growth density to complete analysis.\"")
 				pause = 0
-	return

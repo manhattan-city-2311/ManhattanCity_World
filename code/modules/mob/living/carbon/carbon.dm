@@ -183,7 +183,7 @@
 				Weaken(2)
 			if(26 to 30)
 				Weaken(5)
-			if(31 to INFINITY)
+			if(31 to POSITIVE_INFINITY)
 				Weaken(10) //This should work for now, more is really silly and makes you lay there forever
 
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
@@ -218,7 +218,7 @@
 						status += "bruised"
 					if(20 to 40)
 						status += "wounded"
-					if(40 to INFINITY)
+					if(40 to POSITIVE_INFINITY)
 						status += "mangled"
 
 				switch(burndamage)
@@ -226,7 +226,7 @@
 						status += "numb"
 					if(10 to 40)
 						status += "blistered"
-					if(40 to INFINITY)
+					if(40 to POSITIVE_INFINITY)
 						status += "peeling away"
 
 				if(org.is_stump())
@@ -402,7 +402,7 @@
 	stop_pulling()
 	to_chat(src, "<span class='warning'>You slipped on [slipped_on]!</span>")
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
-	Weaken(Floor(stun_duration/2))
+	Weaken(floor(stun_duration/2))
 	return 1
 
 /mob/living/carbon/proc/add_chemical_effect(var/effect, var/magnitude = 1)

@@ -58,7 +58,6 @@
 
 	var/datum/global_iterator/pr_int_temp_processor //normalizes internal air mixture temperature
 	var/datum/global_iterator/pr_inertial_movement //controls intertial movement in spesss
-	var/datum/global_iterator/pr_give_air //moves air from tank to cabin
 	var/datum/global_iterator/pr_internal_damage //processes internal damage
 
 
@@ -87,20 +86,14 @@
 
 	icon_state += "-open"
 	add_radio()
-	add_cabin()
-	if(!add_airtank()) //we check this here in case mecha does not have an internal tank available by default - WIP
-		removeVerb(/obj/mecha/verb/connect_to_port)
-		removeVerb(/obj/mecha/verb/toggle_internal_tank)
 	spark_system.set_up(2, 0, src)
 	spark_system.attach(src)
 	add_cell()
 	add_iterators()
-	removeVerb(/obj/mecha/verb/disconnect_from_port)
 	log_message("[src.name] created.")
 	loc.Entered(src)
 	mechas_list += src //global mech list
 	update_transform()
-	return
 
 /obj/mecha/Destroy()
 	src.go_out()
@@ -144,7 +137,6 @@
 
 	QDEL_NULL(pr_int_temp_processor)
 	QDEL_NULL(pr_inertial_movement)
-	QDEL_NULL(pr_give_air)
 	QDEL_NULL(pr_internal_damage)
 	QDEL_NULL(spark_system)
 
@@ -160,10 +152,6 @@
 
 /obj/mecha/proc/addVerb(verb_path)
 	verbs += verb_path
-
-/obj/mecha/proc/add_airtank()
-	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
-	return internal_tank
 
 /obj/mecha/proc/add_cell(var/obj/item/weapon/cell/C=null)
 	if(C)
@@ -192,7 +180,6 @@
 /obj/mecha/proc/add_iterators()
 	pr_int_temp_processor = new /datum/global_iterator/mecha_preserve_temp(list(src))
 	pr_inertial_movement = new /datum/global_iterator/mecha_intertial_movement(null,0)
-	pr_give_air = new /datum/global_iterator/mecha_tank_give_air(list(src))
 	pr_internal_damage = new /datum/global_iterator/mecha_internal_damage(list(src),0)
 
 
@@ -347,11 +334,6 @@
 		user.forceMove(get_turf(src))
 		to_chat(user,"You climb out from [src]")
 		return 0
-	if(connected_port)
-		if(world.time - last_message > 20)
-			src.occupant_message("Unable to move while connected to the air system port")
-			last_message = world.time
-		return 0
 	if(state)
 		occupant_message("<font color='red'>Maintenance protocols in effect</font>")
 		return
@@ -376,7 +358,7 @@
 		move_result	= mechstep(direction)
 	if(move_result)
 		can_move = 0
-		use_power(step_energy_drain)
+		//use_power(step_energy_drain)
 		if(istype(src.loc, /turf/space))
 			if(!src.check_for_support())
 				src.pr_inertial_movement.start(list(src,direction))
@@ -434,7 +416,7 @@
 ///////////////////////////////////
 
 /obj/mecha/proc/check_for_internal_damage(var/list/possible_int_damage,var/ignore_threshold=null)
-	if(!islist(possible_int_damage) || isemptylist(possible_int_damage)) return
+	if(!islist(possible_int_damage) || LAZYLEN(possible_int_damage)) return
 	if(prob(20))
 		if(ignore_threshold || src.health*100/initial(src.health)<src.internal_damage_threshold)
 			for(var/T in possible_int_damage)
@@ -578,9 +560,6 @@
 		src.log_append_to_last("Armor saved.")
 		return
 
-	if(Proj.damage_type == HALLOSS)
-		use_power(Proj.agony * 5)
-
 	if(!(Proj.nodamage))
 		var/ignore_threshold
 		if(istype(Proj, /obj/item/projectile/beam/pulse))
@@ -654,7 +633,7 @@
 
 /obj/mecha/emp_act(severity)
 	if(get_charge())
-		use_power((cell.charge/2)/severity)
+		//use_power((cell.charge/2)/severity)
 		take_damage(50 / severity,"energy")
 	src.log_message("EMP detected",1)
 	check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
@@ -904,128 +883,9 @@
 	else
 		return 0
 
-
-/////////////////////////////////////
-////////  Atmospheric stuff  ////////
-/////////////////////////////////////
-
-/obj/mecha/proc/get_turf_air()
-	var/turf/T = get_turf(src)
-	if(T)
-		. = T.return_air()
-	return
-
-/obj/mecha/remove_air(amount)
-	if(use_internal_tank)
-		return cabin_air.remove(amount)
-	else
-		var/turf/T = get_turf(src)
-		if(T)
-			return T.remove_air(amount)
-	return
-
-/obj/mecha/return_air()
-	if(use_internal_tank)
-		return cabin_air
-	return get_turf_air()
-
-/obj/mecha/proc/return_pressure()
-	. = 0
-	if(use_internal_tank)
-		. =  cabin_air.return_pressure()
-	else
-		var/datum/gas_mixture/t_air = get_turf_air()
-		if(t_air)
-			. = t_air.return_pressure()
-	return
-
-//skytodo: //No idea what you want me to do here, mate.
-/obj/mecha/proc/return_temperature()
-	. = 0
-	if(use_internal_tank)
-		. = cabin_air.temperature
-	else
-		var/datum/gas_mixture/t_air = get_turf_air()
-		if(t_air)
-			. = t_air.temperature
-	return
-
-/obj/mecha/proc/connect(obj/machinery/atmospherics/portables_connector/new_port)
-	//Make sure not already connected to something else
-	if(connected_port || !new_port || new_port.connected_device)
-		return 0
-
-	//Make sure are close enough for a valid connection
-	if(new_port.loc != src.loc)
-		return 0
-
-	//Perform the connection
-	connected_port = new_port
-	connected_port.connected_device = src
-
-	//Actually enforce the air sharing
-	var/datum/pipe_network/network = connected_port.return_network(src)
-	if(network && !(internal_tank.return_air() in network.gases))
-		network.gases += internal_tank.return_air()
-		network.update = 1
-	log_message("Connected to gas port.")
-	return 1
-
-/obj/mecha/proc/disconnect()
-	if(!connected_port)
-		return 0
-
-	var/datum/pipe_network/network = connected_port.return_network(src)
-	if(network)
-		network.gases -= internal_tank.return_air()
-
-	connected_port.connected_device = null
-	connected_port = null
-	src.log_message("Disconnected from gas port.")
-	return 1
-
-
 /////////////////////////
 ////////  Verbs  ////////
 /////////////////////////
-
-
-/obj/mecha/verb/connect_to_port()
-	set name = "Connect to port"
-	set category = "Exosuit Interface"
-	set src = usr.loc
-	set popup_menu = 0
-	if(!src.occupant) return
-	if(usr!=src.occupant)
-		return
-	var/obj/machinery/atmospherics/portables_connector/possible_port = locate(/obj/machinery/atmospherics/portables_connector/) in loc
-	if(possible_port)
-		if(connect(possible_port))
-			src.occupant_message("<span class='notice'>\The [name] connects to the port.</span>")
-			src.verbs += /obj/mecha/verb/disconnect_from_port
-			src.verbs -= /obj/mecha/verb/connect_to_port
-			return
-		else
-			src.occupant_message("<span class='danger'>\The [name] failed to connect to the port.</span>")
-			return
-	else
-		src.occupant_message("Nothing happens")
-
-
-/obj/mecha/verb/disconnect_from_port()
-	set name = "Disconnect from port"
-	set category = "Exosuit Interface"
-	set src = usr.loc
-	set popup_menu = 0
-	if(!src.occupant) return
-	if(usr!=src.occupant)
-		return
-	if(disconnect())
-		src.occupant_message("<span class='notice'>[name] disconnects from the port.</span>")
-		src.verbs -= /obj/mecha/verb/disconnect_from_port
-		src.verbs += /obj/mecha/verb/connect_to_port
-	else
-		src.occupant_message("<span class='danger'>[name] is not connected to the port at the moment.</span>")
 
 /obj/mecha/verb/toggle_lights()
 	set name = "Toggle Lights"
@@ -1038,21 +898,6 @@
 	else		set_light(light_range - lights_power)
 	src.occupant_message("Toggled lights [lights?"on":"off"].")
 	log_message("Toggled lights [lights?"on":"off"].")
-	return
-
-
-/obj/mecha/verb/toggle_internal_tank()
-	set name = "Toggle internal airtank usage."
-	set category = "Exosuit Interface"
-	set src = usr.loc
-	set popup_menu = 0
-	if(usr!=src.occupant)
-		return
-	use_internal_tank = !use_internal_tank
-	src.occupant_message("Now taking air from [use_internal_tank?"internal airtank":"environment"].")
-	src.log_message("Now taking air from [use_internal_tank?"internal airtank":"environment"].")
-	return
-
 
 /obj/mecha/MouseDrop_T(mob/O, mob/user as mob)
 	//Humans can pilot mechs.
@@ -1105,7 +950,7 @@
 	if(isliving(usr))
 		var/mob/living/L = usr
 		if(L.has_buckled_mobs())
-			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
+			to_chat(L, SPAN("warning", "You have other entities attached to yourself. Remove them first."))
 			return
 
 //	to_chat(usr, "You start climbing into [src.name]")
@@ -1331,26 +1176,16 @@
 		if(hasInternalDamage(intdamflag))
 			output += dam_reports[tflag]
 			output += "<br />"
-	if(return_pressure() > WARNING_HIGH_PRESSURE)
-		output += "<font color='red'><b>DANGEROUSLY HIGH CABIN PRESSURE</b></font><br />"
 	return output
 
 
 /obj/mecha/proc/get_stats_part()
 	var/integrity = health/initial(health)*100
 	var/cell_charge = get_charge()
-	var/tank_pressure = internal_tank ? round(internal_tank.return_pressure(),0.01) : "None"
-	var/tank_temperature = internal_tank ? internal_tank.return_temperature() : "Unknown"
-	var/cabin_pressure = round(return_pressure(),0.01)
 	var/output = {"[report_internal_damage()]
 						[integrity<30?"<font color='red'><b>DAMAGE LEVEL CRITICAL</b></font><br>":null]
 						<b>Integrity: </b> [integrity]%<br>
 						<b>Powercell charge: </b>[isnull(cell_charge)?"No powercell installed":"[cell.percent()]%"]<br>
-						<b>Air source: </b>[use_internal_tank?"Internal Airtank":"Environment"]<br>
-						<b>Airtank pressure: </b>[tank_pressure]kPa<br>
-						<b>Airtank temperature: </b>[tank_temperature]K|[tank_temperature - T0C]&deg;C<br>
-						<b>Cabin pressure: </b>[cabin_pressure>WARNING_HIGH_PRESSURE ? "<font color='red'>[cabin_pressure]</font>": cabin_pressure]kPa<br>
-						<b>Cabin temperature: </b> [return_temperature()]K|[return_temperature() - T0C]&deg;C<br>
 						<b>Lights: </b>[lights?"on":"off"]<br>
 						[src.dna?"<b>DNA-locked:</b><br> <span style='font-size:10px;letter-spacing:-1px;'>[src.dna]</span> \[<a href='?src=\ref[src];reset_dna=1'>Reset</a>\]<br>":null]
 					"}
@@ -1373,13 +1208,6 @@
 						</div>
 						</div>
 						<div class='wr'>
-						<div class='header'>Airtank</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_airtank=1'>Toggle Internal Airtank Usage</a><br>
-						[(/obj/mecha/verb/disconnect_from_port in src.verbs)?"<a href='?src=\ref[src];port_disconnect=1'>Disconnect from port</a><br>":null]
-						[(/obj/mecha/verb/connect_to_port in src.verbs)?"<a href='?src=\ref[src];port_connect=1'>Connect to port</a><br>":null]
-						</div>
-						</div>
 						<div class='wr'>
 						<div class='header'>Permissions & Logging</div>
 						<div class='links'>
@@ -1531,10 +1359,6 @@
 		if(usr != src.occupant)	return
 		src.toggle_lights()
 		return
-	if(href_list["toggle_airtank"])
-		if(usr != src.occupant)	return
-		src.toggle_internal_tank()
-		return
 	if(href_list["rmictoggle"])
 		if(usr != src.occupant)	return
 		radio.broadcasting = !radio.broadcasting
@@ -1552,14 +1376,6 @@
 			new_frequency = sanitize_frequency(new_frequency)
 		radio.set_frequency(new_frequency)
 		send_byjax(src.occupant,"exosuit.browser","rfreq","[format_frequency(radio.frequency)]")
-		return
-	if(href_list["port_disconnect"])
-		if(usr != src.occupant)	return
-		src.disconnect_from_port()
-		return
-	if (href_list["port_connect"])
-		if(usr != src.occupant)	return
-		src.connect_to_port()
 		return
 	if (href_list["view_log"])
 		if(usr != src.occupant)	return
@@ -1806,39 +1622,6 @@
 			mecha.cabin_air.temperature -= max(-10, min(10, round(delta/4,0.1)))
 		return
 
-/datum/global_iterator/mecha_tank_give_air
-	delay = 15
-
-	process(var/obj/mecha/mecha)
-		if(mecha.internal_tank)
-			var/datum/gas_mixture/tank_air = mecha.internal_tank.return_air()
-			var/datum/gas_mixture/cabin_air = mecha.cabin_air
-
-			var/release_pressure = mecha.internal_tank_valve
-			var/cabin_pressure = cabin_air.return_pressure()
-			var/pressure_delta = min(release_pressure - cabin_pressure, (tank_air.return_pressure() - cabin_pressure)/2)
-			var/transfer_moles = 0
-			if(pressure_delta > 0) //cabin pressure lower than release pressure
-				if(tank_air.temperature > 0)
-					transfer_moles = pressure_delta*cabin_air.volume/(cabin_air.temperature * R_IDEAL_GAS_EQUATION)
-					var/datum/gas_mixture/removed = tank_air.remove(transfer_moles)
-					cabin_air.merge(removed)
-			else if(pressure_delta < 0) //cabin pressure higher than release pressure
-				var/datum/gas_mixture/t_air = mecha.get_turf_air()
-				pressure_delta = cabin_pressure - release_pressure
-				if(t_air)
-					pressure_delta = min(cabin_pressure - t_air.return_pressure(), pressure_delta)
-				if(pressure_delta > 0) //if location pressure is lower than cabin pressure
-					transfer_moles = pressure_delta*cabin_air.volume/(cabin_air.temperature * R_IDEAL_GAS_EQUATION)
-					var/datum/gas_mixture/removed = cabin_air.remove(transfer_moles)
-					if(t_air)
-						t_air.merge(removed)
-					else //just delete the cabin gas, we're in space or some shit
-						qdel(removed)
-		else
-			return stop()
-		return
-
 /datum/global_iterator/mecha_intertial_movement //inertial movement in space
 	delay = 7
 
@@ -1858,33 +1641,13 @@
 		if(mecha.hasInternalDamage(MECHA_INT_FIRE))
 			if(!mecha.hasInternalDamage(MECHA_INT_TEMP_CONTROL) && prob(5))
 				mecha.clearInternalDamage(MECHA_INT_FIRE)
-			if(mecha.internal_tank)
-				if(mecha.internal_tank.return_pressure()>mecha.internal_tank.maximum_pressure && !(mecha.hasInternalDamage(MECHA_INT_TANK_BREACH)))
-					mecha.setInternalDamage(MECHA_INT_TANK_BREACH)
-				var/datum/gas_mixture/int_tank_air = mecha.internal_tank.return_air()
-				if(int_tank_air && int_tank_air.volume>0) //heat the air_contents
-					int_tank_air.temperature = min(6000+T0C, int_tank_air.temperature+rand(10,15))
-			if(mecha.cabin_air && mecha.cabin_air.volume>0)
-				mecha.cabin_air.temperature = min(6000+T0C, mecha.cabin_air.temperature+rand(10,15))
-				if(mecha.cabin_air.temperature>mecha.max_temperature/2)
-					mecha.take_damage(4/round(mecha.max_temperature/mecha.cabin_air.temperature,0.1),"fire")
 		if(mecha.hasInternalDamage(MECHA_INT_TEMP_CONTROL)) //stop the mecha_preserve_temp loop datum
 			mecha.pr_int_temp_processor.stop()
-		if(mecha.hasInternalDamage(MECHA_INT_TANK_BREACH)) //remove some air from internal tank
-			if(mecha.internal_tank)
-				var/datum/gas_mixture/int_tank_air = mecha.internal_tank.return_air()
-				var/datum/gas_mixture/leaked_gas = int_tank_air.remove_ratio(0.10)
-				if(mecha.loc && hascall(mecha.loc,"assume_air"))
-					mecha.loc.assume_air(leaked_gas)
-				else
-					qdel(leaked_gas)
 		if(mecha.hasInternalDamage(MECHA_INT_SHORT_CIRCUIT))
 			if(mecha.get_charge())
 				mecha.spark_system.start()
 				mecha.cell.charge -= min(20,mecha.cell.charge)
 				mecha.cell.maxcharge -= min(20,mecha.cell.maxcharge)
-		return
-
 
 /////////////
 

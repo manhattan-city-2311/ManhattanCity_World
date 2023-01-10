@@ -20,7 +20,7 @@
 		return
 	add_fingerprint(user)
 
-	use_power(50)
+	//use_power(50)
 	on = !(on)
 	icon_state = text("igniter[]", on)
 
@@ -76,10 +76,7 @@
 			icon_state = "[base_state]-d"
 		if(!disable)
 			user.visible_message("<span class='warning'>[user] has reconnected the [src]!</span>", "<span class='warning'>You fix the connection to the [src].</span>")
-			if(powered())
-				icon_state = "[base_state]"
-			else
-				icon_state = "[base_state]-p"
+			icon_state = "[base_state]-p"
 
 /obj/machinery/sparker/attack_ai()
 	if(anchored)
@@ -88,9 +85,6 @@
 		return
 
 /obj/machinery/sparker/proc/ignite()
-	if(!(powered()))
-		return
-
 	if((disable) || (last_spark && world.time < last_spark + 50))
 		return
 
@@ -99,7 +93,7 @@
 	s.set_up(2, 1, src)
 	s.start()
 	last_spark = world.time
-	use_power(1000)
+	//use_power(1000)
 	return 1
 
 /obj/machinery/sparker/emp_act(severity)
@@ -118,7 +112,7 @@
 	if(..())
 		return
 
-	use_power(5)
+	//use_power(5)
 
 	active = 1
 	icon_state = "launcheract"
@@ -130,7 +124,7 @@
 
 	for(var/obj/machinery/igniter/M in machines)
 		if(M.id == id)
-			use_power(50)
+			//use_power(50)
 			M.on = !(M.on)
 			M.icon_state = text("igniter[]", M.on)
 

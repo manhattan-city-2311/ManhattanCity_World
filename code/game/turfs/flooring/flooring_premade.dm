@@ -311,8 +311,6 @@
 	initial_flooring = /decl/flooring/tiling/steel_dirty
 
 /turf/simulated/floor/tiled/steel/airless
-	oxygen = 0
-	nitrogen = 0
 
 /turf/simulated/floor/tiled/asteroid_steel
 	icon_state = "asteroidfloor"
@@ -320,8 +318,6 @@
 
 /turf/simulated/floor/tiled/asteroid_steel/airless
 	name = "airless plating"
-	oxygen = 0
-	nitrogen = 0
 
 /turf/simulated/floor/tiled/white
 	name = "white floor"
@@ -372,42 +368,22 @@
 //ATMOS PREMADES
 /turf/simulated/floor/reinforced/airless
 	name = "vacuum floor"
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
 
 /turf/simulated/floor/airless
 	name = "airless plating"
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
 
 /turf/simulated/floor/tiled/airless
 	name = "airless floor"
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
 
 /turf/simulated/floor/bluegrid/airless
 	name = "airless floor"
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
 
 /turf/simulated/floor/greengrid/airless
 	name = "airless floor"
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
 
-/turf/simulated/floor/greengrid/nitrogen
-	oxygen = 0
 
 /turf/simulated/floor/tiled/white/airless
 	name = "airless floor"
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
 
 // Placeholders
 

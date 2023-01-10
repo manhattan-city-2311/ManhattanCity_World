@@ -126,7 +126,7 @@
 		switch(reagents.total_volume)
 			if(0 to 3)			filling.icon_state = "[icon_state]1"
 			if(4 to 7) 			filling.icon_state = "[icon_state]5"
-			if(8 to INFINITY)	filling.icon_state = "[icon_state]12"
+			if(8 to POSITIVE_INFINITY)	filling.icon_state = "[icon_state]12"
 
 		filling.color += reagents.get_color()
 		overlays += filling
@@ -161,7 +161,7 @@
 			if(60 to 69)		filling.icon_state = "fitness-cup70"
 			if(70 to 79)		filling.icon_state = "fitness-cup80"
 			if(80 to 89)		filling.icon_state = "fitness-cup90"
-			if(90 to INFINITY)	filling.icon_state = "fitness-cup100"
+			if(90 to POSITIVE_INFINITY)	filling.icon_state = "fitness-cup100"
 
 		filling.color += reagents.get_color()
 		overlays += filling

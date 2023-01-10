@@ -176,7 +176,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 			displaced = TRUE
 
 	if(istype(T))
-		visible_message(span("danger", "\The [L] falls off \the [src]!"))
+		visible_message(SPAN("danger", "\The [L] falls off \the [src]!"))
 		L.forceMove(T)
 
 		// Do the actual hurting. Double cliffs do halved damage due to them most likely hitting twice.
@@ -184,7 +184,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		if(istype(L.buckled, /obj/vehicle)) // People falling off in vehicles will take less damage, but will damage the vehicle severely.
 			var/obj/vehicle/vehicle = L.buckled
 			vehicle.adjust_health(40 * harm)
-			to_chat(L, span("warning", "\The [vehicle] absorbs some of the impact, damaging it."))
+			to_chat(L, SPAN("warning", "\The [vehicle] absorbs some of the impact, damaging it."))
 			harm /= 2
 
 		playsound(L, 'sound/effects/break_stone.ogg', 70, 1)
@@ -196,7 +196,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		sleep(fall_time) // A brief delay inbetween the two sounds helps sell the 'ouch' effect.
 		playsound(L, "punch", 70, 1)
 		shake_camera(L, 1, 1)
-		visible_message(span("danger", "\The [L] hits the ground!"))
+		visible_message(SPAN("danger", "\The [L] hits the ground!"))
 
 		// The bigger they are, the harder they fall.
 		// They will take at least 20 damage at the minimum, and tries to scale up to 40% of their max health.
@@ -211,7 +211,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		// Now fall off more cliffs below this one if they exist.
 		var/obj/structure/cliff/bottom_cliff = locate() in T
 		if(bottom_cliff)
-			visible_message(span("danger", "\The [L] rolls down towards \the [bottom_cliff]!"))
+			visible_message(SPAN("danger", "\The [L] rolls down towards \the [bottom_cliff]!"))
 			sleep(5)
 			bottom_cliff.fall_off_cliff(L)
 
@@ -223,7 +223,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		if(shoes && shoes.rock_climbing)
 			return ..() // Do the other checks too.
 
-	to_chat(user, span("warning", "\The [src] is too steep to climb unassisted."))
+	to_chat(user, SPAN("warning", "\The [src] is too steep to climb unassisted."))
 	return FALSE
 
 // This tells AI mobs to not be dumb and step off cliffs willingly.

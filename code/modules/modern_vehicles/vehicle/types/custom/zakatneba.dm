@@ -20,6 +20,9 @@
 	topgear = 2.67
 	efficiency = 0.98
 
+/obj/item/vehicle_part/fueltank/xi7
+	capacity = 40
+
 /obj/manhattan/vehicle/motorcycle/zakatneba
 	name = "XI7-MOONSTER"
 	desc = "The neon fighter of night roads. It is an exclusive model, they do not produce them anymore. It is considered the benchmark for sports motorcycles. It shimmers with red and turquoise shades when riding. It is the stuff of legends."
@@ -34,7 +37,8 @@
 		VC_BACK_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_ENGINE = /obj/item/vehicle_part/engine/xi7,
 		VC_GEARBOX = /obj/item/vehicle_part/gearbox/xi7,
-		VC_CARDAN = /obj/item/vehicle_part/cardan
+		VC_CARDAN = /obj/item/vehicle_part/cardan,
+		VC_FUELTANK = /obj/item/vehicle_part/fueltank/xi7
 	)
 
 	rider_xs = list(

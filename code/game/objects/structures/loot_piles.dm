@@ -607,7 +607,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/random/tool,
 		/obj/random/tool,
 		/obj/item/stack/cable_coil/random,
-		/obj/random/tank,
 		/obj/random/tech_supply/component,
 		/obj/random/tech_supply/component,
 		/obj/random/tech_supply/component,
@@ -640,7 +639,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	common_loot = list(
 		/obj/random/tool,
 		/obj/item/stack/cable_coil/random,
-		/obj/random/tank,
 		/obj/random/tech_supply/component,
 		/obj/item/stack/material/steel{amount = 25},
 		/obj/item/stack/material/glass{amount = 10},
@@ -683,7 +681,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	common_loot = list(
 		/obj/random/tool,
 		/obj/item/stack/cable_coil/random,
-		/obj/random/tank,
 		/obj/random/tech_supply/component,
 		/obj/item/stack/material/steel{amount = 40},
 		/obj/item/stack/material/glass{amount = 20},
@@ -718,7 +715,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	common_loot = list(
 		/obj/random/tool,
 		/obj/item/stack/cable_coil/random,
-		/obj/random/tank,
 		/obj/random/tech_supply/component,
 		/obj/item/stack/material/steel{amount = 25},
 		/obj/item/stack/material/glass{amount = 10},
@@ -761,7 +757,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	common_loot = list(
 		/obj/random/tool,
 		/obj/item/stack/cable_coil/random,
-		/obj/random/tank,
 		/obj/random/tech_supply/component,
 		/obj/item/stack/material/steel{amount = 25},
 		/obj/item/stack/material/glass{amount = 10},
@@ -814,7 +809,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	common_loot = list(
 		/obj/random/tool,
 		/obj/item/stack/cable_coil/random,
-		/obj/random/tank,
 		/obj/random/tech_supply/component,
 		/obj/item/stack/material/steel{amount = 25},
 		/obj/item/stack/material/glass{amount = 10},

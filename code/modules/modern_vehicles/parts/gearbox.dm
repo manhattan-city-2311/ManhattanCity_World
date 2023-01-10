@@ -40,11 +40,13 @@
 
 /obj/item/vehicle_part/gearbox/proc/downshift()
 	switch(selected_gear)
-		if("R")
+		if("R", "N")
 			return
+/*
 		if("N")
 			selected_gear = "R"
 			return
+*/
 		if("1")
 			selected_gear = "N"
 			return

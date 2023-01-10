@@ -34,7 +34,7 @@
 		var/mob/living/L = A
 		if(prob(15))
 			L.Weaken(3)
-			L.visible_message(span("danger", "\The [src] knocks down \the [L]!"))
+			L.visible_message(SPAN("danger", "\The [src] knocks down \the [L]!"))
 
 /mob/living/simple_mob/animal/space/tree/death()
 	..(null,"is hacked into pieces!")

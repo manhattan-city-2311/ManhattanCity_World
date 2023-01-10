@@ -135,7 +135,7 @@
 		if(debug)
 			visible_message("[src]: Removing [removed] W.")
 
-		use_power(power_rating)
+		//use_power(power_rating)
 
 		network.update = 1
 	else

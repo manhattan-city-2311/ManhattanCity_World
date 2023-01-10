@@ -236,8 +236,8 @@ datum
 		var/datum/mind/target
 		var/explanation_text = "text not set"
 		var/job
-		var/points = INFINITY //If this isn't set to something else, the objective is bugged and should be ignored
-		var/weight = INFINITY
+		var/points = POSITIVE_INFINITY //If this isn't set to something else, the objective is bugged and should be ignored
+		var/weight = POSITIVE_INFINITY
 
 		New(var/text,var/joba)
 			if(text)
@@ -249,9 +249,9 @@ datum
 		proc/check_completion()
 			return 1
 		proc/get_points(var/job)
-			return INFINITY
+			return POSITIVE_INFINITY
 		proc/get_weight(var/job)
-			return INFINITY
+			return POSITIVE_INFINITY
 		proc/find_target_by_role(role, role_type=0)//Option sets either to check assigned role or special role. Default to assigned.
 			for(var/datum/mind/possible_target in ticker.minds)
 				if((possible_target != owner) && ishuman(possible_target.current) && ((role_type ? possible_target.special_role : possible_target.assigned_role) == role) )
@@ -297,7 +297,7 @@ datum
 						if(0)
 							return 60*difficulty
 				else
-					return INFINITY
+					return POSITIVE_INFINITY
 
 			get_weight()
 				if(target)
@@ -332,7 +332,7 @@ datum
 				if(target)
 					return 30
 				else
-					return INFINITY
+					return POSITIVE_INFINITY
 
 			get_weight()
 				if(target)
@@ -465,7 +465,7 @@ datum
 						if(0)
 							return 60*difficulty
 				else
-					return INFINITY
+					return POSITIVE_INFINITY
 
 			get_weight()
 				if(target)
@@ -530,7 +530,7 @@ datum
 
 				return 0
 			get_points()
-				return INFINITY
+				return POSITIVE_INFINITY
 
 			get_weight(var/job)
 				return 1
@@ -545,7 +545,7 @@ datum
 
 				return 1
 			get_points()
-				return INFINITY
+				return POSITIVE_INFINITY
 
 			get_weight(var/job)
 				return 1
@@ -625,7 +625,7 @@ datum
 						if(3)
 							return 30
 						if(4)
-							return INFINITY
+							return POSITIVE_INFINITY
 			*/
 
 
@@ -1014,7 +1014,7 @@ datum
 						if(3)
 							return 30
 						if(4)
-							return INFINITY
+							return POSITIVE_INFINITY
 			*/
 			cyborg
 				steal_target = /obj/item/robot_parts/robot_suit

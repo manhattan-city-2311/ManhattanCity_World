@@ -138,7 +138,7 @@
 	if(cpu.battery_module && cpu.battery_module.battery.charge <= 0) // Battery-run but battery is depleted.
 		power_failure()
 		return 0
-	else if(!cpu.battery_module && (!powered() || !tesla_link || !tesla_link.enabled)) // Not battery run, but lacking APC connection.
+	else if(!cpu.battery_module && (!tesla_link || !tesla_link.enabled)) // Not battery run, but lacking APC connection.
 		power_failure()
 		return 0
 	else if(stat & NOPOWER)
@@ -163,10 +163,8 @@
 		if(cpu.battery_module && (cpu.battery_module.battery.charge < cpu.battery_module.battery.maxcharge))
 			use_power = 2
 
-		if(cpu.battery_module && powered() && (use_power == 2)) // Battery charging itself
+		if(cpu.battery_module && (use_power == 2)) // Battery charging itself
 			cpu.battery_module.battery.give(100 * CELLRATE)
-		else if(cpu.battery_module && !powered()) // Unpowered, but battery covers the usage.
-			cpu.battery_module.battery.use(idle_power_usage * CELLRATE)
 
 	else	// No wireless connection run only on battery.
 		use_power = 0

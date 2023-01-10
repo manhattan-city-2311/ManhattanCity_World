@@ -57,7 +57,7 @@
 		var/t = min(charge, charging.cell.maxcharge - charging.cell.charge)
 		if(t > 0)
 			charging.give_power(t)
-			use_power(t * 150)
+			//use_power(t * 150)
 		else
 			charging.occupant_message("<span class='notice'>Fully charged.</span>")
 			done = TRUE

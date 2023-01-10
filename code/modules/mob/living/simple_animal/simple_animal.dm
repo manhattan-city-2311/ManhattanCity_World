@@ -264,7 +264,7 @@
 		if(stat != DEAD)
 			var/heal_per = (health / getMaxHealth()) * 100
 			switch(heal_per)
-				if(100 to INFINITY)
+				if(100 to POSITIVE_INFINITY)
 					healths.icon_state = "health0"
 				if(80 to 100)
 					healths.icon_state = "health1"
@@ -285,7 +285,7 @@
 	if(nutrition_icon)
 		var/food_per = (nutrition / initial(nutrition)) * 100
 		switch(food_per)
-			if(90 to INFINITY)
+			if(90 to POSITIVE_INFINITY)
 				nutrition_icon.icon_state = "nutrition0"
 			if(75 to 90)
 				nutrition_icon.icon_state = "nutrition1"
@@ -1099,7 +1099,7 @@
 /mob/living/simple_animal/proc/GetPath(var/turf/target,var/get_to = 1,var/max_distance = world.view*6)
 	ai_log("GetPath([target],[get_to],[max_distance])",2)
 	ForgetPath()
-	var/list/new_path = AStar(get_turf(loc), target, astar_adjacent_proc, /turf.proc/Distance, min_target_dist = get_to, max_node_depth = max_distance, id = myid, exclude = obstacles)
+	var/list/new_path = AStar(get_turf(loc), target, astar_adjacent_proc, TYPE_PROC_REF(/turf, Distance), min_target_dist = get_to, max_node_depth = max_distance, id = myid, exclude = obstacles)
 
 	if(new_path && new_path.len)
 		walk_list = new_path

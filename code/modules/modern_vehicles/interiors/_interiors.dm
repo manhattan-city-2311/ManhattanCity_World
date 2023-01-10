@@ -25,7 +25,6 @@
 			CRASH("[interior_template] was unable to load.")
 			return
 
-		GLOB.vehicle_spawnpoints -= S
 		qdel(S)
 		break
 
@@ -59,93 +58,40 @@
 	GLOB.vehicle_spawnpoints += src
 	icon_state = null
 
+/obj/effect/interior_spawn/Destroy()
+	GLOB.vehicle_spawnpoints -= src
+	. = ..()
+
 /obj/manhattan/vehicle/large
 	var/datum/vehicle_interior/interior = null
 	var/size_x = 0
 	var/size_y = 0
 	var/datum/map_template/interior_template = /datum/map_template
 
+/obj/manhattan/vehicle/large/get_all_positions()
+	return ..() + list(VP_INTERIOR)
+
 /obj/manhattan/vehicle/large/initialize()
-	..()
+	. = ..()
 	interior = new(interior_template, src)
 
-/obj/manhattan/vehicle/large/proc/move_to_interior(atom/movable/user)
-	visible_message(SPAN_INFO("[user] enters the interior of [src]."))
-	to_chat(user, SPAN_INFO("You are now in the interior of [src]."))
-	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
-	user.forceMove(get_turf(interior.entrance))
-	occupants[user] = "passenger"
-
-/obj/manhattan/vehicle/large/enter_vehicle()
-	set name = "Войти в транспорт"
-	set category = "Транспорт"
-	set src in view(1)
-
-	var/mob/living/user = usr
-	if(!istype(user) || !src.Adjacent(user) || user.incapacitated())
-		return
-	var/player_pos_choice
-	var/list/L = list("driver","passenger","gunner", "Cancel")
-	if(L.len == 1)
-		player_pos_choice = L[1]
+/obj/manhattan/vehicle/large/proc/move_to_interior(atom/movable/user, puller)
+	if(user == puller)
+		visible_message(SPAN_NOTICE("[user] enters the interior of [src]."))
 	else
-		player_pos_choice = input(user, "Enter which position?", "Vehicle Entry Position Select", "Cancel") in L
-
-	switch(player_pos_choice)
-		if("cancel")
-			return
-		if("passenger")
-			move_to_interior(user)
-		else
-			enter_as_position(user, player_pos_choice)
-
-/obj/manhattan/vehicle/large/enter_as_position(var/mob/user,var/position = "driver")
-	if(block_enter_exit)
-		to_chat(user, SPAN_NOTICE("The [src] is locked."))
-		return 0
-	if(check_position_blocked(position))
-		to_chat(user, SPAN_NOTICE("No [position] spaces in [src]"))
-		return 0
-	var/mob/living/h_test = user
-	if(!istype(h_test) && position == "driver")
-		to_chat(user, SPAN_NOTICE("You don't know how to drive that.")) //Let's assume non-living mobs can't drive.
-		return
-	var/can_enter = check_enter_invalid()
-	if(can_enter)
-		to_chat(user, SPAN_NOTICE("[can_enter]"))
-		return 0
-	if(user in occupants)
-		if(occupants[user] == position)
-			to_chat(user, SPAN_NOTICE("You're already a [position] of [src]"))
-			return 0
-		occupants[user] = position
-		visible_message(SPAN_NOTICE("[user] enters [src] as [position]"))
-		update_object_sprites()
-		return 1
-
-	occupants[user] = position
-	user.forceMove(src)
-	update_object_sprites()
-	visible_message("<span class = 'notice'>[user] enters the [position] position of [src].</span>")
-	to_chat(user,"<span class = 'info'>You are now in the [position] position of [src].</span>")
+		visible_message(SPAN_NOTICE("[puller] put [user] into interior of \the [src]."))
+	to_chat(user, SPAN_NOTICE("You are now in the interior of [src]."))
 	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
-	return 1
 
-/obj/manhattan/vehicle/large/exit_vehicle(mob/user, ignore_incap_check = 0)
-	if(!occupants[user])
-		to_chat(user, SPAN_NOTICE("You must be inside [src] to exit it."))
-		return
-	if(user.incapacitated() && !ignore_incap_check)
-		to_chat(user, SPAN_WARNING("You cannot do that when you are incapacitated!"))
-		return
-	var/nLoc = pick_valid_exit_loc()
-	if(!nLoc)
-		to_chat(user, SPAN_NOTICE("There is no valid location to exit at."))
-		return
-	occupants -= user
-	user.forceMove(nLoc)
-	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
-	update_object_sprites()
+	user.forceMove(get_turf(interior.entrance))
+	occupants[user] = VP_INTERIOR
+
+	return TRUE
+
+/obj/manhattan/vehicle/large/handle_entering(mob/user, position, puller)
+	if(position == VP_INTERIOR)
+		return move_to_interior(user, puller)
+	return ..()
 
 /obj/structure/vehiclewall
 	name = "vehicle wall"
@@ -162,7 +108,6 @@
 
 /obj/structure/vehicledoor
 	name = "vehicle door"
-	desc = "Don't joke about the back door!"
 	icon = 'icons/vehicles/interior/walls.dmi'
 	icon_state = "ambulancedoor"
 
@@ -179,3 +124,10 @@
 /obj/structure/vehicledoor/attack_hand(mob/user)
 	. = ..()
 	interior.vehicle.exit_vehicle(user)
+
+/obj/structure/vehicledoor/MouseDrop_T(mob/target, mob/user)
+	. = ..()
+	if(ismob(target))
+		interior.vehicle.exit_vehicle(target, ingore_incap_check = TRUE, puller = user)
+	else
+		target.forceMove(interior.vehicle.pick_valid_exit_loc())

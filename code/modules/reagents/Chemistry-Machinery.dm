@@ -401,7 +401,7 @@
 	if(istype(O,/obj/item/stack))
 		var/obj/item/stack/stack = O
 
-		if(isemptylist(stack.associated_reagents))
+		if(LAZYLEN(stack.associated_reagents))
 			to_chat(user, "\The [O] is not suitable for blending.")
 			return 0
 
@@ -524,7 +524,7 @@
 
 		if(istype(O, /obj/item/stack))
 			var/obj/item/stack/stack = O
-			if(!isemptylist(stack.associated_reagents))
+			if(!LAZYLEN(stack.associated_reagents))
 				var/to_use = 0
 
 				if((stack.amount * stack.reagent_multiplier) > remaining_volume)
@@ -589,10 +589,10 @@
 	if(istype(I,/obj/item/weapon/reagent_containers))
 		analyzing = TRUE
 		update_icon()
-		to_chat(user, span("notice", "Analyzing \the [I], please stand by..."))
+		to_chat(user, SPAN("notice", "Analyzing \the [I], please stand by..."))
 
 		if(!do_after(user, 2 SECONDS, src))
-			to_chat(user, span("warning", "Sample moved outside of scan range, please try again and remain still."))
+			to_chat(user, SPAN("warning", "Sample moved outside of scan range, please try again and remain still."))
 			analyzing = FALSE
 			update_icon()
 			return
@@ -609,9 +609,9 @@
 			for(var/datum/reagent/R in I.reagents.reagent_list)
 				if(!R.name)
 					continue
-				to_chat(user, span("notice", "Contains [R.volume]ml of <b>[R.name]</b>.<br>[R.description]<br>"))
+				to_chat(user, SPAN("notice", "Contains [R.volume]ml of <b>[R.name]</b>.<br>[R.description]<br>"))
 
-		to_chat(user, span("notice", "Scanning of \the [I] complete."))
+		to_chat(user, SPAN("notice", "Scanning of \the [I] complete."))
 		analyzing = FALSE
 		update_icon()
 		return

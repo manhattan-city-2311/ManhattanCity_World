@@ -120,12 +120,14 @@
 	name = "transit station sign"
 	desc = "A sign for the city transit station."
 	icon_state = "transit"
+	emissive_state = "transit-emissive"
 	light_color = COLOR_ORANGE
 
 /obj/structure/sign/neon/big/transit/south
 	name = "south transit station sign"
 	desc = "A sign for the city transit station."
 	icon_state = "transit_alt"
+	emissive_state = "transit_alt-emissive"
 
 /obj/structure/sign/neon/big/train
 	name = "transit station sign"
@@ -187,6 +189,7 @@
 	name = "Strange neon art"
 	desc = "Neon artwork of...something."
 	icon_state = "city_of_night"
+	emissive_state = "city_of_night"
 	light_color = COLOR_YELLOW
 
 /obj/structure/sign/neon/big/restaurant
@@ -211,6 +214,7 @@
 	name = "big city sign"
 	desc = "A sign with some unknown language."
 	icon_state = "randomshit1"
+	icon_state = "randomshit1-emissive"
 	light_color = LIGHT_COLOR_HOTPINK
 
 /obj/structure/sign/neon/big/manhattan
@@ -300,18 +304,22 @@
 
 /obj/structure/sign/neon/figures/square
 	icon_state = "square"
+	emissive_state = "square"
 	light_color = LIGHT_COLOR_HOTPINK
 
 /obj/structure/sign/neon/figures/triangle
 	icon_state = "triangle"
+	emissive_state = "triangle"
 	light_color = LIGHT_COLOR_NEONGREEN
 
 /obj/structure/sign/neon/figures/crest
 	icon_state = "x"
+	emissive_state = "x"
 	light_color = LIGHT_COLOR_NEONGREEN
 
 /obj/structure/sign/neon/figures/circle
 	icon_state = "circle"
+	emissive_state = "circle"
 	light_color = LIGHT_COLOR_HOTPINK
 
 /obj/structure/sign/neon/big/bar2
@@ -377,6 +385,7 @@
 	name = "city hospital sign"
 	desc = "Holographic Hospital sign."
 	icon_state = "med1"
+	emissive_state = "med1-emissive"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 /obj/structure/sign/neon/big/hospital2
@@ -392,6 +401,7 @@
 	name = "neon menu screen"
 	desc = "A sign with some options to choose."
 	icon_state = "options"
+	emissive_state = "options-emissive"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
 /obj/structure/sign/neon/big/bar

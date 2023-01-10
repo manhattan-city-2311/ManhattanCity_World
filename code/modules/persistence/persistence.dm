@@ -20,26 +20,18 @@
 */
 /datum/proc/deserialize(var/list/data)
 	return
-
 /atom
-	// This var isn't actually used for anything, but is present so that
-	// DM's map reader doesn't forfeit on reading a JSON-serialized map
-	var/map_json_data
-	var/persistence_loaded = FALSE
-
-	var/save_contents = TRUE
-	var/save_reagents = TRUE
-	var/save_forensics = FALSE
+	var/persistence_flags = PF_SAVE_CONTENTS
 
 	var/unique_save_vars = list()
 
 	var/dont_save = FALSE // For atoms that are temporary by necessity - like lighting overlays
 
 /atom/proc/on_persistence_load()
-	persistence_loaded = FALSE	// turns this off.
+	persistence_flags &= ~PF_PERSISTENCE_LOADED
 
 /atom/proc/on_persistence_save()
-	persistence_loaded = TRUE
+	persistence_flags |= PF_PERSISTENCE_LOADED
 
 /atom/proc/persistence_track()
 	return
@@ -87,52 +79,48 @@
 	if(!fingerprintshidden)
 		fingerprintshidden = list()
 
-	if(islist(suit_fibers) && !isemptylist(suit_fibers))
+	if(islist(suit_fibers) && !LAZYLEN(suit_fibers))
 		truncate_oldest(suit_fibers, MAX_FINGERPRINTS)
-	if(islist(fingerprints) && !isemptylist(fingerprints))
+	if(islist(fingerprints) && !LAZYLEN(fingerprints))
 		truncate_oldest(fingerprints, MAX_FINGERPRINTS)
-	if(islist(fingerprintshidden) && !isemptylist(fingerprintshidden))
+	if(islist(fingerprintshidden) && !LAZYLEN(fingerprintshidden))
 		truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
 
 	return TRUE
 
 /atom/proc/pack_persistence_data()
-	var/list/all_reagents = reagents.reagent_list
-	var/list/reagents_to_save = list()
+	. = list()
 
-	if(reagents)
-		for(var/datum/reagent/R in all_reagents)
-			var/datum/map_reagent_data/reagent_holder = new()
+	for(var/datum/reagent/R as anything in reagents.reagent_list)
+		var/datum/map_reagent_data/reagent_holder = new()
 
-			reagent_holder.id = R.id
-			reagent_holder.amount = R.volume
+		reagent_holder.id = R.id
+		reagent_holder.amount = R.volume
 
-			if(R.get_data())
-				var/list/datalist = R.get_data()
+		if(R.get_data())
+			var/list/datalist = R.get_data()
 
-				if(islist(datalist))
-					var/list/metadata = list()
-					for(var/V in datalist)
-						if(!istext(datalist[V]) && !isnum(datalist[V]))
-							continue
-						metadata[V] = datalist[V]
-
-					reagent_holder.data = metadata
-				else
-					if(!istext(R.get_data()) && !isnum(R.get_data()))
+			if(islist(datalist))
+				var/list/metadata = list()
+				for(var/V in datalist)
+					if(!istext(datalist[V]) && !isnum(datalist[V]))
 						continue
+					metadata[V] = datalist[V]
 
-					reagent_holder.data = R.get_data()
+				reagent_holder.data = metadata
+			else
+				if(!istext(R.get_data()) && !isnum(R.get_data()))
+					continue
 
-			reagents_to_save += reagent_holder
+				reagent_holder.data = R.get_data()
 
-	return reagents_to_save
+		. += reagent_holder
 
 /obj/proc/unpack_persistence_data(var/list/saved_reagents)
 	if(!reagents)
 		return
 
-	if(isemptylist(saved_reagents))
+	if(LAZYLEN(saved_reagents))
 		return FALSE
 
 	reagents.reagent_list.Cut()
@@ -196,7 +184,7 @@
 // Custom vars-to-save/persistence load list
 
 /obj
-	save_forensics = TRUE
+	persistence_flags = PF_SAVE_CONTENTS | PF_SAVE_FORENSICS
 
 /obj/vars_to_save()
 	return list("density","anchored","color","dir","layer","plane","pixel_x","pixel_y","icon_state") + unique_save_vars

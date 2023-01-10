@@ -26,18 +26,6 @@
 	QDEL_NULL(holding)
 	. = ..()
 
-/obj/machinery/portable_atmospherics/initialize()
-	. = ..()
-	spawn()
-		var/obj/machinery/atmospherics/portables_connector/port = locate() in loc
-		if(port)
-			connect(port)
-			update_icon()
-
-/obj/machinery/portable_atmospherics/process()
-	if(connected_port)
-		update_icon()
-
 /obj/machinery/portable_atmospherics/blob_act()
 	qdel(src)
 
@@ -53,92 +41,13 @@
 	return null
 
 /obj/machinery/portable_atmospherics/proc/connect(obj/machinery/atmospherics/portables_connector/new_port)
-	//Make sure not already connected to something else
-	if(connected_port || !new_port || new_port.connected_device)
-		return 0
-
-	//Make sure are close enough for a valid connection
-	if(new_port.loc != loc)
-		return 0
-
-	//Perform the connection
-	connected_port = new_port
-	connected_port.connected_device = src
-	connected_port.on = 1 //Activate port updates
-
-	anchored = 1 //Prevent movement
-
-	//Actually enforce the air sharing
-	var/datum/pipe_network/network = connected_port.return_network(src)
-	if(network && !network.gases.Find(air_contents))
-		network.gases += air_contents
-		network.update = 1
-
-	return 1
-
-/obj/machinery/portable_atmospherics/proc/disconnect()
-	if(!connected_port)
-		return 0
-
-	var/datum/pipe_network/network = connected_port.return_network(src)
-	if(network)
-		network.gases -= air_contents
-
-	anchored = 0
-
-	connected_port.connected_device = null
-	connected_port = null
-
-	return 1
-
-/obj/machinery/portable_atmospherics/proc/update_connected_network()
-	if(!connected_port)
-		return
-
-	var/datum/pipe_network/network = connected_port.return_network(src)
-	if (network)
-		network.update = 1
-
-/obj/machinery/portable_atmospherics/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
-	if ((istype(W, /obj/item/weapon/tank) && !( src.destroyed )))
-		if (src.holding)
-			return
-		var/obj/item/weapon/tank/T = W
-		user.drop_item()
-		T.loc = src
-		src.holding = T
-		update_icon()
-		return
-
-	else if (istype(W, /obj/item/weapon/wrench))
-		if(connected_port)
-			disconnect()
-			to_chat(user, "<span class='notice'>You disconnect \the [src] from the port.</span>")
-			update_icon()
-			playsound(src, W.usesound, 50, 1)
-			return
-		else
-			var/obj/machinery/atmospherics/portables_connector/possible_port = locate(/obj/machinery/atmospherics/portables_connector/) in loc
-			if(possible_port)
-				if(connect(possible_port))
-					to_chat(user, "<span class='notice'>You connect \the [src] to the port.</span>")
-					update_icon()
-					playsound(src, W.usesound, 50, 1)
-					return
-				else
-					to_chat(user, "<span class='notice'>\The [src] failed to connect to the port.</span>")
-					return
-			else
-				to_chat(user, "<span class='notice'>Nothing happens.</span>")
-				return
-
-	else if ((istype(W, /obj/item/device/analyzer)) && Adjacent(user))
-		var/obj/item/device/analyzer/A = W
-		A.analyze_gases(src, user)
-		return
-
 	return
 
+/obj/machinery/portable_atmospherics/proc/disconnect()
+	return
+
+/obj/machinery/portable_atmospherics/proc/update_connected_network()
+	return
 
 
 /obj/machinery/portable_atmospherics/powered
@@ -148,13 +57,6 @@
 	var/obj/item/weapon/cell/cell
 	var/use_cell = TRUE
 	var/removeable_cell = TRUE
-
-/obj/machinery/portable_atmospherics/powered/powered()
-	if(use_power) //using area power
-		return ..()
-	if(cell && cell.charge)
-		return 1
-	return 0
 
 /obj/machinery/portable_atmospherics/powered/attackby(obj/item/I, mob/user)
 	if(use_cell && istype(I, /obj/item/weapon/cell))

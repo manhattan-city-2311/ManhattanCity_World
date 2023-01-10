@@ -53,16 +53,13 @@
 		return
 
 /obj/machinery/flasher/proc/flash()
-	if(!(powered()))
-		return
-
 	if((disable) || (last_flash && world.time < last_flash + 150))
 		return
 
 	playsound(src.loc, 'sound/weapons/flash.ogg', 100, 1)
 	flick("[base_state]_flash", src)
 	last_flash = world.time
-	use_power(1500)
+	//use_power(1500)
 
 	for (var/mob/O in viewers(src, null))
 		if(get_dist(src, O) > range)
@@ -125,7 +122,7 @@
 	if(..())
 		return
 
-	use_power(5)
+	//use_power(5)
 
 	active = 1
 	icon_state = "launcheract"

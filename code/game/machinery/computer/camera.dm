@@ -134,7 +134,7 @@
 	else if(isobj(A))
 		jump_to = locate() in A
 	else if(isturf(A))
-		var/best_dist = INFINITY
+		var/best_dist = POSITIVE_INFINITY
 		for(var/obj/machinery/camera/camera in get_area(A))
 			if(!camera.can_use())
 				continue

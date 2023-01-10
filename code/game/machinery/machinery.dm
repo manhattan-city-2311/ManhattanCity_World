@@ -161,7 +161,7 @@ Class Procs:
 
 /obj/machinery/emp_act(severity)
 	if(use_power && stat == 0)
-		use_power(7500/severity)
+		//use_power(7500/severity)
 
 		var/obj/effect/overlay/pulse2 = new /obj/effect/overlay(src.loc)
 		pulse2.icon = 'icons/effects/effects.dmi'
@@ -193,15 +193,6 @@ Class Procs:
 //sets the use_power var and then forces an area power update
 /obj/machinery/proc/update_use_power(var/new_use_power)
 	use_power = new_use_power
-
-/obj/machinery/proc/auto_use_power()
-	if(!powered(power_channel))
-		return 0
-	if(use_power == 1)
-		use_power(idle_power_usage, power_channel, 1)
-	else if(use_power >= 2)
-		use_power(active_power_usage, power_channel, 1)
-	return 1
 
 /obj/machinery/proc/operable(var/additional_flags = 0)
 	return !inoperable(additional_flags)

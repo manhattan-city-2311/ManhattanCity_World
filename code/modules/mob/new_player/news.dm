@@ -48,7 +48,7 @@
 		if(CHANNEL.messages)
 			current_news_page = CHANNEL.messages.len
 
-	if(!current_news_page || isemptylist(CHANNEL.messages))
+	if(!current_news_page || LAZYLEN(CHANNEL.messages))
 		dat += "No current available news."
 	else
 		dat += get_news_page(CHANNEL, CHANNEL.messages[current_news_page], current_news_page)
@@ -72,7 +72,7 @@
 
 	dat += get_newspaper_header(CHANNEL.channel_name, CHANNEL.channel_topics,"#d4cec1")
 
-	if(isemptylist(CHANNEL.messages))
+	if(LAZYLEN(CHANNEL.messages))
 		dat += "<I>No current articles for this newspaper.</I><BR>"
 	else
 		var/pic_data

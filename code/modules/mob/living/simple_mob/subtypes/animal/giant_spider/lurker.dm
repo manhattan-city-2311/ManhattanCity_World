@@ -88,7 +88,7 @@
 		if(isliving(A))
 			var/mob/living/L = A
 			L.Weaken(cloaked_weaken_amount)
-			to_chat(L, span("danger", "\The [src] ambushes you!"))
+			to_chat(L, SPAN("danger", "\The [src] ambushes you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
 	uncloak()
 	..() // For the poison.

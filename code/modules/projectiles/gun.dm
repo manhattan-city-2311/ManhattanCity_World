@@ -570,7 +570,7 @@
 					to_chat(user, "<span class='warning'>Your aim wavers as you fire \the [src] with just one hand.</span>")
 				if(31 to 45)
 					to_chat(user, "<span class='warning'>You have trouble keeping \the [src] on target with just one hand.</span>")
-				if(46 to INFINITY)
+				if(46 to POSITIVE_INFINITY)
 					to_chat(user, "<span class='warning'>You struggle to keep \the [src] on target with just one hand!</span>")
 		else if(!user.can_wield_item(src))
 			switch(one_handed_penalty)
@@ -581,7 +581,7 @@
 					to_chat(user, "<span class='warning'>Your aim wavers as you try to hold \the [src] steady.</span>")
 				if(31 to 45)
 					to_chat(user, "<span class='warning'>You have trouble holding \the [src] steady.</span>")
-				if(46 to INFINITY)
+				if(46 to POSITIVE_INFINITY)
 					to_chat(user, "<span class='warning'>You struggle to hold \the [src] steady!</span>")
 
 	if(recoil)
@@ -788,9 +788,13 @@
 
 /atom/MouseEntered(location, control, params)
 	if(istype(usr, /mob/living))
+		var/turf/T = get_turf(usr)
+		if(!isturf(T))
+			return
+
 		var/mob/living/L = usr
 		if(istype(src, /obj/screen/click_catcher))
-			L.last_mouse_target = params2turf(params2list(params)["screen-loc"], get_turf(usr))
+			L.last_mouse_target = params2turf(params2list(params)["screen-loc"], T)
 		else
 			L.last_mouse_target = src
 

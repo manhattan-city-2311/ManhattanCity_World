@@ -55,8 +55,6 @@ SUBSYSTEM_DEF(machines)
 			machine?.is_processing = null
 			global.machines -= machine
 			continue
-		else if(machine.use_power)
-			machine.auto_use_power()
 
 		if(no_mc_tick)
 			CHECK_TICK

@@ -11,7 +11,7 @@
 	dat += "<br><b>Note:</b> This is arranged from earliest to latest. <br><br>"
 
 
-	if(!isemptylist(M.attack_log))
+	if(!LAZYLEN(M.attack_log))
 		dat += "<fieldset style='border: 2px solid white; display: inline'>"
 		for(var/l in M.attack_log)
 			dat += "[l]<br>"
@@ -41,7 +41,7 @@
 		dat += "<b>Current Antag?:</b> [(M.mind.special_role)?"Yes":"No"]<br>"
 	dat += "<br><b>Note:</b> This is arranged from earliest to latest. <br><br>"
 
-	if(!isemptylist(M.dialogue_log))
+	if(!LAZYLEN(M.dialogue_log))
 		dat += "<fieldset style='border: 2px solid white; display: inline'>"
 
 		for(var/d in M.dialogue_log)

@@ -40,7 +40,7 @@
 			occupant_message("The sleeper is already occupied")
 			return
 		if(target.has_buckled_mobs())
-			occupant_message(span("warning", "\The [target] has other entities attached to it. Remove them first."))
+			occupant_message(SPAN("warning", "\The [target] has other entities attached to it. Remove them first."))
 			return
 		occupant_message("You start putting [target] into [src].")
 		chassis.visible_message("[chassis] starts putting [target] into the [src].")
@@ -344,7 +344,7 @@
 	proc/reset()
 		last_piece = null
 
-	proc/dismantleFloor(var/turf/new_turf)
+	proc/dismantlefloor(var/turf/new_turf)
 		if(istype(new_turf, /turf/simulated/floor))
 			var/turf/simulated/floor/T = new_turf
 			if(!T.is_plating())
@@ -352,7 +352,7 @@
 		return new_turf.is_plating()
 
 	proc/layCable(var/turf/new_turf)
-		if(equip_ready || !istype(new_turf) || !dismantleFloor(new_turf))
+		if(equip_ready || !istype(new_turf) || !dismantlefloor(new_turf))
 			return reset()
 		var/fdirn = turn(chassis.dir,180)
 		for(var/obj/structure/cable/LC in new_turf)		// check to make sure there's not a cable there already

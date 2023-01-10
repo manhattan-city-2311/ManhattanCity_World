@@ -7,7 +7,7 @@
 	desc = "Cardan shaft. Transfers torque from the gearbox to the wheels."
 	id = VC_CARDAN
 
-	needs_processing = TRUE
+	needs_processing = FALSE
 
 	mass = 10
 	var/ratio = 3.42

@@ -50,11 +50,8 @@
 
 obj/machinery/gateway/centerstation/process()
 	if(stat & (NOPOWER))
-		if(active) toggleoff()
-		return
-
-	if(active)
-		use_power(5000)
+		if(active)
+			toggleoff()
 
 
 /obj/machinery/gateway/centerstation/proc/detect()
@@ -80,7 +77,6 @@ obj/machinery/gateway/centerstation/process()
 /obj/machinery/gateway/centerstation/proc/toggleon(mob/user as mob)
 	if(!ready)			return
 	if(linked.len != 8)	return
-	if(!powered())		return
 	if(!awaygate)
 		to_chat(user, "<span class='notice'>Error: No destination found.</span>")
 		return
@@ -127,7 +123,7 @@ obj/machinery/gateway/centerstation/process()
 		if(dest)
 			M.loc = dest.loc
 			M.set_dir(SOUTH)
-			use_power(5000)
+			//use_power(5000)
 		return
 
 

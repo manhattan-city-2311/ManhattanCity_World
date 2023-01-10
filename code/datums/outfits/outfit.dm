@@ -5,7 +5,7 @@ var/list/outfits_decls_by_type_
 /proc/outfit_by_type(var/outfit_type)
 	if(!outfits_decls_root_)
 		init_outfit_decls()
-	return outfits_decls_by_type_[outfit_type]
+	return outfits_decls_by_type_["[outfit_type]"]
 
 /proc/outfits()
 	if(!outfits_decls_root_)
@@ -64,7 +64,7 @@ var/list/outfits_decls_by_type_
 
 	if(is_hidden_category())
 		return
-	outfits_decls_by_type_[type] = src
+	outfits_decls_by_type_["[type]"] = src
 	dd_insertObjectList(outfits_decls_, src)
 
 /decl/hierarchy/outfit/proc/pre_equip(mob/living/carbon/human/H)

@@ -57,6 +57,7 @@
 			transferred = null
 			SSmining.clean()
 			transfering = 0
+			SSpersistent_world.resolve_obstruction("mine")
 	else
 		SSmining.generate()
 		spawn(150)
@@ -72,6 +73,7 @@
 			transfering = 0
 			SSmining.next_invasion = world.time + rand(13 MINUTES, 16 MINUTES)
 			SSmining.invasion_destination = get_turf(src)
+			SSpersistent_world.add_obstruction("mine", "Mine is deployed.")
 	spawn(100)
 		if(!transfering) // Cancel
 			return

@@ -14,7 +14,6 @@
 				prob(200);/obj/random/junk,
 				prob(200);/obj/random/material,
 				prob(50);/obj/random/toy,
-				prob(100);/obj/random/tank,
 				prob(50);/obj/random/soap,
 				prob(60);/obj/random/drinkbottle,
 				prob(500);/obj/random/maintenance/clean)

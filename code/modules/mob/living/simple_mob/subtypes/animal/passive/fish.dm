@@ -45,7 +45,7 @@
 		return_timer = 0
 
 	if(return_timer == 5 MINUTES)
-		src.visible_message(span("notice", "\The [src] swims away into the water and vanishes beneath its surface."))
+		src.visible_message(SPAN("notice", "\The [src] swims away into the water and vanishes beneath its surface."))
 		qdel(src)
 
 /mob/living/simple_mob/animal/passive/fish/death()

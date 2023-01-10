@@ -204,7 +204,7 @@
 			}
 
 			// byjax
-			function replace_span(what) {
+			function replace_SPAN(what) {
 				var idx = what.indexOf(':');
 				document.getElementById(what.substr(0, idx)).innerHTML = what.substr(idx + 1);
 			}

@@ -276,17 +276,10 @@
 	if(old_stat != stat)
 		update_icon()
 
-/obj/machinery/atmospherics/tvalve/digital/update_icon()
-	..()
-	if(!powered())
-		icon_state = "tvalve[mirrored ? "m" : ""]nopower"
-
 /obj/machinery/atmospherics/tvalve/digital/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/machinery/atmospherics/tvalve/digital/attack_hand(mob/user as mob)
-	if(!powered())
-		return
 	if(!src.allowed(user))
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return

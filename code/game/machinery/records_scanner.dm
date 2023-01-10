@@ -25,7 +25,7 @@ obj/machinery/scanner/New()
 /obj/machinery/scanner/process()
 	if(stat & NOPOWER)
 		return
-	use_power(50)
+	//use_power(50)
 
 /obj/machinery/scanner/power_change()
 	..()
@@ -40,7 +40,7 @@ obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 		return
 	if(!ishuman(user) || lastuser == user.real_name)
 		return
-	use_power(500)
+	//use_power(500)
 	flick("scanner_on",src)
 	lastuser = user.real_name
 	var/mname = user.real_name

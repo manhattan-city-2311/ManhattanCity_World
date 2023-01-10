@@ -18,6 +18,6 @@
 	M.Paralyse(3)
 	M.Weaken(1)
 	M.emp_act(1)
-	to_chat(M, span("critical", "You've been electricuted!"))
+	to_chat(M, SPAN("critical", "You've been electricuted!"))
 	M.burn_skin(damage)
 	return 1

@@ -29,9 +29,7 @@
 	else
 		icon_state = ""
 
-	if(!powered())
-		icon_state += "off"
-	else if(node2 && node3 && node1)
+	if(node2 && node3 && node1)
 		icon_state += use_power ? "on" : "off"
 	else
 		icon_state += "off"
@@ -73,7 +71,7 @@
 
 	if (power_draw >= 0)
 		last_power_draw = power_draw
-		use_power(power_draw)
+		//use_power(power_draw)
 
 	return 1
 

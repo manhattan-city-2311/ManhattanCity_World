@@ -61,7 +61,7 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 	on_turfs_changed = null
 	on_turf_entered = null
 	holder = null
-	. = ..()
+	return QDEL_HINT_IWILLGC
 
 /datum/proximity_trigger/proc/is_active()
 	return turfs_in_range.len

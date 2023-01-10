@@ -55,7 +55,7 @@
 	if (args.len < 2)
 		return -1
 
-	var/result = call("ByondPOST.dll", "send_post_request")(arglist(args))
+	var/result = CALL_EXT("ByondPOST.dll", "send_post_request")(arglist(args))
 
 	if (!result)
 		log_debug("ByondPOST POST: No result returned from external library.")
@@ -99,7 +99,7 @@
 	if (args.len < 2)
 		return -1
 
-	var/result = call("ByondPOST.dll", "send_get_request")(arglist(args))
+	var/result = CALL_EXT("ByondPOST.dll", "send_get_request")(arglist(args))
 
 	if (!result)
 		log_debug("ByondPOST GET: No result returned from external library.")

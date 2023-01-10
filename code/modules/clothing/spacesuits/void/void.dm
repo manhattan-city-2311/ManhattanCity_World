@@ -34,7 +34,7 @@
 	desc = "A high-tech dark red space suit. Used for AI satellite maintenance."
 	slowdown = 1
 	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 20)
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit)
+	allowed = list(/obj/item/device/flashlight)
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 
@@ -66,7 +66,7 @@
 /obj/item/clothing/suit/space/void/examine(user)
 	..(user)
 	var/list/part_list = new
-	for(var/obj/item/I in list(helmet,boots,tank,cooler))
+	for(var/obj/item/I in list(helmet,boots,tank))
 		part_list += "\a [I]"
 	to_chat(user, "\The [src] has [english_list(part_list)] installed.")
 	if(tank && in_range(src,user))
@@ -100,20 +100,6 @@
 			to_chat(M, "Your suit's helmet deploys with a hiss.")
 			helmet.canremove = 0
 
-	if(tank)
-		if(H.s_store) //In case someone finds a way.
-			to_chat(M, "Alarmingly, the valve on your suit's installed tank fails to engage.")
-		else if (H.equip_to_slot_if_possible(tank, slot_s_store))
-			to_chat(M, "The valve on your suit's installed tank safely engages.")
-			tank.canremove = 0
-
-	if(cooler)
-		if(H.s_store) //Ditto
-			to_chat(M, "Alarmingly, the cooling unit installed into your suit fails to deploy.")
-		else if (H.equip_to_slot_if_possible(cooler, slot_s_store))
-			to_chat(M, "Your suit's cooling unit deploys.")
-			cooler.canremove = 0
-
 
 /obj/item/clothing/suit/space/void/dropped()
 	..()
@@ -135,14 +121,6 @@
 			if(boots && H.shoes == boots)
 				H.drop_from_inventory(boots)
 				boots.forceMove(src)
-
-	if(tank)
-		tank.canremove = 1
-		tank.forceMove(src)
-
-	if(cooler)
-		cooler.canremove = 1
-		cooler.forceMove(src)
 
 /obj/item/clothing/suit/space/void/verb/toggle_helmet()
 
@@ -177,35 +155,6 @@
 			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
 	helmet.update_light(H)
 
-/obj/item/clothing/suit/space/void/verb/eject_tank()
-
-	set name = "Eject Voidsuit Tank/Cooler"
-	set category = "Object"
-	set src in usr
-
-	if(!istype(src.loc,/mob/living)) return
-
-	if(!tank && !cooler)
-		to_chat(usr, "There is no tank or cooling unit inserted.")
-		return
-
-	var/mob/living/carbon/human/H = usr
-
-	if(!istype(H)) return
-	if(H.stat) return
-	if(H.wear_suit != src) return
-
-	var/obj/item/removing = null
-	if(tank)
-		removing = tank
-		tank = null
-	else
-		removing = cooler
-		cooler = null
-	to_chat(H, "<span class='info'>You press the emergency release, ejecting \the [removing] from your suit.</span>")
-	removing.canremove = 1
-	H.drop_from_inventory(removing)
-
 /obj/item/clothing/suit/space/void/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(!istype(user,/mob/living)) return
@@ -219,7 +168,7 @@
 
 	if(istype(W,/obj/item/weapon/screwdriver))
 		if(helmet || boots || tank)
-			var/choice = input("What component would you like to remove?") as null|anything in list(helmet,boots,tank,cooler)
+			var/choice = input("What component would you like to remove?") as null|anything in list(helmet,boots,tank)
 			if(!choice) return
 
 			if(choice == tank)	//No, a switch doesn't work here. Sorry. ~Techhead
@@ -227,11 +176,6 @@
 				tank.forceMove(get_turf(src))
 				playsound(src, W.usesound, 50, 1)
 				src.tank = null
-			else if(choice == cooler)
-				to_chat(user, "You pop \the [cooler] out of \the [src]'s storage compartment.")
-				cooler.forceMove(get_turf(src))
-				playsound(src, W.usesound, 50, 1)
-				src.cooler = null
 			else if(choice == helmet)
 				to_chat(user, "You detatch \the [helmet] from \the [src]'s helmet mount.")
 				helmet.forceMove(get_turf(src))
@@ -263,29 +207,4 @@
 			W.forceMove(src)
 			boots = W
 		return
-	else if(istype(W,/obj/item/weapon/tank))
-		if(tank)
-			to_chat(user, "\The [src] already has an airtank installed.")
-		else if(cooler)
-			to_chat(user, "\The [src]'s suit cooling unit is in the way.  Remove it first.")
-		else if(istype(W,/obj/item/weapon/tank/phoron))
-			to_chat(user, "\The [W] cannot be inserted into \the [src]'s storage compartment.")
-		else
-			to_chat(user, "You insert \the [W] into \the [src]'s storage compartment.")
-			user.drop_item()
-			W.forceMove(src)
-			tank = W
-		return
-	else if(istype(W,/obj/item/device/suit_cooling_unit))
-		if(cooler)
-			to_chat(user, "\The [src] already has a suit cooling unit installed.")
-		else if(tank)
-			to_chat(user, "\The [src]'s airtank is in the way.  Remove it first.")
-		else
-			to_chat(user, "You insert \the [W] into \the [src]'s storage compartment.")
-			user.drop_item()
-			W.forceMove(src)
-			cooler = W
-		return
-
 	..()

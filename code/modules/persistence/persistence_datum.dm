@@ -22,7 +22,7 @@
 	if(name)
 		filename = "data/persistent/[lowertext(using_map.name)]-[lowertext(name)].txt"
 	if(!isnull(entries_decay_at) && !isnull(entries_expire_at))
-		entries_decay_at = Floor(entries_expire_at * entries_decay_at)
+		entries_decay_at = floor(entries_expire_at * entries_decay_at)
 
 /datum/persistent/proc/LabelTokens(var/list/tokens)
 	var/list/labelled_tokens = list()

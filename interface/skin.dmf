@@ -395,7 +395,7 @@ macro "macro"
 	elem 
 		name = "CTRL+Subtract"
 		command = "down"
-	elem
+	elem 
 		name = "F1"
 		command = "adminhelp"
 	elem 
@@ -927,130 +927,6 @@ macro "borgmacro"
 
 
 menu "menu"
-// 	elem 
-// 		name = "&File"
-// 		command = ""
-// 		saved-params = "is-checked"
-// 	elem 
-// 		name = "&Quick screenshot\tF2"
-// 		command = ".screenshot auto"
-// 		category = "&File"
-// 		saved-params = "is-checked"
-// 	elem 
-// 		name = "&Save screenshot as...\tShift+F2"
-// 		command = ".screenshot"
-// 		category = "&File"
-// 		saved-params = "is-checked"
-// 	elem 
-// 		name = ""
-// 		command = ""
-// 		category = "&File"
-// 		saved-params = "is-checked"
-// 	elem 
-// 		name = "&Reconnect"
-// 		command = ".reconnect"
-// 		category = "&File"
-// 		saved-params = "is-checked"
-// 	elem 
-// 		name = "&Check ping"
-// 		command = ".ping"
-// 		category = "&File"
-// 		saved-params = "is-checked"
-// 	elem 
-// 		name = "&Quit"
-// 		command = ".quit"
-// 		category = "&File"
-// 		saved-params = "is-checked"
-// 	elem 
-// 		name = "&Icons"
-// 		command = ""
-// 		saved-params = "is-checked"
-// 	elem "stretch"
-// 		name = "&Stretch to fit"
-// 		command = ".winset \"mapwindow.map.icon-size=0\""
-// 		category = "&Icons"
-// 		is-checked = true
-// 		can-check = true
-// 		group = "size"
-// 		saved-params = "is-checked"
-// 	elem "icon128"
-// 		name = "&256x256"
-// 		command = ".winset \"mapwindow.map.icon-size=256\""
-// 		category = "&Icons"
-// 		can-check = true
-// 		group = "size"
-// 		saved-params = "is-checked"
-// 	elem "icon128"
-// 		name = "&128x128"
-// 		command = ".winset \"mapwindow.map.icon-size=128\""
-// 		category = "&Icons"
-// 		can-check = true
-// 		group = "size"
-// 		saved-params = "is-checked"
-// 	elem "icon96"
-// 		name = "&96x96"
-// 		command = ".winset \"mapwindow.map.icon-size=96\""
-// 		category = "&Icons"
-// 		can-check = true
-// 		group = "size"
-// 		saved-params = "is-checked"
-// 	elem "icon64"
-// 		name = "&64x64"
-// 		command = ".winset \"mapwindow.map.icon-size=64\""
-// 		category = "&Icons"
-// 		can-check = true
-// 		group = "size"
-// 		saved-params = "is-checked"
-// 	elem "icon48"
-// 		name = "&48x48"
-// 		command = ".winset \"mapwindow.map.icon-size=48\""
-// 		category = "&Icons"
-// 		can-check = true
-// 		group = "size"
-// 		saved-params = "is-checked"
-// 	elem "icon32"
-// 		name = "&32x32"
-// 		command = ".winset \"mapwindow.map.icon-size=32\""
-// 		category = "&Icons"
-// 		can-check = true
-// 		group = "size"
-// 		saved-params = "is-checked"
-// 	elem 
-// 		name = ""
-// 		command = ""
-// 		category = "&Icons"
-// 		saved-params = "is-checked"
-// 	elem "textmode"
-// 		name = "&Text"
-// 		command = ".winset \"menu.textmode.is-checked=true?mapwindow.map.text-mode=true:mapwindow.map.text-mode=false\""
-// 		category = "&Icons"
-// 		can-check = true
-// 		saved-params = "is-checked"
-// 	elem 
-// 		name = "&Scaling"
-// 		command = ""
-// 		saved-params = "is-checked"
-// 	elem "NN"
-// 		name = "&Nearest Neighbor"
-// 		command = ".winset \"mapwindow.map.zoom-mode=distort\""
-// 		category = "&Scaling"
-// 		can-check = true
-// 		group = "scale"
-// 		saved-params = "is-checked"
-// 	elem "PS"
-// 		name = "&Point Sampling"
-// 		command = ".winset \"mapwindow.map.zoom-mode=normal\""
-// 		category = "&Scaling"
-// 		can-check = true
-// 		group = "scale"
-// 		saved-params = "is-checked"
-// 	elem "BL"
-// 		name = "&Bilinear"
-// 		command = ".winset \"mapwindow.map.zoom-mode=blur\""
-// 		category = "&Scaling"
-// 		can-check = true
-// 		group = "scale"
-// 		saved-params = "is-checked"
 
 
 window "Telecomms IDE"
@@ -1287,21 +1163,27 @@ window "infowindow"
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
-		pos = 281,0
+		pos = 281,-30
 		size = 640x440
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Manhattan City 18+"
+		statusbar = false
 		icon = 'icons\\ws_64.png'
 		macro = "macro"
 		menu = "menu"
-		statusbar = false
+		outer-size = 656x479
+		inner-size = 640x440
 	elem "mainvsplit"
 		type = CHILD
 		pos = 3,0
 		size = 640x440
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
@@ -1318,8 +1200,11 @@ window "mainwindow"
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
-		pos = 281,0
+		pos = 281,-30
 		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1327,6 +1212,7 @@ window "mapwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 654x494
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -1345,6 +1231,7 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-visible = false
 		is-disabled = true
 		saved-params = ""
@@ -1352,8 +1239,11 @@ window "mapwindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 281,0
+		pos = 281,-30
 		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1361,12 +1251,14 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 654x494
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
 		size = 640x460
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-visible = false
 		is-disabled = true
 		saved-params = ""
@@ -1395,20 +1287,24 @@ window "outputwindow"
 		pos = 560,460
 		size = 80x20
 		anchor1 = 100,100
-		anchor2 = none
+		anchor2 = -1,-1
+		background-color = none
 		saved-params = ""
 		text = "Hotkey Toggle"
 		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
+		is-flat = true
 		button-type = pushbox
 	elem "saybutton"
 		type = BUTTON
-		pos = 520,460 
+		pos = 520,460
 		size = 40x20
 		anchor1 = 100,100
-		anchor2 = none
+		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
+		is-flat = true
 		button-type = pushbox
 
 window "popupwindow"
@@ -1425,16 +1321,22 @@ window "popupwindow"
 window "rpane"
 	elem "rpane"
 		type = MAIN
-		pos = 418,0
+		pos = 281,-30
 		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
 	elem "rpanewindow"
 		type = CHILD
 		pos = 0,0
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
@@ -1442,10 +1344,14 @@ window "rpane"
 		type = BUTTON
 		pos = 0,0
 		size = 60x15
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Text"
 		command = ".winset \"rpanewindow.left=;\""
+		is-flat = true
 		is-checked = true
 		group = "rpanemode"
 		button-type = pushbox
@@ -1453,27 +1359,39 @@ window "rpane"
 		type = BUTTON
 		pos = 62,0
 		size = 60x15
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Info"
 		command = ".winset \"rpanewindow.left=infowindow\""
+		is-flat = true
 		group = "rpanemode"
 		button-type = pushbox
 	elem "rulesb"
 		type = BUTTON
 		pos = 127,0
 		size = 60x15
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Rules"
 		command = "rules"
+		is-flat = true
 		group = "rpanemode"
 	elem "wikib"
 		type = BUTTON
 		pos = 190,0
 		size = 60x15
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
+		is-flat = true
 		group = "rpanemode"
 	elem "browseb"
 		type = BUTTON
@@ -1487,22 +1405,17 @@ window "rpane"
 		saved-params = "is-checked"
 		text = "Browser"
 		command = ".winset \"rpanewindow.left=browserwindow\""
+		is-flat = true
 		group = "rpanemode"
 		button-type = pushbox
-	elem "changelog"
-		type = BUTTON
-		pos = 322,0
-		size = 60x15
-		saved-params = "is-checked"
-		text = "Changelog"
-		command = "Changelog"
-		group = "rpanemode"
 
 window "browserwindow"
 	elem "browserwindow"
 		type = MAIN
 		pos = 281,0
 		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Browser"
 		is-pane = true

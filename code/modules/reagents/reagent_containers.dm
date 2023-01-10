@@ -187,7 +187,7 @@
 		to_chat(usr,"<span class='notice'>You are unable to empty [src]...</span>")
 		return
 
-	if(isemptylist(reagentlist()))
+	if(LAZYLEN(reagentlist()))
 		to_chat(usr,"<span class='notice'>[src] is empty.</span>")
 		return
 

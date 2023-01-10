@@ -198,7 +198,7 @@
 	spawn()
 		if(icon_state == "tele1")
 			teleport(M)
-			use_power(5000)
+			//use_power(5000)
 	return
 
 /obj/machinery/teleport/hub/proc/teleport(atom/movable/M as mob|obj)
@@ -361,7 +361,7 @@
 
 	if(com)
 		com.icon_state = "tele1"
-		use_power(5000)
+		//use_power(5000)
 		update_use_power(2)
 		com.update_use_power(2)
 		for(var/mob/O in hearers(src, null))
@@ -398,7 +398,7 @@
 		for(var/mob/O in hearers(src, null))
 			O.show_message("<span class='notice'>Test firing!</span>", 2)
 		com.teleport()
-		use_power(5000)
+		//use_power(5000)
 
 		spawn(30)
 			active=0

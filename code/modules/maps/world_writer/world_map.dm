@@ -76,7 +76,7 @@
 			continue
 		MO.object_vars[V] = O.vars[V]
 
-	if(O.save_reagents && O.reagents)
+	if(O.reagents)
 		MO.reagent_data = O.pack_persistence_data()
 
 	var/turf/obj_turf = get_turf(O)
@@ -87,7 +87,7 @@
 		MO.z = obj_turf.z
 
 	// forensic data has to be stored independently because lists don't typically save
-	if(O.save_forensics)
+	if(O.persistence_flags & PF_SAVE_FORENSICS)
 		MO.forensic_data["fingerprints"] = O.fingerprints
 		MO.forensic_data["fingerprintshidden"] = O.fingerprintshidden
 		MO.forensic_data["suit_fibers"] = O.suit_fibers
@@ -164,7 +164,7 @@
 	. = MO
 
 
-	if(!O.save_contents)
+	if(!(O.persistence_flags & PF_SAVE_CONTENTS))
 		return
 
 	for(var/obj/A as anything in O.get_saveable_contents())
@@ -176,7 +176,7 @@
 
 		MO.contents += MO_2
 
-		if(!A.save_contents)
+		if(!(A.persistence_flags & PF_SAVE_CONTENTS))
 			continue
 		for(var/obj/B as anything in A.get_saveable_contents())
 			if(B.dont_save)
@@ -187,7 +187,7 @@
 
 			MO_2.contents += MO_3
 
-			if(!B.save_contents)
+			if(!(B.persistence_flags & PF_SAVE_CONTENTS))
 				continue
 
 			for(var/obj/C as anything in B.get_saveable_contents())
@@ -252,12 +252,12 @@
 	for(var/V in object_vars)
 		O.vars[V] = object_vars[V]
 
-	if(!isemptylist(reagent_data) && O.reagents)
+	if(!LAZYLEN(reagent_data) && O.reagents)
 		var/obj/item/weapon/reagent_containers/container = O
 		container.unpack_persistence_data(reagent_data)
 
 	// forensic data has to be stored independently because lists don't typically save
-	if(O.save_forensics && !isemptylist(forensic_data))
+	if(!LAZYLEN(forensic_data))
 		O.fingerprints = forensic_data["fingerprints"]
 		O.fingerprintshidden = forensic_data["fingerprintshidden"]
 		O.suit_fibers = forensic_data["suit_fibers"]
@@ -269,7 +269,7 @@
 
 	O.forceMove(locate(x, y, z))
 
-	O.persistence_loaded = TRUE
+	O.persistence_flags |= PF_PERSISTENCE_LOADED
 
 	return TRUE
 

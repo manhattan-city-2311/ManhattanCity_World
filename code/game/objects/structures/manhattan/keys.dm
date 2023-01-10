@@ -36,7 +36,7 @@
 			icon_state = "keyring-3"
 		if (4)
 			icon_state = "keyring-4"
-		if (5 to INFINITY)
+		if (5 to POSITIVE_INFINITY)
 			icon_state = "keyring-5"
 
 /obj/item/weapon/door/masterkey/attack_self(mob/user)

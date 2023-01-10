@@ -128,8 +128,6 @@ var/list/debug_verbs = list (
         ,/client/proc/sec_camera_report
         ,/client/proc/intercom_view
         ,/client/proc/Cell
-        ,/client/proc/atmosscan
-        ,/client/proc/powerdebug
         ,/client/proc/count_objects_on_z_level
         ,/client/proc/count_objects_all
         ,/client/proc/cmd_assume_direct_control
@@ -147,7 +145,6 @@ var/list/debug_verbs = list (
         ,/client/proc/disable_communication
         ,/client/proc/disable_movement
         ,/client/proc/hide_debug_verbs
-        ,/datum/admins/proc/setup_supermatter
         ,/client/proc/atmos_toggle_debug
         ,/client/proc/spawn_tanktransferbomb
         ,/client/proc/take_picture

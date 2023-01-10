@@ -278,7 +278,7 @@
 				resiliance = 1
 			if(70 to 95)
 				resiliance = 2
-			if(95 to INFINITY)
+			if(95 to POSITIVE_INFINITY)
 				resiliance = 3
 	else
 		resiliance = -2

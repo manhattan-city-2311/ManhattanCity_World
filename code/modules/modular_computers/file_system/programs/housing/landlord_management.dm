@@ -33,7 +33,7 @@
 	if(LOT.landlord)
 		output += "<b>Landlord Balance:</b> [cash2text( LOT.get_landlord_balance(), FALSE, TRUE, TRUE )] ([cash2text( LOT.get_service_charge(), FALSE, TRUE, TRUE )] per payroll)<br>"
 
-	if(!isemptylist(LOT.get_tenants()))
+	if(!LAZYLEN(LOT.get_tenants()))
 		output += "<b>Tenants [LOT.tenancy_no_info()]:</b><br>"
 		for(var/datum/tenant/T in LOT.get_tenants())
 			output += "<li>[T.name] | Account Balance: [cash2text( T.get_balance(), FALSE, TRUE, TRUE )] (Rent: [cash2text( LOT.get_rent(T), FALSE, TRUE, TRUE )]) (Last Payment: [T.last_payment])</li>"
@@ -127,7 +127,7 @@
 
 		page_msg += "<fieldset style='border: 2px solid grey; display: inline; width: 80%'>"
 
-		if(!isemptylist(SSlots.get_lots_for_sale()))
+		if(!LAZYLEN(SSlots.get_lots_for_sale()))
 			for(var/datum/lot/L in SSlots.get_lots_for_sale())
 				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name] (Owned by [L.get_landlord_name()])<br>"
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
@@ -152,7 +152,7 @@
 
 		page_msg += "<fieldset style='border: 2px solid grey; display: inline; width: 80%'>"
 
-		if(!isemptylist(SSlots.get_lots_by_owner_uid(unique_id)))
+		if(!LAZYLEN(SSlots.get_lots_by_owner_uid(unique_id)))
 			for(var/datum/lot/L in SSlots.get_lots_by_owner_uid(unique_id))
 				var/datum/tenant/your_landlord = L.get_landlord()
 				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name]<br>"
@@ -204,7 +204,7 @@
 					page_msg += "<a href='?src=\ref[src];choice=edit_description;lot=\ref[L]'>Change Description</a> </font>"
 
 
-					if(!isemptylist(L.get_tenants()))
+					if(!LAZYLEN(L.get_tenants()))
 						page_msg += "<br><br><div style='background-color:black; font-size: 11px; color: white'>"
 						page_msg += "<h3>Tenants:</h4><br>"
 						for(var/datum/tenant/tenant in L.get_tenants())
@@ -247,7 +247,7 @@
 	else if(index == 9) // Lot for that are available for rent
 		page_msg = "Here's a list of lots available for renting.<br>"
 		page_msg += "<fieldset style='border: 2px solid grey; display: inline; width: 80%'>"
-		if(!isemptylist(SSlots.get_lots_for_rent()))
+		if(!LAZYLEN(SSlots.get_lots_for_rent()))
 			for(var/datum/lot/L in SSlots.get_lots_for_rent())
 				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name]<br>"
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
@@ -282,7 +282,7 @@
 	else if(index == 10) // Lot that you rent
 		page_msg = "These are the lots that you currently rent.<br><br>"
 		page_msg += "<fieldset style='border: 2px solid grey; display: inline; width: 80%'>"
-		if(!isemptylist(SSlots.get_lots_by_tenant_uid(unique_id)))
+		if(!LAZYLEN(SSlots.get_lots_by_tenant_uid(unique_id)))
 			for(var/datum/lot/L in SSlots.get_lots_by_tenant_uid(unique_id))
 				var/datum/tenant/your_tenant = L.get_tenant_by_uid(unique_id)
 				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name]<br>"
@@ -319,7 +319,7 @@
 			page_msg = "These are the current applications for tenancy for this lot.<br>"
 			page_msg += "<fieldset style='border: 2px solid grey; display: inline; width: 80%'>"
 
-			if(!isemptylist(L.applied_tenants))
+			if(!LAZYLEN(L.applied_tenants))
 				for(var/datum/tenant/A in L.applied_tenants)
 					page_msg += "<font color=\"yellow\"><b>Applicant Name:</b></font> [A.name]<br>"
 					page_msg += "<font color=\"yellow\"><b>Email:</b></font> [A.email]<br>"
@@ -345,7 +345,7 @@
 			page_msg = "This is a list of financial transactions from the last payroll you may review.<br>"
 			page_msg += "<fieldset style='border: 2px solid grey; display: inline; width: 80%'>"
 
-			if(!isemptylist(L.landlord_checkbook))
+			if(!LAZYLEN(L.landlord_checkbook))
 				for(var/A in L.landlord_checkbook)
 					page_msg += "[A]<br>"
 			else
@@ -384,7 +384,7 @@
 				page_msg += "<b>Contact Email:</b> [L.landlord.email]<br>"
 
 			if(clerk_access || judge_access)
-				if(!isemptylist(L.get_tenants()))
+				if(!LAZYLEN(L.get_tenants()))
 					page_msg += "<b>Tenants [L.tenancy_no_info()]:</b><br>"
 					for(var/datum/tenant/T in L.get_tenants())
 						page_msg += "<li>[T.name] | Account Balance: [cash2text( T.get_balance(), FALSE, TRUE, TRUE )] (Last Payment: [T.last_payment]) | Rent: [cash2text( L.get_rent(T), FALSE, TRUE, TRUE )]</li>"

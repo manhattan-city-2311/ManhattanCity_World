@@ -180,7 +180,7 @@
 				take_damage(1.3 - owner.perfusion)
 
 			switch(blood_volume)
-				if(BLOOD_PERFUSION_SAFE to INFINITY)
+				if(BLOOD_PERFUSION_SAFE to POSITIVE_INFINITY)
 					if(can_heal)
 						damage--
 				if(BLOOD_PERFUSION_OKAY to BLOOD_PERFUSION_SAFE)
@@ -196,7 +196,7 @@
 					if(!owner.paralysis && prob(15))
 						owner.Paralyse(3)
 						to_chat(owner, "<span class='warning'>You feel extremely [pick("dizzy","woozy","faint")]...</span>")
-				if(-(INFINITY) to BLOOD_PERFUSION_SURVIVE)
+				if(-(POSITIVE_INFINITY) to BLOOD_PERFUSION_SURVIVE)
 					owner.eye_blurry = max(owner.eye_blurry, 6)
 					owner.Paralyse(3)
 	..()

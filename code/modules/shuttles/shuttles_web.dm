@@ -88,7 +88,7 @@
 				if(autopilot_delay % 10 == 0) // Every ten ticks.
 					var/seconds_left = autopilot_delay * 2
 					if(seconds_left >= 60) // A minute
-						var/minutes_left = Floor(seconds_left / 60)
+						var/minutes_left = floor(seconds_left / 60)
 						seconds_left = seconds_left % 60
 						autopilot_say("Departing in [minutes_left] minute\s[seconds_left ? ", [seconds_left] seconds":""].")
 					else
@@ -482,7 +482,7 @@
 
 /obj/shuttle_connector/initialize()
 	. = ..()
-	SSshuttles.OnDocksInitialized(CALLBACK(src, .proc/setup_routes))
+	SSshuttles.OnDocksInitialized(CALLBACK(src, PROC_REF(setup_routes)))
 
 /obj/shuttle_connector/proc/setup_routes()
 	if(destinations && shuttle_name)

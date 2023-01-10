@@ -57,7 +57,7 @@
 	icon_state = "[initial(icon_state)]_empty"
 
 	switch(product_left)
-		if(6 to INFINITY)
+		if(6 to POSITIVE_INFINITY)
 			icon_state = "[initial(icon_state)]_3"
 		if(4 to 6)
 			icon_state = "[initial(icon_state)]_2"

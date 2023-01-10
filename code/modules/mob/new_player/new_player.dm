@@ -224,8 +224,8 @@
 	if(job.minimum_character_age && (client.prefs.age < job.minimum_character_age)) return 0
 	if(job.title == "Prisoner" && client.prefs.criminal_status != "Incarcerated")	return 0
 	if(job.title != "Prisoner" && client.prefs.criminal_status == "Incarcerated")	return 0
-	if(job.clean_record_required && client.prefs.crime_record && !isemptylist(client.prefs.crime_record)) return 0
-	if(!isemptylist(job.exclusive_employees) && !(client.prefs.unique_id in job.exclusive_employees)) return 0
+	if(job.clean_record_required && client.prefs.crime_record && !LAZYLEN(client.prefs.crime_record)) return 0
+	if(!LAZYLEN(job.exclusive_employees) && !(client.prefs.unique_id in job.exclusive_employees)) return 0
 	if(client.prefs.is_synth() && !job.allows_synths)
 		return 0
 	if(job.business)

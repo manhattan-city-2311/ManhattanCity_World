@@ -53,7 +53,7 @@
 	else if(percent >= 10 && percent <= 50)
 		icon_state = "half"
 		item_state = "bloodpack_half"
-	else if(percent >= 51 && percent < INFINITY)
+	else if(percent >= 51 && percent < POSITIVE_INFINITY)
 		icon_state = "full"
 		item_state = "bloodpack_full"
 

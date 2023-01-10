@@ -14,20 +14,6 @@
 
 	var/problem = 0				// If this is not 0 there is some sort of issue in the powernet. Monitors will display warnings.
 
-/datum/powernet/New()
-	START_PROCESSING_POWERNET(src)
-	..()
-
-/datum/powernet/Destroy()
-	for(var/obj/structure/cable/C in cables)
-		cables -= C
-		C.powernet = null
-	for(var/obj/machinery/power/M in nodes)
-		nodes -= M
-		M.powernet = null
-	STOP_PROCESSING_POWERNET(src)
-	return ..()
-
 //Returns the amount of excess power (before refunding to SMESs) from last tick.
 //This is for machines that might adjust their power consumption using this data.
 /datum/powernet/proc/last_surplus()
@@ -127,7 +113,7 @@
 
 /datum/powernet/proc/get_electrocute_damage()
 	switch(avail)
-		if (1000000 to INFINITY)
+		if (1000000 to POSITIVE_INFINITY)
 			return min(rand(50,160),rand(50,160))
 		if (200000 to 1000000)
 			return min(rand(25,80),rand(25,80))

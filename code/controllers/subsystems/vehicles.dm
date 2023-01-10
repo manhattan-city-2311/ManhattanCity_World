@@ -20,6 +20,7 @@ SUBSYSTEM_DEF(vehicles)
 			for(var/j = 0, j < iterations, ++j)
 				V.process_vehicle(0.1 / iterations)
 				V.process_movement(0.1 / iterations)
+			V.update_ui()
 		else
 			queue -= V
 

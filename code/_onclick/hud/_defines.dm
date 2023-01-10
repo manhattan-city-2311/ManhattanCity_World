@@ -55,6 +55,8 @@
 #define ui_construct_fire "EAST-1:16,CENTER+1:13" //above health, slightly to the left
 #define ui_construct_pull "EAST-1:28,SOUTH+1:10" //above the zone_sel icon
 
+#define ui_vehicle_ui "EAST-5:-3,NORTH-2:6"
+
 //Lower right, persistant menu
 #define ui_dropbutton "EAST-4:22,SOUTH:5"
 #define ui_drop_throw "EAST-1:28,SOUTH+1:7"

@@ -62,7 +62,7 @@
 	switch(radiation_count)
 		if(null)
 			icon_state = "geiger_on_1"
-		if(-INFINITY to RAD_LEVEL_LOW)
+		if(NEGATIVE_INFINITY to RAD_LEVEL_LOW)
 			icon_state = "geiger_on_1"
 		if(RAD_LEVEL_LOW to RAD_LEVEL_MODERATE)
 			icon_state = "geiger_on_2"
@@ -70,7 +70,7 @@
 			icon_state = "geiger_on_3"
 		if(RAD_LEVEL_HIGH to RAD_LEVEL_VERY_HIGH)
 			icon_state = "geiger_on_4"
-		if(RAD_LEVEL_VERY_HIGH to INFINITY)
+		if(RAD_LEVEL_VERY_HIGH to POSITIVE_INFINITY)
 			icon_state = "geiger_on_5"
 
 #undef RAD_LEVEL_LOW

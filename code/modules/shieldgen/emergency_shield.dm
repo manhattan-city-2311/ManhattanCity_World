@@ -176,7 +176,7 @@
 			if (malfunction && prob(33) || !malfunction)
 				var/obj/machinery/shield/S = new/obj/machinery/shield(target_tile)
 				deployed_shields += S
-				use_power(S.shield_generate_power)
+				//use_power(S.shield_generate_power)
 
 /obj/machinery/shieldgen/proc/collapse_shields()
 	for(var/obj/machinery/shield/shield_tile in deployed_shields)
@@ -208,7 +208,7 @@
 
 			if (new_power_usage != idle_power_usage)
 				idle_power_usage = new_power_usage
-				use_power(0)
+				//use_power(0)
 
 			check_delay = 60
 		else

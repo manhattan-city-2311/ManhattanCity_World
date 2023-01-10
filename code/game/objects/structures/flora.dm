@@ -170,7 +170,7 @@
 	table_drag = TRUE
 
 /obj/structure/flora/pottedplant/on_persistence_load()
-	if(isemptylist(contents))
+	if(LAZYLEN(contents))
 		return TRUE
 
 	if(contents[1])

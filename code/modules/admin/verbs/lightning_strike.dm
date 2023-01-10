@@ -90,7 +90,7 @@
 			L.adjustFireLoss(rand(10,20))
 			L.make_jittery(20)
 			L.emp_act(1)
-			to_chat(L, span("critical", "You've been struck by lightning!"))
+			to_chat(L, SPAN("critical", "You've been struck by lightning!"))
 
 			// If a non-player simplemob was struck, inflict huge damage.
 			// If the damage is fatal, the SA is turned to ash.
@@ -99,7 +99,7 @@
 				SA.adjustFireLoss(200)
 				SA.updatehealth()
 				if(SA.health <= 0) // Might be best to check/give simple_mobs siemens when this gets ported to new mobs.
-					SA.visible_message(span("critical", "\The [SA] disintegrates into ash!"))
+					SA.visible_message(SPAN("critical", "\The [SA] disintegrates into ash!"))
 					SA.ash()
 					continue // No point deafening something that wont exist.
 
@@ -109,7 +109,7 @@
 			if(iscarbon(L))
 				var/mob/living/carbon/C = L
 				C.ear_deaf += 10
-			to_chat(L, span("danger", "Lightning struck nearby, and the thunderclap is deafening!"))
+			to_chat(L, SPAN("danger", "Lightning struck nearby, and the thunderclap is deafening!"))
 
 #undef LIGHTNING_ZAP_RANGE
 #undef LIGHTNING_POWER

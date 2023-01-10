@@ -64,7 +64,7 @@ var/global/list/all_paperwork = list()
 			if(A in I.access)
 				return TRUE
 
-	if(isemptylist(req_access))
+	if(LAZYLEN(req_access))
 		return TRUE
 
 	return FALSE

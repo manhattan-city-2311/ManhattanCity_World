@@ -137,7 +137,7 @@ var/list/ventcrawl_machinery = list(
 						to_chat(src, "<span class='warning'>You feel an icy chill coming from the vent.</span>")
 					if(T0C + 40 to BODYTEMP_HEAT_DAMAGE_LIMIT)
 						to_chat(src, "<span class='warning'>You feel a hot wash coming from the vent.</span>")
-					if(BODYTEMP_HEAT_DAMAGE_LIMIT to INFINITY)
+					if(BODYTEMP_HEAT_DAMAGE_LIMIT to POSITIVE_INFINITY)
 						to_chat(src, "<span class='danger'>You feel a searing heat coming from the vent!</span>")
 
 				switch(vent_found.air_contents.return_pressure())
@@ -147,7 +147,7 @@ var/list/ventcrawl_machinery = list(
 						to_chat(src, "<span class='warning'>You feel a strong drag pulling you into the vent.</span>")
 					if(WARNING_HIGH_PRESSURE to HAZARD_HIGH_PRESSURE)
 						to_chat(src, "<span class='warning'>You feel a strong current pushing you away from the vent.</span>")
-					if(HAZARD_HIGH_PRESSURE to INFINITY)
+					if(HAZARD_HIGH_PRESSURE to POSITIVE_INFINITY)
 						to_chat(src, "<span class='danger'>You feel a roaring wind pushing you away from the vent!</span>")
 
 			fade_towards(vent_found,45)

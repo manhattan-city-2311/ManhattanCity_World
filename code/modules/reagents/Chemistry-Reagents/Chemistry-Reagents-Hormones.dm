@@ -105,7 +105,7 @@
 		if(POTASSIUM_LEVEL_HBAD to POTASSIUM_LEVEL_HCRITICAL)
 			heart.cardiac_output_modificators["potassium_level"] = 0.7
 			heart.pulse_modificators["potassium_level"] = volume * 0.2
-		if(POTASSIUM_LEVEL_HCRITICAL to INFINITY)
+		if(POTASSIUM_LEVEL_HCRITICAL to POSITIVE_INFINITY)
 			heart.cardiac_output_modificators["potassium_level"] = 0.65
 			heart.pulse_modificators["potassium_level"] = volume * 0.4
 

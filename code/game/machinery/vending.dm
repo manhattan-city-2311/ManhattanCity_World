@@ -591,7 +591,7 @@
 			speak(vend_reply)
 			last_reply = world.time
 
-	use_power(vend_power_usage)	//actuators and stuff
+	//use_power(vend_power_usage)	//actuators and stuff
 	if(icon_vend) //Show the vending animation if needed
 		flick(icon_vend,src)
 	playsound(src.loc, "sound/[vending_sound]", 100, 1)
@@ -851,8 +851,7 @@
 //	charge_free_department = DEPT_BAR
 //	block_persistence = TRUE
 	
-	save_contents = FALSE // to stop hoarding since this regens the contents anyway
-
+	persistence_flags = 0
 
 /obj/machinery/vending/assist
 	products = list(	/obj/item/device/assembly/prox_sensor = 5,/obj/item/device/assembly/igniter = 3,/obj/item/device/assembly/signaler = 4,
@@ -1476,7 +1475,7 @@
 
 //	charge_free_department = DEPT_BAR
 	
-	save_contents = FALSE
+	persistence_flags = 0
 
 /obj/machinery/vending/sovietsoda
 	name = "BODA"

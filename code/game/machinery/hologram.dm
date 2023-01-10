@@ -155,7 +155,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 			clear_holo(master)
 			continue
 
-		use_power(power_per_hologram)
+		//use_power(power_per_hologram)
 	return 1
 
 /obj/machinery/hologram/holopad/proc/move_hologram(mob/living/silicon/ai/user)

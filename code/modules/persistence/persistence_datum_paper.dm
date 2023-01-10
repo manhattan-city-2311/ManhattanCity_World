@@ -1,7 +1,7 @@
 /datum/persistent/paper
 	name = "paper"
 	tokens_per_line = 7
-	entries_expire_at = INFINITY
+	entries_expire_at = POSITIVE_INFINITY
 	has_admin_data = TRUE
 	var/paper_type = /obj/item/weapon/paper
 	var/requires_noticeboard = TRUE

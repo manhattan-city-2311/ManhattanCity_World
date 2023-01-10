@@ -174,7 +174,7 @@
 				if(istype(S, /mob/living/silicon/ai)) continue
 				step_towards(S, center)
 
-		use_power(electricity_level * 5)
+		//use_power(electricity_level * 5)
 		sleep(13 - electricity_level)
 
 	pulling = 0

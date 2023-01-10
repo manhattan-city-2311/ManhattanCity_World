@@ -24,7 +24,7 @@
 
 	light_color = "#E1FDFF"
 
-/obj/manhattan/vehicle/large/ambulance/update_object_sprites()
+/obj/manhattan/vehicle/large/ambulance/update_icon()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
 		bounds = "64,96"

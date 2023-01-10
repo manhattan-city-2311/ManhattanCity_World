@@ -69,15 +69,15 @@
 	var/seconds = remaining_hour % seconds_in_minute / 10
 
 
-	var/hour_text = num2text(Floor(hours))
+	var/hour_text = num2text(floor(hours))
 	if(length(hour_text) < 2)
 		hour_text = "0[hour_text]" // Add padding if needed, to look more like time2text().
 
-	var/minute_text = num2text(Floor(minutes))
+	var/minute_text = num2text(floor(minutes))
 	if(length(minute_text) < 2)
 		minute_text = "0[minute_text]"
 
-	var/second_text = num2text(Floor(seconds))
+	var/second_text = num2text(floor(seconds))
 	if(length(second_text) < 2)
 		second_text = "0[second_text]"
 

@@ -128,7 +128,7 @@ SUBSYSTEM_DEF(emails)
 
 	var/list/all_messages = 	(inbox | spam | deleted | outbox)
 
-	if(!isemptylist(all_messages))
+	if(!LAZYLEN(all_messages))
 		if((all_messages.len - 1) > max_messages)
 			return 0
 

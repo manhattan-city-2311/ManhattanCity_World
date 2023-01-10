@@ -82,7 +82,7 @@
 	playsound(src.loc, open_sound, 100, 1)
 	flick(icon_state_opening, src)
 	src.density = 0
-	
+
 	src.update_icon()
 	src.set_opacity(0)
 	sleep(15)
@@ -98,7 +98,7 @@
 	src.layer = closed_layer
 	flick(icon_state_closing, src)
 	src.density = 1
-	
+
 	src.update_icon()
 	src.set_opacity(initial(opacity))
 	sleep(15)
@@ -164,7 +164,7 @@
 				return
 
 	else if(istype(C, /obj/item/stack/material) && C.get_material_name() == "plasteel") // Repairing.
-		var/amt = Ceiling((maxhealth - health)/150)
+		var/amt = ceil((maxhealth - health)/150)
 		if(!amt)
 			to_chat(usr, "<span class='notice'>\The [src] is already fully repaired.</span>")
 			return

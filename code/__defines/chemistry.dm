@@ -49,8 +49,8 @@
 #define CE_ANTIVIRAL     "antiviral"    // Anti-virus effect.
 #define CE_TOXIN         "toxins"       // Generic toxins, stops autoheal.
 #define CE_BREATHLOSS    "breathloss"   // Breathing depression, makes you need more air
-#define CE_MIND    		 "mindbending"  // Stabilizes or wrecks mind. Used for hallucinations
-#define CE_CRYO 	     "cryogenic"    // Prevents damage from being frozen
+#define CE_MIND          "mindbending"  // Stabilizes or wrecks mind. Used for hallucinations
+#define CE_CRYO          "cryogenic"    // Prevents damage from being frozen
 #define CE_ANTIARRYTHMIC "stablerythme" // Prevents arrythmias.
 #define CE_ARRYTHMIC     "arrythmic"    // Causes arrythmia.
 #define CE_BETABLOCKER   "betablocker"  // β1-selective beta-blockers.
@@ -59,11 +59,5 @@
 
 // Attached to CE_ANTIBIOTIC
 #define ANTIBIO_NORM	1
-#define ANTIBIO_OD		2
+#define ANTIBIO_OD	2
 #define ANTIBIO_SUPER	3
-
-// Chemistry lists.
-var/list/tachycardics  = list("coffee", "crank", "hyperzine", "nitroglycerin", "thirteenloko", "nicotine") // Increase heart rate.
-var/list/bradycardics  = list("neurotoxin", "cryoxadone", "clonexadone", "ecstasy", "stoxin")                 // Decrease heart rate.
-var/list/heartstopper  = list("potassium_chlorophoride", "zombie_powder") // This stops the heart.
-var/list/cheartstopper = list("potassium_chloride")                       // This stops the heart when overdose is met. -- c = conditional

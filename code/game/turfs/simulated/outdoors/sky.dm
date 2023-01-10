@@ -5,12 +5,6 @@
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "sky_slow"
 
-	// Assume there's a vacuum for the purposes of avoiding active edges at initialization, as well as ZAS fun if a window breaks.
-	oxygen = 0
-	carbon_dioxide = 0
-	nitrogen = 0
-	phoron = 0
-
 /turf/simulated/sky/initialize()
 	. = ..()
 	SSplanets.addTurf(src)

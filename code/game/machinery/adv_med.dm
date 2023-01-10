@@ -50,7 +50,7 @@
 			to_chat(user, "<span class='notice'>\The [src] is already occupied!</span>")
 			return
 		if(H.affecting.has_buckled_mobs())
-			to_chat(user, span("warning", "\The [H.affecting] has other entities attached to it. Remove them first."))
+			to_chat(user, SPAN("warning", "\The [H.affecting] has other entities attached to it. Remove them first."))
 			return
 		var/mob/M = H.affecting
 		if(M.abiotic())
@@ -86,7 +86,7 @@
 		to_chat(user, "<span class='notice'>Subject cannot have abiotic items on.</span>")
 		return 0
 	if(O.has_buckled_mobs())
-		to_chat(user, span("warning", "\The [O] has other entities attached to it. Remove them first."))
+		to_chat(user, SPAN("warning", "\The [O] has other entities attached to it. Remove them first."))
 		return
 
 	if(O == user)
@@ -197,7 +197,7 @@
 /obj/machinery/body_scanconsole/power_change()
 	if(stat & BROKEN)
 		icon_state = "body_scannerconsole-p"
-	else if(powered() && !panel_open)
+	else if(!panel_open)
 		icon_state = initial(icon_state)
 		stat &= ~NOPOWER
 	else
@@ -529,7 +529,7 @@
 						infected = "Acute Infection+:"
 					if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
 						infected = "Acute Infection++:"
-					if (INFECTION_LEVEL_THREE -49 to INFINITY)
+					if (INFECTION_LEVEL_THREE -49 to POSITIVE_INFINITY)
 						infected = "Gangrene Detected:"
 
 				var/unknown_body = 0
@@ -571,7 +571,7 @@
 						infection = "Acute Infection+:"
 					if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
 						infection = "Acute Infection++:"
-					if (INFECTION_LEVEL_THREE -49 to INFINITY)
+					if (INFECTION_LEVEL_THREE -49 to POSITIVE_INFINITY)
 						infection = "Necrosis Detected:"
 
 				dat += "<tr>"

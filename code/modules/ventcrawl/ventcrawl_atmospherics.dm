@@ -55,12 +55,6 @@
 /obj/machinery/atmospherics/proc/can_crawl_through()
 	return 1
 
-/obj/machinery/atmospherics/unary/can_crawl_through()
-	if(welded)
-		return 0
-
-	. = ..()
-
 /obj/machinery/atmospherics/proc/findConnecting(var/direction)
 	for(var/obj/machinery/atmospherics/target in get_step(src,direction))
 		if(target.initialize_directions & get_dir(target,src))
@@ -69,24 +63,3 @@
 
 /obj/machinery/atmospherics/proc/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node1 || target == node2)
-
-/obj/machinery/atmospherics/pipe/manifold/isConnectable(var/obj/machinery/atmospherics/target)
-	return (target == node3 || ..())
-
-obj/machinery/atmospherics/trinary/isConnectable(var/obj/machinery/atmospherics/target)
-	return (target == node3 || ..())
-
-/obj/machinery/atmospherics/pipe/manifold4w/isConnectable(var/obj/machinery/atmospherics/target)
-	return (target == node3 || target == node4 || ..())
-
-/obj/machinery/atmospherics/tvalve/isConnectable(var/obj/machinery/atmospherics/target)
-	return (target == node3 || ..())
-
-/obj/machinery/atmospherics/pipe/cap/isConnectable(var/obj/machinery/atmospherics/target)
-	return (target == node || ..())
-
-/obj/machinery/atmospherics/portables_connector/isConnectable(var/obj/machinery/atmospherics/target)
-	return (target == node || ..())
-
-/obj/machinery/atmospherics/unary/isConnectable(var/obj/machinery/atmospherics/target)
-	return (target == node || ..())

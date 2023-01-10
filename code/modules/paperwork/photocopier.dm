@@ -88,7 +88,7 @@
 				to_chat(usr, "<span class='warning'>\The [copyitem] can't be copied by \the [src].</span>")
 				break
 
-			use_power(active_power_usage)
+			//use_power(active_power_usage)
 	else if(href_list["remove"])
 		if(copyitem)
 			copyitem.loc = usr.loc

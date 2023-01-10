@@ -747,7 +747,7 @@
 					new/mob/living/simple_mob/blob/spore/nanite(location)
 
 			else if(blob_client && location)
-				to_chat(blob_client, span("warning", "You feel the last vestiges of your consciousness being overwritten and slipping away..."))
+				to_chat(blob_client, SPAN("warning", "You feel the last vestiges of your consciousness being overwritten and slipping away..."))
 				C.gib()
 				new /obj/structure/blob/core/grey_goo(location, blob_client, 1, 0) //Come back to this and fix it. Mind not transferring properly.
 

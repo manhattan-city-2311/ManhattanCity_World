@@ -106,7 +106,7 @@
 	stamps = null
 
 	if(info != initial(info))
-		if(!persistence_loaded)
+		if(!(persistence_flags & PF_PERSISTENCE_LOADED))
 			info = html_encode(info)
 		info = replacetext_char(info, "\n", "<BR>")
 		info = parsepencode(info)

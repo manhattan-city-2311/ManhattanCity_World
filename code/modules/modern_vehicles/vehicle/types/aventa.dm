@@ -25,6 +25,9 @@
 	topgear = 3.42
 	efficiency = 0.92
 
+/obj/item/vehicle_part/fueltank/aventa
+	capacity = 90
+
 /obj/manhattan/vehicle/aventa
 	name = "Aventa sport car"
 	desc = "A vehicle for racing across the streets."
@@ -48,7 +51,8 @@
 		VC_LEFT_BACK_WHEEL = /obj/item/vehicle_part/wheel,
 		VC_ENGINE = /obj/item/vehicle_part/engine/aventa,
 		VC_GEARBOX = /obj/item/vehicle_part/gearbox/aventa,
-		VC_CARDAN = /obj/item/vehicle_part/cardan
+		VC_CARDAN = /obj/item/vehicle_part/cardan,
+		VC_FUELTANK = /obj/item/vehicle_part/fueltank/aventa
 	)
 
 	aerodynamics_coefficent = 0.23
@@ -57,12 +61,16 @@
 /obj/manhattan/vehicle/aventa/get_braking_force()
 	return 5000
 
-/obj/manhattan/vehicle/aventa/update_object_sprites()
+/obj/manhattan/vehicle/aventa/update_icon()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)
-		bounds = "64,96"
+		bounds = "40,77"
+		bound_x = 5
+		bound_y = 5
 	else
-		bounds = "96,64"
+		bounds = "106,38"
+		bound_x = 6
+		bound_y = 4
 
 /obj/item/vehicle_component/health_manager/aventa
 	integrity = 100

@@ -23,7 +23,7 @@
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = LIGHT //Lights are calc'd via area so they dont need to be in the machine list
-	var/on = 0					// 1 if on, 0 if off
+	var/on = TRUE					// 1 if on, 0 if off
 	var/brightness_range
 	var/brightness_power
 	var/brightness_color
@@ -56,7 +56,6 @@
 		if(prob(L.broken_chance))
 			broken(1)
 
-	on = powered()
 	update(0)
 
 /obj/machinery/light/built/New()
@@ -292,7 +291,6 @@
 	update_from_bulb(L)
 	qdel(L)
 
-	on = powered()
 	update()
 
 	if(on && rigged)

@@ -10,24 +10,24 @@ SUBSYSTEM_DEF(garbage)
 
 	var/list/collection_timeout = list(0, 30 SECONDS, 10 SECONDS)	// deciseconds to wait before moving something up in the queue to the next level
 
-	var/delslasttick = 0		// number of del()'s we've done this tick
-	var/gcedlasttick = 0		// number of things that gc'ed last tick
-	var/totaldels = 0
-	var/totalgcs = 0
+	var/static/delslasttick = 0		// number of del()'s we've done this tick
+	var/static/gcedlasttick = 0		// number of things that gc'ed last tick
+	var/static/totaldels = 0
+	var/static/totalgcs = 0
 
-	var/highest_del_time = 0
-	var/highest_del_tickusage = 0
+	var/static/highest_del_time = 0
+	var/static/highest_del_tickusage = 0
 
-	var/list/pass_counts
-	var/list/fail_counts
+	var/static/list/pass_counts
+	var/static/list/fail_counts
 
-	var/list/items = list()			// Holds our qdel_item statistics datums
+	var/static/list/items = list()			// Holds our qdel_item statistics datums
 
 	// List of Queues
 	// Each queue is a list of refID's of things that should be garbage collected
 	// refID's are associated with the time at which they time out and need to be manually del()
 	// we do this so we aren't constantly locating them and preventing them from being gc'd
-	var/list/queues
+	var/static/list/queues
 
 
 /datum/controller/subsystem/garbage/PreInit()
@@ -45,16 +45,16 @@ SUBSYSTEM_DEF(garbage)
 		counts += length(L)
 	msg += "Q:[counts.Join(",")]|D:[delslasttick]|G:[gcedlasttick]|"
 	msg += "GR:"
-	if (!(delslasttick+gcedlasttick))
+	if (!(delslasttick + gcedlasttick))
 		msg += "n/a|"
 	else
-		msg += "[round((gcedlasttick/(delslasttick+gcedlasttick))*100, 0.01)]%|"
+		msg += "[round((gcedlasttick / (delslasttick + gcedlasttick)) * 100, 0.01)]%|"
 
 	msg += "TD:[totaldels]|TG:[totalgcs]|"
-	if (!(totaldels+totalgcs))
+	if (!(totaldels + totalgcs))
 		msg += "n/a|"
 	else
-		msg += "TGR:[round((totalgcs/(totaldels+totalgcs))*100, 0.01)]%"
+		msg += "TGR:[round((totalgcs / (totaldels + totalgcs)) * 100, 0.01)]%"
 	msg += " P:[pass_counts.Join(",")]"
 	msg += "|F:[fail_counts.Join(",")]"
 	..(msg)
@@ -170,7 +170,7 @@ SUBSYSTEM_DEF(garbage)
 				var/type = D.type
 				var/datum/qdel_item/I = items[type]
 				var/extrainfo = "--"
-				if(istype(D,/image))
+				if(istype(D, /image))
 					var/image/img = D
 					var/icon/ico = img.icon
 					extrainfo = "L:[img.loc] -- I:[ico] -- IS:[img.icon_state] --"

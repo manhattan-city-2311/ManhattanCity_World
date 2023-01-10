@@ -122,10 +122,6 @@
 	name = "city bounced radio"
 	path =/obj/item/device/radio/off
 
-/datum/category_item/crafting/autolathe/general/suit_cooler
-	name = "suit cooling unit"
-	path =/obj/item/device/suit_cooling_unit
-
 /datum/category_item/crafting/autolathe/general/weldermask
 	name = "welding mask"
 	path =/obj/item/clothing/head/welding

@@ -206,7 +206,7 @@
 			occupant.Sleeping(30)
 			occupant.adjustOxyLoss(-4)
 
-			use_power(7500) //This might need tweaking.
+			//use_power(7500) //This might need tweaking.
 			return
 
 		else if((occupant.health >= heal_level || occupant.health == occupant.getMaxHealth()) && (!eject_wait))

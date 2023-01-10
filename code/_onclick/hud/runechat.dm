@@ -71,7 +71,7 @@
 /datum/runechat_message_holder/proc/fadeout()
 	animate(image, alpha = 0, time = RUNECHAT_EOL_FADE, flags = ANIMATION_PARALLEL)
 	spawn(RUNECHAT_EOL_FADE)
-		qdel_self()
+		qdel(src)
 
 /mob/handle_hear(text, italics, mob/speaker)
 	. = ..()
@@ -93,12 +93,16 @@
 	var/datum/runechat_message_holder/msg = new
 
 	var/message_loc
-	if(!(speaker in hearers(get_turf(src)))) // Radio
+	
+	var/speaker_loc = speaker
+	if(isvehicle(speaker.loc))
+		speaker_loc = speaker.loc
+	if(!(speaker_loc in hearers(get_turf(src)))) // Radio
 		var/icon/r_icon = icon('icons/emoji.dmi', icon_state = "radio")
 		text = "\icon[r_icon]&nbsp;[text]"
 		message_loc = src
 	else
-		message_loc = speaker
+		message_loc = speaker_loc
 
 	var/maptext_style = "font-family: '[speaker.runechat_font]';"
 	var/shadow_color = "0 2px 3px black"
@@ -113,17 +117,18 @@
 			animate(M.image, pixel_y = M.image.pixel_y + mheight, time = RUNECHAT_SPAWN_TIME)
 
 	msg.image = image(loc = message_loc, layer = LAYER_HUD_RUNECHAT)
-	var/image/message 		= msg.image
-	message.plane 			= PLANE_PLAYER_HUD
+
+	var/image/message       = msg.image
+	message.plane           = PLANE_PLAYER_HUD
 	message.appearance_flags= APPEARANCE_UI_IGNORE_ALPHA | KEEP_APART
 	message.maptext_width 	= RUNECHAT_WIDTH
 	message.maptext_height 	= mheight
-	message.maptext_x 		= (RUNECHAT_WIDTH - bound_width) * -0.5
-	message.maptext 		= complete_text
-	message.alpha 			= 0
+	message.maptext_x       = (RUNECHAT_WIDTH - bound_width) * -0.5
+	message.maptext         = complete_text
+	message.alpha           = 0
 
 	msg.client = client
-	msg.loc = message_loc
+	msg.loc    = message_loc
 
 	LAZYINITLIST(client.seen_runechat_messages)
 	LAZYINITLIST(client.seen_runechat_messages[message_loc])

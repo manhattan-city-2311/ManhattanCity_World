@@ -104,6 +104,7 @@ var/global/decl/sound_player/sound_player = new()
 		proxy_listener.register_turfs()
 
 /datum/sound_token/Destroy()
+	..()
 	Stop()
 	return QDEL_HINT_IWILLGC
 

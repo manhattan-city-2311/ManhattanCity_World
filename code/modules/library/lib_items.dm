@@ -167,7 +167,7 @@
 	unique_save_vars = list("dat", "author", "title", "unique", "carved", "icon_state")
 
 /obj/item/weapon/book/on_persistence_load()
-	if(!isemptylist(contents))
+	if(!LAZYLEN(contents))
 		store = contents[1]
 
 /obj/item/weapon/book/attack_self(var/mob/user as mob)

@@ -27,7 +27,7 @@
 		var/datum/data/record/police_record = get_sec_record(H)
 		if(police_record)
 			var/list/criminal_record = police_record.fields["crim_record"]
-			if(!isemptylist(criminal_record))
+			if(!LAZYLEN(criminal_record))
 				return "Has a criminal record"
 
 	return 0

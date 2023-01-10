@@ -131,7 +131,7 @@
 	if(can_move)
 		can_move = 0
 		switch(user.bodytemperature)
-			if(300 to INFINITY)
+			if(300 to POSITIVE_INFINITY)
 				spawn(10) can_move = 1
 			if(295 to 300)
 				spawn(13) can_move = 1

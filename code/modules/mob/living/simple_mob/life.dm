@@ -34,7 +34,7 @@
 		if(stat != DEAD)
 			var/heal_per = (health / getMaxHealth()) * 100
 			switch(heal_per)
-				if(100 to INFINITY)
+				if(100 to POSITIVE_INFINITY)
 					healths.icon_state = "health0"
 				if(80 to 100)
 					healths.icon_state = "health1"
@@ -55,7 +55,7 @@
 	if(nutrition_icon)
 		var/food_per = (nutrition / initial(nutrition)) * 100
 		switch(food_per)
-			if(90 to INFINITY)
+			if(90 to POSITIVE_INFINITY)
 				nutrition_icon.icon_state = "nutrition0"
 			if(75 to 90)
 				nutrition_icon.icon_state = "nutrition1"

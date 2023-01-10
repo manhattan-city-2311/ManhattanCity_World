@@ -178,7 +178,7 @@
 			if (overcharge_percent >= 150)
 				if (prob(1))
 					explosion(src.loc, 0, 1, 3, 5)
-		if ((3.6e6+1) to INFINITY)
+		if ((3.6e6+1) to POSITIVE_INFINITY)
 			if (overcharge_percent >= 115)
 				if (prob(8))
 					ion_act()

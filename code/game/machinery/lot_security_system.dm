@@ -42,7 +42,7 @@
 	name = "Z.E.U.S. System Deluxe"
 	prevent_flags = LOT_SECURITY_STOP_EVERYTHING
 	innate_access_exemptions = list() // Even the CoP can't grief.
-	zap_power = INFINITY
+	zap_power = POSITIVE_INFINITY
 	hardened = TRUE
 	desired_area_type = /area
 	owner_uid = "Nanotrasen"
@@ -571,13 +571,13 @@
 
 	playsound(baddie, 'sound/effects/lightningbolt.ogg', 75, TRUE)
 	playsound(src, 'sound/machines/alarm4.ogg', 60, TRUE)
-	Beam(baddie, "lightning[rand(1, 12)]", 'icons/effects/beam.dmi', 0.5 SECONDS, INFINITY)
+	Beam(baddie, "lightning[rand(1, 12)]", 'icons/effects/beam.dmi', 0.5 SECONDS, POSITIVE_INFINITY)
 	flick("[icon_state]_fire", src)
 
 	baddie.visible_message(
-		span("danger", "\The [baddie] was shocked by \the [get_area(src)]'s security system!"),
-		span("danger", "You've been shocked by the security system!"),
-		span("danger", "You hear an electric zap.")
+		SPAN("danger", "\The [baddie] was shocked by \the [get_area(src)]'s security system!"),
+		SPAN("danger", "You've been shocked by the security system!"),
+		SPAN("danger", "You hear an electric zap.")
 	)
 	log_and_message_admins("was zapped by \the [src] at \the [get_area(src)].", baddie)
 

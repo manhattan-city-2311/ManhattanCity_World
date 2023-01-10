@@ -29,7 +29,7 @@
 				badness += "strong inflammation"
 			if(INFECTION_LEVEL_THREE to INFECTION_LEVEL_MAX)
 				badness += "blackening"
-			if(INFECTION_LEVEL_MAX to INFINITY)
+			if(INFECTION_LEVEL_MAX to POSITIVE_INFINITY)
 				badness += "peeling with disgusting blisters"
 	if(!badness.len)
 		to_chat(user, "<span class='notice'>[H]'s skin is normal.</span>")
@@ -189,13 +189,13 @@
 
 /obj/item/weapon/grab/proc/titty_twist(mob/target, mob/attacker)
 	if(state < GRAB_AGGRESSIVE)
-		to_chat(attacker, span("warning", "You require a better grab to do this."))
+		to_chat(attacker, SPAN("warning", "You require a better grab to do this."))
 		return
 
-	attacker.visible_message(span("danger", "[attacker] grabs hold of [target]'s titties!"))
+	attacker.visible_message(SPAN("danger", "[attacker] grabs hold of [target]'s titties!"))
 	if(do_after(attacker,20) && target)
 		last_action = world.time
-		attacker.visible_message(span("danger", "[attacker] twists [target]'s titties with the white hot fury of a thousand suns!"))
+		attacker.visible_message(SPAN("danger", "[attacker] twists [target]'s titties with the white hot fury of a thousand suns!"))
 		playsound(target.loc, 'sound/effects/mob_effects/Wilhelm_Scream.ogg', 25, 1, -1)
 		target.Weaken(2)
 		target.stuttering += 2

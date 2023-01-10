@@ -1,0 +1,32 @@
+"a" = (/obj/structure/bed/chair/shuttle{dir = 4},/turf/simulated/floor/tiled/monotile_dark,/area/planets/Manhattan/indoor)
+"b" = (/obj/structure/vehiclewall{dir = 1},/obj/structure/closet/hydrant{pixel_y = 5},/obj/machinery/light{dir = 1; pixel_y = 0},/turf/simulated/open,/area/planets/Manhattan/indoor)
+"c" = (/obj/structure/table/standard,/obj/machinery/defibrillator,/turf/simulated/floor/tiled/monotile_dark,/area/planets/Manhattan/indoor)
+"d" = (/obj/effect/vehicle_entrance,/obj/machinery/light/invis,/turf/simulated/floor/tiled/monotile_dark,/area/planets/Manhattan/indoor)
+"e" = (/obj/structure/railing{dir = 1},/obj/structure/table/rack,/obj/item/weapon/reagent_containers/syringe/adrenaline,/obj/item/weapon/reagent_containers/syringe/adrenaline,/obj/item/weapon/reagent_containers/glass/bottle/dopamine,/obj/item/weapon/reagent_containers/glass/bottle/ampoule/morphine,/obj/item/weapon/reagent_containers/glass/bottle/ampoule/morphine,/obj/item/weapon/reagent_containers/glass/bottle/ampoule/amicile,/turf/simulated/floor/tiled/monotile_dark,/area/planets/Manhattan/indoor)
+"f" = (/obj/structure/vehiclewall{dir = 4; layer = 2.9},/turf/simulated/open,/area/planets/Manhattan/indoor)
+"j" = (/obj/structure/vehiclewall{dir = 6},/turf/simulated/open,/area/planets/Manhattan/indoor)
+"k" = (/obj/structure/vehiclewall{dir = 8},/turf/simulated/open,/area/planets/Manhattan/indoor)
+"n" = (/obj/structure/vehiclewall{dir = 8; layer = 2.9},/turf/simulated/open,/area/planets/Manhattan/indoor)
+"p" = (/obj/machinery/monitor,/obj/structure/table/standard,/turf/simulated/floor/tiled/monotile_dark,/area/planets/Manhattan/indoor)
+"s" = (/obj/structure/vehiclewall{dir = 9},/turf/simulated/open,/area/planets/Manhattan/indoor)
+"v" = (/obj/structure/vehiclewall{dir = 10},/turf/simulated/open,/area/planets/Manhattan/indoor)
+"x" = (/obj/structure/vehicledoor,/turf/simulated/open,/area/planets/Manhattan/indoor)
+"y" = (/obj/structure/bed/chair/shuttle{dir = 8},/turf/simulated/floor/tiled/monotile_dark,/area/planets/Manhattan/indoor)
+"C" = (/obj/structure/vehiclewall{dir = 5},/turf/simulated/open,/area/planets/Manhattan/indoor)
+"F" = (/turf/simulated/floor/tiled/monotile_dark,/area/planets/Manhattan/indoor)
+"G" = (/obj/structure/bed,/turf/simulated/floor/tiled/monotile_dark,/area/planets/Manhattan/indoor)
+"J" = (/obj/structure/vehiclewall{dir = 1},/turf/simulated/open,/area/planets/Manhattan/indoor)
+"P" = (/obj/structure/table/standard,/obj/item/intubation_tube,/obj/item/intubation_tube,/obj/item/weapon/reagent_containers/syringe,/obj/item/weapon/reagent_containers/syringe,/turf/simulated/floor/tiled/monotile_dark,/area/planets/Manhattan/indoor)
+"S" = (/obj/structure/vehiclewall{dir = 1},/obj/structure/closet/secure_closet/medical_wall/pills{pixel_y = 5},/turf/simulated/open,/area/planets/Manhattan/indoor)
+"U" = (/obj/structure/vehiclewall/ambulance,/turf/simulated/open,/area/planets/Manhattan/indoor)
+"V" = (/obj/structure/vehiclewall{dir = 4},/turf/simulated/open,/area/planets/Manhattan/indoor)
+"W" = (/obj/structure/table/standard,/turf/simulated/floor/tiled/monotile_dark,/area/planets/Manhattan/indoor)
+
+(1,1,1) = {"
+sSbJC
+kaFyV
+kpFcV
+kGFPV
+nedWf
+vUxUj
+"}

@@ -62,7 +62,7 @@
 					disp_emote = pick("scream", "cry", "groan", "whimper")
 					if(stuttering < 10)
 						stuttering += 5
-				if(80 to INFINITY)
+				if(80 to POSITIVE_INFINITY)
 					flash_pain()
 					disp_emote = pick("scream", "cry", "agony")
 					if(stuttering < 10 && rand(25))
@@ -130,7 +130,7 @@
 				custom_pain("Your body stings slightly.", getToxLoss())
 			if(25 to 45)
 				custom_pain("Your whole body hurts badly.", getToxLoss())
-			if(61 to INFINITY)
+			if(61 to POSITIVE_INFINITY)
 				custom_pain("Your body aches all over, it's driving you mad.", getToxLoss())
 	
 	if(damaged_organ)
@@ -147,7 +147,7 @@
 			if(11 to 90)
 				msg = "<font size=2>Your [damaged_organ.name] [burning ? "burns" : "hurts"] badly!</font>"
 
-			if(91 to INFINITY)
+			if(91 to POSITIVE_INFINITY)
 				msg = "<font size=3>OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!</font>"
 
 		custom_pain(SPAN_DANGER(msg), 0, prob(10), affecting = damaged_organ, flash_pain = maxdam)
