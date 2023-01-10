@@ -48,7 +48,8 @@
 			for(var/mob/new_player/player in player_list)
 				stat("[player.key]", (player.ready)?("(Playing)"):(null))
 				totalPlayers++
-				if(player.ready)totalPlayersReady++
+				if(player.ready)
+					totalPlayersReady++
 
 
 /mob/new_player/proc/JoinLate(selected_job_name, antag_type)
@@ -61,19 +62,24 @@
 
 	if(!config.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
-		return
+		return FALSE
 	else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
 		to_chat(usr, "<span class='danger'>The city is currently exploding. Joining would go poorly.</span>")
-		return
+		return FALSE
 
 	if(!is_alien_whitelisted(src, all_species[client.prefs.species]))
 		src << alert("You are currently not whitelisted to play [client.prefs.species].")
-		return 0
+		return FALSE
 
 	var/datum/species/S = all_species[client.prefs.species]
 	if(!(S.spawn_flags & SPECIES_CAN_JOIN))
 		src << alert("Your current species, [client.prefs.species], is not available for play on the city.")
-		return 0
+		return FALSE
+	if(!client.prefs.is_records_filled())	
+		spawn()
+			alert(src, "Стоп, стоп, стоп. Прежде чем зайти в игру, персонаж обязан обладать документацией. Пожалуйста, заполните \[РЕГИСТРАЦИОННЫЕ ДАННЫЕ].")
+		return FALSE
+
 	if(client.prefs.location)
 		AttemptLateSpawn(selected_job_name, client.prefs.location, antag_type)
 	else
@@ -146,6 +152,11 @@
 
 
 	if(href_list["lobby_ready"])
+		if(!ready && !client.prefs.is_records_filled())
+			spawn()
+				alert(src, "Стоп, стоп, стоп. Прежде чем зайти в игру, персонаж обязан обладать документацией. Пожалуйста, заполните \[РЕГИСТРАЦИОННЫЕ ДАННЫЕ].")
+			return
+
 		ready = !ready
 		update_lobby()
 		return 1
