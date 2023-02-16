@@ -32,10 +32,10 @@
 	var/list/species_allowed = list(SPECIES_HUMAN,SPECIES_HUMAN_CHILD,SPECIES_HUMAN_TEEN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN)
 
 	// Whether or not the accessory can be affected by colouration
-	var/do_colouration = 1
+	var/do_colouration = TRUE
 
 	//To allow markings to show over hair layer, often used for IPC and Skrell markings.
-	var/over_hair = 0
+	var/over_hair = FALSE
 
 /*
 ////////////////////////////
@@ -2567,6 +2567,12 @@ If you're reading this and have any clue on how to fix this. Please. Be my guest
 		icon_state = "tilaka"
 		body_parts = list(BP_HEAD)
 		species_allowed = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN, SPECIES_HUMAN_VATBORN_MPL)
+
+/datum/sprite_accessory/marking/human/cat_ears
+	body_parts = list(BP_HEAD)
+	icon_state = "ears_cat"
+	name = "Ear Biomods (Cat)"
+	over_hair = TRUE
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery

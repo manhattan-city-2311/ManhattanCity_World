@@ -92,7 +92,7 @@
 /client/proc/playtitlemusic()
 	if(!ticker || !ticker.login_music)	return
 	if(is_preference_enabled(/datum/client_preference/play_lobby_music))
-		src << sound(ticker.login_music, repeat = 0, wait = 0, volume = 85, channel = 1) // MAD JAMS
+		src << sound(ticker.login_music, repeat = 0, wait = 0, volume = 50, channel = 1) // MAD JAMS
 
 /proc/get_sfx(soundin)
 	if(istext(soundin))
