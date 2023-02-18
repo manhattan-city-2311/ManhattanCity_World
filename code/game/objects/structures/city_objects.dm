@@ -15,6 +15,7 @@
 	icon_state = "off"
 	var/broken
 	var/shift = 0
+	var/static/cycle = list("red", "red", "yellow", "green", "green", "yellow")
 
 /obj/machinery/street/traffic/initialize()
 	. = ..()
@@ -36,15 +37,15 @@
 		if("green")
 			set_light(l_color = LIGHT_COLOR_NEONGREEN)
 
+#define TMP_CYCLE_INDEX ((world.time / (5 SECONDS)) + shift) % 6 + 1
 /obj/machinery/street/traffic/process()
 	. = ..()
 	if(broken)
 		icon_state = icon_state == "off" ? "yellow" : "off"
 	else
-		icon_state = list("red", "red", "yellow", "green", "green", "yellow")[(world.time / (5 SECONDS) + shift) % 6 + 1]
-
+		icon_state = cycle[TMP_CYCLE_INDEX]
 	update_light_color()
-
+#undef TMP_CYCLE_INDEX
 /obj/machinery/street/pedestrian
 	name = "pedestrian signal"
 	anchored = 1
