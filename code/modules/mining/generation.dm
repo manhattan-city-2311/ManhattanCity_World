@@ -79,6 +79,8 @@
 			return
 		transfering = 2
 		for(var/x in 1 to 5)
+			if(!transfering) // Cancel
+				return
 			visible_message("[icon2html(src, hearers(src))] [6-x]...")
 			sleep(10)
 

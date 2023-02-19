@@ -1,6 +1,6 @@
-var/list/outfits_decls_
-var/list/outfits_decls_root_
-var/list/outfits_decls_by_type_
+var/list/outfits_decls_ = list()
+var/decl/hierarchy/outfit/outfits_decls_root_ = list()
+var/list/outfits_decls_by_type_ = list()
 
 /proc/outfit_by_type(var/outfit_type)
 	if(!outfits_decls_root_)
