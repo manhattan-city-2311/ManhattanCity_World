@@ -60,26 +60,32 @@
 		update_icon()
 
 /obj/item/device/flashlight/process()
-	if(on)
-		if(cell)
-			if(brightness_level && power_usage)
-				if(power_usage < cell.charge)
-					cell.charge -= power_usage
-				else
-					cell.charge = 0
-					visible_message("<span class='warning'>\The [src] flickers before going dull.</span>")
-					set_light(0)
-					on = 0
-					update_icon()
+	if(!on || !cell || !brightness_level || !power_usage)
+		return
+	if(power_usage >= cell.charge)
+		cell.charge = 0
+		visible_message("<span class='warning'>\The [src] flickers before going dull.</span>")
+		turn_off()
+		return
+	cell.charge -= power_usage
+
+/obj/item/device/flashlight/proc/turn_on()
+	on = TRUE
+	update_icon()
+
+/obj/item/device/flashlight/proc/turn_off()
+	on = FALSE
+	update_icon()
 
 /obj/item/device/flashlight/proc/set_light_helper()
-	if(!on)
+	if(on == FALSE)
 		set_light(0)
-	
+		return
+
 	if(brightness_level == "low")
-		set_light(brightness_on/2)
+		set_light(brightness_on / 2)
 	else if(brightness_level == "high")
-		set_light(brightness_on*1.5)
+		set_light(brightness_on * 1.5)
 	else
 		set_light(brightness_on)
 
@@ -88,7 +94,6 @@
 		icon_state = "[initial(icon_state)]-on"
 	else
 		icon_state = "[initial(icon_state)]"
-	
 	set_light_helper()
 
 /obj/item/device/flashlight/examine(mob/user)
@@ -119,8 +124,8 @@
 			to_chat(user, "You flick the switch on [src], but nothing happens.")
 			return 0
 	on = !on
+	on ? turn_on() : turn_off()
 	playsound(src.loc, 'sound/weapons/empty.ogg', 15, 1, -3)
-	update_icon()
 	user.update_action_buttons()
 	return 1
 
@@ -368,7 +373,7 @@
 			src.icon_state = "[initial(icon_state)]-empty"
 		processing_objects -= src
 
-/obj/item/device/flashlight/flare/proc/turn_off()
+/obj/item/device/flashlight/flare/turn_off()
 	on = 0
 	src.force = initial(src.force)
 	src.damtype = initial(src.damtype)
@@ -425,7 +430,7 @@
 			src.icon_state = "[initial(icon_state)]-empty"
 		processing_objects -= src
 
-/obj/item/device/flashlight/glowstick/proc/turn_off()
+/obj/item/device/flashlight/glowstick/turn_off()
 	on = 0
 	update_icon()
 
