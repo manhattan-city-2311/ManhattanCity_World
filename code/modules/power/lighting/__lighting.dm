@@ -457,6 +457,8 @@
 			flicker(5)
 		else
 			seton(FALSE) // Otherwise keep it dark and spooky for when someone shows up.
+	else
+		return PROCESS_KILL
 
 
 // called when area power state changes

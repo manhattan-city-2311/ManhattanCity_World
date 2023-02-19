@@ -25,4 +25,4 @@
 
 /datum/reagent/methohexital/overdose(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
-	M.add_chemical_effect(CE_PULSE, min(0.5 * volume, -20))
+	M.add_chemical_effect(CE_PULSE, max(-volume, -20))

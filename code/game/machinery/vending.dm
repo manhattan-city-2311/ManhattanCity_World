@@ -698,8 +698,6 @@
 	if(shoot_inventory && prob(2))
 		throw_item()
 
-	return
-
 /obj/machinery/vending/proc/speak(var/message)
 	if(stat & NOPOWER)
 		return

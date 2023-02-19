@@ -192,7 +192,6 @@ var/global/list/limb_icon_cache = list()
 	return mob_icon
 
 /obj/item/organ/external/proc/apply_colouration(icon/applying)
-
 	if(nonsolid)
 		applying.MapColors("#4D4D4D","#969696","#1C1C1C", "#000000")
 		if(species && species.get_bodytype(owner) != SPECIES_HUMAN)

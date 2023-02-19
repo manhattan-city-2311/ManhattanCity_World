@@ -247,7 +247,12 @@
 			m.apply_damage(damage, BRUTE, blocked = m.run_armor_check(attack_flag = "bomb"))
 
 /obj/manhattan/vehicle/attack_hand(mob/user)
-	if(user.a_intent != "hurt")
+	if(user.a_intent != I_HURT)
+		if(user in occupants)
+			usr = user
+			switch_seats()
+			return
+		
 		if(doors_locked())
 			to_chat(user, "\The [src] is locked.")
 			return

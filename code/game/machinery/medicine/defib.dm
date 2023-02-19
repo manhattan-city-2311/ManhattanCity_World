@@ -18,7 +18,6 @@
 	var/list/options = list()
 
 /obj/machinery/defibrillator/process()
-	. = ..()
 	if(pacing && pace_sync && pads)
 		var/obj/item/organ/internal/heart/heart = pads.attached.internal_organs_by_name[O_HEART]
 		heart.cpr += pace_rate

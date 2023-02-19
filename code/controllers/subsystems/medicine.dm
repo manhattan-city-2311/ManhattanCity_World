@@ -2,7 +2,7 @@
 SUBSYSTEM_DEF(medicine)
 	name = "Medicine"
 	priority = FIRE_PRIORITY_MEDICINE
-	wait = 2 SECONDS
+	wait = 2.5 SECONDS
 	flags = SS_POST_FIRE_TIMING | SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 

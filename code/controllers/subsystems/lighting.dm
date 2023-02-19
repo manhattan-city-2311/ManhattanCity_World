@@ -134,15 +134,22 @@ SUBSYSTEM_DEF(lighting)
 
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
-	while(currentrun.len)
-		var/atom/movable/lighting_overlay/O = currentrun[currentrun.len]
-		currentrun.len--
+	var/i = 0
+	for(var/atom/movable/lighting_overlay/O as anything in currentrun)
+		++i
 
-		if(!O) continue
+		if(!O)
+			continue
+
 		O.update_overlay()
 		O.needs_update = FALSE
 
-		DUAL_TICK_CHECK
+		if(init_tick_checks)
+			CHECK_TICK
+		else if(MC_TICK_CHECK)
+			currentrun.Cut(1, i + 1)
+			return
+	currentrun.Cut()
 
 /datum/controller/subsystem/lighting/stat_entry(msg_prefix)
 	var/list/msg = list(msg_prefix)

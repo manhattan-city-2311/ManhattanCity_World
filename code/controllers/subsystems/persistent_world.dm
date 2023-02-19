@@ -12,6 +12,31 @@ SUBSYSTEM_DEF(persistent_world)
 
 	var/skip_saving = FALSE
 	var/list/obstructions
+	
+	var/static/area/list/areas_to_save = list()
+	var/static/list/blocked_characters = list()
+
+/area/initialize()
+	. = ..()
+	if(should_objects_be_saved || should_turfs_be_saved)
+		SSpersistent_world.areas_to_save += src
+
+/area/Destroy()
+	. = ..()
+	SSpersistent_world.areas_to_save -= src
+
+/datum/controller/subsystem/persistent_world/Topic(href, list/href_list)
+	to_world("хуй")
+	if(!check_rights(R_ADMIN))
+		return
+	
+	to_world("пизда")
+	if(input(usr, "Are you sure?", "Confirmation", "Cancel") in list("Cancel", "OK") == "Cancel")
+		return
+	
+	to_world("сковорода")
+	
+	blocked_characters -= href_list["victim"]
 
 /datum/controller/subsystem/persistent_world/proc/add_obstruction(id, message)
 	LAZYSET(obstructions, id, message)
@@ -40,6 +65,7 @@ SUBSYSTEM_DEF(persistent_world)
 	load_map()
 	load_all_businesses()
 	to_world("World loading took [(world.timeofday - start_timeofday) / (1 SECOND)] seconds.")
+	
 	return ..()
 
 /datum/controller/subsystem/persistent_world/proc/load_map()
@@ -69,6 +95,8 @@ SUBSYSTEM_DEF(persistent_world)
 				online = FALSE
 				stoplag()
 				online = TRUE
+				
+	from_save(S, blocked_characters)
 
 	loading = FALSE
 
@@ -92,9 +120,7 @@ SUBSYSTEM_DEF(persistent_world)
 	var/list/tchunk = turfs_data[1]
 	var/turfs_chunk = 1
 
-	for(var/area/A)
-		if(!A.should_objects_be_saved && !A.should_turfs_be_saved)
-			continue
+	for(var/area/A as anything in areas_to_save)
 		for(var/atom/V as anything in A)
 			if(!V.dont_save)
 				if(isturf(V))
@@ -114,6 +140,7 @@ SUBSYSTEM_DEF(persistent_world)
 
 	to_save(S, data)
 	to_save(S, turfs_data)
+	to_save(S, blocked_characters)
 
 	Master.processing = original_processing
 

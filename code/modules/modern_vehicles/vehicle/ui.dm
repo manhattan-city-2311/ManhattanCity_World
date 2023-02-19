@@ -81,8 +81,8 @@
 	my_mob.client?.screen += noverlay
 
 /obj/screen/vehicle_ui/Destroy()
-	. = ..()
 	remove_overlays()
+	. = ..()
 
 /obj/screen/vehicle_ui/update_icon()
 	remove_overlays()

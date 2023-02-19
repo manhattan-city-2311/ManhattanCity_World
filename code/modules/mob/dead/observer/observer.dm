@@ -161,8 +161,7 @@ Works together with spawning an observer, noted above.
 	handle_vision()
 
 /mob/proc/permadelete()
-	client.prefs.delete_character()
-
+	SSpersistent_world.blocked_characters += client.prefs.real_name
 	abandon()
 
 /mob/proc/ghostize(can_reenter_corpse = 1)
@@ -190,8 +189,6 @@ Works together with spawning an observer, noted above.
 		B.update()
 	if(ghost.client)
 		ghost.client.time_died_as_mouse = ghost.timeofdeath
-	if(ghost.client && !ghost.client.holder && !config.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
-		ghost.verbs -= /mob/observer/dead/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
 	return ghost
 /*
 This is the proc mobs get to turn into a ghost. Forked from ghostize due to compatibility issues.
@@ -230,14 +227,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/can_use_hands()	return 0
 /mob/observer/dead/is_active()		return 0
 
-/mob/observer/dead/Stat()
-	..()
-	if(statpanel("Status"))
-		if(emergency_shuttle)
-			var/eta_status = emergency_shuttle.get_status_panel_eta()
-			if(eta_status)
-				stat(null, eta_status)
-
 /mob/observer/dead/verb/reenter_corpse()
 	set category = "Ghost"
 	set name = "Re-enter Corpse"
@@ -260,38 +249,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!admin_ghosted)
 		announce_ghost_joinleave(mind, 0, "They now occupy their body again.")
 	return 1
-
-/mob/observer/dead/verb/toggle_medHUD()
-	set category = "Ghost"
-	set name = "Toggle MedicHUD"
-	set desc = "Toggles Medical HUD allowing you to see how everyone is doing"
-
-	medHUD = !medHUD
-	plane_holder.set_vis(VIS_CH_HEALTH, medHUD)
-	plane_holder.set_vis(VIS_CH_STATUS_OOC, medHUD)
-	to_chat(src,SPAN_INFO("<B>Medical HUD [medHUD ? "Enabled" : "Disabled"]</B>"))
-
-/mob/observer/dead/verb/toggle_antagHUD()
-	set category = "Ghost"
-	set name = "Toggle AntagHUD"
-	set desc = "Toggles AntagHUD allowing you to see who is the antagonist"
-
-	if(!config.antag_hud_allowed && !client.holder)
-		to_chat(src, "<font color='red'>Admins have disabled this for this round.</font>")
-		return
-	if(jobban_isbanned(src, "AntagHUD"))
-		to_chat(src, "<font color='red'><B>You have been banned from using this feature</B></font>")
-		return
-	if(config.antag_hud_restricted && !has_enabled_antagHUD && !client.holder)
-		var/response = alert(src, "If you turn this on, you will not be able to take any part in the round.","Are you sure you want to turn this feature on?","Yes","No")
-		if(response == "No") return
-		can_reenter_corpse = FALSE
-	if(!has_enabled_antagHUD && !client.holder)
-		has_enabled_antagHUD = TRUE
-
-	antagHUD = !antagHUD
-	plane_holder.set_vis(VIS_CH_SPECIAL, antagHUD)
-	to_chat(src,SPAN_INFO("<B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B>"))
 
 /mob/observer/dead/proc/dead_tele(var/area/A in return_sorted_areas())
 	set category = "Ghost"
@@ -418,21 +375,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				following = null
 			else
 				to_chat(src, "This mob is not located in the game world.")
-/*
-/mob/observer/dead/verb/boo()
-	set category = "Ghost"
-	set name = "Boo!"
-	set desc= "Scare your crew members because of boredom!"
-
-	if(bootime > world.time) return
-	var/obj/machinery/light/L = locate(/obj/machinery/light) in view(1, src)
-	if(L)
-		L.flicker()
-		bootime = world.time + 600
-		return
-	//Maybe in the future we can add more <i>spooky</i> code here!
-	return
-*/
 
 /mob/observer/dead/memory()
 	set hidden = 1
@@ -528,16 +470,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		host.ckey = src.ckey
 		host.add_ventcrawl(vent_found)
 		to_chat(host, "<span class='info'>You are now a mouse. Try to avoid interaction with players, and do not give hints away that you are more than a simple rodent.</span>")
-
-/mob/observer/dead/verb/view_manfiest()
-	set name = "Show Crew Manifest"
-	set category = "Ghost"
-
-	var/dat
-	dat += "<h4>Crew Manifest</h4>"
-	dat += data_core.get_manifest()
-
-	src << browse(dat, "window=manifest;size=370x420;can_close=1")
 
 //This is called when a ghost is drag clicked to something.
 /mob/observer/dead/MouseDrop(atom/over)

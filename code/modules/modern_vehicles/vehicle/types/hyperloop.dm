@@ -34,7 +34,7 @@
 	return 1
 
 /obj/manhattan/vehicle/large/hyperloop/attack_hand(mob/user)
-	enter_as_position(user, "passenger")
+	enter_as_position(user, "interior")
 
 /datum/map_template/hyperloop
 	name = "Hyperloop"
