@@ -26,15 +26,11 @@ SUBSYSTEM_DEF(persistent_world)
 	SSpersistent_world.areas_to_save -= src
 
 /datum/controller/subsystem/persistent_world/Topic(href, list/href_list)
-	to_world("хуй")
 	if(!check_rights(R_ADMIN))
 		return
 	
-	to_world("пизда")
-	if(input(usr, "Are you sure?", "Confirmation", "Cancel") in list("Cancel", "OK") == "Cancel")
+	if(alert(usr, "Are you sure?", "Confirmation", "Cancel", "Yes, unblock them.") == "Cancel")
 		return
-	
-	to_world("сковорода")
 	
 	blocked_characters -= href_list["victim"]
 

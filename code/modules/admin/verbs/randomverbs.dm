@@ -1030,4 +1030,4 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	for(var/name in SSpersistent_world.blocked_characters)
-		to_chat(usr, "<a href='?src=\ref[SSpersistent_world];victim=[name]'>[name]</a>")
+		to_chat(usr, "<a href='?src=\ref[SSpersistent_world]&victim=[name]'>[name]</a>")

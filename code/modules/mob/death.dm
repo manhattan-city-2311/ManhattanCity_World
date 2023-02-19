@@ -94,7 +94,7 @@
 
 	ticker?.mode?.check_win()
 
-	to_chat(src, SPAN_XXLARGE(SPAN_OCCULT("You died and your character has left Manhattan City forever.")))
+	to_chat(src, SPAN_XXLARGE(SPAN_OCCULT("You died and your character has left Manhattan forever.")))
 	permadelete()
 
 	return TRUE
