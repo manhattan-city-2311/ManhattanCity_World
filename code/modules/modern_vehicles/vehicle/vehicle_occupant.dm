@@ -5,6 +5,12 @@
 		if(VP_INTERIOR)
 			return "[prefix && "in the"] interiors"
 
+// call before changing position
+/obj/manhattan/vehicle/proc/handle_position_change(mob/user)
+	if(user in get_occupants_in_position(VP_DRIVER))
+		user.client?.screen -= user.vehicle_ui
+		QDEL_NULL(user.vehicle_ui)
+
 /obj/manhattan/vehicle/proc/exit_vehicle(mob/user, ignore_incap_check = FALSE, mob/puller = null)
 	if(!(user in get_occupants_in_position(VP_INTERIOR)) && user.loc != src)
 		to_chat(user, SPAN_NOTICE("[puller || "You"] must be inside [src] to exit it."))
@@ -17,9 +23,7 @@
 		to_chat(user, SPAN_NOTICE("There is no valid location to exit at."))
 		return
 
-	if(user in get_occupants_in_position(VP_DRIVER))
-		user.client?.screen -= user.vehicle_ui
-		QDEL_NULL(user.vehicle_ui)
+	handle_position_change(user)
 
 	occupants -= user
 	contents -= user
@@ -114,11 +118,12 @@
 	return TRUE
 
 /obj/manhattan/vehicle/proc/handle_entering(mob/user, position, puller)
-	occupants += user
+	handle_position_change(user)
+	occupants |= user
 	//user.client.view = "[round(VIEW_SIZE_X * vehicle_view_modifier)]x[round(VIEW_SIZE_Y * vehicle_view_modifier)]"
 	occupants[user] = position
 	user.loc = contents
-	contents += user
+	contents |= user
 	update_icon()
 	if(puller)
 		visible_message(SPAN_NOTICE("[puller] put [user] [position_name(position)]."))
@@ -165,7 +170,10 @@
 		if(player_pos_choice == "Cancel")
 			return
 	
-		enter_as_position(C, player_pos_choice, user)
+		if(C == user)
+			enter_as_position(C, player_pos_choice)
+		else
+			enter_as_position(C, player_pos_choice, user)
 	else if(VP_INTERIOR in get_all_positions())
 		handle_entering(C, VP_INTERIOR, user)
 

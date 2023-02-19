@@ -1023,19 +1023,14 @@ default behaviour is:
 		lying = 0
 		canmove = 1
 	else
-		if(istype(buckled, /obj/vehicle))
-			var/obj/vehicle/V = buckled
+		if(istype(buckled, /obj/manhattan/vehicle))
 			if(is_physically_disabled())
 				lying = 0
 				canmove = 1
-				if(!V.riding_datum) // If it has a riding datum, the datum handles moving the pixel_ vars.
-					pixel_y = V.mob_offset_y - 5
 			else
 				if(buckled.buckle_lying != -1)
 					lying = buckled.buckle_lying
 				canmove = 1
-				if(!V.riding_datum) // If it has a riding datum, the datum handles moving the pixel_ vars.
-					pixel_y = V.mob_offset_y
 		else if(buckled)
 			anchored = 1
 			canmove = 1 //The line above already makes the chair not swooce away if the sitter presses a button. No need to incapacitate them as a criminally large amount of mechanics read this var as a type of stun.

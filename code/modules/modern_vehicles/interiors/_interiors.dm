@@ -14,27 +14,32 @@
 
 	var/global/list/datum/map_template/templates_cache = list()
 
-/datum/vehicle_interior/New(interior_template = /datum/map_template, new_vehicle)
+/datum/vehicle_interior/New(interior_template, new_vehicle)
+	var/is_failed = TRUE
 	for(var/obj/effect/interior_spawn/S in GLOB.vehicle_spawnpoints)
 		middle_turf = get_turf(S)
 
 		if(!(interior_template in templates_cache))
-			templates_cache[interior_template] = new interior_template()
-
+			templates_cache[interior_template] = new interior_template
+		
 		if(!templates_cache[interior_template].load(middle_turf, centered = TRUE))
-			CRASH("[interior_template] was unable to load.")
-			return
+			continue
 
+		is_failed = FALSE
 		qdel(S)
 		break
 
+	if(is_failed)
+		message_admins("Failed to load [type]")
+		CRASH("Failed to load [type]")
+		
 	id = gid++
 
-	for(var/obj/effect/vehicle_entrance/E in range(5, middle_turf))
+	for(var/obj/effect/vehicle_entrance/E in get_area(middle_turf))
 		entrance = E
 		entrance.id = id
 		break
-	for(var/obj/structure/vehicledoor/E in range(5, middle_turf))
+	for(var/obj/structure/vehicledoor/E in get_area(middle_turf))
 		door = E
 		door.id = id
 		door.interior = src
@@ -42,6 +47,7 @@
 	vehicle = new_vehicle
 	if(!vehicle)
 		return
+
 	GLOB.vehicle_interiors += src
 
 /obj/effect/vehicle_entrance
@@ -53,7 +59,7 @@
 	var/free_x = 0
 	var/free_y = 0
 
-/obj/effect/interior_spawn/initialize()
+/obj/effect/interior_spawn/New()
 	. = ..()
 	GLOB.vehicle_spawnpoints += src
 	icon_state = null
@@ -82,6 +88,10 @@
 		visible_message(SPAN_NOTICE("[puller] put [user] into interior of \the [src]."))
 	to_chat(user, SPAN_NOTICE("You are now in the interior of [src]."))
 	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
+
+	if(!interior?.entrance)
+		to_chat(user, SPAN_OCCULT("or not."))
+		return
 
 	user.forceMove(get_turf(interior.entrance))
 	occupants[user] = VP_INTERIOR

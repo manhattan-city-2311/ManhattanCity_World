@@ -69,7 +69,7 @@
 /obj/machinery/monitor/process()
 	if(!attached)
 		return PROCESS_KILL
-	if(!Adjacent(attached))
+	if(!(attached in range(get_turf(src), 1)))
 		attached = null
 		return PROCESS_KILL
 

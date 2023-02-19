@@ -32,7 +32,8 @@
 	savefile_version = SAVEFILE_VERSION_MAX
 
 /datum/preferences/proc/load_preferences()
-	if(!path)				return 0
+	if(!path)
+		return 0
 
 	if(world.time < loadprefcooldown)
 		if(istype(client))

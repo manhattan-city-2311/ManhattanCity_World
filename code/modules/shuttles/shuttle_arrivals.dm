@@ -19,44 +19,6 @@
 
 // Unlike most shuttles, the arrivals shuttle is completely automated, so we need to put some additional code here.
 
-
-// This proc checks if anyone is on the shuttle.
-/datum/shuttle/ferry/arrivals/proc/check_for_passengers(area/A)
-	for(var/mob/living/L in A)
-		return TRUE
-	return FALSE
-
-// This is to stop the shuttle if someone tries to stow away when its leaving.
-/datum/shuttle/ferry/arrivals/post_warmup_checks()
-	if(!location) // If we're at station.
-		if(check_for_passengers(area_station))
-			return FALSE
-	return TRUE
-
-/datum/shuttle/ferry/arrivals/process()
-	if(process_state == IDLE_STATE)
-
-		if(location) // If we're off-station (space).
-			if(check_for_passengers(area_offsite)) // No point arriving with an empty shuttle.
-				warmup_time = initial(warmup_time)
-				launch()
-				message_passengers(area_offsite, "Arriving at [using_map.station_name] in thirty seconds...")
-				spawn(10 SECONDS)
-					message_passengers(area_offsite, "Arriving at [using_map.station_name] in twenty seconds.")
-					spawn(10 SECONDS)
-						message_passengers(area_offsite, "Arriving at [using_map.station_name] in ten seconds.  Please buckle up.")
-
-		else // We are at the station.
-			if(!check_for_passengers(area_station)) // Don't leave with anyone.
-				if(launch_delay) // Give some time to get on the docks so people don't get trapped inbetween the dock airlocks.
-					launch_delay--
-				else
-					launch_delay = initial(launch_delay)
-					warmup_time = 0 // Gotta go fast.
-					launch()
-
-	..() // Do everything else
-
 /*
 /datum/shuttle/ferry/arrivals/current_dock_target()
 	if(location) // If we're off station.

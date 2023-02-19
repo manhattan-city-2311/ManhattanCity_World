@@ -91,8 +91,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/global_erp,
 	/client/proc/response_team, // Response Teams admin verb,
 	/client/proc/trader_ship, // Trader ship admin verb,
-	/client/proc/toggle_antagHUD_use,
-	/client/proc/toggle_antagHUD_restrictions,
 	/client/proc/allow_character_respawn,    // Allows a ghost to respawn ,
 	/client/proc/event_manager_panel,
 	/client/proc/empty_ai_core_toggle_latejoin,
@@ -107,7 +105,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/toggle_attack_logs,
 	/datum/admins/proc/paralyze_mob,
 	/datum/admins/proc/sendFax,
-	/client/proc/despawn_player
+	/client/proc/despawn_player,
+	/datum/admins/proc/view_blocked_characters
 	)
 
 var/list/admin_verbs_ban = list(

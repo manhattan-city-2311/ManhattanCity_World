@@ -3,7 +3,7 @@
 	layer = MOB_LAYER
 	plane = MOB_PLANE
 	animate_movement = 2
-	flags = PROXMOVE
+	flags = PROXMOVE | NOREACT
 	vis_flags = VIS_INHERIT_DIR
 	appearance_flags = DEFAULT_APPEARANCE | KEEP_TOGETHER
 	blocks_emissive = EMISSIVE_BLOCK_UNIQUE

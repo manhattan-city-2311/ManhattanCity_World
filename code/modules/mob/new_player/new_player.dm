@@ -75,9 +75,15 @@
 	if(!(S.spawn_flags & SPECIES_CAN_JOIN))
 		src << alert("Your current species, [client.prefs.species], is not available for play on the city.")
 		return FALSE
-	if(!client.prefs.is_records_filled())	
+	if(!client.prefs.is_records_filled())
 		spawn()
 			alert(src, "Стоп, стоп, стоп. Прежде чем зайти в игру, персонаж обязан обладать документацией. Пожалуйста, заполните \[РЕГИСТРАЦИОННЫЕ ДАННЫЕ].")
+		return FALSE
+
+	if(client.prefs.real_name in SSpersistent_world.blocked_characters)
+		spawn()
+			alert(src, "Персонаж \"[client.prefs.real_name]\" заблокирован. Удалите его, или обратитесь к администраторам.")
+		message_admins("[ckey] just tried to enter with blocked character")
 		return FALSE
 
 	if(client.prefs.location)
@@ -144,8 +150,6 @@
 			// qdel(mannequin)
 			observer.real_name = client.prefs.real_name
 			observer.name = observer.real_name
-			if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
-				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
 			observer.key = key
 			qdel(src)
 		return 1
@@ -156,6 +160,11 @@
 			spawn()
 				alert(src, "Стоп, стоп, стоп. Прежде чем зайти в игру, персонаж обязан обладать документацией. Пожалуйста, заполните \[РЕГИСТРАЦИОННЫЕ ДАННЫЕ].")
 			return
+		if(client.prefs.real_name in SSpersistent_world.blocked_characters)
+			spawn()
+				alert(src, "Персонаж \"[client.prefs.real_name]\" заблокирован. Удалите его, или обратитесь к администраторам.")
+			message_admins("[ckey] just tried to enter with blocked character")
+			return FALSE
 
 		ready = !ready
 		update_lobby()
@@ -259,6 +268,11 @@
 		return 0
 	if(!client)
 		return 0
+	if(client.prefs.real_name in SSpersistent_world.blocked_characters)
+		spawn()
+			alert(src, "Персонаж \"[client.prefs.real_name]\" заблокирован. Удалите его, или обратитесь к администраторам.")
+		message_admins("[ckey] just tried to enter with blocked character in attempt late spawn")
+		return FALSE
 
 	var/is_prisoner
 	if(rank == "Prisoner")
@@ -333,7 +347,14 @@
 			rank = character.mind.role_alt_title
 
 
-/mob/new_player/proc/create_character(var/turf/T)
+/mob/new_player/proc/create_character(turf/T)
+	if(client.prefs.real_name in SSpersistent_world.blocked_characters)
+		message_admins("[ckey] just tried to enter with blocked character after ready check")
+		abandon()
+		spawn()
+			alert(src, "Персонаж \"[client.prefs.real_name]\" заблокирован. Удалите его, или обратитесь к администраторам.")
+		return
+		
 	spawning = 1
 
 	var/mob/living/carbon/human/new_character

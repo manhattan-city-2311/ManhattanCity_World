@@ -30,8 +30,6 @@
 
 	handle_glucose_level()
 
-	handle_additictions()
-
 	consume_oxygen(REST_OXYGEN_CONSUMING * k) // muscles resting
 
 	oxy_last_tick_demand = oxy_demand

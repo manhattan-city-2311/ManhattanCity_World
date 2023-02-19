@@ -14,7 +14,6 @@ SUBSYSTEM_DEF(planets)
 
 	var/list/currentrun = list()
 
-	var/list/needs_sun_update = list()
 	var/list/needs_temp_update = list()
 
 /datum/controller/subsystem/planets/Initialize(timeofday)
@@ -97,14 +96,6 @@ SUBSYSTEM_DEF(planets)
 	if(!resumed)
 		src.currentrun = planets.Copy()
 
-	var/list/needs_sun_update = src.needs_sun_update
-	while(needs_sun_update.len)
-		var/datum/planet/P = needs_sun_update[needs_sun_update.len]
-		needs_sun_update.len--
-		updateSunlight(P)
-		if(MC_TICK_CHECK)
-			return
-
 	var/list/currentrun = src.currentrun
 	while(currentrun.len)
 		var/datum/planet/P = currentrun[currentrun.len]
@@ -112,55 +103,8 @@ SUBSYSTEM_DEF(planets)
 
 		P.process(last_fire)
 
-		//Sun light needs changing
-		if(P.needs_work & PLANET_PROCESS_SUN)
-			P.needs_work &= ~PLANET_PROCESS_SUN
-			needs_sun_update |= P
-
-		//Temperature needs updating
-		if(P.needs_work & PLANET_PROCESS_TEMP)
-			P.needs_work &= ~PLANET_PROCESS_TEMP
-			needs_temp_update |= P
-
 		if(MC_TICK_CHECK)
 			return
-
-/datum/controller/subsystem/planets/proc/updateSunlight(var/datum/planet/P)
-	// Remove old value from corners
-	var/list/sunlit_corners = P.sunlit_corners
-	var/old_lum_r = -P.sun["lum_r"]
-	var/old_lum_g = -P.sun["lum_g"]
-	var/old_lum_b = -P.sun["lum_b"]
-	if(old_lum_r || old_lum_g || old_lum_b)
-		for(var/C in sunlit_corners)
-			var/datum/lighting_corner/LC = C
-			LC.update_lumcount(old_lum_r, old_lum_g, old_lum_b)
-			CHECK_TICK
-	sunlit_corners.Cut()
-
-	// Calculate new values to apply
-	var/new_brightness = P.sun["brightness"]
-	var/new_color = P.sun["color"]
-	var/lum_r = new_brightness * GetRedPart  (new_color) / 255
-	var/lum_g = new_brightness * GetGreenPart(new_color) / 255
-	var/lum_b = new_brightness * GetBluePart (new_color) / 255
-	var/static/update_gen = -1 // Used to prevent double-processing corners. Otherwise would happen when looping over adjacent turfs.
-	for(var/I in P.planet_floors)
-		var/turf/simulated/T = I
-		if(!T.lighting_corners_initialised)
-			T.generate_missing_corners()
-		for(var/C in T.get_corners())
-			var/datum/lighting_corner/LC = C
-			if(LC.update_gen != update_gen && LC.active)
-				sunlit_corners += LC
-				LC.update_gen = update_gen
-				LC.update_lumcount(lum_r, lum_g, lum_b)
-		CHECK_TICK
-	update_gen--
-	P.sun["lum_r"] = lum_r
-	P.sun["lum_g"] = lum_g
-	P.sun["lum_b"] = lum_b
-
 
 /datum/controller/subsystem/planets/proc/weatherDisco()
 	var/count = 100000

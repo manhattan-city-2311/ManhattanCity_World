@@ -72,12 +72,11 @@
 
 /datum/reagents/proc/update_total() // Updates volume.
 	total_volume = 0
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.volume < MINIMUM_CHEMICAL_VOLUME)
 			del_reagent(R.id)
 		else
 			total_volume += R.volume
-	return
 
 /datum/reagents/proc/handle_reactions()
 	if(chemistryProcess)
@@ -112,7 +111,7 @@
 		if(!reaction_occured)
 			break
 
-	for(var/datum/chemical_reaction/C in effect_reactions)
+	for(var/datum/chemical_reaction/C as anything in effect_reactions)
 		C.post_reaction(src)
 
 	update_total()
@@ -127,16 +126,15 @@
 	update_total()
 	amount = min(amount, get_free_space())
 
-	for(var/datum/reagent/current in reagent_list)
+	for(var/datum/reagent/current as anything in reagent_list)
 		if(current.id == id)
 			current.volume += amount
-			if(!isnull(data)) // For all we know, it could be zero or empty string and meaningful
+			if(data) // For all we know, it could be zero or empty string and meaningful
 				current.mix_data(data, amount)
 			update_total()
 			if(!safety)
 				handle_reactions()
-			if(my_atom)
-				my_atom.on_reagent_change()
+			my_atom?.on_reagent_change()
 
 			return current
 
@@ -150,8 +148,7 @@
 		update_total()
 		if(!safety)
 			handle_reactions()
-		if(my_atom)
-			my_atom.on_reagent_change()
+		my_atom?.on_reagent_change()
 
 		return R
 
@@ -173,15 +170,15 @@
 			return 1
 	return 0
 
-/datum/reagents/proc/del_reagent(var/id)
-	for(var/datum/reagent/current in reagent_list)
-		if (current.id == id)
-			reagent_list -= current
-			qdel(current)
-			update_total()
-			if(my_atom)
-				my_atom.on_reagent_change()
-			return 0
+/datum/reagents/proc/del_reagent(id)
+	for(var/datum/reagent/current as anything in reagent_list)
+		if (current.id != id)
+			continue
+		reagent_list -= current
+		qdel(current)
+		update_total()
+		my_atom?.on_reagent_change()
+		return
 
 /datum/reagents/proc/has_reagent(var/id, var/amount = 0)
 	for(var/datum/reagent/current in reagent_list)

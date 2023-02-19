@@ -71,9 +71,11 @@
 		update_icon()
 		return
 	if(pumping_blood)
-		attached.mcv_add = min(setting, attached.mcv_add)
+		attached.mcv_add = max(setting, attached.mcv_add)
 		if(prob(10))
 			to_chat(attached, SPAN_DANGER("Some strange tubes pump blood in and out of your body, it's weird!"))
+		if(prob(1))
+			attached.internal_organs_by_name[O_HEART].make_common_arrythmia(rand(1,2))
 	if(oxygenating_blood)
 		attached.make_oxygen(oxygen_setting) // FIXME: possible overflow issues
 		attached.remove_co2(oxygen_setting * 0.8)

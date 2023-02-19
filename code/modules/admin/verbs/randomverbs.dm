@@ -283,40 +283,6 @@ Ccomp's first proc.
 	message_admins("Admin [key_name_admin(usr)] allowed [key_name_admin(G)] to bypass the respawn time limit", 1)
 
 
-/client/proc/toggle_antagHUD_use()
-	set category = "Server"
-	set name = "Toggle antagHUD usage"
-	set desc = "Toggles antagHUD usage for observers"
-
-	if(!holder)
-		to_chat(src, "Only administrators may use this command.")
-	var/action=""
-	if(config.antag_hud_allowed)
-		for(var/mob/observer/dead/g in get_ghosts())
-			if(!g.client.holder)						//Remove the verb from non-admin ghosts
-				g.verbs -= /mob/observer/dead/verb/toggle_antagHUD
-			if(g.antagHUD)
-				g.antagHUD = 0						// Disable it on those that have it enabled
-				g.has_enabled_antagHUD = 2				// We'll allow them to respawn
-				to_chat(g, "<font color='red'><B>The Administrator has disabled AntagHUD </B></font>")
-		config.antag_hud_allowed = 0
-		to_chat(src, "<font color='red'><B>AntagHUD usage has been disabled</B></font>")
-		action = "disabled"
-	else
-		for(var/mob/observer/dead/g in get_ghosts())
-			if(!g.client.holder)						// Add the verb back for all non-admin ghosts
-				g.verbs += /mob/observer/dead/verb/toggle_antagHUD
-			to_chat(g, SPAN_INFO("<B>The Administrator has enabled AntagHUD </B>"))	// Notify all observers they can now use AntagHUD
-		config.antag_hud_allowed = 1
-		action = "enabled"
-		to_chat(src, SPAN_INFO("<B>AntagHUD usage has been enabled</B>"))
-
-
-	log_admin("[key_name(usr)] has [action] antagHUD usage for observers")
-	message_admins("Admin [key_name_admin(usr)] has [action] antagHUD usage for observers", 1)
-
-
-
 /client/proc/toggle_antagHUD_restrictions()
 	set category = "Server"
 	set name = "Toggle antagHUD Restrictions"
@@ -1055,3 +1021,13 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	else if(isliving(M))
 		M.ghostize()
 		qdel(M) //Bye
+
+/datum/admins/proc/view_blocked_characters()
+	set category = "Admin"
+	set name = "View Blocked characters"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	for(var/name in SSpersistent_world.blocked_characters)
+		to_chat(usr, "<a href='?src=\ref[SSpersistent_world]&victim=[name]'>[name]</a>")

@@ -101,11 +101,9 @@
 
 #define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
 
-#define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
-
+#define DEBUG_ARGS(x) log_debug("[__FILE__] - [__LINE__] [x]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
+#define DEBUG_LIST(x) 
 #define show_image(target, image)                           target << image
-
-#define any2ref(x) "\ref[x]"
 
 #define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"
 
@@ -129,7 +127,7 @@
 
 #define LAZYACCESS0(L, I) (L ? (isnum(I) ? (I > 0 && I <= L.len ? L[I] : 0) : L[I]) : 0)
 
-proc/n_repeat(var/string, var/amount)
+proc/n_repeat(string, amount)
 	if(istext(string) && isnum(amount))
 		var/i
 		var/newstring = ""

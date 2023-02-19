@@ -107,7 +107,6 @@ var/list/floor_light_cache = list()
 		return
 
 /obj/machinery/floor_light/process()
-	..()
 	var/need_update
 	if((!anchored || broken()) && on)
 		use_power = 0

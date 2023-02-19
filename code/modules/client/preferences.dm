@@ -549,15 +549,20 @@ var/list/preferences_datums = list()
 	if(S)
 		dat += "<h1>Выбор персонажа<h1><br>"
 		dat += "<b>В данный момент используется: </b>"
-		dat += "<a href='?src=\ref[src];changeslot=[default_slot]'>[real_name]</a><br>"
+		if(real_name in SSpersistent_world.blocked_characters)
+			dat += "<a href='?src=\ref[src];changeslot=[default_slot]'><span class='requiredToBeFull'>[real_name]</span></a><br>"
+		else
+			dat += "<a href='?src=\ref[src];changeslot=[default_slot]'>[real_name]</a><br>"
 		dat += "Выберите слот для загрузки:<hr>"
 		var/name
 		for(var/i=1, i<= config.character_slots, i++)
 			S.cd = "/character[i]"
 			S["real_name"] >> name
-			if(!name)	name = "Empty Slot [i]"
-			if(i==default_slot)
-				name = "[name]"
+			if(!name)
+				name = "Пустой слот #[i]"
+			
+			if(name in SSpersistent_world.blocked_characters)
+				name = "<span class='requiredToBeFull'>[name]</span>"
 			dat += "<a href='?src=\ref[src];changeslot=[i]'>[name]</a><br>"
 
 	dat += "</center></body>"

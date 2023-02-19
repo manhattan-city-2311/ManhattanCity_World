@@ -177,14 +177,6 @@
 
 	var/player_byond_age = get_byond_age()
 
-	if(config.min_byond_age)
-		if(config.min_byond_age > player_byond_age)
-			log_adminwarn("Failed Login: [key] - New account registered on [byond_join_date] (Age: [player_byond_age] days) - Minimum: [config.min_byond_age] days.")
-			message_admins("<span class='adminnotice'>Failed Login: [key] -  New account registered on [byond_join_date] (Age: [player_byond_age] days) - Minimum: [config.min_byond_age] days.</span>")
-			to_chat(src, "Apologies, this server is not accepting newly registered byond accounts right now. Please try again later.")
-			qdel(src)
-			return 0
-
 	//Panic bunker code
 	if (isnum(player_age) && player_age == 0) //first connection
 		if (config.panic_bunker && !holder && !deadmin_holder)
