@@ -232,26 +232,52 @@
 		var/datum/browser/popup = new(src, "Server News", "Server News", 450, 300, src)
 		popup.set_content(dat)
 		popup.open()
-
+#define DEBUG_TO_WORLD(i) to_world("[i]")
 /mob/new_player/proc/IsJobAvailable(rank)
 	var/datum/job/job = SSjobs.GetJob(rank)
-	if(!job)	return 0
-	if(!job.enabled) return 0
-	if(!job.is_position_available()) return 0
-	if(jobban_isbanned(src,rank))	return 0
-	if(!is_hard_whitelisted(src, job)) return 0
-	if(!job.player_old_enough(src.client))	return 0
-	if(job.minimum_character_age && (client.prefs.age < job.minimum_character_age)) return 0
-	if(job.title == "Prisoner" && client.prefs.criminal_status != "Incarcerated")	return 0
-	if(job.title != "Prisoner" && client.prefs.criminal_status == "Incarcerated")	return 0
-	if(job.clean_record_required && client.prefs.crime_record && !LAZYLEN(client.prefs.crime_record)) return 0
-	if(!LAZYLEN(job.exclusive_employees) && !(client.prefs.unique_id in job.exclusive_employees)) return 0
-	if(client.prefs.is_synth() && !job.allows_synths)
+	var/i = 0
+	if(!job || !job.enabled || !job.is_position_available())
+		DEBUG_TO_WORLD(i)
 		return 0
+	i += 1
+	if(jobban_isbanned(src,rank) || !is_hard_whitelisted(src, job))
+		DEBUG_TO_WORLD(i)
+		return 0
+	i += 1
+	if(!job.player_old_enough(src.client))
+		DEBUG_TO_WORLD(i)
+		return 0
+	i += 1
+	if(job.minimum_character_age && (client.prefs.age < job.minimum_character_age))
+		DEBUG_TO_WORLD(i)
+		return 0
+	i += 1
+	//job.title == "Prisoner" && client.prefs.criminal_status != "Incarcerated" ||
+	//|| job.title != "Prisoner" && client.prefs.criminal_status == "Incarcerated"
+	if(job.title == "Prisoner" ^ client.prefs.criminal_status == "Incarcerated" == 1)
+		DEBUG_TO_WORLD(i)
+		return 0
+	i += 1
+	if(job.clean_record_required && client.prefs.crime_record && !LAZYLEN(client.prefs.crime_record))
+		DEBUG_TO_WORLD(i)
+		return 0
+	i += 1
+	if(LAZYLEN(job.exclusive_employees) && !(client.prefs.unique_id in job.exclusive_employees))
+		DEBUG_TO_WORLD(i)
+		return 0
+	i += 1
+	if(client.prefs.is_synth() && !job.allows_synths)
+		DEBUG_TO_WORLD(i)
+		return 0
+	i += 1
 	if(job.business)
 		var/datum/business/biz = get_business_by_biz_uid(job.business)
-		if(biz && biz.suspended) return 0
-
+		DEBUG_TO_WORLD(i)
+		i += 1
+		if(biz && biz.suspended)
+			DEBUG_TO_WORLD(i)
+			return 0
+	i += 1
 	return 1
 
 /mob/new_player/proc/AttemptLateSpawn(rank, turf/spawning_at, antag_type)
@@ -264,7 +290,7 @@
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 		return 0
 	if(!IsJobAvailable(rank))
-		src << alert("[rank] is not available. Please try another.")
+		alert(src, "[rank] is not available. Please try another.", "Sorry")
 		return 0
 	if(!client)
 		return 0
@@ -354,7 +380,7 @@
 		spawn()
 			alert(src, "Персонаж \"[client.prefs.real_name]\" заблокирован. Удалите его, или обратитесь к администраторам.")
 		return
-		
+
 	spawning = 1
 
 	var/mob/living/carbon/human/new_character

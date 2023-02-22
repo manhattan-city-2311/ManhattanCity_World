@@ -113,8 +113,8 @@ var/list/preferences_datums = list()
 	var/birth_month	= 1					//month you were born
 	var/birth_year						//year you were born
 	// There's no birth year, as that's automatically calculated by your age.
-
-	var/spawnpoint = "City Arrivals Airbus" //where this character will spawn (0-2).
+	#define DEFAULT_SPAWNPOINT_NAME "City Arrivals Airbus"
+	var/spawnpoint = DEFAULT_SPAWNPOINT_NAME //where this character will spawn (0-2).
 	var/b_type = "O+"					//blood type (not-chooseable)
 	var/backbag = 2					//backpack type
 	var/pdachoice = 1					//PDA type

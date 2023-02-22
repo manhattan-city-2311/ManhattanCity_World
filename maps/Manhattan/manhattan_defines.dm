@@ -32,7 +32,7 @@
 	emergency_shuttle_called_message = "An emergency evacuation shuttle has been called. It will arrive at the east side of the city in approximately %ETA%"
 	emergency_shuttle_recall_message = "The emergency shuttle has been recalled."
 
-	allowed_spawns = list("City Arrivals Airbus", "Cryogenic Storage", "Prison")
+	allowed_spawns = list(DEFAULT_SPAWNPOINT_NAME, "Cryogenic Storage", "Prison")
 
 //	planet_datums_to_make = list(/datum/planet/pollux)
 

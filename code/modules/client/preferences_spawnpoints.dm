@@ -26,7 +26,7 @@ var/list/spawntypes = list()
 	return get_turf(pick(turfs))
 
 /datum/spawnpoint/arrivals
-	display_name = "City Arrivals Airbus"
+	display_name = DEFAULT_SPAWNPOINT_NAME
 	msg = "will arrive to the city shortly by tram"
 
 /datum/spawnpoint/arrivals/New()
