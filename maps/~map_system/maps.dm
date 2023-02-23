@@ -121,12 +121,16 @@ var/list/all_maps = list()
 	var/head_department = DEPT_NANOTRASEN	// NOTE: Has to exist in-game as a department account. See: code\modules\economy\departments.dm and input id here.
 	var/main_department = DEPT_COLONY
 
+	var/forced_holomap_zlevel = null
+
 
 /datum/map/New()
 	..()
 	if(zlevel_datum_type)
 		for(var/type in subtypesof(zlevel_datum_type))
-			new type(src)
+			var/datum/map_z_level/Z = new type(src)
+			if(!forced_holomap_zlevel && Z.z == forced_holomap_zlevel)
+				forced_holomap_zlevel = Z.z
 	if(!map_levels)
 		map_levels = station_levels.Copy()
 	if(!allowed_jobs || !allowed_jobs.len)

@@ -215,7 +215,7 @@
 /obj/structure/sign/neon/trafficsign
 	name = "stop traffic sign"
 	desc = "A sign to regulate road traffic."
-	icon = 'icons/obj/road_signs.dmi'
+	icon = 'icons/obj/manhattan/lighting/road_signs.dmi'
 	icon_state = "base"
 	var/overlay_state = "stop"
 	light_color = LIGHT_COLOR_NEONLIGHTBLUE

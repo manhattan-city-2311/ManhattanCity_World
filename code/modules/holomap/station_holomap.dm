@@ -34,7 +34,9 @@
 /obj/machinery/station_map/New()
 	..()
 	holomap_datum = new()
-	original_zLevel = loc.z
+
+	update_z()
+
 	SSholomaps.station_holomaps += src
 	flags |= ON_BORDER // Why? It doesn't help if its not density
 
@@ -50,10 +52,21 @@
 	holomap_datum = null
 	. = ..()
 
+
+/obj/machinery/station_map/proc/update_z(turf/_loc = null)
+	if(using_map.forced_holomap_zlevel)
+		original_zLevel = using_map.forced_holomap_zlevel
+	else
+		if(!_loc)
+			_loc = loc
+		original_zLevel = _loc.z
+
 /obj/machinery/station_map/proc/setup_holomap()
 	bogus = FALSE
 	var/turf/T = get_turf(src)
-	original_zLevel = T.z
+	// original_zLevel = T.z
+	update_z(T)
+
 	if(!("[HOLOMAP_EXTRA_STATIONMAP]_[original_zLevel]" in SSholomaps.extraMiniMaps))
 		bogus = TRUE
 		holomap_datum.initialize_holomap_bogus()
@@ -71,19 +84,21 @@
 	// floor_markings.plane = ABOVE_TURF_PLANE // Not until we do planes ~Leshana
 	// floor_markings.layer = DECAL_LAYER
 	update_icon()
+/obj/machinery/station_map/proc/IsInRange(atom/movable/user)
+	return Adjacent(user)
 
-/obj/machinery/station_map/attack_hand(var/mob/user)
+/obj/machinery/station_map/attack_hand(mob/user)
 	if(watching_mob && (watching_mob != user))
 		to_chat(user, "<span class='warning'>Someone else is currently watching the holomap.</span>")
 		return
-	if(user.loc != loc)
-		to_chat(user, "<span class='warning'>You need to stand in front of \the [src].</span>")
+	if(!IsInRange(user))
+		to_chat(user, "<span class='warning'>You need to stand nearby \the [src].</span>")
 		return
 	startWatching(user)
 
 // Let people bump up against it to watch
-/obj/machinery/station_map/Bumped(var/atom/movable/AM)
-	if(!watching_mob && isliving(AM) && AM.loc == loc)
+/obj/machinery/station_map/Bumped(atom/movable/AM)
+	if(!watching_mob && isliving(AM) && IsInRange(AM))
 		startWatching(AM)
 
 // In order to actually get Bumped() we need to block movement.  We're (visually) on a wall, so people
