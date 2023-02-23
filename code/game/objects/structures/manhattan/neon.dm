@@ -268,6 +268,21 @@
 	bounds = "64,32"
 	pixel_x = 12
 	light_color = LIGHT_COLOR_LIGHT_CYAN
+	var/obj/machinery/station_map/attachable/holomap
+
+/obj/structure/sign/neon/big/manhattan2/initialize()
+	. = ..()
+	holomap = new(get_turf(src))
+	holomap.SetOwner(src)
+	holomap.bounds = bounds
+
+/obj/structure/sign/neon/big/manhattan2/attack_hand(mob/user)
+	. = ..()
+	holomap.attack_hand(user)
+
+/obj/structure/sign/neon/big/manhattan2/Bumped(atom/movable/AM)
+	. = ..()
+	holomap.Bumped(AM)
 
 /obj/structure/sign/neon/big/hospital1
 	name = "city hospital sign"

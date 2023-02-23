@@ -71,19 +71,21 @@
 	// floor_markings.plane = ABOVE_TURF_PLANE // Not until we do planes ~Leshana
 	// floor_markings.layer = DECAL_LAYER
 	update_icon()
+/obj/machinery/station_map/proc/IsInRange(atom/movable/user)
+	return Adjacent(user)
 
-/obj/machinery/station_map/attack_hand(var/mob/user)
+/obj/machinery/station_map/attack_hand(mob/user)
 	if(watching_mob && (watching_mob != user))
 		to_chat(user, "<span class='warning'>Someone else is currently watching the holomap.</span>")
 		return
-	if(user.loc != loc)
-		to_chat(user, "<span class='warning'>You need to stand in front of \the [src].</span>")
+	if(!IsInRange(user))
+		to_chat(user, "<span class='warning'>You need to stand nearby \the [src].</span>")
 		return
 	startWatching(user)
 
 // Let people bump up against it to watch
-/obj/machinery/station_map/Bumped(var/atom/movable/AM)
-	if(!watching_mob && isliving(AM) && AM.loc == loc)
+/obj/machinery/station_map/Bumped(atom/movable/AM)
+	if(!watching_mob && isliving(AM) && IsInRange(AM))
 		startWatching(AM)
 
 // In order to actually get Bumped() we need to block movement.  We're (visually) on a wall, so people
