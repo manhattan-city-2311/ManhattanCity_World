@@ -55,6 +55,9 @@
 
 	council_email = "city-council@geminus.nt"
 
+	forced_holomap_zlevel = Z_LEVEL_SECOND_MANHATTAN
+	// holomap_offset_x
+
 //� ����� �� ��� ������ ��� �����?:
 
 /*/datum/map/new_manhattan/perform_map_generation()
@@ -65,6 +68,10 @@
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_FIRST_GEMINUS, world.maxx, world.maxy)         // Create the mining ore distribution map.
 
 	return 1*/
+/datum/map_z_level/new_manhattan
+	holomap_offset_y = 150
+	holomap_offset_x = 3
+	holomap_legend_x = -12
 
 /datum/map_z_level/new_manhattan/first
 	z = Z_LEVEL_FIRST_MANHATTAN

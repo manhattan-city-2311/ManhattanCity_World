@@ -5,17 +5,28 @@
 	var/image/legend
 
 /datum/station_holomap/proc/initialize_holomap(var/turf/T, var/isAI = null, var/mob/user = null, var/reinit = FALSE)
+	var/force = (!using_map.forced_holomap_zlevel || using_map.forced_holomap_zlevel == T.z)
 	if(!station_map || reinit)
-		station_map = image(SSholomaps.extraMiniMaps["[HOLOMAP_EXTRA_STATIONMAP]_[T.z]"])
-	if(!cursor || reinit)
+		if(force)
+			station_map = image(SSholomaps.extraMiniMaps["[HOLOMAP_EXTRA_STATIONMAP]_[T.z]"])
+		else
+			station_map = image(SSholomaps.extraMiniMaps["[HOLOMAP_EXTRA_STATIONMAP]_[using_map.forced_holomap_zlevel]"])
+	if(force && (!cursor || reinit))
 		cursor = image('icons/holomap_markers.dmi', "you")
 	if(!legend || reinit)
 		legend = image('icons/effects/64x64.dmi', "legend_sc")
 
 	if(isAI)
-		T = get_turf(user.client.eye)
-	cursor.pixel_x = (T.x - 6 + HOLOMAP_PIXEL_OFFSET_X(T.z)) * PIXEL_MULTIPLIER
-	cursor.pixel_y = (T.y - 6 + HOLOMAP_PIXEL_OFFSET_Y(T.z)) * PIXEL_MULTIPLIER
+		var/mob/eye = user.client.eye
+		if(using_map.forced_holomap_zlevel)
+			T = locate(eye.x, eye.y, using_map.forced_holomap_zlevel)
+			if(!isturf(T))
+				T = get_turf(eye)
+		else
+			T = get_turf(eye)
+	if(force)
+		cursor.pixel_x = (T.x - 6 + HOLOMAP_PIXEL_OFFSET_X(T.z)) * PIXEL_MULTIPLIER
+		cursor.pixel_y = (T.y - 6 + HOLOMAP_PIXEL_OFFSET_Y(T.z)) * PIXEL_MULTIPLIER
 
 	legend.pixel_x = HOLOMAP_LEGEND_X(T.z)
 	legend.pixel_y = HOLOMAP_LEGEND_Y(T.z)

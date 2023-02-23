@@ -1,10 +1,9 @@
 // to attach it to movable send attack_hand and Bumped to ./attachable/attack_hand&Bumped
 // DO NOT ATTACH TO OBJ/ITEMS
 /obj/machinery/station_map/attachable
-	density = 0
-	anchored = 0
 	icon = null
 	icon_state = null
+	density = 0
 	var/atom/movable/owner = null
 
 /obj/machinery/station_map/attachable/Destroy()

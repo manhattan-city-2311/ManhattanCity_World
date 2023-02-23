@@ -34,7 +34,9 @@
 /obj/machinery/station_map/New()
 	..()
 	holomap_datum = new()
-	original_zLevel = loc.z
+
+	update_z()
+
 	SSholomaps.station_holomaps += src
 	flags |= ON_BORDER // Why? It doesn't help if its not density
 
@@ -50,10 +52,21 @@
 	holomap_datum = null
 	. = ..()
 
+
+/obj/machinery/station_map/proc/update_z(turf/_loc = null)
+	if(using_map.forced_holomap_zlevel)
+		original_zLevel = using_map.forced_holomap_zlevel
+	else
+		if(!_loc)
+			_loc = loc
+		original_zLevel = _loc.z
+
 /obj/machinery/station_map/proc/setup_holomap()
 	bogus = FALSE
 	var/turf/T = get_turf(src)
-	original_zLevel = T.z
+	// original_zLevel = T.z
+	update_z(T)
+
 	if(!("[HOLOMAP_EXTRA_STATIONMAP]_[original_zLevel]" in SSholomaps.extraMiniMaps))
 		bogus = TRUE
 		holomap_datum.initialize_holomap_bogus()
