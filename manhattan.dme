@@ -1212,6 +1212,7 @@
 #include "code\game\objects\structures\manhattan\lock.dm"
 #include "code\game\objects\structures\manhattan\lockpicking_tools.dm"
 #include "code\game\objects\structures\manhattan\misc.dm"
+#include "code\game\objects\structures\manhattan\neon.dm"
 #include "code\game\objects\structures\manhattan\plasma.dm"
 #include "code\game\objects\structures\manhattan\platform.dm"
 #include "code\game\objects\structures\props\alien.dm"
