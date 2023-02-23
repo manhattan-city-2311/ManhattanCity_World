@@ -156,7 +156,7 @@
 // It's a seperate object to allow the use of flick().
 /atom/movable/weather_visuals/special
 	plane = PLANE_LIGHTING_ABOVE
-	
+
 /datum/weather_holder/proc/update_wind()
 	var/new_wind_speed = rand(current_weather.wind_low, current_weather.wind_high)
 	if(!new_wind_speed)

@@ -45,6 +45,7 @@
 	flags = null
 	outdoors = TRUE
 	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+	luminosity = 1
 	should_objects_be_saved = FALSE
 
 /area/planets/Manhattan/indoor
@@ -53,6 +54,7 @@
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
 	base_turf = /turf/simulated/floor/plating
+	luminosity = 0
 
 /area/planets/Manhattan/indoor/upper
 	base_turf = /turf/simulated/open

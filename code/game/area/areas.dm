@@ -43,7 +43,9 @@
 	var/uid
 	var/there_can_be_many = FALSE
 	var/lot_id
-	var/code = "" //blue, red, black	
+	var/code = "" //blue, red, black
+	var/dynamic_lighting = TRUE
+	luminosity = 0
 	var/outdoors = FALSE
 
 /area/New()
@@ -56,10 +58,10 @@
 		power_equip = 0
 		power_environ = 0
 
-	if(dynamic_lighting)
-		luminosity = 0
-	else
-		luminosity = 1
+//	if(dynamic_lighting)
+//		luminosity = 0
+//	else
+//		luminosity = 1
 
 	..()
 

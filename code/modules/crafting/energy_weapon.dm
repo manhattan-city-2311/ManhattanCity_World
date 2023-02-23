@@ -2,7 +2,7 @@
 	item1 = /obj/item/stack/material/steel
 	item2 = /obj/item/stack/cable_coil
 	result = /obj/item/weapon/manhattan/craft/weapon_part/energy_main
-	strict_order = FALSE
+	strict_order = TRUE
 	workbenches = list(/obj/structure/manhattan/workbench)
 
 /decl/crafting_recipe/energy_main_part/get_required_time(atom/item1, atom/item2)
