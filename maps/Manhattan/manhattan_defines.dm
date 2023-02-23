@@ -69,9 +69,12 @@
 
 	return 1*/
 /datum/map_z_level/new_manhattan
-	holomap_offset_y = 150
-	holomap_offset_x = 3
-	holomap_legend_x = -12
+	holomap_offset_y = 96
+	holomap_offset_x = -5
+
+	holomap_legend_y = 150
+	holomap_legend_x = 0
+
 
 /datum/map_z_level/new_manhattan/first
 	z = Z_LEVEL_FIRST_MANHATTAN
