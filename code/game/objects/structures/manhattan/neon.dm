@@ -153,7 +153,7 @@
 	name = "Startech logo"
 	desc = "Neon corporation logo on a wall."
 	icon_state = "startech"
-	light_color = LIGHT_COLOR_NEONBLUE
+	light_color = COLOR_ORANGE
 
 /obj/structure/sign/neon/cray
 	name = "CRAY Ind. logo"
@@ -341,3 +341,9 @@
 	icon_state = "casino"
 	light_color = LIGHT_COLOR_NEONYELLOW
 
+/obj/structure/sign/neon/big/sol
+	name = "solgov propoganda sign"
+	desc = "A sign of SSG agitation."
+	icon_state = "sol-future"
+	emissive_state = "sol-future-emissive"
+	light_color = LIGHT_COLOR_LIGHT_CYAN
