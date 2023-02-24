@@ -35,7 +35,20 @@
 	//var/list/lights				// list of all lights on this area
 	var/list/all_doors = null		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/firedoors_closed = 0
-	var/list/ambience = list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
+	var/list/ambience = list(
+		'sound/ambience/ambigen2.ogg',
+		// 'sound/ambience/ambigen3.ogg',
+		// 'sound/ambience/ambigen4.ogg',
+		// 'sound/ambience/ambigen5.ogg',
+		// 'sound/ambience/ambigen6.ogg',
+		// 'sound/ambience/ambigen7.ogg',
+		// 'sound/ambience/ambigen8.ogg',
+		// 'sound/ambience/ambigen9.ogg',
+		// 'sound/ambience/ambigen10.ogg',
+		// 'sound/ambience/ambigen11.ogg',
+		// 'sound/ambience/ambigen12.ogg',
+		'sound/ambience/ambigen14.ogg'
+	)
 	var/list/forced_ambience = null
 	var/sound_env = CITY
 	var/turf/base_turf //The base turf type of the area, which can be used to override the z-level's base turf
@@ -264,10 +277,12 @@
 var/list/mob/living/forced_ambiance_list = new
 
 /area/Entered(A)
-	if(!istype(A,/mob/living))	return
+	if(!istype(A,/mob/living))
+		return
 
 	var/mob/living/L = A
-	if(!L.ckey)	return
+	if(!L.ckey)
+		return
 
 	if(!L.lastarea)
 		L.lastarea = get_area(L.loc)
@@ -278,11 +293,14 @@ var/list/mob/living/forced_ambiance_list = new
 		L.update_floating( L.Check_Dense_Object() )
 
 	L.lastarea = newarea
+
 	play_ambience(L)
+
+/mob/living/var/tmp/current_forced_ambience = null
 
 /area/proc/play_ambience(mob/living/L)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(!(L && L.is_preference_enabled(/datum/client_preference/play_ambiance)))
+	if(!L || !L.is_preference_enabled(/datum/client_preference/play_ambiance))
 		return
 
 	// If we previously were in an area with force-played ambiance, stop it.
@@ -290,20 +308,22 @@ var/list/mob/living/forced_ambiance_list = new
 		sound_to(L, sound(null, channel = CHANNEL_AMBIENCE_FORCED))
 		forced_ambiance_list -= L
 
-	if(!L.client.ambience_playing)
-		L.client.ambience_playing = 1
-		sound_to(L, sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE))
+	// if(!L.client.ambience_playing)
+	// 	L.client.ambience_playing = 1
+	// 	sound_to(L, sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE))
 
 	if(forced_ambience)
-		if(forced_ambience.len)
-			forced_ambiance_list |= L
-			var/sound/chosen_ambiance = pick(forced_ambience)
-			if(!istype(chosen_ambiance))
-				chosen_ambiance = sound(chosen_ambiance, repeat = 1, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE_FORCED)
-			sound_to(L, chosen_ambiance)
-		else
-			sound_to(L, sound(null, channel = CHANNEL_AMBIENCE_FORCED))
-	else if(src.ambience.len) //&& prob(40))
+		if(!L.current_forced_ambience || !(L.current_forced_ambience in forced_ambience))
+			if(forced_ambience.len)
+				forced_ambiance_list |= L
+				var/sound/chosen_ambiance = pick(forced_ambience)
+				if(!istype(chosen_ambiance))
+					chosen_ambiance = sound(chosen_ambiance, repeat = 1, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE_FORCED)
+				sound_to(L, chosen_ambiance)
+				L.current_forced_ambience = chosen_ambiance
+			else
+				sound_to(L, sound(null, channel = CHANNEL_AMBIENCE_FORCED))
+	else if(src.ambience.len && prob(40))
 		if((world.time >= L.client.played + 120))
 			var/sound = pick(ambience)
 			sound_to(L, sound(sound, repeat = 0, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE))
@@ -313,6 +333,7 @@ var/list/mob/living/forced_ambiance_list = new
 	if(L in forced_ambiance_list)
 		sound_to(L, sound(null, channel = CHANNEL_AMBIENCE_FORCED))
 		forced_ambiance_list -= L
+		L.current_forced_ambience = null
 	sound_to(L, sound(null, channel = CHANNEL_AMBIENCE))
 
 /area/proc/gravitychange(var/gravitystate = 0, var/area/A)

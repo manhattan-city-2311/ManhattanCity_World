@@ -1,3 +1,15 @@
+#define HOLOMAP_AREACOLOR_SFP "#44aaaa99"
+#define HOLOMAP_AREACOLOR_COMERCIAL "#749ea8aa"
+#define HOLOMAP_AREACOLOR_BUILDING_FLATS "#00cc33aa"
+#define HOLOMAP_AREACOLOR_BUILDING_FLATS_ELITE "#ffaa00aa"
+#define HOLOMAP_AREACOLOR_BUILDING_OFFICE "#aaccffaa"
+#define HOLOMAP_AREACOLOR_BUILDING_SOUTH "#882200aa"
+#define HOLOMAP_AREACOLOR_BUILDING_SOCIAL "#749ea8aa"
+#define HOLOMAP_AREACOLOR_TEOTR "#0e810099"
+#define HOLOMAP_AREACOLOR_CIVILIAN "#00aa1199"
+#define HOLOMAP_AREACOLOR_RUINS "#5b5b5baa"
+
+
 //shuttle areas
 /area/shuttle
 	dynamic_lighting = 1 //OH BOY
@@ -44,7 +56,14 @@
 	sound_env = CITY
 	flags = null
 	outdoors = TRUE
-	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+	forced_ambience = list(
+		'sound/manhattan/north1.ogg',
+		'sound/manhattan/north3.ogg',
+		'sound/manhattan/north5.ogg',
+		'sound/manhattan/north6.ogg',
+		'sound/manhattan/north7.ogg',
+		'sound/manhattan/north8.ogg'
+	)
 	luminosity = 1
 	should_objects_be_saved = FALSE
 
@@ -67,6 +86,9 @@
 	name = "\improper New-Manhattan third level outdoors"
 	base_turf = /turf/simulated/open
 
+/area/planets/Manhattan/indoor/north/substation
+	holomap_color = HOLOMAP_AREACOLOR_ENGINEERING
+
 /area/planets/Manhattan/indoor/north/underground_global
 	name = "\improper New-Manhattan underground"
 
@@ -77,6 +99,7 @@
 /area/planets/Manhattan/indoor/north/underground_global/sewer/hideout
 
 /area/planets/Manhattan/indoor/north/bar
+	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
 
 /area/planets/Manhattan/indoor/north/bar/entrance
 	icon_state = "north_m1"
@@ -124,6 +147,7 @@
 	outdoors = TRUE
 
 /area/planets/Manhattan/indoor/north/gas
+	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
 
 /area/planets/Manhattan/indoor/north/gas/store
 	icon_state = "north_m1"
@@ -167,6 +191,7 @@
 /area/planets/Manhattan/indoor/north/crey
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m2"
+	holomap_color = HOLOMAP_AREACOLOR_SCIENCE
 
 /area/planets/Manhattan/indoor/north/crey/office1
 /area/planets/Manhattan/indoor/north/crey/office2
@@ -212,6 +237,7 @@
 /area/planets/Manhattan/indoor/north/casino
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m1"
+	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
 
 /area/planets/Manhattan/indoor/north/casino/director
 /area/planets/Manhattan/indoor/north/casino/recroom
@@ -233,6 +259,7 @@
 /area/planets/Manhattan/indoor/north/church
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m3"
+	holomap_color = HOLOMAP_AREACOLOR_CIVILIAN
 
 /area/planets/Manhattan/indoor/north/church/hall
 /area/planets/Manhattan/indoor/north/church/restroom
@@ -266,6 +293,7 @@
 /area/planets/Manhattan/indoor/north/cinema
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m4"
+	holomap_color = HOLOMAP_AREACOLOR_CIVILIAN
 
 /area/planets/Manhattan/indoor/north/cinema/room1
 /area/planets/Manhattan/indoor/north/cinema/room2
@@ -284,6 +312,7 @@
 
 /area/planets/Manhattan/indoor/north/house_standart1
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS
 
 /area/planets/Manhattan/indoor/north/house_standart1/upper
 	base_turf = /turf/simulated/open
@@ -397,6 +426,7 @@
 
 /area/planets/Manhattan/indoor/north/house_standart2
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS
 
 /area/planets/Manhattan/indoor/north/house_standart2/upper
 	base_turf = /turf/simulated/open
@@ -518,6 +548,7 @@
 
 /area/planets/Manhattan/indoor/north/house_standart3
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS
 
 /area/planets/Manhattan/indoor/north/house_standart3/upper
 	base_turf = /turf/simulated/open
@@ -595,6 +626,7 @@
 /area/planets/Manhattan/indoor/north/elite1
 	icon_state = "north_m3"
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS_ELITE
 
 /area/planets/Manhattan/indoor/north/elite1/hall
 /area/planets/Manhattan/indoor/north/elite1/hallway1
@@ -608,7 +640,6 @@
 
 /area/planets/Manhattan/indoor/north/elite1/upper
 	base_turf = /turf/simulated/open
-
 /area/planets/Manhattan/indoor/north/elite1/upper/hall3
 /area/planets/Manhattan/indoor/north/elite1/upper/workroom
 /area/planets/Manhattan/indoor/north/elite1/upper/bedroom
@@ -616,6 +647,7 @@
 /area/planets/Manhattan/indoor/north/elite2
 	icon_state = "north_m3"
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS_ELITE
 
 /area/planets/Manhattan/indoor/north/elite2/hallkitchen
 /area/planets/Manhattan/indoor/north/elite2/hallway
@@ -635,6 +667,7 @@
 /area/planets/Manhattan/indoor/north/elite3
 	icon_state = "north_m3"
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS_ELITE
 
 /area/planets/Manhattan/indoor/north/elite3/hallkitchen
 /area/planets/Manhattan/indoor/north/elite3/hallway
@@ -643,7 +676,7 @@
 /area/planets/Manhattan/indoor/north/elite3/storage
 /area/planets/Manhattan/indoor/north/elite3/touchgrass
 
-/area/planets/Manhattan/indoor/north/elite2/upper
+/area/planets/Manhattan/indoor/north/elite3/upper
 	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/indoor/north/elite3/upper/hallway2
@@ -653,6 +686,7 @@
 /area/planets/Manhattan/indoor/north/hotel
 	icon_state = "north_m1"
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS
 
 /area/planets/Manhattan/indoor/north/hotel/hall
 /area/planets/Manhattan/indoor/north/hotel/receprion
@@ -696,6 +730,7 @@
 /area/planets/Manhattan/indoor/north/office1
 	icon_state = "north_m2"
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_BUILDING_OFFICE
 
 /area/planets/Manhattan/indoor/north/office1/hall
 /area/planets/Manhattan/indoor/north/office1/restroom
@@ -712,6 +747,7 @@
 /area/planets/Manhattan/indoor/north/office2
 	icon_state = "north_m2"
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_BUILDING_OFFICE
 
 /area/planets/Manhattan/indoor/north/office2/hall
 /area/planets/Manhattan/indoor/north/office2/restroom
@@ -739,6 +775,7 @@
 	ambience = list('sound/ambience/MAIN0C.SAP.ogg', 'sound/ambience/MAIN05.SAP.ogg')
 	icon_state = "north_m3"
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_SECURITY
 
 /area/planets/Manhattan/indoor/north/police_dept/mainhall
 /area/planets/Manhattan/indoor/north/police_dept/bullpen
@@ -788,6 +825,7 @@
 /area/planets/Manhattan/indoor/north/hospital
 	icon_state = "north_m4"
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_MEDICAL
 
 /area/planets/Manhattan/indoor/north/hospital/hall
 /area/planets/Manhattan/indoor/north/hospital/cab1
@@ -832,6 +870,7 @@
 /area/planets/Manhattan/indoor/north/transit
 	icon_state = "north_m2"
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_HALLWAYS
 
 /area/planets/Manhattan/indoor/north/transit/secpost1
 /area/planets/Manhattan/indoor/north/transit/secpost2
@@ -849,6 +888,7 @@
 /area/planets/Manhattan/indoor/north/sfp
 	icon_state = "north_m1"
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_SFP
 
 /area/planets/Manhattan/indoor/north/sfp/hall
 /area/planets/Manhattan/indoor/north/sfp/office
@@ -874,6 +914,7 @@
 /area/planets/Manhattan/indoor/north/shopping
 	icon_state = "north_m1"
 	base_turf = /turf/simulated/floor/plating
+	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
 
 /area/planets/Manhattan/indoor/north/shopping/checkpointsouth
 /area/planets/Manhattan/indoor/north/shopping/checkpointnorth
@@ -918,7 +959,17 @@
 	sound_env = CITY
 	flags = null
 	outdoors = 1
-	ambience = list('sound/manhattan/south1.ogg')
+	forced_ambience = list(
+		'sound/manhattan/south/Ghetto.ogg',
+		'sound/manhattan/south/south_indoors1.ogg',
+		'sound/manhattan/south/south_indoors2.ogg',
+		'sound/manhattan/south/south_indoors3.ogg',
+		'sound/manhattan/south/south_indoors4.ogg',
+		'sound/manhattan/south/south_indoors5.ogg',
+		'sound/manhattan/south/south_indoors6.ogg',
+		'sound/manhattan/south/south_indoors7.ogg',
+		'sound/manhattan/south/south_indoors8.ogg'
+	)
 
 /area/planets/Manhattan/south/indoor
 	name = "\improper New-Manhattan South District Interior"
@@ -965,7 +1016,18 @@
 	flags = RAD_SHIELDED
 	outdoors = 0
 	base_turf = /turf/simulated/floor/plating
-	ambience = list('sound/manhattan/south_indoors1.ogg', 'sound/manhattan/south_indoors2.ogg', 'sound/manhattan/south_indoors3.ogg', 'sound/manhattan/south_indoors4.ogg', 'sound/manhattan/south_indoors5.ogg', 'sound/manhattan/south_indoors6.ogg', 'sound/manhattan/south_indoors7.ogg', 'sound/manhattan/south_indoors8.ogg', )
+	forced_ambience = list(
+		'sound/manhattan/south/south_indoors1.ogg',
+		'sound/manhattan/south/south_indoors2.ogg',
+		'sound/manhattan/south/south_indoors3.ogg',
+		'sound/manhattan/south/south_indoors4.ogg',
+		'sound/manhattan/south/south_indoors5.ogg',
+		'sound/manhattan/south/south_indoors6.ogg',
+		'sound/manhattan/south/south_indoors7.ogg',
+		'sound/manhattan/south/south_indoors8.ogg'
+	)
+
+	holomap_color = HOLOMAP_AREACOLOR_BUILDING_SOUTH
 
 /area/planets/Manhattan/south/building/f1
 	icon_state = "south_m_build_flat"
@@ -1101,6 +1163,8 @@
 /area/planets/Manhattan/south/building/ruin
 	name = "\improper Building Ruins"
 	icon_state = "south_m_ruin"
+	holomap_color = HOLOMAP_AREACOLOR_RUINS
+
 /area/planets/Manhattan/south/building/ruin/upper
 	name = "\improper Building Ruins"
 	base_turf = /turf/simulated/open
@@ -1277,6 +1341,7 @@
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
 	outdoors = 1
+	holomap_color = HOLOMAP_AREACOLOR_ENGINEERING
 
 /area/planets/Manhattan/south/factory/upper
 	outdoors = 0
@@ -1390,6 +1455,7 @@
 	name = "\improper Factory Cargo Wing"
 	icon_state = "south_m_factory_c"
 	outdoors = 0
+	holomap_color = HOLOMAP_AREACOLOR_CARGO
 
 /area/planets/Manhattan/south/factory/cargo/upper
 	base_turf = /turf/simulated/open
@@ -1417,6 +1483,7 @@
 
 /area/planets/Manhattan/south/factory/cargo/mining
 	name = "\improper Mining"
+
 /area/planets/Manhattan/south/factory/cargo/mining/equip
 	name = "\improper Mining equipment"
 
@@ -1447,6 +1514,7 @@
 
 /area/planets/Manhattan/south/factory/engineering/hangar
 	name = "\improper Delivery Hangar"
+	holomap_color = HOLOMAP_AREACOLOR_CARGO
 
 /area/planets/Manhattan/south/factory/engineering/hangar/upper
 	base_turf = /turf/simulated/open
@@ -1468,10 +1536,12 @@
 /area/planets/Manhattan/south/building/social
 	name = "\improper Unoccupied building"
 	icon_state = "south_m_build"
+	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
 
 /area/planets/Manhattan/south/building/social/teotr
 	name = "\improper Bar 'TEoTR'"
 	icon_state = "south_m_teotr"
+	holomap_color = HOLOMAP_AREACOLOR_TEOTR
 /area/planets/Manhattan/south/building/social/teotr/office
 	name = "\improper 'TEoTR' Office"
 	base_turf = /turf/simulated/open
@@ -1531,6 +1601,7 @@
 /area/planets/Manhattan/south/building/social/brothel
 	name = "\improper Brothel Lobby"
 	icon_state = "south_m_brothel"
+
 /area/planets/Manhattan/south/building/social/brothel/hallway
 	name = "\improper Brothel Hallway"
 /area/planets/Manhattan/south/building/social/brothel/office
@@ -1581,6 +1652,8 @@
 /area/planets/Manhattan/south/building/social/metro
 	name = "\improper South Transit Station"
 	icon_state = "south_m_metro"
+	holomap_color = HOLOMAP_AREACOLOR_HALLWAYS
+
 /area/planets/Manhattan/south/building/social/motodealer
 	name = "\improper South Motorcycle dealership dealer"
 	icon_state = "south_m_dealer"
