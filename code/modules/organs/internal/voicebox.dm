@@ -9,7 +9,7 @@
 	icon_state = "larynx"
 	parent_organ = BP_HEAD		// We don't have a neck area
 	organ_tag = O_VOICE
-	var/will_assist_languages = list(LANGUAGE_GALCOM)
+	var/list/blacklist_languages = list(LANGUAGE_EAL)
 	var/mute = FALSE
 
 /obj/item/organ/internal/voicebox/New()
@@ -20,7 +20,7 @@
 	return
 
 /obj/item/organ/internal/voicebox/proc/add_assistable_langs(var/language)	// Adds a new language (by string/define) to the list of things the voicebox can assist
-	will_assist_languages |= language
+	blacklist_languages.Remove(language)
 	amend_assist_langs()	// Can't think of a better place to put this, makes the voicebox actually start to assist with the added language
 
 /////////////////////////////////
@@ -28,7 +28,7 @@
 /////////////////////////////////
 
 /obj/item/organ/internal/voicebox/assist	// In the off chance we get a species that doesn't speak GalCom by default
-	will_assist_languages = list(LANGUAGE_GALCOM, LANGUAGE_EAL)
+	blacklist_languages = list()
 
 /obj/item/organ/internal/voicebox/assist/New()
 	..()
@@ -36,7 +36,7 @@
 
 /obj/item/organ/internal/voicebox/robot
 	name = "vocal synthesizer"
-	will_assist_languages = list(LANGUAGE_GALCOM, LANGUAGE_EAL) // Synthetics spawn with this by default
+	blacklist_languages = list() // Synthetics spawn with this by default
 
 /obj/item/organ/internal/voicebox/robot/New()
 	..()

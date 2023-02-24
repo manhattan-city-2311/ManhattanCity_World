@@ -15,7 +15,7 @@
 		if(V)
 			var/list/need_amend = list()			// If they've already got all the languages they need, then they don't need this implant to do anything
 			for(var/L in languages)
-				if(L in V.will_assist_languages)
+				if(!(L in V.blacklist_languages))
 					continue
 				else
 					need_amend |= L

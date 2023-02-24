@@ -168,7 +168,7 @@
 			var/obj/item/organ/internal/voicebox/vocal = H.internal_organs_by_name[O_VOICE]
 			if(!vocal || vocal.is_broken() || vocal.mute)
 				return FALSE
-			if(!(src.name in vocal.will_assist_languages))
+			if(src.name in vocal.blacklist_languages)
 				return FALSE
 
 // Language handling.
@@ -198,12 +198,26 @@
 //Prevents someone from speaking a null language.
 	if(!speaking)
 		log_debug("[src] attempted to speak a null language.")
-		return 0
+		return FALSE
 
 	if (only_species_language && speaking != all_languages[species_language])
-		return 0
+		to_world("-1")
+		return FALSE
 
-	return (speaking.can_speak_special(src) && (universal_speak || (speaking && (speaking.flags & INNATE)) || (speaking in src.languages)))
+	if(!speaking.can_speak_special(src))
+		to_world("0")
+		return FALSE
+
+	if(universal_speak)
+		return TRUE
+	if(speaking && (speaking.flags & INNATE))
+		return TRUE
+	if(speaking in src.languages)
+		return TRUE
+
+	// return (speaking.can_speak_special(src) &&
+	// (universal_speak || (speaking && (speaking.flags & INNATE)) || (speaking in src.languages))
+	// )
 
 /mob/proc/get_language_prefix()
 	if(client && client.prefs.language_prefixes && client.prefs.language_prefixes.len)
