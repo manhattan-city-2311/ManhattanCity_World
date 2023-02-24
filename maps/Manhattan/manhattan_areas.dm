@@ -170,6 +170,7 @@
 /area/planets/Manhattan/indoor/north/cityhall
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m4"
+	holomap_color = "#ffff00aa"
 
 /area/planets/Manhattan/indoor/north/cityhall/office1
 /area/planets/Manhattan/indoor/north/cityhall/office2
