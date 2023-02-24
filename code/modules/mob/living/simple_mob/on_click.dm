@@ -2,7 +2,8 @@
 	Animals
 */
 /mob/living/simple_mob/UnarmedAttack(var/atom/A, var/proximity)
-	if(!(. = ..()))
+	. = ..()
+	if(!.)
 		return
 
 //	setClickCooldown(get_attack_speed())

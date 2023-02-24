@@ -9,8 +9,8 @@
 	Otherwise pretty standard.
 */
 /mob/living/carbon/human/UnarmedAttack(var/atom/A, var/proximity)
-
-	if(!..())
+	. = ..()
+	if(!.)
 		return
 
 	// Special glove functions:

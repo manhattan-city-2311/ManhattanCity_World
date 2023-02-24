@@ -178,7 +178,8 @@
 	else if(isobj(AM))
 		var/obj/item/I = AM
 		tforce = I.throwforce
-	if(reinf) tforce *= 0.25
+	if(reinf)
+		tforce *= 0.25
 	if(health - tforce <= 7 && !reinf)
 		anchored = 0
 		update_verbs()
@@ -255,7 +256,8 @@
 	return 1
 
 /obj/structure/window/attackby(obj/item/W as obj, mob/user as mob)
-	if(!istype(W)) return//I really wish I did not need this
+	if(!istype(W))
+		return//I really wish I did not need this
 
 	if(istype(W, /obj/item/device/floor_painter) && user.a_intent == I_HELP)
 		return // windows are paintable now, so no accidental damage should happen.
@@ -302,7 +304,8 @@
 			trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Slamming \the [M] against \the [src].")
 			return
 
-	if(W.flags & NOBLUDGEON) return
+	if(W.flags & NOBLUDGEON)
+		return
 
 	if(istype(W, /obj/item/weapon/screwdriver))
 		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using \the [W] to modify \the [src]."))
@@ -365,7 +368,8 @@
 /obj/structure/window/proc/hit(var/damage, var/sound_effect = 1)
 	if(damage < force_threshold || force_threshold < 0)
 		return
-	if(reinf) damage *= 0.5
+	if(reinf)
+		damage *= 0.5
 	take_damage(damage)
 	return
 

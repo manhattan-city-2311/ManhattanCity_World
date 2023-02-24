@@ -128,7 +128,9 @@
 	// A is a turf or is on a turf, or in something on a turf (pen in a box); but not something in something on a turf (pen in a box in a backpack)
 	sdepth = A.storage_depth_turf()
 	if(isturf(A) || isturf(A.loc) || (sdepth != -1 && sdepth <= 1))
-		if(A.Adjacent(src) || (W && W.attack_can_reach(src, A, W.reach)) ) // see adjacent.dm
+		var/turf/T = get_turf(src)
+		if(A.Adjacent(src) || (W && W.attack_can_reach(src, A, W.reach)) ||\
+			((istype(A, /obj/structure/window) || istype(A, /obj/machinery/door/window)) && T.AdjacentQuick(A)))
 			if(W)
 				// Return 1 in attackby() to prevent afterattack() effects (when safely moving items for example)
 				var/resolved = W.resolve_attackby(A,src)
