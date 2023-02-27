@@ -91,6 +91,13 @@
 		key.forceMove(src)
 	playsound(src, 'sound/vehicles/modern/vehicle_key.ogg', 150, 1)
 
+/mob/a_intent_change(input as text)
+	if(!isvehicle(loc) || input != "left")
+		return ..()
+	
+	var/obj/manhattan/vehicle/V = loc
+	V.engine()
+
 /obj/manhattan/vehicle/verb/engine()
 	set name = "Зажигание"
 	set category = "Транспорт"

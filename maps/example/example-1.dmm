@@ -19,6 +19,7 @@
 "as" = (/obj/structure/gas_station/old,/turf/simulated/floor/tiled/dark,/area/aisat)
 "at" = (/obj/manhattan/vehicle/large/hyperloop,/turf/simulated/floor/tiled/dark,/area/aisat)
 "au" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 9},/obj/structure/neon_spline/red/corner,/turf/simulated/floor/tiled/dark,/area/aisat)
+"av" = (/obj/machinery/media/jukebox{anchored = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
 "ax" = (/obj/machinery/light{icon_state = "tube1"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
 "ay" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 1},/obj/structure/neon_spline/red,/turf/simulated/floor/tiled/dark,/area/aisat)
 "az" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
@@ -115,7 +116,7 @@ abanaEananananananananananananananananananananananananananaHanananananananananan
 abanaEananananananananananananananananananananananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
 abanaEananananananananananananananananananananananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
 abanaEanananananbbabababafaialamababababababbdananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbeahaaaoahahahanaoahacadaeahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
+abanaEanananananbeahaaaoahahahavaoahacadaeahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
 abanaEanananananbeahahahahahahanahahajaqajahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
 abanaEanananananbeahahahahahahanahahahahahahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
 abanaEanananananbeahahahahahahanahahahahahahbfananananananaHananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab
