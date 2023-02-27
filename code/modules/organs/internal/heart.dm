@@ -156,18 +156,15 @@
 		if(A.can_strengthen(src))
 			A.strengthen(src)
 			break
-
-/*
 	var/period = world.time - last_arrythmia_gain
 
 	if(prob(1) && period > 1.5 MINUTES && !get_ow_arrythmia())
 		var/arrythmic = get_arrythmic()
 
-		if(arrythmic >= 1 && (get_arrythmia_score() < arrythmic))
+		if(arrythmic > 1 && (get_arrythmia_score() < arrythmic))
 			make_common_arrythmia(arrythmic)
 		if(get_arrythmia_score() >= (ARRYTHMIA_SEVERITY_OVERWRITING - 1) || get_arrythmic() >= (ARRYTHMIA_SEVERITY_OVERWRITING - 1))
 			make_specific_arrythmia(ARRYTHMIA_SEVERITY_OVERWRITING)
-*/
 
 /obj/item/organ/internal/heart/proc/handle_heartbeat()
 	// This is very weird..
@@ -207,7 +204,7 @@
 					var/min_eff_damage = max(0, W.damage - 10) / 6 //still want a little bit to drip out, for effect
 					blood_max += max(min_eff_damage, W.damage - 30)
 				else
-					blood_max += W.damage
+					blood_max += W.damage * 0.25
 
 		if(temp.is_artery_cut())
 			var/bleed_amount = temp.get_artery_cut_damage() * 0.1

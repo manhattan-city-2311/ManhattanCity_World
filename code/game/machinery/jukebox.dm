@@ -76,6 +76,8 @@ datum/track/New(var/title_name, var/audio)
 		new/datum/track("Play Me", 'sound/music/disco/Rick Astley.ogg')
 	)
 
+	var/datum/sound_token/sound_token
+
 /obj/machinery/media/jukebox/New()
 	..()
 	default_apply_parts()
@@ -268,35 +270,22 @@ datum/track/New(var/title_name, var/audio)
 		return 1
 
 /obj/machinery/media/jukebox/proc/StopPlaying()
-	var/area/main_area = get_area(src)
-	// Always kill the current sound
-	for(var/mob/living/M in mobs_in_area(main_area))
-		M << sound(null, channel = 1)
+	sound_token?.Stop()
 
-		main_area.forced_ambience = null
-	playing = 0
+	playing = FALSE
 	update_use_power(1)
 	update_icon()
 
 
 /obj/machinery/media/jukebox/proc/StartPlaying()
 	StopPlaying()
+
 	if(!current_track)
 		return
 
-	var/area/main_area = get_area(src)
-	if(freq)
-		var/sound/new_song = sound(current_track.sound, channel = 1, repeat = 1, volume = 25)
-		new_song.frequency = freq
-		main_area.forced_ambience = list(new_song)
-	else
-		main_area.forced_ambience = list(current_track.sound)
+	sound_token = global.sound_player.PlayLoopingSound(src, "[get_area(src)][type][rand(100)]", current_track.sound, 25, 14, 7, prefer_mute = TRUE)
 
-	for(var/mob/living/M in mobs_in_area(main_area))
-		if(M.mind)
-			main_area.play_ambience(M)
-
-	playing = 1
+	playing = TRUE
 	update_use_power(2)
 	update_icon()
 

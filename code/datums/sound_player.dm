@@ -177,6 +177,7 @@ var/global/decl/sound_player/sound_player = new()
 		if(!(v.abilities & VIRTUAL_ABILITY_HEAR))
 			return
 		listener = v.host
+
 	if(listener in listeners)
 		return
 
@@ -192,7 +193,7 @@ var/global/decl/sound_player/sound_player = new()
 	GLOB.moved_event.register(listener, src, /datum/sound_token/proc/PrivUpdateListenerLoc)
 	GLOB.destroyed_event.register(listener, src, /datum/sound_token/proc/PrivRemoveListener)
 
-	PrivUpdateListenerLoc(listener, TRUE)
+	PrivUpdateListenerLoc(listener, prefer_mute)
 
 /datum/sound_token/proc/PrivRemoveListener(atom/listener, sound/null_sound)
 	if(!null_sound)
@@ -200,6 +201,7 @@ var/global/decl/sound_player/sound_player = new()
 	sound_to(listener, null_sound)
 	GLOB.moved_event.unregister(listener, src, /datum/sound_token/proc/PrivUpdateListenerLoc)
 	GLOB.destroyed_event.unregister(listener, src, /datum/sound_token/proc/PrivRemoveListener)
+
 	listeners -= listener
 
 /datum/sound_token/proc/PrivUpdateListenerLoc(atom/listener, update_sound = FALSE)

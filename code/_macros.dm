@@ -102,7 +102,7 @@
 #define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
 
 #define DEBUG_ARGS(x) log_debug("[__FILE__] - [__LINE__] [x]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
-#define DEBUG_LIST(x) 
+#define DEBUG_LIST(x) log_debug("[__FILE__] - [__LINE__] [#x]") ; for(var/arg in x) { log_debug("\t[log_info_line(arg)] = [log_info_line(x[arg]) || "null"]") }
 #define show_image(target, image)                           target << image
 
 #define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"

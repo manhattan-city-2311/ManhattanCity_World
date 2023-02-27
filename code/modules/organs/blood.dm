@@ -39,10 +39,7 @@
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/carbon/human/proc/drip(var/amt, var/tar = src, var/ddir)
 	if(remove_blood(amt))
-		if(bloodstr.total_volume)
-			var/chem_share = amt / (bloodstr.total_volume + vessel.total_volume)
-			bloodstr.remove_any(chem_share * bloodstr.total_volume)
-		blood_splatter(tar, src, (ddir && ddir>0), spray_dir = ddir)
+		blood_splatter(tar, src, (ddir > 0), spray_dir = ddir)
 		return amt
 	return 0
 
@@ -95,12 +92,10 @@
 	return bled
 #undef BLOOD_SPRAY_DISTANCE
 
-/mob/living/carbon/human/proc/remove_blood(var/amt)
-	if(!should_have_organ(O_HEART)) //TODO: Make drips come from the reagents instead.
+/mob/living/carbon/human/proc/remove_blood(amt)
+	if(!should_have_organ(O_HEART) || !amt)
 		return 0
-	if(!amt)
-		return 0
-	return vessel.remove_reagent("blood", amt * (src.mob_size/MOB_MEDIUM))
+	return vessel.remove_reagent(CI_BLOOD, amt * (mob_size / MOB_MEDIUM))
 
 /****************************************************
 				BLOOD TRANSFERS
@@ -112,7 +107,7 @@
 	if(!B)
 		B = new /datum/reagent/blood
 		B.sync_to(src)
-		container.reagents.add_reagent("blood", amount, B.data)
+		container.reagents.add_reagent(CI_BLOOD, amount, B.data)
 	else
 		B.sync_to(src)
 		B.volume += amount

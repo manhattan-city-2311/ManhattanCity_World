@@ -66,8 +66,6 @@
 	UNSETEMPTY(client.seen_runechat_messages[loc])
 	UNSETEMPTY(client.seen_runechat_messages)
 
-	return ..()
-
 /datum/runechat_message_holder/proc/fadeout()
 	animate(image, alpha = 0, time = RUNECHAT_EOL_FADE, flags = ANIMATION_PARALLEL)
 	spawn(RUNECHAT_EOL_FADE)
@@ -95,14 +93,13 @@
 	var/message_loc
 	
 	var/speaker_loc = speaker
-	if(isvehicle(speaker.loc))
+	if(!isturf(speaker.loc))
 		speaker_loc = speaker.loc
-	if(!(speaker_loc in hearers(get_turf(src)))) // Radio
-		var/icon/r_icon = icon('icons/emoji.dmi', icon_state = "radio")
-		text = "\icon[r_icon]&nbsp;[text]"
-		message_loc = src
-	else
-		message_loc = speaker_loc
+
+	if(!(speaker_loc in view(src)))
+		return
+
+	message_loc = speaker_loc
 
 	var/maptext_style = "font-family: '[speaker.runechat_font]';"
 	var/shadow_color = "0 2px 3px black"
