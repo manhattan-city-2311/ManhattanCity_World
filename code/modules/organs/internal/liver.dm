@@ -12,7 +12,7 @@
 		CI_GLUCAGONE
 	)
 	hormones = list(
-		CI_GLUCOSE = 5
+		CI_GLUCOSE = 50
 	)
 
 	var/bilirubine_norm = -1

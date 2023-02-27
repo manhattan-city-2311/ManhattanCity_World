@@ -15,6 +15,7 @@
 	name = "transit station sign"
 	desc = "A sign for the city transit station."
 	icon_state = "train"
+	emissive_state = "train-emissive"
 	light_color = "#ff00ff"
 
 /obj/structure/sign/neon/big/direction1

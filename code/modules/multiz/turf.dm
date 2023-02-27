@@ -28,6 +28,16 @@
 
 	z_flags = ZM_MIMIC_DEFAULTS | ZM_MIMIC_OVERWRITE | ZM_MIMIC_NO_AO | ZM_ALLOW_LIGHTING
 
+/turf/simulated/open/initialize()
+	if(get_area(src).outdoors)
+		SSplanets.addTurf(src)
+	return ..()
+
+/turf/simulated/open/Destroy()
+	if(get_area(src).outdoors)
+		SSplanets.removeTurf(src)
+	return ..()
+
 /turf/simulated/open/Entered(var/atom/movable/mover)
 	..()
 	mover.fall()

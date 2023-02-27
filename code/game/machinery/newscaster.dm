@@ -223,16 +223,19 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 	if(news_network.wanted_issue) //wanted icon state, there can be no overlays on it as it's a priority message
 		icon_state = "newscaster_wanted"
+		overlays += emissive_appearance(icon, "[icon_state]-emissive")
 		return
 
 	if(alert) //new message alert overlay
 		overlays += "newscaster_alert"
+		overlays += emissive_appearance(icon, "newscaster_alert-emissive")
 
 	if(hitstaken > 0) //Cosmetic damage overlay
 		overlays += image(icon, "crack[hitstaken]")
 
 	icon_state = "newscaster_normal"
-	return
+	
+	overlays += emissive_appearance(icon, "[icon_state]-emissive")
 
 /obj/machinery/newscaster/power_change()
 	if(isbroken) //Broken shit can't be powered.
