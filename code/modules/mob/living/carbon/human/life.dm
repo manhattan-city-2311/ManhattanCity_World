@@ -782,7 +782,7 @@
 				if(GLUCOSE_LEVEL_NORMAL - 2   to GLUCOSE_LEVEL_NORMAL - 0.5) nutrition_icon.icon_state = "nutrition2"
 				if(GLUCOSE_LEVEL_LBAD + 2.5   to GLUCOSE_LEVEL_NORMAL - 2)   nutrition_icon.icon_state = "nutrition2"
 				if(GLUCOSE_LEVEL_LBAD - 1     to GLUCOSE_LEVEL_LBAD + 2.5)	 nutrition_icon.icon_state = "nutrition4"
-				if(NEGATIVE_INFINITY 				  to GLUCOSE_LEVEL_LBAD)		 nutrition_icon.icon_state = "nutrition5"
+				if(NEGATIVE_INFINITY 		  to GLUCOSE_LEVEL_LBAD)		 nutrition_icon.icon_state = "nutrition5"
 		if(!isSynthetic())
 			if(hydration_icon)
 				switch(hydration)

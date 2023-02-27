@@ -50,6 +50,7 @@
 
 /atom/movable/openspace
 	name = ""
+	desc = ""
 	simulated = FALSE
 	anchored = TRUE
 	mouse_opacity = FALSE
@@ -73,8 +74,6 @@
 
 // Holder object used for dimming openspaces & copying lighting of below turf.
 /atom/movable/openspace/multiplier
-	name = "openspace multiplier"
-	desc = "You shouldn't see this."
 	icon = 'icons/effects/lighting_overlay.dmi'
 	icon_state = "dark"
 	plane = OPENTURF_MAX_PLANE
@@ -92,10 +91,11 @@
 
 /atom/movable/openspace/multiplier/proc/copy_lighting(atom/movable/lighting_overlay/LO)
 	appearance = LO
+	plane = OPENTURF_MAX_PLANE
 	layer = MIMICED_LIGHTING_LAYER
-	//plane = PLANE_LIGHTING + 0.01
 	invisibility = 0
 	blend_mode = BLEND_MULTIPLY
+
 	if (icon_state == null)
 		// We're using a color matrix, so just darken the colors across the board.
 		var/list/c_list = color
@@ -138,10 +138,10 @@
 	var/override_depth
 
 /atom/movable/openspace/overlay/New()
-	SSzcopy.openspace_overlays += 1
+	++SSzcopy.openspace_overlays
 
 /atom/movable/openspace/overlay/Destroy()
-	SSzcopy.openspace_overlays -= 1
+	--SSzcopy.openspace_overlays
 
 	if (associated_atom)
 		associated_atom.bound_overlay = null

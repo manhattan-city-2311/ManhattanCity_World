@@ -27,7 +27,7 @@
 	bound_height = 10
 	bound_x = 10
 	bound_y = 7
-
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	layer = ABOVE_MOB_LAYER
 	light_color = LIGHT_COLOR_BLUE
 	light_type = /obj/item/weapon/light/bulb/street2
