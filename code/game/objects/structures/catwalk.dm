@@ -64,7 +64,6 @@
 			qdel(src)
 		if(3.0)
 			qdel(src)
-	return
 
 /obj/structure/catwalk/attackby(obj/item/C as obj, mob/user as mob)
 	if (istype(C, /obj/item/weapon/weldingtool))

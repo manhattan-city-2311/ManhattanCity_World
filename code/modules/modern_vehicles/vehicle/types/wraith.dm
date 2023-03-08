@@ -4,7 +4,6 @@
 
 	icon = 'code/modules/halo/vehicles/types/Wraith.dmi'
 	icon_state = "wraith"
-	anchored = 1
 
 	bound_height = 64
 	bound_width = 96

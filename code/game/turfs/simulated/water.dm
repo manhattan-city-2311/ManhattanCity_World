@@ -102,7 +102,7 @@
 		return 0
 	if(hovering)
 		return 0
-	if(locate(/obj/structure/catwalk) in loc)
+	if(locate(/obj/structure/catwalk) in get_turf(src))
 		return 0
 	var/turf/simulated/floor/water/T = loc
 	if(istype(T))

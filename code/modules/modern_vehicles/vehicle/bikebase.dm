@@ -6,7 +6,6 @@
 	icon = 'icons/obj/bike.dmi'
 	icon_state = "bike_off"
 	var/overlay_icon_state = "bike_off_overlay"
-	anchored = TRUE
 
 	components = list(
 		VC_FRONT_WHEEL = /obj/item/vehicle_part/wheel,
