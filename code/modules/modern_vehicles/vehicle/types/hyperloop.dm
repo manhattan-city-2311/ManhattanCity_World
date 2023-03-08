@@ -15,7 +15,6 @@
 	bound_x = 160
 	bound_y = 256
 	density = TRUE
-	anchored = TRUE
 	interior_template = /datum/map_template/hyperloop
 
 	size_x = 7

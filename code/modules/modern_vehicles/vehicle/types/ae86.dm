@@ -32,7 +32,6 @@
 
 	icon = 'icons/vehicles/ae86.dmi'
 	icon_state = "ae86"
-	anchored = 1
 
 	comp_prof = /datum/component_profile/ae86
 
