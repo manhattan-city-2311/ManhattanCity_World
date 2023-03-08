@@ -6,6 +6,8 @@
 
 	w_class = ITEM_SIZE_VEHICLE
 
+	anchored = TRUE
+
 	var/headlights_overlay
 	var/headlights_on = FALSE
 

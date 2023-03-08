@@ -34,7 +34,6 @@
 
 	icon = 'icons/vehicles/aventador.dmi'
 	icon_state = "aventador"
-	anchored = 1
 
 	comp_prof = /datum/component_profile/aventa
 

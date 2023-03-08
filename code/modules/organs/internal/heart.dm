@@ -188,7 +188,7 @@
 	for(var/obj/item/organ/external/temp in owner.organs_by_name)
 		var/open_wound
 		if(temp.status & ORGAN_BLEEDING)
-			for(var/datum/wound/W in temp.wounds)
+			for(var/datum/wound/W as anything in temp.wounds)
 				if(!open_wound && (W.damage_type == CUT || W.damage_type == PIERCE) && W.damage && !W.is_treated())
 					open_wound = TRUE
 
