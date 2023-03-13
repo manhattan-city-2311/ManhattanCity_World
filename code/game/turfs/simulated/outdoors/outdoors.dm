@@ -21,7 +21,7 @@ var/list/turf_edge_cache = list()
 /turf/simulated/floor/initialize()
 	if(get_area(src).outdoors)
 		SSplanets.addTurf(src)
-	..()
+	return ..()
 
 /turf/simulated/floor/Destroy()
 	if(get_area(src).outdoors)

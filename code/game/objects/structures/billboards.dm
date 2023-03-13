@@ -14,39 +14,35 @@
 	plane = LIGHTING_OBJS_PLANE
 	layer = ABOVE_MOB_LAYER
 	pixel_y = 10
-	var/ads = list(			"ssl",
-							"ntbuilding",
-							"keeptidy",
-							"smoke",
-							"tunguska",
-							"rent",
-							"vets",
-							"army",
-							"fitness",
-							"movie1",
-							"movie2",
-							"blank",
-							"gentrified",
-							"legalcoke",
-							"pollux",
-							"vacay",
-							"atluscity",
-							"sunstar",
-							"speedweed",
-							"golf",
-							"visit_texas")
+	var/ads = list(
+		"ssl",
+		"ntbuilding",
+		"keeptidy",
+		"smoke",
+		"tunguska",
+		"rent",
+		"vets",
+		"army",
+		"fitness",
+		"movie1",
+		"movie2",
+		"blank",
+		"gentrified",
+		"legalcoke",
+		"pollux",
+		"vacay",
+		"atluscity",
+		"sunstar",
+		"speedweed",
+		"golf",
+		"visit_texas")
 
 	var/current_ad
 
-/obj/structure/billboard/Destroy()
-	set_light(0)
-	return ..()
-
-/obj/structure/billboard/New()
-	..()
-	var/type = rand(1,4)
+/obj/structure/billboard/initialize()
+	. = ..()
 	if(prob(50))
-		icon_state = "[initial(icon_state)][type]"
+		icon_state = "[initial(icon_state)][rand(1, 4)]"
 
 	update_icon()
 
@@ -57,6 +53,7 @@
 		overlays += pick(ads)
 	else
 		overlays += current_ad
+	overlays += emissive_appearance(icon, "emissive")
 
 
 /obj/structure/billboard/city

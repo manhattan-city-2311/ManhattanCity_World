@@ -4,7 +4,6 @@
 
 	icon = 'icons/vehicles/ambulance.dmi'
 	icon_state = "ambulance"
-	anchored = 1
 
 	headlights_overlay = "headlights"
 

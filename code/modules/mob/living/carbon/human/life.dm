@@ -782,7 +782,7 @@
 				if(GLUCOSE_LEVEL_NORMAL - 2   to GLUCOSE_LEVEL_NORMAL - 0.5) nutrition_icon.icon_state = "nutrition2"
 				if(GLUCOSE_LEVEL_LBAD + 2.5   to GLUCOSE_LEVEL_NORMAL - 2)   nutrition_icon.icon_state = "nutrition2"
 				if(GLUCOSE_LEVEL_LBAD - 1     to GLUCOSE_LEVEL_LBAD + 2.5)	 nutrition_icon.icon_state = "nutrition4"
-				if(NEGATIVE_INFINITY 				  to GLUCOSE_LEVEL_LBAD)		 nutrition_icon.icon_state = "nutrition5"
+				if(NEGATIVE_INFINITY 		  to GLUCOSE_LEVEL_LBAD)		 nutrition_icon.icon_state = "nutrition5"
 		if(!isSynthetic())
 			if(hydration_icon)
 				switch(hydration)
@@ -1028,19 +1028,14 @@
 
 	var/font_size
 	var/message
-	var/emote_pick
 	switch(shock_stage)
-		if(SHOCK_STAGE_SCREAM-5 to SHOCK_STAGE_STUN - 15)
-			emote_pick = pick("groan", "cry", "scream")
-
-		if(SHOCK_STAGE_STUN-15 to SHOCK_STAGE_STUN-2)
+		if(SHOCK_STAGE_STUN-10 to SHOCK_STAGE_STUN-2)
 			message = pick(SHOCK_PAIN_MESSAGES_SEVERE)
 
 			if(life_tick % SHOCK_STAGE_STUN == 0)
 				Weaken(20)
-			
+
 			font_size = 2
-			emote_pick = pick("groan", "cry", "scream")
 
 		if(SHOCK_STAGE_STUN - 1 to SHOCK_STAGE_STUN + 1)
 			if(prob(20))
@@ -1049,7 +1044,8 @@
 				Paralyse(5)
 			else
 				message = "You cannot resist any more!"
-				emote_pick = pick("cry", "scream", "scream", "cry", "agony")
+				if((life_tick % SHOCK_EMOTE_PERIOD) == 0)
+					emote(pick("cry", "scream", "scream", "cry", "agony"), supress_warning = TRUE)
 
 				if((life_tick % SHOCK_STAGE_STUN) == 0)
 					Weaken(5)
@@ -1061,9 +1057,8 @@
 				Weaken(20)
 			if(prob(4))
 				Stun(rand(5, 10))
-	
+
 			font_size = 3
-			emote_pick = pick("groan", "cry", "scream")
 
 		if(SHOCK_STAGE_AGONY to POSITIVE_INFINITY)
 			message = pick(SHOCK_PAIN_MESSAGES_SEVERE)
@@ -1077,15 +1072,15 @@
 			if(prob(1))
 				emote("collapse")
 				Paralyse(5)
-			
+
 			font_size = 3
-			emote_pick = "agony"
+			if((life_tick % SHOCK_EMOTE_PERIOD) == 0)
+				emote("agony", supress_warning = TRUE)
 
 	if(message)
 		throttle_message("shock", message, bold = TRUE, font_size = font_size, span = "danger", delay = SHOCK_MESSAGE_PERIOD)
 
-	if(emote_pick && (life_tick % SHOCK_EMOTE_PERIOD) == 0)
-		emote(emote_pick, supress_warning = TRUE)
+
 
 
 /mob/living/carbon/human/proc/handle_pulse()

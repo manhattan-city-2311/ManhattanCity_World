@@ -169,7 +169,7 @@
 	for(var/T in SANITIZE_LIST(waste_hormones))
 		make_hormone(T, waste_hormones[T])
 
-	if(!vital && damage && owner.bloodstr.get_reagent_amount(CI_GLUCOSE) >= GLUCOSE_LEVEL_NORMAL_LOW)
+	if(!vital && damage && owner.bloodstr.get_reagent_amount(CI_GLUCOSE) > GLUCOSE_LEVEL_NORMAL_LOW)
 		var/regen = min(0.02, damage)
 		absorb_hormone(CI_GLUCOSE, regen)
 		damage = max(0, damage - regen)

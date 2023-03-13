@@ -4,7 +4,6 @@
 
 	icon = 'icons/vehicles/truck.dmi'
 	icon_state = "truck"
-	anchored = 1
 
 	bound_height = 96
 	bound_width = 64

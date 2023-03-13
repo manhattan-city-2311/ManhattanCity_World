@@ -711,14 +711,13 @@ default behaviour is:
 /mob/living/Move(a, b, flag)
 
 	if (buckled && buckled.loc != a) //not updating position
-		if(istype(buckled, /mob))	//If you're buckled to a mob, a la slime things, keep on rolling.
+		if(ismob(buckled))	//If you're buckled to a mob, a la slime things, keep on rolling.
 			return buckled.Move(a, b)
 		else	//Otherwise, no running around for you.
 			return 0
 
 	if (restrained())
 		stop_pulling()
-
 
 	var/t7 = 1
 	if (restrained())
@@ -729,8 +728,8 @@ default behaviour is:
 		var/turf/T = loc
 		. = ..()
 
-		if (pulling && pulling.loc)
-			if(!( isturf(pulling.loc) ))
+		if (pulling?.loc)
+			if(!isturf(pulling.loc))
 				stop_pulling()
 				return
 
@@ -764,7 +763,7 @@ default behaviour is:
 									if(blood_volume < 25)
 										bloodtrail = 0	//Most of it's gone already, just leave it be
 									else
-										H.vessel.remove_reagent(CI_BLOOD, 8)
+										H.vessel.remove_reagent(CI_BLOOD, 4)
 							if(bloodtrail)
 								var/turf/location = M.loc
 								if(istype(location, /turf/simulated))
@@ -789,7 +788,7 @@ default behaviour is:
 											if(blood_volume < 25)
 												bloodtrail = 0	//Most of it's gone already, just leave it be
 											else
-												H.vessel.remove_reagent(CI_BLOOD, 8)
+												H.vessel.remove_reagent(CI_BLOOD, 4)
 									if(bloodtrail)
 										location.add_blood(M)
 

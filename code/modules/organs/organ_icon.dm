@@ -140,15 +140,15 @@ var/global/list/limb_icon_cache = list()
 	..()
 
 /obj/item/organ/external/proc/get_icon(skeletal)
-	var/gender = gendered_icon && (owner?.gender == FEMALE ? "_f" : "_m")
+	var/gender = gendered_icon ? (owner?.gender == FEMALE ? "_f" : "_m") : ""
 
 	icon_cache_key = "[icon_name]_[species ? species.name : SPECIES_HUMAN]"
 
 	if(force_icon)
-		mob_icon = new /icon(force_icon, "[icon_name][gender]")
+		mob_icon = icon(force_icon, "[icon_name + gender]")
 	else
 		if(!dna)
-			mob_icon = new /icon('icons/mob/human_races/r_human.dmi', "[icon_name][gender]")
+			mob_icon = icon('icons/mob/human_races/r_human.dmi', "[icon_name][gender]")
 		else
 			gender = gendered_icon ? (dna.GetUIState(DNA_UI_GENDER) ? "_f" : "_m") : ""
 
@@ -160,12 +160,11 @@ var/global/list/limb_icon_cache = list()
 				mob_icon = species.get_icobase(owner, status & ORGAN_MUTATED)
 
 			mob_icon = icon(mob_icon, icon_name + gender)
-
 			if(!skeletal)
 				apply_colouration(mob_icon)
 
 			// Body markings, actually does not include head this time. Done separately above.
-			if(!istype(src,/obj/item/organ/external/head))
+			if(!istype(src, /obj/item/organ/external/head))
 				for(var/M in markings)
 					var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
 					var/icon/mark_s = new("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
