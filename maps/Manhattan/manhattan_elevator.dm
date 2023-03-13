@@ -85,7 +85,7 @@
 
 /obj/turbolift_map_holder/crey
 	name = "CREY Facility Elevator"
-	depth = 2
+	depth = 4
 	lift_size_x = 3
 	lift_size_y = 3
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
@@ -94,7 +94,9 @@
 
 	areas_to_use = list(
 		/area/turbolift/crey1,
-		/area/turbolift/crey2
+		/area/turbolift/crey2,
+		/area/turbolift/crey3,
+		/area/turbolift/crey4
 		)
 
 /obj/turbolift_map_holder/office1

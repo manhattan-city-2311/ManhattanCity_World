@@ -102,7 +102,7 @@
 	name = "big city sign"
 	desc = "A sign with some unknown language."
 	icon_state = "randomshit1"
-	icon_state = "randomshit1-emissive"
+	emissive_state = "randomshit1-emissive"
 	light_color = LIGHT_COLOR_HOTPINK
 
 /obj/structure/sign/neon/big/manhattan
@@ -334,6 +334,12 @@
 	icon_state = "startech"
 	emissive_state = "startech-emissive"
 	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/big/cray_promotion
+	name = "neon CRAY Ind. ad"
+	desc = "A neon flickering sign, explaining how various things made by corporation works."
+	icon_state = "cray"
+	light_color = LIGHT_COLOR_HALOGEN
 
 /obj/structure/sign/neon/big/casino
 	name = "neon casino sign"

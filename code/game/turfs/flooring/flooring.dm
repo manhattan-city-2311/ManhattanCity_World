@@ -85,6 +85,26 @@ var/list/flooring_types
 		'sound/effects/footstep/grass3.ogg',
 		'sound/effects/footstep/grass4.ogg'))
 
+/decl/flooring/manhattan_grass
+	name = "grass"
+	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
+	icon = 'icons/turf/auto_strata_grass.dmi'
+	damage_temperature = T0C+80
+	flags = TURF_CAN_BURN
+	icon_base = "grass_1"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/grass1.ogg',
+		'sound/effects/footstep/grass2.ogg',
+		'sound/effects/footstep/grass3.ogg',
+		'sound/effects/footstep/grass4.ogg'))
+
+/decl/flooring/manhattan_grass/dark
+	name = "grass"
+	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
+	icon = 'icons/turf/auto_strata_grass.dmi'
+	flags = TURF_CAN_BURN
+	icon_base = "grass_0"
+
 /decl/flooring/asteroid
 	name = "coarse sand"
 	desc = "Gritty and unpleasant."
@@ -139,6 +159,22 @@ var/list/flooring_types
 		'sound/effects/footstep/dirt3.ogg',
 		'sound/effects/footstep/dirt4.ogg'))
 
+/decl/flooring/dirt/manhattan
+	name = "dirt"
+	desc = "Quite dirty!"
+	icon = 'icons/turf/auto_strata_grass.dmi'
+	icon_base = "grass_0_mud"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/dirt1.ogg',
+		'sound/effects/footstep/dirt2.ogg',
+		'sound/effects/footstep/dirt3.ogg',
+		'sound/effects/footstep/dirt4.ogg'))
+
+/decl/flooring/dirt/manhattan/mud
+	name = "dirt"
+	desc = "Quite dirty!"
+	icon = 'icons/turf/auto_strata_grass.dmi'
+	icon_base = "grass_0_mud_alt"
 
 /decl/flooring/snow/snow2
 	name = "snow"
@@ -522,6 +558,14 @@ var/list/flooring_types
 /decl/flooring/reinforced/circuit/green
 	name = "processing strata"
 	icon_base = "gcircuit"
+
+/decl/flooring/reinforced/circuit/purple
+	name = "processing strata"
+	icon_base = "pcircuit"
+
+/decl/flooring/reinforced/circuit/red
+	name = "processing strata"
+	icon_base = "rcircuit"
 
 /decl/flooring/reinforced/cult
 	name = "engraved floor"

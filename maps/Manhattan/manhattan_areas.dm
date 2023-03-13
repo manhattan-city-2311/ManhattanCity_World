@@ -51,7 +51,7 @@
 	icon_state = "Holodeck"
 
 /area/planets/Manhattan/outdoor
-	name = "\improper New-Manhattan area"
+	name = "\improper New-Manhattan area(North)"
 	dynamic_lighting = 1
 	sound_env = CITY
 	flags = null
@@ -68,7 +68,7 @@
 	should_objects_be_saved = FALSE
 
 /area/planets/Manhattan/indoor
-	name = "\improper New-Manhattan Interior"
+	name = "\improper New-Manhattan Interior(North)"
 	icon_state = "yellow"
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
@@ -79,24 +79,26 @@
 	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/outdoor/upper1
-	name = "\improper New-Manhattan second level outdoors"
+	name = "\improper New-Manhattan second level outdoors(North)"
 	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/outdoor/upper2
-	name = "\improper New-Manhattan third level outdoors"
+	name = "\improper New-Manhattan third level outdoors(North)"
 	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/indoor/north/substation
+	name = "\improper GAS station power substation(North)"
 	holomap_color = HOLOMAP_AREACOLOR_ENGINEERING
 
 /area/planets/Manhattan/indoor/north/underground_global
-	name = "\improper New-Manhattan underground"
+	name = "\improper New-Manhattan underground(North)"
 
 /area/planets/Manhattan/indoor/north/underground_global/sewer
 	name = "\improper New-Manhattan north sewers"
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/underground_global/sewer/hideout
+	name = "\improper Hideout in sewers(North)"
 
 /area/planets/Manhattan/indoor/north/bar
 	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
@@ -135,13 +137,16 @@
 	icon_state = "north_m3"
 
 /area/planets/Manhattan/indoor/north/bar/pub1
+	name = "\improper Bar Clients Zone(North)"
 	icon_state = "north_m2"
 
 /area/planets/Manhattan/indoor/north/bar/pub2
+	name = "\improper Bar Clients Zone(North-Upper)"
 	base_turf = /turf/simulated/open
 	icon_state = "north_m2"
 
 /area/planets/Manhattan/indoor/north/bar/vip_zone
+	name = "\improper Bar VIP Zone(North-Upper)"
 	base_turf = /turf/simulated/open
 	icon_state = "north_m4"
 	outdoors = TRUE
@@ -150,6 +155,7 @@
 	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
 
 /area/planets/Manhattan/indoor/north/gas/store
+	name = "\improper GAS Station Store(North)"
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/gas/other
@@ -168,6 +174,7 @@
 	icon_state = "north_m3"
 
 /area/planets/Manhattan/indoor/north/cityhall
+	name = "\improper City Hall(North)"
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m4"
 	holomap_color = "#ffff00aa"
@@ -179,6 +186,7 @@
 /area/planets/Manhattan/indoor/north/cityhall/courtroomwaiting
 
 /area/planets/Manhattan/indoor/north/cityhall/upper
+	name = "\improper City Hall(North-Upper)"
 	base_turf = /turf/simulated/open
 	icon_state = "north_m4"
 
@@ -189,51 +197,93 @@
 /area/planets/Manhattan/indoor/north/cityhall/upper/solgov
 /area/planets/Manhattan/indoor/north/cityhall/upper/gcc
 
-/area/planets/Manhattan/indoor/north/crey
+/area/planets/Manhattan/indoor/north/cray
+	name = "\improper CRAY Ind. Headquarters(North)"
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m2"
 	holomap_color = HOLOMAP_AREACOLOR_SCIENCE
 
-/area/planets/Manhattan/indoor/north/crey/office1
-/area/planets/Manhattan/indoor/north/crey/office2
-/area/planets/Manhattan/indoor/north/crey/recreationroom
-/area/planets/Manhattan/indoor/north/crey/office3
-/area/planets/Manhattan/indoor/north/crey/office4
-/area/planets/Manhattan/indoor/north/crey/office5
-/area/planets/Manhattan/indoor/north/crey/office6
-/area/planets/Manhattan/indoor/north/crey/restroom
-/area/planets/Manhattan/indoor/north/crey/storage
-/area/planets/Manhattan/indoor/north/crey/secretaryoffice
+/area/planets/Manhattan/indoor/north/cray/toilet
+/area/planets/Manhattan/indoor/north/cray/breakroom
+/area/planets/Manhattan/indoor/north/cray/cafeteria
+/area/planets/Manhattan/indoor/north/cray/garage
 
-/area/planets/Manhattan/indoor/north/crey/under
-	base_turf = /turf/simulated/floor/plating
-	icon_state = "north_m2"
+/area/planets/Manhattan/indoor/north/cray/chiefsecurity
+/area/planets/Manhattan/indoor/north/cray/armory
+/area/planets/Manhattan/indoor/north/cray/powerplant
+/area/planets/Manhattan/indoor/north/cray/interrogationroom
+/area/planets/Manhattan/indoor/north/cray/gym
+/area/planets/Manhattan/indoor/north/cray/lockerroom
 
-/area/planets/Manhattan/indoor/north/crey/under/archives
-
-/area/planets/Manhattan/indoor/north/crey/under/backrooms
-/area/planets/Manhattan/indoor/north/crey/under/backrooms/sec
-/area/planets/Manhattan/indoor/north/crey/under/backrooms/watching
-
-/area/planets/Manhattan/indoor/north/crey/under/hydro
-/area/planets/Manhattan/indoor/north/crey/under/firingrange
-/area/planets/Manhattan/indoor/north/crey/under/workshop
-/area/planets/Manhattan/indoor/north/crey/under/xenobio
-/area/planets/Manhattan/indoor/north/crey/under/bombingrange
-/area/planets/Manhattan/indoor/north/crey/under/lockerroom
-
-/area/planets/Manhattan/indoor/north/crey/under/rndmain
-/area/planets/Manhattan/indoor/north/crey/under/cyberspace
-
-/area/planets/Manhattan/indoor/north/crey/upper
+/area/planets/Manhattan/indoor/north/cray/upper1
+	name = "\improper CRAY Ind. Headquarters(North-Upper)"
 	base_turf = /turf/simulated/open
 	icon_state = "north_m2"
 
-/area/planets/Manhattan/indoor/north/crey/upper/creyhead
-/area/planets/Manhattan/indoor/north/crey/upper/restroom
-/area/planets/Manhattan/indoor/north/crey/upper/security
-/area/planets/Manhattan/indoor/north/crey/upper/briefing
-/area/planets/Manhattan/indoor/north/crey/upper/armory
+/area/planets/Manhattan/indoor/north/cray/upper1/checkpoint
+
+/area/planets/Manhattan/indoor/north/cray/upper1/hydromain
+/area/planets/Manhattan/indoor/north/cray/upper1/hydroillegal
+/area/planets/Manhattan/indoor/north/cray/upper1/cabinet1
+/area/planets/Manhattan/indoor/north/cray/upper1/cabinet2
+/area/planets/Manhattan/indoor/north/cray/upper1/cabinet3
+/area/planets/Manhattan/indoor/north/cray/upper1/seniorscicabinet
+/area/planets/Manhattan/indoor/north/cray/upper1/rnd
+/area/planets/Manhattan/indoor/north/cray/upper1/chemistry
+
+/area/planets/Manhattan/indoor/north/cray/upper1/toilet
+/area/planets/Manhattan/indoor/north/cray/upper1/office1
+/area/planets/Manhattan/indoor/north/cray/upper1/office2
+/area/planets/Manhattan/indoor/north/cray/upper1/seniorbearucabinet
+/area/planets/Manhattan/indoor/north/cray/upper1/officecab1
+/area/planets/Manhattan/indoor/north/cray/upper1/officecab2
+/area/planets/Manhattan/indoor/north/cray/upper1/officecab3
+/area/planets/Manhattan/indoor/north/cray/upper1/officecab4
+/area/planets/Manhattan/indoor/north/cray/upper1/officecab5
+/area/planets/Manhattan/indoor/north/cray/upper1/officecab6
+
+/area/planets/Manhattan/indoor/north/cray/upper2
+	name = "\improper CRAY Ind. Headquarters(North-Upper-Second)"
+	base_turf = /turf/simulated/open
+	icon_state = "north_m2"
+
+/area/planets/Manhattan/indoor/north/cray/upper2/chiefbearucabinet
+/area/planets/Manhattan/indoor/north/cray/upper2/chiefscicabinet
+/area/planets/Manhattan/indoor/north/cray/upper2/briefingroom
+/area/planets/Manhattan/indoor/north/cray/upper2/toilet
+/area/planets/Manhattan/indoor/north/cray/upper2/chiefcraycabinet
+/area/planets/Manhattan/indoor/north/cray/upper2/chiefcraycabinet/balcony
+	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+/area/planets/Manhattan/indoor/north/cray/upper2/breakroom
+
+//UNDER CONSTRUCTION
+
+/area/planets/Manhattan/indoor/north/cray/under
+	name = "\improper CRAY Ind. Headquarters(North-Under)"
+	base_turf = /turf/simulated/floor/plating
+	icon_state = "north_m2"
+
+/area/planets/Manhattan/indoor/north/cray/under/archives
+/area/planets/Manhattan/indoor/north/cray/under/backrooms
+	name = "\improper CRAY Ind. Portal Room(North-Under)"
+/area/planets/Manhattan/indoor/north/cray/under/backrooms/sec
+	name = "\improper CRAY Ind. Portal Checkpoint(North-Under)"
+/area/planets/Manhattan/indoor/north/cray/under/backrooms/watching
+	name = "\improper CRAY Ind. Portal Observation Room(North-Under)"
+
+/area/planets/Manhattan/indoor/north/cray/under/hydro
+/area/planets/Manhattan/indoor/north/cray/under/firingrange
+/area/planets/Manhattan/indoor/north/cray/under/workshop
+/area/planets/Manhattan/indoor/north/cray/under/xenobio
+/area/planets/Manhattan/indoor/north/cray/under/bombingrange
+/area/planets/Manhattan/indoor/north/cray/under/lockerroom
+
+/area/planets/Manhattan/indoor/north/cray/under/rndmain
+/area/planets/Manhattan/indoor/north/cray/under/cyberspace
+
+//UNDER CONSTRUCTION
+
+
 
 /area/planets/Manhattan/indoor/north/casino
 	base_turf = /turf/simulated/floor/plating
@@ -244,6 +294,7 @@
 /area/planets/Manhattan/indoor/north/casino/recroom
 /area/planets/Manhattan/indoor/north/casino/hall1
 /area/planets/Manhattan/indoor/north/casino/hall2
+	name = "\improper Casino Playing Hall(North)"
 /area/planets/Manhattan/indoor/north/casino/restroom
 /area/planets/Manhattan/indoor/north/casino/securitypost
 
@@ -252,37 +303,46 @@
 	icon_state = "north_m2"
 
 /area/planets/Manhattan/indoor/north/casino/under/moneystorage
+	name = "\improper Casino Money Storage(North-Under)"
 
 /area/planets/Manhattan/indoor/north/casino/upper
+	name = "\improper Casino Playing Hall(North-Upper)"
 	base_turf = /turf/simulated/open
 	icon_state = "north_m2"
 
 /area/planets/Manhattan/indoor/north/church
+	name = "\improper Church(North)"
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m3"
 	holomap_color = HOLOMAP_AREACOLOR_CIVILIAN
 
 /area/planets/Manhattan/indoor/north/church/hall
+	name = "\improper Church Hall(North)"
 /area/planets/Manhattan/indoor/north/church/restroom
+	name = "\improper Church Bathroom(North)"
 
 /area/planets/Manhattan/indoor/north/church/upper
+	name = "\improper Church(North-Upper)"
 	base_turf = /turf/simulated/open
 	icon_state = "north_m3"
 
 /area/planets/Manhattan/indoor/north/church/upper/hall
 /area/planets/Manhattan/indoor/north/church/upper/cabinet
+	name = "\improper Church Priest Office(North-Upper)"
 
 /area/planets/Manhattan/indoor/north/auto
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m1"
 
 /area/planets/Manhattan/indoor/north/auto/store1
+	name = "\improper Car Dealership Carshop(North)"
 /area/planets/Manhattan/indoor/north/auto/store2
 /area/planets/Manhattan/indoor/north/auto/hall
 /area/planets/Manhattan/indoor/north/auto/director
 /area/planets/Manhattan/indoor/north/auto/recroom
 
 /area/planets/Manhattan/indoor/north/auto/upper
+	name = "\improper Car Dealership(North-Upper)"
 	base_turf = /turf/simulated/open
 	icon_state = "north_m1"
 
@@ -290,6 +350,7 @@
 /area/planets/Manhattan/indoor/north/auto/upper/restroom
 /area/planets/Manhattan/indoor/north/auto/upper/storage
 /area/planets/Manhattan/indoor/north/auto/upper/powerplant
+	name = "\improper Car Dealership Power Substation(North-Upper)"
 
 /area/planets/Manhattan/indoor/north/cinema
 	base_turf = /turf/simulated/floor/plating
@@ -299,6 +360,7 @@
 /area/planets/Manhattan/indoor/north/cinema/room1
 /area/planets/Manhattan/indoor/north/cinema/room2
 /area/planets/Manhattan/indoor/north/cinema/hall1
+	name = "\improper Cinema(North)"
 /area/planets/Manhattan/indoor/north/cinema/room3
 /area/planets/Manhattan/indoor/north/cinema/room4
 
@@ -310,8 +372,10 @@
 /area/planets/Manhattan/indoor/north/cinema/upper/recroom
 /area/planets/Manhattan/indoor/north/cinema/upper/lounge
 /area/planets/Manhattan/indoor/north/cinema/upper/hall1
+	name = "\improper Cinema(North-Upper)"
 
 /area/planets/Manhattan/indoor/north/house_standart1
+	name = "\improper Living House #1(North)"
 	base_turf = /turf/simulated/floor/plating
 	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS
 
@@ -426,6 +490,7 @@
 /area/planets/Manhattan/indoor/north/house_standart1/balcony/four
 
 /area/planets/Manhattan/indoor/north/house_standart2
+	name = "\improper Living House #2(North)"
 	base_turf = /turf/simulated/floor/plating
 	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS
 
@@ -548,6 +613,7 @@
 /area/planets/Manhattan/indoor/north/house_standart2/balcony/eight
 
 /area/planets/Manhattan/indoor/north/house_standart3
+	name = "\improper Living House #3(North)"
 	base_turf = /turf/simulated/floor/plating
 	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS
 
@@ -630,6 +696,7 @@
 	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS_ELITE
 
 /area/planets/Manhattan/indoor/north/elite1/hall
+	name = "\improper Mayor House (North)"
 /area/planets/Manhattan/indoor/north/elite1/hallway1
 /area/planets/Manhattan/indoor/north/elite1/hallway2
 /area/planets/Manhattan/indoor/north/elite1/bath
@@ -651,6 +718,7 @@
 	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS_ELITE
 
 /area/planets/Manhattan/indoor/north/elite2/hallkitchen
+	name = "\improper Elite House #1(North)"
 /area/planets/Manhattan/indoor/north/elite2/hallway
 /area/planets/Manhattan/indoor/north/elite2/bath
 /area/planets/Manhattan/indoor/north/elite2/carpark
@@ -671,6 +739,7 @@
 	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS_ELITE
 
 /area/planets/Manhattan/indoor/north/elite3/hallkitchen
+	name = "\improper Elite House #2(North)"
 /area/planets/Manhattan/indoor/north/elite3/hallway
 /area/planets/Manhattan/indoor/north/elite3/bath
 /area/planets/Manhattan/indoor/north/elite3/carpark
@@ -690,6 +759,7 @@
 	holomap_color = HOLOMAP_AREACOLOR_BUILDING_FLATS
 
 /area/planets/Manhattan/indoor/north/hotel/hall
+	name = "\improper Grand Hotel(North)"
 /area/planets/Manhattan/indoor/north/hotel/receprion
 /area/planets/Manhattan/indoor/north/hotel/room1
 /area/planets/Manhattan/indoor/north/hotel/room1/bath
@@ -734,6 +804,7 @@
 	holomap_color = HOLOMAP_AREACOLOR_BUILDING_OFFICE
 
 /area/planets/Manhattan/indoor/north/office1/hall
+	name = "\improper Empty Office #1(North)"
 /area/planets/Manhattan/indoor/north/office1/restroom
 /area/planets/Manhattan/indoor/north/office1/cabinet
 
@@ -751,6 +822,7 @@
 	holomap_color = HOLOMAP_AREACOLOR_BUILDING_OFFICE
 
 /area/planets/Manhattan/indoor/north/office2/hall
+	name = "\improper Empty Office #2(North)"
 /area/planets/Manhattan/indoor/north/office2/restroom
 /area/planets/Manhattan/indoor/north/office2/recroom
 
@@ -779,6 +851,7 @@
 	holomap_color = HOLOMAP_AREACOLOR_SECURITY
 
 /area/planets/Manhattan/indoor/north/police_dept/mainhall
+	name = "\improper MCPD Department(North)"
 /area/planets/Manhattan/indoor/north/police_dept/bullpen
 /area/planets/Manhattan/indoor/north/police_dept/westreception
 /area/planets/Manhattan/indoor/north/police_dept/westgarage
@@ -800,6 +873,7 @@
 	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/indoor/north/police_dept/upper/mainhall
+	name = "\improper MCPD Department(North-Upper)"
 /area/planets/Manhattan/indoor/north/police_dept/upper/archives
 /area/planets/Manhattan/indoor/north/police_dept/upper/restroom
 /area/planets/Manhattan/indoor/north/police_dept/upper/detectives
@@ -811,6 +885,7 @@
 /area/planets/Manhattan/indoor/north/police_dept/underground
 
 /area/planets/Manhattan/indoor/north/police_dept/underground/maincells
+	name = "\improper MCPD Department(North-Under)"
 /area/planets/Manhattan/indoor/north/police_dept/underground/seccheckpoint
 /area/planets/Manhattan/indoor/north/police_dept/underground/perma
 /area/planets/Manhattan/indoor/north/police_dept/underground/perma/room1
@@ -829,6 +904,7 @@
 	holomap_color = HOLOMAP_AREACOLOR_MEDICAL
 
 /area/planets/Manhattan/indoor/north/hospital/hall
+	name = "\improper W.E.H.S. City Hospital(North)"
 /area/planets/Manhattan/indoor/north/hospital/cab1
 /area/planets/Manhattan/indoor/north/hospital/cab2
 /area/planets/Manhattan/indoor/north/hospital/recroom
@@ -856,10 +932,12 @@
 /area/planets/Manhattan/indoor/north/hospital/upper/surgicalobservation
 /area/planets/Manhattan/indoor/north/hospital/upper/storagepills
 /area/planets/Manhattan/indoor/north/hospital/upper/hall
+	name = "\improper W.E.H.S. City Hospital(North-Upper)"
 
 /area/planets/Manhattan/indoor/north/hospital/underground
 
 /area/planets/Manhattan/indoor/north/hospital/underground/hall
+	name = "\improper W.E.H.S. City Hospital(North-Under)"
 /area/planets/Manhattan/indoor/north/hospital/underground/morgue
 /area/planets/Manhattan/indoor/north/hospital/underground/storagemain
 /area/planets/Manhattan/indoor/north/hospital/underground/washroom
@@ -869,6 +947,7 @@
 /area/planets/Manhattan/indoor/north/hospital/underground/chamber
 
 /area/planets/Manhattan/indoor/north/transit
+	name = "\improper Transit Station(North)"
 	icon_state = "north_m2"
 	base_turf = /turf/simulated/floor/plating
 	holomap_color = HOLOMAP_AREACOLOR_HALLWAYS
@@ -892,6 +971,7 @@
 	holomap_color = HOLOMAP_AREACOLOR_SFP
 
 /area/planets/Manhattan/indoor/north/sfp/hall
+	name = "\improper SFP Office(North)"
 /area/planets/Manhattan/indoor/north/sfp/office
 /area/planets/Manhattan/indoor/north/sfp/supervisorcab
 /area/planets/Manhattan/indoor/north/sfp/garage
@@ -913,9 +993,11 @@
 /area/planets/Manhattan/indoor/north/sfp/upper/evidencelocker
 
 /area/planets/Manhattan/indoor/north/shopping
+	name = "\improper City Mall(North)"
 	icon_state = "north_m1"
 	base_turf = /turf/simulated/floor/plating
 	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
+	ambience = list('sound/manhattan/trading_center1.ogg', 'sound/manhattan/trading_center2.ogg', 'sound/manhattan/trading_center3.ogg', 'sound/manhattan/trading_center4.ogg')
 
 /area/planets/Manhattan/indoor/north/shopping/checkpointsouth
 /area/planets/Manhattan/indoor/north/shopping/checkpointnorth
@@ -1737,17 +1819,31 @@
 	base_turf = /turf/simulated/open
 
 /area/turbolift/crey1
-	name = "lift (first floor)"
-	lift_floor_label = "Floor 1"
-	lift_floor_name = "First floor"
-	lift_announce_str = "Lift arriving at first floor, please stand clear of the doors."
+	name = "lift (level zero)"
+	lift_floor_label = "Floor 0"
+	lift_floor_name = "Level 0"
+	lift_announce_str = "Lift arriving at level zero, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/plating
 
 /area/turbolift/crey2
-	name = "lift (second floor)"
+	name = "lift (first level)"
+	lift_floor_label = "Floor 1"
+	lift_floor_name = "Level 1"
+	lift_announce_str = "Lift arriving at level one, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/crey3
+	name = "lift (second level)"
 	lift_floor_label = "Floor 2"
-	lift_floor_name = "Second floor"
-	lift_announce_str = "Lift arriving at second floor, please stand clear of the doors."
+	lift_floor_name = "Level 2"
+	lift_announce_str = "Lift arriving at level two, please stand clear of the doors."
+	base_turf = /turf/simulated/open
+
+/area/turbolift/crey4
+	name = "lift (third level)"
+	lift_floor_label = "Floor 3"
+	lift_floor_name = "Level 3"
+	lift_announce_str = "Lift arriving at level three, please stand clear of the doors."
 	base_turf = /turf/simulated/open
 
 /area/turbolift/hospitalm1

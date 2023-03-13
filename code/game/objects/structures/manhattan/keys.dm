@@ -331,3 +331,91 @@
 /obj/item/weapon/door/key/medbay/head
 	name = "Hospital Head cabinet key"
 	key_data = "head"
+
+// ЮЖНЫЙ
+
+//Так как у Вани нет никаких нормальных обозначений жилых зданий, я буду помечать их по расположению и названию зону, где они находятся
+
+/obj/item/weapon/door/key/south/teotr
+	name = "TEotR bar key"
+	key_data = "south_teotr34"
+
+// Двухэтажка у Теотра, F3, квартиры с 113-й по 118-ю
+
+/obj/item/weapon/door/key/south/f3/first
+	name = "F3-1-N113 Key"
+	key_data = "south_f3_n1"
+
+/obj/item/weapon/door/key/south/f3/second
+	name = "F3-2-N114 Key"
+	key_data = "south_f3_n2"
+
+/obj/item/weapon/door/key/south/f3/third
+	name = "F3-3-N115 Key"
+	key_data = "south_f3_n3"
+
+/obj/item/weapon/door/key/south/f3/fourth
+	name = "F3-4-N116 Key"
+	key_data = "south_f3_n4"
+
+/obj/item/weapon/door/key/south/f3/fifth
+	name = "F3-5-N117 Key"
+	key_data = "south_f3_n5"
+
+/obj/item/weapon/door/key/south/f3/sixth
+	name = "F3-6-N118 Key"
+	key_data = "south_f3_n6"
+
+//Трёхэтажка, южнее автосалона с квадриками, F2, квартиры с 107-й по 112-ю
+
+/obj/item/weapon/door/key/south/f2/first
+	name = "F2-1-N107 Key"
+	key_data = "south_f2_n1"
+
+/obj/item/weapon/door/key/south/f2/second
+	name = "F2-2-N108 Key"
+	key_data = "south_f2_n2"
+
+/obj/item/weapon/door/key/south/f2/third
+	name = "F2-3-N109 Key"
+	key_data = "south_f2_n3"
+
+/obj/item/weapon/door/key/south/f2/fourth
+	name = "F2-4-N110 Key"
+	key_data = "south_f2_n4"
+
+/obj/item/weapon/door/key/south/f2/fifth
+	name = "F2-5-N111 Key"
+	key_data = "south_f2_n5"
+
+/obj/item/weapon/door/key/south/f2/sixth
+	name = "F2-6-N112 Key"
+	key_data = "south_f2_n6"
+
+//Гаражи севернее F2
+
+/obj/item/weapon/door/key/south/f2/garage/first
+	name = "Garage #1"
+	key_data = "garage-f2-1"
+
+/obj/item/weapon/door/key/south/f2/garage/second
+	name = "Garage #2"
+	key_data = "garage-f2-2"
+
+/obj/item/weapon/door/key/south/f2/garage/third
+	name = "Garage #3"
+	key_data = "garage-f2-3"
+
+/obj/item/weapon/door/key/south/f2/garage/fourth
+	name = "Garage #4"
+	key_data = "garage-f2-4"
+
+/obj/item/weapon/door/key/south/f2/garage/fifth
+	name = "Garage #5"
+	key_data = "garage-f2-5"
+
+//Автосалон с квадриками
+
+/obj/item/weapon/door/key/south/carshop
+	name = "South car dealership key"
+	key_data = "carshopsouth"

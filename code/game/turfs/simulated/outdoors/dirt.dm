@@ -43,8 +43,23 @@
 /turf/simulated/floor/outdoors/dirt/manhattan
 	icon = 'icons/turf/auto_strata_grass.dmi'
 	icon_state = "grass_0_mud"
+	initial_flooring = /decl/flooring/dirt/manhattan
+
+/turf/simulated/floor/outdoors/dirt/manhattan/initialize()
+
+	if(grass_chance && prob(grass_chance))
+		var/has_grass = FALSE
+
+		if (locate(/obj/structure/flora) in contents)
+			has_grass = TRUE
+
+		if(!has_grass)
+			var/grass_type = pick(grass_types)
+			new grass_type(src)
+	. = ..()
 
 /turf/simulated/floor/outdoors/dirt/manhattan/alt
 	icon = 'icons/turf/auto_strata_grass.dmi'
 	name = "mud"
 	icon_state = "grass_0_mud_alt"
+	initial_flooring = /decl/flooring/dirt/manhattan/mud

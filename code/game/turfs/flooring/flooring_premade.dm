@@ -71,6 +71,18 @@
 	icon_state = "bcircuit"
 	initial_flooring = /decl/flooring/reinforced/circuit
 
+/turf/simulated/floor/purplegrid
+	name = "mainframe floor"
+	icon = 'icons/turf/flooring/circuit.dmi'
+	icon_state = "pcircuit"
+	initial_flooring = /decl/flooring/reinforced/circuit/purple
+
+/turf/simulated/floor/redgrid
+	name = "mainframe floor"
+	icon = 'icons/turf/flooring/circuit.dmi'
+	icon_state = "rcircuit"
+	initial_flooring = /decl/flooring/reinforced/circuit/red
+
 /turf/simulated/floor/greengrid
 	name = "mainframe floor"
 	icon = 'icons/turf/flooring/circuit.dmi'

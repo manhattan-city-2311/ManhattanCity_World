@@ -76,7 +76,22 @@ var/list/grass_types = list(
 	name = "thick grass"
 	icon = 'icons/turf/auto_strata_grass.dmi'
 	icon_state = "grass_1"
+	initial_flooring = /decl/flooring/manhattan_grass
+	grass_chance = 0
+	tree_chance = 0
 
 /turf/simulated/floor/outdoors/grass/manhattan/dark
 	name = "thick grass"
 	icon_state = "grass_0"
+	initial_flooring = /decl/flooring/manhattan_grass/dark
+	grass_chance = 0
+	tree_chance = 0
+
+/turf/simulated/floor/outdoors/grass/manhattan/initialize()
+
+	if(tree_chance && prob(tree_chance))
+		new /obj/structure/flora/tree/jungle(src)
+	if(grass_chance && prob(grass_chance))
+		var/grass_type = pick(grass_types)
+		new grass_type(src)
+	. = ..()
