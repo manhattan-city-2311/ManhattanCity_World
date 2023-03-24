@@ -11,6 +11,7 @@
 	var/obj/effect/vehicle_entrance/entrance = null
 	var/obj/structure/vehicledoor/door = null
 	var/obj/manhattan/vehicle/large/vehicle = null
+	var/area/area
 
 	var/global/list/datum/map_template/templates_cache = list()
 
@@ -22,8 +23,7 @@
 		if(!(interior_template in templates_cache))
 			templates_cache[interior_template] = new interior_template
 		
-		if(!templates_cache[interior_template].load(middle_turf, centered = TRUE))
-			continue
+		templates_cache[interior_template].load(middle_turf, centered = TRUE)
 
 		is_failed = FALSE
 		qdel(S)
@@ -34,12 +34,13 @@
 		CRASH("Failed to load [type]")
 		
 	id = gid++
+	area = get_area(middle_turf)
 
-	for(var/obj/effect/vehicle_entrance/E in get_area(middle_turf))
+	for(var/obj/effect/vehicle_entrance/E in area)
 		entrance = E
 		entrance.id = id
 		break
-	for(var/obj/structure/vehicledoor/E in get_area(middle_turf))
+	for(var/obj/structure/vehicledoor/E in area)
 		door = E
 		door.id = id
 		door.interior = src
@@ -133,6 +134,9 @@
 
 /obj/structure/vehicledoor/attack_hand(mob/user)
 	. = ..()
+	if(interior.vehicle.loc == null)
+		to_chat(user, "\The [src] is not opening.")
+		return
 	interior.vehicle.exit_vehicle(user)
 
 /obj/structure/vehicledoor/MouseDrop_T(mob/target, mob/user)

@@ -34,12 +34,6 @@
 	..()
 
 	if(statpanel("Lobby") && ticker)
-		if(ticker.hide_mode)
-			stat("Game Mode:", "Secret")
-		else
-			if(ticker.hide_mode == 0)
-				stat("Game Mode:", "[config.mode_names[master_mode]]") // Old setting for showing the game mode
-
 		if(ticker.current_state == GAME_STATE_PREGAME)
 			stat("Time To Start:", "[ticker.pregame_timeleft][round_progressing ? "" : " (DELAYED)"]")
 			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
@@ -50,6 +44,10 @@
 				totalPlayers++
 				if(player.ready)
 					totalPlayersReady++
+		else if(ticker.current_state == GAME_STATE_PLAYING)
+			if(SSarrival.arrival_state == ARRIVAL_HOLD && SSarrival.next)
+				stat("Next hyperloop departure:", "[(world.time - SSarrival.next) / (1 SECOND)]s")
+
 
 
 /mob/new_player/proc/JoinLate(selected_job_name, antag_type)
@@ -110,6 +108,9 @@
 			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
 
+		if(!client.prefs.persistence_z)
+			return
+
 		AttemptLateSpawn("Civilian")
 		return 1
 
@@ -167,6 +168,7 @@
 			return FALSE
 
 		ready = !ready
+
 		update_lobby()
 		return 1
 
@@ -281,8 +283,8 @@
 	return 1
 
 /mob/new_player/proc/AttemptLateSpawn(rank, turf/spawning_at, antag_type)
-	if (src != usr)
-		return 0
+	//if (src != usr)
+	//	return 0
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
 		return 0
@@ -366,6 +368,8 @@
 
 
 	qdel(src)
+
+	return character
 
 /mob/new_player/proc/AnnounceCyborg(var/mob/living/character, var/rank, var/join_message)
 	if (ticker.current_state == GAME_STATE_PLAYING)

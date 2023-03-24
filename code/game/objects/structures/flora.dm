@@ -4,7 +4,9 @@
 	burn_state = 0 //Burnable
 	burntime = SHORT_BURN
 
-
+/obj/structure/flora/initialize()
+	. = ..()
+	update_icon()
 
 
 //bushes

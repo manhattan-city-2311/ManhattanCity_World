@@ -119,7 +119,7 @@ var/global/datum/controller/gameticker/ticker
 	to_chat(world, "[get_president_info()]")
 
 	current_state = GAME_STATE_PLAYING
-	create_characters() //Create player characters and transfer them.
+	//create_characters() //Create player characters and transfer them.
 	collect_minds()
 	equip_characters()
 	data_core.manifest()

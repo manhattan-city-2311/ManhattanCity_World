@@ -37,7 +37,7 @@
 	update_icon()
 
 	user.mod_keys_override = FALSE
-	user.client?.glide_size = 0	
+	user.client?.glide_size = 0
 
 /obj/manhattan/vehicle/proc/show_occupants_contained(mob/user)
 	var/has_passengers = 0
@@ -95,6 +95,10 @@
 /obj/manhattan/vehicle/proc/check_entering(mob/user, position, puller)
 	var/mob/msg_recipient = puller || user
 
+	if(bounds_dist(src, msg_recipient) < 48)
+		to_chat(msg_recipient, SPAN_WARNING("\The [src] is too far."))
+		return FALSE
+
 	if(doors_locked())
 		to_chat(msg_recipient, SPAN_WARNING("\The [src] is locked."))
 		return FALSE
@@ -133,7 +137,7 @@
 	playsound(src, 'sound/vehicles/modern/vehicle_enter.ogg', 150, 1, 5)
 
 	user.mod_keys_override = TRUE
-	
+
 	if(position == VP_DRIVER)
 		user.vehicle_ui = new(user)
 		user.vehicle_ui.vehicle = src
@@ -158,7 +162,7 @@
 		return
 	if(!ishuman(user) || !Adjacent(user) || user.incapacitated())
 		return
-	
+
 	if(ismob(C))
 		var/player_pos_choice
 		var/list/positions = get_all_positions()
@@ -166,10 +170,10 @@
 			player_pos_choice = positions[1]
 		else
 			player_pos_choice = input(user, "Which position to put?", "Vehicle entry position select", "Cancel") in positions + list("Cancel")
-	
+
 		if(player_pos_choice == "Cancel")
 			return
-	
+
 		if(C == user)
 			enter_as_position(C, player_pos_choice)
 		else
