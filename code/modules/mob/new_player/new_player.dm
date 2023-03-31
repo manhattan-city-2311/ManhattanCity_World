@@ -324,6 +324,7 @@
 
 	var/mob/living/character = create_character(T)	//creates the human and transfers vars and mind
 	character = SSjobs.EquipRank(character, rank, 1)
+	. = character
 
 	UpdateFactionList(character)
 	log_game("JOINED [key_name(character)] as \"[rank]\"")
@@ -366,10 +367,7 @@
 	if(antag)
 		antag.add_antagonist(character.mind,1,0,1)
 
-
 	qdel(src)
-
-	return character
 
 /mob/new_player/proc/AnnounceCyborg(var/mob/living/character, var/rank, var/join_message)
 	if (ticker.current_state == GAME_STATE_PLAYING)

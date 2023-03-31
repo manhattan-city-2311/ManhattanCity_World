@@ -17,7 +17,6 @@
 	var/eject = null
 
 	var/debug = 0
-	var/requires_power = 1
 	var/always_unpowered = 0	//this gets overriden to 1 for space in area/New()
 
 	var/power_equip = 1
@@ -66,10 +65,9 @@
 	uid = ++global_uid
 	all_areas += src
 
-	if(!requires_power)
-		power_light = 0
-		power_equip = 0
-		power_environ = 0
+	power_light = 0
+	power_equip = 0
+	power_environ = 0
 
 	..()
 
@@ -78,10 +76,9 @@
 	return INITIALIZE_HINT_LATELOAD // Areas tradiationally are initialized AFTER other atoms.
 
 /area/LateInitialize()
-	if(!requires_power || !apc)
-		power_light = 0
-		power_equip = 0
-		power_environ = 0
+	power_light = 0
+	power_equip = 0
+	power_environ = 0
 	power_change()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -196,7 +193,7 @@
 	return
 
 /area/proc/updateicon()
-	if ((fire || eject || party) && (!requires_power||power_environ) && !istype(src, /area/space))//If it doesn't require power, can still activate this proc.
+	if ((fire || eject || party) && !istype(src, /area/space))//If it doesn't require power, can still activate this proc.
 		if(fire && !eject && !party)
 			icon_state = "blue"
 		/*else if(atmosalm && !fire && !eject && !party)
@@ -218,21 +215,8 @@
 #define ENVIRON 3
 */
 
-/area/proc/powered(var/chan)		// return true if the area has power to given channel
-
-	if(!requires_power)
-		return 1
-	if(always_unpowered)
-		return 0
-	switch(chan)
-		if(EQUIP)
-			return power_equip
-		if(LIGHT)
-			return power_light
-		if(ENVIRON)
-			return power_environ
-
-	return 0
+/area/proc/powered(chan)		// return true if the area has power to given channel
+	return TRUE
 
 // called when power status changes
 /area/proc/power_change()

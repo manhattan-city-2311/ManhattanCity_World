@@ -106,7 +106,6 @@
 	music = list('sound/ambience/signal.ogg')
 
 /area/ship/scrap/shuttle/
-	requires_power = 0
 	luminosity = 1
 	dynamic_lighting = 0
 

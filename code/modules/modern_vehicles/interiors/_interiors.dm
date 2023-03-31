@@ -6,11 +6,11 @@
 	var/size_x = 0
 	var/size_y = 0
 
-	var/list/mob/living/carbon/human/occupants = null
+	var/list/mob/living/carbon/human/occupants
+	var/obj/effect/vehicle_entrance/entrance
+	var/obj/structure/vehicledoor/door
+	var/obj/manhattan/vehicle/large/vehicle
 	var/turf/middle_turf
-	var/obj/effect/vehicle_entrance/entrance = null
-	var/obj/structure/vehicledoor/door = null
-	var/obj/manhattan/vehicle/large/vehicle = null
 	var/area/area
 
 	var/global/list/datum/map_template/templates_cache = list()
@@ -30,7 +30,6 @@
 		break
 
 	if(is_failed)
-		message_admins("Failed to load [type]")
 		CRASH("Failed to load [type]")
 		
 	id = gid++
@@ -132,8 +131,14 @@
 	var/id
 	var/datum/vehicle_interior/interior = null
 
+// ;(
+/obj/structure/vehicledoor/Move()
+	return
+
+/obj/structure/vehicledoor/forceMove(atom/dest)
+	return
+
 /obj/structure/vehicledoor/attack_hand(mob/user)
-	. = ..()
 	if(interior.vehicle.loc == null)
 		to_chat(user, "\The [src] is not opening.")
 		return

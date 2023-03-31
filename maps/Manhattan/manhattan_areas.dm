@@ -33,18 +33,12 @@
 	power_equip = 1
 	power_light = 1
 	power_environ = 1
-	requires_power = 0
 	flags = RAD_SHIELDED
 	base_turf = /turf/simulated/floor/outdoors/dirt
 
 /area/planets
 	name = "\improper Planet"
 	icon_state = "planet"
-//	has_gravity = 1
-//	power_equip = 1
-//	power_light = 1
-//	power_environ = 1
-//	requires_power = 0
 
 /area/planets/Manhattan
 	name = "\improper New-Manhattan"
@@ -877,6 +871,7 @@
 /area/planets/Manhattan/indoor/north/transit/secpost2
 
 /area/planets/Manhattan/indoor/north/transit/under
+	name = "North Transit Station"
 	icon_state = "north_m2"
 	base_turf = /turf/simulated/floor/plating
 
@@ -1877,9 +1872,7 @@
 
 /area/planets/Manhattan/indoor/mining_lift
 	name = "mine shaft lift"
-	requires_power = FALSE
 
 /area/mine
 	name = "mine"
-	requires_power = FALSE
 	should_objects_be_saved = FALSE

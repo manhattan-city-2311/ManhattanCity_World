@@ -1,35 +1,27 @@
-"a" = (/turf/simulated/wall/r_wall,/area/interior/hyperloop)
-"b" = (/turf/simulated/floor/tiled/white,/area/interior/hyperloop)
-"c" = (/obj/machinery/light/colored/blue{dir = 1},/turf/simulated/floor/tiled/white,/area/interior/hyperloop)
-"d" = (/obj/structure/closet/secure_closet/freezer/fridge,/turf/simulated/floor/tiled/white,/area/interior/hyperloop)
-"e" = (/obj/machinery/microwave,/turf/simulated/floor/tiled/white,/area/interior/hyperloop)
-"f" = (/obj/structure/table/standard,/turf/simulated/floor/tiled/white,/area/interior/hyperloop)
-"g" = (/obj/structure/curtain/black,/turf/simulated/floor/tiled/white,/area/interior/hyperloop)
-"h" = (/obj/structure/bed/chair/shuttle,/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
+"a" = (/turf/simulated/wall/silver,/area/interior/hyperloop)
+"b" = (/obj/machinery/door/airlock{locked = 1},/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
+"c" = (/obj/structure/neon_spline/lightblue{icon_state = "spline_fancy"; dir = 1},/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
+"d" = (/obj/structure/vehicledoor,/turf/simulated/wall/silver,/area/interior/hyperloop)
+"e" = (/obj/machinery/arrival_status_display{pixel_x = 16; pixel_y = 32; plane = -14},/obj/structure/neon_spline/lightblue{icon_state = "spline_fancy"; dir = 1},/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
+"f" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/machinery/light/colored/blue{dir = 8},/obj/effect/floor_decal/corner_techfloor_gray/diagonal,/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
+"g" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_gray/diagonal,/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
+"h" = (/obj/effect/floor_decal/corner_techfloor_gray/diagonal,/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
 "i" = (/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
-"j" = (/obj/structure/bed/chair/shuttle,/obj/machinery/light/colored/purple{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
-"k" = (/obj/structure/bed/chair/shuttle,/obj/machinery/light/colored/purple{dir = 4},/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
-"l" = (/obj/effect/vehicle_entrance,/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
-"m" = (/obj/structure/vehicledoor,/turf/simulated/wall/r_wall,/area/interior/hyperloop)
-"n" = (/obj/structure/bed/chair/shuttle{dir = 4},/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
-"o" = (/obj/structure/bed/chair/shuttle{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
-"p" = (/obj/machinery/door/airlock{name = "Toilet room"},/turf/simulated/floor/tiled/white,/area/interior/hyperloop)
+"j" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/machinery/light/colored/blue{dir = 4},/obj/effect/floor_decal/corner_techfloor_gray/diagonal,/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
+"k" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 4},/obj/effect/floor_decal/corner_techfloor_gray/diagonal,/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
+"l" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 8},/obj/effect/floor_decal/corner_techfloor_gray/diagonal,/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
+"m" = (/obj/machinery/light/colored/blue{dir = 4},/obj/effect/floor_decal/corner_techfloor_gray/diagonal,/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
+"n" = (/obj/structure/neon_spline/lightblue{icon_state = "spline_fancy"; dir = 1},/obj/effect/vehicle_entrance,/turf/simulated/floor/tiled/techmaint,/area/interior/hyperloop)
 
 (1,1,1) = {"
+abaaaaa
+aceccnd
+afgihma
+ahhihha
+aggigga
+ahhihha
+afgigja
+akiiila
 aaaaaaa
-abbcbda
-aefbbfa
-aaagaaa
-ahhihha
-ahhihha
-ahhihha
-ajhihka
-ahhihha
-aiiiilm
-aniiioa
-aaaiaaa
-acaiaca
-abpipba
-abaiaba
 aaaaaaa
 "}

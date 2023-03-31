@@ -19,7 +19,6 @@
 
 /area/submap/cave/crashed_ufo
 	name = "Crashed Alien Vessel"
-	requires_power = FALSE
 
 /area/submap/cave/crystal1
 	name = "Crystaline Cave"

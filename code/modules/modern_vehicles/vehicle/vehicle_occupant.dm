@@ -95,7 +95,7 @@
 /obj/manhattan/vehicle/proc/check_entering(mob/user, position, puller)
 	var/mob/msg_recipient = puller || user
 
-	if(bounds_dist(src, msg_recipient) < 48)
+	if(bounds_dist(src, msg_recipient) > 48)
 		to_chat(msg_recipient, SPAN_WARNING("\The [src] is too far."))
 		return FALSE
 
