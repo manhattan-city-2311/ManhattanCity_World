@@ -266,6 +266,30 @@
 /area/planets/Manhattan/indoor/north/cray/under/archives
 /area/planets/Manhattan/indoor/north/cray/under/backrooms
 	name = "\improper CRAY Ind. Portal Room(North-Under)"
+/area/planets/Manhattan/indoor/north/cray/under/hallway
+	name = "\improper CRAY Ind. main hallway"
+/area/planets/Manhattan/indoor/north/cray/under/medicaloffice
+	name = "\improper CRAY Ind. medical office"
+/area/planets/Manhattan/indoor/north/cray/under/personalroom
+	name = "\improper CRAY Ind. smoking"
+/area/planets/Manhattan/indoor/north/cray/under/toiletblyat
+	name = "\improper CRAY Ind. toilrt undermom"
+/area/planets/Manhattan/indoor/north/cray/under/checkpointa
+	name = "\improper CRAY Ind. checkpoint"
+/area/planets/Manhattan/indoor/north/cray/under/checkpointb
+	name = "\improper CRAY Ind. checkpoint b"
+/area/planets/Manhattan/indoor/north/cray/under/checkpointc
+	name = "\improper CRAY Ind. checkpoint c"
+/area/planets/Manhattan/indoor/north/cray/under/checkpointd
+	name = "\improper CRAY Ind. checkpoint d"
+/area/planets/Manhattan/indoor/north/cray/under/checkpointe
+	name = "\improper CRAY Ind. checkpoint e"
+/area/planets/Manhattan/indoor/north/cray/under/gate
+	name = "\improper CRAY Ind. gate"
+/area/planets/Manhattan/indoor/north/cray/under/jail
+	name = "\improper CRAY Ind. jail"
+/area/planets/Manhattan/indoor/north/cray/under/armoryu
+	name = "\improper CRAY Ind. armory underground"
 /area/planets/Manhattan/indoor/north/cray/under/backrooms/sec
 	name = "\improper CRAY Ind. Portal Checkpoint(North-Under)"
 /area/planets/Manhattan/indoor/north/cray/under/backrooms/watching

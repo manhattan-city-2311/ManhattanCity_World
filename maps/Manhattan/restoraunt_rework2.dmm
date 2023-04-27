@@ -1,0 +1,2736 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ap" = (
+/obj/structure/bed/chair/sofa/black/corner,
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 5
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"at" = (
+/obj/item/device/mic_stand{
+	dir = 1
+	},
+/obj/structure/neon_spline/white,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"az" = (
+/obj/structure/closet/crate/secure/bin,
+/turf/simulated/floor/tiled/white,
+/area/space)
+"aL" = (
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"bm" = (
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 5
+	},
+/obj/machinery/light/floor,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"bJ" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"bM" = (
+/obj/machinery/photocopier,
+/obj/structure/neon_spline/yellow{
+	dir = 6
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"bS" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 6
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"bT" = (
+/obj/structure/window/reinforced/tinted{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/neon_spline/green{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/obj/structure/flora/ausbushes/palebush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"ce" = (
+/obj/structure/bed/chair/comfy/beige,
+/obj/structure/window/reinforced/tinted{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"cp" = (
+/obj/structure/window/reinforced/tinted{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/neon_spline/green{
+	dir = 8
+	},
+/obj/structure/flora/ausbushes,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"cA" = (
+/obj/structure/table/marble,
+/obj/structure/sink/modern{
+	dir = 1;
+	icon_state = "sink_modern"
+	},
+/obj/structure/mirror/wide{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
+"cH" = (
+/turf/simulated/floor/wood/maple,
+/area/space)
+"dv" = (
+/obj/structure/coatrack{
+	pixel_x = 9;
+	pixel_y = 17
+	},
+/obj/structure/reagent_dispensers/water_cooler/full{
+	pixel_x = -8;
+	pixel_y = 6;
+	plane = -13
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 9
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"dY" = (
+/obj/structure/window/reinforced/tinted{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"eo" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/turf/simulated/open,
+/area/space)
+"ey" = (
+/obj/structure/flora/pottedplant/redflower,
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
+"eB" = (
+/obj/structure/neon_spline/yellow/corner{
+	dir = 4
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"eT" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/window/basic,
+/obj/structure/neon_spline/green{
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"eZ" = (
+/obj/structure/safe,
+/obj/structure/neon_spline/yellow{
+	dir = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"fo" = (
+/obj/structure/neon_spline/green{
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"fs" = (
+/obj/structure/neon_spline/yellow/corner{
+	dir = 8
+	},
+/obj/structure/neon_spline/yellow/corner{
+	dir = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"ft" = (
+/turf/simulated/open,
+/area/space)
+"fw" = (
+/obj/structure/table/woodentable/maple,
+/obj/item/weapon/folder/blue,
+/obj/structure/neon_spline/yellow{
+	dir = 5
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"fx" = (
+/obj/structure/flora/pottedplant/pinksakura,
+/obj/structure/neon_spline/yellow{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"fz" = (
+/obj/structure/window/basic,
+/obj/structure/neon_spline/green{
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"fH" = (
+/obj/structure/closet/crate/secure/bin{
+	pixel_y = 7;
+	pixel_x = 3
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 10
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"fO" = (
+/obj/structure/neon_spline/yellow/corner{
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"fP" = (
+/obj/structure/neon_spline/yellow{
+	dir = 6
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"fV" = (
+/obj/effect/wallframe_spawn/reinforced/electric,
+/obj/structure/curtain/open/color/burgandy{
+	icon_state = "closed";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"fX" = (
+/obj/loudspeaker,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 9
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"gi" = (
+/obj/structure/railing,
+/turf/simulated/open,
+/area/space)
+"gj" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 9
+	},
+/obj/structure/flora/pottedplant/greensakura,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"gs" = (
+/obj/effect/floor_decal/corner/yellow/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/yellow/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"gt" = (
+/obj/structure/bed/chair/sofa/black,
+/obj/structure/plasma{
+	pixel_x = -28;
+	pixel_y = 32
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"gy" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/obj/structure/neon_spline/yellow/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/yellow/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"gV" = (
+/turf/simulated/floor/tiled/white,
+/area/space)
+"hb" = (
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/yellow{
+	dir = 8
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"hp" = (
+/obj/structure/bed/chair/comfy/beige,
+/obj/structure/neon_spline/white/corner,
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"hB" = (
+/obj/structure/neon_spline/yellow{
+	dir = 5
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"hR" = (
+/obj/structure/window/reinforced/tinted,
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/obj/structure/flora/ausbushes,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"hW" = (
+/obj/structure/neon_spline/white,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"iA" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted,
+/turf/simulated/open,
+/area/space)
+"iD" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/yellow/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"iE" = (
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"iP" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/space)
+"iS" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"jk" = (
+/obj/structure/device/piano/royal,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"jr" = (
+/obj/structure/bed/chair/comfy/beige,
+/obj/structure/window/reinforced/tinted{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 5
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"jK" = (
+/obj/structure/table/woodentable/ebony,
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"jP" = (
+/obj/structure/neon_spline/yellow,
+/obj/effect/floor_decal/corner/yellow/full,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"kn" = (
+/obj/structure/toilet{
+	dir = 1;
+	icon_state = "toilet00"
+	},
+/obj/machinery/light/colored/white,
+/turf/simulated/floor/tiled/white,
+/area/space)
+"kF" = (
+/obj/structure/neon_spline/yellow,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"kY" = (
+/obj/structure/neon_spline/yellow,
+/obj/effect/floor_decal/corner/yellow/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"ll" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"lD" = (
+/obj/structure/window/basic{
+	dir = 1;
+	icon_state = "window"
+	},
+/obj/structure/neon_spline/green,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"lF" = (
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/structure/filingcabinet,
+/obj/structure/filingcabinet{
+	pixel_x = 10
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 5
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"lY" = (
+/obj/structure/neon_spline/yellow/corner{
+	dir = 1
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"lZ" = (
+/obj/structure/neon_spline/green{
+	icon_state = "spline_fancy";
+	dir = 4
+	},
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"mo" = (
+/obj/structure/table/woodentable/ebony,
+/turf/simulated/floor/wood/maple,
+/area/space)
+"mD" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"mM" = (
+/obj/structure/neon_spline/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"ni" = (
+/obj/structure/flora/pottedplant/crystal,
+/obj/structure/neon_spline/yellow{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"no" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/space)
+"nB" = (
+/obj/structure/table/woodentable/maple,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth{
+	pixel_y = 6;
+	pixel_x = 15
+	},
+/obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla{
+	pixel_y = 7;
+	pixel_x = 9
+	},
+/obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey{
+	pixel_y = 7
+	},
+/obj/item/weapon/reagent_containers/food/drinks/bottle/serpentspirit{
+	pixel_y = 6;
+	pixel_x = -7
+	},
+/obj/structure/neon_spline/yellow,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"nD" = (
+/obj/structure/bed/chair/sofa/black/corner{
+	dir = 1
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 9
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"oc" = (
+/obj/structure/window/basic{
+	dir = 1;
+	icon_state = "window"
+	},
+/obj/structure/neon_spline/green,
+/obj/structure/flora/ausbushes/pointybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"of" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 10
+	},
+/obj/structure/flora/pottedplant/redflower,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"on" = (
+/obj/structure/bed/chair/sofa/black/right{
+	dir = 4;
+	icon_state = "sofaend_right"
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"oI" = (
+/obj/structure/neon_spline/white/corner,
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"pK" = (
+/obj/structure/sculpting_block/sculpted/bust{
+	pixel_y = 10
+	},
+/obj/structure/table/woodentable/maple,
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/obj/structure/window/basic,
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/neon_spline/yellow/three_quarters,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"pW" = (
+/obj/structure/neon_spline/yellow{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"qd" = (
+/obj/structure/neon_spline/yellow{
+	dir = 9
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"rb" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/obj/structure/neon_spline/green{
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/pointybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"rj" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/turf/simulated/open,
+/area/space)
+"rq" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow,
+/obj/structure/neon_spline/yellow/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"rK" = (
+/obj/structure/table/woodentable/ebony,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"sf" = (
+/obj/structure/window/basic{
+	dir = 1;
+	icon_state = "window"
+	},
+/obj/structure/neon_spline/green,
+/obj/structure/flora/ausbushes/leafybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"sU" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 8
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"sV" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
+/obj/structure/neon_spline/yellow,
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"sY" = (
+/obj/structure/table/woodentable/maple,
+/obj/machinery/chemical_dispenser/bar_coffee/full{
+	dir = 4;
+	icon_state = "coffee_dispenser";
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 10
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"ta" = (
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/yellow{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"tc" = (
+/obj/structure/window/basic{
+	dir = 1;
+	icon_state = "window"
+	},
+/obj/structure/neon_spline/green,
+/obj/structure/flora/ausbushes/reedbush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"th" = (
+/obj/structure/bed/chair/comfy/beige,
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"tm" = (
+/obj/structure/bed/chair/comfy/beige,
+/obj/structure/neon_spline/yellow{
+	dir = 8
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"tq" = (
+/obj/structure/window/reinforced/tinted,
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/neon_spline/green{
+	dir = 8
+	},
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"ty" = (
+/obj/structure/bed/chair/comfy/beige,
+/obj/structure/window/reinforced/tinted{
+	icon_state = "window";
+	dir = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"tz" = (
+/obj/structure/curtain/open/color/burgandy,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"tB" = (
+/obj/machinery/door/unpowered/manhattan/wood/north,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"tD" = (
+/obj/effect/wallframe_spawn/reinforced/electric,
+/obj/structure/curtain/open/color/burgandy,
+/turf/simulated/floor/plating,
+/area/space)
+"tK" = (
+/obj/structure/neon_spline/yellow,
+/obj/effect/floor_decal/corner/yellow/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"tZ" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/turf/simulated/open,
+/area/space)
+"ua" = (
+/obj/structure/bed/chair/comfy/beige,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"ui" = (
+/obj/structure/flora/ausbushes/leafybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"uv" = (
+/obj/structure/table/woodentable/maple,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/wine{
+	pixel_y = 7;
+	pixel_x = 7
+	},
+/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey{
+	pixel_y = 6
+	},
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora{
+	pixel_y = 4;
+	pixel_x = -9
+	},
+/obj/structure/neon_spline/yellow,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"uB" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/yellow/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"uN" = (
+/obj/structure/table/marble,
+/obj/structure/sink/modern{
+	dir = 1;
+	icon_state = "sink_modern"
+	},
+/obj/structure/mirror/wide{
+	pixel_y = -24
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
+"uP" = (
+/obj/structure/flora/pottedplant/redflower,
+/obj/structure/neon_spline/yellow/cee{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"uU" = (
+/obj/structure/flora/pottedplant/orientaltree,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"vd" = (
+/obj/structure/flora/pottedplant/orientaltree,
+/obj/structure/neon_spline/yellow{
+	dir = 10
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"vk" = (
+/obj/structure/flora/pottedplant/purple,
+/obj/structure/neon_spline/yellow{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"vm" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/obj/structure/neon_spline/yellow/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"vB" = (
+/obj/structure/flora/pottedplant/purple,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"vD" = (
+/obj/effect/floor_decal/corner/yellow/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"vP" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/simulated/open,
+/area/space)
+"wj" = (
+/obj/structure/window/basic,
+/obj/structure/neon_spline/green{
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/reedbush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"ww" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/space)
+"xc" = (
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 10
+	},
+/obj/machinery/light/floor,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"xj" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 8
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"xR" = (
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/yellow,
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"yb" = (
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"yj" = (
+/obj/structure/bed/chair/sofa/black/left{
+	dir = 8;
+	icon_state = "sofaend_left"
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"zk" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow,
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"zC" = (
+/obj/structure/neon_spline/yellow,
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"zD" = (
+/obj/structure/window/basic{
+	dir = 1;
+	icon_state = "window"
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/obj/structure/neon_spline/green,
+/obj/structure/flora/ausbushes/pointybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"zF" = (
+/obj/structure/neon_spline/yellow,
+/obj/effect/floor_decal/corner/yellow/full{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"zK" = (
+/obj/effect/floor_decal/corner/yellow/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"zW" = (
+/obj/item/weapon/stool/bar/wooden/padded,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Ae" = (
+/obj/structure/window/reinforced/tinted,
+/obj/structure/neon_spline/green{
+	icon_state = "spline_fancy";
+	dir = 4
+	},
+/obj/structure/flora/ausbushes/pointybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"AV" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow/bordercee,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"Br" = (
+/obj/structure/window/reinforced/tinted,
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Bs" = (
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/yellow{
+	dir = 8
+	},
+/obj/machinery/light/floor,
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"Bw" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/obj/structure/neon_spline/yellow,
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"BP" = (
+/obj/structure/table/woodentable/maple,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/sake{
+	pixel_y = 6;
+	pixel_x = 16
+	},
+/obj/item/weapon/reagent_containers/food/drinks/bottle/rum{
+	pixel_y = 5;
+	pixel_x = 7
+	},
+/obj/item/weapon/reagent_containers/food/drinks/bottle/redeemersbrew{
+	pixel_y = 5
+	},
+/obj/item/weapon/reagent_containers/food/drinks/bottle/pwine{
+	pixel_y = 7;
+	pixel_x = -10
+	},
+/obj/structure/neon_spline/yellow,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Ca" = (
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
+"Cf" = (
+/obj/structure/neon_spline/yellow/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"Cv" = (
+/obj/structure/neon_spline/yellow/corner{
+	dir = 4
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"CI" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 1
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"CL" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/neon_spline/green{
+	dir = 8
+	},
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Dn" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow,
+/obj/structure/neon_spline/yellow/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"Ds" = (
+/obj/structure/window/reinforced/tinted{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/leafybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"DM" = (
+/obj/effect/floor_decal/corner/yellow/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/yellow/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"DS" = (
+/obj/structure/window/basic{
+	dir = 1;
+	icon_state = "window"
+	},
+/obj/structure/neon_spline/green,
+/obj/structure/flora/ausbushes,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"DV" = (
+/obj/structure/table/home_wooden/low,
+/obj/item/weapon/material/ashtray/bronze{
+	pixel_x = 9;
+	pixel_y = 6
+	},
+/obj/item/weapon/storage/box/glasses,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Eo" = (
+/obj/machinery/door/unpowered/manhattan/steel/east,
+/turf/simulated/floor/tiled/white,
+/area/space)
+"Ep" = (
+/obj/structure/neon_spline/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Ey" = (
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/yellow{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"EA" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
+/obj/structure/neon_spline/yellow/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"EI" = (
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
+"EY" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/space)
+"Fo" = (
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 6
+	},
+/obj/machinery/light/floor,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"FX" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/obj/structure/window/basic,
+/obj/structure/neon_spline/green{
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/palebush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Gl" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"Gm" = (
+/obj/structure/window/reinforced/tinted{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Gq" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"Gt" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 4
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"GC" = (
+/obj/structure/window/basic,
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Hc" = (
+/obj/structure/neon_spline/yellow{
+	dir = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"HI" = (
+/obj/structure/neon_spline/yellow/corner{
+	dir = 8
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"HO" = (
+/obj/item/device/guitar{
+	pixel_x = 17
+	},
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"HX" = (
+/turf/simulated/wall/iron/silver_paint,
+/area/space)
+"Ia" = (
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/yellow{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"Ir" = (
+/obj/structure/flora/pottedplant/orientaltree,
+/obj/structure/neon_spline/yellow/cee{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"IE" = (
+/obj/structure/neon_spline/yellow{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"IW" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/window/basic,
+/obj/structure/flora/ausbushes/pointybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Jd" = (
+/obj/structure/neon_spline/yellow/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"Jf" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/space)
+"Ji" = (
+/obj/structure/window/basic{
+	dir = 1;
+	icon_state = "window"
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/obj/structure/neon_spline/green,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Jk" = (
+/obj/structure/table/woodentable/maple,
+/obj/machinery/photocopier/faxmachine,
+/obj/structure/neon_spline/yellow{
+	dir = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Jr" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 10
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Jw" = (
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"JG" = (
+/obj/machinery/papershredder{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/obj/structure/neon_spline/yellow,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Kp" = (
+/obj/structure/window/basic{
+	dir = 1;
+	icon_state = "window"
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/neon_spline/green,
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"KF" = (
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 9
+	},
+/obj/machinery/light/floor,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"KI" = (
+/turf/simulated/floor/stairs{
+	dir = 4;
+	icon_state = "ramptop"
+	},
+/area/space)
+"KR" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"Lj" = (
+/obj/structure/neon_spline/yellow{
+	dir = 10
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"Lw" = (
+/obj/structure/neon_spline/yellow{
+	dir = 8
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"LH" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/space)
+"Me" = (
+/obj/structure/window/basic,
+/obj/structure/neon_spline/green{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Mp" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/obj/structure/neon_spline/yellow,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"MF" = (
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"MR" = (
+/turf/simulated/floor/stairs{
+	dir = 8;
+	icon_state = "ramptop"
+	},
+/area/space)
+"MY" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 5
+	},
+/obj/structure/flora/pottedplant/smalltree,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Nd" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 1
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"Nk" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/window/basic{
+	dir = 1;
+	icon_state = "window"
+	},
+/obj/structure/neon_spline/green,
+/obj/structure/flora/ausbushes/reedbush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Nw" = (
+/obj/structure/bed/chair/comfy/beige,
+/obj/structure/window/reinforced/tinted{
+	icon_state = "window";
+	dir = 1
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"Ol" = (
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 8
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"OD" = (
+/obj/structure/flora/pottedplant/unusual,
+/obj/structure/neon_spline/yellow{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"PO" = (
+/obj/structure/neon_spline/yellow,
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"Qu" = (
+/obj/structure/neon_spline/yellow{
+	dir = 1
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"Qv" = (
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"RA" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"RJ" = (
+/obj/structure/window/reinforced/tinted{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/pointybush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Sk" = (
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
+"Td" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/obj/structure/neon_spline/white/corner,
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"TG" = (
+/obj/structure/neon_spline/yellow/corner,
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"TQ" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 9
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"TU" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"UV" = (
+/obj/structure/bed/chair/comfy/beige,
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 8
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"Vd" = (
+/obj/structure/bed/chair/bosschair/black{
+	icon_state = "capchair";
+	dir = 4
+	},
+/obj/structure/neon_spline/white{
+	dir = 6
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Vi" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 6
+	},
+/obj/structure/flora/pottedplant/largebush,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"VS" = (
+/obj/structure/railing,
+/obj/structure/window/reinforced/tinted,
+/turf/simulated/open,
+/area/space)
+"Wu" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 5
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"WQ" = (
+/obj/structure/neon_spline/green{
+	icon_state = "spline_fancy";
+	dir = 5
+	},
+/obj/structure/flora/ausbushes/palebush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Xa" = (
+/obj/structure/table/woodentable/maple,
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen/fountain,
+/obj/structure/neon_spline/yellow{
+	dir = 4
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 4
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Xb" = (
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 1
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"Xm" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 10
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"Xo" = (
+/obj/structure/bed/chair/comfy/beige,
+/obj/structure/window/reinforced/tinted{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 8
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"Xs" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/obj/structure/railing,
+/turf/simulated/open,
+/area/space)
+"XB" = (
+/obj/structure/bed/chair/comfy/beige,
+/obj/structure/window/reinforced/tinted{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 1
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"XC" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"XH" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/obj/structure/neon_spline/yellow/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"XL" = (
+/obj/loudspeaker,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 5
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"XR" = (
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 4
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"XX" = (
+/obj/machinery/door/unpowered/manhattan/steel/north,
+/turf/simulated/floor/tiled/white,
+/area/space)
+"Yh" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/tiled/white,
+/area/space)
+"Yq" = (
+/obj/structure/table/woodentable/maple,
+/obj/machinery/modular_computer/laptop{
+	icon_state = "laptop-open";
+	dir = 8
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Ys" = (
+/obj/structure/neon_spline/yellow,
+/obj/effect/floor_decal/corner/yellow/bordercee{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"Yz" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 6
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Zv" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 4
+	},
+/turf/simulated/floor/wood/bamboo,
+/area/space)
+"Zw" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/space)
+"ZF" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/neon_spline/yellow{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow/full{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"ZZ" = (
+/obj/structure/window/basic{
+	dir = 1;
+	icon_state = "window"
+	},
+/obj/structure/neon_spline/green,
+/obj/structure/flora/ausbushes/palebush,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+
+(1,1,1) = {"
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+eo
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+"}
+(2,1,1) = {"
+ft
+ft
+ft
+ft
+ft
+ft
+tZ
+Ir
+HX
+HX
+HX
+HX
+HX
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+HX
+HX
+HX
+HX
+HX
+HX
+HX
+HX
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+"}
+(3,1,1) = {"
+ft
+ft
+ft
+ft
+ft
+tZ
+ta
+rq
+HX
+MF
+cH
+ft
+VS
+ua
+mo
+rK
+Gl
+ty
+mo
+rK
+Gl
+ty
+mo
+rK
+Gl
+cp
+Me
+vB
+cH
+MF
+HX
+dv
+fH
+HX
+ft
+ft
+ft
+ft
+ft
+ft
+"}
+(4,1,1) = {"
+ft
+ft
+ft
+ft
+Xs
+ni
+EA
+PO
+HX
+cH
+qd
+no
+iA
+tm
+hb
+Bs
+xj
+Xo
+hb
+Bs
+xj
+Xo
+hb
+Bs
+Xm
+Ds
+GC
+qd
+Lj
+cH
+tB
+Hc
+fO
+sY
+HX
+ft
+ft
+ft
+ft
+ft
+"}
+(5,1,1) = {"
+ft
+ft
+ft
+gi
+ta
+ll
+aL
+PO
+HX
+MF
+Qu
+CL
+tq
+th
+jK
+jK
+Gq
+Nw
+jK
+jK
+Gq
+Nw
+jK
+jK
+zk
+Gm
+IW
+Qu
+zC
+MF
+HX
+lF
+Ep
+fs
+vd
+HX
+ft
+ft
+ft
+ft
+"}
+(6,1,1) = {"
+ft
+ft
+ft
+Xs
+iS
+aL
+aL
+Bw
+HX
+cH
+Qu
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+HI
+Lw
+Lw
+Cv
+zC
+cH
+HX
+nD
+on
+eB
+BP
+tD
+ft
+ft
+ft
+ft
+"}
+(7,1,1) = {"
+ft
+ft
+gi
+OD
+Cf
+aL
+aL
+xR
+HX
+MF
+Qu
+yb
+yb
+oI
+Jw
+Jw
+Jw
+Jw
+Jw
+Jw
+Jw
+Jw
+Jw
+Jw
+Jw
+Xb
+yb
+yb
+zC
+uU
+HX
+gt
+DV
+MF
+nB
+tD
+ft
+ft
+ft
+ft
+"}
+(8,1,1) = {"
+ft
+ft
+gi
+IE
+Jd
+aL
+aL
+sV
+HX
+cH
+Qu
+yb
+Td
+Vi
+EY
+LH
+LH
+LH
+LH
+LH
+LH
+LH
+LH
+LH
+vP
+MY
+CI
+yb
+zC
+zD
+HX
+ap
+yj
+MF
+uv
+tD
+ft
+ft
+ft
+ft
+"}
+(9,1,1) = {"
+ft
+ft
+tZ
+MR
+iD
+XH
+vD
+kY
+HX
+MF
+Qu
+hp
+Fo
+EY
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+vP
+bm
+Nd
+zC
+lD
+HX
+pK
+iE
+MF
+kF
+tD
+ft
+ft
+ft
+ft
+"}
+(10,1,1) = {"
+ft
+gi
+fX
+XC
+Jr
+AV
+DM
+jP
+HX
+cH
+Qu
+Ji
+iP
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+vP
+FX
+zC
+sf
+HX
+eZ
+TQ
+Jr
+Mp
+tD
+ft
+ft
+ft
+ft
+"}
+(11,1,1) = {"
+ft
+gi
+jk
+zW
+hW
+AV
+DM
+zF
+tz
+MF
+Qu
+ZZ
+Zw
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+gi
+fz
+zC
+oc
+HX
+Jk
+Wu
+Vd
+JG
+tD
+ft
+ft
+ft
+ft
+"}
+(12,1,1) = {"
+ft
+gi
+HO
+MF
+at
+RA
+DM
+Ys
+tz
+MF
+Qu
+lD
+Zw
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+gi
+wj
+zC
+tc
+HX
+fw
+Xa
+Yq
+bM
+tD
+ft
+ft
+ft
+ft
+"}
+(13,1,1) = {"
+ft
+gi
+XL
+Jw
+Yz
+ZF
+gs
+Ys
+HX
+cH
+Qu
+Kp
+rj
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+Xs
+eT
+zC
+lD
+HX
+HX
+HX
+HX
+HX
+HX
+ft
+ft
+ft
+ft
+"}
+(14,1,1) = {"
+ft
+ft
+ww
+KI
+uB
+gy
+zK
+tK
+HX
+MF
+Qu
+UV
+xc
+Jf
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+Xs
+KF
+Gt
+zC
+DS
+HX
+az
+Ca
+XX
+kn
+HX
+ft
+ft
+ft
+ft
+"}
+(15,1,1) = {"
+ft
+ft
+gi
+pW
+Cf
+aL
+aL
+Bw
+HX
+cH
+Qu
+yb
+sU
+of
+Jf
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+Xs
+gj
+Zv
+yb
+zC
+Nk
+HX
+gV
+gV
+HX
+HX
+HX
+ft
+ft
+ft
+ft
+"}
+(16,1,1) = {"
+ft
+ft
+gi
+fx
+Jd
+aL
+aL
+xR
+HX
+MF
+Qu
+yb
+yb
+Ol
+XC
+XC
+XC
+XC
+XC
+XC
+XC
+XC
+XC
+XC
+XC
+XR
+yb
+yb
+zC
+cH
+HX
+gV
+gV
+XX
+kn
+HX
+ft
+ft
+ft
+ft
+"}
+(17,1,1) = {"
+ft
+ft
+ft
+ww
+KR
+aL
+aL
+sV
+HX
+cH
+hB
+lY
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+yb
+TG
+mM
+fP
+MF
+HX
+Sk
+gV
+HX
+HX
+HX
+ft
+ft
+ft
+ft
+"}
+(18,1,1) = {"
+ft
+ft
+ft
+gi
+Ia
+TU
+aL
+PO
+HX
+rb
+bJ
+XB
+jK
+jK
+Gq
+Nw
+jK
+jK
+Gq
+Nw
+jK
+jK
+Gq
+Nw
+jK
+jK
+zk
+dY
+hR
+Eo
+HX
+gV
+gV
+gV
+uN
+HX
+ft
+ft
+ft
+ft
+"}
+(19,1,1) = {"
+ft
+ft
+ft
+ft
+ww
+vk
+vm
+PO
+HX
+fo
+ui
+jr
+Qv
+Ey
+mD
+ce
+Qv
+Ey
+mD
+ce
+Qv
+Ey
+mD
+ce
+Qv
+Ey
+bS
+RJ
+Br
+gV
+XX
+gV
+gV
+gV
+cA
+HX
+ft
+ft
+ft
+ft
+"}
+(20,1,1) = {"
+ft
+ft
+ft
+ft
+ft
+ww
+Ia
+Dn
+HX
+WQ
+lZ
+ty
+mo
+rK
+Gl
+ty
+mo
+rK
+Gl
+ty
+mo
+rK
+Gl
+ty
+mo
+rK
+Gl
+bT
+Ae
+ey
+HX
+Yh
+EI
+gV
+cA
+HX
+ft
+ft
+ft
+ft
+"}
+(21,1,1) = {"
+ft
+ft
+ft
+ft
+ft
+ft
+ww
+uP
+HX
+HX
+HX
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+fV
+HX
+HX
+HX
+HX
+HX
+HX
+HX
+HX
+HX
+ft
+ft
+ft
+ft
+"}
+(22,1,1) = {"
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+LH
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+"}
+(23,1,1) = {"
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+ft
+"}

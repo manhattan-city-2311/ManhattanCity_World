@@ -1,0 +1,136 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/unsimulated/shuttle/wall/dark,
+/area/interior)
+"c" = (
+/turf/simulated/floor/tiled/monotile_dark,
+/area/interior)
+"f" = (
+/obj/structure/bed/roller,
+/obj/structure/neon_spline/blue,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/interior)
+"h" = (
+/obj/structure/bed/chair/shuttle,
+/obj/structure/neon_spline/blue{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/interior)
+"l" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/structure/neon_spline/blue{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/interior)
+"o" = (
+/obj/structure/bed/chair/shuttle,
+/obj/structure/neon_spline/blue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/interior)
+"y" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/structure/neon_spline/blue{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/interior)
+"A" = (
+/obj/structure/neon_spline/blue{
+	dir = 4
+	},
+/obj/effect/vehicle_entrance,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/interior)
+"I" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/structure/neon_spline/blue{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/interior)
+"L" = (
+/obj/machinery/door/airlock{
+	locked = 1
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/interior)
+"M" = (
+/obj/structure/bed/chair/shuttle,
+/obj/structure/neon_spline/blue{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/interior)
+"V" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/structure/neon_spline/blue{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/interior)
+"Z" = (
+/obj/item/roller,
+/obj/structure/table/standard,
+/obj/structure/neon_spline/blue{
+	dir = 8
+	},
+/obj/item/weapon/reagent_containers/syringe/drugs,
+/obj/item/weapon/reagent_containers/syringe/morphine,
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/obj/item/clothing/mask/muzzle,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/interior)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+M
+Z
+I
+y
+a
+"}
+(3,1,1) = {"
+a
+o
+c
+c
+f
+a
+"}
+(4,1,1) = {"
+a
+h
+A
+l
+V
+a
+"}
+(5,1,1) = {"
+a
+a
+L
+a
+a
+a
+"}
