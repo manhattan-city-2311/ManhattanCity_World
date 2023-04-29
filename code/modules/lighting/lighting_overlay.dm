@@ -17,6 +17,8 @@
 	var/lum_b = 0
 
 	var/needs_update = FALSE
+	
+	vis_flags = VIS_HIDE
 
 /atom/movable/lighting_overlay/initialize()
 	// doesn't need special init
@@ -130,7 +132,7 @@
 /atom/movable/lighting_overlay/Destroy(var/force)
 	if (force)
 		--total_lighting_overlays
-		global.lighting_update_overlays     -= src
+		global.lighting_update_overlays -= src
 		LAZYREMOVE(SSlighting.currentrun, src)
 
 		var/turf/T = loc

@@ -14,7 +14,7 @@
 
 #define LIGHTING_ROUND_VALUE    1 / 64 //Value used to round lumcounts, values smaller than 1/255 don't matter (if they do, thanks sinking points), greater values will make lighting less precise, but in turn increase performance, VERY SLIGHTLY.
 
-#define LIGHTING_SOFT_THRESHOLD 0.054 // If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.  This also should be the transparancy of the "soft_dark" icon state.
+#define LIGHTING_SOFT_THRESHOLD 0.0001 // If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.  This also should be the transparancy of the "soft_dark" icon state.
 
 #define LIGHTING_MULT_FACTOR 0.5
 // If I were you I'd leave this alone.
@@ -74,9 +74,9 @@
 // Neon pallette
 #define LIGHT_COLOR_HOTPINK    "#F419A0"
 #define LIGHT_COLOR_NEONGREEN  "#1FFF0F"
-#define LIGHT_COLOR_NEONRED    "#F72119"
+#define LIGHT_COLOR_NEONRED    "#f80000"
 #define LIGHT_COLOR_NEONYELLOW "#FFF01F"
-#define LIGHT_COLOR_NEONLIGHTBLUE "#83EEFF"
+#define LIGHT_COLOR_NEONLIGHTBLUE "#7df9ff"
 #define LIGHT_COLOR_NEONBLUE   "#4D4DFF"
 #define LIGHT_COLOR_NEONDARKBLUE "#000370"
 #define LIGHT_COLOR_NEONORANGE "#FF5733"
@@ -97,8 +97,8 @@
 
 #define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-3, size=4, color="#04080FAA")
 
-#define LIGHTING_BLOOM filter(type="bloom", size = 6, threshold = "#DDDDDD", offset = 8, alpha = 80)
-#define NEON_DECALS_BLOOM filter(type="bloom", size = 6, threshold = "#000000", offset = 8, alpha = 80)
+#define LIGHTING_BLOOM filter(type="bloom", size = 6, threshold = "#DDDDDD", offset = 10, alpha = 60)
+#define NEON_DECALS_BLOOM filter(type="bloom", size = 6, threshold = "#000000", offset = 10, alpha = 60)
 
 /// Uses vis_overlays to leverage caching so that very few new items need to be made for the overlay. For anything that doesn't change outline or opaque area much or at all.
 #define EMISSIVE_BLOCK_GENERIC 1

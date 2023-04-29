@@ -140,7 +140,6 @@
 /mob/living/simple_mob/animal/sif/sakimm/initialize()
 	. = ..()
 
-	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
 
 	if(randomize_size)

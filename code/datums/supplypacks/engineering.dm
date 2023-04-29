@@ -194,21 +194,6 @@
 	containername = "Supermatter crate (CAUTION)"
 	access = access_ce
 */
-/datum/supply_pack/eng/teg
-	contains = list(/obj/machinery/power/generator)
-	name = "Mark I Thermoelectric Generator"
-	cost = 5000
-	containertype = /obj/structure/closet/crate/secure/large
-	containername = "Mk1 TEG crate"
-	access = access_engine
-
-/datum/supply_pack/eng/circulator
-	contains = list(/obj/machinery/atmospherics/binary/circulator)
-	name = "Binary atmospheric circulator"
-	cost = 3000
-	containertype = /obj/structure/closet/crate/secure/large
-	containername = "Atmospheric circulator crate"
-	access = access_engine
 
 /datum/supply_pack/eng/radsuit
 	contains = list(

@@ -98,7 +98,6 @@
 /mob/living/simple_mob/animal/sif/leech/initialize()
 	..()
 
-	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
 
 /mob/living/simple_mob/animal/sif/leech/Stat()

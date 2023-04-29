@@ -38,7 +38,6 @@
 /mob/living/simple_mob/animal/passive/mouse/New()
 	..()
 
-	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
 
 	if(name == initial(name))
