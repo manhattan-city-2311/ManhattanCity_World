@@ -1278,12 +1278,12 @@
 
 	losebreath = 0
 
-	bloodstr.add_reagent(CI_GLUCOSE, GLUCOSE_LEVEL_NORMAL)
-
 	co2 = 0
 	oxy = OXYGEN_LEVEL_NORMAL //* k
 
 	. = ..()
+	
+	bloodstr.add_reagent(CI_GLUCOSE, GLUCOSE_LEVEL_NORMAL)
 
 
 /mob/living/carbon/human/proc/handle_defib_timer()
