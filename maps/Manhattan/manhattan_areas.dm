@@ -196,6 +196,20 @@
 /area/planets/Manhattan/indoor/north/cityhall/upper/mayoroffice
 /area/planets/Manhattan/indoor/north/cityhall/upper/solgov
 /area/planets/Manhattan/indoor/north/cityhall/upper/gcc
+/area/planets/Manhattan/indoor/north/cityhall/upper/stairs1
+/area/planets/Manhattan/indoor/north/cityhall/upper/stairs2
+/area/planets/Manhattan/indoor/north/cityhall/upper/stairs3
+/area/planets/Manhattan/indoor/north/cityhall/upper/lawyeroffice
+/area/planets/Manhattan/indoor/north/cityhall/upper/judgeassistantoffice
+/area/planets/Manhattan/indoor/north/cityhall/upper/scene
+/area/planets/Manhattan/indoor/north/cityhall/upper/sceneback
+/area/planets/Manhattan/indoor/north/cityhall/upper/hall
+/area/planets/Manhattan/indoor/north/cityhall/upper/license1
+/area/planets/Manhattan/indoor/north/cityhall/upper/license2
+/area/planets/Manhattan/indoor/north/cityhall/upper/hallway
+/area/planets/Manhattan/indoor/north/cityhall/upper/janitor
+/area/planets/Manhattan/indoor/north/cityhall/upper/garage
+/area/planets/Manhattan/indoor/north/cityhall/upper/secoffice
 
 /area/planets/Manhattan/indoor/north/cray
 	name = "\improper CRAY Ind. Headquarters(North)"
@@ -1047,6 +1061,9 @@
 /area/planets/Manhattan/indoor/north/shopping/upper/techstore
 /area/planets/Manhattan/indoor/north/shopping/upper/bank
 /area/planets/Manhattan/indoor/north/shopping/upper/bank/sec
+/area/planets/Manhattan/indoor/north/shopping/upper/bank/vault
+/area/planets/Manhattan/indoor/north/shopping/upper/bank/archive
+/area/planets/Manhattan/indoor/north/shopping/upper/bank/roof
 
 /area/planets/Manhattan/indoor/north/shopping/underground
 
