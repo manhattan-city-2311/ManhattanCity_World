@@ -39,8 +39,6 @@ var/list/mob_hat_cache = list()
 
 	can_pull_size = ITEMSIZE_NO_CONTAINER
 	can_pull_mobs = MOB_PULL_SMALLER
-	can_enter_vent_with = list(
-		/obj)
 
 	mob_bump_flag = SIMPLE_ANIMAL
 	mob_swap_flags = SIMPLE_ANIMAL
@@ -91,7 +89,6 @@ var/list/mob_hat_cache = list()
 
 	..()
 
-	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
 	remove_language("Robot Talk")
 	add_language("Robot Talk", 0)

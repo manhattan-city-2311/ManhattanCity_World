@@ -14,7 +14,6 @@
 	containername = "city painting supplies crate"
 	containertype = /obj/structure/closet/crate
 	contains = list(
-			/obj/item/device/pipe_painter = 2,
 			/obj/item/device/floor_painter = 2,
 			/obj/item/device/closet_painter = 2
 			)

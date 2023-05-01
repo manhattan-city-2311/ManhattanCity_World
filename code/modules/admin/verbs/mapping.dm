@@ -145,7 +145,6 @@ var/list/debug_verbs = list (
         ,/client/proc/disable_communication
         ,/client/proc/disable_movement
         ,/client/proc/hide_debug_verbs
-        ,/client/proc/atmos_toggle_debug
         ,/client/proc/spawn_tanktransferbomb
         ,/client/proc/take_picture
 		,/client/proc/analyze_openturf

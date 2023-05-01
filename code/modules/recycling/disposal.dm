@@ -387,16 +387,7 @@
 		src.pressurize() //otherwise charge
 
 /obj/machinery/disposal/proc/pressurize()
-	if(stat & NOPOWER)			// won't charge if no power
-		update_use_power(0)
-		return
-
-	var/atom/L = loc						// recharging from loc turf
-	var/datum/gas_mixture/env = L.return_air()
-
-	if(env?.temperature > 0)
-		var/transfer_moles = (PUMP_MAX_FLOW_RATE/env.volume)*env.total_moles	//group_multiplier is divided out here
-		pump_gas(src, env, air_contents, transfer_moles, active_power_usage)
+	return
 
 // perform a flush
 /obj/machinery/disposal/proc/flush()

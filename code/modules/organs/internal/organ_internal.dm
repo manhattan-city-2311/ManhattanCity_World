@@ -15,6 +15,7 @@
 
 /obj/item/organ/internal/rejuvenate(ignore_prosthetic_prefs)
 	..()
+	hormones = initial(hormones)
 
 /obj/item/organ/internal/initialize()
 	..()

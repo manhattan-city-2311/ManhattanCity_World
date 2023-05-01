@@ -78,27 +78,8 @@
 	mode = NPC_MODE_SLEEP
 	STOP_PROCESSING(SSnpc, src)
 
-/mob/living/carbon/human/npc/process()
-	..()
-	switch(mode)
-		if(NPC_MODE_ROUTE)
-			handle_route()
-			domove()
-		if(NPC_MODE_PATROL)
-			handle_patrol()
-			domove()
-		if(NPC_MODE_ATTACK)
-			handle_combat()
-			domove()
-		if(NPC_MODE_IDLE)
-			handleIdle()
-			return
-
 /mob/living/carbon/human/npc/Life()
-	..()
-	if(stat == UNCONSCIOUS)
-		mode = NPC_MODE_SLEEP
-	update_glide()
+	return
 
 /mob/living/carbon/human/npc/proc/domove()
 	var/newloc = get_step(src.loc, move_dir)
