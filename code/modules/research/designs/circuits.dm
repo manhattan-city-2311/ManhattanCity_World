@@ -343,20 +343,6 @@ CIRCUITS BELOW
 	build_path = /obj/item/weapon/circuitboard/breakerbox
 	sort_string = "JBABD"
 
-/datum/design/circuit/gas_heater
-	name = "gas heating system"
-	id = "gasheater"
-	req_tech = list(TECH_POWER = 2, TECH_ENGINEERING = 1)
-	build_path = /obj/item/weapon/circuitboard/unary_atmos/heater
-	sort_string = "JCAAA"
-
-/datum/design/circuit/gas_cooler
-	name = "gas cooling system"
-	id = "gascooler"
-	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
-	build_path = /obj/item/weapon/circuitboard/unary_atmos/cooler
-	sort_string = "JCAAB"
-
 /datum/design/circuit/secure_airlock
 	name = "secure airlock electronics"
 	desc =  "Allows for the construction of a tamper-resistant airlock electronics."

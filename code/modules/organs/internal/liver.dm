@@ -22,7 +22,7 @@
 
 /obj/item/organ/internal/liver/influence_hormone(T, amount)
 	if(T == CI_GLUCAGONE)
-		free_hormone(CI_GLUCOSE, min(amount, 0.1))
+		free_hormone(CI_GLUCOSE, min(amount, 1))
 		absorb_hormone(T, min(amount, 0.1) * 10)
 
 /obj/item/organ/internal/liver/Process()

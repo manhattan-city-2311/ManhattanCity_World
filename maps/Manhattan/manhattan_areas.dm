@@ -196,6 +196,20 @@
 /area/planets/Manhattan/indoor/north/cityhall/upper/mayoroffice
 /area/planets/Manhattan/indoor/north/cityhall/upper/solgov
 /area/planets/Manhattan/indoor/north/cityhall/upper/gcc
+/area/planets/Manhattan/indoor/north/cityhall/upper/stairs1
+/area/planets/Manhattan/indoor/north/cityhall/upper/stairs2
+/area/planets/Manhattan/indoor/north/cityhall/upper/stairs3
+/area/planets/Manhattan/indoor/north/cityhall/upper/lawyeroffice
+/area/planets/Manhattan/indoor/north/cityhall/upper/judgeassistantoffice
+/area/planets/Manhattan/indoor/north/cityhall/upper/scene
+/area/planets/Manhattan/indoor/north/cityhall/upper/sceneback
+/area/planets/Manhattan/indoor/north/cityhall/upper/hall
+/area/planets/Manhattan/indoor/north/cityhall/upper/license1
+/area/planets/Manhattan/indoor/north/cityhall/upper/license2
+/area/planets/Manhattan/indoor/north/cityhall/upper/hallway
+/area/planets/Manhattan/indoor/north/cityhall/upper/janitor
+/area/planets/Manhattan/indoor/north/cityhall/upper/garage
+/area/planets/Manhattan/indoor/north/cityhall/upper/secoffice
 
 /area/planets/Manhattan/indoor/north/cray
 	name = "\improper CRAY Ind. Headquarters(North)"
@@ -1023,22 +1037,27 @@
 	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
 	ambience = list('sound/manhattan/trading_center1.ogg', 'sound/manhattan/trading_center2.ogg', 'sound/manhattan/trading_center3.ogg', 'sound/manhattan/trading_center4.ogg')
 
-/area/planets/Manhattan/indoor/north/shopping/checkpointsouth
-/area/planets/Manhattan/indoor/north/shopping/checkpointnorth
-/area/planets/Manhattan/indoor/north/shopping/secrecroom
-/area/planets/Manhattan/indoor/north/shopping/cafe
+/area/planets/Manhattan/indoor/north/shopping/Ashan
+/area/planets/Manhattan/indoor/north/shopping/Hall1
+/area/planets/Manhattan/indoor/north/shopping/Barber
+/area/planets/Manhattan/indoor/north/shopping/Asia
 /area/planets/Manhattan/indoor/north/shopping/gym
-/area/planets/Manhattan/indoor/north/shopping/gym/lockerroom
-/area/planets/Manhattan/indoor/north/shopping/gym/storage
-/area/planets/Manhattan/indoor/north/shopping/barber
-/area/planets/Manhattan/indoor/north/shopping/welfarestore
-/area/planets/Manhattan/indoor/north/shopping/clothingstore
+/area/planets/Manhattan/indoor/north/shopping/toiler
+/area/planets/Manhattan/indoor/north/shopping/hall2
+/area/planets/Manhattan/indoor/north/shopping/security
+/area/planets/Manhattan/indoor/north/shopping/chillroompersonal
+/area/planets/Manhattan/indoor/north/shopping/balcony
+/area/planets/Manhattan/indoor/north/shopping/shopodezhda
+/area/planets/Manhattan/indoor/north/shopping/tools
 
 /area/planets/Manhattan/indoor/north/shopping/upper
 	base_turf = /turf/simulated/open
 
-/area/planets/Manhattan/indoor/north/shopping/upper/gamecenter
-/area/planets/Manhattan/indoor/north/shopping/upper/gamecenter/recroom
+/area/planets/Manhattan/indoor/north/shopping/upper/gamecenterhallway
+/area/planets/Manhattan/indoor/north/shopping/upper/gamecenter/bar
+/area/planets/Manhattan/indoor/north/shopping/upper/gamecenter/arena
+/area/planets/Manhattan/indoor/north/shopping/upper/gamecenter/computers
+/area/planets/Manhattan/indoor/north/shopping/upper/gamecenter/games
 /area/planets/Manhattan/indoor/north/shopping/upper/seccam
 /area/planets/Manhattan/indoor/north/shopping/upper/restroom
 /area/planets/Manhattan/indoor/north/shopping/upper/storage
@@ -1047,6 +1066,9 @@
 /area/planets/Manhattan/indoor/north/shopping/upper/techstore
 /area/planets/Manhattan/indoor/north/shopping/upper/bank
 /area/planets/Manhattan/indoor/north/shopping/upper/bank/sec
+/area/planets/Manhattan/indoor/north/shopping/upper/bank/vault
+/area/planets/Manhattan/indoor/north/shopping/upper/bank/archive
+/area/planets/Manhattan/indoor/north/shopping/upper/bank/roof
 
 /area/planets/Manhattan/indoor/north/shopping/underground
 

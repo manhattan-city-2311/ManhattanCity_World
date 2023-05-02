@@ -1405,9 +1405,6 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			else
 				to_chat(user,"<span class='notice'>No significantchemical agents found in [A].</span>")
 
-		if(5)
-			analyze_gases(A, user)
-
 	if (!scanmode && istype(A, /obj/item/weapon/paper) && owner)
 		// JMO 20140705: Makes scanned document show up properly in the notes. Not pretty for formatted documents,
 		// as this will clobber the HTML, but at least it lets you scan a document. You can restore the original

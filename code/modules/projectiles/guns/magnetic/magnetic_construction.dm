@@ -26,13 +26,6 @@
 		increment_construction_stage()
 		return
 
-	if(istype(thing, /obj/item/pipe) && construction_stage == 3)
-		user.drop_from_inventory(thing)
-		qdel(thing)
-		user.visible_message("<span class='notice'>\The [user] jams \the [thing] into \the [src].</span>")
-		increment_construction_stage()
-		return
-
 	if(istype(thing, /obj/item/weapon/weldingtool) && construction_stage == 4)
 		var/obj/item/weapon/weldingtool/welder = thing
 

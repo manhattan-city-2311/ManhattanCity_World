@@ -15,7 +15,7 @@
 		icon_state = "mirror_frame"
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -28 : 28)
 		pixel_y = (dir & 3)? (dir == 1 ? -30 : 30) : 0
-	return
+
 
 /obj/structure/mirror/proc/shatter()
 	if(!glass) return
@@ -46,37 +46,6 @@
 				new /obj/item/frame/mirror( src.loc )
 				qdel(src)
 		return
-	if(istype(I, /obj/item/weapon/crowbar))
-		if(shattered && glass)
-			to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
-			icon_state = "mirror_frame"
-			glass = !glass
-			new /obj/item/weapon/material/shard( src.loc )
-			return
-		if(!shattered && glass)
-			if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to remove \the [src]'s glass with [I]."))
-				return
-			playsound(src.loc, I.usesound, 50, 1)
-			to_chat(user, "<span class='notice'>You remove the glass.</span>")
-			glass = !glass
-			icon_state = "mirror_frame"
-			new /obj/item/stack/material/glass( src.loc, 2 )
-			return
-
-	if(istype(I, /obj/item/stack/material/glass))
-		if(!glass)
-			var/obj/item/stack/material/glass/G = I
-			if (G.get_amount() < 2)
-				to_chat(user, "<span class='warning'>You need two sheets of glass to add them to the frame.</span>")
-				return
-			to_chat(user, "<span class='notice'>You start to add the glass to the frame.</span>")
-			if(do_after(user, 20))
-				if (G.use(2))
-					shattered = 0
-					glass = 1
-					icon_state = "mirror"
-					to_chat(user, "<span class='notice'>You add the glass to the frame.</span>")
-			return
 
 	if(shattered && glass)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)
@@ -113,6 +82,10 @@
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror_wide"
 	var/image/overlay
+
+/obj/structure/mirror/wide/initialize()
+	. = ..()
+	update_icon()
 
 /obj/structure/mirror/wide/shatter()
 	if(!glass) return

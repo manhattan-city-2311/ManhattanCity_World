@@ -103,11 +103,11 @@
 
 	var/max_F = weight / delta
 	if(get_transfer_case() != TRANSFER_CASE_AWD)
-		max_F /= 2
+		max_F /= 1.88
 
 	skid = !ISINRANGE(F, -max_F, max_F)
 	if(skid)
-		var/nF = clamp(F, -max_F, max_F)
+		var/nF = clamp(F, -max_F * 0.9, max_F * 0.9)
 		skid = (F - nF) * delta
 		F = nF
 

@@ -95,16 +95,6 @@
 /mob/proc/can_ztravel()
 	return 0
 
-/mob/living/zMove(direction)
-	//Sort of a lame hack to allow ztravel through zpipes. Should be improved.
-	if(is_ventcrawling && istype(loc,/obj/machinery/atmospherics/pipe/zpipe))
-		var/obj/machinery/atmospherics/pipe/zpipe/currentpipe = loc
-		if(istype(currentpipe.node1,/obj/machinery/atmospherics/pipe/zpipe))
-			currentpipe.ventcrawl_to(src, currentpipe.node1, direction)
-		else if(istype(currentpipe.node2,/obj/machinery/atmospherics/pipe/zpipe))
-			currentpipe.ventcrawl_to(src, currentpipe.node2, direction)
-	return ..()
-
 /mob/observer/can_ztravel()
 	return TRUE
 
@@ -207,16 +197,6 @@
 // Mechas are anchored, so we need to override.
 /obj/mecha/can_fall()
 	return TRUE
-
-/obj/item/pipe/can_fall()
-	. = ..()
-
-	if(anchored)
-		return FALSE
-
-	var/turf/below = GetBelow(src)
-	if((locate(/obj/structure/disposalpipe/up) in below) || (locate(/obj/machinery/atmospherics/pipe/zpipe/up) in below))
-		return FALSE
 
 /mob/living/can_fall()
 	if(hovering)

@@ -33,6 +33,14 @@
 	return 1
 
 /obj/manhattan/vehicle/large/hyperloop/attack_hand(mob/user)
+	if(dir & NORTH || dir & SOUTH)
+		var/D = get_dir(src, user)
+		if(!(D & EAST) && !(D & WEST))
+			return
+	else if(dir == EAST || dir == WEST)
+		var/D = get_dir(src, user)
+		if(!(D & NORTH) && !(D & SOUTH))
+			return
 	enter_as_position(user, "interior")
 
 /datum/map_template/hyperloop

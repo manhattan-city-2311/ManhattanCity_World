@@ -20,11 +20,13 @@
 "at" = (/obj/manhattan/vehicle/large/hyperloop,/turf/simulated/floor/tiled/dark,/area/aisat)
 "au" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 9},/obj/structure/neon_spline/red/corner,/turf/simulated/floor/tiled/dark,/area/aisat)
 "av" = (/obj/machinery/media/jukebox{anchored = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
+"aw" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/item/frame/mirror{pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/aisat)
 "ax" = (/obj/machinery/light{icon_state = "tube1"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
 "ay" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 1},/obj/structure/neon_spline/red,/turf/simulated/floor/tiled/dark,/area/aisat)
 "az" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
 "aA" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 5},/obj/structure/neon_spline/red/corner{icon_state = "spline_fancy_corner"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
 "aB" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/device/multitool,/turf/simulated/floor/tiled/dark,/area/aisat)
+"aC" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/mirror/wide{pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/aisat)
 "aD" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/clothing/gloves/yellow,/turf/simulated/floor/tiled/dark,/area/aisat)
 "aE" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 8},/obj/structure/neon_spline/red{icon_state = "spline_fancy"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
 "aF" = (/obj/effect/landmark{name = "JoinLate"},/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
@@ -116,7 +118,7 @@ abanaEananananananananananananananananananananananananananaHanananananananananan
 abanaEananananananananananananananananananananananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
 abanaEananananananananananananananananananananananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
 abanaEanananananbbabababafaialamababababababbdananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbeahaaaoahahahavaoahacadaeahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
+abanaEanananananbeahaaaoaCawahavaoahacadaeahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
 abanaEanananananbeahahahahahahanahahajaqajahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
 abanaEanananananbeahahahahahahanahahahahahahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
 abanaEanananananbeahahahahahahanahahahahahahbfananananananaHananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab

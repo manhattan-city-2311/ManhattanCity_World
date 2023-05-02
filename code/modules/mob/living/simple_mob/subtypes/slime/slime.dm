@@ -61,15 +61,12 @@
 	var/injection_amount = 5 // This determines how much.
 	var/mood = ":3" // Icon to use to display 'mood', as an overlay.
 
-	can_enter_vent_with = list(/obj/item/clothing/head)
-
 /datum/say_list/slime
 	speak = list("Blorp...", "Blop...")
 	emote_see = list("bounces", "jiggles", "sways")
 	emote_hear = list("squishes")
 
 /mob/living/simple_mob/slime/initialize()
-	verbs += /mob/living/proc/ventcrawl
 	update_mood()
 	glow_color = color
 	handle_light()

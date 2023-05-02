@@ -63,7 +63,6 @@
 
 /mob/living/simple_mob/animal/sif/frostfly/initialize()
 	..()
-	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
 
 /datum/say_list/frostfly

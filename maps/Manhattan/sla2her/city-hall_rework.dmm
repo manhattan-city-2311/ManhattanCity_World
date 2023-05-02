@@ -1,0 +1,7175 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ag" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"am" = (
+/obj/structure/stairs/west,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"ap" = (
+/obj/structure/bed/chair/skameika_steel/right{
+	dir = 8;
+	icon_state = "bench_right"
+	},
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"av" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/suit_jacket/really_black,
+/obj/item/weapon/folder/white,
+/obj/item/weapon/folder/white,
+/obj/item/weapon/folder/white,
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"aB" = (
+/obj/structure/bed/chair/office{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"aC" = (
+/obj/effect/floor_decal/spline/fancy/black,
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 4
+	},
+/obj/structure/filingcabinet,
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 10
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"aG" = (
+/obj/effect/floor_decal/corner/grey/bordercorner{
+	dir = 1
+	},
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"aI" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"aJ" = (
+/obj/structure/neon_spline/white/three_quarters,
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"aL" = (
+/obj/structure/bed/chair/general{
+	icon_state = "chair_preview";
+	dir = 1
+	},
+/turf/simulated/floor/pavement/pave_tiling,
+/area/space)
+"aN" = (
+/obj/structure/mirror/wide{
+	pixel_x = 31
+	},
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"aX" = (
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/structure/filingcabinet,
+/obj/structure/filingcabinet{
+	pixel_x = 10
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"aZ" = (
+/obj/structure/closet/crate/secure/bin,
+/turf/simulated/floor/carpet/blue,
+/area/space)
+"be" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"bm" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"bq" = (
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 8
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"br" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"bu" = (
+/obj/structure/coatrack{
+	pixel_x = -11
+	},
+/obj/structure/reagent_dispensers/water_cooler/full,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"by" = (
+/obj/machinery/door/unpowered/manhattan/wood/east,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"bC" = (
+/obj/machinery/door/unpowered/manhattan/steel/east,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"bE" = (
+/obj/structure/neon_spline/green/corner{
+	dir = 1
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"bP" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/wood/tiledwood,
+/area/space)
+"bS" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/paper_bin,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"bU" = (
+/obj/structure/closet/cabinet,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 5
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"bW" = (
+/obj/structure/filingcabinet,
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 10
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"bZ" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/stamp/approved,
+/obj/item/weapon/stamp/denied{
+	pixel_x = 9
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/space)
+"cf" = (
+/obj/structure/bed/chair/skameika_steel/left{
+	icon_state = "bench_left";
+	dir = 8
+	},
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"cg" = (
+/turf/simulated/wall/concrete,
+/area/space)
+"cq" = (
+/obj/machinery/papershredder,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"cy" = (
+/obj/machinery/door/unpowered/manhattan/steel/east,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"cz" = (
+/obj/machinery/door/window/eastright{
+	dir = 8;
+	icon_state = "right"
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"cB" = (
+/obj/structure/bed/chair/general,
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"cC" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"cF" = (
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"cN" = (
+/obj/effect/floor_decal/corner/grey/bordercorner{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"cP" = (
+/obj/structure/neon_spline/white/corner,
+/obj/structure/sculpting_block/sculpted/large/lion,
+/turf/simulated/floor/pavement/pave_tiling,
+/area/space)
+"cX" = (
+/obj/structure/neon_spline/white{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"dd" = (
+/obj/machinery/light/colored/blue{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"df" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 4
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"di" = (
+/obj/structure/bed/chair/skameika_steel{
+	icon_state = "bench_center";
+	dir = 8
+	},
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"do" = (
+/obj/machinery/modular_computer/console/preset/government{
+	icon_state = "console";
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"dq" = (
+/obj/structure/railing{
+	dir = 8;
+	icon_state = "railing0";
+	tag = "icon-railing0 (WEST)"
+	},
+/turf/simulated/open,
+/area/space)
+"dD" = (
+/obj/structure/table/home_wooden,
+/obj/item/weapon/material/ashtray/bronze{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/turf/simulated/floor/roof{
+	icon_state = "roof-55"
+	},
+/area/space)
+"dN" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 4;
+	icon_state = "grass_edge"
+	},
+/turf/simulated/floor/roof{
+	icon_state = "roof-255"
+	},
+/area/space)
+"dP" = (
+/obj/machinery/door/window/eastleft{
+	dir = 1
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"dR" = (
+/obj/machinery/recharge_station,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"ec" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"ef" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/painting_custom{
+	icon_state = "1,11";
+	name = "autumn painting";
+	pixel_y = 31
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ek" = (
+/obj/machinery/light/colored/white,
+/turf/simulated/floor/stairs{
+	dir = 4;
+	icon_state = "ramptop"
+	},
+/area/space)
+"en" = (
+/obj/machinery/door/window/eastleft,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ez" = (
+/turf/simulated/floor/pavement,
+/area/space)
+"eB" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/white/border,
+/obj/machinery/light/colored/white,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"eD" = (
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"eH" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"eI" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"eQ" = (
+/turf/simulated/floor/carpet,
+/area/space)
+"eS" = (
+/obj/machinery/light/colored/blue{
+	dir = 4
+	},
+/obj/structure/neon_spline/green,
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"eU" = (
+/obj/structure/closet/crate/secure/bin,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"eY" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/painting_custom{
+	icon_state = "0,11";
+	name = "autumn painting";
+	pixel_y = 31
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"fc" = (
+/obj/structure/closet/crate/secure/bin,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 6
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"fe" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"fj" = (
+/obj/machinery/door/blast/gate/thin{
+	id = "69"
+	},
+/turf/simulated/floor/road/garage,
+/area/space)
+"fk" = (
+/turf/simulated/floor/pavement/border{
+	dir = 8;
+	icon_state = "pavementt"
+	},
+/area/space)
+"fl" = (
+/obj/effect/floor_decal/spline/fancy/black,
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 1
+	},
+/obj/structure/filingcabinet,
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 10
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"ft" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"fz" = (
+/obj/structure/bed/chair/frilly/beige{
+	dir = 1
+	},
+/turf/simulated/floor/roof{
+	icon_state = "roof-55"
+	},
+/area/space)
+"fL" = (
+/obj/machinery/photocopier{
+	pixel_x = -2
+	},
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"fM" = (
+/obj/structure/neon_spline/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/road/empty,
+/area/space)
+"fP" = (
+/obj/structure/neon_spline/white/corner,
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"fQ" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"fR" = (
+/obj/machinery/modular_computer/console/preset/government{
+	icon_state = "console";
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"fT" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"fX" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 4
+	},
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"fY" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/loudspeaker,
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"gg" = (
+/obj/structure/bed/chair/frilly/black,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"gl" = (
+/obj/structure/filingcabinet{
+	pixel_x = 10
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/structure/filingcabinet,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"gp" = (
+/obj/machinery/atm{
+	pixel_y = 27
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"gs" = (
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"gv" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 4;
+	icon_state = "grass_edge"
+	},
+/turf/simulated/floor/roof{
+	icon_state = "roof-157"
+	},
+/area/space)
+"gz" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/door/window/eastleft{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"gB" = (
+/obj/structure/neon_spline/white{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"gJ" = (
+/obj/structure/closet/crate/secure/bin,
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"gN" = (
+/obj/machinery/modular_computer/console/preset/government{
+	icon_state = "console";
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"hg" = (
+/obj/structure/neon_spline/orange/cee{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"hn" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"hr" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/black,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"hD" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"hE" = (
+/obj/structure/bed/chair/frilly/black{
+	icon_state = "frillychair";
+	dir = 1
+	},
+/turf/simulated/floor/roof{
+	icon_state = "roof-203"
+	},
+/area/space)
+"hM" = (
+/obj/structure/bed/chair/skameika_steel/right{
+	icon_state = "bench_right";
+	dir = 4
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"hP" = (
+/obj/effect/floor_decal/spline/fancy/black/corner,
+/turf/simulated/floor/wood/maple,
+/area/space)
+"ic" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ih" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1;
+	icon_state = "grass_edge"
+	},
+/turf/simulated/floor/roof{
+	icon_state = "roof-255"
+	},
+/area/space)
+"ix" = (
+/turf/simulated/floor/carpet/turcarpet,
+/area/space)
+"iL" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/bed/chair/general,
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"iP" = (
+/obj/machinery/modular_computer/console/preset/government{
+	icon_state = "console";
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/grey/border,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"iU" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/eastleft{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"iV" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/painting_custom{
+	icon_state = "10,6";
+	name = "red rose painting";
+	pixel_y = 30
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"iZ" = (
+/obj/machinery/photocopier/faxmachine,
+/obj/structure/table/woodentable/ebony,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ja" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 9
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"jd" = (
+/turf/simulated/floor/wood/maple,
+/area/space)
+"ji" = (
+/obj/effect/floor_decal/spline/fancy/black/cee{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"jj" = (
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"jn" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/obj/structure/neon_spline/orange{
+	dir = 1
+	},
+/obj/structure/neon_spline/orange,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"jr" = (
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"jC" = (
+/obj/machinery/light/colored/blue{
+	dir = 4
+	},
+/turf/simulated/floor/pavement/border{
+	icon_state = "pavementt";
+	dir = 8
+	},
+/area/space)
+"jD" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"jK" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/weapon/folder/white,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 9
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"jT" = (
+/obj/structure/railing{
+	dir = 8;
+	icon_state = "railing0";
+	tag = "icon-railing0 (WEST)"
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"jU" = (
+/obj/machinery/door/window/eastright{
+	dir = 1
+	},
+/obj/structure/neon_spline/white/corner,
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"kd" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/turf/simulated/floor/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/area/space)
+"ke" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 9
+	},
+/obj/effect/floor_decal/spline/fancy/black/corner,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"kg" = (
+/obj/effect/floor_decal/corner/grey/border,
+/obj/machinery/light/colored/white,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"kl" = (
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"kn" = (
+/obj/structure/neon_spline/white,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"kp" = (
+/obj/machinery/light/colored/blue{
+	dir = 8
+	},
+/obj/structure/neon_spline/green{
+	dir = 1
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"kv" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/device/flashlight/lamp/alt{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 1
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"kz" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 10
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"kA" = (
+/obj/effect/floor_decal/chapel{
+	icon_state = "chapel";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"kC" = (
+/obj/structure/table/woodentable/ebony,
+/turf/simulated/floor/carpet/blue,
+/area/space)
+"kG" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/stamp/approved,
+/obj/item/weapon/stamp/citysecretary{
+	pixel_y = 4;
+	pixel_x = 7
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"kN" = (
+/obj/machinery/door/window/eastleft{
+	dir = 2
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"kU" = (
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"lg" = (
+/obj/machinery/vending/snack,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 9
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"lz" = (
+/obj/machinery/light/colored/white,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"lA" = (
+/obj/machinery/door/window/eastright{
+	dir = 1
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"lB" = (
+/obj/machinery/door/window/eastright,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"lT" = (
+/obj/structure/neon_spline/green,
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"lY" = (
+/obj/structure/bed/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 4
+	},
+/turf/simulated/floor/carpet/blue,
+/area/space)
+"mo" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/grey/bordercorner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"mp" = (
+/obj/machinery/door/unpowered/manhattan/steel/north,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"mq" = (
+/obj/effect/floor_decal/corner/grey/border,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"mJ" = (
+/obj/structure/bed/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/black,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"mM" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/road/garage,
+/area/space)
+"mP" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 8
+	},
+/obj/structure/painting_custom{
+	icon_state = "2,6";
+	name = "vase painting";
+	pixel_x = -30
+	},
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"mQ" = (
+/turf/simulated/floor/roof{
+	icon_state = "roof-137"
+	},
+/area/space)
+"na" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ne" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"nl" = (
+/obj/structure/railing,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/structure/neon_spline/orange/cee{
+	dir = 4
+	},
+/obj/machinery/light/colored/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"nn" = (
+/obj/effect/floor_decal/chapel{
+	icon_state = "chapel";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"nB" = (
+/obj/structure/bed/chair/office{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/black,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"nE" = (
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/obj/machinery/photocopier,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"nF" = (
+/turf/simulated/floor/road,
+/area/space)
+"nJ" = (
+/turf/simulated/floor/pavement/border{
+	icon_state = "pavementt";
+	dir = 1
+	},
+/area/space)
+"nM" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 1
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"oc" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/obj/structure/neon_spline/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"oh" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/painting_custom{
+	icon_state = "7,8";
+	name = "sky painting";
+	pixel_y = 32
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ol" = (
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"op" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"ow" = (
+/obj/structure/coatrack,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"oz" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 9
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"oA" = (
+/obj/machinery/door/unpowered/manhattan/steel/west,
+/turf/simulated/floor/carpet/blue,
+/area/space)
+"oE" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"oH" = (
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"oW" = (
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 10
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"pa" = (
+/obj/structure/closet/crate/bin,
+/obj/machinery/light/colored/blue{
+	dir = 1
+	},
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 4
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"pe" = (
+/obj/machinery/light/colored/blue{
+	dir = 8
+	},
+/turf/simulated/floor/pavement,
+/area/space)
+"pj" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"pp" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 10
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"pq" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/papershredder,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ps" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/structure/railing,
+/obj/structure/neon_spline/orange{
+	dir = 1
+	},
+/obj/structure/neon_spline/orange,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"pw" = (
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"pA" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 6
+	},
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"pB" = (
+/obj/structure/bed/chair/bosschair/red,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"pC" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 5
+	},
+/obj/structure/closet/crate/secure/bin,
+/obj/structure/neon_spline/white/corner,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"pD" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"pQ" = (
+/turf/simulated/floor/roof{
+	icon_state = "roof-255"
+	},
+/area/space)
+"pR" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"pU" = (
+/obj/structure/filingcabinet,
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 10
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"pV" = (
+/obj/structure/closet/crate/secure/bin,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"pX" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/turf/simulated/floor/stairs{
+	dir = 4;
+	icon_state = "ramptop"
+	},
+/area/space)
+"pZ" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/turf/simulated/open,
+/area/space)
+"qd" = (
+/obj/structure/table/wooden_reinforced,
+/obj/structure/neon_spline/white,
+/obj/item/weapon/folder/blue,
+/obj/item/weapon/pen,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"qk" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 5
+	},
+/obj/item/weapon/pen,
+/obj/item/weapon/paper_bin,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"qm" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 10
+	},
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 1
+	},
+/obj/structure/sculpting_block/sculpted/large/pillar{
+	anchored = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"qo" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/item/weapon/folder/white,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"qq" = (
+/obj/machinery/light/colored/blue,
+/obj/structure/neon_spline/green/corner{
+	dir = 8
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"qs" = (
+/obj/item/weapon/storage/belt/janitor,
+/obj/structure/closet,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"qy" = (
+/turf/simulated/floor/road/empty,
+/area/space)
+"qE" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"qH" = (
+/obj/structure/window/basic,
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"qN" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/simulated/floor/carpet,
+/area/space)
+"qQ" = (
+/obj/structure/neon_spline/green/corner,
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"rm" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"rt" = (
+/obj/structure/table/woodentable/ebony,
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 4
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"ry" = (
+/obj/machinery/light/colored/blue{
+	dir = 4
+	},
+/obj/structure/neon_spline/green{
+	dir = 1;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"rA" = (
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"rD" = (
+/obj/structure/neon_spline/white,
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"rH" = (
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/obj/item/device/mic_stand/defense,
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"rP" = (
+/obj/structure/filingcabinet,
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 10
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"rR" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 10
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"sa" = (
+/obj/effect/floor_decal/chapel,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"sc" = (
+/obj/structure/closet/crate/secure/bin,
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"sg" = (
+/obj/structure/railing,
+/obj/effect/floor_decal/spline/fancy/black,
+/turf/simulated/floor/wood/maple,
+/area/space)
+"sl" = (
+/obj/effect/floor_decal/corner/white/border,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"su" = (
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"sx" = (
+/turf/simulated/floor/pavement/border{
+	icon_state = "pavementt";
+	dir = 8
+	},
+/area/space)
+"sB" = (
+/obj/effect/floor_decal/spline/fancy/black/cee,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"sJ" = (
+/obj/machinery/vending/snack,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"sK" = (
+/obj/structure/railing{
+	dir = 8;
+	icon_state = "railing0";
+	tag = "icon-railing0 (WEST)"
+	},
+/obj/structure/closet/crate/secure/bin,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"tg" = (
+/turf/simulated/floor/pavement/pave_tiling,
+/area/space)
+"ti" = (
+/turf/simulated/floor/roof{
+	icon_state = "roof-21"
+	},
+/area/space)
+"tj" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 8
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"tl" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 8;
+	icon_state = "grass_edge"
+	},
+/turf/simulated/floor/roof{
+	icon_state = "roof-157"
+	},
+/area/space)
+"tn" = (
+/obj/machinery/door/unpowered/manhattan/steel/south,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"tp" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"ts" = (
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"tw" = (
+/obj/structure/table/woodentable/ebony,
+/turf/simulated/floor/carpet/tealcarpet,
+/area/space)
+"tH" = (
+/obj/structure/closet/crate/secure/bin,
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ue" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"uf" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ug" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/turf/simulated/floor/stairs{
+	dir = 8;
+	icon_state = "ramptop"
+	},
+/area/space)
+"uL" = (
+/obj/machinery/door/window/eastleft{
+	dir = 2
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"uN" = (
+/obj/structure/railing,
+/obj/machinery/button/remote/blast_door{
+	id = "69";
+	pixel_y = 28
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/structure/neon_spline/orange/cee{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"uP" = (
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 1
+	},
+/obj/structure/neon_spline/green{
+	dir = 8;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"uT" = (
+/obj/machinery/door/window/eastright{
+	dir = 2;
+	icon_state = "right"
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"uW" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	icon_state = "rwindow";
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/table/woodentable/ebony,
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/item/weapon/folder/blue,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"uY" = (
+/obj/machinery/papershredder,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"vq" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/obj/structure/sculpting_block/sculpted/large/pillar{
+	anchored = 1
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"vr" = (
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 8
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"vH" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/structure/railing,
+/obj/structure/neon_spline/orange/cee{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"vL" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"vO" = (
+/obj/structure/table/marble,
+/obj/structure/mirror/wide/alt{
+	pixel_x = 26
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"vQ" = (
+/obj/effect/floor_decal/corner/grey/bordercorner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"vV" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/structure/railing,
+/obj/structure/neon_spline/orange,
+/obj/structure/neon_spline/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"wd" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/structure/railing,
+/obj/structure/neon_spline/orange/cee{
+	dir = 4
+	},
+/obj/machinery/light/colored/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"wi" = (
+/turf/simulated/floor/pavement/corner{
+	dir = 8;
+	icon_state = "pave_corner";
+	tag = "icon-pave_corner (WEST)"
+	},
+/area/space)
+"wj" = (
+/obj/machinery/light/colored/white,
+/turf/simulated/floor/wood/tiledwood,
+/area/space)
+"wn" = (
+/obj/effect/floor_decal/corner/white/border,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"wv" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ww" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 9
+	},
+/obj/structure/closet/crate/secure/bin,
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"wy" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/obj/structure/neon_spline/orange/cee{
+	dir = 4
+	},
+/obj/machinery/light/colored/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"wG" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/structure/neon_spline/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"wJ" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"xa" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/painting_custom{
+	icon_state = "13,5";
+	name = "ark painting";
+	pixel_y = 32
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"xe" = (
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"xg" = (
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"xl" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/pavement/pave_tiling,
+/area/space)
+"xn" = (
+/obj/structure/sculpting_block/sculpted/large/pillar{
+	anchored = 1
+	},
+/obj/effect/floor_decal/spline/fancy/black/cee,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"xo" = (
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 4
+	},
+/turf/simulated/floor/wood/tiledwood,
+/area/space)
+"xA" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"xC" = (
+/obj/effect/floor_decal/spline/fancy/black/cee{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"xO" = (
+/obj/item/device/mic_stand{
+	icon_state = "micstand";
+	dir = 4
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"xP" = (
+/obj/effect/floor_decal/corner/white/border,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"xQ" = (
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"xR" = (
+/obj/structure/neon_spline/white/corner,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"xV" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
+/turf/simulated/floor/wood/tiledwood,
+/area/space)
+"yf" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"yE" = (
+/obj/structure/table/marble,
+/obj/structure/mirror/wide/alt{
+	pixel_x = 26
+	},
+/obj/structure/neon_spline/white{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/white/diagonal,
+/obj/machinery/light/colored/white,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"yH" = (
+/obj/machinery/photocopier/faxmachine,
+/obj/structure/table/woodentable/ebony,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"yO" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 9
+	},
+/obj/machinery/vending/coffee,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"yP" = (
+/obj/structure/railing{
+	dir = 8;
+	icon_state = "railing0";
+	tag = "icon-railing0 (WEST)"
+	},
+/turf/simulated/floor/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/area/space)
+"yT" = (
+/obj/structure/table/marble,
+/obj/structure/mirror/wide/alt{
+	pixel_x = 26
+	},
+/obj/structure/sink/modern{
+	dir = 8;
+	pixel_x = 4
+	},
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"yU" = (
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"zd" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ze" = (
+/obj/structure/neon_spline/green{
+	dir = 1
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"zj" = (
+/obj/structure/stairs/west,
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"zm" = (
+/obj/structure/closet/crate/bin,
+/obj/machinery/light/colored/blue{
+	dir = 1
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"zt" = (
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"zM" = (
+/obj/machinery/door/window/eastleft{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"zT" = (
+/obj/machinery/light/colored/white,
+/turf/simulated/floor/stairs{
+	dir = 8;
+	icon_state = "ramptop"
+	},
+/area/space)
+"zX" = (
+/obj/machinery/door/unpowered/manhattan/steel/east,
+/turf/simulated/floor/carpet,
+/area/space)
+"zY" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 1
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Af" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Ag" = (
+/obj/structure/table/woodentable/ebony,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Aj" = (
+/obj/structure/bed/chair/bosschair/blue,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"AW" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/woodentable/ebony,
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/machinery/photocopier/faxmachine,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Bb" = (
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 6
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Bd" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 5
+	},
+/obj/machinery/photocopier,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Bj" = (
+/obj/effect/floor_decal/chapel{
+	icon_state = "chapel";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Br" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"Bv" = (
+/obj/structure/table/woodentable/ebony,
+/turf/simulated/floor/carpet/turcarpet,
+/area/space)
+"BB" = (
+/obj/structure/closet/crate/secure/bin,
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"BE" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/wood/tiledwood,
+/area/space)
+"BF" = (
+/obj/structure/bed/chair/frilly/beige,
+/turf/simulated/floor/roof{
+	icon_state = "roof-55"
+	},
+/area/space)
+"BK" = (
+/obj/structure/table/wooden_reinforced,
+/obj/structure/neon_spline/white/corner,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"BO" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 6
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"BR" = (
+/obj/machinery/door/unpowered/manhattan/steel/east,
+/obj/effect/floor_decal/corner/white/bordercee{
+	icon_state = "bordercolorcee";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"BU" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/painting_custom{
+	icon_state = "6,8";
+	name = "sky painting";
+	pixel_y = 32
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Cb" = (
+/obj/effect/floor_decal/corner/grey/bordercorner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/grey/bordercorner,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Cd" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"Cf" = (
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Cg" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/grey/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Ci" = (
+/obj/machinery/photocopier{
+	pixel_x = 5;
+	pixel_y = 1
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Ck" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Cl" = (
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"Cr" = (
+/obj/machinery/light/colored/blue,
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"Ct" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 4
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Cu" = (
+/obj/structure/reagent_dispensers/water_cooler/full,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 10
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"Cx" = (
+/obj/effect/floor_decal/corner/grey/border,
+/obj/structure/painting_custom{
+	icon_state = "0,5";
+	name = "tower painting";
+	pixel_y = -30
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Cz" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/white/border,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"CD" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/door/window/eastright{
+	dir = 8;
+	icon_state = "right"
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"CE" = (
+/obj/structure/railing,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"CN" = (
+/turf/simulated/floor/carpet/tealcarpet,
+/area/space)
+"CO" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"CQ" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"CW" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8;
+	icon_state = "spline_fancy"
+	},
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 1
+	},
+/turf/simulated/floor/wood/tiledwood,
+/area/space)
+"Dc" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 4
+	},
+/obj/structure/painting_custom{
+	icon_state = "13,7";
+	name = "water lily painting";
+	pixel_x = 30
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Dj" = (
+/obj/structure/neon_spline/green/corner{
+	dir = 8
+	},
+/turf/simulated/floor/pavement/border{
+	icon_state = "pavementt";
+	dir = 1
+	},
+/area/space)
+"Dl" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/grey/border,
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Dn" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/grey/bordercorner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Do" = (
+/obj/effect/floor_decal/corner/grey/bordercorner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/grey/bordercorner,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"DB" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"DE" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/turf/simulated/open,
+/area/space)
+"DS" = (
+/obj/structure/closet/crate/secure/bin,
+/turf/simulated/floor/roof{
+	icon_state = "roof-255"
+	},
+/area/space)
+"Ec" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/weapon/folder/white,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Ek" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 6
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"Ew" = (
+/obj/structure/closet/secure_closet/security_empty,
+/obj/item/clothing/gloves/white,
+/obj/item/clothing/accessory/armband/silk,
+/obj/item/weapon/melee/telebaton,
+/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/jacket/charcoal,
+/obj/item/clothing/accessory/tie/black,
+/obj/item/clothing/glasses/fakesunglasses,
+/obj/item/clothing/head/beretg,
+/obj/item/clothing/head/helmet/swat,
+/obj/item/clothing/mask/fakemoustache,
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/clothing/under/suit_jacket/charcoal,
+/obj/item/weapon/storage/briefcase,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"EA" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/bed/chair/general,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"EG" = (
+/obj/structure/table/woodentable/ebony,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"EH" = (
+/obj/structure/sculpting_block/sculpted/large/pillar{
+	anchored = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"EO" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/obj/structure/closet/crate/secure/bin,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"ER" = (
+/obj/structure/closet/secure_closet/security_empty,
+/obj/item/clothing/gloves/white,
+/obj/item/clothing/accessory/armband/silk,
+/obj/item/weapon/melee/telebaton,
+/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/jacket/charcoal,
+/obj/item/clothing/accessory/tie/black,
+/obj/item/clothing/glasses/fakesunglasses,
+/obj/item/clothing/head/beretg,
+/obj/item/clothing/head/helmet/swat,
+/obj/item/clothing/mask/fakemoustache,
+/obj/item/clothing/shoes/dress/white,
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/clothing/under/suit_jacket/charcoal,
+/obj/item/weapon/storage/briefcase,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"EV" = (
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 1
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"Fh" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Fp" = (
+/obj/effect/floor_decal/corner/grey/bordercorner{
+	dir = 4
+	},
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Ft" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 9
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Fv" = (
+/obj/structure/closet/crate/secure/bin,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Fy" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"FA" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/photocopier,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"FC" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 5
+	},
+/obj/structure/reagent_dispensers/water_cooler/full,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"FD" = (
+/obj/machinery/metal_detector,
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"FF" = (
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"FL" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 6
+	},
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 4
+	},
+/obj/structure/sculpting_block/sculpted/large/pillar{
+	anchored = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"FQ" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"FR" = (
+/obj/structure/railing{
+	dir = 8;
+	icon_state = "railing0";
+	tag = "icon-railing0 (WEST)"
+	},
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/wood/tiledwood,
+/area/space)
+"FV" = (
+/obj/effect/floor_decal/corner/white/border,
+/obj/effect/floor_decal/corner/white/bordercorner{
+	icon_state = "bordercolorcorner";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"FY" = (
+/obj/effect/floor_decal/spline/fancy/black/corner,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Ga" = (
+/obj/machinery/photocopier{
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Gd" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"Gh" = (
+/obj/structure/railing{
+	dir = 8;
+	icon_state = "railing0";
+	tag = "icon-railing0 (WEST)"
+	},
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/structure/sculpting_block/sculpted/large/pillar{
+	anchored = 1
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"Gi" = (
+/obj/structure/railing,
+/obj/structure/stairs/west,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Gk" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Gp" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/storage/briefcase,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Gw" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/door/window/eastleft,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Gy" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 8;
+	icon_state = "grass_edge"
+	},
+/turf/simulated/floor/roof{
+	icon_state = "roof-255"
+	},
+/area/space)
+"GB" = (
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"GC" = (
+/obj/machinery/door/window/eastright{
+	dir = 2;
+	icon_state = "right"
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"GG" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/obj/structure/neon_spline/orange/cee{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"GH" = (
+/obj/structure/table/woodentable/ebony,
+/turf/simulated/floor/carpet,
+/area/space)
+"GK" = (
+/obj/structure/bed/chair/office/dark,
+/turf/simulated/floor/carpet/turcarpet,
+/area/space)
+"GO" = (
+/obj/structure/neon_spline/orange/cee,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"GR" = (
+/obj/structure/bed/chair/skameika_steel/left{
+	icon_state = "bench_left";
+	dir = 4
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"GU" = (
+/obj/structure/stairs/east,
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"GW" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"GZ" = (
+/obj/machinery/light/colored/blue{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Hb" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/stamp/citysecretary{
+	pixel_y = 4;
+	pixel_x = 7
+	},
+/obj/item/weapon/stamp/approved,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Hc" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/stamp/approved,
+/obj/item/weapon/stamp/denied{
+	pixel_x = 9
+	},
+/turf/simulated/floor/carpet,
+/area/space)
+"Hi" = (
+/obj/structure/table/home_wooden,
+/obj/item/weapon/material/ashtray/bronze,
+/turf/simulated/floor/roof{
+	icon_state = "roof-203"
+	},
+/area/space)
+"Hj" = (
+/obj/structure/coatrack{
+	pixel_x = -11
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Hk" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Hn" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 4
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Hq" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/pavement/pave_tiling,
+/area/space)
+"Hr" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Hz" = (
+/obj/structure/bed/chair/bosschair/black{
+	dir = 1;
+	icon_state = "capchair"
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/space)
+"HF" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 9
+	},
+/obj/structure/reagent_dispensers/water_cooler/full,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"HQ" = (
+/obj/effect/floor_decal/corner/grey/border,
+/obj/structure/painting_custom{
+	icon_state = "10,4";
+	name = "puppy painting";
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"HU" = (
+/obj/machinery/door/unpowered/manhattan/steel/west,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Io" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"IC" = (
+/obj/structure/bed/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"IE" = (
+/obj/effect/floor_decal/corner/white/border,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 1
+	},
+/obj/machinery/light/colored/white,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"IG" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"IR" = (
+/turf/simulated/floor/pavement/corner,
+/area/space)
+"IU" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"IV" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/structure/railing{
+	dir = 8;
+	icon_state = "railing0";
+	tag = "icon-railing0 (WEST)"
+	},
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 1;
+	icon_state = "spline_fancy_cee"
+	},
+/turf/simulated/floor/wood/tiledwood,
+/area/space)
+"IY" = (
+/turf/simulated/floor/pavement/border{
+	dir = 4;
+	icon_state = "pavementt"
+	},
+/area/space)
+"Jd" = (
+/obj/structure/curtain/open/color/burgandy,
+/obj/machinery/door/window/eastright{
+	dir = 2
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Je" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Jr" = (
+/obj/structure/closet/secure_closet/guncabinet/bodyguard,
+/obj/item/weapon/gun/projectile/colt,
+/obj/item/ammo_magazine/m45/rubber,
+/obj/item/ammo_magazine/m45,
+/obj/item/ammo_magazine/m45/rubber,
+/obj/item/ammo_magazine/m45,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"JG" = (
+/obj/structure/neon_spline/green/corner{
+	dir = 4
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"JT" = (
+/obj/structure/coatrack,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"JZ" = (
+/obj/structure/sculpting_block/sculpted/large/pillar{
+	anchored = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Kb" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Kc" = (
+/obj/machinery/light/colored/blue{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Kd" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/door/window/eastright,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Kn" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/black,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Kr" = (
+/turf/simulated/floor/pavement/corner{
+	dir = 4;
+	icon_state = "pave_corner";
+	tag = "icon-pave_corner (EAST)"
+	},
+/area/space)
+"Kx" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/machinery/atm{
+	pixel_y = 27
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Ky" = (
+/obj/item/weapon/mop,
+/obj/structure/mopbucket,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"KF" = (
+/turf/simulated/floor/pavement/corner_invert,
+/area/space)
+"KG" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/grey/bordercorner,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"KI" = (
+/obj/machinery/light/colored/blue{
+	dir = 8
+	},
+/obj/structure/neon_spline/green,
+/turf/simulated/floor/pavement/border{
+	icon_state = "pavementt";
+	dir = 1
+	},
+/area/space)
+"KL" = (
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 4
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"KS" = (
+/obj/machinery/vending/coffee,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"KX" = (
+/obj/structure/coatrack{
+	pixel_x = 11
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"KY" = (
+/obj/structure/closet/secure_closet/guncabinet/bodyguard,
+/obj/item/weapon/gun/projectile/colt,
+/obj/item/ammo_magazine/m45/rubber,
+/obj/item/ammo_magazine/m45,
+/obj/item/ammo_magazine/m45/rubber,
+/obj/item/ammo_magazine/m45,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 9
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"Lj" = (
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Ln" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 8
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Lo" = (
+/obj/structure/table/woodentable/ebony,
+/obj/machinery/modular_computer/laptop{
+	icon_state = "laptop-open";
+	dir = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Lp" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/obj/machinery/vending/coffee,
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 5
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"Lt" = (
+/obj/machinery/modular_computer/console/preset/security{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"LB" = (
+/obj/structure/railing,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/structure/neon_spline/orange,
+/obj/structure/neon_spline/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"LC" = (
+/obj/effect/floor_decal/spline/fancy/black,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"LD" = (
+/turf/simulated/floor/water/deep/pool,
+/area/space)
+"LK" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 8
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"LP" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"LV" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/structure/table/woodentable/ebony,
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Mg" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"Mk" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 5;
+	icon_state = "grass_edge"
+	},
+/turf/simulated/floor/roof{
+	icon_state = "roof-255"
+	},
+/area/space)
+"Mn" = (
+/turf/simulated/open,
+/area/space)
+"My" = (
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/obj/structure/window/basic,
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"MQ" = (
+/obj/structure/sculpting_block/sculpted/large/venus{
+	anchored = 1;
+	pixel_y = 10
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"Nb" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 4
+	},
+/turf/simulated/floor/wood/tiledwood,
+/area/space)
+"Nd" = (
+/obj/structure/neon_spline/green{
+	icon_state = "spline_fancy";
+	dir = 4
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"Ni" = (
+/obj/structure/bed/chair/frilly/black,
+/turf/simulated/floor/roof{
+	icon_state = "roof-203"
+	},
+/area/space)
+"Nq" = (
+/obj/machinery/door/unpowered/manhattan/steel/south,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Nw" = (
+/obj/effect/floor_decal/spline/fancy/black,
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 1
+	},
+/obj/machinery/light/spot,
+/obj/machinery/photocopier{
+	pixel_x = 5;
+	pixel_y = -8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"NB" = (
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 6
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"NH" = (
+/obj/machinery/vending/coffee,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 5
+	},
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"NK" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"NO" = (
+/obj/machinery/door/unpowered/manhattan/steel/north,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"NS" = (
+/obj/structure/stairs/east,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"NW" = (
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 1
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"NZ" = (
+/obj/structure/closet/crate/secure/bin,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"Oa" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 1
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Od" = (
+/obj/machinery/door/unpowered/manhattan/steel/north,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Oh" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Oj" = (
+/obj/structure/stairs/west,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Ot" = (
+/obj/structure/railing,
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"Ou" = (
+/obj/structure/sculpting_block/sculpted/large/pillar{
+	anchored = 1
+	},
+/turf/simulated/floor/pavement/pave_tiling,
+/area/space)
+"Oz" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"OH" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 9;
+	icon_state = "grass_edge"
+	},
+/turf/simulated/floor/roof{
+	icon_state = "roof-255"
+	},
+/area/space)
+"Pi" = (
+/turf/simulated/floor/carpet/blue,
+/area/space)
+"Pl" = (
+/obj/structure/neon_spline/white,
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Pq" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Ps" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 4
+	},
+/obj/structure/painting_custom{
+	icon_state = "3,7";
+	name = "snowy forest painting";
+	pixel_x = 30
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Px" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/structure/table/woodentable/ebony,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Py" = (
+/obj/structure/table/wooden_reinforced,
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"PE" = (
+/obj/structure/table/wooden_reinforced,
+/obj/structure/neon_spline/white,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"PS" = (
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor,
+/area/space)
+"Qb" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"Qm" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Qt" = (
+/obj/structure/closet/crate/secure/bin,
+/turf/simulated/floor/carpet,
+/area/space)
+"QK" = (
+/turf/simulated/floor/roof{
+	icon_state = "roof-157"
+	},
+/area/space)
+"QQ" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/modular_computer/console/preset/government{
+	icon_state = "console";
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"QZ" = (
+/turf/simulated/floor/pavement/corner_invert{
+	dir = 8;
+	icon_state = "pave_invert_corner";
+	tag = "icon-pave_invert_corner (WEST)"
+	},
+/area/space)
+"Rd" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 6
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Rh" = (
+/turf/simulated/floor/road/garage,
+/area/space)
+"Rj" = (
+/obj/machinery/light/colored/blue{
+	dir = 8
+	},
+/turf/simulated/floor/pavement/pave_tiling,
+/area/space)
+"Rk" = (
+/obj/structure/coatrack{
+	pixel_x = -9
+	},
+/obj/structure/reagent_dispensers/water_cooler/full,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Rv" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/structure/table/woodentable/ebony,
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Rw" = (
+/obj/structure/neon_spline/green{
+	dir = 8
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"RD" = (
+/obj/structure/neon_spline/white,
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"RE" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/newspaper,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"RJ" = (
+/obj/structure/stairs/east,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"RP" = (
+/obj/structure/bed/chair/office/dark,
+/turf/simulated/floor/carpet/tealcarpet,
+/area/space)
+"RY" = (
+/obj/structure/railing{
+	dir = 8;
+	icon_state = "railing0";
+	tag = "icon-railing0 (WEST)"
+	},
+/obj/structure/reagent_dispensers/water_cooler/full,
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 9
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"Se" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"So" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/folder/white,
+/obj/item/weapon/folder/blue{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Sv" = (
+/turf/simulated/floor/pavement/border{
+	dir = 1;
+	icon_state = "pavementt"
+	},
+/area/space)
+"SS" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"ST" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/black,
+/obj/machinery/light/spot,
+/obj/structure/closet/crate/secure/bin,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"SX" = (
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 1
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"SY" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/folder/blue{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Ta" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"Tf" = (
+/obj/structure/filingcabinet,
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 10
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Ty" = (
+/obj/machinery/door/unpowered/manhattan/steel/north,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"TB" = (
+/obj/machinery/light/colored/blue{
+	dir = 4
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"TJ" = (
+/obj/structure/railing,
+/obj/structure/stairs/east,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"TP" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/woodentable/ebony,
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"TR" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/stamp/approved,
+/obj/item/weapon/stamp/denied{
+	pixel_x = 9
+	},
+/obj/item/weapon/stamp/solgov{
+	pixel_x = -8
+	},
+/turf/simulated/floor/carpet/blue,
+/area/space)
+"TS" = (
+/obj/structure/bed/chair/bosschair/beige{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/tealcarpet,
+/area/space)
+"Ud" = (
+/obj/structure/window/basic,
+/obj/structure/window/basic{
+	icon_state = "window";
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Ue" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing0";
+	tag = "icon-railing0 (EAST)"
+	},
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 1;
+	icon_state = "spline_fancy_cee"
+	},
+/turf/simulated/floor/wood/tiledwood,
+/area/space)
+"Ur" = (
+/obj/structure/reagent_dispensers/water_cooler/full,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 4
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"UD" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"UJ" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"UK" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/weapon/stamp/approved,
+/obj/item/weapon/stamp/denied{
+	pixel_x = 9
+	},
+/turf/simulated/floor/carpet/tealcarpet,
+/area/space)
+"UV" = (
+/obj/structure/bed/chair/office{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Va" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 5
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"Vf" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 6
+	},
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Vj" = (
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 4
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"Vl" = (
+/obj/structure/table/woodentable/ebony,
+/obj/machinery/modular_computer/laptop{
+	icon_state = "laptop-open";
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Vm" = (
+/obj/effect/floor_decal/spline/fancy/black/corner,
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"Vn" = (
+/obj/machinery/door/unpowered/manhattan/wood/east,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Vp" = (
+/obj/structure/reagent_dispensers/water_cooler/full,
+/obj/structure/railing{
+	dir = 8;
+	icon_state = "railing0";
+	tag = "icon-railing0 (WEST)"
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"Vr" = (
+/obj/effect/floor_decal/spline/fancy/black,
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 1
+	},
+/obj/structure/filingcabinet,
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 10
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Vt" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/white/diagonal,
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"Vu" = (
+/obj/structure/bed/chair/office{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/black,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Vw" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 5
+	},
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"VL" = (
+/obj/machinery/modular_computer/console/preset/government{
+	icon_state = "console";
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/grey/border,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"VO" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"VQ" = (
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"VR" = (
+/obj/structure/filingcabinet/chestdrawer,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 5
+	},
+/obj/machinery/light/colored/white{
+	icon_state = "white1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"VU" = (
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"VY" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"VZ" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Wb" = (
+/turf/simulated/floor/pavement/corner{
+	dir = 1;
+	icon_state = "pave_corner";
+	tag = "icon-pave_corner (NORTH)"
+	},
+/area/space)
+"Wc" = (
+/obj/structure/table/woodentable/ebony,
+/obj/effect/floor_decal/spline/fancy/black,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Wg" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"Wh" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Wi" = (
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 8
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Wm" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/structure/neon_spline/orange{
+	dir = 8
+	},
+/obj/machinery/light/colored/orange{
+	dir = 8;
+	tag = null
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Wt" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/structure/neon_spline/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Wu" = (
+/obj/structure/railing{
+	dir = 8;
+	icon_state = "railing0";
+	tag = "icon-railing0 (WEST)"
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"WO" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 10
+	},
+/obj/structure/flora/pottedplant/stoutbush,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"Xb" = (
+/obj/structure/neon_spline/white/corner,
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"Xe" = (
+/obj/structure/neon_spline/green/corner{
+	dir = 8
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/space)
+"Xm" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"Xu" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"XG" = (
+/obj/effect/floor_decal/spline/fancy/black,
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"XR" = (
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 8
+	},
+/obj/structure/sculpting_block/sculpted/large/lion,
+/turf/simulated/floor/pavement/pave_tiling,
+/area/space)
+"XT" = (
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/effect/floor_decal/spline/fancy/black/corner,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"XU" = (
+/obj/structure/neon_spline/white{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"XW" = (
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 1
+	},
+/turf/simulated/floor/wood/tiledwood,
+/area/space)
+"Yf" = (
+/obj/machinery/light/colored/blue,
+/turf/simulated/floor/outdoors/grass/manhattan,
+/area/space)
+"Yh" = (
+/obj/machinery/metal_detector,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"Yk" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 6
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/space)
+"Yr" = (
+/obj/machinery/door/window/eastleft{
+	dir = 1
+	},
+/obj/structure/neon_spline/white/corner{
+	icon_state = "spline_fancy_corner";
+	dir = 8
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"Yz" = (
+/obj/effect/floor_decal/corner/grey/bordercorner{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"YD" = (
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 8
+	},
+/obj/structure/painting_custom{
+	icon_state = "15,7";
+	name = "batya painting";
+	pixel_x = -31
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"YI" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/grey/border,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"YK" = (
+/obj/structure/railing{
+	dir = 8;
+	icon_state = "railing0";
+	tag = "icon-railing0 (WEST)"
+	},
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 10
+	},
+/turf/simulated/floor/wood/maple,
+/area/space)
+"YN" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"YR" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 10
+	},
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"YS" = (
+/obj/effect/floor_decal/spline/fancy/black/corner{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"YY" = (
+/obj/structure/neon_spline/white{
+	dir = 4;
+	icon_state = "spline_fancy"
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"Zd" = (
+/obj/structure/closet/crate/secure/bin,
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/white/diagonal,
+/turf/simulated/floor/tiled/old_cargo/blue,
+/area/space)
+"Zi" = (
+/obj/structure/curtain/open/color/burgandy,
+/obj/machinery/door/window/eastleft{
+	dir = 2
+	},
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"ZD" = (
+/obj/structure/bed/chair/office/dark,
+/turf/simulated/floor/wood/ebony,
+/area/space)
+"ZG" = (
+/obj/effect/floor_decal/spline/fancy/black{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"ZJ" = (
+/turf/simulated/floor/wood/tiledwood,
+/area/space)
+"ZU" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ZV" = (
+/obj/structure/bed/chair/skameika_steel{
+	icon_state = "bench_center";
+	dir = 4
+	},
+/obj/structure/neon_spline/white{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/carpet/wcarpet,
+/area/space)
+"ZX" = (
+/obj/effect/floor_decal/corner/grey/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo,
+/area/space)
+"ZZ" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
+/obj/structure/neon_spline/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+
+(1,1,1) = {"
+wi
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+IR
+nF
+qy
+qy
+qy
+qy
+qy
+qy
+qy
+nF
+wi
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+fk
+IR
+"}
+(2,1,1) = {"
+Sv
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+KF
+IR
+nF
+qy
+qy
+qy
+qy
+qy
+nF
+wi
+QZ
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+ez
+"}
+(3,1,1) = {"
+Sv
+yU
+qQ
+Nd
+Nd
+Nd
+Nd
+Nd
+Nd
+bE
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+KF
+IR
+nF
+nF
+nF
+nF
+nF
+wi
+QZ
+yU
+yU
+yU
+qQ
+Nd
+Nd
+Nd
+Nd
+Nd
+Nd
+bE
+ez
+"}
+(4,1,1) = {"
+Sv
+yU
+lT
+cF
+dd
+cF
+cF
+cF
+cF
+ry
+yU
+yU
+yU
+yU
+TB
+yU
+yU
+yU
+yU
+TB
+KF
+sx
+sx
+sx
+sx
+jC
+QZ
+yU
+yU
+yU
+yU
+eS
+cF
+cF
+cF
+dd
+cF
+cF
+ze
+ez
+"}
+(5,1,1) = {"
+Sv
+yU
+lT
+Yf
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cF
+ze
+ez
+"}
+(6,1,1) = {"
+Sv
+yU
+lT
+cF
+PS
+lg
+tj
+tj
+tj
+tj
+tj
+tj
+tj
+tj
+tj
+Ln
+tj
+tj
+tj
+tj
+tj
+tj
+tj
+tj
+tj
+tj
+tj
+tj
+tj
+tj
+WO
+cg
+Ft
+tj
+tj
+pp
+cg
+GZ
+ze
+ez
+"}
+(7,1,1) = {"
+Sv
+yU
+lT
+cF
+PS
+pV
+hD
+hD
+df
+Dc
+hD
+df
+ZX
+xg
+xg
+kA
+Bj
+xg
+xg
+hD
+hD
+hD
+df
+Cb
+hD
+hD
+df
+Cb
+hD
+hD
+BO
+Nq
+hn
+hD
+hD
+fT
+Nq
+uP
+JG
+ez
+"}
+(8,1,1) = {"
+Sv
+yU
+qq
+cg
+cg
+cg
+Gw
+Kd
+cg
+cg
+cg
+cg
+FC
+Ps
+ZX
+nn
+sa
+xg
+kg
+cg
+cg
+cg
+cg
+Vn
+cg
+cg
+cg
+Vn
+cg
+cg
+cg
+cg
+cg
+cg
+cy
+cg
+cg
+Br
+yU
+ez
+"}
+(9,1,1) = {"
+Sv
+yU
+yU
+PS
+RE
+Hr
+ZU
+ZU
+ZU
+ZU
+sc
+cg
+cg
+cg
+Bd
+uf
+ZX
+xg
+mq
+PS
+av
+xQ
+xQ
+xQ
+bu
+cg
+Rk
+xQ
+xQ
+jj
+xQ
+cg
+Ky
+ft
+ft
+YN
+cg
+Br
+yU
+ez
+"}
+(10,1,1) = {"
+Sv
+yU
+yU
+PS
+Fh
+ZU
+ZU
+ZU
+Gk
+ZU
+yP
+bP
+wj
+cg
+cg
+cg
+iL
+xg
+mq
+PS
+SY
+xQ
+Gp
+xQ
+tp
+cg
+Fv
+xQ
+So
+ZD
+tp
+cg
+qE
+hg
+GO
+IU
+cg
+gp
+yU
+ez
+"}
+(11,1,1) = {"
+Sv
+qQ
+Nd
+PS
+FA
+ZU
+ZU
+ZU
+ZU
+ZU
+kd
+bP
+yP
+bP
+ZJ
+cg
+EA
+xg
+mq
+PS
+Fv
+ZD
+Lo
+Ct
+aX
+cg
+gl
+Hn
+Gp
+Vl
+ag
+cg
+qs
+ne
+ne
+dR
+cg
+Br
+yU
+ez
+"}
+(12,1,1) = {"
+Sv
+lT
+Yf
+cg
+xn
+xC
+Xu
+sB
+ji
+ec
+qm
+xV
+kd
+bP
+ZJ
+cg
+pC
+Fp
+mq
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+pa
+yU
+ez
+"}
+(13,1,1) = {"
+Sv
+lT
+cF
+cg
+NZ
+GR
+ZV
+hM
+Gd
+Gd
+Vw
+ec
+YR
+ug
+zT
+cg
+cg
+Se
+Do
+mp
+pR
+Vt
+NK
+NK
+cC
+cg
+FQ
+Py
+kz
+vq
+yU
+RD
+aL
+Hq
+aL
+tg
+Ou
+CQ
+yU
+ez
+"}
+(14,1,1) = {"
+Sv
+lT
+cF
+cg
+cB
+pw
+pw
+pw
+pw
+pw
+pw
+pw
+Kn
+Ue
+CW
+xo
+cg
+BU
+mq
+cg
+Io
+kU
+Xb
+ts
+gB
+cg
+gg
+Ec
+Wi
+kz
+CQ
+RD
+aL
+tg
+aL
+tg
+tg
+CQ
+yU
+ez
+"}
+(15,1,1) = {"
+Sv
+lT
+cF
+cg
+Mg
+pw
+pw
+MQ
+pw
+pw
+pw
+pw
+Vw
+qm
+BE
+ZJ
+cg
+oh
+mq
+cg
+Zd
+kU
+rD
+cg
+by
+cg
+xQ
+su
+xQ
+kn
+CQ
+RD
+aL
+tg
+aL
+tg
+tg
+CQ
+yU
+ez
+"}
+(16,1,1) = {"
+Sv
+lT
+Yf
+cg
+sJ
+pw
+pw
+pw
+pw
+pw
+pw
+pw
+pw
+ST
+oE
+lz
+cg
+wv
+mq
+cg
+vO
+yT
+yE
+cg
+GW
+cg
+xQ
+xQ
+xQ
+kn
+fY
+RD
+aL
+tg
+aL
+tg
+tg
+CQ
+yU
+ez
+"}
+(17,1,1) = {"
+Sv
+lT
+cF
+cg
+IG
+LP
+jD
+jD
+jD
+Rv
+uW
+QQ
+jD
+Vr
+GU
+NS
+cg
+xa
+HQ
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+EH
+xQ
+su
+PE
+CQ
+RD
+aL
+tg
+aL
+tg
+cP
+FF
+yU
+ez
+"}
+(18,1,1) = {"
+Sv
+Xe
+Rw
+Yr
+Gd
+Yh
+Gd
+Gd
+Gd
+Gd
+rt
+eI
+pw
+fl
+cg
+cg
+cg
+wv
+mq
+cg
+jK
+do
+fL
+JT
+oW
+Zi
+xQ
+xQ
+xO
+PE
+CQ
+vr
+VU
+VU
+VU
+VU
+VU
+KL
+yU
+ez
+"}
+(19,1,1) = {"
+Sv
+qQ
+Nd
+jU
+xe
+FD
+xe
+xe
+xe
+xe
+kv
+pw
+pw
+fl
+cg
+cg
+cg
+wv
+mq
+cg
+Oa
+eH
+rm
+pD
+sl
+Jd
+xQ
+xQ
+xQ
+qd
+CQ
+fP
+rH
+GB
+GB
+GB
+GB
+EV
+yU
+ez
+"}
+(20,1,1) = {"
+Sv
+lT
+cF
+cg
+Kx
+Oh
+Je
+ec
+ec
+LV
+AW
+TP
+ec
+aC
+zj
+am
+cg
+iV
+Do
+Od
+eD
+Hk
+YY
+cX
+sl
+cg
+EH
+xQ
+su
+PE
+CQ
+RD
+aL
+tg
+aL
+tg
+XR
+oH
+yU
+ez
+"}
+(21,1,1) = {"
+Sv
+lT
+Yf
+cg
+Vp
+jT
+pw
+pw
+pw
+pw
+pw
+pw
+pw
+Nw
+oE
+lz
+cg
+wv
+mq
+cg
+bU
+aN
+jr
+Ur
+Bb
+cg
+xQ
+xQ
+xQ
+kn
+fY
+RD
+aL
+tg
+aL
+tg
+tg
+CQ
+yU
+ez
+"}
+(22,1,1) = {"
+Sv
+lT
+cF
+cg
+KS
+pw
+pw
+MQ
+pw
+pw
+pw
+pw
+ke
+FL
+BE
+ZJ
+cg
+eY
+mq
+cg
+cg
+cg
+cg
+cg
+BR
+cg
+xQ
+su
+xQ
+kn
+CQ
+RD
+aL
+tg
+aL
+tg
+tg
+CQ
+yU
+ez
+"}
+(23,1,1) = {"
+Sv
+lT
+cF
+cg
+cB
+pw
+pw
+pw
+pw
+pw
+pw
+pw
+Kn
+IV
+Nb
+XW
+cg
+ef
+mq
+zd
+ja
+Lt
+Cu
+cg
+wn
+cg
+gg
+Ec
+xR
+Rd
+CQ
+RD
+aL
+tg
+aL
+tg
+tg
+CQ
+yU
+ez
+"}
+(24,1,1) = {"
+Sv
+lT
+cF
+cg
+gJ
+ap
+di
+cf
+xe
+xe
+ke
+jD
+pA
+pX
+ek
+cg
+cg
+Se
+mq
+iU
+Wg
+aJ
+xP
+Ty
+IE
+cg
+FQ
+BK
+Rd
+Gh
+yU
+RD
+aL
+xl
+aL
+tg
+Ou
+CQ
+yU
+ez
+"}
+(25,1,1) = {"
+Sv
+lT
+Yf
+cg
+xn
+xC
+fe
+sB
+ji
+jD
+FL
+FR
+yP
+bP
+ZJ
+cg
+ww
+aG
+mq
+qo
+VR
+ow
+fc
+cg
+wn
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+zm
+yU
+ez
+"}
+(26,1,1) = {"
+Sv
+Xe
+Rw
+PS
+Fh
+ZU
+ZU
+ZU
+ZU
+ZU
+yP
+bP
+kd
+bP
+ZJ
+cg
+EA
+xg
+mq
+cg
+cg
+cg
+cg
+cg
+wn
+cg
+oc
+Wm
+wG
+wG
+Wm
+Wt
+wG
+wG
+Wm
+ZZ
+cg
+yU
+yU
+ez
+"}
+(27,1,1) = {"
+Sv
+yU
+yU
+PS
+Px
+ZU
+ZU
+ZU
+ZU
+ZU
+kd
+bP
+wj
+cg
+cg
+cg
+iL
+xg
+mq
+cg
+KY
+Jr
+ER
+Ew
+FV
+tn
+Wh
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+Cf
+tn
+Nd
+bE
+ez
+"}
+(28,1,1) = {"
+Sv
+yU
+yU
+PS
+pq
+UJ
+ZU
+ZU
+ZU
+ZU
+sc
+cg
+cg
+cg
+yO
+mP
+vQ
+xg
+Cx
+cg
+rA
+CO
+Pq
+yf
+xP
+cg
+uN
+mM
+mM
+vH
+mM
+mM
+vH
+mM
+mM
+GG
+cg
+cF
+ze
+ez
+"}
+(29,1,1) = {"
+Sv
+yU
+Cr
+cg
+cg
+cg
+CD
+gz
+cg
+cg
+cg
+cg
+HF
+LK
+vQ
+kA
+Bj
+xg
+mq
+cg
+NW
+Af
+ZU
+Pl
+Cz
+cg
+LB
+Rh
+Rh
+ps
+Rh
+Rh
+vV
+Rh
+Rh
+jn
+cg
+cF
+ze
+ez
+"}
+(30,1,1) = {"
+Sv
+yU
+lT
+cF
+PS
+Kb
+ic
+ic
+LK
+YD
+ic
+LK
+vQ
+xg
+xg
+nn
+sa
+xg
+Do
+NO
+rA
+Oz
+Lj
+XU
+eB
+cg
+LB
+Rh
+Rh
+ps
+Rh
+Rh
+vV
+Rh
+Rh
+jn
+cg
+cF
+ze
+ez
+"}
+(31,1,1) = {"
+Sv
+yU
+lT
+cF
+PS
+NH
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+Vf
+cg
+qk
+nE
+kl
+Xm
+Yk
+cg
+nl
+Rh
+Rh
+wd
+Rh
+Rh
+wd
+Rh
+Rh
+wy
+cg
+GZ
+ze
+ez
+"}
+(32,1,1) = {"
+Sv
+yU
+lT
+Yf
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+cg
+fj
+fj
+cg
+fj
+fj
+cg
+fj
+fj
+cg
+cg
+cF
+ze
+ez
+"}
+(33,1,1) = {"
+Sv
+yU
+lT
+cF
+Kc
+cF
+cF
+cF
+cF
+kp
+yU
+yU
+yU
+lT
+Kc
+cF
+cF
+cF
+cF
+Kc
+ze
+yU
+yU
+yU
+yU
+yU
+pe
+qy
+qy
+Rj
+qy
+qy
+Rj
+qy
+qy
+KI
+cF
+cF
+ze
+ez
+"}
+(34,1,1) = {"
+Sv
+yU
+Xe
+Rw
+Rw
+Rw
+Rw
+Rw
+Rw
+JG
+yU
+yU
+yU
+Xe
+Rw
+Rw
+Rw
+Rw
+Rw
+Rw
+JG
+yU
+yU
+yU
+yU
+yU
+ez
+qy
+qy
+tg
+qy
+qy
+tg
+qy
+qy
+Dj
+Rw
+Rw
+JG
+ez
+"}
+(35,1,1) = {"
+Sv
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+ez
+qy
+qy
+tg
+qy
+qy
+tg
+qy
+qy
+nJ
+yU
+yU
+yU
+ez
+"}
+(36,1,1) = {"
+Wb
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+IY
+Kr
+fM
+fM
+IY
+fM
+fM
+IY
+fM
+fM
+Wb
+IY
+IY
+IY
+Kr
+"}
+
+(1,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+"}
+(2,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+"}
+(3,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+"}
+(4,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+DE
+DE
+DE
+DE
+Mn
+Mn
+Mn
+"}
+(5,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+cg
+cg
+PS
+PS
+PS
+PS
+PS
+cg
+cg
+cg
+PS
+PS
+PS
+PS
+PS
+cg
+cg
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+BF
+dD
+fz
+ti
+pZ
+Mn
+Mn
+"}
+(6,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+cg
+pU
+FY
+fQ
+fQ
+fQ
+fQ
+Tf
+cg
+aX
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+VZ
+cg
+aX
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+VZ
+cg
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(7,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+cg
+na
+mJ
+be
+gs
+be
+IC
+mq
+cg
+aX
+Pi
+Pi
+Pi
+Pi
+Pi
+Pi
+xQ
+cg
+aX
+xQ
+xQ
+xQ
+CN
+CN
+tw
+tw
+CN
+xQ
+cg
+DS
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(8,1,2) = {"
+Mn
+Mn
+Mn
+cg
+cg
+gN
+Wc
+kG
+gs
+Hb
+Ag
+VL
+cg
+xQ
+Pi
+lY
+Pi
+Pi
+Pi
+Pi
+xQ
+cg
+xQ
+xQ
+xQ
+xQ
+CN
+RP
+tw
+CN
+CN
+xQ
+Nq
+dN
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(9,1,2) = {"
+Mn
+Mn
+Mn
+PS
+cq
+Yz
+Vu
+gs
+gs
+gs
+aB
+Dl
+cg
+xQ
+TR
+kC
+kC
+Pi
+Pi
+Pi
+xQ
+cg
+xQ
+xQ
+xQ
+xQ
+CN
+CN
+tw
+TS
+CN
+xQ
+cg
+cF
+ih
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(10,1,2) = {"
+Mn
+Mn
+Mn
+PS
+Ci
+xg
+LC
+gs
+gs
+gs
+gs
+YI
+cg
+xQ
+xQ
+Aj
+EG
+aZ
+Pi
+Pi
+xQ
+cg
+xQ
+xQ
+xQ
+xQ
+CN
+CN
+UK
+tw
+CN
+xQ
+cg
+cF
+Mk
+dN
+gv
+pZ
+Mn
+Mn
+"}
+(11,1,2) = {"
+Mn
+Mn
+Mn
+PS
+yH
+hD
+zt
+UD
+Cg
+KG
+KX
+tH
+cg
+xQ
+xQ
+xQ
+cg
+cg
+oA
+cg
+cg
+cg
+cg
+HU
+cg
+cg
+xQ
+xQ
+xQ
+xQ
+xQ
+Fv
+cg
+cF
+cF
+cF
+cF
+pZ
+Mn
+Mn
+"}
+(12,1,2) = {"
+Mn
+Mn
+Mn
+cg
+cg
+cg
+cg
+cg
+en
+lB
+cg
+cg
+cg
+PS
+PS
+PS
+cg
+JZ
+ZG
+ue
+ue
+ue
+ue
+VY
+JZ
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+Mn
+Mn
+Mn
+"}
+(13,1,2) = {"
+Mn
+Mn
+Mn
+PS
+Qm
+gs
+gs
+gs
+gs
+gs
+gs
+eU
+bS
+Ag
+Ag
+Qm
+cg
+ZG
+YS
+Fy
+Fy
+Fy
+Fy
+ol
+VY
+cg
+jd
+jd
+jd
+jd
+jd
+jd
+cg
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(14,1,2) = {"
+Mn
+Mn
+Mn
+PS
+gs
+oz
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+rR
+gs
+cg
+br
+Ot
+LD
+LD
+LD
+LD
+VO
+XG
+PS
+jd
+jd
+jd
+jd
+jd
+jd
+cg
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(15,1,2) = {"
+Mn
+Mn
+Mn
+PS
+gs
+Va
+SX
+jd
+zY
+Ck
+Ck
+My
+jd
+hP
+NB
+EO
+cg
+br
+Ot
+LD
+bm
+qH
+LD
+VO
+XG
+PS
+jd
+jd
+jd
+jd
+jd
+jd
+cg
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(16,1,2) = {"
+Mn
+Mn
+Mn
+cg
+xg
+CE
+Lp
+vL
+vL
+vL
+vL
+vL
+SX
+sg
+Mn
+Mn
+cg
+br
+Ot
+LD
+pj
+Ud
+LD
+VO
+XG
+PS
+jd
+jd
+jd
+jd
+jd
+jd
+cg
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(17,1,2) = {"
+Mn
+Mn
+Mn
+cg
+RJ
+TJ
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+nM
+sg
+Mn
+Mn
+cg
+br
+Ot
+LD
+LD
+LD
+LD
+VO
+XG
+cg
+jd
+jd
+jd
+jd
+jd
+jd
+cg
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(18,1,2) = {"
+Mn
+Mn
+Mn
+cg
+cg
+cg
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+nM
+bq
+rR
+gs
+uL
+br
+pw
+xA
+xA
+xA
+xA
+pw
+XG
+dP
+jd
+jd
+jd
+jd
+jd
+jd
+kN
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(19,1,2) = {"
+Mn
+Mn
+Mn
+cg
+cg
+cg
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+nM
+hP
+Ek
+gs
+uT
+br
+pw
+Fy
+Fy
+Fy
+Fy
+pw
+XG
+lA
+jd
+jd
+jd
+jd
+jd
+jd
+GC
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(20,1,2) = {"
+Mn
+Mn
+Mn
+cg
+Oj
+Gi
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+nM
+sg
+Mn
+Mn
+cg
+br
+Ot
+LD
+LD
+LD
+LD
+VO
+XG
+cg
+jd
+jd
+jd
+jd
+jd
+jd
+cg
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(21,1,2) = {"
+Mn
+Mn
+Mn
+cg
+xg
+CE
+RY
+Wu
+Wu
+Wu
+Wu
+Wu
+Vj
+sg
+Mn
+Mn
+cg
+br
+Ot
+LD
+bm
+qH
+LD
+VO
+XG
+PS
+jd
+jd
+jd
+jd
+jd
+jd
+cg
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(22,1,2) = {"
+Mn
+Mn
+Mn
+PS
+gs
+oz
+Vj
+jd
+wJ
+Ck
+Ck
+My
+jd
+bq
+YK
+sK
+cg
+br
+Ot
+LD
+pj
+Ud
+LD
+VO
+XG
+PS
+jd
+jd
+jd
+jd
+jd
+jd
+cg
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(23,1,2) = {"
+Mn
+Mn
+Mn
+PS
+gs
+Va
+Cd
+Cd
+Cd
+Cd
+Cd
+Cd
+Cd
+Cd
+Ek
+gs
+cg
+br
+Ot
+LD
+LD
+LD
+LD
+VO
+XG
+PS
+jd
+jd
+jd
+jd
+jd
+jd
+cg
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(24,1,2) = {"
+Mn
+Mn
+Mn
+PS
+Qm
+gs
+gs
+gs
+gs
+gs
+gs
+eU
+Ag
+bS
+Ag
+Qm
+cg
+SS
+Cl
+xA
+xA
+xA
+xA
+Vm
+Ta
+cg
+jd
+jd
+jd
+jd
+jd
+jd
+cg
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(25,1,2) = {"
+Mn
+Mn
+Mn
+cg
+cg
+cg
+cg
+cg
+cz
+zM
+cg
+cg
+cg
+PS
+PS
+PS
+cg
+JZ
+SS
+DB
+DB
+DB
+DB
+Ta
+JZ
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+cg
+Mn
+Mn
+Mn
+"}
+(26,1,2) = {"
+Mn
+Mn
+Mn
+PS
+iZ
+ic
+XT
+VQ
+Dn
+mo
+Hj
+BB
+cg
+xQ
+xQ
+xQ
+cg
+cg
+zX
+cg
+cg
+cg
+cg
+bC
+cg
+cg
+xQ
+xQ
+xQ
+xQ
+xQ
+Fv
+cg
+cF
+cF
+cF
+cF
+pZ
+Mn
+Mn
+"}
+(27,1,2) = {"
+Mn
+Mn
+Mn
+PS
+Ga
+xg
+LC
+gs
+gs
+gs
+gs
+YI
+cg
+xQ
+xQ
+pB
+EG
+Qt
+eQ
+eQ
+xQ
+cg
+xQ
+xQ
+xQ
+xQ
+ix
+ix
+Bv
+Bv
+ix
+xQ
+cg
+cF
+OH
+Gy
+tl
+pZ
+Mn
+Mn
+"}
+(28,1,2) = {"
+Mn
+Mn
+Mn
+PS
+uY
+cN
+nB
+gs
+gs
+gs
+UV
+Dl
+cg
+xQ
+Hc
+GH
+GH
+eQ
+eQ
+eQ
+xQ
+cg
+xQ
+xQ
+xQ
+xQ
+ix
+ix
+Bv
+Hz
+ix
+xQ
+cg
+cF
+ih
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(29,1,2) = {"
+Mn
+Mn
+Mn
+cg
+cg
+fR
+Wc
+Hb
+gs
+kG
+Ag
+iP
+cg
+xQ
+eQ
+qN
+eQ
+eQ
+eQ
+eQ
+xQ
+cg
+xQ
+xQ
+xQ
+xQ
+ix
+GK
+Bv
+ix
+ix
+xQ
+Nq
+Gy
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(30,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+cg
+na
+hr
+be
+gs
+be
+op
+YI
+cg
+aX
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+xQ
+cg
+aX
+xQ
+xQ
+xQ
+ix
+ix
+bZ
+Bv
+ix
+xQ
+cg
+DS
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(31,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+cg
+bW
+zt
+UD
+UD
+UD
+UD
+rP
+cg
+aX
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+VZ
+cg
+aX
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+VZ
+cg
+pQ
+pQ
+pQ
+QK
+pZ
+Mn
+Mn
+"}
+(32,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+cg
+cg
+PS
+PS
+PS
+PS
+PS
+cg
+cg
+cg
+PS
+PS
+PS
+PS
+PS
+cg
+cg
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+PS
+PS
+PS
+cg
+cg
+Ni
+Hi
+hE
+mQ
+pZ
+Mn
+Mn
+"}
+(33,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+dq
+dq
+dq
+dq
+Mn
+Mn
+Mn
+"}
+(34,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+"}
+(35,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+"}
+(36,1,2) = {"
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+Mn
+"}

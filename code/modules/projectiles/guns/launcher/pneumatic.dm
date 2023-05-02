@@ -160,15 +160,7 @@
 		if(5) to_chat(user, "It has a transfer valve installed.")
 
 /obj/item/weapon/cannonframe/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/pipe))
-		if(buildstate == 0)
-			user.drop_from_inventory(W)
-			qdel(W)
-			to_chat(user, "<span class='notice'>You secure the piping inside the frame.</span>")
-			buildstate++
-			update_icon()
-			return
-	else if(istype(W,/obj/item/stack/material) && W.get_material_name() == DEFAULT_WALL_MATERIAL)
+	if(istype(W,/obj/item/stack/material) && W.get_material_name() == DEFAULT_WALL_MATERIAL)
 		if(buildstate == 2)
 			var/obj/item/stack/material/M = W
 			if(M.use(5))
