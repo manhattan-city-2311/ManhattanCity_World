@@ -2878,6 +2878,7 @@
 #include "code\modules\xgm\xgm_gas_mixture.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
+#include "maps\Manhattan\manhattan.dm"
 #include "maps\submaps\mine_submaps\mine.dm"
 #include "maps\submaps\space_submaps\space.dm"
 #include "maps\submaps\surface_submaps\corporate\corporate.dm"
