@@ -12,7 +12,7 @@
 "l" = (/obj/effect/vehicle_entrance,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "m" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "n" = (/obj/machinery/light/colored/blue{dir = 4; tag = null},/obj/structure/table/reinforced,/obj/item/weapon/storage/box/donut/empty,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"o" = (/obj/structure/bed/chair/shuttle,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 5},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"o" = (/obj/structure/bed/chair/shuttle,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 5},/obj/machinery/arrival_status_display{pixel_y = 28; pixel_x = 17},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "q" = (/obj/structure/table/reinforced,/obj/item/weapon/paper,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "r" = (/obj/machinery/light/colored/blue{dir = 1},/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 1},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "s" = (/obj/machinery/light/colored/blue{dir = 8},/obj/structure/table/reinforced,/obj/item/trash/raisins,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
@@ -20,11 +20,11 @@
 "v" = (/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "w" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 4},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "x" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 4},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"y" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 10},/obj/machinery/status_display{pixel_y = -29},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"y" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 10},/obj/machinery/arrival_status_display{pixel_x = 17; pixel_y = -25},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "z" = (/obj/machinery/light/colored/blue{dir = 4; tag = null},/obj/structure/table/reinforced,/obj/item/weapon/newspaper,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "A" = (/obj/structure/bed/chair/shuttle,/obj/structure/window/reinforced{dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "B" = (/obj/structure/bed/chair/shuttle,/obj/structure/window/reinforced{dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"D" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 5},/obj/machinery/status_display,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"D" = (/obj/structure/table/reinforced,/obj/item/trash/plate,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "E" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/obj/machinery/computer/shuttle_control/arrivals{dir = 8},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "F" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid/full,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
 "G" = (/obj/machinery/light/colored/blue{dir = 8},/obj/structure/table/reinforced,/obj/item/trash/candy,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
@@ -46,7 +46,7 @@
 
 (1,1,1) = {"
 aaaaaaa
-aboDUra
+aboUUra
 aGivvld
 afgSwEa
 aBhehAa
@@ -60,10 +60,10 @@ abYJYXa
 acieVna
 afgegma
 aBhehAa
-asieiza
+asieDza
 afgegma
 aBheMja
 akiQvld
-aFRyHNa
+aFyHHNa
 aaaaaaa
 "}
