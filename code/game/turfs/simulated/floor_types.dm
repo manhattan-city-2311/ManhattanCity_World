@@ -245,3 +245,10 @@
 /turf/simulated/shuttle/floor/voidcraft/external/dark
 
 /turf/simulated/shuttle/floor/voidcraft/external/light
+
+/turf/simulated/floor/glass
+	name = "glass floor"
+	desc = "It looks scary"
+	icon = 'icons/turf/flooring/shuttle.dmi'
+	icon_state = "floor_glass"
+	density = FALSE

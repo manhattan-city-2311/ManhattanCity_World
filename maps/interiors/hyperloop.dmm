@@ -1,75 +1,78 @@
-"a" = (/turf/simulated/wall/silver,/area/interior/hyperloop)
-"b" = (/obj/structure/bed/chair/shuttle,/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 8},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"c" = (/obj/machinery/light/colored/blue{dir = 8},/obj/structure/table/reinforced,/obj/item/weapon/paper/crumpled,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"d" = (/obj/structure/vehicledoor,/turf/simulated/wall/silver,/area/interior/hyperloop)
-"e" = (/obj/structure/neon_spline/blue{dir = 8; icon_state = "spline_fancy"},/obj/structure/neon_spline/blue{dir = 4; icon_state = "spline_fancy"},/turf/simulated/floor/tiled/techfloor,/area/interior/hyperloop)
-"f" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"g" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"h" = (/obj/structure/bed/chair/shuttle,/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"i" = (/obj/structure/table/reinforced,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"j" = (/obj/structure/window/reinforced{dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/obj/machinery/computer/shuttle_control/arrivals{dir = 8},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"k" = (/obj/machinery/light/colored/blue{dir = 8},/obj/structure/table/reinforced,/obj/item/weapon/paper,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"l" = (/obj/effect/vehicle_entrance,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"m" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"n" = (/obj/machinery/light/colored/blue{dir = 4; tag = null},/obj/structure/table/reinforced,/obj/item/weapon/storage/box/donut/empty,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"o" = (/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 8},/obj/machinery/light/colored/blue{dir = 1},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"p" = (/turf/simulated/wall/concrete/fckng_invincible,/area/interior/hyperloop/outside)
-"q" = (/obj/structure/table/reinforced,/obj/item/weapon/paper,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"r" = (/obj/machinery/light/colored/blue{dir = 1},/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 1},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"s" = (/obj/machinery/light/colored/blue{dir = 8},/obj/structure/table/reinforced,/obj/item/trash/raisins,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"t" = (/turf/simulated/floor/tiled/monotile,/area/interior/hyperloop/outside)
-"u" = (/obj/structure/neon_spline/blue{dir = 8; icon_state = "spline_fancy"},/obj/structure/neon_spline/blue{dir = 4; icon_state = "spline_fancy"},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 10},/turf/simulated/floor/tiled/techfloor,/area/interior/hyperloop)
-"v" = (/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"w" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 4},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"x" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 4},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"y" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 10},/obj/machinery/arrival_status_display{pixel_x = 17; pixel_y = -25},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"z" = (/obj/machinery/light/colored/blue{dir = 4; tag = null},/obj/structure/table/reinforced,/obj/item/weapon/newspaper,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"A" = (/obj/structure/bed/chair/shuttle,/obj/structure/window/reinforced{dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"B" = (/obj/structure/bed/chair/shuttle,/obj/structure/window/reinforced{dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"C" = (/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop/outside)
-"D" = (/obj/structure/table/reinforced,/obj/item/trash/plate,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"E" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/obj/machinery/computer/shuttle_control/arrivals{dir = 8},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"F" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid/full,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"G" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 5},/obj/machinery/arrival_status_display{pixel_y = 28; pixel_x = 17},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"H" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 10},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"I" = (/obj/structure/neon_spline/blue{dir = 8; icon_state = "spline_fancy"},/obj/structure/neon_spline/blue{dir = 4; icon_state = "spline_fancy"},/obj/structure/curtain/open/color/pale_blue,/turf/simulated/floor/tiled/techfloor/grid,/area/interior/hyperloop)
-"J" = (/obj/structure/neon_spline/blue{dir = 8; icon_state = "spline_fancy"},/obj/structure/neon_spline/blue{dir = 4; icon_state = "spline_fancy"},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 5},/turf/simulated/floor/tiled/techfloor,/area/interior/hyperloop)
-"K" = (/turf/simulated/floor/tiled/monofloor,/area/interior/hyperloop/outside)
-"L" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/obj/effect/vehicle_entrance,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"M" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 4},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"N" = (/obj/machinery/light/colored/blue,/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 4},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"O" = (/obj/machinery/light/colored/blue{dir = 4; tag = null},/obj/structure/table/reinforced,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"P" = (/obj/machinery/light/colored/blue{dir = 8},/obj/structure/table/reinforced,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"Q" = (/obj/structure/neon_spline/blue/cee,/turf/simulated/floor/tiled/techfloor,/area/interior/hyperloop)
-"R" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 10},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"S" = (/obj/structure/neon_spline/blue/cee{dir = 1},/turf/simulated/floor/tiled/techfloor,/area/interior/hyperloop)
-"T" = (/obj/machinery/light/colored/blue{dir = 8},/obj/structure/table/reinforced,/obj/item/weapon/newspaper,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"U" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 5},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"V" = (/obj/structure/table/reinforced,/obj/item/weapon/paper/crumpled,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"W" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"X" = (/obj/structure/bed/chair/shuttle,/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 1},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
-"Y" = (/obj/structure/bed/chair/shuttle,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 5},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aa" = (/turf/simulated/wall/silver,/area/interior/hyperloop)
+"ab" = (/obj/structure/bed/chair/shuttle,/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 8},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"ac" = (/obj/machinery/light/colored/blue{dir = 8},/obj/structure/table/reinforced,/obj/item/weapon/paper/crumpled,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"ad" = (/obj/structure/vehicledoor,/turf/simulated/wall/silver,/area/interior/hyperloop)
+"ae" = (/obj/structure/neon_spline/blue{dir = 8; icon_state = "spline_fancy"},/obj/structure/neon_spline/blue{dir = 4; icon_state = "spline_fancy"},/turf/simulated/floor/tiled/techfloor,/area/interior/hyperloop)
+"af" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"ag" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"ah" = (/obj/structure/bed/chair/shuttle,/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"ai" = (/obj/structure/table/reinforced,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aj" = (/obj/structure/window/reinforced{dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/obj/machinery/computer/shuttle_control/arrivals{dir = 8},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"ak" = (/obj/machinery/light/colored/blue{dir = 8},/obj/structure/table/reinforced,/obj/item/weapon/paper,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"al" = (/obj/effect/vehicle_entrance,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"am" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"an" = (/obj/machinery/light/colored/blue{dir = 4; tag = null},/obj/structure/table/reinforced,/obj/item/weapon/storage/box/donut/empty,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"ao" = (/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 8},/obj/machinery/light/colored/blue{dir = 1},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"ap" = (/turf/simulated/floor/plating,/area/interior/hyperloop/outside)
+"aq" = (/obj/structure/table/reinforced,/obj/item/weapon/paper,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"ar" = (/obj/machinery/light/colored/blue{dir = 1},/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 1},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"as" = (/obj/machinery/light/colored/blue{dir = 8},/obj/structure/table/reinforced,/obj/item/trash/raisins,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"at" = (/obj/hyperloop_renderer,/turf/simulated/floor/plating,/area/interior/hyperloop/outside)
+"au" = (/obj/structure/neon_spline/blue{dir = 8; icon_state = "spline_fancy"},/obj/structure/neon_spline/blue{dir = 4; icon_state = "spline_fancy"},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 10},/turf/simulated/floor/tiled/techfloor,/area/interior/hyperloop)
+"av" = (/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aw" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 4},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"ax" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 4},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"ay" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 10},/obj/machinery/arrival_status_display{pixel_x = 17; pixel_y = -25},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"az" = (/obj/machinery/light/colored/blue{dir = 4; tag = null},/obj/structure/table/reinforced,/obj/item/weapon/newspaper,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aA" = (/obj/structure/bed/chair/shuttle,/obj/structure/window/reinforced{dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aB" = (/obj/structure/bed/chair/shuttle,/obj/structure/window/reinforced{dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aC" = (/obj/hyperloop_display,/turf/simulated/floor/plating,/area/interior/hyperloop/outside)
+"aD" = (/obj/structure/table/reinforced,/obj/item/trash/plate,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aE" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/obj/machinery/computer/shuttle_control/arrivals{dir = 8},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aF" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid/full,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aG" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 5},/obj/machinery/arrival_status_display{pixel_y = 28; pixel_x = 17},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aH" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 10},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aI" = (/obj/structure/neon_spline/blue{dir = 8; icon_state = "spline_fancy"},/obj/structure/neon_spline/blue{dir = 4; icon_state = "spline_fancy"},/obj/structure/curtain/open/color/pale_blue,/turf/simulated/floor/tiled/techfloor/grid,/area/interior/hyperloop)
+"aJ" = (/obj/structure/neon_spline/blue{dir = 8; icon_state = "spline_fancy"},/obj/structure/neon_spline/blue{dir = 4; icon_state = "spline_fancy"},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 5},/turf/simulated/floor/tiled/techfloor,/area/interior/hyperloop)
+"aL" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/obj/effect/vehicle_entrance,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aM" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 4},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aN" = (/obj/machinery/light/colored/blue,/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 4},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aO" = (/obj/machinery/light/colored/blue{dir = 4; tag = null},/obj/structure/table/reinforced,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aP" = (/obj/machinery/light/colored/blue{dir = 8},/obj/structure/table/reinforced,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aQ" = (/obj/structure/neon_spline/blue/cee,/turf/simulated/floor/tiled/techfloor,/area/interior/hyperloop)
+"aR" = (/obj/structure/bed/chair/shuttle{icon_state = "shuttle_chair"; dir = 1},/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 10},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aS" = (/obj/structure/neon_spline/blue/cee{dir = 1},/turf/simulated/floor/tiled/techfloor,/area/interior/hyperloop)
+"aT" = (/obj/machinery/light/colored/blue{dir = 8},/obj/structure/table/reinforced,/obj/item/weapon/newspaper,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 9},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aU" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 5},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aV" = (/obj/structure/table/reinforced,/obj/item/weapon/paper/crumpled,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aW" = (/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 6},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aX" = (/obj/structure/bed/chair/shuttle,/obj/effect/floor_decal/corner_techfloor_grid/full{icon_state = "corner_techfloor_grid_full"; dir = 1},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"aY" = (/obj/structure/bed/chair/shuttle,/obj/effect/floor_decal/corner_techfloor_grid{icon_state = "corner_techfloor_grid"; dir = 5},/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"ba" = (/obj/structure/window/reinforced/crescent/full,/turf/simulated/floor/tiled/monotile_dark,/area/interior/hyperloop)
+"bf" = (/turf/simulated/floor/outdoors/void,/area/interior/hyperloop/outside)
 
 (1,1,1) = {"
-ptCaaaaaaaCtp
-ptCaoGUUraCtp
-pKCdLvvvldCtp
-pKCafgSwEaCtp
-pKCaBhehAaCtp
-pKCaTieiOaCtp
-pKCafgegmaCtp
-pKCaBhehAaCtp
-pKCaPqeizaCtp
-pKCaFRuRxaCtp
-pKCaaaIaaaCtp
-pKCabYJYXaCtp
-pKCacieVnaCtp
-pKCafgegmaCtp
-pKCaBhehAaCtp
-pKCasieDzaCtp
-pKCafgegmaCtp
-pKCaBheMjaCtp
-pKCakiQvWaCtp
-pKCaFyHHNaCtp
-pKCaaaaaaaCtp
+bfbfbfbfbfbfbfbfbfbfbfbfbfbfbf
+bfapapapaaaaaaaaaaaaaaapapapbf
+bfapapapaaaoaGaUaUaraaapapapbf
+bfatapapadaLavavavaladaCapapbf
+bfapapapaaafagaSawaEaaapapapbf
+bfapapapbaaBahaeahaAbaapapapbf
+bfaCapapaaaTaiaeaiaOaaaCapapbf
+bfapapapbaafagaeagambaapapapbf
+bfapapapaaaBahaeahaAaaapapapbf
+bfaCapapbaaPaqaeaiazbaaCapapbf
+bfapapapaaaFaRauaRaxaaapapapbf
+bfapapapaaaaaaaIaaaaaaapapapbf
+bfaCapapaaabaYaJaYaXaaaCapapbf
+bfapapapbaacaiaeaVanbaapapapbf
+bfapapapaaafagaeagamaaapapapbf
+bfaCapapbaaBahaeahaAbaaCapapbf
+bfapapapaaasaiaeaDazaaapapapbf
+bfapapapbaafagaeagambaapapapbf
+bfaCapapaaaBahaeaMajaaaCapapbf
+bfapapapbaakaiaQavaWbaapapapbf
+bfapapapaaaFayaHaHaNaaapapapbf
+bfaCapapaaaaaaaaaaaaaaaCapapbf
+bfbfbfbfbfbfbfbfbfbfbfbfbfbfbf
 "}

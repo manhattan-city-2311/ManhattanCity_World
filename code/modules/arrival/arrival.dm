@@ -73,4 +73,43 @@
 		if(ARRIVAL_WAITING)
 			set_text(station_name, "Depart in [get_eta_text(time_left)]", font_color = ASD_ARRIVED_FONT_COLOR)
 				
-				
+
+
+/obj/hyperloop_renderer
+	icon = 'icons/effects/arrival.dmi'
+	icon_state = "static"
+	density = TRUE
+	opacity = TRUE
+
+/obj/hyperloop_renderer/initialize()
+	. = ..()
+	tag = "@hyperloop_renderer"
+
+/obj/hyperloop_display
+	icon = 'icons/effects/arrival.dmi'
+	icon_state = "static"
+	density = TRUE
+	opacity = TRUE
+	
+	var/obj/hyperloop_renderer/renderer
+
+/obj/hyperloop_display/update_icon()
+	icon = null
+	icon_state = null
+
+	vis_contents += renderer
+
+	if(x > renderer.x) // right
+		transform = matrix(-1, 0, 0, 0, 1, 0)
+
+	set_light(6, 6, "#952CF4")
+
+/obj/hyperloop_display/initialize()
+	. = ..()
+
+	spawn()
+		do
+			renderer = locate("@hyperloop_renderer")
+			sleep(1)
+		while(!renderer)
+		update_icon()

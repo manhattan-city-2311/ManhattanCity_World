@@ -31,8 +31,8 @@
 				break
 		if(valid)
 			interior_template.load(T)
-			area = get_area(T)
-			middle_turf = T
+			middle_turf = locate(T.x + round(interior_template.width / 2), T.y + round(interior_template.height / 2), T.z)
+			area = get_area(middle_turf)
 			break
 	if(!area)
 		CRASH("Failed to load interior")

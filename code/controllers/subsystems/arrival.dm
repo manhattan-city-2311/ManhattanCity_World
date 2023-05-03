@@ -5,7 +5,7 @@
 
 #define ARRIVAL_PERIOD_FEW_PEOPLES (60 SECONDS)
 #define ARRIVAL_PERIOD_HOLD_DEPART (30 SECONDS)
-#define ARRIVAL_PERIOD_TRANSIT (50 SECONDS)
+#define ARRIVAL_PERIOD_TRANSIT (120 SECONDS)
 #define ARRIVAL_PERIOD_WAIT (30 SECONDS) // wait on each station, includes time for arrival
 #define ARRIVAL_PERIOD_MIDST_TRANSIT (10 SECONDS) // time for travel between stops, includes time for departion
 
@@ -25,6 +25,7 @@ SUBSYSTEM_DEF(arrival)
 
 	var/obj/manhattan/vehicle/large/hyperloop/hyperloop
 	var/list/obj/effect/arrival_stop/stops = list()
+	var/obj/hyperloop_renderer/renderer
 	var/current_stop
 
 /datum/controller/subsystem/arrival/stat_entry()
@@ -32,6 +33,11 @@ SUBSYSTEM_DEF(arrival)
 
 /datum/controller/subsystem/arrival/Initialize()
 	hyperloop = new
+
+	do
+		renderer = locate("@hyperloop_renderer")
+		sleep(1)
+	while(!renderer)
 	. = ..()
 
 /datum/controller/subsystem/arrival/proc/spawn_passengers()
@@ -74,6 +80,9 @@ SUBSYSTEM_DEF(arrival)
 			CRASH("No hyperloop stops found ;(")
 		return
 
+	for(var/mob/M in hyperloop.interior.area)
+		shake_camera(M, rand(1, 2), 1)
+
 	switch(arrival_state)
 		if(ARRIVAL_HOLD)
 			var/n_players = 0
@@ -86,12 +95,25 @@ SUBSYSTEM_DEF(arrival)
 			else if(world.time >= next)
 				next = world.time + ARRIVAL_PERIOD_TRANSIT
 				++arrival_state
+
+				renderer.icon_state = "fast"
 				spawn_passengers()
 				current_stop = 1
 
 		if(ARRIVAL_INCOMING)
 			if(world.time < next)
 				return
+			
+			if(world.time < (next + (5 SECONDS)))
+				renderer.icon_state = "medium"
+				return
+			
+			if(world.time < (next + (10 SECONDS)))
+				renderer.icon_state = "slow"
+				return
+
+			flick("static_flick", renderer)
+			renderer.icon_state = "static"
 			arrive()
 			++arrival_state
 			next = world.time + ARRIVAL_PERIOD_WAIT
@@ -100,6 +122,11 @@ SUBSYSTEM_DEF(arrival)
 			if(world.time < next)
 				return
 			depart()
+			flick("static_flick", renderer)
+			renderer.icon_state = "slow"
+
+			spawn(5 SECONDS)
+				renderer.icon_state = "medium"
 
 			if(current_stop++ == stops.len)
 				arrival_state = ARRIVAL_HOLD
