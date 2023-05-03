@@ -15,30 +15,36 @@
 
 	var/global/list/datum/map_template/templates_cache = list()
 
-/datum/vehicle_interior/New(interior_template, new_vehicle)
-	var/is_failed = TRUE
-	for(var/obj/effect/interior_spawn/S in GLOB.vehicle_spawnpoints)
-		middle_turf = get_turf(S)
+/datum/vehicle_interior/New(datum/map_template/interior_template, new_vehicle)
+	if(!(interior_template in templates_cache))
+		templates_cache[interior_template] = new interior_template
+		sleep(3)
 
-		if(!(interior_template in templates_cache))
-			templates_cache[interior_template] = new interior_template
-		
-		templates_cache[interior_template].load(middle_turf, centered = TRUE)
+	interior_template = templates_cache[interior_template]
 
-		is_failed = FALSE
-		qdel(S)
-		break
+	var/area/A = locate(/area/space)
+	for(var/turf/T in A)
+		var/valid = TRUE
+		for(var/turf/check in interior_template.get_affected_turfs(T))
+			if(!istype(check, /turf/space))
+				valid = FALSE
+				break
+		if(valid)
+			interior_template.load(T)
+			area = get_area(T)
+			middle_turf = T
+			break
+	if(!area)
+		CRASH("Failed to load interior")
+		return
 
-	if(is_failed)
-		CRASH("Failed to load [type]")
-		
 	id = gid++
-	area = get_area(middle_turf)
 
 	for(var/obj/effect/vehicle_entrance/E in area)
 		entrance = E
 		entrance.id = id
 		break
+
 	for(var/obj/structure/vehicledoor/E in area)
 		door = E
 		door.id = id
@@ -52,21 +58,6 @@
 
 /obj/effect/vehicle_entrance
 	var/id
-
-/obj/effect/interior_spawn
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "rift"
-	var/free_x = 0
-	var/free_y = 0
-
-/obj/effect/interior_spawn/New()
-	. = ..()
-	GLOB.vehicle_spawnpoints += src
-	icon_state = null
-
-/obj/effect/interior_spawn/Destroy()
-	GLOB.vehicle_spawnpoints -= src
-	. = ..()
 
 /obj/manhattan/vehicle/large
 	var/datum/vehicle_interior/interior = null

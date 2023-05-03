@@ -5,3 +5,9 @@
 
 /area/interior/hyperloop
 	name = "hyperloop interior"
+
+/area/interior/hyperloop/outside
+	name = "hyperloop interior (outside)"
+
+/area/interiors_spawn
+	name = "interiors spawn"

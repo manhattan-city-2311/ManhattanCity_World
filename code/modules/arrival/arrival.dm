@@ -48,9 +48,9 @@
 	if(len <= display_length)
 		return text
 
-	. = copytext(text, text_shift, text_shift + display_length)
+	. = copytext_char(text, text_shift, text_shift + display_length)
 	if(text_shift + display_length - 1 > len)
-		. += copytext(text, 1, text_shift + display_length - len)
+		. += copytext_char(text, 1, text_shift + display_length - len)
 
 	if(++text_shift == len)
 		text_shift = 1

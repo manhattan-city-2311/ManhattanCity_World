@@ -155,7 +155,7 @@
 			continue
 		if(MT.discard_prob && prob(MT.discard_prob))
 			continue
-		if(MT.cost && MT.cost < 0) // Negative costs always get spawned.
+		if(MT.cost < 0) // Negative costs always get spawned.
 			priority_submaps += MT
 		else
 			potential_submaps += MT

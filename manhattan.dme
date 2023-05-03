@@ -2927,6 +2927,7 @@
 #include "code\modules\xgm\xgm_gas_mixture.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
+#include "maps\example\example.dm"
 #include "maps\interiors\interiors.dm"
 #include "maps\Manhattan\manhattan.dm"
 #include "maps\submaps\mine_submaps\mine.dm"
