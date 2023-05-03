@@ -2262,7 +2262,7 @@
 "pek" = (/obj/structure/flora/ausbushes/lavendergrass,/obj/structure/flora/ausbushes/fernybush,/turf/simulated/floor/grass,/area/planets/Manhattan/south/building/social/gym)
 "peH" = (/obj/effect/floor_decal/corner/paleblue/border{dir = 1},/obj/structure/filingcabinet{pixel_x = 5},/obj/structure/filingcabinet{pixel_x = -5},/turf/simulated/floor/tiled/techfloor,/area/planets/Manhattan/indoor/north/cray/under/medicaloffice)
 "pfI" = (/turf/simulated/wall/iron/silver_paint,/area/planets/Manhattan/indoor/north/cray/under/toiletblyat)
-"pfL" = (/obj/structure/table/woodentable/maple{id = "vault5151"},/obj/machinery/button/remote/blast_door{dir = 4},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/tiled/dark,/area/planets/Manhattan/indoor/north/casino/under)
+"pfL" = (/obj/structure/table/woodentable/maple,/obj/machinery/button/remote/blast_door{dir = 4},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/tiled/dark,/area/planets/Manhattan/indoor/north/casino/under)
 "pgh" = (/obj/random/trash,/turf/simulated/floor/tiled/steel_grid,/area/planets/Manhattan/south/building/social/metro)
 "pgj" = (/obj/structure/bed/chair/office/dark,/turf/simulated/floor/tiled/techmaint,/area/planets/Manhattan/south/factory/maintenance)
 "pgl" = (/obj/structure/neon_spline/lightblue{dir = 8},/turf/simulated/floor/water/pool,/area/planets/Manhattan/indoor/north/shopping/underground/gym/pool)
