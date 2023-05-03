@@ -1158,6 +1158,7 @@
 #include "code\game\objects\structures\ghost_pods\silicon.dm"
 #include "code\game\objects\structures\manhattan\clothing.dm"
 #include "code\game\objects\structures\manhattan\collide_cm.dm"
+#include "code\game\objects\structures\manhattan\dj.dm"
 #include "code\game\objects\structures\manhattan\doors.dm"
 #include "code\game\objects\structures\manhattan\flora.dm"
 #include "code\game\objects\structures\manhattan\holoplants.dm"

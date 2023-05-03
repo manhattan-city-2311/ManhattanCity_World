@@ -2,10 +2,6 @@
 	var/id
 	var/global/gid = 0
 
-	//11 at max
-	var/size_x = 0
-	var/size_y = 0
-
 	var/list/mob/living/carbon/human/occupants = null
 	var/turf/middle_turf
 	var/obj/effect/vehicle_entrance/entrance = null
