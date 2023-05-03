@@ -76,6 +76,7 @@
 
 
 /obj/hyperloop_renderer
+	name = "hyperloop tunnell"
 	icon = 'icons/effects/arrival.dmi'
 	icon_state = "static"
 	density = TRUE
@@ -86,6 +87,7 @@
 	tag = "@hyperloop_renderer"
 
 /obj/hyperloop_display
+	name = ""
 	icon = 'icons/effects/arrival.dmi'
 	icon_state = "static"
 	density = TRUE

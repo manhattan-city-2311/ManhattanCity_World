@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(arrival)
 		return
 
 	for(var/mob/M in hyperloop.interior.area)
-		shake_camera(M, rand(1, 2), 1)
+		shake_camera(M, 1, 1)
 
 	switch(arrival_state)
 		if(ARRIVAL_HOLD)
