@@ -335,12 +335,39 @@
 	name = "\improper Casino Playing Hall(North)"
 /area/planets/Manhattan/indoor/north/casino/restroom
 /area/planets/Manhattan/indoor/north/casino/securitypost
+/area/planets/Manhattan/indoor/north/casino/hallway1
+/area/planets/Manhattan/indoor/north/casino/stairs1
+/area/planets/Manhattan/indoor/north/casino/registration
+/area/planets/Manhattan/indoor/north/casino/gamezal1
+/area/planets/Manhattan/indoor/north/casino/boss
+/area/planets/Manhattan/indoor/north/casino/stairs2
+/area/planets/Manhattan/indoor/north/casino/miniboss
+/area/planets/Manhattan/indoor/north/casino/vip1
+/area/planets/Manhattan/indoor/north/casino/vip2
+/area/planets/Manhattan/indoor/north/casino/viphall
+/area/planets/Manhattan/indoor/north/casino/vipmini
+/area/planets/Manhattan/indoor/north/casino/toilet
+/area/planets/Manhattan/indoor/north/casino/hallway2
+/area/planets/Manhattan/indoor/north/casino/roof1
+/area/planets/Manhattan/indoor/north/casino/heli
+/area/planets/Manhattan/indoor/north/casino/penthall1
+/area/planets/Manhattan/indoor/north/casino/penthall2
+/area/planets/Manhattan/indoor/north/casino/penthall3
+/area/planets/Manhattan/indoor/north/casino/penthall4
+/area/planets/Manhattan/indoor/north/casino/pentkitchen
+/area/planets/Manhattan/indoor/north/casino/pentbedroom
+/area/planets/Manhattan/indoor/north/casino/penttoilet1
+/area/planets/Manhattan/indoor/north/casino/penttoilet2
+/area/planets/Manhattan/indoor/north/casino/pentcinema
+/area/planets/Manhattan/indoor/north/casino/pentmeet
 
 /area/planets/Manhattan/indoor/north/casino/under
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m2"
 
 /area/planets/Manhattan/indoor/north/casino/under/moneystorage
+	name = "\improper Casino Money Storage(North-Under)"
+/area/planets/Manhattan/indoor/north/casino/under/vault
 	name = "\improper Casino Money Storage(North-Under)"
 
 /area/planets/Manhattan/indoor/north/casino/upper
