@@ -1,10 +1,3 @@
-#define HYPERLOOP_STATE_OUT 0
-#define HYPERLOOP_STATE_TRANSIT 1
-#define HYPERLOOP_STATE_NORTH_ARRIVAL 2
-#define HYPERLOOP_STATE_NORTH_WAIT 3
-#define HYPERLOOP_STATE_SOUTH_ARRIVAL 4
-#define HYPERLOOP_STATE_SOUTH_WAIT 5
-
 /obj/manhattan/vehicle/large/hyperloop
 	name = "magnet-driven vacuum transit system capsule"
 	desc = "An extraordinary aerodynamic capsule suspended above a magnet structure that is used for propelling it in a vacuum tunnel."
@@ -20,7 +13,7 @@
 	size_x = 7
 	size_y = 16
 
-	var/state = HYPERLOOP_STATE_OUT
+	var/number_of_seats = 20
 
 /obj/manhattan/vehicle/large/hyperloop/update_icon()
 	. = ..()
@@ -52,5 +45,3 @@
 
 /obj/structure/track/magnet/ex_act()
 	return
-/obj/effect/hyperloopstop
-	name = "hyperloop stop"

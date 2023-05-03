@@ -50,11 +50,6 @@ var/global/datum/controller/gameticker/ticker
 		while(current_state == GAME_STATE_PREGAME)
 			if(round_progressing)
 				pregame_timeleft--
-			if(pregame_timeleft == config.vote_autogamemode_timeleft)
-				if(!SSvote.time_remaining)
-					SSvote.autogamemode()	//Quit calling this over and over and over and over.
-					while(SSvote.time_remaining)
-						sleep(1)
 			if(pregame_timeleft <= 0)
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
@@ -119,7 +114,7 @@ var/global/datum/controller/gameticker/ticker
 	to_chat(world, "[get_president_info()]")
 
 	current_state = GAME_STATE_PLAYING
-	create_characters() //Create player characters and transfer them.
+	//create_characters() //Create player characters and transfer them.
 	collect_minds()
 	equip_characters()
 	data_core.manifest()
@@ -389,7 +384,6 @@ var/global/datum/controller/gameticker/ticker
 				if(!round_end_announced) // Spam Prevention. Now it should announce only once.
 					to_chat(world, "<span class='danger'>The round has ended!</span>")
 					round_end_announced = 1
-				SSvote.autotransfer()
 
 		return 1
 

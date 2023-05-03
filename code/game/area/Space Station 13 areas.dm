@@ -6,7 +6,6 @@
 	name = "NICE NAME" 				(not required but makes things really nice)
 	icon = "ICON FILENAME" 			(defaults to areas.dmi)
 	icon_state = "NAME OF ICON" 	(defaults to "unknown" (blank))
-	requires_power = 0 				(defaults to 1)
 	music = "music/music.ogg"		(defaults to "music/music.ogg")
 
 NOTE: there are two lists of areas in the end of this file: centcom and station itself. Please maintain these lists valid. --rastaf0
@@ -22,7 +21,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/space
 	name = "\improper Space"
 	icon_state = "space"
-	requires_power = 1
 	always_unpowered = 1
 	dynamic_lighting = 0
 	power_light = 0
@@ -54,7 +52,6 @@ area/space/atmosalert()
 	return
 
 /area/arrival
-	requires_power = 0
 
 /area/arrival/start
 	name = "\improper Arrival Area"
@@ -74,7 +71,6 @@ area/space/atmosalert()
 //All shuttles should now be under shuttle since we have smooth-wall code.
 
 /area/shuttle
-	requires_power = 0
 	flags = RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
@@ -254,12 +250,10 @@ area/space/atmosalert()
 /area/shuttle/alien/base
 	icon_state = "shuttle"
 	name = "\improper Alien Shuttle Base"
-	requires_power = 1
 
 /area/shuttle/alien/mine
 	icon_state = "shuttle"
 	name = "\improper Alien Shuttle Mine"
-	requires_power = 1
 
 /area/shuttle/prison/
 	name = "\improper Prison Shuttle"
@@ -356,14 +350,12 @@ area/space/atmosalert()
 /area/alien
 	name = "\improper Alien base"
 	icon_state = "yellow"
-	requires_power = 0
 
 // CENTCOM
 
 /area/centcom
 	name = "\improper CentCom"
 	icon_state = "centcom"
-	requires_power = 0
 	dynamic_lighting = 1
 
 /area/centcom/control
@@ -448,7 +440,6 @@ area/space/atmosalert()
 /area/syndicate_mothership
 	name = "\improper Mercenary Base"
 	icon_state = "syndie-ship"
-	requires_power = 0
 	dynamic_lighting = 0
 
 /area/syndicate_mothership/control
@@ -464,13 +455,11 @@ area/space/atmosalert()
 /area/asteroid					// -- TLE
 	name = "\improper Moon"
 	icon_state = "asteroid"
-	requires_power = 0
 	sound_env = ASTEROID
 
 /area/asteroid/cave				// -- TLE
 	name = "\improper Moon - Underground"
 	icon_state = "cave"
-	requires_power = 0
 	sound_env = ASTEROID
 
 /area/asteroid/artifactroom
@@ -478,29 +467,13 @@ area/space/atmosalert()
 	icon_state = "cave"
 	sound_env = SMALL_ENCLOSED
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /area/planet/clown
 	name = "\improper Clown Planet"
 	icon_state = "honk"
-	requires_power = 0
 
 /area/tdome
 	name = "\improper Thunderdome"
 	icon_state = "thunder"
-	requires_power = 0
 	dynamic_lighting = 0
 	sound_env = ARENA
 
@@ -526,7 +499,6 @@ area/space/atmosalert()
 /area/syndicate_station
 	name = "\improper Independent Station"
 	icon_state = "yellow"
-	requires_power = 0
 	flags = RAD_SHIELDED
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 	dynamic_lighting = 0
@@ -583,13 +555,11 @@ area/space/atmosalert()
 /area/wizard_station
 	name = "\improper Wizard's Den"
 	icon_state = "yellow"
-	requires_power = 0
 	dynamic_lighting = 0
 
 /area/skipjack_station
 	name = "\improper Skipjack"
 	icon_state = "yellow"
-	requires_power = 0
 	dynamic_lighting = 1
 	luminosity = 0
 	base_turf = /turf/simulated/floor/water
@@ -630,7 +600,6 @@ area/space/atmosalert()
 /area/prison/arrival_airlock
 	name = "\improper Prison Station Airlock"
 	icon_state = "green"
-	requires_power = 0
 
 /area/prison/control
 	name = "\improper Prison Security Checkpoint"
@@ -679,7 +648,6 @@ area/space/atmosalert()
 /area/prison/solar
 	name = "\improper Prison Solar Array"
 	icon_state = "storage"
-	requires_power = 0
 
 /area/prison/podbay
 	name = "\improper Prison Podbay"
@@ -1541,7 +1509,6 @@ area/space/atmosalert()
 
 /area/holodeck/source_thunderdomecourt
 	name = "\improper Holodeck - Thunderdome Court"
-	requires_power = 0
 	sound_env = ARENA
 
 /area/holodeck/source_courtroom
@@ -1669,7 +1636,6 @@ area/space/atmosalert()
 //Solars
 
 /area/solar
-	requires_power = 1
 	always_unpowered = 1
 	dynamic_lighting = 0
 
@@ -2187,13 +2153,11 @@ area/space/atmosalert()
 /area/supply/station
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	requires_power = 0
 	base_turf = /turf/simulated/floor/tiled/techmaint
 	flags = RAD_SHIELDED || AREA_FLAG_IS_NOT_PERSISTENT
 /area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	requires_power = 0
 	base_turf = /turf/simulated/floor/tiled/techmaint
 	flags = RAD_SHIELDED || AREA_FLAG_IS_NOT_PERSISTENT
 /area/janitor/
@@ -2348,7 +2312,6 @@ area/space/atmosalert()
 	icon_state = "auxstorage"
 
 /area/storage/testroom
-	requires_power = 0
 	name = "\improper Test Room"
 	icon_state = "storage"
 
@@ -2607,7 +2570,6 @@ area/space/atmosalert()
 /area/aisat
 	name = "\improper AI Satellite"
 	icon_state = "ai"
-	requires_power = FALSE
 
 /area/aisat_interior
 	name = "\improper AI Satellite"
@@ -2728,19 +2690,16 @@ area/space/atmosalert()
 	name = "\improper Wild West Mines"
 	icon_state = "away1"
 	luminosity = 1
-	requires_power = 0
 
 /area/awaymission/wwgov
 	name = "\improper Wild West Mansion"
 	icon_state = "away2"
 	luminosity = 1
-	requires_power = 0
 
 /area/awaymission/wwrefine
 	name = "\improper Wild West Refinery"
 	icon_state = "away3"
 	luminosity = 1
-	requires_power = 0
 
 /area/awaymission/wwvault
 	name = "\improper Wild West Vault"
@@ -2748,9 +2707,8 @@ area/space/atmosalert()
 	luminosity = 0
 
 /area/awaymission/wwvaultdoors
-	name = "\improper Wild West Vault Doors"  // this is to keep the vault area being entirely lit because of requires_power
+	name = "\improper Wild West Vault Doors"
 	icon_state = "away2"
-	requires_power = 0
 	luminosity = 0
 
 /area/awaymission/desert
@@ -2772,7 +2730,6 @@ area/space/atmosalert()
 /area/awaymission/spacebattle
 	name = "\improper Space Battle"
 	icon_state = "away"
-	requires_power = 0
 
 /area/awaymission/spacebattle/cruiser
 	name = "\improper NanoTrasen Cruiser"
@@ -2804,7 +2761,6 @@ area/space/atmosalert()
 /area/awaymission/listeningpost
 	name = "\improper Listening Post"
 	icon_state = "away"
-	requires_power = 0
 
 /area/lots
 	name = "Lots"
@@ -2817,7 +2773,6 @@ area/space/atmosalert()
 	icon_state = "null"
 	luminosity = 1
 	dynamic_lighting = 0
-	requires_power = 0
 	ambience = list()
 	var/sound/mysound = null
 
@@ -2939,7 +2894,6 @@ var/list/the_station_areas = list (
 	icon_state = "yellow"
 	luminosity = 1
 	dynamic_lighting = 0
-	requires_power = 0
 	var/sound/mysound = null
 /*
 	New()

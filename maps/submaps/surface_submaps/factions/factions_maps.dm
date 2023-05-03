@@ -38,7 +38,6 @@ var/list/global/workers_union_bases = list()
 	power_equip = 1
 	power_light = 1
 	power_environ = 1
-	requires_power = 0
 	flags = RAD_SHIELDED
 	base_turf = /turf/simulated/floor/outdoors/dirt
 

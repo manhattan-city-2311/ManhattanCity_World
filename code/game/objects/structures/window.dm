@@ -494,7 +494,7 @@
 				else
 					I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
 				overlays += I
-	return
+	return ..()
 
 	/*
 	// Unreachable code. Left incase it is needed later.

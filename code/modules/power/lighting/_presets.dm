@@ -109,9 +109,9 @@
 /obj/machinery/light/flamp/has_power()
 	var/area/A = get_area(src)
 	if(lamp_shade)
-		return A && (!A.requires_power || A.power_light)
+		return A
 	else
-		return A && A.lightswitch && (!A.requires_power || A.power_light)
+		return A && A.lightswitch
 
 /obj/machinery/light/flamp/attack_ai(mob/user)
 	attack_hand()
