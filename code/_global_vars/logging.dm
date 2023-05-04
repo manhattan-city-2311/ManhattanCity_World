@@ -1,4 +1,0 @@
-GLOBAL_VAR(tgui_error_log)
-GLOBAL_PROTECT(tgui_error_log)
-GLOBAL_VAR(tgui_debug_log)
-GLOBAL_PROTECT(tgui_debug_log)

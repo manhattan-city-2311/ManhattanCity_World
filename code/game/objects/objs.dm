@@ -1,7 +1,7 @@
 /obj
 	layer = OBJ_LAYER
 	plane = OBJ_PLANE
-	appearance_flags = DEFAULT_APPEARANCE_UNBOUND // holy maptick...
+	appearance_flags = DEFAULT_APPEARANCE
 	//Used to store information about the contents of the object.
 	var/list/matter
 	var/w_class // Size of the object.
