@@ -80,8 +80,11 @@ SUBSYSTEM_DEF(arrival)
 			CRASH("No hyperloop stops found ;(")
 		return
 
-	for(var/mob/M in hyperloop.interior.area)
-		shake_camera(M, 1, 1)
+	if(renderer.icon_state != "static")
+		for(var/mob/M in hyperloop.interior.area)
+			var/sign = prob(50) ? 1 : -1
+			animate(M.client, pixel_x =  sign * 3, pixel_y =-sign, time = 1 SECOND, flags = ANIMATION_RELATIVE)
+			animate(M.client, pixel_x = -sign * 3, pixel_y = sign, time = 1 SECOND, flags = ANIMATION_RELATIVE)
 
 	switch(arrival_state)
 		if(ARRIVAL_HOLD)
