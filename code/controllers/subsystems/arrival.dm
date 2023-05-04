@@ -82,9 +82,10 @@ SUBSYSTEM_DEF(arrival)
 
 	if(renderer.icon_state != "static")
 		for(var/mob/M in hyperloop.interior.area)
-			var/sign = prob(50) ? 1 : -1
-			animate(M.client, pixel_x =  sign * 3, pixel_y =-sign, time = 1 SECOND, flags = ANIMATION_RELATIVE)
-			animate(M.client, pixel_x = -sign * 3, pixel_y = sign, time = 1 SECOND, flags = ANIMATION_RELATIVE)
+			spawn()
+				var/sign = prob(50) ? 1 : -1
+				animate(M.client, pixel_x =  sign * 3, pixel_y =-sign, time = 2 SECOND)
+				animate(M.client, pixel_x = 0, pixel_y = 0, time = 2 SECOND)
 
 	switch(arrival_state)
 		if(ARRIVAL_HOLD)
@@ -104,15 +105,15 @@ SUBSYSTEM_DEF(arrival)
 				current_stop = 1
 
 		if(ARRIVAL_INCOMING)
+			switch(next - world.time)
+				if(15 SECONDS to POSITIVE_INFINITY)
+					renderer.icon_state = "fast"
+				if(5 SECONDS to 15 SECONDS)
+					renderer.icon_state = "medium"
+				else
+					renderer.icon_state = "slow"
+
 			if(world.time < next)
-				return
-			
-			if(world.time < (next + (5 SECONDS)))
-				renderer.icon_state = "medium"
-				return
-			
-			if(world.time < (next + (10 SECONDS)))
-				renderer.icon_state = "slow"
 				return
 
 			flick("static_flick", renderer)
