@@ -473,9 +473,9 @@
 			last_shot = world.time
 
 			if(silenced)
-				playsound(src, fire_sound, 10, 1)
+				playsound(src, fire_sound, 30, 1)
 			else
-				playsound(src, fire_sound, 50, 1)
+				playsound(src, fire_sound, 100, 1)
 
 			if(muzzle_flash)
 				set_light(muzzle_flash)

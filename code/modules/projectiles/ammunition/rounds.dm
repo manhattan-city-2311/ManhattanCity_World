@@ -29,8 +29,15 @@
 	projectile_type = /obj/item/projectile/bullet/fmj/p357
 /obj/item/ammo_casing/a357/ap
 	projectile_type = /obj/item/projectile/bullet/ap/p357
+	desc = "A .357 armor-piercing bullet casing."
 /obj/item/ammo_casing/a357/hp
 	projectile_type = /obj/item/projectile/bullet/hp/p357
+	desc = "A .357  hollow point bullet casing."
+/obj/item/ammo_casing/a357/rubber
+	projectile_type = /obj/item/projectile/bullet/rubber/p357
+	icon_state = "r-casing"
+	desc = "A .357 rubber bullet casing."
+
 /*
  * .38
  */
@@ -38,17 +45,15 @@
 /obj/item/ammo_casing/a38
 	desc = "A .38 bullet casing."
 	caliber = ".38"
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/item/projectile/bullet/fmj/p38
 
-/obj/item/ammo_casing/a38r
+/obj/item/ammo_casing/a38/rubber
 	desc = "A .38 rubber bullet casing."
-	caliber = ".38"
 	icon_state = "r-casing"
-	projectile_type = /obj/item/projectile/bullet/pistol/rubber
+	projectile_type = /obj/item/projectile/bullet/rubber/p38
 
-/obj/item/ammo_casing/a38p
+/obj/item/ammo_casing/a38/practice
 	desc = "A .38 practice bullet casing."
-	caliber = ".38"
 	icon_state = "r-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/practice
 
@@ -60,19 +65,24 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 130, "uranium" = 100)
 
 /*
- * .50 Action Express
+ * .44
  */
 
 /obj/item/ammo_casing/a44
 	desc = "A .44 bullet casing."
 	caliber = ".44"
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/item/projectile/bullet/fmj/p44
+/obj/item/ammo_casing/a44/ap
+	desc = "A .44 armor-piercing bullet casing."
+	projectile_type = /obj/item/projectile/bullet/ap/p44
+/obj/item/ammo_casing/a44/hp
+	desc = "A .44 hollow-point bullet casing."
+	projectile_type = /obj/item/projectile/bullet/hp/p44
 
-/obj/item/ammo_casing/a44r
+/obj/item/ammo_casing/a44/rubber
 	icon_state = "r-casing"
 	desc = "A .44 rubber bullet casing."
-	caliber = ".44"
-	projectile_type = /obj/item/projectile/bullet/pistol/rubber/strong
+	projectile_type = /obj/item/projectile/bullet/rubber/p44
 
 /*
  * .75 (aka Gyrojet Rockets, aka admin abuse)
@@ -84,23 +94,17 @@
 	projectile_type = /obj/item/projectile/bullet/gyro
 
 /*
- * 5mm
+ * 5.7mm
  */
 
 /obj/item/ammo_casing/a5mm
-	desc = "A 5mm bullet casing."
+	desc = "A 5.7mm bullet casing."
 	caliber = "5mm"
-	projectile_type = /obj/item/projectile/bullet/pistol/small
+	projectile_type = /obj/item/projectile/bullet/fmj/p57
 
 /obj/item/ammo_casing/a5mm/ap
-	desc = "A 5mm armor-piercing bullet casing."
-	caliber = "5mm"
-	projectile_type = /obj/item/projectile/bullet/pistol/small/ap
-
-/obj/item/ammo_casing/a5mm/hollow
-	desc = "A 5mm hollow-point bullet casing."
-	caliber = "5mm"
-	projectile_type = /obj/item/projectile/bullet/pistol/small/hollow
+	desc = "A 5.7mm armor-piercing bullet casing."
+	projectile_type = /obj/item/projectile/bullet/ap/p57
 
 /*
  * 9mm
@@ -109,27 +113,24 @@
 /obj/item/ammo_casing/a9mm
 	desc = "A 9mm bullet casing."
 	caliber = "9mm"
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/item/projectile/bullet/fmj/s9x19
 
 /obj/item/ammo_casing/a9mm/ap
 	desc = "A 9mm armor-piercing bullet casing."
-	projectile_type = /obj/item/projectile/bullet/pistol/ap
+	projectile_type = /obj/item/projectile/bullet/ap/s9x19
 
-/obj/item/ammo_casing/a9mmf
+/obj/item/ammo_casing/a9mm/flash
 	desc = "A 9mm flash shell casing."
-	caliber = "9mm"
 	icon_state = "r-casing"
 	projectile_type = /obj/item/projectile/energy/flash
 
-/obj/item/ammo_casing/a9mmr
+/obj/item/ammo_casing/a9mm/rubber
 	desc = "A 9mm rubber bullet casing."
-	caliber = "9mm"
 	icon_state = "r-casing"
-	projectile_type = /obj/item/projectile/bullet/pistol/rubber
+	projectile_type = /obj/item/projectile/bullet/rubber/s9x19
 
-/obj/item/ammo_casing/a9mmp
+/obj/item/ammo_casing/a9mm/practice
 	desc = "A 9mm practice bullet casing."
-	caliber = "9mm"
 	icon_state = "r-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/practice
 
@@ -142,27 +143,22 @@
 	caliber = ".45"
 	projectile_type = /obj/item/projectile/bullet/fmj/p45
 
-/obj/item/ammo_casing/a45ap
+/obj/item/ammo_casing/a45/ap
 	desc = "A .45 Armor-Piercing bullet casing."
-	caliber = ".45"
-	icon_state = "r-casing"
 	projectile_type = /obj/item/projectile/bullet/ap/p45
 
-/obj/item/ammo_casing/a45p
+/obj/item/ammo_casing/a45/practice
 	desc = "A .45 practice bullet casing."
-	caliber = ".45"
 	icon_state = "r-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/practice
 
-/obj/item/ammo_casing/a45r
+/obj/item/ammo_casing/a45/rubber
 	desc = "A .45 rubber bullet casing."
-	caliber = ".45"
 	icon_state = "r-casing"
-	projectile_type = /obj/item/projectile/bullet/pistol/rubber
+	projectile_type = /obj/item/projectile/bullet/rubber/p45
 
-/obj/item/ammo_casing/a45f
+/obj/item/ammo_casing/a45/flash
 	desc = "A .45 flash shell casing."
-	caliber = ".45"
 	icon_state = "r-casing"
 	projectile_type = /obj/item/projectile/energy/flash
 
@@ -313,9 +309,11 @@
 	desc = "A 7.62x51mm hollow-point bullet casing."
 	projectile_type = /obj/item/projectile/bullet/hp/s7p62x51
 
+/*
 /obj/item/ammo_casing/a762/hunter
 	desc = "A 7.62x51mm hunting bullet casing."
 	projectile_type = /obj/item/projectile/bullet/rifle/a762/hunter
+*/
 
 /*
  * 14.5mm (anti-materiel rifle round)
@@ -357,9 +355,11 @@
 	desc = "A 5.45mm hollow-point bullet casing."
 	projectile_type = /obj/item/projectile/bullet/hp/s5p45x39
 
+/*
 /obj/item/ammo_casing/a545/hunter
 	desc = "A 5.45mm hunting bullet casing."
 	projectile_type = /obj/item/projectile/bullet/rifle/a545/hunter
+*/
 
 /*
  * Misc

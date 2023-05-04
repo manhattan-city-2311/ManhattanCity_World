@@ -122,22 +122,23 @@
 				if(Bump(M)) //Bump will make sure we don't hit a mob multiple times
 					return
 
-/* short-casing projectiles, like the kind used in pistols or SMGs */
+/* note that some idiot decided to use THESE instead of proper calibers listed in fmj.dm and the like */
 
-/obj/item/projectile/bullet/pistol
-	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
+/obj/item/projectile/bullet/pistol // placeholdered
+	fire_sound = 'sound/weapons/gunshot/9mm_shot.ogg'
 	damage = 15
 
-/obj/item/projectile/bullet/pistol/small // they really small
+/obj/item/projectile/bullet/pistol/small // 5.7mm
+	fire_sound = 'sound/weapons/gunshot/57_shot.ogg'
 	damage = 15
 	armor_penetration = 10
 	agony = 5
 
-/obj/item/projectile/bullet/pistol/small/ap // really?
+/obj/item/projectile/bullet/pistol/small/ap
 	damage = 10
 	armor_penetration = 15
 
-/obj/item/projectile/bullet/pistol/small/hollow // how these even works?
+/obj/item/projectile/bullet/pistol/small/hollow
 	damage = 20
 	armor_penetration = 5
 
@@ -156,8 +157,8 @@
 	damage = 20
 	armor_penetration = -10
 
-/obj/item/projectile/bullet/pistol/strong //revolvers and matebas
-	fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
+/obj/item/projectile/bullet/pistol/strong // .44 mag
+	fire_sound = 'sound/weapons/gunshot/44_shot.ogg'
 	damage = 50
 
 /obj/item/projectile/bullet/pistol/rubber //"rubber" bullets
@@ -169,7 +170,7 @@
 	check_armour = "melee"
 
 /obj/item/projectile/bullet/pistol/rubber/strong //"rubber" bullets for revolvers and matebas
-	fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
+	fire_sound = 'sound/weapons/gunshot/44_shot.ogg'
 	damage = 10
 	agony = 60
 	embed_chance = 0
@@ -228,7 +229,7 @@
 	penetrating = 1
 
 /obj/item/projectile/bullet/rifle/a762
-	fire_sound = 'sound/weapons/gunshot/gunshot2.ogg'
+	fire_sound = 'sound/weapons/gunshot/762r_shot.ogg'
 	damage = 35
 
 /obj/item/projectile/bullet/rifle/a762/ap
@@ -240,10 +241,12 @@
 	armor_penetration = 10
 	penetrating = 0
 
-/obj/item/projectile/bullet/rifle/a762/hunter // Optimized for killing simple animals and not people, because Balance.
-	damage = 20
-	SA_bonus_damage = 50 // 70 total on animals.
-	SA_vulnerability = SA_ANIMAL
+//we don't need these, trust me
+/*/obj/item/projectile/bullet/rifle/a762/hunter // Optimized for killing simple animals and not people, because Balance.
+#	damage = 20
+#	SA_bonus_damage = 50 // 70 total on animals.
+#	SA_vulnerability = SA_ANIMAL
+*/
 
 /obj/item/projectile/bullet/rifle/a545
 	damage = 25
@@ -257,10 +260,12 @@
 	armor_penetration = 10
 	penetrating = 0
 
+/*
 /obj/item/projectile/bullet/rifle/a545/hunter
 	damage = 15
 	SA_bonus_damage = 35 // 50 total on animals.
 	SA_vulnerability = SA_ANIMAL
+*/
 
 /obj/item/projectile/bullet/rifle/a145
 	fire_sound = 'sound/weapons/gunshot/sniper.ogg'

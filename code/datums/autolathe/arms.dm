@@ -49,11 +49,6 @@
 	path = /obj/item/ammo_magazine/m5mm/ap
 	hidden = 1
 
-/datum/category_item/crafting/autolathe/arms/pistol_5mmh
-	name = "pistol magazine (5mmH)"
-	path = /obj/item/ammo_magazine/m5mm/hollow
-	hidden = 1
-
 /datum/category_item/crafting/autolathe/arms/box_5mm
 	name = "ammo box (5mm)"
 	path = /obj/item/ammo_magazine/box/c5mm
@@ -63,12 +58,6 @@
 	name = "ammo box (5mm-AP)"
 	path = /obj/item/ammo_magazine/box/c5mm/ap
 	hidden = 1
-
-/datum/category_item/crafting/autolathe/arms/box_5mmh
-	name = "ammo box (5mm-H)"
-	path = /obj/item/ammo_magazine/box/c5mm/hollow
-	hidden = 1
-
 
 /////// .45
 /datum/category_item/crafting/autolathe/arms/pistol_45
@@ -183,19 +172,23 @@
 	name = "rifle magazine (5.45mm practice)"
 	path =/obj/item/ammo_magazine/m545/practice
 
+/*
 /datum/category_item/crafting/autolathe/arms/rifle_545_hunter
 	name = "rifle magazine (5.45mm hunting)"
 	path =/obj/item/ammo_magazine/m545/hunter
+*/
 
 /datum/category_item/crafting/autolathe/arms/machinegun_545
 	name = "machinegun box magazine (5.45)"
 	path =/obj/item/ammo_magazine/m545saw
 	hidden = 1
 
+/*
 /datum/category_item/crafting/autolathe/arms/machinegun_545_hunter
 	name = "machinegun box magazine (5.45 hunting)"
 	path =/obj/item/ammo_magazine/m545saw/hunter
 	hidden = 1
+*/
 
 /////// 7.62
 
@@ -430,9 +423,11 @@
 	path =/obj/item/ammo_magazine/clip/c762
 	hidden = 1
 
+/*
 /datum/category_item/crafting/autolathe/arms/rifle_clip_762_hunter
 	name = "ammo clip (7.62mm hunting)"
 	path =/obj/item/ammo_magazine/clip/c762/hunter
+*/
 
 /datum/category_item/crafting/autolathe/arms/rifle_clip_762_practice
 	name = "ammo clip (7.62mm practice)"
