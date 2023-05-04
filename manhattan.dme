@@ -2539,6 +2539,7 @@
 #include "code\modules\projectiles\projectile\modern\fmj.dm"
 #include "code\modules\projectiles\projectile\modern\hp.dm"
 #include "code\modules\projectiles\projectile\modern\projectile_base.dm"
+#include "code\modules\projectiles\projectile\modern\rubbers.dm"
 #include "code\modules\projectiles\projectile\modern\shotgun.dm"
 #include "code\modules\projectiles\targeting\targeting_client.dm"
 #include "code\modules\projectiles\targeting\targeting_gun.dm"
