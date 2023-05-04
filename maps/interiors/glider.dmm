@@ -1,0 +1,118 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/unsimulated/shuttle/wall/dark,
+/area/space)
+"e" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/structure/neon_spline/orange{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"g" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/structure/neon_spline/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"i" = (
+/obj/structure/vehicledoor{
+	pixel_y = -8
+	},
+/turf/unsimulated/shuttle/wall/dark,
+/area/space)
+"o" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/structure/neon_spline/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"H" = (
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"P" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/structure/neon_spline/orange{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"Q" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/structure/neon_spline/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"R" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/structure/neon_spline/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"X" = (
+/obj/structure/neon_spline/orange,
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+"Z" = (
+/obj/structure/neon_spline/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile_dark,
+/area/space)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+e
+Q
+Q
+P
+a
+"}
+(3,1,1) = {"
+a
+Z
+H
+H
+X
+i
+"}
+(4,1,1) = {"
+a
+g
+R
+R
+o
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+a
+"}
