@@ -47,6 +47,7 @@
 	cpu.hard_drive.store_file(new/datum/computer_file/program/email_administration())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/nt_explorer())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/govportal())
+	cpu.hard_drive.store_file(new/datum/computer_file/program/databaseControl())
 // ===== MEDICAL CONSOLE =====
 /obj/machinery/modular_computer/console/preset/medical
 	 console_department = "Medbay"
