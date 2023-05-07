@@ -29,7 +29,6 @@
 	var/max_hardware_size = 0								// Maximal hardware size. Currently, tablets have 1, laptops 2 and consoles 3. Limits what hardware types can be installed.
 	var/steel_sheet_cost = 5								// Amount of steel sheets refunded when disassembling an empty frame of this computer.
 
-
 	// Important hardware (must be installed for computer to work)
 	var/obj/item/weapon/computer_hardware/network_card/network_card					// Network Card component of this computer. Allows connection to NTNet
 	var/obj/item/weapon/computer_hardware/hard_drive/hard_drive						// Hard Drive component of this computer. Stores programs and files.
@@ -222,6 +221,10 @@
 	data["PC_stationtime"] = stationtime2text()
 	data["PC_hasheader"] = 1
 	data["PC_showexitprogram"] = active_program ? 1 : 0 // Hides "Exit Program" button on mainscreen
+	if(istext(CurrentTheme))
+		CurrentTheme = GetThemeByName(src, CurrentTheme)
+	if(istype(CurrentTheme))
+		data["PC_Theme"] = CurrentTheme.Text
 	return data
 
 // Relays kill program request to currently active program. Use this to quit current program.
@@ -297,6 +300,13 @@
 			return 1
 		to_chat(user, "<span class='danger'>\The [src]'s screen shows \"UNKNOWN ERROR - Contact system administrator for help\".</span>")
 		return
+
+	if(href_list["PC_changetheme"])
+		var/ModularComputerTheme/T = GetThemeByName(src, href_list["PC_changetheme"])
+		if(istype(T, /ModularComputerTheme))
+			CurrentTheme = T
+			ui_interact(usr)
+		return 1
 // Used in following function to reduce copypaste
 /obj/item/modular_computer/proc/power_failure()
 	if(enabled) // Shut down the computer
