@@ -1,0 +1,11 @@
+#define PERMISSION_ACCESS_LOGS "AccessLogs"
+#define PERMISSION_READ "Read"
+#define PERMISSION_WRITE "Write"
+#define PERMISSION_ADMIN "\\--|CPSU|--/"
+
+#define ACCOUNTS_DATABASE "Accounts database"
+#define RECORDS_DATABASE "Citizens records database"
+
+#define IC_DATABASE_LOG_READ 1
+#define IC_DATABASE_LOG_WRITE 2
+#define IC_DATABASE_LOG_EVERYTHING (IC_DATABASE_LOG_READ | IC_DATABASE_LOG_WRITE)
