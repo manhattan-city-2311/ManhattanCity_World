@@ -58,7 +58,6 @@
 		'sound/manhattan/north7.ogg',
 		'sound/manhattan/north8.ogg'
 	)
-	luminosity = 1
 	should_objects_be_saved = FALSE
 
 /area/planets/Manhattan/indoor

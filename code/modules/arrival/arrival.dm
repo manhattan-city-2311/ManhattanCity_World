@@ -81,6 +81,7 @@
 	icon_state = "static"
 	density = TRUE
 	opacity = TRUE
+	appearance_flags = DEFAULT_APPEARANCE_UNBOUND
 
 /obj/hyperloop_renderer/initialize()
 	. = ..()
@@ -92,6 +93,7 @@
 	icon_state = "static"
 	density = TRUE
 	opacity = TRUE
+	appearance_flags = DEFAULT_APPEARANCE_UNBOUND
 	
 	var/obj/hyperloop_renderer/renderer
 
