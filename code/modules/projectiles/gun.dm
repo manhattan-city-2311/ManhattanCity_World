@@ -99,7 +99,7 @@
 	drop_sound = 'sound/items/drop/gun.ogg'
 
 	var/usage_buffer = 5 // each gun is different and will have a variation of this amount on how many uses it has.
-	var/uses = 100 // uses until this gun finally kicks the can
+	var/uses = 100000 // uses until this gun finally kicks the can
 
 	tax_type = WEAPONS_TAX
 	contraband_type = CONTRABAND_GUN
