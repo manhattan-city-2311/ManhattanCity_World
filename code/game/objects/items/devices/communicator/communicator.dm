@@ -103,7 +103,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 	var/static/list/wallpapers = list(
 		WALLPAPER_COMM("Desert City", "blade.png", "#040603"),
 		WALLPAPER_COMM("Cloudy", "cloudy.png", "#090013"),
-		WALLPAPER_COMM("Grid", "grid.png", "#040603"),
+		//WALLPAPER_COMM("Grid", "grid.png", "#040603"),
 		WALLPAPER_COMM("Heavens", "heavens.png", "#6A252C"),
 		WALLPAPER_COMM("Hermit", "hermit.png", "#96A45F"),
 		WALLPAPER_COMM("Night", "night.png", "#41269B"),

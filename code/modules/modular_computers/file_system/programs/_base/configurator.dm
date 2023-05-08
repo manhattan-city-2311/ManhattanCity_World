@@ -72,6 +72,12 @@
 		"powerusage" = H.power_usage
 		)))
 
+	var/list/themes = list()
+	for(var/ModularComputerTheme/i in movable.Themes)
+		themes += i.Name
+	data["themes"] = themes
+	if(istype(movable.CurrentTheme))
+		data["current_theme"] = movable.CurrentTheme.Name
 	data["hardware"] = all_entries
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
