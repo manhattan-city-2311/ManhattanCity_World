@@ -4,6 +4,11 @@
 #define PERMISSION_ADMIN "Admin"
 #define PERMISSION_SYSTEM_ADMIN "\\--|MHT|--/"
 
+#define RECORDS_PERMISSION_WRITE_GENERIC "WriteGeneric"
+#define RECORDS_PERMISSION_WRITE_MEDICAL "WriteMedical"
+#define RECORDS_PERMISSION_WRITE_BORDER_CONTROL "WriteBorderControl"
+#define RECORDS_PERMISSION_WRITE_SECURITY "WriteSecurity"
+
 #define ACCOUNTS_DATABASE "Manhattan United Accounts"
 #define RECORDS_DATABASE "Manhattan Citizens Records"
 
