@@ -10,18 +10,11 @@
 /obj/item/modular_computer/proc/enable_computer(var/mob/user = null)
 	enabled = 1
 
-	//Not so fast!
-/*	if(updates)
-		handle_updates(FALSE)
+	// Autorun
+	// var/datum/computer_file/data/autorun = hard_drive ? hard_drive.find_file_by_name("autorun") : null
+	// if(istype(autorun))
+	//	run_program(autorun.stored_data)
 
-	update_icon()
-
-	// Autorun feature
-	if(!updates)
-		var/datum/computer_file/data/autorun = hard_drive ? hard_drive.find_file_by_name("autorun") : null
-		if(istype(autorun))
-			run_program(autorun.stored_data)
-*/
 	if(user)
 		ui_interact(user)
 

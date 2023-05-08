@@ -100,4 +100,10 @@
  * Called in persistent_world.dm on save_world.
  */
 /hook/save_world
+
+/**
+ * Load world hook.
+ * Called in persistent_world.dm on world load.
+ */
+/hook/load_world
 	

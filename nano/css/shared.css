@@ -1,3 +1,16 @@
+:root
+{
+	--linkMainBackground:   #40628a;
+	--linkBorderColor:      #161616;
+	--linkActiveBackground: #2f943c;
+	--linkOffBackground:    #999999;
+
+	--fontMainColor:        #ffffff;
+}
+.themeHR
+{
+	display: none;
+}
 @font-face
 {
 	font-family: "Fixedsys";
@@ -6,11 +19,12 @@
 body {
 	padding: 0;
 	margin: 0;
-	font-size: 16px;
+	font-size: 12px;
+/*	font-size: 16px;*/
 	color: #ffffff;
+	font-family: Verdana, Geneva, sans-serif;
+/*	font-family: "Fixedsys";*/
 	line-height: 170%;
-	/*font-family: Verdana, Geneva, sans-serif;*/
-	font-family: "Fixedsys";
 	background: #272727;
 }
 #uiNoScript {
@@ -50,6 +64,10 @@ hr {
 	white-space: nowrap;
 }
 
+a:hover, .zoomLink:hover, .linkActive:hover {
+	background: #507aac;
+}
+
 .link32 {
 	float: left;
 	min-width: 15px;
@@ -65,10 +83,6 @@ hr {
 
 .hasIcon {
 	padding: 0px 4px 4px 0px;
-}
-
-a:hover, .zoomLink:hover, .linkActive:hover {
-	background: #507aac;
 }
 
 .linkPending, .linkPending:hover {
@@ -146,7 +160,7 @@ img, a img {
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	padding: 12px 0 6px 0;
-	color: #FFFFFF;
+	color: #ffffff;
 	clear: both;
 }
 
@@ -788,12 +802,16 @@ div.homeScreen
 	text-align: center;
 	color: #ffffff;
 	text-decoration: none;
-	background: rgba(64, 98, 138, 0.6);
+	background: #40628a;
 	border: 1px solid #161616;
 	padding: 0 0 4px 0;
 	margin: 0 0 30px 5.5%;
 	cursor: default;
 	border-radius: 10px;
+}
+
+.link64:hover {
+	font-weight: bold;
 }
 
 .emMenu {
@@ -812,9 +830,6 @@ div.homeScreen
 	border-radius: 10px;
 }
 
-.link64:hover {
-	font-size: 15px;
-}
 
 /*Communicator Dialing*/
 .dialPad {

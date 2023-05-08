@@ -396,6 +396,9 @@ SUBSYSTEM_DEF(jobs)
 	var/datum/job/job = GetJob(rank)
 	var/list/spawn_in_storage = list()
 
+	var/datum/database/records/DBR = load_ic_database(RECORDS_DATABASE)
+	DBR?.write(H.real_name, H.client.prefs.records, "Manhattan Department of the Interior", DBR.has_entry(H.real_name)) // REFERENCES SON
+
 	var/px = H.client.prefs.persistence_x
 	var/py = H.client.prefs.persistence_y
 	var/pz = H.client.prefs.persistence_z
@@ -816,7 +819,7 @@ SUBSYSTEM_DEF(jobs)
 /datum/controller/subsystem/jobs/proc/equip_passport(var/mob/living/carbon/human/H)
 	var/obj/item/weapon/passport/pass = new/obj/item/weapon/passport(get_turf(H))
 
-	if(!H.mind || !H.mind.prefs) 
+	if(!H.mind || !H.mind.prefs)
 		return
 
 	H.update_passport(pass)

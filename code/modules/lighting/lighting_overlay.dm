@@ -10,7 +10,6 @@
 	color = LIGHTING_BASE_MATRIX
 	icon_state = "light1"
 	//auto_init = 0 // doesn't need special init
-	blend_mode = BLEND_OVERLAY
 
 	var/lum_r = 0
 	var/lum_g = 0
@@ -83,32 +82,25 @@
 	var/ag = ca.cache_g
 	var/ab = ca.cache_b
 
-	#if LIGHTING_SOFT_THRESHOLD != 0
-	var/set_luminosity = max > LIGHTING_SOFT_THRESHOLD
-	#else
-	// Because of floating points, it won't even be a flat 0.
-	// This number is mostly arbitrary.
-	var/set_luminosity = max > 1e-6
-	#endif
+	luminosity = max > LIGHTING_SOFT_THRESHOLD
 
 	if((rr & gr & br & ar) && (rg + gg + bg + ag + rb + gb + bb + ab == 8))
 	//anything that passes the first case is very likely to pass the second, and addition is a little faster in this case
 		icon_state = "transparent"
 		color = null
-	else if(!set_luminosity)
+	else if(!luminosity)
 		icon_state = LIGHTING_ICON_STATE_DARK
 		color = null
 	else
 		icon_state = null
+		
 		color = list(
-			rr, rg, rb, 00,
-			gr, gg, gb, 00,
-			br, bg, bb, 00,
-			ar, ag, ab, 00,
-			00, 00, 00, 01
+			rr, rg, rb, 0,
+			gr, gg, gb, 0,
+			br, bg, bb, 0,
+			ar, ag, ab, 0,
+			0, 0, 0, 1
 		)
-
-	luminosity = set_luminosity
 
 // Variety of overrides so the overlays don't get affected by weird things.
 /atom/movable/lighting_overlay/ex_act()

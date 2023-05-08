@@ -1,0 +1,12 @@
+#define PERMISSION_ACCESS_LOGS "AccessLogs"
+#define PERMISSION_READ "Read"
+#define PERMISSION_WRITE "Write"
+#define PERMISSION_ADMIN "Admin"
+#define PERMISSION_SYSTEM_ADMIN "\\--|MHT|--/"
+
+#define ACCOUNTS_DATABASE "Manhattan United Accounts"
+#define RECORDS_DATABASE "Manhattan Citizens Records"
+
+#define IC_DATABASE_LOG_READ 1
+#define IC_DATABASE_LOG_WRITE 2
+#define IC_DATABASE_LOG_EVERYTHING (IC_DATABASE_LOG_READ | IC_DATABASE_LOG_WRITE)
