@@ -31,12 +31,14 @@
 	</div>
 {{else}}
     <div class="itemContent">
-        {{:helper.link('Logout', null, {'logout' : 1})}}
+        {{:data.username}}@{{:data.database}} {{if data.isadmin}}as root{{/if}} {{:helper.link('Logout', null, {'logout' : 1})}}
     </div>
-    <div>
-        {{:data.username}}@{{:data.database}}
+    <div class="itemLabel">
+        Log flags:
     </div>
-    
+    <div class="itemContent">
+        {{:data.logflags}} {{if data.isadmin}}{{:helper.link('Edit', null, {'editlogflag' : 1})}}{{/if}}&nbsp
+    </div>
     {{if data.viewLogs == 1}}
         <div align="left">DB Logs</dev>
         <div align="right" class="itemContent">
