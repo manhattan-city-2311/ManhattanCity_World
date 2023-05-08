@@ -395,3 +395,52 @@
 
 /obj/item/weapon/gun/projectile/p92x/large
 	magazine_type = /obj/item/ammo_magazine/m9mm/large // Spawns with illegal magazines.
+
+	//xeroarmory
+/obj/item/weapon/gun/projectile/p91
+	name = "P91 pistol"
+	desc = "A Hephaestus Industries P91. A reliable, powerful widebody handgun. Its weight compensates for .45 caliber's knockback. Favored by cops for the stopping power, disliked by gangsters because of the bulk."
+	icon_state = "p91"
+	caliber = ".45"
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m45
+	allowed_magazines = list(/obj/item/ammo_magazine/m45)
+	price_tag = 8000
+
+/obj/item/weapon/gun/projectile/p91/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-e"
+
+
+/obj/item/weapon/gun/projectile/p91/compact
+	name = "P91 compact pistol"
+	desc = "A shorter, smaller version of HI P91 handgun, made to be the exact opposite of its bigger cousin. Trades accuracy for concealment while still kicking hard. Not for the faint of wrist. Chambered in .45 Auto."
+	w_class = ITEMSIZE_SMALL
+	icon_state = "p91com"
+
+/obj/item/weapon/gun/projectile/pdp //attempt at a burst-fire pistol
+	name = "PDP pistol"
+	desc = "A Meone National Arms PDP. A lightweight polymer pistol best known for its swift close-range burst mode. Apparently the only MNA product known galaxy-wide. Chambered in 9mm."
+	icon_state = "pdp"
+	caliber = "9mm"
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m9mm/large
+	allowed_magazines = list(/obj/item/ammo_magazine/m9mm)
+	burst_delay = 2
+	price_tag = 7950
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-30,-30), dispersion=list(0.0, 1.0, 1.5))
+		)
+
+/obj/item/weapon/gun/projectile/pdp/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "pdp"
+	else
+		icon_state = "pdp-e"
+	return

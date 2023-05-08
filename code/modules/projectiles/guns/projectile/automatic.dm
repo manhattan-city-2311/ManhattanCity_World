@@ -394,3 +394,33 @@
 		item_state = "bullpup-empty"
 	if(!ignore_inhands)
 		update_held_icon()
+
+		//xeroarmory
+/obj/item/weapon/gun/projectile/automatic/contempt
+	name = "Contempt SMG"
+	desc = "A Hephaestus Industries MP23 'Contempt' SMG. Often regarded as a better alternative to C-20r, it includes serious firepower in a light, low recoil package. For when you need to express your hatred. Chambered in .45 Auto."
+	icon_state = "contempt"
+	caliber = ".45"
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m45tommy //placeholder until I make a new one
+	allowed_magazines = list(/obj/item/ammo_magazine/m45tommy)
+	projectile_type = /obj/item/projectile/bullet/fmj/p45
+	auto_eject = 1
+	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	burst_delay = 1
+	price_tag = 28000
+
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-7,-7), dispersion=list(0.0, 0.3, 0.6)),
+		list(mode_name="automatic", 	burst=1, fire_delay=-1, move_delay=null,    burst_accuracy=null, dispersion=null, automatic=1)
+		)
+
+/obj/item/weapon/gun/projectile/automatic/contempt/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "contempt"
+	else
+		icon_state = "contempt-e"
+	return

@@ -307,3 +307,18 @@ obj/item/weapon/gun/projectile/revolver/detective45/verb/rename_gun()
 	fire_sound = 'sound/weapons/gunshot_heavy.ogg'
 	ammo_type = /obj/item/ammo_casing/a45/rubber
 	max_shells = 7
+
+	//xeroarmory
+/obj/item/weapon/gun/projectile/revolver/unicorn //yes, yet another burst gun
+	name = "Unicorn revolver"
+	desc = "An al-Maliki & Mosley 'Unicorn' revolver. Created to answer the question of 'what if target's too tough for one headshot,' it sports a two-round burst mode. Not very popular due to lack of auto-ejection. Chambered in .44 Magnum."
+	icon_state = "unicorn"
+	caliber = ".44"
+	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
+	ammo_type = /obj/item/ammo_casing/a44
+	burst_delay = 2
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
+		list(mode_name="2-round bursts", burst=2, fire_delay=null, move_delay=3,    burst_accuracy=list(0,-25), dispersion=list(0.0, 1.0))
+		)

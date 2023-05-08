@@ -81,7 +81,7 @@
 /obj/machinery/door/unpowered/manhattan/open(var/forced = 0)
 	if(!can_open(forced))
 		return
-	playsound(src.loc, material.dooropen_noise, 100, 1)
+	playsound(src.loc, material.dooropen_noise, 150, 1)
 
 	operating = 1
 	do_animate("opening")
