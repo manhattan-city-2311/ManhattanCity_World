@@ -1,7 +1,7 @@
-/datum/computer_file/program/recordsrecordsControl
-	filename = "mqlcontrol"
-	filedesc = "MQL database control"
-	extended_desc = "Program used to control MQL databases: setup, create, view raw data and logs"
+/datum/computer_file/program/recordsControl
+	filename = "recordsViewer"
+	filedesc = "Manhattan citizens records viewer"
+	extended_desc = "Program used to view records of citizens"
 	requires_ntnet = TRUE
 	program_menu_icon = "gear"
 	nanomodule_path = /datum/nano_module/program/recordsControl
@@ -15,6 +15,12 @@
 	var/datum/database/records/DB
 	var/list/permissions
 	var/loggedin = FALSE
+	var/static/list/permissionToTitle = list(
+		RECORDS_PERMISSION_WRITE_GENERIC = "@1",
+		RECORDS_PERMISSION_WRITE_MEDICAL = "@2",
+		RECORDS_PERMISSION_WRITE_BORDER_CONTROL = "@3",
+		RECORDS_PERMISSION_WRITE_SECURITY = "@4"
+	)
 
 /datum/nano_module/program/recordsControl/New(host)
 {
@@ -32,50 +38,52 @@
 
 	if(loggedin)
 	{
-		var/list/records = list();
-
-		if(selected_name && DB.has_entry(selected_name))
-			records = DB.read(selected_name, username);
-
-		var/rec = ""
+		var/list/records = selected_name && DB.read(selected_name, username);
+		
+		var/list/recordsData = list();
 		for(var/ID in records)
 		{
 			var/R = records[ID];
-			else if(islist(R))
+			
+			var/list/subdata = list()
+			subdata["label"] = ID;
+			
+			if(islist(R))
 			{
-				rec += "<b>[ID]</b>:";
+				subdata["canedit"] = global.records_id_to_title[ID];
 				var/list/L = R;
 
 				if(L.len == 2 && islist(L[1]))
-					rec += "<a href='?src=\ref[src];receditlp=[ID];']>[L[2]]</a><br>";
+					subdata["value"] = L[2];
 					continue;
 
-				rec += "<br/>";
-
+				var/list/value = list();
 				var/i = 1;
 				for(var/E in L)
-					var/buttons = "<a href='?src=\ref[src];receditl=[ID];count=[i]'><i>Редактировать</i></a>";
-					buttons += "<a href='?src=\ref[src];recerasel=[ID];count=[i]'><i>X</i></a>";
-
-					rec += "\t[E] [buttons]<br/>";
-					++i;
-
-				rec += "\t<a href='?src=\ref[src];recappend=[ID];'><i>Добавить</i></a><br>";
-			}
-			else if(is_record_title(ID))
-			{
-				rec += "<h1>\[[R]\]<hr></h1>";
-				continue;
+					value["[i++]"] = E;
+				subdata["listvalue"] = value;
 			}
 			else
-				rec += "<b>[ID]</b>: <a href='?src=\ref[src];recedit=[ID]'>[R]</a><br>";
+				subdata[is_record_title(ID) ? "title" : "value"] = R;
+			
+			recordsData += list(subdata);
 		}
+		
+		if(recordsData.len)
+			data["records"] = recordsData;
+		
+		var/list/names = list()
+		for(var/name in DB.contents)
+			names += name;
+		data["names"] = names;
+		data["selected_name"] = selected_name;
+			
 	}
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open);
 	if(!ui)
 	{
-		ui = new(user, src, ui_key, "database_control.tmpl", "MQL database control", 600, 600, state = state);
+		ui = new(user, src, ui_key, "database_records.tmpl", "Citizens records", 600, 600, state = state);
 		ui.set_initial_data(data);
 		ui.open();
 	}
@@ -100,14 +108,20 @@
 	if(href_list["login"])
 	{
 		var/datum/database/accounts/accountsDB = load_ic_database(DB.accounts_database);
-		if(!accountsDB.access(username, password, database))
+		var/list/rawPermissions = accountsDB.access(username, password, database);
+		
+		if(!rawPermissions)
 		{
 			to_chat(usr, "Auth failure");
 			return;
 		}
+		
+		permissions = list()
+		for(var/I in rawPermissions)
+			if(I in permissionToTitle)
+				permissions += permissionToTitle[I];
 
 		loggedin = TRUE;
-		viewLogs = FALSE;
 		return TOPIC_REFRESH;
 	}
 	if(href_list["logout"])
@@ -115,6 +129,11 @@
 		password = "";
 		username = "";
 		loggedin = FALSE;
+		return TOPIC_REFRESH;
+	}
+	if(href_list["select_name"])
+	{
+		selected_name = href_lsit["select_name"];
 		return TOPIC_REFRESH;
 	}
 }

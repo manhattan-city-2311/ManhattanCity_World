@@ -151,3 +151,4 @@
 	cpu.hard_drive.store_file(new/datum/computer_file/program/govportal())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/business_manager())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/crim_record())
+	cpu.hard_drive.store_file(new/datum/computer_file/program/recordsControl())

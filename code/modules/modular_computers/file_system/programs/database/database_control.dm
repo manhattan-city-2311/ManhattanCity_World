@@ -46,13 +46,13 @@
 
 	if(loggedin)
 	{
-		data["viewLogs"] = DB.user_has_permission(user, password, PERMISSION_ACCESS_LOGS) ? -1 : viewLogs;
+		data["viewLogs"] = DB.user_has_permission(username, password, PERMISSION_ACCESS_LOGS) ? -1 : viewLogs;
 		data["logflags"] = icdatabaselogflag2text(DB.log_flag);
-		data["isadmin"] = DB.user_has_permission(user, password, PERMISSION_ADMIN)
+		data["isadmin"] = DB.user_has_permission(username, password, PERMISSION_ADMIN)
 
 		if(viewLogs)
 			data["logs"] = DB.logs;
-		else if(DB.user_has_permission(user, password, PERMISSION_READ))
+		else if(DB.user_has_permission(username, password, PERMISSION_READ))
 		{
 			var/list/L = list();
 			for(var/entry in DB.contents)
@@ -93,7 +93,7 @@
 	}
 	if(href_list["view_logs"])
 	{
-		if(viewLogs != 0 || !permissions || !DB.user_has_permission(user, password, PERMISSION_ACCESS_LOGS))
+		if(viewLogs != 0 || !permissions || !DB.user_has_permission(username, password, PERMISSION_ACCESS_LOGS))
 			return;
 			
 		viewLogs = TRUE;
