@@ -17,7 +17,7 @@
 
 /obj/manhattan/vehicle/large/hyperloop/get_exit_offsets()
 	return list(
-		"[NORTH]" = list( 4, 2,  4, 6),
+		"[NORTH]" = list( 5, 2,  5, 6),
 		"[SOUTH]" = list(-1, 2, -1, 6),
 	)
 

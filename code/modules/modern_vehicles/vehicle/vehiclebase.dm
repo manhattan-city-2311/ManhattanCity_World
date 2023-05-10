@@ -164,10 +164,11 @@
 					valid_exit_locs |= t
 					break
 	else
-		var/list/locations = list()
-		for(var/list/off in get_exit_offsets()["[dir]"])
-			locations += block(locate(x + off[1], y + off[2], z), locate(x + off[3], y + off[4], z))
-		for(var/turf/T as anything in locations)
+		var/list/offsets = get_exit_offsets()
+		to_world(json_encode(offsets))
+		offsets = offsets["[dir]"]
+		to_world(json_encode(offsets))
+		for(var/turf/T in block(locate(x + offsets[1], y + offsets[2], z), locate(x + offsets[3], y + offsets[4], z)))
 			if(T in locs || T.density)
 				continue
 			valid_exit_locs += T

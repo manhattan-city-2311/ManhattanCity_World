@@ -35,6 +35,7 @@
 	data["username"] = username;
 	data["password"] = password;
 	data["loggedin"] = loggedin;
+	data["database"] = DB.name;
 
 	if(loggedin)
 	{
@@ -45,12 +46,14 @@
 		{
 			var/R = records[ID];
 
-			var/list/subdata = list()
-			subdata["label"] = ID;
+			var/list/subdata = list(
+				"canedit" = global.records_id_to_title[ID],
+				"label" = ID,
+				(is_record_title(ID) ? "title" : "value") = R
+			)
 
 			if(islist(R))
 			{
-				subdata["canedit"] = global.records_id_to_title[ID];
 				var/list/L = R;
 
 				if(L.len == 2 && islist(L[1]))
@@ -58,13 +61,10 @@
 					continue;
 
 				var/list/value = list();
-				var/i = 1;
 				for(var/E in L)
-					value["[i++]"] = E;
+					value += E;
 				subdata["listvalue"] = value;
 			}
-			else
-				subdata[is_record_title(ID) ? "title" : "value"] = R;
 
 			recordsData += list(subdata);
 		}
@@ -72,7 +72,7 @@
 		if(recordsData.len)
 			data["records"] = recordsData;
 
-		var/list/names = list()
+		var/list/names = list();
 		for(var/name in DB.contents)
 			names += name;
 		data["names"] = names;
@@ -80,6 +80,7 @@
 
 	}
 
+	to_world(json_encode_unescaped(data));
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open);
 	if(!ui)
 	{
@@ -116,7 +117,7 @@
 			return;
 		}
 
-		permissions = list()
+		permissions = list();
 		for(var/I in rawPermissions)
 			if(I in permissionToTitle)
 				permissions += permissionToTitle[I];
