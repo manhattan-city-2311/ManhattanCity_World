@@ -3,7 +3,7 @@
 	var/static/Themes = list(
 		new /ModularComputerTheme("Default"),
 		new /ModularComputerTheme("The Grid", f = "ModularGrid.css"),
-		// new ModularComputerTheme("Badass", f = "Badass.css"),
+		new /ModularComputerTheme("Netrunner", f = "ModularNetrunner.css"),
 	)
 
 /obj/item/modular_computer/initialize()
@@ -13,7 +13,6 @@
 
 /proc/GetThemeByName(obj/item/modular_computer/source, serchingName)
 	for(var/ModularComputerTheme/i in source.Themes)
-		to_world("[i.Name]")
 		if(i.Name == serchingName)
 			return i
 	// if(name in source.Themes)
