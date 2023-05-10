@@ -80,7 +80,6 @@
 
 	}
 
-	to_world(json_encode_unescaped(data));
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open);
 	if(!ui)
 	{

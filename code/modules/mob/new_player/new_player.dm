@@ -239,47 +239,28 @@
 	var/datum/job/job = SSjobs.GetJob(rank)
 	var/i = 0
 	if(!job || !job.enabled || !job.is_position_available())
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(jobban_isbanned(src,rank) || !is_hard_whitelisted(src, job))
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(!job.player_old_enough(src.client))
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(job.minimum_character_age && (client.prefs.age < job.minimum_character_age))
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	//job.title == "Prisoner" && client.prefs.criminal_status != "Incarcerated" ||
 	//|| job.title != "Prisoner" && client.prefs.criminal_status == "Incarcerated"
 	if(job.title == "Prisoner" ^ client.prefs.criminal_status == "Incarcerated" == 1)
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(job.clean_record_required && client.prefs.crime_record && !LAZYLEN(client.prefs.crime_record))
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(LAZYLEN(job.exclusive_employees) && !(client.prefs.unique_id in job.exclusive_employees))
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(client.prefs.is_synth() && !job.allows_synths)
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(job.business)
 		var/datum/business/biz = get_business_by_biz_uid(job.business)
-		DEBUG_TO_WORLD(i)
-		i += 1
+
 		if(biz && biz.suspended)
-			DEBUG_TO_WORLD(i)
 			return 0
-	i += 1
 	return 1
 
 /mob/new_player/proc/AttemptLateSpawn(rank, turf/spawning_at, antag_type)
