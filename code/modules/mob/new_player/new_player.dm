@@ -237,7 +237,6 @@
 #define DEBUG_TO_WORLD(i) to_world("[i]")
 /mob/new_player/proc/IsJobAvailable(rank)
 	var/datum/job/job = SSjobs.GetJob(rank)
-	var/i = 0
 	if(!job || !job.enabled || !job.is_position_available())
 		return 0
 	if(jobban_isbanned(src,rank) || !is_hard_whitelisted(src, job))
