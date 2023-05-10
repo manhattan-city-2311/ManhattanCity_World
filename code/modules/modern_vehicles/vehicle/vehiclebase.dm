@@ -157,11 +157,22 @@
 
 /obj/manhattan/vehicle/proc/pick_valid_exit_loc()
 	var/list/valid_exit_locs = list()
-	for(var/turf/t in locs)
-		for(var/turf/t_2 in RANGE_TURFS(1, t))
-			if(!(t_2 in locs) && !t_2.density)
-				valid_exit_locs |= t
-				break
+	if(!get_exit_offsets())
+		for(var/turf/t in locs)
+			for(var/turf/t_2 in RANGE_TURFS(1, t))
+				if(!(t_2 in locs) && !t_2.density)
+					valid_exit_locs |= t
+					break
+	else
+		var/list/offsets = get_exit_offsets()
+		to_world(json_encode(offsets))
+		offsets = offsets["[dir]"]
+		to_world(json_encode(offsets))
+		for(var/turf/T in block(locate(x + offsets[1], y + offsets[2], z), locate(x + offsets[3], y + offsets[4], z)))
+			if(T in locs || T.density)
+				continue
+			valid_exit_locs += T
+
 	if(!valid_exit_locs.len)
 		return null
 

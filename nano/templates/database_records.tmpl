@@ -1,0 +1,70 @@
+<style>
+	.row {
+		height: calc(100vh - 160px);
+		overflow-y: auto;
+	}
+</style>
+
+{{if data.loggedin == 0}}
+	<b>Manhattan citizens records.</b>
+	<div class="item">
+		<div class="itemLabel">
+			Username:
+		</div>
+		<div class="itemContent">
+			{{:data.username}}&nbsp
+		</div>
+		<div class="itemLabel">
+			Password:
+		</div>
+		<div class="itemContent">
+			{{:data.password}}&nbsp
+		</div>
+		<div class="itemLabel">
+			Options:
+		</div>
+		<div class="itemContent">
+			{{:helper.link('Enter Username', null, {'edit_username' : 1})}}
+			{{:helper.link('Enter Password', null, {'edit_password' : 1})}}
+			{{:helper.link('Log In', null, {'login' : 1})}}
+		</div>
+	</div>
+{{else}}
+	<div class="itemContent">
+		{{:data.username}}@{{:data.database}} {{:helper.link('Logout', null, {'logout' : 1})}}
+	</div><br><br>
+	
+	<div style="display:flex" align="left">
+		<div class="row" style="flex:0 1 min-content;">
+			<table style="table-layout: fixed" align="left">
+				<tr>
+					{{for data.names}}
+					<td style="word-wrap:break-word">
+						{{:helper.link(value, null, {'select_name' : value}, value == data.selected_name ? 'disabled' : null)}}
+					</td>
+					{{/for}}
+				</tr>
+			</table>
+		</div>
+		
+		<div class="row block" style="flex:1 0 75%;">
+		{{if data.records}}
+			{{for data.records}}
+				{{if value.title}}
+					<h1><b>[{{:value.title}}]</b></h1><br>
+				{{else value.value}}
+					<b>{{:value.label}}:</b>&nbsp;&nbsp;&nbsp;&nbsp;{{:value.value}}
+				{{else value.listvalue}}
+					<b>{{:value.label}}:</b><br/>
+					{{for value.listvalue}}
+						&nbsp;&nbsp;&nbsp;&nbsp;
+					{{/for}}
+				{{/if}}
+				<br>
+			{{/for}}
+		{{/if}}
+	</div>
+	
+	</div>
+	
+{{/if}}

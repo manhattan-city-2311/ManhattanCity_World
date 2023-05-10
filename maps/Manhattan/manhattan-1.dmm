@@ -1,4 +1,4 @@
-"aaa" = (/obj/structure/manhattan/rails,/obj/effect/arrival_stop,/turf/simulated/floor/plating,/area/planets/Manhattan/indoor/north/transit/under)
+"aaa" = (/obj/structure/manhattan/rails,/obj/effect/arrival_stop{dir = 1},/turf/simulated/floor/plating,/area/planets/Manhattan/indoor/north/transit/under)
 "aab" = (/obj/structure/manhattan/rails,/obj/effect/arrival_stop{order = 1},/turf/simulated/floor/plating,/area/planets/Manhattan/south/building/social/metro)
 "aao" = (/obj/structure/flora/pottedplant/orientaltree,/turf/simulated/floor/tiled/monotile_dark,/area/planets/Manhattan/indoor/north/shopping/underground/gym)
 "aaD" = (/turf/simulated/wall/concrete/fckng_invincible,/area/planets/Manhattan/indoor/north/transit/under/storage)

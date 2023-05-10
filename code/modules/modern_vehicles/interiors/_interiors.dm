@@ -8,7 +8,6 @@
 
 	var/list/mob/living/carbon/human/occupants
 	var/obj/effect/vehicle_entrance/entrance
-	var/obj/structure/vehicledoor/door
 	var/obj/manhattan/vehicle/large/vehicle
 	var/turf/middle_turf
 	var/area/area
@@ -46,10 +45,9 @@
 		break
 
 	for(var/obj/structure/vehicledoor/E in area)
-		door = E
-		door.id = id
-		door.interior = src
-		break
+		E.id = id
+		E.interior = src
+
 	vehicle = new_vehicle
 	if(!vehicle)
 		return

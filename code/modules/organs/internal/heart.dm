@@ -159,7 +159,7 @@
 	var/period = world.time - last_arrythmia_gain
 
 	if(prob(1) && period > 1.5 MINUTES && !get_ow_arrythmia())
-		var/arrythmic = get_arrythmic()
+		var/arrythmic = 0//get_arrythmic()
 
 		if(arrythmic > 1 && (get_arrythmia_score() < arrythmic))
 			make_common_arrythmia(arrythmic)
