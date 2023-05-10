@@ -165,9 +165,7 @@
 					break
 	else
 		var/list/offsets = get_exit_offsets()
-		to_world(json_encode(offsets))
 		offsets = offsets["[dir]"]
-		to_world(json_encode(offsets))
 		for(var/turf/T in block(locate(x + offsets[1], y + offsets[2], z), locate(x + offsets[3], y + offsets[4], z)))
 			if(T in locs || T.density)
 				continue
