@@ -102,320 +102,92 @@
 		qdel(src)
 	return ..()
 
+#define DOORKEY(_room, _name, _key_data)/obj/item/weapon/door/key/##_room{name = _name;key_data = _key_data;}
 
-/obj/item/weapon/door/key/north1/room1
-	name = "house apartment key #1-1"
-	key_data = "house1north"
+DOORKEY(north1/room1, "house apartment key #1-1", "house1north")
+DOORKEY(north1/room2, "house apartment key #2-1", "house2north")
+DOORKEY(north1/room3, "house apartment key #3-1", "house3north")
+DOORKEY(north1/room4, "house apartment key #4-1", "house4north")
+DOORKEY(north1/room5, "house apartment key #5-1", "house5north")
+DOORKEY(north1/room6, "house apartment key #6-1", "house6north")
+DOORKEY(north1/room7, "house apartment key #7-1", "house7north")
+DOORKEY(north1/room8, "house apartment key #8-1", "house8north")
+DOORKEY(north1/room9, "house apartment key #9-1", "house9north")
 
-/obj/item/weapon/door/key/north1/room2
-	name = "house apartment key #2-1"
-	key_data = "house2north"
+DOORKEY(north1/room10, "house apartment key #10-1", "house10north")
+DOORKEY(north1/room11, "house apartment key #11-1", "house11north")
+DOORKEY(north1/room12, "house apartment key #12-1", "house12north")
 
-/obj/item/weapon/door/key/north1/room3
-	name = "house apartment key #3-1"
-	key_data = "house3north"
+DOORKEY(north2/room1, "house apartment key #1-2", "house1north2")
+DOORKEY(north2/room2, "house apartment key #2-2", "house2north2")
+DOORKEY(north2/room3, "house apartment key #3-2", "house3north2")
+DOORKEY(north2/room4, "house apartment key #4-2", "house4north2")
+DOORKEY(north2/room5, "house apartment key #5-2", "house5north2")
+DOORKEY(north2/room6, "house apartment key #6-2", "house6north2")
 
-/obj/item/weapon/door/key/north1/room4
-	name = "house apartment key #4-1"
-	key_data = "house4north"
-
-/obj/item/weapon/door/key/north1/room5
-	name = "house apartment key #5-1"
-	key_data = "house5north"
-
-/obj/item/weapon/door/key/north1/room6
-	name = "house apartment key #6-1"
-	key_data = "house6north"
-
-/obj/item/weapon/door/key/north1/room7
-	name = "house apartment key #7-1"
-	key_data = "house7north"
-
-/obj/item/weapon/door/key/north1/room8
-	name = "house apartment key #8-1"
-	key_data = "house8north"
-
-/obj/item/weapon/door/key/north1/room9
-	name = "house apartment key #9-1"
-	key_data = "house9north"
-
-/obj/item/weapon/door/key/north1/room10
-	name = "house apartment key #10-1"
-	key_data = "house10north"
-
-/obj/item/weapon/door/key/north1/room11
-	name = "house apartment key #11-1"
-	key_data = "house11north"
-
-/obj/item/weapon/door/key/north1/room12
-	name = "house apartment key #12-1"
-	key_data = "house12north"
-
-/obj/item/weapon/door/key/north2/room1
-	name = "house apartment key #1-2"
-	key_data = "house1north2"
-
-/obj/item/weapon/door/key/north2/room2
-	name = "house apartment key #2-2"
-	key_data = "house2north2"
-
-/obj/item/weapon/door/key/north2/room3
-	name = "house apartment key #3-2"
-	key_data = "house3north2"
-
-/obj/item/weapon/door/key/north2/room4
-	name = "house apartment key #4-2"
-	key_data = "house4north2"
-
-/obj/item/weapon/door/key/north2/room5
-	name = "house apartment key #5-2"
-	key_data = "house5north2"
-
-/obj/item/weapon/door/key/north2/room6
-	name = "house apartment key #6-2"
-	key_data = "house6north2"
-
-/obj/item/weapon/door/key/north2/room7
-	name = "house apartment key #7-2"
-	key_data = "house7north2"
-
-/obj/item/weapon/door/key/north2/room8
-	name = "house apartment key #8-2"
-	key_data = "house8north2"
-
-/obj/item/weapon/door/key/north2/room9
-	name = "house apartment key #9-2"
-	key_data = "house9north2"
-
-/obj/item/weapon/door/key/north2/room10
-	name = "house apartment key #10-2"
-	key_data = "house10north2"
-
-/obj/item/weapon/door/key/north2/room11
-	name = "house apartment key #11-2"
-	key_data = "house11north2"
-
-/obj/item/weapon/door/key/north2/room12
-	name = "house apartment key #12-2"
-	key_data = "house12north2"
-
-/obj/item/weapon/door/key/north3/room1
-	name = "house apartment key #1-3"
-	key_data = "house1north2"
-
-/obj/item/weapon/door/key/north3/room2
-	name = "house apartment key #2-3"
-	key_data = "house2north3"
-
-/obj/item/weapon/door/key/north3/room3
-	name = "house apartment key #3-3"
-	key_data = "house3north3"
-
-/obj/item/weapon/door/key/north3/room4
-	name = "house apartment key #4-3"
-	key_data = "house4north3"
-
-/obj/item/weapon/door/key/north3/room5
-	name = "house apartment key #5-3"
-	key_data = "house5north3"
-
-/obj/item/weapon/door/key/north3/room6
-	name = "house apartment key #6-3"
-	key_data = "house6north3"
-
+DOORKEY(north2/room7,  "house apartment key #7-2",  "house7north2" )
+DOORKEY(north2/room8,  "house apartment key #8-2",  "house8north2" )
+DOORKEY(north2/room9,  "house apartment key #9-2",  "house9north2" )
+DOORKEY(north2/room10, "house apartment key #10-2", "house10north2")
+DOORKEY(north2/room11, "house apartment key #11-2", "house11north2")
+DOORKEY(north2/room12, "house apartment key #12-2", "house12north2")
+DOORKEY(north3/room1,  "house apartment key #1-3",  "house1north2" )
+DOORKEY(north3/room2,  "house apartment key #2-3",  "house2north3" )
+DOORKEY(north3/room3,  "house apartment key #3-3",  "house3north3" )
+DOORKEY(north3/room4,  "house apartment key #4-3",  "house4north3" )
+DOORKEY(north3/room5,  "house apartment key #5-3",  "house5north3" )
+DOORKEY(north3/room6,  "house apartment key #6-3",  "house6north3" )
 // FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK I WANT TO DIE FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK
-
-/obj/item/weapon/door/key/hotel/room1
-	name = "hotel apartment key #1"
-	key_data = "hotel1"
-
-/obj/item/weapon/door/key/hotel/room2
-	name = "hotel apartment key #2"
-	key_data = "hotel2"
-
-/obj/item/weapon/door/key/hotel/room3
-	name = "hotel apartment key #3"
-	key_data = "hotel3"
-
-/obj/item/weapon/door/key/hotel/room4
-	name = "hotel apartment key #4"
-	key_data = "hotel4"
-
-/obj/item/weapon/door/key/hotel/room5
-	name = "hotel apartment key #5"
-	key_data = "hotel5"
-
-/obj/item/weapon/door/key/hotel/room6
-	name = "hotel apartment key #6"
-	key_data = "hotel6"
-
-/obj/item/weapon/door/key/hotel/room7
-	name = "hotel apartment key #7"
-	key_data = "hotel7"
-
-/obj/item/weapon/door/key/hotel/room8
-	name = "hotel apartment key #8"
-	key_data = "hotel8"
-
-/obj/item/weapon/door/key/hotel/room9
-	name = "hotel apartment key #9"
-	key_data = "hotel9"
-
-/obj/item/weapon/door/key/hotel/room11
-	name = "hotel apartment key #11"
-	key_data = "hotel11"
-
-/obj/item/weapon/door/key/hotel/room12
-	name = "hotel apartment key #12"
-	key_data = "hotel12"
-
-/obj/item/weapon/door/key/hotel/room13
-	name = "hotel apartment key #13"
-	key_data = "hotel13"
-
+DOORKEY(hotel/room1,  "hotel apartment key #1",  "hotel1" )
+DOORKEY(hotel/room2,  "hotel apartment key #2",  "hotel2" )
+DOORKEY(hotel/room3,  "hotel apartment key #3",  "hotel3" )
+DOORKEY(hotel/room4,  "hotel apartment key #4",  "hotel4" )
+DOORKEY(hotel/room5,  "hotel apartment key #5",  "hotel5" )
+DOORKEY(hotel/room6,  "hotel apartment key #6",  "hotel6" )
+DOORKEY(hotel/room7,  "hotel apartment key #7",  "hotel7" )
+DOORKEY(hotel/room8,  "hotel apartment key #8",  "hotel8" )
+DOORKEY(hotel/room9,  "hotel apartment key #9",  "hotel9" )
+DOORKEY(hotel/room11, "hotel apartment key #11", "hotel11")
+DOORKEY(hotel/room12, "hotel apartment key #12", "hotel12")
+DOORKEY(hotel/room13, "hotel apartment key #13", "hotel13")
 // АААААААААААААААААААААААААААААААААА БЛЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯАААААААААААААААТЬ
-
-/obj/item/weapon/door/key/northelite/house1
-	name = "House key #11"
-	key_data = "elite1"
-
-/obj/item/weapon/door/key/northelite/house2
-	name = "House key #12"
-	key_data = "elite2"
-
-/obj/item/weapon/door/key/northelite/house3
-	name = "House key #13"
-	key_data = "elite3"
-
-
+DOORKEY(northelite/house1, "House key #11", "elite1")
+DOORKEY(northelite/house2, "House key #12", "elite2")
+DOORKEY(northelite/house3, "House key #13", "elite3")
 // ЁБАНЫЙ РООООООООТ ЭТОГО КАЗИНОООООООООООО
-
-/obj/item/weapon/door/key/casino/
-	name = "Casino storage key"
-	key_data = "casino"
-
+DOORKEY(casino, "Casino storage key", "casino")
 // ГОСПИТАЛЬ
-
-/obj/item/weapon/door/key/medbay/
-	name = "Hospital key"
-	key_data = "medbay"
-
-/obj/item/weapon/door/key/medbay/pharmacy
-	name = "Hospital pharmacy key"
-	key_data = "pharmacy"
-
-/obj/item/weapon/door/key/medbay/lockerroom
-	name = "Hospital locker room key"
-	key_data = "lockerroom"
-
-/obj/item/weapon/door/key/medbay/archive
-	name = "Hospital archives key"
-	key_data = "archive"
-
-/obj/item/weapon/door/key/medbay/cabinet1
-	name = "#1 cabinet key"
-	key_data = "cabinet1"
-
-/obj/item/weapon/door/key/medbay/cabinet2
-	name = "#2 cabinet key"
-	key_data = "cabinet2"
-
-/obj/item/weapon/door/key/medbay/cabinet3
-	name = "#3 cabinet key"
-	key_data = "cabinet3"
-
-/obj/item/weapon/door/key/medbay/cabinet4
-	name = "#4 cabinet key"
-	key_data = "cabinet4"
-
-/obj/item/weapon/door/key/medbay/head
-	name = "Hospital Head cabinet key"
-	key_data = "head"
-
+DOORKEY(medbay, "Hospital key", "medbay")
+DOORKEY(medbay/pharmacy, "Hospital pharmacy key", "pharmacy")
+DOORKEY(medbay/lockerroom, "Hospital locker room key", "lockerroom")
+DOORKEY(medbay/archive, "Hospital archives key", "archive")
+DOORKEY(medbay/cabinet1, "#1 cabinet key", "cabinet1")
+DOORKEY(medbay/cabinet2, "#2 cabinet key", "cabinet2")
+DOORKEY(medbay/cabinet3, "#3 cabinet key", "cabinet3")
+DOORKEY(medbay/cabinet4, "#4 cabinet key", "cabinet4")
+DOORKEY(medbay/head, "Hospital Head cabinet key", "head")
 // ЮЖНЫЙ
-
 //Так как у Вани нет никаких нормальных обозначений жилых зданий, я буду помечать их по расположению и названию зону, где они находятся
-
-/obj/item/weapon/door/key/south/teotr
-	name = "TEotR bar key"
-	key_data = "south_teotr34"
-
+DOORKEY(south/teotr, "TEotR bar key", "south_teotr34")
 // Двухэтажка у Теотра, F3, квартиры с 113-й по 118-ю
-
-/obj/item/weapon/door/key/south/f3/first
-	name = "F3-1-N113 Key"
-	key_data = "south_f3_n1"
-
-/obj/item/weapon/door/key/south/f3/second
-	name = "F3-2-N114 Key"
-	key_data = "south_f3_n2"
-
-/obj/item/weapon/door/key/south/f3/third
-	name = "F3-3-N115 Key"
-	key_data = "south_f3_n3"
-
-/obj/item/weapon/door/key/south/f3/fourth
-	name = "F3-4-N116 Key"
-	key_data = "south_f3_n4"
-
-/obj/item/weapon/door/key/south/f3/fifth
-	name = "F3-5-N117 Key"
-	key_data = "south_f3_n5"
-
-/obj/item/weapon/door/key/south/f3/sixth
-	name = "F3-6-N118 Key"
-	key_data = "south_f3_n6"
-
+DOORKEY(south/f3/first,  "F3-1-N113 Key", "south_f3_n1")
+DOORKEY(south/f3/second, "F3-2-N114 Key", "south_f3_n2")
+DOORKEY(south/f3/third,  "F3-3-N115 Key", "south_f3_n3")
+DOORKEY(south/f3/fourth, "F3-4-N116 Key", "south_f3_n4")
+DOORKEY(south/f3/fifth,  "F3-5-N117 Key", "south_f3_n5")
+DOORKEY(south/f3/sixth,  "F3-6-N118 Key", "south_f3_n6")
 //Трёхэтажка, южнее автосалона с квадриками, F2, квартиры с 107-й по 112-ю
-
-/obj/item/weapon/door/key/south/f2/first
-	name = "F2-1-N107 Key"
-	key_data = "south_f2_n1"
-
-/obj/item/weapon/door/key/south/f2/second
-	name = "F2-2-N108 Key"
-	key_data = "south_f2_n2"
-
-/obj/item/weapon/door/key/south/f2/third
-	name = "F2-3-N109 Key"
-	key_data = "south_f2_n3"
-
-/obj/item/weapon/door/key/south/f2/fourth
-	name = "F2-4-N110 Key"
-	key_data = "south_f2_n4"
-
-/obj/item/weapon/door/key/south/f2/fifth
-	name = "F2-5-N111 Key"
-	key_data = "south_f2_n5"
-
-/obj/item/weapon/door/key/south/f2/sixth
-	name = "F2-6-N112 Key"
-	key_data = "south_f2_n6"
-
+DOORKEY(south/f2/first,  "F2-1-N107 Key", "south_f2_n1")
+DOORKEY(south/f2/second, "F2-2-N108 Key", "south_f2_n2")
+DOORKEY(south/f2/third,  "F2-3-N109 Key", "south_f2_n3")
+DOORKEY(south/f2/fourth, "F2-4-N110 Key", "south_f2_n4")
+DOORKEY(south/f2/fifth,  "F2-5-N111 Key", "south_f2_n5")
+DOORKEY(south/f2/sixth,  "F2-6-N112 Key", "south_f2_n6")
 //Гаражи севернее F2
-
-/obj/item/weapon/door/key/south/f2/garage/first
-	name = "Garage #1"
-	key_data = "garage-f2-1"
-
-/obj/item/weapon/door/key/south/f2/garage/second
-	name = "Garage #2"
-	key_data = "garage-f2-2"
-
-/obj/item/weapon/door/key/south/f2/garage/third
-	name = "Garage #3"
-	key_data = "garage-f2-3"
-
-/obj/item/weapon/door/key/south/f2/garage/fourth
-	name = "Garage #4"
-	key_data = "garage-f2-4"
-
-/obj/item/weapon/door/key/south/f2/garage/fifth
-	name = "Garage #5"
-	key_data = "garage-f2-5"
-
+DOORKEY(south/f2/garage/first,  "Garage #1", "garage-f2-1")
+DOORKEY(south/f2/garage/second, "Garage #2", "garage-f2-2")
+DOORKEY(south/f2/garage/third,  "Garage #3", "garage-f2-3")
+DOORKEY(south/f2/garage/fourth, "Garage #4", "garage-f2-4")
+DOORKEY(south/f2/garage/fifth,  "Garage #5", "garage-f2-5")
 //Автосалон с квадриками
-
-/obj/item/weapon/door/key/south/carshop
-	name = "South car dealership key"
-	key_data = "carshopsouth"
+DOORKEY(south/carshop, "South car dealership key", "carshopsouth")
