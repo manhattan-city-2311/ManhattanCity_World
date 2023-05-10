@@ -218,3 +218,6 @@
 		if(prob(hit_chance))
 			return position
 	return null
+
+/obj/manhattan/vehicle/proc/get_exit_offsets()
+	return

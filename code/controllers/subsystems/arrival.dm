@@ -63,6 +63,7 @@ SUBSYSTEM_DEF(arrival)
 
 /datum/controller/subsystem/arrival/proc/arrive()
 	hyperloop.forceMove(get_turf(stops[current_stop]))
+	hyperloop.dir = stops[current_stop]
 
 /datum/controller/subsystem/arrival/proc/depart()
 	hyperloop.forceMove(null)

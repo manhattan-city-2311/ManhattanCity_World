@@ -15,6 +15,12 @@
 
 	var/number_of_seats = 20
 
+/obj/manhattan/vehicle/large/hyperloop/get_exit_offsets()
+	return list(
+		"[NORTH]" = list( 4, 2,  4, 6),
+		"[SOUTH]" = list(-1, 2, -1, 6),
+	)
+
 /obj/manhattan/vehicle/large/hyperloop/update_icon()
 	. = ..()
 	if(dir == NORTH || dir == SOUTH)

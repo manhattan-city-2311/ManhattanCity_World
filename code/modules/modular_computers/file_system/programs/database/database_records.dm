@@ -39,15 +39,15 @@
 	if(loggedin)
 	{
 		var/list/records = selected_name && DB.read(selected_name, username);
-		
+
 		var/list/recordsData = list();
 		for(var/ID in records)
 		{
 			var/R = records[ID];
-			
+
 			var/list/subdata = list()
 			subdata["label"] = ID;
-			
+
 			if(islist(R))
 			{
 				subdata["canedit"] = global.records_id_to_title[ID];
@@ -65,19 +65,19 @@
 			}
 			else
 				subdata[is_record_title(ID) ? "title" : "value"] = R;
-			
+
 			recordsData += list(subdata);
 		}
-		
+
 		if(recordsData.len)
 			data["records"] = recordsData;
-		
+
 		var/list/names = list()
 		for(var/name in DB.contents)
 			names += name;
 		data["names"] = names;
 		data["selected_name"] = selected_name;
-			
+
 	}
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open);
@@ -109,13 +109,13 @@
 	{
 		var/datum/database/accounts/accountsDB = load_ic_database(DB.accounts_database);
 		var/list/rawPermissions = accountsDB.access(username, password, database);
-		
+
 		if(!rawPermissions)
 		{
 			to_chat(usr, "Auth failure");
 			return;
 		}
-		
+
 		permissions = list()
 		for(var/I in rawPermissions)
 			if(I in permissionToTitle)
@@ -133,7 +133,7 @@
 	}
 	if(href_list["select_name"])
 	{
-		selected_name = href_lsit["select_name"];
+		selected_name = href_list["select_name"];
 		return TOPIC_REFRESH;
 	}
 }
