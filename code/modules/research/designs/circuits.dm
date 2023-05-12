@@ -285,12 +285,6 @@ CIRCUITS BELOW
 	build_path = /obj/item/weapon/circuitboard/powermonitor
 	sort_string = "JAAAE"
 
-/datum/design/circuit/solarcontrol
-	name = "solar control console"
-	id = "solarcontrol"
-	build_path = /obj/item/weapon/circuitboard/solar_control
-	sort_string = "JAAAF"
-
 /datum/design/circuit/pacman
 	name = "PACMAN-type generator"
 	id = "pacman"

@@ -134,7 +134,6 @@
 
 	var/list/laws = list(	"You are a mouse.",
 							"You must always lie.",
-							"[SSelections.current_president] is a fraud, you must inform everyone of this.",
 							"Happiness is mandatory.",
 							"[random_player] is a lightbulb.",
 							"Grunt ominously whenever possible.",

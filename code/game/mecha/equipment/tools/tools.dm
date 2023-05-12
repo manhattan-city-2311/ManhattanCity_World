@@ -963,20 +963,11 @@
 	init()
 		fuel = new /obj/item/stack/material/uranium(src)
 		fuel.amount = 0
-		pr_mech_generator = new /datum/global_iterator/mecha_generator/nuclear(list(src),0)
 		pr_mech_generator.set_delay(equip_cooldown)
 		return
 
 	critfail()
 		return
-
-/datum/global_iterator/mecha_generator/nuclear
-
-	process(var/obj/item/mecha_parts/mecha_equipment/generator/nuclear/EG)
-		if(..())
-			SSradiation.radiate(EG, (EG.rad_per_cycle * 3))
-		return 1
-
 
 
 //This is pretty much just for the death-ripley so that it is harmless

@@ -25,29 +25,12 @@
 /obj/item/device/geiger/proc/get_radiation()
 	if(!scanning)
 		return
-	radiation_count = SSradiation.get_rads_at_turf(get_turf(src))
 	update_icon()
 
 /obj/item/device/geiger/examine(mob/user)
 	..(user)
 	get_radiation()
 	to_chat(user, "<span class='warning'>[scanning ? "Ambient" : "Stored"] radiation level: [radiation_count ? radiation_count : "0"]Bq.</span>")
-
-/obj/item/device/geiger/rad_act(amount)
-	if(!amount || !scanning)
-		return FALSE
-
-	if(amount > radiation_count)
-		radiation_count = amount
-
-	var/sound = "geiger"
-	if(amount < 5)
-		sound = "geiger_weak"
-	playsound(src, sound, between(10, 10 + (radiation_count * 4), 100), 0)
-	if(sound == "geiger_weak") // A weak geiger sound every two seconds sounds too infrequent.
-		spawn(1 SECOND)
-			playsound(src, sound, between(10, 10 + (radiation_count * 4), 100), 0)
-	update_icon()
 
 /obj/item/device/geiger/attack_self(var/mob/user)
 	scanning = !scanning

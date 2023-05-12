@@ -402,17 +402,7 @@
 	time_per_sheet = 576 //same power output, but a 50 sheet stack will last 2 hours at max safe power
 	circuit = /obj/item/weapon/circuitboard/pacman/super
 
-/obj/machinery/power/port_gen/pacman/super/UseFuel()
-	//produces a tiny amount of radiation when in use
-	if (prob(2*power_output))
-		SSradiation.radiate(src, 4)
-	..()
-
 /obj/machinery/power/port_gen/pacman/super/explode()
-	//a nice burst of radiation
-	var/rads = 50 + (sheets + sheet_left)*1.5
-	SSradiation.radiate(src, (max(20, rads)))
-
 	explosion(src.loc, 3, 3, 5, 3)
 	qdel(src)
 

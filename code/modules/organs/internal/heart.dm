@@ -183,7 +183,7 @@
 		return
 	//Bleeding out
 	var/blood_max = 0
-	var/bpcoef = min(1.5, owner.mpressure / BLOOD_PRESSURE_NORMAL)
+	var/bpcoef = min(1.25, owner.mpressure / BLOOD_PRESSURE_NORMAL)
 	var/list/do_spray = list()
 	for(var/obj/item/organ/external/temp in owner.organs_by_name)
 		var/open_wound

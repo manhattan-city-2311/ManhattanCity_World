@@ -523,7 +523,6 @@
 	..()
 
 /mob/living/simple_mob/slime/xenobio/green/proc/irradiate()
-	SSradiation.radiate(src, rads)
 	for(var/obj/machinery/portable_atmospherics/hydroponics/G in range(7,src))
 		G.mutation_level++
 		G.toxins += 0.1

@@ -42,11 +42,7 @@
 	rod_quantities[fuel_type] = initial_amount
 
 /obj/item/weapon/fuel_assembly/process()
-	if(!radioactivity)
-		return PROCESS_KILL
-
-	if(istype(loc, /turf))
-		SSradiation.radiate(src, max(1,ceil(radioactivity/30)))
+	return PROCESS_KILL
 
 /obj/item/weapon/fuel_assembly/Destroy()
 	processing_objects -= src

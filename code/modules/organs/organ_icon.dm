@@ -156,6 +156,7 @@ var/global/list/limb_icon_cache = list()
 				mob_icon = 'icons/mob/human_races/r_skeleton.dmi'
 			else if (robotic >= ORGAN_ROBOT)
 				mob_icon = 'icons/mob/human_races/robotic.dmi'
+				gender = ""
 			else
 				mob_icon = species.get_icobase(owner, status & ORGAN_MUTATED)
 

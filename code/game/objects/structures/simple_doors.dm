@@ -164,11 +164,6 @@
 			CheckHardness()
 	return
 
-/obj/structure/simple_door/process()
-	if(!material.radioactivity)
-		return
-	SSradiation.radiate(src, round(material.radioactivity/3))
-
 /obj/structure/simple_door/iron/New(var/newloc,var/material_name)
 	..(newloc, "iron")
 

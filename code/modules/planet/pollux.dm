@@ -588,8 +588,6 @@ var/datum/planet/pollux/planet_pollux = null
 			if(!get_area(T).outdoors)
 				continue // They're indoors, so no need to irradiate them with fallout.
 
-			L.rad_act(rand(direct_rad_low, direct_rad_high))
-
 // This makes random tiles near people radioactive for awhile.
 // Tiles far away from people are left alone, for performance.
 /datum/weather/pollux/fallout/proc/irradiate_nearby_turf(mob/living/L)
@@ -599,8 +597,6 @@ var/datum/planet/pollux/planet_pollux = null
 	var/turf/T = pick(turfs) // We get one try per tick.
 	if(!istype(T))
 		return
-	if(get_area(T).outdoors)
-		SSradiation.radiate(T, rand(fallout_rad_low, fallout_rad_high))
 
 /datum/weather/pollux/acid_rain
 	name = "acid rain"

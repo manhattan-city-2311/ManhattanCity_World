@@ -47,6 +47,9 @@ SUBSYSTEM_DEF(arrival)
 		chairs += C
 
 	for(var/mob/new_player/NP in player_list)
+		if(!chairs.len)
+			break
+
 		if(NP.spawning || !NP.ready)
 			continue
 
@@ -85,8 +88,8 @@ SUBSYSTEM_DEF(arrival)
 		for(var/mob/M in hyperloop.interior.area)
 			spawn()
 				var/sign = prob(50) ? 1 : -1
-				animate(M.client, pixel_x =  sign * 3, pixel_y =-sign, time = 2 SECOND)
-				animate(M.client, pixel_x = 0, pixel_y = 0, time = 2 SECOND)
+				animate(M.client, pixel_x = sign * 3, pixel_y = -sign, time = 2 SECOND)
+				animate(M.client, pixel_x = 0       , pixel_y =  0   , time = 2 SECOND)
 
 	switch(arrival_state)
 		if(ARRIVAL_HOLD)
@@ -95,7 +98,7 @@ SUBSYSTEM_DEF(arrival)
 				if(NP.spawning || !NP.ready)
 					++n_players
 
-			if(!next && n_players > 5 || (n_players > 0 && (last_departure == 0 || (world.time - last_departure) > ARRIVAL_PERIOD_FEW_PEOPLES)))
+			if(!next && (n_players > 5 || (n_players && (last_departure == 0 || (world.time - last_departure) > ARRIVAL_PERIOD_FEW_PEOPLES))))
 				next = world.time + ARRIVAL_PERIOD_HOLD_DEPART
 			else if(world.time >= next)
 				next = world.time + ARRIVAL_PERIOD_TRANSIT

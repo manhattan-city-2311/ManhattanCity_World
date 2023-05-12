@@ -86,18 +86,6 @@
 	message_admins("Admin [key_name_admin(usr)] has loaded all dept accs through verb.", 1)
 	return 1
 
-
-/client/proc/debug_politics()
-	set category = "Persistence"
-	set name = "Debug Politics"
-	set desc = "Let's get into the nepotism."
-
-	if(!holder)
-		to_chat(usr, "<font color='red'>Only admins can use this command!</font>")
-		return 0
-
-	debug_variables(SSelections)
-
 /client/proc/debug_news()
 	set category = "Persistence"
 	set name = "Debug News"

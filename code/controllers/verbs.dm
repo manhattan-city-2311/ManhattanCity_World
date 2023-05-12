@@ -146,8 +146,5 @@
 		if("Websites")
 			debug_variables(SSwebsites)
 			feedback_add_details("admin_verb", "DWebsites")
-		if("Bounties")
-			debug_variables(SSbounties)
-			feedback_add_details("admin_verb", "DBounties")
 
 	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")

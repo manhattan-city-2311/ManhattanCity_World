@@ -2,6 +2,7 @@ SUBSYSTEM_DEF(vehicles)
 	name = "Vehicles"
 	flags = SS_NO_INIT
 	wait = 1 // deciseconds
+	priority = FIRE_PRIORITY_VEHICLES
 	var/list/vehicles = list()
 	var/list/queue
 

@@ -154,6 +154,8 @@
 	SSvehicles.vehicles += src
 	START_PROCESSING(SSobj, src)
 	update_icon()
+	angle = angle2dir(dir)
+	update_angle_vector()
 
 /obj/manhattan/vehicle/proc/pick_valid_exit_loc()
 	var/list/valid_exit_locs = list()
@@ -200,7 +202,7 @@
 	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
 	engine?.handle_sound()
 
-	for(var/obj/item/vehicle_part/VP in components)
+	for(var/obj/item/vehicle_part/VP as anything in components)
 		if(VP.can_process())
 			VP.part_process()
 

@@ -24,8 +24,6 @@
 	universal detective scanners to check if the fingerprints and fibers are around. If you send us one we'll pass you our leftover sterilizine \
 	and one of our UV lights."
 
-	items_wanted = list(/obj/item/device/detective_scanner = 1)
-
 	item_rewards = list(/obj/item/weapon/reagent_containers/spray/sterilizine = 1,
 	/obj/item/device/uv_light = 1)
 

@@ -109,8 +109,8 @@
 
 #define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-3, size=4, color="#04080FAA")
 
-#define LIGHTING_BLOOM filter(type="bloom", size = 6, threshold = "#DDDDDD", offset = 10, alpha = 60)
-#define NEON_DECALS_BLOOM filter(type="bloom", size = 6, threshold = "#000000", offset = 10, alpha = 60)
+#define LIGHTING_BLOOM filter(type="bloom", size = 5, threshold = "#DDDDDD", offset = 10, alpha = 60)
+#define NEON_DECALS_BLOOM filter(type="bloom", size = 5, threshold = "#000000", offset = 10, alpha = 60)
 
 /// Uses vis_overlays to leverage caching so that very few new items need to be made for the overlay. For anything that doesn't change outline or opaque area much or at all.
 #define EMISSIVE_BLOCK_GENERIC 1

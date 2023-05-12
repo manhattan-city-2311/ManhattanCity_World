@@ -383,19 +383,3 @@
 			return
 
 		A.charge(amount, account_recieving, "GovPortal Transfer from [A.owner_name]")
-
-
-	if(href_list["resign_president"])
-		. = 1
-
-		if("No" == alert("Are you sure you would like to resign as president?", "Resign as President", "No", "Yes"))
-			return
-
-		if("No" == alert("Just making sure, do you want to resign as president? This CANNOT be undone.", "Resign as President", "No", "Yes"))
-			return
-
-		SSelections.clear_president()
-
-		command_announcement.Announce("The current president of the Polluxian colonies has officially stepped down, Nanotrasen will reorganise the cabinet shortly.", "Presidential Resignition")
-
-		index = 1

@@ -413,16 +413,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, SPAN_INFO("Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)"))
 		to_chat(src, SPAN_INFO("Heat Capacity: [round(environment.heat_capacity(),0.1)]"))
 
-/mob/observer/dead/verb/check_radiation()
-	set name = "Check Radiation"
-	set category = "Ghost"
-
-	var/turf/t = get_turf(src)
-	if(t)
-		var/rads = SSradiation.get_rads_at_turf(t)
-		to_chat(src, "<span class='notice'>Radiation level: [rads ? rads : "0"] Bq.</span>")
-
-
 /mob/observer/dead/verb/become_mouse()
 	set name = "Become mouse"
 	set category = "Ghost"
