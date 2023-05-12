@@ -1,4 +1,3 @@
-/*
 /mob/living/carbon/human/verb/interact()
 	set name = "Взаимодействовать"
 	set src in view(1)
@@ -10,4 +9,3 @@
 
 	show_erp_panel()
 	user.show_erp_panel()
-*/

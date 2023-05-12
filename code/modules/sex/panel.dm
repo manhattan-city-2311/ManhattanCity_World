@@ -7,11 +7,10 @@
 	var/dat = "<table><tr>"
 	var/global/list/categories = list(
 		ERP_ACTION_CATEGORY_ROMANCE,
-//		No sex allowed
-//		ERP_ACTION_CATEGORY_FOREPLAY,
-//		ERP_ACTION_CATEGORY_SEX,
-//		ERP_ACTION_CATEGORY_RAPE,
-//		ERP_ACTION_CATEGORY_POSITIONING
+		ERP_ACTION_CATEGORY_FOREPLAY,
+		ERP_ACTION_CATEGORY_SEX,
+		ERP_ACTION_CATEGORY_RAPE,
+		ERP_ACTION_CATEGORY_POSITIONING
 	)
 	for(var/id in categories)
 		if(id == erp_panel_selected_category)
