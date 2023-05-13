@@ -1,2 +1,14 @@
+environment = "manhattan.dme"
+
 [langserver]
 dreamchecker = true
+
+[code_standards]
+disallow_relative_type_definitions = false
+disallow_relative_proc_definitions = false
+
+[dmdoc]
+use_typepath_names = true
+
+[debugger]
+engine = "auxtools"

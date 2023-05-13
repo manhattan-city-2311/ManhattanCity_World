@@ -7,13 +7,10 @@
  */
 
 /obj/item/weapon/rig
-
 	name = "hardsuit control module"
 	icon = 'icons/obj/rig_modules.dmi'
 	desc = "A back-mounted hardsuit deployment and control mechanism."
 	slot_flags = SLOT_BACK
-	req_one_access = list()
-	req_access = list()
 	w_class = ITEMSIZE_HUGE
 	action_button_name = "Toggle Heatsink"
 
@@ -64,7 +61,6 @@
 
 	// Rig status vars.
 	var/open = 0                                              // Access panel status.
-	var/locked = 1                                            // Lock status.
 	var/subverted = 0
 	var/interface_locked = 0
 	var/control_overridden = 0
@@ -99,7 +95,6 @@
 			to_chat(usr, "\icon[piece] \The [piece] [piece.gender == PLURAL ? "are" : "is"] deployed.")
 
 	if(src.loc == usr)
-		to_chat(usr, "The access panel is [locked? "locked" : "unlocked"].")
 		to_chat(usr, "The maintenance panel is [open ? "open" : "closed"].")
 		to_chat(usr, "Hardsuit systems are [offline ? "<font color='red'>offline</font>" : "<font color='green'>online</font>"].")
 		to_chat(usr, "The cooling stystem is [cooling_on ? "active" : "inactive"].")
@@ -112,9 +107,6 @@
 
 	item_state = icon_state
 	wires = new(src)
-
-	if((!req_access || !req_access.len) && (!req_one_access || !req_one_access.len))
-		locked = 0
 
 	spark_system = new()
 	spark_system.set_up(5, 0, src)
@@ -464,7 +456,6 @@
 	data["chargestatus"] = cell ? floor((cell.charge/cell.maxcharge)*50) : 0
 
 	data["emagged"] =       subverted
-	data["coverlock"] =     locked
 	data["interfacelock"] = interface_locked
 	data["aicontrol"] =     control_overridden
 	data["aioverride"] =    ai_override_enabled
@@ -593,8 +584,6 @@
 	else if(href_list["toggle_ai_control"])
 		ai_override_enabled = !ai_override_enabled
 		notify_ai("Synthetic suit control has been [ai_override_enabled ? "enabled" : "disabled"].")
-	else if(href_list["toggle_suit_lock"])
-		locked = !locked
 
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
