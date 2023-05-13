@@ -15,7 +15,6 @@ cfg/
 
 maps/Geminus/backup/*
 .VSCodeCounter
-.vscode/tasks.json
 maps/Geminus/backup/geminus-3.dmm
 maps/Geminus/backup/geminus-2.dmm
 maps/Geminus/backup/geminus-1.dmm                                                                                                                                                                                                              
@@ -26,3 +25,11 @@ config/admin_ranks.txt
 !/config/config.txt
 config/admins.txt
 config/admins.txt
+
+# JavaScript tools
+**/node_modules
+
+# named byond versions config
+/tools/build/dm_versions.json
+
+.cache
