@@ -154,8 +154,6 @@
 	SSvehicles.vehicles += src
 	START_PROCESSING(SSobj, src)
 	update_icon()
-	angle = angle2dir(dir)
-	update_angle_vector()
 
 /obj/manhattan/vehicle/proc/pick_valid_exit_loc()
 	var/list/valid_exit_locs = list()
