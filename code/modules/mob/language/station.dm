@@ -99,30 +99,17 @@
 	flags = WHITELISTED
 	syllables = list("qr","qrr","xuq","qil","quum","xuqm","vol","xrim","zaoo","qu-uu","qix","qoo","zix")
 
-/datum/language/skrellfar
-	name = LANGUAGE_SKRELLIANFAR
-	desc = "The most common language among the Skrellian Far Kingdoms. Has an even higher than usual concentration of inaudible phonemes."
-	speech_verb = "warbles"
-	ask_verb = "warbles"
-	exclaim_verb = "sings"
-	whisper_verb = "hums"
-	colour = "skrellfar"
-	key = "p"
-	space_chance = 30
-	flags = WHITELISTED
-	syllables = list("qr","qrr","xuq","qil","quum","xuqm","vol","xrim","zaoo","qu-uu","qix","qoo","zix", "...", "oo", "q", "nq", "x", "xq", "ll", "...", "...", "...") //should sound like there's holes in it
 
-
-/*/datum/language/human
-	name = LANGUAGE_SOL_COMMON
-	desc = "A bastardized hybrid of many languages, including Chinese, English, French, and more; it is the common language of the Sol system."
+datum/language/human
+	name = LANGUAGE_FRENCH
+	desc = "A slightly morphed version of old Earth French, almost never heard spoken by anyone other than descendants of original Meotourne colonists."
 	speech_verb = "says"
 	whisper_verb = "whispers"
 	colour = "solcom"
-	key = "1"
+	key = "f"
 	flags = WHITELISTED
-	//syllables are at the bottom of the file
-*/
+	//syllables are at the bottom of the file AND ARE TO BE REMADE
+
 /datum/language/human/get_spoken_verb(var/msg_end)
 	switch(msg_end)
 		if("!")

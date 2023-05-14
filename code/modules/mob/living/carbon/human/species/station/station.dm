@@ -7,11 +7,11 @@
 	Their strict caste systems allowing them to slight and sneer at each other even as they oppress their servants that they create en-masse.<br><br> \
 	And why not? Rightfully so, they rule the known universe."
 	num_alternate_languages = 3
-	species_language = LANGUAGE_SOL_COMMON
-	secondary_langs = list(LANGUAGE_SOL_COMMON, LANGUAGE_TERMINUS)
+	species_language = LANGUAGE_GALCOM
+	secondary_langs = list(LANGUAGE_SPACER, LANGUAGE_FRENCH)
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 	additional_wage = 0
-	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	min_age = 18
 	max_age = 120
 	slowdown = 1.2

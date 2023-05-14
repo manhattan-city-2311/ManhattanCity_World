@@ -268,7 +268,7 @@
 /obj/machinery/computer/slot_machine/proc/broadcast(var/message)
 	if(!message) return
 
-	Broadcast_Message(radio, all_languages[LANGUAGE_SOL_COMMON], null, radio, message, "[capitalize(src.name)]", "Money Snatcher", "Slot machine #[id]", 0, 0, list(0,1), 1459)
+	Broadcast_Message(radio, all_languages[LANGUAGE_SPACER], null, radio, message, "[capitalize(src.name)]", "Money Snatcher", "Slot machine #[id]", 0, 0, list(0,1), 1459)
 
 
 /obj/machinery/computer/slot_machine/proc/hit_animation()
