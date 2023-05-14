@@ -309,14 +309,18 @@ var/global/use_preloader = FALSE
 	var/turf/T
 	if(members[first_turf_index] != /turf/template_noop)
 		T = instance_atom(members[first_turf_index],members_attributes[first_turf_index],crds,no_changeturf)
-
+		
 	if(T)
+		if(T.loc:dynamic_lighting)
+			new /atom/movable/lighting_overlay(T, TRUE)
 		//if others /turf are presents, simulates the underlays piling effect
 		index = first_turf_index + 1
 		while(index <= members.len - 1) // Last item is an /area
 			var/underlay = T.appearance
 			T = instance_atom(members[index],members_attributes[index],crds,no_changeturf)//instance new turf
 			T.underlays += underlay
+			if(T.loc:dynamic_lighting)
+				new /atom/movable/lighting_overlay(T, TRUE)
 			index++
 
 	//finally instance all remainings objects/mobs

@@ -39,8 +39,6 @@
 	if(T)
 		tesla_link = T
 
-
-
 	return TRUE
 
 /obj/machinery/modular_computer/get_persistent_metadata()
@@ -66,7 +64,6 @@
 	for(var/V in computer_data)
 		if(!istype(V, /datum/computer_file/program))
 			continue
-
 		var/rest_prg = new V(src)
 		cpu.hard_drive.stored_files += rest_prg
 
@@ -82,6 +79,7 @@
 
 	if(!cpu || !cpu.enabled)
 		return
+
 	if(cpu.active_program)
 		var/image/I = image(cpu.active_program.program_icon_state ? cpu.active_program.program_icon_state : screen_icon_state_menu)
 		I.plane = PLANE_LIGHTING_ABOVE

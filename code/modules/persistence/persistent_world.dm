@@ -8,9 +8,6 @@
 	//save business data
 	save_all_businesses()
 
-	//save politics related data
-	SSelections.save_data.save_candidates()
-
 	//save news
 	news_data.save_main_news()
 

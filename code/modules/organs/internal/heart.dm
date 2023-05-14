@@ -159,7 +159,7 @@
 	var/period = world.time - last_arrythmia_gain
 
 	if(prob(1) && period > 1.5 MINUTES && !get_ow_arrythmia())
-		var/arrythmic = get_arrythmic()
+		var/arrythmic = 0//get_arrythmic()
 
 		if(arrythmic > 1 && (get_arrythmia_score() < arrythmic))
 			make_common_arrythmia(arrythmic)
@@ -183,7 +183,7 @@
 		return
 	//Bleeding out
 	var/blood_max = 0
-	var/bpcoef = min(1.5, owner.mpressure / BLOOD_PRESSURE_NORMAL)
+	var/bpcoef = min(1.25, owner.mpressure / BLOOD_PRESSURE_NORMAL)
 	var/list/do_spray = list()
 	for(var/obj/item/organ/external/temp in owner.organs_by_name)
 		var/open_wound

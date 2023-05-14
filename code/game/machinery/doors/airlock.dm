@@ -601,9 +601,6 @@ About the new airlock wires panel:
 		user.stunned += 10
 		return TRUE
 
-/obj/machinery/door/airlock/bumpopen(mob/living/simple_animal/user as mob)
-	..(user)
-
 /obj/machinery/door/airlock/proc/isElectrified()
 	if(src.electrified_until != 0)
 		return 1

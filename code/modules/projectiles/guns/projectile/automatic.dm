@@ -1,15 +1,18 @@
-/obj/item/weapon/gun/projectile/automatic //Hopefully someone will find a way to make these fire in bursts or something. --Superxpdude //Except burstfire isn't fit for an rp server --Mark
+/obj/item/weapon/gun/projectile/automatic //all these things are waiting for decent full-auto implementation
 	name = "prototype SMG"
 	desc = "A protoype lightweight, fast firing gun. Uses 9mm rounds."
 	icon_state = "saber"	//ugly
 	w_class = ITEMSIZE_NORMAL
-	load_method = SPEEDLOADER //yup. until someone sprites a magazine for it.
-	max_shells = 22
+	force = 10
 	caliber = "9mm"
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
-	ammo_type = /obj/item/ammo_casing/a9mm
-	projectile_type = /obj/item/projectile/bullet/pistol
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m9mm/large
+	allowed_magazines = list(/obj/item/ammo_magazine/m9mm, /obj/item/ammo_magazine/m9mm/large)
+	projectile_type = /obj/item/projectile/bullet/fmj/s9x19
+	auto_eject = 1
+	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	multi_aim = 1
 	burst_delay = 2
 
@@ -17,8 +20,8 @@
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-15,-15), dispersion=list(0.0, 0.6, 1.0))
-//		list(mode_name="short bursts",   burst=5, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-15,-15,-30,-30), dispersion=list(0.6, 1.0, 1.0, 1.0, 1.2)),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-15,-15), dispersion=list(0.0, 0.6, 1.0)),
+		list(mode_name="automatic", 	burst=1, fire_delay=-1, move_delay=null,    burst_accuracy=null, dispersion=null, automatic=1)
 		)
 
 /obj/item/weapon/gun/projectile/automatic/c20r
@@ -35,7 +38,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m10mm
 	allowed_magazines = list(/obj/item/ammo_magazine/m10mm)
-	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	projectile_type = /obj/item/projectile/bullet/fmj/s9x19
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	price_tag = 22260
@@ -60,6 +63,8 @@
 	w_class = ITEMSIZE_LARGE
 	force = 10
 	caliber = "5.45mm"
+	recoil = 2.5
+	accuracy = -2
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
@@ -72,8 +77,8 @@
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30), dispersion=list(0.0, 0.6, 0.6))
-//		list(mode_name="short bursts", 	burst=5, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30,-30,-45), dispersion=list(0.6, 1.0, 1.0, 1.0, 1.2)),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30), dispersion=list(0.0, 0.6, 0.6)),
+		list(mode_name="automatic", 	burst=1, fire_delay=-1, move_delay=null,    burst_accuracy=null, dispersion=null, automatic=1)
 		)
 
 /obj/item/weapon/gun/projectile/automatic/sts35/update_icon(var/ignore_inhands)
@@ -93,12 +98,12 @@
 	caliber = "9mm"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
-	ammo_type = "/obj/item/ammo_casing/a9mmr"
+	ammo_type = "/obj/item/ammo_casing/a9mm/rubber"
 	fire_sound = 'sound/weapons/Gunshot_light.ogg'
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mmt/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mmt)
-	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	projectile_type = /obj/item/projectile/bullet/fmj/s9x19
 	price_tag = 21200
 
 /obj/item/weapon/gun/projectile/automatic/wt550/update_icon()
@@ -389,3 +394,33 @@
 		item_state = "bullpup-empty"
 	if(!ignore_inhands)
 		update_held_icon()
+
+		//xeroarmory
+/obj/item/weapon/gun/projectile/automatic/contempt
+	name = "Contempt SMG"
+	desc = "A Hephaestus Industries MP23 'Contempt' SMG. Often regarded as a better alternative to C-20r, it includes serious firepower in a light, low recoil package. For when you need to express your hatred. Chambered in .45 Auto."
+	icon_state = "contempt"
+	caliber = ".45"
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m45tommy //placeholder until I make a new one
+	allowed_magazines = list(/obj/item/ammo_magazine/m45tommy)
+	projectile_type = /obj/item/projectile/bullet/fmj/p45
+	auto_eject = 1
+	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	burst_delay = 1
+	price_tag = 28000
+
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-7,-7), dispersion=list(0.0, 0.3, 0.6)),
+		list(mode_name="automatic", 	burst=1, fire_delay=-1, move_delay=null,    burst_accuracy=null, dispersion=null, automatic=1)
+		)
+
+/obj/item/weapon/gun/projectile/automatic/contempt/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "contempt"
+	else
+		icon_state = "contempt-e"
+	return

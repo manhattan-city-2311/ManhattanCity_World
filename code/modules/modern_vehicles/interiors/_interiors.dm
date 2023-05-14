@@ -6,44 +6,48 @@
 	var/size_x = 0
 	var/size_y = 0
 
-	var/list/mob/living/carbon/human/occupants = null
+	var/list/mob/living/carbon/human/occupants
+	var/obj/effect/vehicle_entrance/entrance
+	var/obj/manhattan/vehicle/large/vehicle
 	var/turf/middle_turf
-	var/obj/effect/vehicle_entrance/entrance = null
-	var/obj/structure/vehicledoor/door = null
-	var/obj/manhattan/vehicle/large/vehicle = null
+	var/area/area
 
 	var/global/list/datum/map_template/templates_cache = list()
 
-/datum/vehicle_interior/New(interior_template, new_vehicle)
-	var/is_failed = TRUE
-	for(var/obj/effect/interior_spawn/S in GLOB.vehicle_spawnpoints)
-		middle_turf = get_turf(S)
+/datum/vehicle_interior/New(datum/map_template/interior_template, new_vehicle)
+	if(!(interior_template in templates_cache))
+		templates_cache[interior_template] = new interior_template
+		sleep(3)
 
-		if(!(interior_template in templates_cache))
-			templates_cache[interior_template] = new interior_template
-		
-		if(!templates_cache[interior_template].load(middle_turf, centered = TRUE))
-			continue
+	interior_template = templates_cache[interior_template]
 
-		is_failed = FALSE
-		qdel(S)
-		break
+	var/area/A = locate(/area/space)
+	for(var/turf/T in A)
+		var/valid = TRUE
+		for(var/turf/check in interior_template.get_affected_turfs(T))
+			if(!istype(check, /turf/space))
+				valid = FALSE
+				break
+		if(valid)
+			interior_template.load(T)
+			middle_turf = locate(T.x + round(interior_template.width / 2), T.y + round(interior_template.height / 2), T.z)
+			area = get_area(middle_turf)
+			break
+	if(!area)
+		CRASH("Failed to load interior")
+		return
 
-	if(is_failed)
-		message_admins("Failed to load [type]")
-		CRASH("Failed to load [type]")
-		
 	id = gid++
 
-	for(var/obj/effect/vehicle_entrance/E in get_area(middle_turf))
+	for(var/obj/effect/vehicle_entrance/E in area)
 		entrance = E
 		entrance.id = id
 		break
-	for(var/obj/structure/vehicledoor/E in get_area(middle_turf))
-		door = E
-		door.id = id
-		door.interior = src
-		break
+
+	for(var/obj/structure/vehicledoor/E in area)
+		E.id = id
+		E.interior = src
+
 	vehicle = new_vehicle
 	if(!vehicle)
 		return
@@ -52,21 +56,6 @@
 
 /obj/effect/vehicle_entrance
 	var/id
-
-/obj/effect/interior_spawn
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "rift"
-	var/free_x = 0
-	var/free_y = 0
-
-/obj/effect/interior_spawn/New()
-	. = ..()
-	GLOB.vehicle_spawnpoints += src
-	icon_state = null
-
-/obj/effect/interior_spawn/Destroy()
-	GLOB.vehicle_spawnpoints -= src
-	. = ..()
 
 /obj/manhattan/vehicle/large
 	var/datum/vehicle_interior/interior = null
@@ -131,13 +120,22 @@
 	var/id
 	var/datum/vehicle_interior/interior = null
 
+// ;(
+/obj/structure/vehicledoor/Move()
+	return
+
+/obj/structure/vehicledoor/forceMove(atom/dest)
+	return
+
 /obj/structure/vehicledoor/attack_hand(mob/user)
-	. = ..()
+	if(interior.vehicle.loc == null)
+		to_chat(user, "\The [src] is not opening.")
+		return
 	interior.vehicle.exit_vehicle(user)
 
 /obj/structure/vehicledoor/MouseDrop_T(mob/target, mob/user)
 	. = ..()
 	if(ismob(target))
-		interior.vehicle.exit_vehicle(target, ingore_incap_check = TRUE, puller = user)
+		interior.vehicle.exit_vehicle(target, ignore_incap_check = TRUE, puller = user)
 	else
 		target.forceMove(interior.vehicle.pick_valid_exit_loc())

@@ -2,6 +2,7 @@
 #define RECORD_HEIGHT "РОСТ (В СМ)"
 #define RECORD_WEIGHT "ВЕС (В КГ)"
 #define RECORD_LANGUAGES "ВЛАДЕЕТ ЯЗЫКАМИ"
+#define RECORD_LAST_CHANGE "ПОСЛЕДНЕЕ ИЗМЕНЕНИЕ"
 
 GLOBAL_VAR_CONST(PREF_YES, "Yes")
 GLOBAL_VAR_CONST(PREF_NO, "No")
@@ -35,7 +36,22 @@ GLOBAL_VAR_CONST(PREF_DARK, "Dark")
 
 // Check if starts with '@'.
 /proc/is_record_title(record)
-	return copytext(record, 1, 2) == "@"
+	return starts_with(record, "@")
+
+var/global/list/records_id_to_title = list()
+/proc/generate_records_support()
+	var/list/records = get_records_blank()
+	
+	var/curTitle
+	for(var/id in records)
+		if(is_record_title(id))
+			curTitle = id
+		else
+			global.records_id_to_title[id] = curTitle
+
+/world/New()
+	. = ..()
+	generate_records_support()
 
 /proc/get_records_blank()
 	return list(
@@ -52,25 +68,25 @@ GLOBAL_VAR_CONST(PREF_DARK, "Dark")
 		, "РОДСТВЕННИКИ" = list()
 		, "ОБРАЗОВАНИЕ" = null
 		, "КВАЛИФИКАЦИЯ" = list(null)
-		, "ЛИЦЕНЗИИ" = list(null)
+		, "ЛИЦЕНЗИИ" = list(null),
 
-		, "@2" = "МЕДИЦИНСКАЯ СПРАВКА"
+		"@2" = "МЕДИЦИНСКАЯ СПРАВКА"
 		, "ПРОТЕЗЫ, ИМПЛАНТЫ" = list()
 		, "ПОСМЕРТНЫЕ ИНСТРУКЦИИ" = list(list("Кремация", "Сохранение в морге", "Традиционное погребение", "Передача родственникам"), null)
 		, "ДОНОР ОРГАНОВ" = list(list("Да", "Нет"), "Да")
 		, "АЛЛЕРГИИ" = list()
-		, "ЗАКЛЮЧЕНИЕ ПСИХИАТРА" = null
+		, "ЗАКЛЮЧЕНИЕ ПСИХИАТРА" = null,
 
-		, "@3" = "ПОГРАНИЧНЫЙ КОНТРОЛЬ"
+		"@3" = "ПОГРАНИЧНЫЙ КОНТРОЛЬ"
 		, "МЕСТО РОЖДЕНИЯ" = null
 		, "МЕСТО ПРОЖИВАНИЯ" = null
-		, "ГРАЖДАНСТВО БЕЛЬМЕОНА" = list(list("Имеется", "В процессе получения", "Отсутствует"), null)
+		, "ГРАЖДАНСТВО БЕЛЬМЕОНА" = list(list("Имеется", "В процессе получения", "Отсутствует"), null),
 
-		, "@4" = "ОТЧЕТ БЕЗОПАСНОСТИ"
+		"@4" = "ОТЧЕТ БЕЗОПАСНОСТИ"
 		, "РЕГИСТРАЦИЯ" = list(list("Южный район", "Северный район"), null)
-		, "КРИМИНАЛЬНЫЙ СТАТУС" = list()
+		, "КРИМИНАЛЬНЫЙ СТАТУС" = list(),
 
-		, "ПОСЛЕДНЕЕ ИЗМЕНЕНИЕ" = null
+		RECORD_LAST_CHANGE = null
 	)
 
 var/list/preferences_datums = list()

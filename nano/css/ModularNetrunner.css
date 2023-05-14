@@ -1,0 +1,88 @@
+.themeHR
+{
+	display: block;
+	box-shadow: 0 3px 20px 1px #ff0000;
+}
+
+body
+{
+	color:  	#ff6666;
+	background: #1f1613;
+	background-image: none;
+}
+
+.link32
+{
+	background: #4a1f19;
+	border: 1px solid #ff9999;
+}
+.link, .linkOn, .linkOff, .selected, .disabled, .yellowButton, .redButton
+{
+	color: #ffeeee;
+	background: #4a1f19;
+	border: 1px solid #ff9999;
+	box-shadow: 0 0 10px 2px #ff0000;
+}
+
+a:hover, .zoomLink:hover, .linkActive:hover
+{
+	background: #8a1f19;
+}
+
+.linkOn, a.linkOn:link, a.linkOn:visited, a.linkOn:active, a.linkOn:hover, .selected, a.selected:link, a.selected:visited, a.selected:active, a.selected:hover
+{
+	color: #ffeeee;
+	background: #221111;
+	box-shadow: 0 0 15px 2px #e41f1d;
+	border-color: #ffaaaa;
+}
+
+.linkOff, a.linkOff:link, a.linkOff:visited, a.linkOff:active, a.linkOff:hover, .disabled, a.disabled:link, a.disabled:visited, a.disabled:active, a.disabled:hover
+{
+	color: #ffeeee;
+	background: #221111;
+	border-color: #660403;
+	box-shadow: none;
+}
+
+.linkDanger, a.linkDanger:link, a.linkDanger:visited, a.linkDanger:active
+{
+	color: #660000;
+	background-color: #fe3322;
+	border-color: #aa0000;
+}
+
+.linkDanger:hover
+{
+	background-color: #fe6400;
+}
+
+.displayBar
+{
+	width: 236px;
+	height: 12px;
+	border: 1px solid #ff4444;
+	background: #4a1f19;
+	box-shadow: 0 0 10px 2px #a32c2f;
+}
+
+.displayBarFill
+{
+	width: 0%;
+	height: 100%;
+	background: #a32c2f;
+	overflow: hidden;
+	float: left;
+}
+
+.displayBarFill.good
+{
+	color: #ffffff;
+	background: #a32c2f;
+}
+
+.displayBarFill.highlight
+{
+	color: #ffffff;
+	background: #a32c2f;
+}

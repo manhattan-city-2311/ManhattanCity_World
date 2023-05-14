@@ -316,7 +316,6 @@ var/list/datum/power/changeling/powerinstances = list()
 
 
 	for (var/datum/power/changeling/P in powerinstances)
-		//to_world("[P] - [Pname] = [P.name == Pname ? "True" : "False"]")
 		if(P.name == Pname)
 			Thepower = P
 			break

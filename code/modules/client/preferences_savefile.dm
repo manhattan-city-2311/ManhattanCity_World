@@ -131,6 +131,7 @@
 	from_save(S, persistence_x)
 	from_save(S, persistence_y)
 	from_save(S, persistence_z)
+	from_save(S, records)
 
 /datum/preferences/proc/save_persistence(savefile/S)
 	to_save(S, bank_account)
@@ -138,6 +139,7 @@
 	to_save(S, persistence_x)
 	to_save(S, persistence_y)
 	to_save(S, persistence_z)
+	to_save(S, records)
 
 /datum/preferences/proc/delete_persistence(savefile/S)
 	bank_account = initial(bank_account)

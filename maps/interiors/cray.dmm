@@ -1,22 +1,18 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/unsimulated/shuttle/wall/dark,
-/area/interior)
+/turf/unsimulated/shuttle/wall/dark)
 "c" = (
-/turf/simulated/floor/tiled/monotile_dark,
-/area/interior)
+/turf/simulated/floor/tiled/monotile_dark)
 "f" = (
 /obj/structure/bed/roller,
 /obj/structure/neon_spline/blue,
-/turf/simulated/floor/tiled/monotile_dark,
-/area/interior)
+/turf/simulated/floor/tiled/monotile_dark)
 "h" = (
 /obj/structure/bed/chair/shuttle,
 /obj/structure/neon_spline/blue{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/monotile_dark,
-/area/interior)
+/turf/simulated/floor/tiled/monotile_dark)
 "l" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
@@ -24,15 +20,13 @@
 /obj/structure/neon_spline/blue{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile_dark,
-/area/interior)
+/turf/simulated/floor/tiled/monotile_dark)
 "o" = (
 /obj/structure/bed/chair/shuttle,
 /obj/structure/neon_spline/blue{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile_dark,
-/area/interior)
+/turf/simulated/floor/tiled/monotile_dark)
 "y" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 4
@@ -40,15 +34,13 @@
 /obj/structure/neon_spline/blue{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/monotile_dark,
-/area/interior)
+/turf/simulated/floor/tiled/monotile_dark)
 "A" = (
 /obj/structure/neon_spline/blue{
 	dir = 4
 	},
 /obj/effect/vehicle_entrance,
-/turf/simulated/floor/tiled/monotile_dark,
-/area/interior)
+/turf/simulated/floor/tiled/monotile_dark)
 "I" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 4
@@ -56,21 +48,17 @@
 /obj/structure/neon_spline/blue{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile_dark,
-/area/interior)
+/turf/simulated/floor/tiled/monotile_dark)
 "L" = (
-/obj/machinery/door/airlock{
-	locked = 1
-	},
-/turf/simulated/floor/tiled/monotile_dark,
-/area/interior)
+/obj/structure/vehicledoor,
+/turf/unsimulated/shuttle/wall/dark,
+/area/space)
 "M" = (
 /obj/structure/bed/chair/shuttle,
 /obj/structure/neon_spline/blue{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/monotile_dark,
-/area/interior)
+/turf/simulated/floor/tiled/monotile_dark)
 "V" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
@@ -78,8 +66,7 @@
 /obj/structure/neon_spline/blue{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/monotile_dark,
-/area/interior)
+/turf/simulated/floor/tiled/monotile_dark)
 "Z" = (
 /obj/item/roller,
 /obj/structure/table/standard,
@@ -91,8 +78,7 @@
 /obj/item/clothing/suit/straight_jacket,
 /obj/item/clothing/glasses/sunglasses/blindfold,
 /obj/item/clothing/mask/muzzle,
-/turf/simulated/floor/tiled/monotile_dark,
-/area/interior)
+/turf/simulated/floor/tiled/monotile_dark)
 
 (1,1,1) = {"
 a

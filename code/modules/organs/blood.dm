@@ -296,7 +296,7 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	update_cm(newhr)
 
 /mob/living/carbon/human/proc/update_cm(hr = get_heart_rate())
-	var/blood_volume = get_blood_volume()
+	var/blood_volume = sqrt(get_blood_volume())
 	var/cardiac_output_mod = get_cardiac_output_mod()
 	if(cardiac_output_mod && blood_volume && mcv < 100)
 		mcv = 1000 * cardiac_output_mod * blood_volume // MCV should'nt be zero if any circulation present
@@ -332,7 +332,7 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 	dpressure = max(0, LERP(dpressure, (gvr * (2180 + hr53))/((17820 - hr53)), force))
 
 	var/mcv50divhr27 = (50 * mcv) / ((27 * hr) || 1000)
-	spressure = clamp(LERP(spressure, mcv50divhr27 + 2.0 * dpressure - (7646.0 * k)/54.0, force), 0, MAX_PRESSURE)
+	spressure = clamp(LERP(spressure, mcv50divhr27 + 2.0 * dpressure - (7646.0 * k)/49.585, force), 0, MAX_PRESSURE)
 	dpressure = min(dpressure, spressure - rand(5, 15))
 
 	mpressure = dpressure + (spressure - dpressure) / 3.0

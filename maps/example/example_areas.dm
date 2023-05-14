@@ -14,9 +14,7 @@
 
 /area/example_mine_lift
 	name = "example mine lift"
-	requires_power = FALSE
 
 /area/mine
 	name = "mine"
-	requires_power = FALSE
 	should_objects_be_saved = FALSE

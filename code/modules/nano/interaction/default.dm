@@ -62,7 +62,7 @@
 /atom/proc/contents_nano_distance(var/src_object, var/mob/living/user)
 	return user.shared_living_nano_distance(src_object)
 
-/atom/movable
+/datum
 	var/nanoui_interactive_dist = 1
 	var/nanoui_update_dist = 2
 	var/nanoui_disabled_dist = 4

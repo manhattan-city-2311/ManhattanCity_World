@@ -9,3 +9,6 @@
 /obj/item/projectile/bullet/hp
 	armor_penetration = 5
 	agony = 15
+
+/obj/item/projectile/bullet/rubber
+	agony = 40

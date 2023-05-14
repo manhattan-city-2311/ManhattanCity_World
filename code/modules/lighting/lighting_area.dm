@@ -5,5 +5,5 @@
 /area/New()
 	. = ..()
 
-	if(dynamic_lighting)
-		luminosity = FALSE
+	if(!dynamic_lighting)
+		luminosity = TRUE

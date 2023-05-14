@@ -7,6 +7,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/hide_most_verbs,		//hides all our hideable adminverbs,
 	/client/proc/mark_datum_mapview,	//Lets us mark datums.
 	/client/proc/debug_variables,		//allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify,
+	/client/proc/debug_databases,
 	/client/proc/cmd_check_new_players,	//allows us to see every new player
 //	/client/proc/check_antagonists,		//shows all antags,
 //	/client/proc/cmd_mod_say,
@@ -259,7 +260,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/colorooc,
 	/client/proc/toggle_canon,
 //	/client/proc/department_account_view,
-	/client/proc/debug_politics,
 	/client/proc/debug_news,
 	/client/proc/backup_all_lots,
 	/client/proc/save_all_characters,
@@ -401,7 +401,6 @@ var/list/admin_verbs_event_manager = list(
 	/client/proc/toggle_canon,
 	/client/proc/save_all_characters,
 //	/client/proc/department_account_view,
-	/client/proc/debug_politics,
 	/client/proc/debug_news,
 	/client/proc/backup_all_lots,
 	/client/proc/save_department_accounts,

@@ -1,0 +1,67 @@
+{{if data.loggedin == 0}}
+    <b>MQL Database© control panel.</b>
+	<div class="item">
+		<div class="itemLabel">
+			Database id:
+		</div>
+		<div class="itemContent">
+			{{:data.database}}&nbsp
+		</div>
+		<div class="itemLabel">
+			Username:
+		</div>
+		<div class="itemContent">
+			{{:data.username}}&nbsp
+		</div>
+		<div class="itemLabel">
+			Password:
+		</div>
+		<div class="itemContent">
+			{{:data.password}}&nbsp
+		</div>
+		<div class="itemLabel">
+			Options:
+		</div>
+		<div class="itemContent">
+			{{:helper.link('Enter Database', null, {'edit_database' : 1})}}
+			{{:helper.link('Enter Username', null, {'edit_username' : 1})}}
+			{{:helper.link('Enter Password', null, {'edit_password' : 1})}}
+			{{:helper.link('Log In', null, {'login' : 1})}}
+		</div>
+	</div>
+{{else}}
+    <div class="itemContent">
+        {{:data.username}}@{{:data.database}} {{if data.isadmin}}as root{{/if}} {{:helper.link('Logout', null, {'logout' : 1})}}
+    </div>
+    <div class="itemLabel">
+        Log flags:
+    </div>
+    <div class="itemContent">
+        {{:data.logflags}} {{if data.isadmin}}{{:helper.link('Edit', null, {'editlogflag' : 1})}}{{/if}}&nbsp
+    </div>
+    {{if data.viewLogs == 1}}
+        <div align="left">DB Logs</dev>
+        <div align="right" class="itemContent">
+            {{:helper.link('Back', null, {'back' : 1})}}
+        </div>
+        <table style="table-layout:fixed; width: 100%; width: 100%; background-color:black; border: 1px;">
+        {{for data.logs}}
+            <tr>
+                <td>{{:value}}</td>
+            </tr>
+        {{/for}}
+        </table>
+        </div>
+    {{else}}
+    <div align="right" class="itemContent">
+        {{:helper.link('View Logs', null, {'view_logs' : 1}, data.viewLogs == -1 ? 'disabled' : null)}}
+    </div>
+    <table style="table-layout:fixed; width: 100%; background-color:black; border: 1px;">
+        {{for data.contents}}
+            <tr>
+                <td style="word-wrap: break-word">{{:value}}</td>
+            </tr>
+        {{/for}}
+        </table>
+    {{/if}}
+{{/if}}

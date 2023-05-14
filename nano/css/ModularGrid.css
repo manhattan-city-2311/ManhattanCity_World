@@ -1,0 +1,87 @@
+.themeHR
+{
+	display: block;
+}
+
+body
+{
+	color:  	#ffffee;
+	background: #13191f;
+	background-image: none;
+}
+
+.link32
+{
+	background: #191f4a;
+	border: 1px solid #99d9ff;
+}
+.link, .linkOn, .linkOff, .selected, .disabled, .yellowButton, .redButton
+{
+	color: #ffffee;
+	background: #191f4a;
+	border: 1px solid #99d9ff;
+	box-shadow: 0 0 10px 2px #2f8ca3;
+}
+
+a:hover, .zoomLink:hover, .linkActive:hover
+{
+	background: #2f8ca3;
+}
+
+.linkOn, a.linkOn:link, a.linkOn:visited, a.linkOn:active, a.linkOn:hover, .selected, a.selected:link, a.selected:visited, a.selected:active, a.selected:hover
+{
+	color: #ffffee;
+	background: #e49f1d;
+	box-shadow: 0 0 20px 2px #f4af2d;
+	border-color: #ffccaa;
+}
+
+.linkOff, a.linkOff:link, a.linkOff:visited, a.linkOff:active, a.linkOff:hover, .disabled, a.disabled:link, a.disabled:visited, a.disabled:active, a.disabled:hover
+{
+	color: #ffffee;
+	background: #222222;
+	border-color: #030415;
+	box-shadow: none;
+}
+
+.linkDanger, a.linkDanger:link, a.linkDanger:visited, a.linkDanger:active
+{
+	color: #ffffee;
+	background-color: #fe6400;
+	border-color: #aa0000;
+}
+
+.linkDanger:hover
+{
+	background-color: #fe6400;
+}
+
+.displayBar
+{
+	width: 236px;
+	height: 12px;
+	border: 1px solid #99d9ff;
+	background: #191F4A;
+	box-shadow: 0 0 10px 2px #2f8ca3;
+}
+
+.displayBarFill
+{
+	width: 0%;
+	height: 100%;
+	background: #2f8ca3;
+	overflow: hidden;
+	float: left;
+}
+
+.displayBarFill.good
+{
+	color: #ffffff;
+	background: #2f8ca3;
+}
+
+.displayBarFill.highlight
+{
+	color: #ffffff;
+	background: #4facc3;
+}

@@ -108,10 +108,6 @@ var/list/whitelist = list()
 		if(M.client.prefs.unique_id in person)
 			return TRUE
 
-	if(jobs.title == "President" && SSelections && SSelections.current_president) // Only the player who is president and their allotted character can be president
-		if(M.ckey == SSelections.current_president.ckey && M.client.prefs.real_name == SSelections.current_president.name)
-			return TRUE
-
 	//If we have a loaded file, search it
 	if(jobs.hard_whitelisted)
 		for (var/s in hard_whitelist)

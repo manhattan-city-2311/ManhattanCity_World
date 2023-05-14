@@ -139,6 +139,7 @@
 	recoil = 0
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	load_method = MAGAZINE
+	fire_sound = 'sound/weapons/gunshot/silenced_shot.ogg'
 	magazine_type = /obj/item/ammo_magazine/m45
 	allowed_magazines = list(/obj/item/ammo_magazine/m45)
 	projectile_type = /obj/item/projectile/bullet/fmj/p45
@@ -228,7 +229,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/item/projectile/bullet/fmj/s9x19
 
 /obj/item/weapon/gun/projectile/pistol/flash
 	name = "compact signal pistol"
@@ -308,8 +309,8 @@
 
 	var/global/list/ammo_types = list(
 		/obj/item/ammo_casing/a357              = ".357",
-		/obj/item/ammo_casing/a9mmf             = "9mm",
-		/obj/item/ammo_casing/a45f              = ".45",
+		/obj/item/ammo_casing/a9mm/flash             = "9mm",
+		/obj/item/ammo_casing/a45/flash              = ".45",
 		/obj/item/ammo_casing/a10mm             = "10mm",
 		/obj/item/ammo_casing/a12g              = "12g",
 		/obj/item/ammo_casing/a12g              = "12g",
@@ -346,7 +347,7 @@
 	load_method = SINGLE_CASING
 	max_shells = 2
 	ammo_type = /obj/item/ammo_casing/a357
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/item/projectile/bullet/fmj/p357
 
 /obj/item/weapon/gun/projectile/luger
 	name = "\improper P08 Luger"
@@ -357,7 +358,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/item/projectile/bullet/fmj/s9x19
 	price_tag = 5300
 
 /obj/item/weapon/gun/projectile/luger/update_icon()
@@ -394,3 +395,52 @@
 
 /obj/item/weapon/gun/projectile/p92x/large
 	magazine_type = /obj/item/ammo_magazine/m9mm/large // Spawns with illegal magazines.
+
+	//xeroarmory
+/obj/item/weapon/gun/projectile/p91
+	name = "P91 pistol"
+	desc = "A Hephaestus Industries P91. A reliable, powerful widebody handgun. Its weight compensates for .45 caliber's knockback. Favored by cops for the stopping power, disliked by gangsters because of the bulk."
+	icon_state = "p91"
+	caliber = ".45"
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m45
+	allowed_magazines = list(/obj/item/ammo_magazine/m45)
+	price_tag = 8000
+
+/obj/item/weapon/gun/projectile/p91/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-e"
+
+
+/obj/item/weapon/gun/projectile/p91/compact
+	name = "P91 compact pistol"
+	desc = "A shorter, smaller version of HI P91 handgun, made to be the exact opposite of its bigger cousin. Trades accuracy for concealment while still kicking hard. Not for the faint of wrist. Chambered in .45 Auto."
+	w_class = ITEMSIZE_SMALL
+	icon_state = "p91com"
+
+/obj/item/weapon/gun/projectile/pdp //attempt at a burst-fire pistol
+	name = "PDP pistol"
+	desc = "A Meone National Arms PDP. A lightweight polymer pistol best known for its swift close-range burst mode. Apparently the only MNA product known galaxy-wide. Chambered in 9mm."
+	icon_state = "pdp"
+	caliber = "9mm"
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m9mm/large
+	allowed_magazines = list(/obj/item/ammo_magazine/m9mm)
+	burst_delay = 2
+	price_tag = 7950
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-30,-30), dispersion=list(0.0, 1.0, 1.5))
+		)
+
+/obj/item/weapon/gun/projectile/pdp/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "pdp"
+	else
+		icon_state = "pdp-e"
+	return

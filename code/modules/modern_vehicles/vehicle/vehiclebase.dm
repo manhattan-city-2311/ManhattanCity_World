@@ -154,28 +154,25 @@
 	SSvehicles.vehicles += src
 	START_PROCESSING(SSobj, src)
 	update_icon()
-
-/obj/manhattan/vehicle/attack_generic(mob/living/simple_animal/attacker, damage, text)
-	visible_message(SPAN_DANGER("[attacker] [text] [src]"))
-	var/pos_to_dam = should_damage_occ()
-	if(pos_to_dam)
-		var/list/occ_list = get_occupants_in_position(pos_to_dam)
-		if(!occ_list?.len)
-			return TRUE
-		var/mob/mob_to_hit = pick(occ_list)
-		if(!mob_to_hit)
-			return TRUE
-		attacker.UnarmedAttack(mob_to_hit)
-
-	comp_prof.take_component_damage(damage, BRUTE)
+	angle = angle2dir(dir)
+	update_angle_vector()
 
 /obj/manhattan/vehicle/proc/pick_valid_exit_loc()
 	var/list/valid_exit_locs = list()
-	for(var/turf/t in locs)
-		for(var/turf/t_2 in RANGE_TURFS(1, t))
-			if(!(t_2 in locs) && !t_2.density)
-				valid_exit_locs |= t
-				break
+	if(!get_exit_offsets())
+		for(var/turf/t in locs)
+			for(var/turf/t_2 in RANGE_TURFS(1, t))
+				if(!(t_2 in locs) && !t_2.density)
+					valid_exit_locs |= t
+					break
+	else
+		var/list/offsets = get_exit_offsets()
+		offsets = offsets["[dir]"]
+		for(var/turf/T in block(locate(x + offsets[1], y + offsets[2], z), locate(x + offsets[3], y + offsets[4], z)))
+			if(T in locs || T.density)
+				continue
+			valid_exit_locs += T
+
 	if(!valid_exit_locs.len)
 		return null
 
@@ -205,7 +202,7 @@
 	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
 	engine?.handle_sound()
 
-	for(var/obj/item/vehicle_part/VP in components)
+	for(var/obj/item/vehicle_part/VP as anything in components)
 		if(VP.can_process())
 			VP.part_process()
 
@@ -254,7 +251,7 @@
 			usr = user
 			switch_seats()
 			return
-		
+
 		if(doors_locked())
 			to_chat(user, "\The [src] is locked.")
 			return

@@ -7,11 +7,10 @@ var/list/gamemode_cache = list()
 	var/nudge_script_path = "nudge.py"  	// where the nudge.py script is located
 
 	var/canonicity = 0					// if we're canon or not.
-	var/years_in_future = 289			// how many years in the future are we?
+	var/years_in_future = 288			// how many years in the future are we?
 	var/days_in_future = 0				// how many years in the future are we?
 	var/months_in_future = 0				// how many years in the future are we?
 
-	var/log_tgui_debug // Log debug info about tgui
 	var/log_ooc = 0					// log OOC channel
 	var/log_access = 0					// log login/logout
 	var/log_say = 0					// log client say
@@ -359,9 +358,6 @@ var/list/gamemode_cache = list()
 
 				if ("log_access")
 					config.log_access = 1
-					
-				if ("log_tgui_debug")
-					config.log_tgui_debug = 1
 
 				if ("sql_enabled")
 					config.sql_enabled = 1

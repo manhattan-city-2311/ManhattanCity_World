@@ -8,7 +8,7 @@
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a357
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/item/projectile/bullet/fmj/p357
 	var/chamber_offset = 0 //how many empty chambers in the cylinder until you hit a round
 
 /obj/item/weapon/gun/projectile/revolver/verb/spin_cylinder()
@@ -74,7 +74,7 @@
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	fire_sound = 'sound/weapons/gunshot_heavy.ogg'
-	ammo_type = /obj/item/ammo_casing/a45r
+	ammo_type = /obj/item/ammo_casing/a45/rubber
 	max_shells = 7
 
 
@@ -132,7 +132,7 @@ obj/item/weapon/gun/projectile/revolver/detective45/verb/rename_gun()
 	ammo_type = /obj/item/ammo_casing/a38/emp
 
 /obj/item/weapon/gun/projectile/revolver/deckard/rubber
-	ammo_type = /obj/item/ammo_casing/a38r
+	ammo_type = /obj/item/ammo_casing/a38/rubber
 
 /obj/item/weapon/gun/projectile/revolver/deckard/update_icon()
 	..()
@@ -181,7 +181,7 @@ obj/item/weapon/gun/projectile/revolver/detective45/verb/rename_gun()
 	max_shells = 9
 	caliber = ".38"
 	ammo_type = /obj/item/ammo_casing/a38
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/item/projectile/bullet/fmj/p38
 	var/secondary_max_shells = 1
 	var/secondary_caliber = "12g"
 	var/secondary_ammo_type = /obj/item/ammo_casing/a12g
@@ -298,11 +298,27 @@ obj/item/weapon/gun/projectile/revolver/detective45/verb/rename_gun()
 	user.visible_message("<span class='danger'>[user.name] fires [src] at their head!</span>", "<span class='userdanger'>You fire [src] at your head!</span>", "<span class='italics'>You hear a gunshot!</span>")
 
 /obj/item/weapon/gun/projectile/revolver/saitako
-	name = "revolver 'SAITAKO'"
+	name = "'SAITAKO' revolver"
+	desc = "A fancy piece, custom-crafted by a private Lunar workshop. Chambered in .45 Auto."
 	icon = 'icons/obj/manhattan/aaaaa.dmi'
 	icon_state = "revolver"
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	fire_sound = 'sound/weapons/gunshot_heavy.ogg'
-	ammo_type = /obj/item/ammo_casing/a45r
+	ammo_type = /obj/item/ammo_casing/a45/rubber
 	max_shells = 7
+
+	//xeroarmory
+/obj/item/weapon/gun/projectile/revolver/unicorn //yes, yet another burst gun
+	name = "Unicorn revolver"
+	desc = "An al-Maliki & Mosley 'Unicorn' revolver. Created to answer the question of 'what if target's too tough for one headshot,' it sports a two-round burst mode. Not very popular due to lack of auto-ejection. Chambered in .44 Magnum."
+	icon_state = "unicorn"
+	caliber = ".44"
+	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
+	ammo_type = /obj/item/ammo_casing/a44
+	burst_delay = 2
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
+		list(mode_name="2-round bursts", burst=2, fire_delay=null, move_delay=3,    burst_accuracy=list(0,-25), dispersion=list(0.0, 1.0))
+		)

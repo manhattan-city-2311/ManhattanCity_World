@@ -396,6 +396,9 @@ SUBSYSTEM_DEF(jobs)
 	var/datum/job/job = GetJob(rank)
 	var/list/spawn_in_storage = list()
 
+	var/datum/database/records/DBR = load_ic_database(RECORDS_DATABASE)
+	DBR?.write(H.real_name, H.client.prefs.records, "Manhattan Department of the Interior", DBR.has_entry(H.real_name)) // REFERENCES SON
+
 	var/px = H.client.prefs.persistence_x
 	var/py = H.client.prefs.persistence_y
 	var/pz = H.client.prefs.persistence_z
@@ -583,14 +586,14 @@ SUBSYSTEM_DEF(jobs)
 				W.color = R.color
 				qdel(R)
 
-	to_chat(H, "<B>You are [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
+	//to_chat(H, "<B>You are [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
 
 	if(job.idtype && job.has_headset)
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_l_ear)
 		to_chat(H, "<b>To speak on your department's radio channel use :h. For the use of other channels, examine your headset.</b>")
 
-	if(job.supervisors)
-		to_chat(H, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
+	//if(job.supervisors)
+	//	to_chat(H, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
 
 	if(job.req_admin_notify)
 		to_chat(H, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, ensure that you cryo first to free up your job slot.</b>")
@@ -816,7 +819,7 @@ SUBSYSTEM_DEF(jobs)
 /datum/controller/subsystem/jobs/proc/equip_passport(var/mob/living/carbon/human/H)
 	var/obj/item/weapon/passport/pass = new/obj/item/weapon/passport(get_turf(H))
 
-	if(!H.mind || !H.mind.prefs) 
+	if(!H.mind || !H.mind.prefs)
 		return
 
 	H.update_passport(pass)

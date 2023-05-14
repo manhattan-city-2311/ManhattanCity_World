@@ -309,7 +309,6 @@
 	radiation += plasma_temperature/2
 	plasma_temperature = 0
 
-	SSradiation.radiate(src, radiation)
 	Radiate()
 
 /obj/effect/fusion_em_field/proc/Radiate()
@@ -407,7 +406,7 @@
 
 //Reaction radiation is fairly buggy and there's at least three procs dealing with radiation here, this is to ensure constant radiation output.
 /obj/effect/fusion_em_field/proc/radiation_scale()
-	SSradiation.radiate(src, 2 + plasma_temperature / PLASMA_TEMP_RADIATION_DIVISIOR)
+	return
 
 //Somehow fixing the radiation issue managed to break this, but moving it to it's own proc seemed to have fixed it. I don't know.
 /obj/effect/fusion_em_field/proc/temp_dump()

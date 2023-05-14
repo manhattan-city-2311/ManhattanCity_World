@@ -33,18 +33,12 @@
 	power_equip = 1
 	power_light = 1
 	power_environ = 1
-	requires_power = 0
 	flags = RAD_SHIELDED
 	base_turf = /turf/simulated/floor/outdoors/dirt
 
 /area/planets
 	name = "\improper Planet"
 	icon_state = "planet"
-//	has_gravity = 1
-//	power_equip = 1
-//	power_light = 1
-//	power_environ = 1
-//	requires_power = 0
 
 /area/planets/Manhattan
 	name = "\improper New-Manhattan"
@@ -64,7 +58,6 @@
 		'sound/manhattan/north7.ogg',
 		'sound/manhattan/north8.ogg'
 	)
-	luminosity = 1
 	should_objects_be_saved = FALSE
 
 /area/planets/Manhattan/indoor
@@ -102,6 +95,9 @@
 
 /area/planets/Manhattan/indoor/north/bar
 	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
+	forced_ambience = list(
+	'sound/manhattan/salvatore.ogg'
+	)
 
 /area/planets/Manhattan/indoor/north/bar/entrance
 	icon_state = "north_m1"
@@ -178,6 +174,9 @@
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m4"
 	holomap_color = "#ffff00aa"
+	forced_ambience = list(
+	'sound/manhattan/office1.ogg'
+	) //add variations and other room ambients i.e. courtroom & offices
 
 /area/planets/Manhattan/indoor/north/cityhall/office1
 /area/planets/Manhattan/indoor/north/cityhall/office2
@@ -267,7 +266,14 @@
 /area/planets/Manhattan/indoor/north/cray/upper2/toilet
 /area/planets/Manhattan/indoor/north/cray/upper2/chiefcraycabinet
 /area/planets/Manhattan/indoor/north/cray/upper2/chiefcraycabinet/balcony
-	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+	forced_ambience = list(
+	'sound/manhattan/north1.ogg',
+	'sound/manhattan/north3.ogg',
+	'sound/manhattan/north5.ogg',
+	'sound/manhattan/north6.ogg',
+	'sound/manhattan/north7.ogg',
+	'sound/manhattan/north8.ogg'
+	)
 /area/planets/Manhattan/indoor/north/cray/upper2/breakroom
 
 //UNDER CONSTRUCTION
@@ -327,6 +333,9 @@
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m1"
 	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
+	forced_ambience = list(
+	'sound/manhattan/casino.ogg'
+	)
 
 /area/planets/Manhattan/indoor/north/casino/director
 /area/planets/Manhattan/indoor/north/casino/recroom
@@ -335,12 +344,39 @@
 	name = "\improper Casino Playing Hall(North)"
 /area/planets/Manhattan/indoor/north/casino/restroom
 /area/planets/Manhattan/indoor/north/casino/securitypost
+/area/planets/Manhattan/indoor/north/casino/hallway1
+/area/planets/Manhattan/indoor/north/casino/stairs1
+/area/planets/Manhattan/indoor/north/casino/registration
+/area/planets/Manhattan/indoor/north/casino/gamezal1
+/area/planets/Manhattan/indoor/north/casino/boss
+/area/planets/Manhattan/indoor/north/casino/stairs2
+/area/planets/Manhattan/indoor/north/casino/miniboss
+/area/planets/Manhattan/indoor/north/casino/vip1
+/area/planets/Manhattan/indoor/north/casino/vip2
+/area/planets/Manhattan/indoor/north/casino/viphall
+/area/planets/Manhattan/indoor/north/casino/vipmini
+/area/planets/Manhattan/indoor/north/casino/toilet
+/area/planets/Manhattan/indoor/north/casino/hallway2
+/area/planets/Manhattan/indoor/north/casino/roof1
+/area/planets/Manhattan/indoor/north/casino/heli
+/area/planets/Manhattan/indoor/north/casino/penthall1
+/area/planets/Manhattan/indoor/north/casino/penthall2
+/area/planets/Manhattan/indoor/north/casino/penthall3
+/area/planets/Manhattan/indoor/north/casino/penthall4
+/area/planets/Manhattan/indoor/north/casino/pentkitchen
+/area/planets/Manhattan/indoor/north/casino/pentbedroom
+/area/planets/Manhattan/indoor/north/casino/penttoilet1
+/area/planets/Manhattan/indoor/north/casino/penttoilet2
+/area/planets/Manhattan/indoor/north/casino/pentcinema
+/area/planets/Manhattan/indoor/north/casino/pentmeet
 
 /area/planets/Manhattan/indoor/north/casino/under
 	base_turf = /turf/simulated/floor/plating
 	icon_state = "north_m2"
 
 /area/planets/Manhattan/indoor/north/casino/under/moneystorage
+	name = "\improper Casino Money Storage(North-Under)"
+/area/planets/Manhattan/indoor/north/casino/under/vault
 	name = "\improper Casino Money Storage(North-Under)"
 
 /area/planets/Manhattan/indoor/north/casino/upper
@@ -516,7 +552,14 @@
 /area/planets/Manhattan/indoor/north/house_standart1/balcony
 	icon_state = "north_m3"
 	sound_env = CITY
-	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+	forced_ambience = list(
+	'sound/manhattan/north1.ogg',
+	'sound/manhattan/north3.ogg',
+	'sound/manhattan/north5.ogg',
+	'sound/manhattan/north6.ogg',
+	'sound/manhattan/north7.ogg',
+	'sound/manhattan/north8.ogg'
+	)
 	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/indoor/north/house_standart1/balcony/one
@@ -631,7 +674,14 @@
 /area/planets/Manhattan/indoor/north/house_standart2/balcony
 	icon_state = "north_m3"
 	sound_env = CITY
-	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+	forced_ambience = list(
+	'sound/manhattan/north1.ogg',
+	'sound/manhattan/north3.ogg',
+	'sound/manhattan/north5.ogg',
+	'sound/manhattan/north6.ogg',
+	'sound/manhattan/north7.ogg',
+	'sound/manhattan/north8.ogg'
+	)
 	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/indoor/north/house_standart2/balcony/one
@@ -692,7 +742,14 @@
 /area/planets/Manhattan/indoor/north/house_standart3/room3/balcony
 	icon_state = "north_m3"
 	sound_env = CITY
-	ambience = list('sound/manhattan/north1.ogg', 'sound/manhattan/north3.ogg', 'sound/manhattan/north5.ogg', 'sound/manhattan/north6.ogg', 'sound/manhattan/north7.ogg', 'sound/manhattan/north8.ogg')
+	forced_ambience = list(
+	'sound/manhattan/north1.ogg',
+	'sound/manhattan/north3.ogg',
+	'sound/manhattan/north5.ogg',
+	'sound/manhattan/north6.ogg',
+	'sound/manhattan/north7.ogg',
+	'sound/manhattan/north8.ogg'
+	)
 	base_turf = /turf/simulated/open
 
 /area/planets/Manhattan/indoor/north/house_standart3/room4
@@ -883,7 +940,10 @@
 /area/planets/Manhattan/indoor/north/office2/upper/cab3
 
 /area/planets/Manhattan/indoor/north/police_dept
-	ambience = list('sound/ambience/MAIN0C.SAP.ogg', 'sound/ambience/MAIN05.SAP.ogg')
+	forced_ambience = list(
+	'sound/ambience/MAIN0C.SAP.ogg',
+	'sound/ambience/MAIN05.SAP.ogg'
+	)
 	icon_state = "north_m3"
 	base_turf = /turf/simulated/floor/plating
 	holomap_color = HOLOMAP_AREACOLOR_SECURITY
@@ -989,11 +1049,15 @@
 	icon_state = "north_m2"
 	base_turf = /turf/simulated/floor/plating
 	holomap_color = HOLOMAP_AREACOLOR_HALLWAYS
+	forced_ambience = list(
+	'sound/manhattan/metro.ogg'
+	)
 
 /area/planets/Manhattan/indoor/north/transit/secpost1
 /area/planets/Manhattan/indoor/north/transit/secpost2
 
 /area/planets/Manhattan/indoor/north/transit/under
+	name = "North Transit Station"
 	icon_state = "north_m2"
 	base_turf = /turf/simulated/floor/plating
 
@@ -1011,11 +1075,13 @@
 /area/planets/Manhattan/indoor/north/sfp/hall
 	name = "\improper SFP Office(North)"
 /area/planets/Manhattan/indoor/north/sfp/office
+	forced_ambience = list(
+	'sound/manhattan/office1.ogg'
+	) //todo: add variations
 /area/planets/Manhattan/indoor/north/sfp/supervisorcab
 /area/planets/Manhattan/indoor/north/sfp/garage
 /area/planets/Manhattan/indoor/north/sfp/storage
 /area/planets/Manhattan/indoor/north/sfp/powerplant
-
 /area/planets/Manhattan/indoor/north/sfp/upper
 	icon_state = "north_m2"
 	base_turf = /turf/simulated/open
@@ -1035,7 +1101,12 @@
 	icon_state = "north_m1"
 	base_turf = /turf/simulated/floor/plating
 	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
-	ambience = list('sound/manhattan/trading_center1.ogg', 'sound/manhattan/trading_center2.ogg', 'sound/manhattan/trading_center3.ogg', 'sound/manhattan/trading_center4.ogg')
+	forced_ambience = list(
+	'sound/manhattan/trading_center1.ogg',
+	'sound/manhattan/trading_center2.ogg',
+	'sound/manhattan/trading_center3.ogg',
+	'sound/manhattan/trading_center4.ogg'
+	)
 
 /area/planets/Manhattan/indoor/north/shopping/Ashan
 /area/planets/Manhattan/indoor/north/shopping/Hall1
@@ -1346,6 +1417,9 @@
 /area/planets/Manhattan/south/building/chem_str/office
 	name = "\improper Chem Street Office"
 	icon_state = "south_m_chem_office"
+	forced_ambience = list(
+	'sound/manhattan/office1.ogg'
+	)
 /area/planets/Manhattan/south/building/chem_str/hallway
 	name = "\improper Chem Street Hallway"
 	icon_state = "south_m_chem_hall"
@@ -1408,6 +1482,9 @@
 	outdoors = 1
 /area/planets/Manhattan/south/building/chem_str/office/upper
 	name = "\improper Chem Street 2nd Floor Office"
+	forced_ambience = list(
+	'sound/manhattan/office1.ogg'
+	)
 /area/planets/Manhattan/south/building/chem_str/under
 	name = "\improper Chem Street Underground"
 /area/planets/Manhattan/south/building/chem_str/storage
@@ -1782,6 +1859,9 @@
 	name = "\improper South Transit Station"
 	icon_state = "south_m_metro"
 	holomap_color = HOLOMAP_AREACOLOR_HALLWAYS
+	forced_ambience = list(
+	'sound/manhattan/metro.ogg'
+	)
 
 /area/planets/Manhattan/south/building/social/motodealer
 	name = "\improper South Motorcycle dealership dealer"
@@ -2019,9 +2099,7 @@
 
 /area/planets/Manhattan/indoor/mining_lift
 	name = "mine shaft lift"
-	requires_power = FALSE
 
 /area/mine
 	name = "mine"
-	requires_power = FALSE
 	should_objects_be_saved = FALSE

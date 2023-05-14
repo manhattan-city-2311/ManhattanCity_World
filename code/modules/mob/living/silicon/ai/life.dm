@@ -152,8 +152,7 @@
 	if(APU_power)
 		return 0
 	var/turf/T = get_turf(src)
-	var/area/A = get_area(src)
-	return ((!A.power_equip) && A.requires_power == 1 || istype(T, /turf/space)) && !istype(src.loc,/obj/item)
+	return istype(T, /turf/space) && !istype(src.loc, /obj/item)
 
 /mob/living/silicon/ai/updatehealth()
 	if(status_flags & GODMODE)

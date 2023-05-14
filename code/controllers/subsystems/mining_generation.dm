@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(mining)
 	var/list/obj/structure/mine_dull/dulls
 	var/list/turf/cache
 
-	var/scale = 0.3
+	var/scale = 0.1
 	var/offset = 0
 	var/octaves = 4
 	var/ydisplace = 0.5
@@ -117,7 +117,7 @@ SUBSYSTEM_DEF(mining)
 
 	generate_structures()
 
-	seed_submaps(list(marker.z), rand(50, 150), /turf/simulated/mining, /datum/map_template/mine)
+	seed_submaps(list(marker.z), rand(150, 500), /turf/simulated/mining, /datum/map_template/mine)
 
 	for(var/turf/simulated/floor/T as anything in cache)
 		T?.regenerate_ao()
@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(mining)
 /datum/controller/subsystem/mining/proc/start_invasion()
 	set waitfor = FALSE
 
-	for(var/mob/M in block(locate(1, 1, marker.z), locate(world.maxx, world.maxy, marker.z)))
+	for(var/mob/M in get_area(marker))
 		spawn()
 			shake_camera(M, rand(3, 5), 1)
 			sleep(3)

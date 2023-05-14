@@ -189,18 +189,9 @@
 
 			//radiation
 			t_left_radspike -= deltaT
-			if(t_left_radspike > 0)
-				//ordinary radiation
-				radiation = rand() * 15
-			else
-				//radspike
-				if(t_left_radspike > -5)
-					radiation = rand() * 15 + 85
-					if(!rad_shield)
-						//irradiate nearby mobs
-						SSradiation.radiate(src, radiation / 25)
-				else
-					t_left_radspike = pick(10,15,25)
+			if(t_left_radspike <= 0)
+			else if(t_left_radspike <= -5)
+				t_left_radspike = pick(10,15,25)
 
 			//use some coolant to cool down
 			if(coolant_usage_rate > 0)

@@ -1671,7 +1671,6 @@ var/mob/dview/dview_mob = new
 			/turf/unsimulated = "UNSIMULATED",
 			/turf = "T",
 			/mob/living/carbon = "CARBON",
-			/mob/living/simple_animal = "SIMPLE",
 			/mob/living = "LIVING",
 			/mob = "M"
 		)

@@ -68,9 +68,6 @@ var/list/blob_cores = list()
 /obj/structure/blob/core/pressurized_slime
 	desired_blob_type = /datum/blob_type/pressurized_slime
 
-/obj/structure/blob/core/radioactive_ooze
-	desired_blob_type = /datum/blob_type/radioactive_ooze
-
 /obj/structure/blob/core/classic
 	desired_blob_type = /datum/blob_type/classic
 

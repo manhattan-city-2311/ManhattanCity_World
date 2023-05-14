@@ -53,3 +53,6 @@ var/global/cmp_field = "name"
 
 /proc/cmp_planelayer(atom/A, atom/B)
 	return (B.plane - A.plane) || (B.layer - A.layer)
+
+/proc/cmp_arrival_stop(obj/effect/arrival_stop/A, obj/effect/arrival_stop/B)
+	return A.order - B.order

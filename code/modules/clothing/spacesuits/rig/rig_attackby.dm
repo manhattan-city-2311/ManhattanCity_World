@@ -10,29 +10,9 @@
 	if(chest && (istype(W,/obj/item/stack/material) || istype(W, /obj/item/weapon/weldingtool)))
 		return chest.attackby(W,user)
 
-	// Lock or unlock the access panel.
-	if(W.GetID())
-		if(subverted)
-			locked = 0
-			to_chat(user, "<span class='danger'>It looks like the locking system has been shorted out.</span>")
-			return
+	if(istype(W,/obj/item/weapon/crowbar))
 
-		if((!req_access || !req_access.len) && (!req_one_access || !req_one_access.len))
-			locked = 0
-			to_chat(user, "<span class='danger'>\The [src] doesn't seem to have a locking mechanism.</span>")
-			return
-
-		if(security_check_enabled && !src.allowed(user))
-			to_chat(user, "<span class='danger'>Access denied.</span>")
-			return
-
-		locked = !locked
-		to_chat(user, "You [locked ? "lock" : "unlock"] \the [src] access panel.")
-		return
-
-	else if(istype(W,/obj/item/weapon/crowbar))
-
-		if(!open && locked)
+		if(!open)
 			to_chat(user, "The access panel is locked shut.")
 			return
 
@@ -188,9 +168,6 @@
 
 /obj/item/weapon/rig/emag_act(var/remaining_charges, var/mob/user)
 	if(!subverted)
-		req_access.Cut()
-		req_one_access.Cut()
-		locked = 0
 		subverted = 1
 		to_chat(user, "<span class='danger'>You short out the access protocol for the suit.</span>")
 		return 1

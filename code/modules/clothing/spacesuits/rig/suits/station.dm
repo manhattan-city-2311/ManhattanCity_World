@@ -37,17 +37,11 @@
 		/obj/item/weapon/storage/secure/briefcase
 		)
 
-	req_access = list()
-	req_one_access = list()
-
 	glove_type = null
 	helm_type = null
 	boot_type = null
 
 /obj/item/weapon/rig/internalaffairs/equipped
-
-	req_access = list(access_lawyer)
-
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/device/flash,
@@ -83,9 +77,6 @@
 		/obj/item/weapon/rcd
 		)
 
-	req_access = list()
-	req_one_access = list()
-
 
 /obj/item/weapon/rig/industrial/equipped
 
@@ -118,8 +109,6 @@
 		/obj/item/weapon/rcd
 		)
 
-	req_access = list()
-	req_one_access = list()
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/gauntlets/rig/eva
@@ -127,9 +116,6 @@
 	siemens_coefficient = 0
 
 /obj/item/weapon/rig/eva/equipped
-
-	req_access = list(access_engine)
-
 	initial_modules = list(
 		/obj/item/rig_module/device/plasmacutter,
 		/obj/item/rig_module/maneuvering_jets,
@@ -160,8 +146,6 @@
 		/obj/item/weapon/rcd
 		)
 
-	req_access = list()
-	req_one_access = list()
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/gauntlets/rig/ce
@@ -169,8 +153,6 @@
 	siemens_coefficient = 0
 
 /obj/item/weapon/rig/ce/equipped
-
-	req_access = list(access_ce)
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
@@ -210,12 +192,7 @@
 		/obj/item/weapon/pickaxe/hand,
 		/obj/item/weapon/storage/bag/fossils)
 
-	req_access = list()
-	req_one_access = list()
-
 /obj/item/weapon/rig/hazmat/equipped
-
-	req_access = list(access_rd)
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
@@ -245,12 +222,7 @@
 		/obj/item/roller
 		)
 
-	req_access = list()
-	req_one_access = list()
-
 /obj/item/weapon/rig/medical/equipped
-
-	req_access = list(access_medical)
 
 	initial_modules = list(
 		/obj/item/rig_module/sprinter,
@@ -280,9 +252,6 @@
 		/obj/item/weapon/tank,
 		/obj/item/weapon/melee/baton
 		)
-
-	req_access = list()
-	req_one_access = list()
 
 
 /obj/item/weapon/rig/hazard/equipped

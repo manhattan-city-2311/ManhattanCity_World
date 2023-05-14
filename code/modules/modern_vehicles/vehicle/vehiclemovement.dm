@@ -157,8 +157,16 @@
 
 	update_occupants_eye_offsets()
 
+/obj/manhattan/vehicle/var/bypass_bump = 0
+
 /obj/manhattan/vehicle/Bump(atom/obstacle)
 	if(obstacle == src)
+		return
+
+	log_debug("Bump([obstacle]), bounds_dist = [bounds_dist(src, obstacle)]")
+
+	if(bounds_dist(src, obstacle) > 0 )
+		++bypass_bump
 		return
 
 	. = ..()
@@ -177,6 +185,15 @@
 			break
 
 	Move(newLoc, update_dir ? get_dir(loc, newLoc) : dir, nstep_x, nstep_y)
+	
+	if(bypass_bump > 3)
+		bypass_bump = 0
+
+	if(bypass_bump)
+		density = FALSE
+		Move(newLoc, update_dir ? get_dir(loc, newLoc) : dir, nstep_x, nstep_y)
+		density = TRUE
+		bypass_bump = 0
 
 // Tile step
 /obj/manhattan/vehicle/proc/move_helper2(x_step, y_step, nstep_x, nstep_y, update_dir = TRUE)

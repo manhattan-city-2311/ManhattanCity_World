@@ -104,13 +104,13 @@
 	icon_state = "bluenew"
 
 /area/surface/outside/river/faxalven
-	name = "Faxälven River"
+	name = "Faxï¿½lven River"
 
 /area/surface/outside/river/indalsalven
-	name = "Indalsälven River"
+	name = "Indalsï¿½lven River"
 
 /area/surface/outside/river/svartan
-	name = "Svartån River"
+	name = "Svartï¿½n River"
 
 /area/surface/outside/lake/romsele
 	name = "Romsele Lake"
@@ -344,7 +344,6 @@
 /area/surface/outpost/wall
 	name = "The Wall"
 	icon_state = "red"
-	requires_power = FALSE
 
 /area/surface/outpost/wall/checkpoint
 	name = "Checkpoint"
@@ -384,7 +383,6 @@
 /area/turbolift
 	name = "\improper Turbolift"
 	icon_state = "shuttle"
-	requires_power = 0
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
 
@@ -998,7 +996,6 @@ area/crew_quarters/heads/sc/hop/quarters
 	icon_state = "SolarcontrolS"
 
 /area/solar
-	requires_power = 1
 	always_unpowered = 1
 
 /area/solar/aftportsolar
@@ -1028,7 +1025,6 @@ area/crew_quarters/heads/sc/hop/quarters
 /area/shuttle/response_ship
 	name = "\improper Response Team Ship"
 	icon_state = "centcom"
-	requires_power = 0
 	flags = RAD_SHIELDED
 
 /area/shuttle/response_ship/start
@@ -1087,7 +1083,6 @@ area/crew_quarters/heads/sc/hop/quarters
 /area/shuttle/shuttle1
 	name = "\improper Hangar Deck"
 	icon_state = "yellow"
-	requires_power = 0
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
 
@@ -1138,7 +1133,6 @@ area/crew_quarters/heads/sc/hop/quarters
 /area/shuttle/shuttle2
 	name = "\improper Hangar Deck"
 	icon_state = "yellow"
-	requires_power = 0
 	dynamic_lighting = 1
 	flags = RAD_SHIELDED
 
@@ -1208,14 +1202,12 @@ area/crew_quarters/heads/sc/hop/quarters
 /area/syndicate_mothership
 	name = "\improper Mercenary Base"
 	icon_state = "syndie-ship"
-	requires_power = 0
 	dynamic_lighting = 0
 	flags = RAD_SHIELDED
 
 /area/syndicate_station
 	name = "\improper Mercenary Base"
 	icon_state = "syndie-ship"
-	requires_power = 0
 	dynamic_lighting = 0
 	flags = RAD_SHIELDED
 
@@ -1275,7 +1267,6 @@ area/crew_quarters/heads/sc/hop/quarters
 /area/skipjack_station
 	name = "Raider Outpost"
 	icon_state = "yellow"
-	requires_power = 0
 	dynamic_lighting = 0
 	flags = RAD_SHIELDED
 
@@ -1329,7 +1320,6 @@ area/crew_quarters/heads/sc/hop/quarters
 /area/ninja_dojo
 	name = "\improper Ninja Base"
 	icon_state = "green"
-	requires_power = 0
 	flags = RAD_SHIELDED
 
 /area/ninja_dojo/dojo

@@ -193,29 +193,6 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 
-/datum/asset/simple/tgui_common
-	isTrivial = TRUE
-	verify = FALSE
-	assets = list(
-		"tgui-common.bundle.js" = 'tgui/public/tgui-common.bundle.js',
-	)
-
-/datum/asset/simple/tgui
-	isTrivial = TRUE
-	verify = FALSE
-	assets = list(
-		"tgui.bundle.js" = 'tgui/public/tgui.bundle.js',
-		"tgui.bundle.css" = 'tgui/public/tgui.bundle.css',
-	)
-
-/datum/asset/simple/tgui_panel
-	isTrivial = TRUE
-	verify = FALSE
-	assets = list(
-		"tgui-panel.bundle.js" = 'tgui/public/tgui-panel.bundle.js',
-		"tgui-panel.bundle.css" = 'tgui/public/tgui-panel.bundle.css',
-	)
-
 /datum/asset/simple/fontawesome
 	isTrivial = TRUE
 	verify = FALSE

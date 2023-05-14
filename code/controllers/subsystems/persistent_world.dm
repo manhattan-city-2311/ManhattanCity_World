@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(persistent_world)
 	var/skip_saving = FALSE
 	var/list/obstructions
 	
-	var/static/area/list/areas_to_save = list()
+	var/static/list/area/areas_to_save = list()
 	var/static/list/blocked_characters = list()
 
 /area/initialize()
@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(persistent_world)
 	if(!check_rights(R_ADMIN))
 		return
 	
-	if(alert(usr, "Are you sure?", "Confirmation", "Cancel", "Yes, unblock them.") == "Cancel")
+	if(alert(usr, "Are you sure?", "Confirmation", "Cancel", "Yes, unblock [href_list["victim"]].") == "Cancel")
 		return
 	
 	blocked_characters -= href_list["victim"]
@@ -41,15 +41,13 @@ SUBSYSTEM_DEF(persistent_world)
 	LAZYREMOVE(obstructions, id)
 
 /datum/controller/subsystem/persistent_world/stat_entry()
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
-
 	var/msg = "HOLD"
 	if(saved_objects)
 		var/ts = saved_turfs / ((world.timeofday-start) / (1 SECOND))
 		var/os = saved_objects / ((world.timeofday-start) / (1 SECOND))
 		msg = "T: [saved_turfs] O: [saved_objects] T/s: [ts] O/s: [os]"
-	stat("\[[state_letter()]][name]", statclick.update(msg))
+
+	..(msg)
 
 /datum/controller/subsystem/persistent_world/PreInit()
 	. = ..()
@@ -60,6 +58,7 @@ SUBSYSTEM_DEF(persistent_world)
 	admin_notice(SPAN_DANGER("Loading persistent world"), R_DEBUG)
 	load_map()
 	load_all_businesses()
+	callHook("load_world")
 	to_world("World loading took [(world.timeofday - start_timeofday) / (1 SECOND)] seconds.")
 	
 	return ..()

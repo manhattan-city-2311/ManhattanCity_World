@@ -34,12 +34,6 @@
 	..()
 
 	if(statpanel("Lobby") && ticker)
-		if(ticker.hide_mode)
-			stat("Game Mode:", "Secret")
-		else
-			if(ticker.hide_mode == 0)
-				stat("Game Mode:", "[config.mode_names[master_mode]]") // Old setting for showing the game mode
-
 		if(ticker.current_state == GAME_STATE_PREGAME)
 			stat("Time To Start:", "[ticker.pregame_timeleft][round_progressing ? "" : " (DELAYED)"]")
 			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
@@ -50,6 +44,10 @@
 				totalPlayers++
 				if(player.ready)
 					totalPlayersReady++
+		else if(ticker.current_state == GAME_STATE_PLAYING)
+			if(SSarrival.arrival_state == ARRIVAL_HOLD && SSarrival.next)
+				stat("Next hyperloop departure:", "[(world.time - SSarrival.next) / (1 SECOND)]s")
+
 
 
 /mob/new_player/proc/JoinLate(selected_job_name, antag_type)
@@ -110,6 +108,9 @@
 			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
 
+		if(!client.prefs.persistence_z)
+			return
+
 		AttemptLateSpawn("Civilian")
 		return 1
 
@@ -167,6 +168,7 @@
 			return FALSE
 
 		ready = !ready
+
 		update_lobby()
 		return 1
 
@@ -235,54 +237,34 @@
 #define DEBUG_TO_WORLD(i) to_world("[i]")
 /mob/new_player/proc/IsJobAvailable(rank)
 	var/datum/job/job = SSjobs.GetJob(rank)
-	var/i = 0
 	if(!job || !job.enabled || !job.is_position_available())
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(jobban_isbanned(src,rank) || !is_hard_whitelisted(src, job))
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(!job.player_old_enough(src.client))
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(job.minimum_character_age && (client.prefs.age < job.minimum_character_age))
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	//job.title == "Prisoner" && client.prefs.criminal_status != "Incarcerated" ||
 	//|| job.title != "Prisoner" && client.prefs.criminal_status == "Incarcerated"
 	if(job.title == "Prisoner" ^ client.prefs.criminal_status == "Incarcerated" == 1)
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(job.clean_record_required && client.prefs.crime_record && !LAZYLEN(client.prefs.crime_record))
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(LAZYLEN(job.exclusive_employees) && !(client.prefs.unique_id in job.exclusive_employees))
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(client.prefs.is_synth() && !job.allows_synths)
-		DEBUG_TO_WORLD(i)
 		return 0
-	i += 1
 	if(job.business)
 		var/datum/business/biz = get_business_by_biz_uid(job.business)
-		DEBUG_TO_WORLD(i)
-		i += 1
+
 		if(biz && biz.suspended)
-			DEBUG_TO_WORLD(i)
 			return 0
-	i += 1
 	return 1
 
 /mob/new_player/proc/AttemptLateSpawn(rank, turf/spawning_at, antag_type)
-	if (src != usr)
-		return 0
+	//if (src != usr)
+	//	return 0
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
 		return 0
@@ -322,6 +304,7 @@
 
 	var/mob/living/character = create_character(T)	//creates the human and transfers vars and mind
 	character = SSjobs.EquipRank(character, rank, 1)
+	. = character
 
 	UpdateFactionList(character)
 	log_game("JOINED [key_name(character)] as \"[rank]\"")
@@ -363,7 +346,6 @@
 	var/datum/antagonist/antag = all_antag_types[antag_type]
 	if(antag)
 		antag.add_antagonist(character.mind,1,0,1)
-
 
 	qdel(src)
 
