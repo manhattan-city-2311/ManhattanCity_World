@@ -10,6 +10,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "code\_debugger.dm"
 #include "code\_macros.dm"
 #include "code\_map_tests.dm"
 #include "code\_unit_tests.dm"
@@ -2196,9 +2197,14 @@
 #include "code\modules\modern_vehicles\vehicle\types\ambulance.dm"
 #include "code\modules\modern_vehicles\vehicle\types\aventa.dm"
 #include "code\modules\modern_vehicles\vehicle\types\cerberus.dm"
+#include "code\modules\modern_vehicles\vehicle\types\cray.dm"
 #include "code\modules\modern_vehicles\vehicle\types\crown.dm"
 #include "code\modules\modern_vehicles\vehicle\types\cybertruck.dm"
+#include "code\modules\modern_vehicles\vehicle\types\glider.dm"
 #include "code\modules\modern_vehicles\vehicle\types\hyperloop.dm"
+#include "code\modules\modern_vehicles\vehicle\types\kaneda.dm"
+#include "code\modules\modern_vehicles\vehicle\types\rider.dm"
+#include "code\modules\modern_vehicles\vehicle\types\taho.dm"
 #include "code\modules\modern_vehicles\vehicle\types\track_bound.dm"
 #include "code\modules\modern_vehicles\vehicle\types\truck.dm"
 #include "code\modules\modern_vehicles\vehicle\types\custom\zakatneba.dm"

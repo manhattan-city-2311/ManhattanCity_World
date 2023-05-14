@@ -104,7 +104,7 @@ h1.alert, h2.alert		{color: #000000;}
 .vox					{color: #AA00AA;}
 .rough					{font-family: "Trebuchet MS", cursive, sans-serif;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}
-.terminus				{font-family: "Times New Roman", Times, serif, sans-serif}
+.french					{font-family: "Times New Roman", Times, serif, sans-serif}
 .interface				{color: #330033;}
 .chinese				{color: #d4a52a;}
 .indian					{color: #422863;}

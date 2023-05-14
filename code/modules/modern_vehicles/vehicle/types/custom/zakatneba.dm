@@ -25,7 +25,7 @@
 
 /obj/manhattan/vehicle/motorcycle/zakatneba
 	name = "XI7-MOONSTER"
-	desc = "The neon fighter of night roads. It is an exclusive model, they do not produce them anymore. It is considered the benchmark for sports motorcycles. It shimmers with red and turquoise shades when riding. It is the stuff of legends."
+	desc = "The neon fighter of night roads. Being an exclusive, discontinued model, it's often used as a benchmark for sports motorcycles. It shimmers with red and turquoise shades when riding. The stuff of legends."
 	icon = 'icons/vehicles/custom/zakatneba.dmi'
 	icon_state = "lights"
 	overlay_icon_state = "overlay"

@@ -1,6 +1,6 @@
 /obj/manhattan/vehicle/large/ambulance
-	name = "City Ambulance"
-	desc = "A vehicle for transporting wounded and unstable patients. Can hold 3 people"
+	name = "Ambulance"
+	desc = "A standard-issue hospital vehicle, painted white and red. Has a sizable back cab, fit for most medical emergencies."
 
 	icon = 'icons/vehicles/ambulance.dmi'
 	icon_state = "ambulance"

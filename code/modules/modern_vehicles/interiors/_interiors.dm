@@ -136,6 +136,6 @@
 /obj/structure/vehicledoor/MouseDrop_T(mob/target, mob/user)
 	. = ..()
 	if(ismob(target))
-		interior.vehicle.exit_vehicle(target, ingore_incap_check = TRUE, puller = user)
+		interior.vehicle.exit_vehicle(target, ignore_incap_check = TRUE, puller = user)
 	else
 		target.forceMove(interior.vehicle.pick_valid_exit_loc())

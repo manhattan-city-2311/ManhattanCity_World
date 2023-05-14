@@ -6,7 +6,7 @@
 	ys = list(0, 50,   100,  150,  200,  250,  150,  100)
 	max_rpm = 6000
 
-	mass = 180
+	mass = 140
 
 /obj/item/vehicle_part/gearbox/crown
 	name = "crown's brand gearbox"
@@ -27,8 +27,8 @@
 	capacity = 65
 
 /obj/manhattan/vehicle/crown
-	name = "crown"
-	desc = "The police vehicles."
+	name = "Crown"
+	desc = "A standard police cruiser with MCPD livery. It's the oldest, cheapest and one of the most robust cars in widespread service on many colonies."
 
 	icon = 'icons/vehicles/crown.dmi'
 	icon_state = "crown"

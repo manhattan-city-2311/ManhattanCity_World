@@ -29,8 +29,8 @@
 	capacity = 90
 
 /obj/manhattan/vehicle/aventa
-	name = "Aventa sport car"
-	desc = "A vehicle for racing across the streets."
+	name = "Aventa"
+	desc = "A modern supercar, mass-imported from Sol at mindblowing prices. Often seen speeding across the streets of Manhattan."
 
 	icon = 'icons/vehicles/aventador.dmi'
 	icon_state = "aventador"
