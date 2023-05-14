@@ -28,8 +28,8 @@
 	capacity = 50
 
 /obj/manhattan/vehicle/cybertruck
-	name = "cybertruck"
-	desc = "Brand new modification of the famous vehicle."
+	name = "Cybertruck" //but mom it's not a truck
+	desc = "A brand new SUV modification of the famous truck with MCPD livery. Commonly used for high-speed chases, creating roadblocks and ramming them."
 
 	icon = 'icons/vehicles/cybertruck.dmi'
 	icon_state = "cybertruck"

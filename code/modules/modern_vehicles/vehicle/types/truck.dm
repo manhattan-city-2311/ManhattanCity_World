@@ -1,6 +1,6 @@
 /obj/manhattan/vehicle/truck
-	name = "Car truck"
-	desc = "A vehicle for transporting stuff, can hold 4 people."
+	name = "Pickup Truck" //should rename it later
+	desc = "A nondescript larger-than-average vehicle with two front seats and a plethora of cargo space in its open cab."
 
 	icon = 'icons/vehicles/truck.dmi'
 	icon_state = "truck"
