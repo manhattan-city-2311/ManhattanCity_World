@@ -27,8 +27,8 @@
 	capacity = 65
 
 /obj/manhattan/vehicle/crown
-	name = "crown"
-	desc = "The police vehicles."
+	name = "Crown"
+	desc = "A standard police cruiser with MCPD livery. It's the oldest, cheapest and one of the most robust cars in widespread service on many colonies."
 
 	icon = 'icons/vehicles/crown.dmi'
 	icon_state = "crown"

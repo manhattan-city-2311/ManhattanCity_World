@@ -28,7 +28,7 @@
 
 /obj/manhattan/vehicle/ae86
 	name = "Ae86"
-	desc = "A vehicle." // TODO: Fill.
+	desc = "A drivable replica of the once famous Toyota Sprinter AE86, with maybe slightly better performance. Oddly capable of pulling sick drifts."
 
 	icon = 'icons/vehicles/ae86.dmi'
 	icon_state = "ae86"

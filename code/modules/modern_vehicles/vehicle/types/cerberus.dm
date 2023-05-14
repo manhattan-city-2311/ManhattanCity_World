@@ -1,5 +1,6 @@
 /obj/manhattan/vehicle/cerberus
 	name = "Cerberus"
+	desc = "A large, armored, powerful truck with MCPD livery. Tested in field conditions of countless armed conflicts across human space, its design was adopted by some law enforcement agencies."
 	icon = 'icons/vehicles/cerberus.dmi'
 
 	bound_height = 64

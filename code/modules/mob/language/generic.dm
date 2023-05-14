@@ -29,7 +29,7 @@
 	syllables = list(
 "vol", "zum", "coo","zoo","bi","do","ooz","ite","og","re","si","ite","ish",
 "ar","at","on","ee","east","ma","da", "rim")
-	partial_understanding = list(LANGUAGE_SOL_COMMON = 30)
+	partial_understanding = list(LANGUAGE_FRENCH = 30)
 
 //TODO flag certain languages to use the mob-type specific say_quote and then get rid of these.
 /datum/language/common/get_spoken_verb(var/msg_end)
@@ -54,6 +54,7 @@
 "nt","ti","us","it","en","at","tu","te","ri","es","et","ra","ta","an","ni","li","on","or","se",
 "am","ae","ia","di","ue","em","ar","ui","st","si","de","ci","iu","ne","pe","co","os","ur","ru")
 */
+/*
 /datum/language/terminus
 	name = LANGUAGE_TERMINUS
 	desc = "A quickly spoken language adopted by the people of the industrial Terminus sector of Andromeda."
@@ -66,16 +67,16 @@
 	syllables = list (".a", "spa", "pan", "blaif", "stra", "!u", "!ei", "!am", "by", ".y", "gry", "zbly", "!y", "fl",
  	"sm", "rn", "cpi", "ku", "koi", "pr", "glau", "stu", "ved", "ki", "tsa", "xau", "jbu", "sny", "stro", "nu",
  	"uan", "ju", "!i", "ge", "luk", "an", "ar", "at", "es", "et", "bel", "ki", "jaa", "ch", "ki", "gh", "ll", "uu", "wat")
-
+*/
 // Criminal language.
-/*/datum/language/gutter
+/datum/language/gutter
 	name = LANGUAGE_GUTTER
 	desc = "Gutter originated as a Thieves' Cant of sorts during the early colonization era. The language eventually spread from the cartels and triads to the disenfranchised people of Ocral Spax and beyond."
 	speech_verb = "growls"
 	colour = "rough"
 	key = "3"
 	space_chance = 45
-	partial_understanding = list(LANGUAGE_GALCOM = 10, LANGUAGE_TRADEBAND = 20, LANGUAGE_SOL_COMMON = 20)
+	partial_understanding = list(LANGUAGE_GALCOM = 10, LANGUAGE_FRENCH = 20)
 	syllables = list (
 "gra","ba","ba","breh","bra","rah","dur","ra","ro","gro","go","ber","bar","geh","heh", "gra",
 "a", "ai", "an", "ang", "ao", "ba", "bai", "ban", "bang", "bao", "bei", "ben", "beng", "bi", "bian", "biao",
@@ -127,7 +128,7 @@
 "le", "me", "nd", "ne", "ng", "nt", "on", "or", "ou", "re", "se", "st", "te", "th", "ti", "to",
 "ve", "wa", "all", "and", "are", "but", "ent", "era", "ere", "eve", "for", "had", "hat", "hen", "her", "hin",
 "his", "ing", "ion", "ith", "not", "ome", "oul", "our", "sho", "ted", "ter", "tha", "the", "thi")
-*/
+
 /datum/language/sign
 	name = LANGUAGE_SIGN
 	desc = "A sign language commonly used for those who are deaf or mute."

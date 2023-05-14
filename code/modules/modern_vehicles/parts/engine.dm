@@ -14,7 +14,7 @@
 	var/stop_sound = 'sound/vehicles/modern/vehicle_turned_off.ogg'
 	var/start_sound = 'sound/vehicles/modern/vehicle_start.ogg'
 	var/failstart_sound = 'sound/vehicles/modern/vehicle_failing_to_start.ogg'
-	break_message = "<span class = 'danger'>The car's engine whines like an injured animal and shuts down!</span>"
+	break_message = "<span class = 'danger'>The car's engine lets out a sharp creak and shuts down!</span>"
 
 	// Note:
 	var/list/xs = list(0, 400, 1000, 2000, 3000, 4000, 5000, 5500, 6000)
@@ -45,7 +45,7 @@
 	vehicle.active = FALSE
 	if(vehicle.active)
 		playsound(vehicle, stop_sound, 150, 1, 5)
-		vehicle.visible_message("\The [vehicle]'s engines stops.")
+		vehicle.visible_message("\The [vehicle]'s engine stops.")
 	rpm = 0
 
 /obj/item/vehicle_part/engine/proc/handle_torque(delta = 2)
@@ -87,7 +87,7 @@
 			. = 'sound/vehicles/modern/zb_fb_med.ogg'
 		if(RPM_FAST to POSITIVE_INFINITY)
 			. = 'sound/vehicles/modern/zb_fb_fast.ogg'
-	
+
 	if(. != cur_sound)
 		sound_token?.Stop()
 		sound_token = global.sound_player.PlayLoopingSound(vehicle, "[vehicle.serial_number][type]", ., 25, 7)
