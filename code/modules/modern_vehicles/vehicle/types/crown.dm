@@ -6,7 +6,7 @@
 	ys = list(0, 50,   100,  150,  200,  250,  150,  100)
 	max_rpm = 6000
 
-	mass = 180
+	mass = 140
 
 /obj/item/vehicle_part/gearbox/crown
 	name = "crown's brand gearbox"
