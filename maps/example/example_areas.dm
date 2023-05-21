@@ -18,3 +18,7 @@
 /area/mine
 	name = "mine"
 	should_objects_be_saved = FALSE
+
+/area/examplestation
+	name = "Example"
+	holomap_color = HOLOMAP_AREACOLOR_HALLWAYS

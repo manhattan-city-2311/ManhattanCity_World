@@ -1,143 +1,143 @@
-"aa" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/light_switch{pixel_y = 24},/turf/simulated/floor/tiled/dark,/area/aisat)
-"ab" = (/turf/simulated/wall,/area/aisat)
-"ac" = (/obj/structure/bed/chair/sofa/black/right,/turf/simulated/floor/tiled/dark,/area/aisat)
-"ad" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/bed/chair/sofa/black,/obj/structure/plasma{pixel_x = -28; pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/aisat)
-"ae" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/bed/chair/sofa/black/left,/turf/simulated/floor/tiled/dark,/area/aisat)
-"af" = (/obj/structure/sign/neon/figures/circle,/turf/simulated/wall,/area/aisat)
-"ag" = (/obj/structure/table/standard,/obj/item/weapon/storage/belt/utility/full,/turf/simulated/floor/tiled/dark,/area/aisat)
-"ah" = (/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
-"ai" = (/obj/structure/sign/neon/figures/crest,/turf/simulated/wall,/area/aisat)
-"aj" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/holoplant,/turf/simulated/floor/tiled/dark,/area/aisat)
-"ak" = (/obj/machinery/light,/turf/simulated/floor/tiled/dark,/area/aisat)
-"al" = (/obj/structure/sign/neon/figures/square,/turf/simulated/wall,/area/aisat)
-"am" = (/obj/structure/sign/neon/figures/triangle,/turf/simulated/wall,/area/aisat)
-"an" = (/turf/simulated/floor/tiled/dark,/area/aisat)
-"ao" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/light/colored/green{icon_state = "green1"; dir = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
-"ap" = (/obj/machinery/light/floor,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aq" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/steel,/obj/item/device/flashlight/lamp/lava/green,/turf/simulated/floor/tiled/dark,/area/aisat)
-"ar" = (/obj/structure/gas_station,/turf/simulated/floor/tiled/dark,/area/aisat)
-"as" = (/obj/structure/gas_station/old,/turf/simulated/floor/tiled/dark,/area/aisat)
-"at" = (/obj/effect/arrival_stop,/turf/simulated/floor/tiled/dark,/area/aisat)
-"au" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 9},/obj/structure/neon_spline/red/corner,/turf/simulated/floor/tiled/dark,/area/aisat)
-"av" = (/obj/machinery/media/jukebox{anchored = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
-"aw" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/item/frame/mirror{pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/aisat)
-"ax" = (/obj/machinery/light{icon_state = "tube1"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
-"ay" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 1},/obj/structure/neon_spline/red,/turf/simulated/floor/tiled/dark,/area/aisat)
-"az" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
-"aA" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 5},/obj/structure/neon_spline/red/corner{icon_state = "spline_fancy_corner"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
-"aB" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/device/multitool,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aC" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/mirror/wide{pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/aisat)
-"aD" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/clothing/gloves/yellow,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aE" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 8},/obj/structure/neon_spline/red{icon_state = "spline_fancy"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
-"aF" = (/obj/effect/landmark{name = "JoinLate"},/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aG" = (/obj/effect/landmark/start,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aH" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 4},/obj/structure/neon_spline/red{icon_state = "spline_fancy"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
-"aI" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 10},/obj/structure/neon_spline/red/corner{icon_state = "spline_fancy_corner"; dir = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
-"aL" = (/obj/structure/neon_spline/green,/obj/structure/neon_spline/red{icon_state = "spline_fancy"; dir = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
-"aM" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 6},/obj/structure/neon_spline/red/corner{icon_state = "spline_fancy_corner"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
-"aN" = (/obj/effect/floor_decal/corner/white/diagonal,/mob/living/carbon/human/npc/interactable/retail/testing,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aO" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/spacecash/bundle/c100,/obj/item/weapon/spacecash/bundle/c100,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aP" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/surgical/scalpel,/obj/item/weapon/surgical/retractor,/obj/item/weapon/surgical/hemostat,/obj/item/weapon/surgical/circular_saw,/obj/item/weapon/surgical/cautery,/obj/item/weapon/surgical/bonesetter,/obj/item/weapon/surgical/bonegel,/obj/item/weapon/surgical/bone_clamp,/obj/item/weapon/surgical/suture,/obj/item/weapon/surgical/surgicaldrill,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aQ" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/atm,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aR" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aS" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/machinery/monitor,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aT" = (/obj/structure/bed/roller/adv,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aU" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/paper_bin,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aV" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/pen/red,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aW" = (/turf/simulated/wall,/area/example_mine_lift)
-"aX" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/card/id/security/detective,/turf/simulated/floor/tiled/dark,/area/aisat)
-"aY" = (/obj/machinery/door/airlock,/turf/simulated/floor/tiled/dark,/area/example_mine_lift)
-"aZ" = (/obj/machinery/mine_lift_button{pixel_x = -24},/turf/simulated/floor/tiled/dark,/area/example_mine_lift)
-"ba" = (/turf/simulated/floor/tiled/dark,/area/example_mine_lift)
-"bb" = (/obj/structure/neon_spline/purple/corner,/turf/simulated/floor/tiled/dark,/area/aisat)
-"bd" = (/obj/structure/neon_spline/purple/corner{icon_state = "spline_fancy_corner"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
-"be" = (/obj/structure/neon_spline/purple{icon_state = "spline_fancy"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
-"bf" = (/obj/structure/neon_spline/purple{icon_state = "spline_fancy"; dir = 8},/turf/simulated/floor/tiled/dark,/area/aisat)
-"bg" = (/obj/structure/neon_spline/purple/corner{icon_state = "spline_fancy_corner"; dir = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
-"bh" = (/obj/structure/neon_spline/purple{icon_state = "spline_fancy"; dir = 1},/turf/simulated/floor/tiled/dark,/area/aisat)
-"bi" = (/obj/structure/neon_spline/purple/corner{icon_state = "spline_fancy_corner"; dir = 4},/turf/simulated/floor/tiled/dark,/area/aisat)
+"aa" = (/turf/simulated/wall,/area/examplestation)
+"ab" = (/turf/simulated/floor/tiled/dark,/area/examplestation)
+"ac" = (/obj/machinery/light/floor,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"ad" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 9},/obj/structure/neon_spline/red/corner,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"ae" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 1},/obj/structure/neon_spline/red,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"af" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 5},/obj/structure/neon_spline/red/corner{icon_state = "spline_fancy_corner"; dir = 8},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"ag" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 8},/obj/structure/neon_spline/red{icon_state = "spline_fancy"; dir = 4},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"ah" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 4},/obj/structure/neon_spline/red{icon_state = "spline_fancy"; dir = 8},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"ai" = (/obj/structure/neon_spline/purple/corner,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aj" = (/obj/structure/sign/neon/figures/circle,/turf/simulated/wall,/area/examplestation)
+"ak" = (/obj/structure/sign/neon/figures/crest,/turf/simulated/wall,/area/examplestation)
+"al" = (/obj/structure/sign/neon/figures/square,/turf/simulated/wall,/area/examplestation)
+"am" = (/obj/structure/sign/neon/figures/triangle,/turf/simulated/wall,/area/examplestation)
+"an" = (/obj/structure/neon_spline/purple/corner{icon_state = "spline_fancy_corner"; dir = 8},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"ao" = (/obj/structure/neon_spline/purple{icon_state = "spline_fancy"; dir = 4},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"ap" = (/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aq" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/light_switch{pixel_y = 24},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"ar" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/light/colored/green{icon_state = "green1"; dir = 1},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"as" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/mirror/wide{pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"at" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/item/frame/mirror{pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"au" = (/obj/machinery/media/jukebox{anchored = 1},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"av" = (/obj/machinery/station_map{pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aw" = (/obj/structure/bed/chair/sofa/black/right,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"ax" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/bed/chair/sofa/black,/obj/structure/plasma{pixel_x = -28; pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"ay" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/bed/chair/sofa/black/left,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"az" = (/obj/structure/neon_spline/purple{icon_state = "spline_fancy"; dir = 8},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aA" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/holoplant,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aB" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/steel,/obj/item/device/flashlight/lamp/lava/green,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aC" = (/obj/effect/floor_decal/corner/white/diagonal,/mob/living/carbon/human/npc/interactable/retail/testing,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aD" = (/obj/structure/gas_station,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aE" = (/obj/structure/gas_station/old,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aF" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/spacecash/bundle/c100,/obj/item/weapon/spacecash/bundle/c100,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aG" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aH" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/card/id/security/detective,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aI" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/machinery/atm,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aJ" = (/obj/machinery/light,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aK" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aL" = (/obj/machinery/light{icon_state = "tube1"; dir = 4},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aM" = (/obj/structure/sign/neon/big/manhattan2,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aN" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/device/multitool,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aO" = (/obj/structure/table/standard,/obj/item/weapon/storage/belt/utility/full,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aP" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/clothing/gloves/yellow,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aQ" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/paper_bin,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aR" = (/obj/effect/landmark{name = "JoinLate"},/obj/effect/floor_decal/corner/white/diagonal,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aS" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/surgical/scalpel,/obj/item/weapon/surgical/retractor,/obj/item/weapon/surgical/hemostat,/obj/item/weapon/surgical/circular_saw,/obj/item/weapon/surgical/cautery,/obj/item/weapon/surgical/bonesetter,/obj/item/weapon/surgical/bonegel,/obj/item/weapon/surgical/bone_clamp,/obj/item/weapon/surgical/suture,/obj/item/weapon/surgical/surgicaldrill,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aT" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/machinery/monitor,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aU" = (/obj/effect/floor_decal/corner/white/diagonal,/obj/structure/table/standard,/obj/item/weapon/pen/red,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aV" = (/obj/effect/landmark/start,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aW" = (/obj/structure/bed/roller/adv,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aX" = (/obj/effect/arrival_stop,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aY" = (/obj/structure/neon_spline/purple/corner{icon_state = "spline_fancy_corner"; dir = 1},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"aZ" = (/obj/structure/neon_spline/purple{icon_state = "spline_fancy"; dir = 1},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"ba" = (/obj/structure/neon_spline/purple/corner{icon_state = "spline_fancy_corner"; dir = 4},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"bb" = (/obj/machinery/door/airlock,/turf/simulated/floor/tiled/dark,/area/examplestation)
+"bc" = (/obj/machinery/mine_lift_button{pixel_x = -24},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"bd" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 10},/obj/structure/neon_spline/red/corner{icon_state = "spline_fancy_corner"; dir = 1},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"be" = (/obj/structure/neon_spline/green,/obj/structure/neon_spline/red{icon_state = "spline_fancy"; dir = 1},/turf/simulated/floor/tiled/dark,/area/examplestation)
+"bf" = (/obj/structure/neon_spline/green{icon_state = "spline_fancy"; dir = 6},/obj/structure/neon_spline/red/corner{icon_state = "spline_fancy_corner"; dir = 4},/turf/simulated/floor/tiled/dark,/area/examplestation)
 
 (1,1,1) = {"
-abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
-abanapanananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanapanananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanapanananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanapanananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanapanananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanapanananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanapanananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanauayayayayayayayayayayayayayayayayayayayayayayayayayayaAanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEananananananananananananananananananananananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEananananananananananananananananananananananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEananananananananananananananananananananananananananaHananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab
-abanaEananananananananananananananananananananananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEananananananananananananananananananananananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEananananananananananananananananananananananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbbabababafaialamababababababbdananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbeahaaaoaCawahavaoahacadaeahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbeahahahahahahanahahajaqajahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbeahahahahahahanahahahahahahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbeahahahahahahanahahahahahahbfananananananaHananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab
-abanaEanananananbeahahahaNahahanahahahahahahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEananarasanbeahahaOaRaXaQakahahahahahahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbeazananananaxabazananananaxbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbeahahahahahaBagaDahahahahahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbeaUahaFaFaFahanahahaPaRaSahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbeaVahaFaFaFahaGahahahaTahahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbeaRahaFaFaFahanahahahahahahbfanatananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbeahahahahahahanahahahahahahbfananananananaHananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab
-abanaEanananananbeahahahahahahakahahahahahahbfananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananbgbhbhbhbhbhbhbhbhbhbhbhbhbhbiananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananananananananananananananananananaWaYaYaWanaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananananananananananananananananananaWaZbaaWanaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananananananananananananananananananaWbabaaWanaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEanananananananananananananananananananananaWaWaWaWanaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaEananananananananananananananananananananananananananaHanananananananananananananananananananananananananananananananananananananananananananananananananananab
-abanaIaLaLaLaLaLaLaLaLaLaLaLaLaLaLaLaLaLaLaLaLaLaLaLaLaLaLaMananapanananananananapanananananananapanananananananapanananananananapanananananananapanananananananapab
-abananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananananab
-abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaabacabababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabacabababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabacabababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabacabababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabacabababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabacabababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabacabababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabadaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeafabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagababababababababababababababababababababababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagababababababababababababababababababababababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagababababababababababababababababababababababababababahababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacaa
+aaabagababababababababababababababababababababababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagababababababababababababababababababababababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagababababababababababababababababababababababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababaiaaaaaaajakalamaaaaaaaaaaaaanababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababaoapaqarasatapauaravawaxayapazababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababaoapapapapapapabapapaAaBaAapazababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababaoapapapapapapabapapapapapapazababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababaoapapapapapapabapapapapapapazababababababahababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacaa
+aaabagabababababaoapapapaCapapabapapapapapapazababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagababaDaEabaoapapaFaGaHaIaJapapapapapapazababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababaoaKababababaLaaaKababababaLazababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababaoapapapapapaNaOaPapapapapapazababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababaoaQapaRaRaRapabapapaSaGaTapazababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababaoaUapaRaRaRapaVapapapaWapapazababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababaoaGapaRaRaRapabapapapapapapazabaXababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababaoapapapapapapabapapapapapapazababababababahababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacaa
+aaabagabababababaoapapapapapapaJapapapapapapazababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababaYaZaZaZaZaZaZaZaZaZaZaZaZaZbaababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababababababababaMabababababababababaabbbbaaabahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababababababababababababababababababaabcabaaabahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababababababababababababababababababaaababaaabahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagabababababababababababababababababababababaaaaaaaaabahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabagababababababababababababababababababababababababababahabababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaabbdbebebebebebebebebebebebebebebebebebebebebebebebebebebfababacabababababababacabababababababacabababababababacabababababababacabababababababacabababababababacaa
+aaababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

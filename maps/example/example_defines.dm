@@ -27,6 +27,7 @@
 	emergency_shuttle_leaving_dock = "The Emergency Shuttle has left the station. Estimate %ETA% until the shuttle docks at %dock_name%."
 	emergency_shuttle_called_message = "An emergency evacuation shuttle has been called. It will arrive at docks one and two in approximately %ETA%"
 	emergency_shuttle_recall_message = "The emergency shuttle has been recalled."
+	holomap_offset_y = list(-96)
 
 /datum/map_z_level/example/first
 	z = Z_LEVEL_FIRST_EXAMPLE
