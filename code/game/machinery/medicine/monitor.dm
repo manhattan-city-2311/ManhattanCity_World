@@ -87,15 +87,15 @@
 	else
 		data["hr"] = "UNKNOWN"
 	data["bp"] = attached.get_blood_pressure_fluffy()
-	switch(attached.mpressure)
-		if(NEGATIVE_INFINITY to BLOOD_PRESSURE_L2BAD)
-			data["bp_s"] = "bad"
-		if(BLOOD_PRESSURE_L2BAD to BLOOD_PRESSURE_NORMAL - 30)
-			data["bp_s"] = "average"
-		if(BLOOD_PRESSURE_HBAD to BLOOD_PRESSURE_H2BAD)
-			data["bp_s"] = "average"
-		if(BLOOD_PRESSURE_H2BAD to POSITIVE_INFINITY)
-			data["bp_s"] = "bad"
+	var/mPressure = attached.mpressure
+	if(NEGATIVE_INFINITY <= mPressure && mPressure <= BLOOD_PRESSURE_L2BAD)
+		data["bp_s"] = "bad"
+	if(BLOOD_PRESSURE_L2BAD <= mPressure && mPressure <= (BLOOD_PRESSURE_NORMAL - 30))
+		data["bp_s"] = "average"
+	if(BLOOD_PRESSURE_HBAD <= mPressure && mPressure <= BLOOD_PRESSURE_H2BAD)
+		data["bp_s"] = "average"
+	if(BLOOD_PRESSURE_H2BAD <= mPressure && mPressure <= POSITIVE_INFINITY)
+		data["bp_s"] = "bad"
 
 	switch(attached.get_blood_perfusion())
 		if(0 to 0.6)

@@ -16,6 +16,22 @@
 	if(N)
 		amount_per_transfer_from_this = N
 
+/obj/item/weapon/reagent_containers/proc/addDescriptionAboutReagents()
+	desc += " It contains:"
+	var/RLLen = reagents.reagent_list.len
+	if(RLLen > 1)
+		for(var/datum/reagent/reagent in reagents.reagent_list)
+			desc += " [reagent.name],"
+		desc += "."
+	else if(RLLen == 1)
+		var/datum/reagent/reagent = reagents.reagent_list[0]
+		desc += " [reagent.volume]ml of [reagent.name]. [reagent.description]"
+
+	var/cost
+	for(var/datum/reagent/reagent in reagents.reagent_list)
+		cost += reagent.volume * reagent.price_tag
+	desc += " It's cost label reads: [cost]."
+
 /obj/item/weapon/reagent_containers/New()
 	..()
 	if(!possible_transfer_amounts)

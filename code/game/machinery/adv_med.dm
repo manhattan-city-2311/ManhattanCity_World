@@ -516,21 +516,21 @@
 					o_dead = "Necrotic:"
 				if(e.open)
 					open = "Open:"
-				switch (e.germ_level)
-					if (INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
-						infected = "Mild Infection:"
-					if (INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-						infected = "Mild Infection+:"
-					if (INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-						infected = "Mild Infection++:"
-					if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
-						infected = "Acute Infection:"
-					if (INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
-						infected = "Acute Infection+:"
-					if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
-						infected = "Acute Infection++:"
-					if (INFECTION_LEVEL_THREE -49 to POSITIVE_INFINITY)
-						infected = "Gangrene Detected:"
+				var/GL = e.germ_level
+				if(INFECTION_LEVEL_ONE <= GL && GL <= (INFECTION_LEVEL_ONE + 200))
+					infected = "Mild Infection:"
+				if((INFECTION_LEVEL_ONE + 200) <= GL && GL <= (INFECTION_LEVEL_ONE + 300))
+					infected = "Mild Infection+:"
+				if((INFECTION_LEVEL_ONE + 300) <= GL && GL <= (INFECTION_LEVEL_ONE + 400))
+					infected = "Mild Infection++:"
+				if(INFECTION_LEVEL_TWO <= GL && GL <= (INFECTION_LEVEL_TWO + 200))
+					infected = "Acute Infection:"
+				if((INFECTION_LEVEL_TWO + 200) <= GL && GL <= (INFECTION_LEVEL_TWO + 300))
+					infected = "Acute Infection+:"
+				if((INFECTION_LEVEL_TWO + 300) <= GL && GL <= (INFECTION_LEVEL_THREE - 50))
+					infected = "Acute Infection++:"
+				if((INFECTION_LEVEL_THREE -49) <= GL && GL <= POSITIVE_INFINITY)
+					infected = "Gangrene Detected:"
 
 				var/unknown_body = 0
 				for(var/I in e.implants)
@@ -558,21 +558,14 @@
 				if(i.status & ORGAN_DEAD)
 					i_dead = "Necrotic:"
 				var/infection = "None"
-				switch (i.germ_level)
-					if (INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
-						infection = "Mild Infection:"
-					if (INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-						infection = "Mild Infection+:"
-					if (INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-						infection = "Mild Infection++:"
-					if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
-						infection = "Acute Infection:"
-					if (INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
-						infection = "Acute Infection+:"
-					if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
-						infection = "Acute Infection++:"
-					if (INFECTION_LEVEL_THREE -49 to POSITIVE_INFINITY)
-						infection = "Necrosis Detected:"
+				var/GL = i.germ_level
+				if (INFECTION_LEVEL_ONE <= GL && GL <= (INFECTION_LEVEL_ONE + 200)) infection = "Mild Infection:"
+				if ((INFECTION_LEVEL_ONE + 200) <= GL && GL <= (INFECTION_LEVEL_ONE + 300)) infection = "Mild Infection+:"
+				if ((INFECTION_LEVEL_ONE + 300) <= GL && GL <= (INFECTION_LEVEL_ONE + 400)) infection = "Mild Infection++:"
+				if (INFECTION_LEVEL_TWO <= GL && GL <= (INFECTION_LEVEL_TWO + 200)) infection = "Acute Infection:"
+				if ((INFECTION_LEVEL_TWO + 200) <= GL && GL <= (INFECTION_LEVEL_TWO + 300)) infection = "Acute Infection+:"
+				if ((INFECTION_LEVEL_TWO + 300) <= GL && GL <= (INFECTION_LEVEL_THREE -50)) infection = "Acute Infection++:"
+				if ((INFECTION_LEVEL_THREE -49) <= GL && GL <= POSITIVE_INFINITY) infection = "Necrosis Detected:"
 
 				dat += "<tr>"
 				dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech][i_dead]</td><td></td>"

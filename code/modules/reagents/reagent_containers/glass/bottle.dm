@@ -40,20 +40,7 @@
 	if(!icon_state)
 		icon_state = "bottle-[rand(1,4)]"
 
-	desc += " It contains:"
-	if(reagents.reagent_list.len > 1)
-		for(var/datum/reagent/reagent in reagents.reagent_list)
-			desc += " [reagent.name],"
-		desc += "."
-	else
-		var/datum/reagent/reagent = pick(reagents.reagent_list)
-		desc += " [reagent.volume]ml of [reagent.name]. [reagent.description]"
-
-	var/cost
-	for(var/datum/reagent/reagent in reagents.reagent_list)
-		cost += reagent.volume * reagent.price_tag
-	desc += " It's cost label reads: [cost]."
-
+	addDescriptionAboutReagents()
 
 /obj/item/weapon/reagent_containers/glass/bottle/update_icon()
 	overlays.Cut()

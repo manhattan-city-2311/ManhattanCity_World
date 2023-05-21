@@ -87,9 +87,9 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	return ..()
 
 /obj/machinery/mri/attack_hand(mob/user)
-	if (src.connected)
+	if(src.connected)
 		for(var/atom/movable/A as mob|obj in src.connected.loc)
-			if (!( A.anchored ))
+			if(!A.anchored)
 				A.forceMove(src)
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		qdel(src.connected)
@@ -99,7 +99,7 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 		src.connected = new /obj/structure/mri_tray( src.loc )
 		step(src.connected, SOUTH)
 		var/turf/T = get_step(src, SOUTH)
-		if (list_find(T.contents, src.connected))
+		if(list_find(T.contents, src.connected))
 			src.connected.connected = src
 			for(var/atom/movable/A as mob|obj in src)
 				A.forceMove(src.connected.loc)
@@ -111,12 +111,12 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	return
 
 /obj/machinery/mri/relaymove(mob/user as mob)
-	if (user.stat)
+	if(user.stat)
 		return
 	src.connected = new /obj/structure/mri_tray( src.loc )
 	step(src.connected, SOUTH)
 	var/turf/T = get_step(src, SOUTH)
-	if (list_find(T.contents, src.connected))
+	if(list_find(T.contents, src.connected))
 		src.connected.connected = src
 		for(var/atom/movable/A as mob|obj in src)
 			A.forceMove(src.connected.loc)
@@ -150,9 +150,9 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	return ..()
 
 /obj/structure/mri_tray/attack_hand(mob/user as mob)
-	if (src.connected)
+	if(src.connected)
 		for(var/atom/movable/A as mob|obj in src.loc)
-			if (!( A.anchored ))
+			if(!A.anchored)
 				A.forceMove(src.connected)
 		src.connected.connected = null
 		//src.connected.update()
@@ -163,11 +163,11 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 	return
 
 /obj/structure/mri_tray/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
-	if ((!( istype(O, /atom/movable) ) || O.anchored || get_dist(user, src) > 1 || get_dist(user, O) > 1 || list_find(user.contents, src) || list_find(user.contents, O)))
+	if((!( istype(O, /atom/movable) ) || O.anchored || get_dist(user, src) > 1 || get_dist(user, O) > 1 || list_find(user.contents, src) || list_find(user.contents, O)))
 		return
-	if (!ismob(O) && !istype(O, /obj/structure/closet/body_bag))
+	if(!ismob(O) && !istype(O, /obj/structure/closet/body_bag))
 		return
-	if (!ismob(user) || user.stat || user.lying || user.stunned)
+	if(!ismob(user) || user.stat || user.lying || user.stunned)
 		return
 	O.forceMove(src.loc)
 	visible_message("<span class='warning'>\The [user] places [O] onto [src]!</span>")
@@ -258,21 +258,21 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 			robot = "Prosthetic:"
 		if(e.open)
 			open = "Open:"
-		switch (e.germ_level)
-			if (INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
-				infected = "Mild Infection:"
-			if (INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-				infected = "Mild Infection+:"
-			if (INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-				infected = "Mild Infection++:"
-			if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
-				infected = "Acute Infection:"
-			if (INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
-				infected = "Acute Infection+:"
-			if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
-				infected = "Acute Infection++:"
-			if (INFECTION_LEVEL_THREE -49 to POSITIVE_INFINITY)
-				infected = "Gangrene Detected:"
+		var/GL = e.germ_level
+		if(INFECTION_LEVEL_ONE <= GL && GL <= (INFECTION_LEVEL_ONE + 200))
+			infected = "Mild Infection:"
+		if((INFECTION_LEVEL_ONE + 200) <= GL && GL <= (INFECTION_LEVEL_ONE + 300))
+			infected = "Mild Infection+:"
+		if((INFECTION_LEVEL_ONE + 300) <= GL && GL <= (INFECTION_LEVEL_ONE + 400))
+			infected = "Mild Infection++:"
+		if(INFECTION_LEVEL_TWO <= GL && GL <= (INFECTION_LEVEL_TWO + 200))
+			infected = "Acute Infection:"
+		if((INFECTION_LEVEL_TWO + 200) <= GL && GL <= (INFECTION_LEVEL_TWO + 300))
+			infected = "Acute Infection+:"
+		if((INFECTION_LEVEL_TWO + 300) <= GL && GL <= (INFECTION_LEVEL_THREE - 50))
+			infected = "Acute Infection++:"
+		if((INFECTION_LEVEL_THREE -49) <= GL && GL <= POSITIVE_INFINITY)
+			infected = "Gangrene Detected:"
 
 		var/unknown_body = 0
 
@@ -305,21 +305,21 @@ GLOBAL_LIST_INIT(mri_attracted_items, typecacheof(list(
 		if(i.status & ORGAN_DEAD)
 			i_dead = "Necrotic:"
 		var/infection = "None"
-		switch (i.germ_level)
-			if (INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
-				infection = "Mild Infection:"
-			if (INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-				infection = "Mild Infection+:"
-			if (INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-				infection = "Mild Infection++:"
-			if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
-				infection = "Acute Infection:"
-			if (INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
-				infection = "Acute Infection+:"
-			if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
-				infection = "Acute Infection++:"
-			if (INFECTION_LEVEL_THREE -49 to POSITIVE_INFINITY)
-				infection = "Necrosis Detected:"
+		var/GL = i.germ_level
+		if(INFECTION_LEVEL_ONE <= GL && GL <= (INFECTION_LEVEL_ONE + 200))
+			infection = "Mild Infection:"
+		if((INFECTION_LEVEL_ONE + 200) <= GL && GL <= (INFECTION_LEVEL_ONE + 300))
+			infection = "Mild Infection+:"
+		if((INFECTION_LEVEL_ONE + 300) <= GL && GL <= (INFECTION_LEVEL_ONE + 400))
+			infection = "Mild Infection++:"
+		if(INFECTION_LEVEL_TWO <= GL && GL <= (INFECTION_LEVEL_TWO + 200))
+			infection = "Acute Infection:"
+		if((INFECTION_LEVEL_TWO + 200) <= GL && GL <= (INFECTION_LEVEL_TWO + 300))
+			infection = "Acute Infection+:"
+		if((INFECTION_LEVEL_TWO + 300) <= GL && GL <= (INFECTION_LEVEL_THREE - 50))
+			infection = "Acute Infection++:"
+		if((INFECTION_LEVEL_THREE -49) <= GL && GL <= POSITIVE_INFINITY)
+			infection = "Necrosis Detected:"
 		dat += "<tr>"
 		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech][i_dead]</td><td></td>"
 		dat += "</tr>"
