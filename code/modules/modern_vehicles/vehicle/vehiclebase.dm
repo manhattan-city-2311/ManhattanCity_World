@@ -200,7 +200,8 @@
 	var/obj/item/vehicle_part/engine/engine = components[VC_ENGINE]
 	engine?.handle_sound()
 
-	for(var/obj/item/vehicle_part/VP as anything in components)
+	for(var/tag in components)
+		var/obj/item/vehicle_part/VP = components[tag]
 		if(VP.can_process())
 			VP.part_process()
 
