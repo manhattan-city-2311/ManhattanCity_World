@@ -22,7 +22,7 @@
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 
-	var/mob/watching_mob = null
+	var/list/watching_mobs = list()
 	var/image/small_station_map = null
 	var/image/floor_markings = null
 	var/image/panel = null
@@ -88,8 +88,8 @@
 	return Adjacent(user)
 
 /obj/machinery/station_map/attack_hand(mob/user)
-	if(watching_mob && (watching_mob != user))
-		to_chat(user, "<span class='warning'>Someone else is currently watching the holomap.</span>")
+	if(user in watching_mobs)
+		stopWatching(user)
 		return
 	if(!IsInRange(user))
 		to_chat(user, "<span class='warning'>You need to stand nearby \the [src].</span>")
@@ -98,7 +98,7 @@
 
 // Let people bump up against it to watch
 /obj/machinery/station_map/Bumped(atom/movable/AM)
-	if(!watching_mob && isliving(AM) && IsInRange(AM))
+	if(isliving(AM) && IsInRange(AM) && !(AM in watching_mobs))
 		startWatching(AM)
 
 // In order to actually get Bumped() we need to block movement.  We're (visually) on a wall, so people
@@ -136,10 +136,10 @@
 			user.client.screen |= global_hud.holomap // TODO - HACK! This should be there permenently really.
 			user.client.images |= holomap_datum.station_map
 
-			watching_mob = user
-			GLOB.moved_event.register(watching_mob, src, /obj/machinery/station_map/proc/checkPosition)
-			GLOB.dir_set_event.register(watching_mob, src, /obj/machinery/station_map/proc/checkPosition)
-			GLOB.destroyed_event.register(watching_mob, src, /obj/machinery/station_map/proc/stopWatching)
+			watching_mobs |= user
+			GLOB.moved_event.register(user, src, /obj/machinery/station_map/proc/checkPosition)
+			GLOB.dir_set_event.register(user, src, /obj/machinery/station_map/proc/checkPosition)
+			GLOB.destroyed_event.register(user, src, /obj/machinery/station_map/proc/stopWatching)
 			update_use_power(2)
 
 			if(bogus)
@@ -153,23 +153,36 @@
 
 /obj/machinery/station_map/process()
 	if((stat & (NOPOWER|BROKEN)) || !anchored)
-		stopWatching()
+		StopShowing()
 
-/obj/machinery/station_map/proc/checkPosition()
-	if(!watching_mob || (watching_mob.loc != loc) || (dir != watching_mob.dir))
-		stopWatching()
+/obj/machinery/station_map/proc/checkToStop(atom/movable/moving_instance)
+	return !moving_instance || (get_dist(src, moving_instance) > 0) || (dir != moving_instance.dir)
 
-/obj/machinery/station_map/proc/stopWatching()
-	if(watching_mob)
-		if(watching_mob.client)
+/obj/machinery/station_map/proc/checkPosition(atom/movable/moving_instance, atom/old_loc, atom/new_loc)
+	if(checkToStop(moving_instance))
+		stopWatching(moving_instance)
+	else
+		GLOB.moved_event.unregister(moving_instance, src, /obj/machinery/station_map/proc/checkPosition)
+		GLOB.dir_set_event.unregister(moving_instance, src, /obj/machinery/station_map/proc/checkPosition)
+		GLOB.moved_event.register(moving_instance, src, /obj/machinery/station_map/proc/checkPosition)
+		GLOB.dir_set_event.register(moving_instance, src, /obj/machinery/station_map/proc/checkPosition)
+
+/obj/machinery/station_map/proc/StopShowing()
+	for(var/mob/i in watching_mobs)
+		stopWatching(i)
+
+/obj/machinery/station_map/proc/stopWatching(atom/movable/moving_instance, atom/old_loc, atom/new_loc)
+	var/mob/M = moving_instance
+	watching_mobs -= moving_instance
+	if(M)
+		if(M.client)
 			animate(holomap_datum.station_map, alpha = 0, time = 5, easing = LINEAR_EASING)
-			var/mob/M = watching_mob
 			spawn(5) //we give it time to fade out
 				M.client.images -= holomap_datum.station_map
-		GLOB.moved_event.unregister(watching_mob, src)
-		GLOB.dir_set_event.unregister(watching_mob, src)
-		GLOB.destroyed_event.unregister(watching_mob, src)
-	watching_mob = null
+		GLOB.moved_event.unregister(M, src)
+		GLOB.dir_set_event.unregister(M, src)
+		GLOB.destroyed_event.unregister(M, src)
+	M = null
 	update_use_power(1)
 
 /obj/machinery/station_map/power_change()

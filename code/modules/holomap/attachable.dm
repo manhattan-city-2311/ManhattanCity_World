@@ -38,3 +38,6 @@
 
 /obj/machinery/station_map/attachable/update_icon()
 	return
+
+/obj/machinery/station_map/attachable/checkToStop(atom/movable/moving_instance)
+	return !moving_instance || (get_dist(src, moving_instance) > 0)
