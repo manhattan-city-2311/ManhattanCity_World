@@ -24,7 +24,7 @@
 			desc += " [reagent.name],"
 		desc += "."
 	else if(RLLen == 1)
-		var/datum/reagent/reagent = reagents.reagent_list[0]
+		var/datum/reagent/reagent = reagents.reagent_list[1]
 		desc += " [reagent.volume]ml of [reagent.name]. [reagent.description]"
 
 	var/cost
