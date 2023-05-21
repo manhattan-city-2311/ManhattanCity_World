@@ -129,7 +129,7 @@
 
 /obj/structure/vehicledoor/attack_hand(mob/user)
 	if(interior.vehicle.loc == null)
-		to_chat(user, "\The [src] is not opening.")
+		to_chat(user, "\The [src] is locked.")
 		return
 	interior.vehicle.exit_vehicle(user)
 
