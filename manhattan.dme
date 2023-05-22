@@ -1392,6 +1392,7 @@
 #include "code\modules\client\asset_cache.dm"
 #include "code\modules\client\client.dm"
 #include "code\modules\client\client_defines.dm"
+#include "code\modules\client\client_login.dm"
 #include "code\modules\client\client_procs.dm"
 #include "code\modules\client\darkmode.dm"
 #include "code\modules\client\movement.dm"

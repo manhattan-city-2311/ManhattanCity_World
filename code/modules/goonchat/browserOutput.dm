@@ -12,10 +12,6 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/tmp/iconCache.sav"))
 
 /client/var/chatOutput/chatOutput
 
-/client/New()
-	chatOutput = new (src)
-	return ..()
-
 /// Member of /client that manages caching and sending messages to its holder
 /chatOutput
 	var/client/owner

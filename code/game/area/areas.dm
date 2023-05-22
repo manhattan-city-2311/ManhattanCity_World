@@ -283,9 +283,10 @@ var/list/mob/living/forced_ambiance_list = new
 		return
 
 	// If we previously were in an area with force-played ambiance, stop it.
-	if(L in forced_ambiance_list)
+	if(L in forced_ambiance_list && (forced_ambience.len == 0))
 		sound_to(L, sound(null, channel = CHANNEL_AMBIENCE_FORCED))
 		forced_ambiance_list -= L
+		L.current_forced_ambience = null
 
 	// if(!L.client.ambience_playing)
 	// 	L.client.ambience_playing = 1
@@ -295,14 +296,18 @@ var/list/mob/living/forced_ambiance_list = new
 		if(!L.current_forced_ambience || !(L.current_forced_ambience in forced_ambience))
 			if(forced_ambience.len)
 				forced_ambiance_list |= L
-				var/sound/chosen_ambiance = pick(forced_ambience)
-				if(!istype(chosen_ambiance))
-					chosen_ambiance = sound(chosen_ambiance, repeat = 1, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE_FORCED)
-				sound_to(L, chosen_ambiance)
-				L.current_forced_ambience = chosen_ambiance
+				var/chosen_ambiance_path = pick(forced_ambience)
+				sound_to(L, sound(\
+					chosen_ambiance_path,\
+					repeat = 1, wait = 0,\
+					volume = 50, channel = CHANNEL_AMBIENCE_FORCED))
+				L.current_forced_ambience = chosen_ambiance_path
+				// to_world("1:[json_encode(forced_ambience)]:[L.current_forced_ambience]")
 			else
+				// to_world("0:[json_encode(forced_ambience)]")
 				sound_to(L, sound(null, channel = CHANNEL_AMBIENCE_FORCED))
-	else if(src.ambience.len && prob(40))
+				L.current_forced_ambience = null
+	else if(ambience.len && prob(40))
 		if((world.time >= L.client.played + 120))
 			var/sound = pick(ambience)
 			sound_to(L, sound(sound, repeat = 0, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE))

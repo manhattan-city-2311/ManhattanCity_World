@@ -51,12 +51,12 @@
 	flags = null
 	outdoors = TRUE
 	forced_ambience = list(
-		'sound/manhattan/north1.ogg',
-		'sound/manhattan/north3.ogg',
-		'sound/manhattan/north5.ogg',
-		'sound/manhattan/north6.ogg',
-		'sound/manhattan/north7.ogg',
-		'sound/manhattan/north8.ogg'
+		'sound/manhattan/north/north1.ogg',
+		'sound/manhattan/north/north3.ogg',
+		'sound/manhattan/north/north5.ogg',
+		'sound/manhattan/north/north6.ogg',
+		'sound/manhattan/north/north7.ogg',
+		'sound/manhattan/north/north8.ogg'
 	)
 	should_objects_be_saved = FALSE
 
@@ -267,12 +267,12 @@
 /area/planets/Manhattan/indoor/north/cray/upper2/chiefcraycabinet
 /area/planets/Manhattan/indoor/north/cray/upper2/chiefcraycabinet/balcony
 	forced_ambience = list(
-	'sound/manhattan/north1.ogg',
-	'sound/manhattan/north3.ogg',
-	'sound/manhattan/north5.ogg',
-	'sound/manhattan/north6.ogg',
-	'sound/manhattan/north7.ogg',
-	'sound/manhattan/north8.ogg'
+		'sound/manhattan/north/north1.ogg',
+		'sound/manhattan/north/north3.ogg',
+		'sound/manhattan/north/north5.ogg',
+		'sound/manhattan/north/north6.ogg',
+		'sound/manhattan/north/north7.ogg',
+		'sound/manhattan/north/north8.ogg'
 	)
 /area/planets/Manhattan/indoor/north/cray/upper2/breakroom
 
@@ -553,12 +553,12 @@
 	icon_state = "north_m3"
 	sound_env = CITY
 	forced_ambience = list(
-	'sound/manhattan/north1.ogg',
-	'sound/manhattan/north3.ogg',
-	'sound/manhattan/north5.ogg',
-	'sound/manhattan/north6.ogg',
-	'sound/manhattan/north7.ogg',
-	'sound/manhattan/north8.ogg'
+	'sound/manhattan/north/north1.ogg',
+	'sound/manhattan/north/north3.ogg',
+	'sound/manhattan/north/north5.ogg',
+	'sound/manhattan/north/north6.ogg',
+	'sound/manhattan/north/north7.ogg',
+	'sound/manhattan/north/north8.ogg'
 	)
 	base_turf = /turf/simulated/open
 
@@ -675,12 +675,12 @@
 	icon_state = "north_m3"
 	sound_env = CITY
 	forced_ambience = list(
-	'sound/manhattan/north1.ogg',
-	'sound/manhattan/north3.ogg',
-	'sound/manhattan/north5.ogg',
-	'sound/manhattan/north6.ogg',
-	'sound/manhattan/north7.ogg',
-	'sound/manhattan/north8.ogg'
+	'sound/manhattan/north/north1.ogg',
+	'sound/manhattan/north/north3.ogg',
+	'sound/manhattan/north/north5.ogg',
+	'sound/manhattan/north/north6.ogg',
+	'sound/manhattan/north/north7.ogg',
+	'sound/manhattan/north/north8.ogg'
 	)
 	base_turf = /turf/simulated/open
 
@@ -743,12 +743,12 @@
 	icon_state = "north_m3"
 	sound_env = CITY
 	forced_ambience = list(
-	'sound/manhattan/north1.ogg',
-	'sound/manhattan/north3.ogg',
-	'sound/manhattan/north5.ogg',
-	'sound/manhattan/north6.ogg',
-	'sound/manhattan/north7.ogg',
-	'sound/manhattan/north8.ogg'
+	'sound/manhattan/north/north1.ogg',
+	'sound/manhattan/north/north3.ogg',
+	'sound/manhattan/north/north5.ogg',
+	'sound/manhattan/north/north6.ogg',
+	'sound/manhattan/north/north7.ogg',
+	'sound/manhattan/north/north8.ogg'
 	)
 	base_turf = /turf/simulated/open
 
@@ -1102,10 +1102,10 @@
 	base_turf = /turf/simulated/floor/plating
 	holomap_color = HOLOMAP_AREACOLOR_COMERCIAL
 	forced_ambience = list(
-	'sound/manhattan/trading_center1.ogg',
-	'sound/manhattan/trading_center2.ogg',
-	'sound/manhattan/trading_center3.ogg',
-	'sound/manhattan/trading_center4.ogg'
+	'sound/manhattan/trading_center/trading_center1.ogg',
+	'sound/manhattan/trading_center/trading_center2.ogg',
+	'sound/manhattan/trading_center/trading_center3.ogg',
+	'sound/manhattan/trading_center/trading_center4.ogg'
 	)
 
 /area/planets/Manhattan/indoor/north/shopping/Ashan
